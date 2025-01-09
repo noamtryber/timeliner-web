@@ -176,25 +176,6 @@ export const Testimonials = () => {
             </Card>
           ))}
         </div>
-
-        {/* Running Logos */}
-        <div className="relative">
-          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
-          <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
-          
-          <div className="flex gap-12 items-center justify-start overflow-hidden">
-            <div className="flex gap-12 items-center animate-[scroll_25s_linear_infinite]">
-              {[...logos, ...logos].map((logo, index) => (
-                <img
-                  key={index}
-                  src={logo}
-                  alt="Company Logo"
-                  className="h-12 w-auto opacity-50 hover:opacity-100 transition-opacity"
-                />
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
