@@ -1,4 +1,4 @@
-import { MessageCircle, Clock, Apps } from "lucide-react";
+import { MessageCircle, Clock, AppWindow } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 const pains = [
@@ -21,7 +21,7 @@ const pains = [
     imagePath: "/placeholder.svg"
   },
   {
-    icon: Apps,
+    icon: AppWindow,
     title: "No Centralized Tools",
     description: [
       "Juggling multiple apps for projects, feedback, and payments wastes time.",
