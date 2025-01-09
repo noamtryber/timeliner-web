@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Switch } from "@/components/ui/switch";
 import { Slider } from "@/components/ui/slider";
-import { Check, Award, Database, Crown, Users, Play } from "lucide-react";
+import { Database, Crown, Users, Play } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -11,6 +10,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { PricingHeader } from "./pricing/PricingHeader";
+import { PlanFeature } from "./pricing/PlanFeature";
+import { PlanIcon } from "./pricing/PlanIcon";
+import { FreePlan } from "./pricing/FreePlan";
 
 export const Pricing = () => {
   const [isYearly, setIsYearly] = useState(false);
@@ -27,20 +30,6 @@ export const Pricing = () => {
   const basicPrice = calculatePrice(19, 250, basicStorage);
   const proPrice = calculatePrice(39, 500, proStorage);
 
-  const PlanFeature = ({ text }: { text: string }) => (
-    <div className="flex items-center gap-2 text-sm text-white/70">
-      <Check className="w-4 h-4 text-primary" />
-      <span>{text}</span>
-    </div>
-  );
-
-  const PlanIcon = ({ Icon, color }: { Icon: any; color: string }) => (
-    <div className={`w-12 h-12 rounded-full flex items-center justify-center bg-${color}/10 mb-6 mx-auto relative group transition-all duration-300`}>
-      <div className={`absolute inset-0 rounded-full bg-${color}/20 blur-md group-hover:blur-xl transition-all duration-300`} />
-      <Icon className={`w-6 h-6 text-${color} relative z-10 animate-pulse`} />
-    </div>
-  );
-
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background gradients */}
@@ -48,33 +37,10 @@ export const Pricing = () => {
       <div className="absolute -bottom-[40%] -right-[20%] w-[70%] h-[100%] bg-secondary/20 blur-[120px] rounded-full animate-pulse delay-1000" />
       
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text animate-fade-up">
-            Find the Perfect Plan for You
-          </h2>
-          <p className="text-xl text-white/70 mb-8 animate-fade-up delay-100">
-            Start for free and scale up as you grow. Choose the plan that fits your workflow.
-          </p>
-          
-          <div className="flex items-center justify-center gap-3 animate-fade-up delay-200">
-            <span className="text-sm text-white/70">Monthly</span>
-            <Switch
-              checked={isYearly}
-              onCheckedChange={setIsYearly}
-              className="data-[state=checked]:bg-primary"
-            />
-            <span className="text-sm text-white/70">
-              Yearly <span className="text-primary">(25% off)</span>
-            </span>
-          </div>
-          {isYearly && (
-            <p className="text-sm text-primary mt-2 animate-fade-up">
-              Billed annually at ${(basicPrice * 12).toFixed(2)}/year for Basic or ${(proPrice * 12).toFixed(2)}/year for Pro
-            </p>
-          )}
-        </div>
+        <PricingHeader isYearly={isYearly} setIsYearly={setIsYearly} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <FreePlan />
 
           {/* Basic Plan */}
           <Card className="glass p-6 flex flex-col animate-fade-up delay-400 hover:scale-105 transition-transform duration-300">
@@ -232,4 +198,3 @@ export const Pricing = () => {
     </section>
   );
 };
-
