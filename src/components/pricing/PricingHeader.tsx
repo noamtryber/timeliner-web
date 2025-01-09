@@ -19,7 +19,7 @@ export const PricingHeader = ({ pricingPeriod, setPricingPeriod }: PricingHeader
         <button
           onClick={() => setPricingPeriod('monthly')}
           className={cn(
-            "px-4 py-2 rounded-md transition-all duration-300",
+            "w-full px-4 py-2 rounded-md transition-all duration-300",
             pricingPeriod === 'monthly' 
               ? "bg-gradient-to-br from-primary to-secondary text-white" 
               : "text-white/70 hover:text-white"
@@ -30,7 +30,7 @@ export const PricingHeader = ({ pricingPeriod, setPricingPeriod }: PricingHeader
         <button
           onClick={() => setPricingPeriod('quarterly')}
           className={cn(
-            "px-4 py-2 rounded-md transition-all duration-300",
+            "w-full px-4 py-2 rounded-md transition-all duration-300",
             pricingPeriod === 'quarterly' 
               ? "bg-gradient-to-br from-primary to-secondary text-white" 
               : "text-white/70 hover:text-white"
@@ -42,7 +42,7 @@ export const PricingHeader = ({ pricingPeriod, setPricingPeriod }: PricingHeader
         <button
           onClick={() => setPricingPeriod('yearly')}
           className={cn(
-            "px-4 py-2 rounded-md transition-all duration-300",
+            "w-full px-4 py-2 rounded-md transition-all duration-300",
             pricingPeriod === 'yearly' 
               ? "bg-gradient-to-br from-primary to-secondary text-white" 
               : "text-white/70 hover:text-white"
