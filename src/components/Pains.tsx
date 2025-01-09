@@ -49,12 +49,12 @@ export const Pains = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative">
           {pains.map((pain, index) => (
-            <div key={index} className="relative pt-[300px]">
+            <div key={index} className="relative pt-[400px] md:pt-[500px] lg:pt-[300px]">
               {/* Floating image */}
               <div 
                 className={`absolute top-0 left-1/2 -translate-x-1/2 ${
-                  index === 1 ? 'w-[400px] h-[600px]' : 'w-[320px] h-[240px]'
-                } -mt-4 transform hover:scale-105 transition-transform duration-300`}
+                  index === 1 ? 'w-[280px] md:w-[400px] h-[400px] md:h-[600px]' : 'w-[240px] md:w-[320px] h-[180px] md:h-[240px]'
+                } transform hover:scale-105 transition-transform duration-300`}
                 style={{ 
                   zIndex: index === 1 ? 3 : 2,
                   perspective: '1000px',
@@ -65,6 +65,11 @@ export const Pains = () => {
                   src={pain.imagePath}
                   alt={pain.title}
                   className="w-full h-full object-contain rounded-lg shadow-xl"
+                  style={{
+                    maxHeight: '100%',
+                    width: 'auto',
+                    margin: '0 auto'
+                  }}
                 />
               </div>
 
