@@ -14,7 +14,7 @@ const features = [
     icon: Workflow,
     title: "Smart Revision Tracking",
     description: "Reduce back-and-forth by 31% with AI-powered workflow management and version control. Our intelligent system learns from your feedback patterns and helps streamline the revision process.",
-    videoUrl: "https://player.vimeo.com/video/1045525235?autoplay=1&loop=0&muted=1&background=1"
+    videoUrl: "https://player.vimeo.com/video/1045525235?autoplay=1&loop=1&muted=1&background=1"
   },
   {
     icon: FileStack,
@@ -122,10 +122,11 @@ export const Features = () => {
                   <>
                     <iframe
                       src={feature.videoUrl}
-                      className="w-full h-full absolute inset-0"
-                      frameBorder="0"
+                      className="w-full h-full absolute inset-0 border-0"
+                      loading="lazy"
                       allow="autoplay; fullscreen; picture-in-picture"
                       allowFullScreen
+                      style={{ background: 'url(/placeholder.svg) center/cover no-repeat' }}
                     />
                     <noscript>
                       <img 
