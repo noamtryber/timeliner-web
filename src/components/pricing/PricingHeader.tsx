@@ -1,11 +1,11 @@
-import { Switch } from "@/components/ui/switch";
+import { cn } from "@/lib/utils";
 
 interface PricingHeaderProps {
-  isYearly: boolean;
-  setIsYearly: (value: boolean) => void;
+  pricingPeriod: 'monthly' | 'quarterly' | 'yearly';
+  setPricingPeriod: (value: 'monthly' | 'quarterly' | 'yearly') => void;
 }
 
-export const PricingHeader = ({ isYearly, setIsYearly }: PricingHeaderProps) => {
+export const PricingHeader = ({ pricingPeriod, setPricingPeriod }: PricingHeaderProps) => {
   return (
     <div className="text-center max-w-3xl mx-auto mb-16">
       <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text animate-fade-up">
@@ -16,21 +16,42 @@ export const PricingHeader = ({ isYearly, setIsYearly }: PricingHeaderProps) => 
       </p>
       
       <div className="flex items-center justify-center gap-3 animate-fade-up delay-200">
-        <span className="text-sm text-white/70">Monthly</span>
-        <Switch
-          checked={isYearly}
-          onCheckedChange={setIsYearly}
-          className="data-[state=checked]:bg-primary"
-        />
-        <span className="text-sm text-white/70">
-          Yearly <span className="text-primary">(25% off)</span>
-        </span>
+        <button
+          onClick={() => setPricingPeriod('monthly')}
+          className={cn(
+            "px-4 py-2 rounded-md transition-all duration-300",
+            pricingPeriod === 'monthly' 
+              ? "bg-gradient-to-br from-primary to-secondary text-white" 
+              : "text-white/70 hover:text-white"
+          )}
+        >
+          Monthly
+        </button>
+        <button
+          onClick={() => setPricingPeriod('quarterly')}
+          className={cn(
+            "px-4 py-2 rounded-md transition-all duration-300",
+            pricingPeriod === 'quarterly' 
+              ? "bg-gradient-to-br from-primary to-secondary text-white" 
+              : "text-white/70 hover:text-white"
+          )}
+        >
+          Quarterly
+          <span className="block text-xs text-primary">15% off</span>
+        </button>
+        <button
+          onClick={() => setPricingPeriod('yearly')}
+          className={cn(
+            "px-4 py-2 rounded-md transition-all duration-300",
+            pricingPeriod === 'yearly' 
+              ? "bg-gradient-to-br from-primary to-secondary text-white" 
+              : "text-white/70 hover:text-white"
+          )}
+        >
+          Yearly
+          <span className="block text-xs text-primary">25% off</span>
+        </button>
       </div>
-      {isYearly && (
-        <p className="text-sm text-primary mt-2 animate-fade-up">
-          Save 25% with annual billing
-        </p>
-      )}
     </div>
   );
 };

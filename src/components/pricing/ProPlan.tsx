@@ -13,14 +13,25 @@ import { PlanFeature } from "./PlanFeature";
 import { PlanIcon } from "./PlanIcon";
 
 interface ProPlanProps {
-  isYearly: boolean;
+  pricingPeriod: 'monthly' | 'quarterly' | 'yearly';
   proStorage: number;
   setProStorage: (value: number) => void;
   calculatePrice: (basePrice: number, baseStorage: number, currentStorage: number) => number;
 }
 
-export const ProPlan = ({ isYearly, proStorage, setProStorage, calculatePrice }: ProPlanProps) => {
+export const ProPlan = ({ pricingPeriod, proStorage, setProStorage, calculatePrice }: ProPlanProps) => {
   const proPrice = calculatePrice(39, 500, proStorage);
+
+  const getPeriodTotal = () => {
+    switch (pricingPeriod) {
+      case 'quarterly':
+        return proPrice * 3;
+      case 'yearly':
+        return proPrice * 12;
+      default:
+        return proPrice;
+    }
+  };
 
   return (
     <Card className="glass p-6 flex flex-col border-primary animate-fade-up delay-500 hover:scale-105 transition-transform duration-300">
@@ -30,9 +41,9 @@ export const ProPlan = ({ isYearly, proStorage, setProStorage, calculatePrice }:
       <div className="text-3xl font-bold mb-4">
         ${proPrice.toFixed(2)}
         <span className="text-sm font-normal text-white/70">/month</span>
-        {isYearly && (
+        {pricingPeriod !== 'monthly' && (
           <span className="block text-sm text-primary mt-1">
-            ${(proPrice * 12).toFixed(2)} billed annually
+            ${getPeriodTotal().toFixed(2)} billed {pricingPeriod}
           </span>
         )}
       </div>

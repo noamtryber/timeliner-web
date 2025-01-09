@@ -6,7 +6,7 @@ import { ProPlan } from "./pricing/ProPlan";
 import { EnterprisePlan } from "./pricing/EnterprisePlan";
 
 export const Pricing = () => {
-  const [isYearly, setIsYearly] = useState(false);
+  const [pricingPeriod, setPricingPeriod] = useState<'monthly' | 'quarterly' | 'yearly'>('monthly');
   const [basicStorage, setBasicStorage] = useState(250);
   const [proStorage, setProStorage] = useState(500);
 
@@ -14,7 +14,15 @@ export const Pricing = () => {
     const extraStorage = Math.max(0, currentStorage - baseStorage);
     const extraCost = Math.floor(extraStorage / 100) * 3;
     const monthlyPrice = basePrice + extraCost;
-    return isYearly ? monthlyPrice * 0.75 : monthlyPrice;
+    
+    switch (pricingPeriod) {
+      case 'quarterly':
+        return monthlyPrice * 0.85; // 15% off
+      case 'yearly':
+        return monthlyPrice * 0.75; // 25% off
+      default:
+        return monthlyPrice;
+    }
   };
 
   return (
@@ -24,18 +32,21 @@ export const Pricing = () => {
       <div className="absolute -bottom-[40%] -right-[20%] w-[70%] h-[100%] bg-secondary/20 blur-[120px] rounded-full animate-pulse delay-1000" />
       
       <div className="container mx-auto px-4">
-        <PricingHeader isYearly={isYearly} setIsYearly={setIsYearly} />
+        <PricingHeader 
+          pricingPeriod={pricingPeriod} 
+          setPricingPeriod={setPricingPeriod} 
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <FreePlan />
           <BasicPlan 
-            isYearly={isYearly}
+            pricingPeriod={pricingPeriod}
             basicStorage={basicStorage}
             setBasicStorage={setBasicStorage}
             calculatePrice={calculatePrice}
           />
           <ProPlan 
-            isYearly={isYearly}
+            pricingPeriod={pricingPeriod}
             proStorage={proStorage}
             setProStorage={setProStorage}
             calculatePrice={calculatePrice}
