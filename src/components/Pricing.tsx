@@ -75,33 +75,6 @@ export const Pricing = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Free Plan */}
-          <Card className="glass p-6 flex flex-col animate-fade-up delay-300 hover:scale-105 transition-transform duration-300">
-            <PlanIcon Icon={Award} color="primary" />
-            <h3 className="text-2xl font-bold mb-2">Free</h3>
-            <p className="text-white/70 mb-6">For Beginners or Small Projects</p>
-            <div className="text-3xl font-bold mb-8">
-              $0.00
-              <span className="text-sm font-normal text-white/70">/month</span>
-            </div>
-            
-            <div className="space-y-4 mb-8 flex-grow">
-              <h4 className="font-semibold">Core Features:</h4>
-              <PlanFeature text="1 Admin Account" />
-              <PlanFeature text="3 Active Projects" />
-              <PlanFeature text="Client Access- 1 guest per project" />
-              <PlanFeature text="2GB Storage" />
-              
-              <h4 className="font-semibold mt-6">Additional Features:</h4>
-              <PlanFeature text="Basic Project Workflow (Edit, Revision, Approval)" />
-              <PlanFeature text="Timecode-Based Comments for precise feedback" />
-              <PlanFeature text="Simple File Sharing for client uploads/downloads" />
-            </div>
-            
-            <Button className="w-full bg-gradient-to-br from-primary to-secondary hover:opacity-90 transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40">
-              Get Started for Free
-            </Button>
-          </Card>
 
           {/* Basic Plan */}
           <Card className="glass p-6 flex flex-col animate-fade-up delay-400 hover:scale-105 transition-transform duration-300">
@@ -124,6 +97,28 @@ export const Pricing = () => {
                 className="mb-4"
               />
             </div>
+
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="outline" className="w-full mb-6 border-primary/50 hover:bg-primary/10">
+                  <Play className="w-4 h-4 mr-2" />
+                  Why Basic?
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="glass">
+                <DialogHeader>
+                  <DialogTitle>Why Choose Basic?</DialogTitle>
+                </DialogHeader>
+                <div className="space-y-4">
+                  <div className="aspect-video bg-card/50 rounded-lg flex items-center justify-center">
+                    <Play className="w-12 h-12 text-primary animate-pulse" />
+                  </div>
+                  <p className="text-white/70">
+                    Perfect for freelancers and small teams looking to streamline their video editing workflow. Get organized with project management tools and client collaboration features at an affordable price.
+                  </p>
+                </div>
+              </DialogContent>
+            </Dialog>
             
             <div className="space-y-4 mb-8 flex-grow">
               <h4 className="font-semibold">Core Features:</h4>
@@ -139,33 +134,9 @@ export const Pricing = () => {
               <PlanFeature text="Basic Analytics to track project statuses" />
             </div>
             
-            <div className="space-y-4">
-              <Button className="w-full bg-gradient-to-br from-accent to-primary hover:opacity-90 transition-all duration-300 shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/40">
-                Get Started
-              </Button>
-              
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button variant="outline" className="w-full border-primary/50 hover:bg-primary/10">
-                    <Play className="w-4 h-4 mr-2" />
-                    Why Basic?
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="glass">
-                  <DialogHeader>
-                    <DialogTitle>Why Choose Basic?</DialogTitle>
-                  </DialogHeader>
-                  <div className="space-y-4">
-                    <div className="aspect-video bg-card/50 rounded-lg flex items-center justify-center">
-                      <Play className="w-12 h-12 text-primary animate-pulse" />
-                    </div>
-                    <p className="text-white/70">
-                      Perfect for freelancers and small teams looking to streamline their video editing workflow. Get organized with project management tools and client collaboration features at an affordable price.
-                    </p>
-                  </div>
-                </DialogContent>
-              </Dialog>
-            </div>
+            <Button className="w-full bg-gradient-to-br from-accent to-primary hover:opacity-90 transition-all duration-300 shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/40">
+              Get Started
+            </Button>
           </Card>
 
           {/* Pro Plan */}
@@ -189,6 +160,28 @@ export const Pricing = () => {
                 className="mb-4"
               />
             </div>
+
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="outline" className="w-full mb-6 border-primary/50 hover:bg-primary/10">
+                  <Play className="w-4 h-4 mr-2" />
+                  Why Pro?
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="glass">
+                <DialogHeader>
+                  <DialogTitle>Why Choose Pro?</DialogTitle>
+                </DialogHeader>
+                <div className="space-y-4">
+                  <div className="aspect-video bg-card/50 rounded-lg flex items-center justify-center">
+                    <Play className="w-12 h-12 text-primary animate-pulse" />
+                  </div>
+                  <p className="text-white/70">
+                    Ideal for growing agencies that need advanced features like custom branding, extensive team collaboration tools, and priority support. Scale your video production business with confidence.
+                  </p>
+                </div>
+              </DialogContent>
+            </Dialog>
             
             <div className="space-y-4 mb-8 flex-grow">
               <h4 className="font-semibold">Core Features:</h4>
@@ -204,33 +197,9 @@ export const Pricing = () => {
               <PlanFeature text="Collaborative Tools: Tasks, deadlines, tracking" />
             </div>
             
-            <div className="space-y-4">
-              <Button className="w-full bg-gradient-to-br from-primary to-secondary hover:opacity-90 transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40">
-                Get Started
-              </Button>
-              
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button variant="outline" className="w-full border-primary/50 hover:bg-primary/10">
-                    <Play className="w-4 h-4 mr-2" />
-                    Why Pro?
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="glass">
-                  <DialogHeader>
-                    <DialogTitle>Why Choose Pro?</DialogTitle>
-                  </DialogHeader>
-                  <div className="space-y-4">
-                    <div className="aspect-video bg-card/50 rounded-lg flex items-center justify-center">
-                      <Play className="w-12 h-12 text-primary animate-pulse" />
-                    </div>
-                    <p className="text-white/70">
-                      Ideal for growing agencies that need advanced features like custom branding, extensive team collaboration tools, and priority support. Scale your video production business with confidence.
-                    </p>
-                  </div>
-                </DialogContent>
-              </Dialog>
-            </div>
+            <Button className="w-full bg-gradient-to-br from-primary to-secondary hover:opacity-90 transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40">
+              Get Started
+            </Button>
           </Card>
 
           {/* Enterprise Plan */}
@@ -263,3 +232,4 @@ export const Pricing = () => {
     </section>
   );
 };
+
