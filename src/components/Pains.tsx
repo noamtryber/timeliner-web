@@ -47,28 +47,38 @@ export const Pains = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative">
           {pains.map((pain, index) => (
-            <Card 
-              key={index}
-              className="glass p-6 hover:bg-card/50 transition-all duration-300 animate-fade-up"
-              style={{ animationDelay: `${index * 200}ms` }}
-            >
-              <div className="relative mb-6 aspect-video overflow-hidden rounded-lg">
+            <div key={index} className="relative pt-[200px]">
+              {/* Floating image */}
+              <div 
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-[280px] h-[180px] -mt-4 transform hover:scale-105 transition-transform duration-300"
+                style={{ 
+                  zIndex: 2,
+                  perspective: '1000px',
+                  transform: `translateX(-50%) rotate${index % 2 === 0 ? 'Y' : 'X'}(${index % 2 === 0 ? -3 : 3}deg)`
+                }}
+              >
                 <img
                   src={pain.imagePath}
                   alt={pain.title}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover rounded-lg shadow-xl"
                 />
               </div>
-              <pain.icon className="w-10 h-10 text-primary mb-4" />
-              <h3 className="text-xl font-semibold mb-4">{pain.title}</h3>
-              {pain.description.map((desc, i) => (
-                <p key={i} className="text-white/70 mb-2">
-                  {desc}
-                </p>
-              ))}
-            </Card>
+
+              {/* Content card */}
+              <Card className="glass p-6 hover:bg-card/50 transition-all duration-300 animate-fade-up"
+                style={{ animationDelay: `${index * 200}ms` }}
+              >
+                <pain.icon className="w-10 h-10 text-primary mb-4" />
+                <h3 className="text-xl font-semibold mb-4">{pain.title}</h3>
+                {pain.description.map((desc, i) => (
+                  <p key={i} className="text-white/70 mb-2">
+                    {desc}
+                  </p>
+                ))}
+              </Card>
+            </div>
           ))}
         </div>
 
