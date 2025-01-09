@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card";
+import { ComparisonTable } from "./ComparisonTable";
 
 export const Savings = () => {
   return (
@@ -16,7 +17,10 @@ export const Savings = () => {
           </p>
         </div>
 
-        <div className="flex flex-col items-center gap-8">
+        {/* Comparison Table */}
+        <ComparisonTable />
+
+        <div className="flex flex-col items-center gap-8 mt-16">
           <div className="w-full max-w-4xl mx-auto">
             <img
               src="/lovable-uploads/d70e7b9a-2f8d-4114-a256-55208522d8dd.png"
