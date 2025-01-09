@@ -37,8 +37,6 @@ export const Pricing = () => {
     </div>
   );
 
-  // ... keep existing code (JSX structure)
-
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background gradients */}
