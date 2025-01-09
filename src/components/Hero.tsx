@@ -1,33 +1,41 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 
 export const Hero = () => {
   return (
-    <div className="min-h-screen pt-16 flex items-center">
-      <div className="container mx-auto px-4 animate-fade-up">
+    <div className="min-h-screen flex items-center relative overflow-hidden">
+      {/* Background gradient effects */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background" />
+      <div className="absolute -top-[40%] -right-[20%] w-[70%] h-[100%] bg-primary/20 blur-[120px] rounded-full" />
+      <div className="absolute -bottom-[40%] -left-[20%] w-[70%] h-[100%] bg-accent/20 blur-[120px] rounded-full" />
+      
+      <div className="container mx-auto px-4 relative animate-fade-up">
         <div className="text-center max-w-4xl mx-auto">
-          <span className="text-primary/80 font-medium mb-4 block">
-            STREAMLINE YOUR VIDEO PRODUCTION WORKFLOW
+          <span className="text-primary/80 font-medium mb-4 block tracking-wide">
+            AI-POWERED VIDEO PRODUCTION WORKFLOW
           </span>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 gradient-text tracking-tight">
-            Reduce Client Revisions by 31% with Smart Workflows
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 gradient-text tracking-tight leading-tight">
+            Transform Your Business with Smart Video Workflows
           </h1>
-          <p className="text-xl md:text-2xl text-white/70 mb-8 leading-relaxed">
+          <p className="text-xl md:text-2xl text-white/70 mb-12 leading-relaxed">
             From Netflix to independent creators, teams trust Timeliner to manage projects, 
             track revisions, and get paid faster.
           </p>
-          <div className="aspect-video w-full max-w-3xl mx-auto mb-12 rounded-lg overflow-hidden glass p-1">
-            <iframe
-              src="https://player.vimeo.com/video/76979871?h=8272103f6e"
-              className="w-full h-full rounded-lg"
-              allow="autoplay; fullscreen; picture-in-picture"
-            ></iframe>
-          </div>
-          <div className="flex items-center justify-center gap-4">
-            <Button size="lg" className="bg-primary hover:bg-primary/90">
-              Start Free Trial <ArrowRight className="ml-2 h-4 w-4" />
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button 
+              size="lg" 
+              className="bg-primary hover:bg-primary/90 text-lg px-8 py-6 h-auto w-full sm:w-auto"
+            >
+              Start Free Trial
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button size="lg" variant="outline" className="border-white/10">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-white/10 text-lg px-8 py-6 h-auto w-full sm:w-auto hover:bg-white/5"
+            >
+              <Play className="mr-2 h-5 w-5" />
               Watch Demo
             </Button>
           </div>
