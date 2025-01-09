@@ -11,10 +11,13 @@ export const Pricing = () => {
   const [proStorage, setProStorage] = useState(500);
 
   const calculatePrice = (basePrice: number, baseStorage: number, currentStorage: number) => {
+    // Calculate extra storage cost
     const extraStorage = Math.max(0, currentStorage - baseStorage);
     const extraCost = Math.floor(extraStorage / 100) * 3;
-    const totalPrice = basePrice + extraCost;
-    return isYearly ? totalPrice * 0.75 : totalPrice;
+    const monthlyPrice = basePrice + extraCost;
+    
+    // Apply yearly discount but return monthly price
+    return isYearly ? monthlyPrice * 0.75 : monthlyPrice;
   };
 
   const basicPrice = calculatePrice(19, 250, basicStorage);
@@ -33,6 +36,8 @@ export const Pricing = () => {
       <Icon className={`w-6 h-6 text-${color} relative z-10 animate-pulse`} />
     </div>
   );
+
+  // ... keep existing code (JSX structure)
 
   return (
     <section className="py-24 relative overflow-hidden">
@@ -60,6 +65,11 @@ export const Pricing = () => {
               Yearly <span className="text-primary">(25% off)</span>
             </span>
           </div>
+          {isYearly && (
+            <p className="text-sm text-primary mt-2 animate-fade-up">
+              Billed annually at ${(basicPrice * 12).toFixed(2)}/year for Basic or ${(proPrice * 12).toFixed(2)}/year for Pro
+            </p>
+          )}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
