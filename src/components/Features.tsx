@@ -14,7 +14,7 @@ const features = [
     icon: Workflow,
     title: "Smart Revision Tracking",
     description: "Reduce back-and-forth by 31% with AI-powered workflow management and version control. Our intelligent system learns from your feedback patterns and helps streamline the revision process.",
-    videoUrl: "/placeholder.svg" // We'll replace these with actual videos later
+    videoUrl: "https://player.vimeo.com/video/1045525235?autoplay=1&loop=0&muted=1&background=1"
   },
   {
     icon: FileStack,
@@ -116,13 +116,32 @@ export const Features = () => {
               </div>
               
               {/* Video/Animation Side */}
-              <div className={`glass rounded-xl aspect-video overflow-hidden
+              <div className={`glass rounded-xl aspect-video overflow-hidden relative
                 ${index % 2 === 0 ? 'lg:order-last' : 'lg:order-first'}`}>
-                <img 
-                  src={feature.videoUrl} 
-                  alt={feature.title}
-                  className="w-full h-full object-cover"
-                />
+                {feature.title === "Smart Revision Tracking" ? (
+                  <>
+                    <iframe
+                      src={feature.videoUrl}
+                      className="w-full h-full absolute inset-0"
+                      frameBorder="0"
+                      allow="autoplay; fullscreen; picture-in-picture"
+                      allowFullScreen
+                    />
+                    <noscript>
+                      <img 
+                        src="/placeholder.svg" 
+                        alt={feature.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </noscript>
+                  </>
+                ) : (
+                  <img 
+                    src={feature.videoUrl} 
+                    alt={feature.title}
+                    className="w-full h-full object-cover"
+                  />
+                )}
               </div>
             </div>
           ))}
