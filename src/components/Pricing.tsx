@@ -21,7 +21,7 @@ export const Pricing = () => {
       case 'yearly':
         return monthlyPrice * 0.75; // 25% off
       default:
-        return monthlyPrice;
+        return monthlyPrice; // No discount for monthly
     }
   };
 
