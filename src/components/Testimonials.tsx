@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Star } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Avatar, AvatarImage } from "./ui/avatar";
 
 const testimonials = [
@@ -52,8 +52,33 @@ const logos = [
 
 const AnimatedNumber = ({ value, suffix = "" }: { value: number, suffix?: string }) => {
   const [current, setCurrent] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const elementRef = useRef<HTMLSpanElement>(null);
   
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => {
+      if (elementRef.current) {
+        observer.unobserve(elementRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
     const duration = 2000; // 2 seconds
     const steps = 60;
     const stepValue = value / steps;
@@ -72,10 +97,10 @@ const AnimatedNumber = ({ value, suffix = "" }: { value: number, suffix?: string
     }, duration / steps);
 
     return () => clearInterval(timer);
-  }, [value]);
+  }, [value, isVisible]);
 
   return (
-    <span>
+    <span ref={elementRef}>
       {current.toFixed(current >= 100 ? 0 : 1)}
       {suffix}
     </span>
