@@ -3,7 +3,14 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Slider } from "@/components/ui/slider";
-import { Check, Award, Database, Crown, Users } from "lucide-react";
+import { Check, Award, Database, Crown, Users, Play } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export const Pricing = () => {
   const [isYearly, setIsYearly] = useState(false);
@@ -11,12 +18,9 @@ export const Pricing = () => {
   const [proStorage, setProStorage] = useState(500);
 
   const calculatePrice = (basePrice: number, baseStorage: number, currentStorage: number) => {
-    // Calculate extra storage cost
     const extraStorage = Math.max(0, currentStorage - baseStorage);
     const extraCost = Math.floor(extraStorage / 100) * 3;
     const monthlyPrice = basePrice + extraCost;
-    
-    // Apply yearly discount but return monthly price
     return isYearly ? monthlyPrice * 0.75 : monthlyPrice;
   };
 
@@ -135,9 +139,33 @@ export const Pricing = () => {
               <PlanFeature text="Basic Analytics to track project statuses" />
             </div>
             
-            <Button className="w-full bg-gradient-to-br from-accent to-primary hover:opacity-90 transition-all duration-300 shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/40">
-              Get Started
-            </Button>
+            <div className="space-y-4">
+              <Button className="w-full bg-gradient-to-br from-accent to-primary hover:opacity-90 transition-all duration-300 shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/40">
+                Get Started
+              </Button>
+              
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="outline" className="w-full border-primary/50 hover:bg-primary/10">
+                    <Play className="w-4 h-4 mr-2" />
+                    Why Basic?
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="glass">
+                  <DialogHeader>
+                    <DialogTitle>Why Choose Basic?</DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-4">
+                    <div className="aspect-video bg-card/50 rounded-lg flex items-center justify-center">
+                      <Play className="w-12 h-12 text-primary animate-pulse" />
+                    </div>
+                    <p className="text-white/70">
+                      Perfect for freelancers and small teams looking to streamline their video editing workflow. Get organized with project management tools and client collaboration features at an affordable price.
+                    </p>
+                  </div>
+                </DialogContent>
+              </Dialog>
+            </div>
           </Card>
 
           {/* Pro Plan */}
@@ -176,9 +204,33 @@ export const Pricing = () => {
               <PlanFeature text="Collaborative Tools: Tasks, deadlines, tracking" />
             </div>
             
-            <Button className="w-full bg-gradient-to-br from-primary to-secondary hover:opacity-90 transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40">
-              Get Started
-            </Button>
+            <div className="space-y-4">
+              <Button className="w-full bg-gradient-to-br from-primary to-secondary hover:opacity-90 transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40">
+                Get Started
+              </Button>
+              
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="outline" className="w-full border-primary/50 hover:bg-primary/10">
+                    <Play className="w-4 h-4 mr-2" />
+                    Why Pro?
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="glass">
+                  <DialogHeader>
+                    <DialogTitle>Why Choose Pro?</DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-4">
+                    <div className="aspect-video bg-card/50 rounded-lg flex items-center justify-center">
+                      <Play className="w-12 h-12 text-primary animate-pulse" />
+                    </div>
+                    <p className="text-white/70">
+                      Ideal for growing agencies that need advanced features like custom branding, extensive team collaboration tools, and priority support. Scale your video production business with confidence.
+                    </p>
+                  </div>
+                </DialogContent>
+              </Dialog>
+            </div>
           </Card>
 
           {/* Enterprise Plan */}
@@ -205,22 +257,6 @@ export const Pricing = () => {
             <Button variant="outline" className="w-full border-primary/50 hover:bg-primary/10 transition-all duration-300">
               Contact Sales
             </Button>
-          </Card>
-        </div>
-
-        <div className="mt-16 grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <Card className="glass p-6 animate-fade-up delay-700">
-            <h3 className="text-xl font-bold mb-4">Why Basic?</h3>
-            <p className="text-white/70">
-              Perfect for freelancers and small teams looking to streamline their video editing workflow. Get organized with project management tools and client collaboration features at an affordable price.
-            </p>
-          </Card>
-          
-          <Card className="glass p-6 animate-fade-up delay-800">
-            <h3 className="text-xl font-bold mb-4">Why Pro?</h3>
-            <p className="text-white/70">
-              Ideal for growing agencies that need advanced features like custom branding, extensive team collaboration tools, and priority support. Scale your video production business with confidence.
-            </p>
           </Card>
         </div>
       </div>
