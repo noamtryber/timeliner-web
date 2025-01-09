@@ -34,7 +34,12 @@ export const BasicPlan = ({ pricingPeriod, basicStorage, setBasicStorage, calcul
   };
 
   return (
-    <Card className="glass p-6 flex flex-col animate-fade-up delay-400 hover:scale-105 transition-transform duration-300">
+    <Card className="glass p-6 flex flex-col animate-fade-up delay-400 hover:scale-105 transition-transform duration-300 relative">
+      {/* Most Popular Badge */}
+      <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary via-accent to-primary px-4 py-1 rounded-full text-sm font-semibold text-white shadow-lg">
+        Most Popular
+      </div>
+
       <PlanIcon Icon={Database} color="accent" />
       <h3 className="text-2xl font-bold mb-2">Basic</h3>
       <p className="text-white/70 mb-6">For Small Agencies or Freelancers</p>
