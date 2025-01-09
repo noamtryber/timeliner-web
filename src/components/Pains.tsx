@@ -9,7 +9,7 @@ const pains = [
       "Mismatched client and editor expectations lead to frustration.",
       "Revisions and Versions scattered across WhatsApp, Email, and G-Drive."
     ],
-    imagePath: "/lovable-uploads/a4781b2d-4caf-447d-ae15-0bf590645911.png"
+    imagePath: "/lovable-uploads/8e8e21c8-1e41-4c91-98e2-bedebf2b90b5.png"
   },
   {
     icon: Clock,
@@ -18,7 +18,7 @@ const pains = [
       "Payments take weeks or months to arrive.",
       "No automated system to ensure quick payouts after approval."
     ],
-    imagePath: "/placeholder.svg"
+    imagePath: "/lovable-uploads/94a8f111-a09f-4217-80ff-c246e3f328d1.png"
   },
   {
     icon: AppWindow,
@@ -27,7 +27,7 @@ const pains = [
       "Juggling multiple apps for projects, feedback, and payments wastes time.",
       "No seamless way for agencies to manage freelancers or pay them per project milestone."
     ],
-    imagePath: "/placeholder.svg"
+    imagePath: "/lovable-uploads/301f83d9-fbbe-4a1f-ad2c-169a8e280ac0.png"
   }
 ];
 
