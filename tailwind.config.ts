@@ -75,10 +75,15 @@ export default {
             transform: "translateY(0)",
           },
         },
+        "scroll": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(calc(-50% - 3rem))" }
+        }
       },
       animation: {
         "fade-up": "fade-up 0.5s ease-out",
         "fade-down": "fade-down 0.5s ease-out",
+        "scroll": "scroll 25s linear infinite",
       },
     },
   },
