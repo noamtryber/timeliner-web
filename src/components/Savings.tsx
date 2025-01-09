@@ -21,14 +21,6 @@ export const Savings = () => {
         <ComparisonTable />
 
         <div className="flex flex-col items-center gap-8 mt-16">
-          <div className="w-full max-w-4xl mx-auto">
-            <img
-              src="/lovable-uploads/d70e7b9a-2f8d-4114-a256-55208522d8dd.png"
-              alt="Timeliner cost comparison with other tools"
-              className="w-full h-auto rounded-lg shadow-xl hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-
           <Card className="glass p-6 text-center max-w-2xl mx-auto">
             <p className="text-xl md:text-2xl font-semibold gradient-text">
               Save over $100/month with Timeliner
