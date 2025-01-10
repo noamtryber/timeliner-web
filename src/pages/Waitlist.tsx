@@ -113,17 +113,24 @@ const Waitlist = () => {
               We'd love to hear from you! We're committed to building the best tool for video editors and project management - 
               and that's exactly why your opinion matters to us!
             </p>
-            <div className="w-full h-[600px] glass rounded-lg overflow-hidden">
-              <iframe 
-                src="https://docs.google.com/forms/d/e/1FAIpQLSd9soTWB-dwKruXAA_mh4DJ-4rjAcSCw3YaU2k42YkxrE4O7Q/viewform?embedded=true"
-                width="100%"
-                height="100%"
-                frameBorder="0"
-                marginHeight={0}
-                marginWidth={0}
-              >
-                Loading form...
-              </iframe>
+            <div className="bg-white/5 backdrop-blur-md rounded-xl border border-white/10 overflow-hidden shadow-xl">
+              <div className="p-6 bg-gradient-to-b from-primary/5 to-transparent border-b border-white/10">
+                <h3 className="text-xl font-semibold text-white">Share Your Feedback</h3>
+                <p className="text-white/70 mt-2">Help us shape the future of Timeliner</p>
+              </div>
+              <div className="h-[450px]">
+                <iframe 
+                  src="https://docs.google.com/forms/d/e/1FAIpQLSd9soTWB-dwKruXAA_mh4DJ-4rjAcSCw3YaU2k42YkxrE4O7Q/viewform?embedded=true"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  marginHeight={0}
+                  marginWidth={0}
+                  className="bg-white"
+                >
+                  Loading form...
+                </iframe>
+              </div>
             </div>
           </section>
         </div>
