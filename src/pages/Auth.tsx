@@ -175,16 +175,23 @@ const Auth = () => {
                   container: 'w-full',
                   button: 'hover:scale-[1.02] transition-transform duration-200',
                   input: 'bg-card/30 backdrop-blur-sm border border-white/10',
+                  label: 'text-sm font-medium text-white/70',
                 },
               }}
               providers={[]}
-              options={{
-                emailRedirectTo: `${window.location.origin}/auth/callback`,
-                additionalSignUpFields: {
-                  full_name: {
-                    required: true,
-                    label: 'Full Name',
+              localization={{
+                variables: {
+                  sign_up: {
+                    email_label: 'Email',
+                    password_label: 'Create a password',
+                    button_label: 'Sign up',
                   },
+                },
+              }}
+              additionalData={{
+                full_name: {
+                  required: true,
+                  label: 'Full name',
                 },
               }}
             />
