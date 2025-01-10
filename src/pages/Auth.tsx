@@ -123,6 +123,11 @@ const Auth = () => {
       <div className="relative min-h-screen flex items-center justify-center p-4">
         <div className="w-full max-w-md space-y-6">
           <div className="text-center mb-8 animate-fade-up">
+            <img 
+              src="/lovable-uploads/98b8bad0-76f5-4b50-af12-b49cd7309a55.png"
+              alt="Timeliner Logo"
+              className="w-48 h-auto mx-auto mb-6 animate-fade-up filter drop-shadow-lg hover:scale-105 transition-transform duration-300"
+            />
             <h1 className="text-4xl font-bold gradient-text-purple mb-3">
               Welcome to Timeliner
             </h1>
