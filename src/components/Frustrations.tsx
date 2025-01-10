@@ -74,7 +74,7 @@ export const Frustrations = () => {
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
       <div className="absolute -top-[40%] -right-[20%] w-[70%] h-[100%] bg-primary/10 blur-[120px] rounded-full" />
-      <div className="absolute -bottom-[40%] -left-[20%] w-[70%] h-[100%] bg-accent/10 blur-[120px] rounded-full md:hidden" />
+      <div className="absolute -bottom-[40%] -left-[20%] w-[70%] h-[100%] bg-accent/10 blur-[120px] rounded-full" />
       
       <div className="container mx-auto px-4 relative">
         <motion.div 
