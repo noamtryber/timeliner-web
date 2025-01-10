@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { PlayCircle } from "lucide-react";
+import { PlayCircle, Workflow, FileStack, CreditCard, Users, FolderOpen, UserCircle, Shield } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { usePageContent } from "@/hooks/usePageContent";
 import { useMediaContent } from "@/hooks/useMediaContent";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 
 export const Features = () => {
   const featuresRef = useRef<HTMLDivElement>(null);
@@ -53,6 +53,16 @@ export const Features = () => {
 
   const getFeatureMedia = (sectionId: string, key: string) => {
     return media?.find(item => item.section_id === sectionId && item.media_key === key)?.media_url || '';
+  };
+
+  const iconComponents = {
+    Workflow,
+    FileStack,
+    CreditCard,
+    Users,
+    FolderOpen,
+    UserCircle,
+    Shield
   };
 
   const features = [
@@ -128,58 +138,61 @@ export const Features = () => {
         </div>
         
         <div ref={featuresRef} className="space-y-32">
-          {features.map((feature, index) => (
-            <div 
-              key={index}
-              className={`feature-item opacity-0 translate-y-10 transition-all duration-700 ease-out
-                grid grid-cols-1 lg:grid-cols-2 gap-8 items-center`}
-            >
-              {/* Video Side */}
-              <div className={`overflow-hidden relative order-1 rounded-3xl
-                ${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
-                <div className="w-full h-full">
-                  <iframe
-                    src={feature.videoUrl}
-                    className="w-full h-full scale-[1.05] rounded-3xl"
-                    loading="lazy"
-                    allow="autoplay; fullscreen; picture-in-picture"
-                    style={{
-                      aspectRatio: '16/9',
-                      border: 'none',
-                      background: 'transparent',
-                      transform: 'scale(1.05)',
-                      borderRadius: '1.5rem',
-                    }}
-                  />
-                </div>
-              </div>
-              
-              {/* Content Side */}
-              <div className={`space-y-6 order-2 
-                ${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
-                <div className="flex items-center space-x-4">
-                  <div className="p-3 rounded-xl bg-primary/10 text-primary">
-                    <feature.icon className="w-6 h-6" />
+          {features.map((feature, index) => {
+            const IconComponent = iconComponents[feature.icon as keyof typeof iconComponents];
+            return (
+              <div 
+                key={feature.id}
+                className={`feature-item opacity-0 translate-y-10 transition-all duration-700 ease-out
+                  grid grid-cols-1 lg:grid-cols-2 gap-8 items-center`}
+              >
+                {/* Video Side */}
+                <div className={`overflow-hidden relative order-1 rounded-3xl
+                  ${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
+                  <div className="w-full h-full">
+                    <iframe
+                      src={feature.videoUrl}
+                      className="w-full h-full scale-[1.05] rounded-3xl"
+                      loading="lazy"
+                      allow="autoplay; fullscreen; picture-in-picture"
+                      style={{
+                        aspectRatio: '16/9',
+                        border: 'none',
+                        background: 'transparent',
+                        transform: 'scale(1.05)',
+                        borderRadius: '1.5rem',
+                      }}
+                    />
                   </div>
-                  <h3 className="text-2xl font-bold">{feature.title}</h3>
                 </div>
-                <p className="text-lg text-white/70 leading-relaxed">
-                  {feature.description}
-                </p>
-                <Button 
-                  onClick={() => setOpenDialog(feature.title)}
-                  className="bg-gradient-to-r from-primary via-accent to-primary shadow-lg hover:shadow-primary/20 transition-all duration-300"
-                >
-                  <PlayCircle className="w-5 h-5 mr-2" /> Learn More
-                </Button>
+                
+                {/* Content Side */}
+                <div className={`space-y-6 order-2 
+                  ${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
+                  <div className="flex items-center space-x-4">
+                    <div className="p-3 rounded-xl bg-primary/10 text-primary">
+                      <IconComponent className="w-6 h-6" />
+                    </div>
+                    <h3 className="text-2xl font-bold">{feature.title}</h3>
+                  </div>
+                  <p className="text-lg text-white/70 leading-relaxed">
+                    {feature.description}
+                  </p>
+                  <Button 
+                    onClick={() => setOpenDialog(feature.title)}
+                    className="bg-gradient-to-r from-primary via-accent to-primary shadow-lg hover:shadow-primary/20 transition-all duration-300"
+                  >
+                    <PlayCircle className="w-5 h-5 mr-2" /> Learn More
+                  </Button>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
       {features.map((feature) => (
-        <Dialog key={feature.title} open={openDialog === feature.title} onOpenChange={() => setOpenDialog(null)}>
+        <Dialog key={feature.id} open={openDialog === feature.title} onOpenChange={() => setOpenDialog(null)}>
           <DialogContent className="sm:max-w-[800px] bg-card/95 backdrop-blur-xl">
             <DialogHeader>
               <DialogTitle className="text-2xl">{feature.title}</DialogTitle>
