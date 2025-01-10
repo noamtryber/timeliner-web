@@ -5,7 +5,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 export type SectionType = 'hero' | 'feature' | 'benefit' | 'testimonial' | 'pricing' | 'faq' | 'frustrations' | 'nav';
 
 interface TransformedContent {
-  [key: string]: any;
+  [key: string]: string;
 }
 
 export const usePageContent = (sectionType: SectionType, sectionId?: string) => {
@@ -14,17 +14,17 @@ export const usePageContent = (sectionType: SectionType, sectionId?: string) => 
   return useQuery({
     queryKey: ['page-content', sectionType, sectionId, language],
     queryFn: async () => {
-      const { data: translatedContent, error } = await supabase
+      let query = supabase
         .from('translations')
         .select('*')
         .eq('section_type', sectionType)
         .eq('language', language);
 
       if (sectionId) {
-        // Additional filter for section_id if provided
-        const filteredContent = translatedContent?.filter(item => item.section_id === sectionId);
-        translatedContent?.splice(0, translatedContent.length, ...filteredContent);
+        query = query.eq('section_id', sectionId);
       }
+
+      const { data: translatedContent, error } = await query;
 
       if (error) {
         console.error('Error fetching translations:', error);
@@ -38,6 +38,7 @@ export const usePageContent = (sectionType: SectionType, sectionId?: string) => 
       });
       
       return transformedContent;
-    }
+    },
+    staleTime: 1000 * 60 * 5, // Cache for 5 minutes
   });
 };

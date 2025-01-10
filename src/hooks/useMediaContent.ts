@@ -2,6 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { SectionType } from "./usePageContent";
 
+interface MediaContent {
+  id: string;
+  section_type: SectionType;
+  section_id?: string;
+  media_type: string;
+  media_key: string;
+  media_url: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
 export const useMediaContent = (sectionType: SectionType, sectionId?: string) => {
   return useQuery({
     queryKey: ['media-content', sectionType, sectionId],
@@ -22,7 +33,7 @@ export const useMediaContent = (sectionType: SectionType, sectionId?: string) =>
         throw error;
       }
       
-      return data;
+      return data as MediaContent[];
     }
   });
 };

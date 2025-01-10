@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { useQueryClient } from "@tanstack/react-query";
 
-type SupportedLanguage = 'en' | 'es' | 'pt' | 'zh' | 'ru' | 'ar' | 'he';
+export type SupportedLanguage = 'en' | 'es' | 'pt' | 'zh' | 'ru' | 'ar' | 'he';
 
 interface LanguageContextType {
   language: SupportedLanguage;
@@ -20,8 +20,15 @@ export const useLanguage = () => useContext(LanguageContext);
 const RTL_LANGUAGES = ['ar', 'he'];
 
 export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
-  const [language, setLanguage] = useState<SupportedLanguage>('en');
+  const [language, setLanguageState] = useState<SupportedLanguage>('en');
+  const queryClient = useQueryClient();
   const isRTL = RTL_LANGUAGES.includes(language);
+
+  const setLanguage = (newLanguage: SupportedLanguage) => {
+    setLanguageState(newLanguage);
+    // Invalidate all queries to trigger refetch with new language
+    queryClient.invalidateQueries();
+  };
 
   useEffect(() => {
     // Update document direction based on language
