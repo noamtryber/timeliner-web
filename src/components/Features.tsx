@@ -1,74 +1,28 @@
-import { useEffect, useRef } from "react";
-import { 
-  Workflow, 
-  FileStack, 
-  CreditCard, 
-  Users, 
-  FolderOpen, 
-  UserCircle, 
-  Shield,
-  PlayCircle
-} from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { PlayCircle } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
-
-const features = [
-  {
-    icon: Workflow,
-    title: "Smart Revision Tracking",
-    description: "Reduce back-and-forth by 31% with AI-powered workflow management and version control. Our intelligent system learns from your feedback patterns and helps streamline the revision process.",
-    videoUrl: "https://player.vimeo.com/video/1045720680?autoplay=1&loop=1&muted=1&background=1&quality=1080p",
-    learnMoreVideo: "https://player.vimeo.com/video/1043854758?autoplay=1"
-  },
-  {
-    icon: FileStack,
-    title: "Interactive Briefs",
-    description: "Create crystal-clear project briefs that align expectations from day one. Our interactive brief system ensures nothing gets missed and everyone stays on the same page throughout the project.",
-    videoUrl: "https://player.vimeo.com/video/1045720890?autoplay=1&loop=1&muted=1&background=1&quality=1080p",
-    learnMoreVideo: "https://player.vimeo.com/video/1043854006?autoplay=1"
-  },
-  {
-    icon: CreditCard,
-    title: "Seamless Payments",
-    description: "Get paid faster with automated invoicing and integrated payment processing. Set up milestone payments, automate reminders, and maintain a steady cash flow with our payment tools.",
-    videoUrl: "https://player.vimeo.com/video/1045721120?autoplay=1&loop=1&muted=1&background=1&quality=1080p",
-    learnMoreVideo: "https://player.vimeo.com/video/1043856217?autoplay=1"
-  },
-  {
-    icon: Users,
-    title: "Client Management",
-    description: "Manage all your clients and projects in one centralized dashboard. Keep track of project status, deadlines, and client communications in a single, intuitive interface.",
-    videoUrl: "https://player.vimeo.com/video/1045721146?autoplay=1&loop=1&muted=1&background=1&quality=1080p",
-    learnMoreVideo: "https://player.vimeo.com/video/1043856452?autoplay=1"
-  },
-  {
-    icon: FolderOpen,
-    title: "Client Portals",
-    description: "Give clients a professional, branded experience for feedback and approvals. Custom-branded portals make it easy for clients to review work and provide timely feedback.",
-    videoUrl: "https://player.vimeo.com/video/1045721261?autoplay=1&loop=1&muted=1&background=1&quality=1080p",
-    learnMoreVideo: "https://player.vimeo.com/video/1043854547?autoplay=1"
-  },
-  {
-    icon: UserCircle,
-    title: "Team Collaboration",
-    description: "Keep your entire team aligned with real-time updates and notifications. Our collaboration tools make it easy to assign tasks, track progress, and maintain clear communication.",
-    videoUrl: "https://player.vimeo.com/video/1045721315?autoplay=1&loop=1&muted=1&background=1&quality=1080p",
-    learnMoreVideo: "https://player.vimeo.com/video/1043856320?autoplay=1"
-  },
-  {
-    icon: Shield,
-    title: "Secure Media Storage",
-    description: "Forget juggling third-party tools. Store all your media securely in the cloud, with everything right where you need it.",
-    videoUrl: "https://player.vimeo.com/video/1045721377?autoplay=1&loop=1&muted=1&background=1&quality=1080p",
-    learnMoreVideo: "https://player.vimeo.com/video/1043856167?autoplay=1"
-  }
-];
+import { usePageContent } from "@/hooks/usePageContent";
+import { useMediaContent } from "@/hooks/useMediaContent";
+import { useToast } from "@/components/ui/use-toast";
 
 export const Features = () => {
   const featuresRef = useRef<HTMLDivElement>(null);
   const [openDialog, setOpenDialog] = useState<string | null>(null);
-  
+  const { data: content, isLoading: contentLoading, error: contentError } = usePageContent('feature');
+  const { data: media, isLoading: mediaLoading, error: mediaError } = useMediaContent('feature');
+  const { toast } = useToast();
+
+  useEffect(() => {
+    if (contentError || mediaError) {
+      toast({
+        variant: "destructive",
+        title: "Error loading content",
+        description: "Please try refreshing the page"
+      });
+    }
+  }, [contentError, mediaError, toast]);
+
   useEffect(() => {
     const observerOptions = {
       root: null,
@@ -92,6 +46,73 @@ export const Features = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  const getFeatureContent = (sectionId: string, key: string) => {
+    return content?.find(item => item.section_id === sectionId && item.content_key === key)?.content_value || '';
+  };
+
+  const getFeatureMedia = (sectionId: string, key: string) => {
+    return media?.find(item => item.section_id === sectionId && item.media_key === key)?.media_url || '';
+  };
+
+  const features = [
+    {
+      id: 'revision-tracking',
+      icon: 'Workflow',
+      title: getFeatureContent('revision-tracking', 'title'),
+      description: getFeatureContent('revision-tracking', 'description'),
+      videoUrl: getFeatureMedia('revision-tracking', 'preview'),
+      learnMoreVideo: getFeatureMedia('revision-tracking', 'learn-more')
+    },
+    {
+      id: 'interactive-briefs',
+      icon: 'FileStack',
+      title: getFeatureContent('interactive-briefs', 'title'),
+      description: getFeatureContent('interactive-briefs', 'description'),
+      videoUrl: getFeatureMedia('interactive-briefs', 'preview'),
+      learnMoreVideo: getFeatureMedia('interactive-briefs', 'learn-more')
+    },
+    {
+      id: 'seamless-payments',
+      icon: 'CreditCard',
+      title: getFeatureContent('seamless-payments', 'title'),
+      description: getFeatureContent('seamless-payments', 'description'),
+      videoUrl: getFeatureMedia('seamless-payments', 'preview'),
+      learnMoreVideo: getFeatureMedia('seamless-payments', 'learn-more')
+    },
+    {
+      id: 'client-management',
+      icon: 'Users',
+      title: getFeatureContent('client-management', 'title'),
+      description: getFeatureContent('client-management', 'description'),
+      videoUrl: getFeatureMedia('client-management', 'preview'),
+      learnMoreVideo: getFeatureMedia('client-management', 'learn-more')
+    },
+    {
+      id: 'client-portals',
+      icon: 'FolderOpen',
+      title: getFeatureContent('client-portals', 'title'),
+      description: getFeatureContent('client-portals', 'description'),
+      videoUrl: getFeatureMedia('client-portals', 'preview'),
+      learnMoreVideo: getFeatureMedia('client-portals', 'learn-more')
+    },
+    {
+      id: 'team-collaboration',
+      icon: 'UserCircle',
+      title: getFeatureContent('team-collaboration', 'title'),
+      description: getFeatureContent('team-collaboration', 'description'),
+      videoUrl: getFeatureMedia('team-collaboration', 'preview'),
+      learnMoreVideo: getFeatureMedia('team-collaboration', 'learn-more')
+    },
+    {
+      id: 'secure-media-storage',
+      icon: 'Shield',
+      title: getFeatureContent('secure-media-storage', 'title'),
+      description: getFeatureContent('secure-media-storage', 'description'),
+      videoUrl: getFeatureMedia('secure-media-storage', 'preview'),
+      learnMoreVideo: getFeatureMedia('secure-media-storage', 'learn-more')
+    }
+  ];
 
   return (
     <section id="features" className="py-20 overflow-hidden">

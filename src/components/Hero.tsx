@@ -1,7 +1,24 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
+import { usePageContent } from "@/hooks/usePageContent";
+import { useToast } from "@/components/ui/use-toast";
 
 export const Hero = () => {
+  const { data: content, isLoading, error } = usePageContent('hero', 'main');
+  const { toast } = useToast();
+
+  if (error) {
+    toast({
+      variant: "destructive",
+      title: "Error loading content",
+      description: "Please try refreshing the page"
+    });
+  }
+
+  const getContent = (key: string) => {
+    return content?.find(item => item.content_key === key)?.content_value || '';
+  };
+
   return (
     <div className="min-h-screen flex items-center relative overflow-hidden">
       {/* Background gradient effects */}
@@ -12,14 +29,13 @@ export const Hero = () => {
       <div className="container mx-auto px-4 relative animate-fade-up">
         <div className="text-center max-w-4xl mx-auto">
           <span className="text-primary/80 font-medium mb-4 block tracking-wide">
-            VIDEO EDITORS AND POST PRODUCTION AGENCIES:
+            {getContent('subtitle')}
           </span>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 gradient-text tracking-tight leading-tight">
-            Transform Chaos into Clarity with Smarter Video Editing Management
+            {getContent('title')}
           </h1>
           <p className="text-xl md:text-2xl text-white/70 mb-12 leading-relaxed">
-            The only tool you'll ever need to manage projects, streamline revisions,
-            ensure timely payments, and deliver faster. Designed by creators, for creators.
+            {getContent('description')}
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

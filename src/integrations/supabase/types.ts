@@ -9,7 +9,69 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      media_content: {
+        Row: {
+          created_at: string | null
+          id: string
+          media_key: string
+          media_type: string
+          media_url: string
+          section_id: string | null
+          section_type: Database["public"]["Enums"]["section_type"]
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          media_key: string
+          media_type: string
+          media_url: string
+          section_id?: string | null
+          section_type: Database["public"]["Enums"]["section_type"]
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          media_key?: string
+          media_type?: string
+          media_url?: string
+          section_id?: string | null
+          section_type?: Database["public"]["Enums"]["section_type"]
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      page_content: {
+        Row: {
+          content_key: string
+          content_value: string
+          created_at: string | null
+          id: string
+          section_id: string | null
+          section_type: Database["public"]["Enums"]["section_type"]
+          updated_at: string | null
+        }
+        Insert: {
+          content_key: string
+          content_value: string
+          created_at?: string | null
+          id?: string
+          section_id?: string | null
+          section_type: Database["public"]["Enums"]["section_type"]
+          updated_at?: string | null
+        }
+        Update: {
+          content_key?: string
+          content_value?: string
+          created_at?: string | null
+          id?: string
+          section_id?: string | null
+          section_type?: Database["public"]["Enums"]["section_type"]
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -18,7 +80,13 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      section_type:
+        | "hero"
+        | "feature"
+        | "benefit"
+        | "testimonial"
+        | "pricing"
+        | "faq"
     }
     CompositeTypes: {
       [_ in never]: never
