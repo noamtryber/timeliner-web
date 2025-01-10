@@ -15,15 +15,16 @@ export const Frustration3DIcon: React.FC<Frustration3DIconProps> = ({ type }) =>
     const sketch = (p: p5) => {
       let rotation = 0;
       let particleRotation = 0;
-      const particles: { x: number; y: number; z: number }[] = [];
+      const particles: { x: number; y: number; z: number; speed: number }[] = [];
       
       // Initialize particles for the 'tools' animation
-      for (let i = 0; i < 8; i++) {
-        const angle = (i / 8) * p.TWO_PI;
+      for (let i = 0; i < 12; i++) {
+        const angle = (i / 12) * p.TWO_PI;
         particles.push({
           x: p.cos(angle) * 30,
           y: p.sin(angle) * 30,
-          z: 0
+          z: p.random(-20, 20),
+          speed: p.random(0.5, 2)
         });
       }
 
@@ -42,67 +43,69 @@ export const Frustration3DIcon: React.FC<Frustration3DIconProps> = ({ type }) =>
 
         switch (type) {
           case 'expectations':
-            // Two figures arguing
+            // 3D X shape
             p.push();
             p.rotateY(rotation);
+            p.rotateX(rotation * 0.5);
             
-            // Figure 1
+            // First diagonal line of X
             p.push();
-            p.translate(-20, 0, 0);
             p.fill(155, 135, 245);
-            p.sphere(12); // Head
-            p.translate(0, 20, 0);
-            p.scale(1, 1.5, 1);
-            p.cylinder(8, 25); // Body
+            p.rotateZ(45);
+            p.translate(0, 0, 0);
+            p.box(40, 8, 8);
             p.pop();
-
-            // Figure 2
+            
+            // Second diagonal line of X
             p.push();
-            p.translate(20, 0, 0);
             p.fill(214, 188, 250);
-            p.sphere(12); // Head
-            p.translate(0, 20, 0);
-            p.scale(1, 1.5, 1);
-            p.cylinder(8, 25); // Body
+            p.rotateZ(-45);
+            p.translate(0, 0, 0);
+            p.box(40, 8, 8);
             p.pop();
-
+            
             p.pop();
             break;
 
           case 'payments':
-            // Animated coins/money
+            // Single rotating coin
             p.push();
             p.rotateX(70);
             p.rotateZ(rotation);
             
-            for (let i = 0; i < 3; i++) {
-              p.push();
-              p.translate(0, 0, i * 10);
-              p.fill(i % 2 === 0 ? '#9b87f5' : '#D6BCFA');
-              p.cylinder(20, 5, 24, 1);
-              p.pop();
-            }
+            // Coin body
+            p.fill('#9b87f5');
+            p.cylinder(25, 5, 24, 1);
+            
+            // Coin details
+            p.push();
+            p.translate(0, 0, 3);
+            p.fill('#D6BCFA');
+            p.cylinder(20, 2, 24, 1);
+            p.pop();
+            
             p.pop();
             break;
 
           case 'tools':
-            // Particles merging and separating
+            // Dynamic moving particles
             p.push();
-            p.rotateY(rotation);
-            const phase = p.sin(particleRotation);
-            const radius = p.map(phase, -1, 1, 30, 5);
+            p.rotateY(rotation * 0.5);
             
             particles.forEach((particle, i) => {
-              const angle = (i / particles.length) * p.TWO_PI;
-              const x = p.cos(angle) * radius;
-              const y = p.sin(angle) * radius;
+              // Update particle position
+              particle.z = p.sin((rotation + i * 30) * particle.speed) * 20;
+              const radius = p.map(p.sin(particleRotation * particle.speed), -1, 1, 15, 35);
+              const x = p.cos((rotation * particle.speed + i * 30) / 30) * radius;
+              const y = p.sin((rotation * particle.speed + i * 30) / 30) * radius;
               
               p.push();
-              p.translate(x, y, 0);
+              p.translate(x, y, particle.z);
               p.fill(i % 2 === 0 ? '#9b87f5' : '#D6BCFA');
-              p.sphere(5);
+              p.sphere(4);
               p.pop();
             });
+            
             p.pop();
             break;
 
