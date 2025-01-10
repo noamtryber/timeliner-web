@@ -102,21 +102,8 @@ export const Features = () => {
                 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center
                 ${index % 2 === 0 ? '' : 'lg:flex-row-reverse'}`}
             >
-              {/* Content Side */}
-              <div className="space-y-6">
-                <div className="flex items-center space-x-4">
-                  <div className="p-3 rounded-xl bg-primary/10 text-primary">
-                    <feature.icon className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-2xl font-bold">{feature.title}</h3>
-                </div>
-                <p className="text-lg text-white/70 leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-              
-              {/* Video/Animation Side */}
-              <div className={`glass rounded-xl aspect-video overflow-hidden relative
+              {/* Video/Animation Side - Now first on mobile */}
+              <div className={`glass rounded-xl aspect-video overflow-hidden relative order-1 lg:order-none
                 ${index % 2 === 0 ? 'lg:order-last' : 'lg:order-first'}`}>
                 {feature.title === "Smart Revision Tracking" ? (
                   <>
@@ -143,6 +130,19 @@ export const Features = () => {
                     className="w-full h-full object-cover"
                   />
                 )}
+              </div>
+              
+              {/* Content Side - Now second on mobile */}
+              <div className="space-y-6 order-2 lg:order-none">
+                <div className="flex items-center space-x-4">
+                  <div className="p-3 rounded-xl bg-primary/10 text-primary">
+                    <feature.icon className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-2xl font-bold">{feature.title}</h3>
+                </div>
+                <p className="text-lg text-white/70 leading-relaxed">
+                  {feature.description}
+                </p>
               </div>
             </div>
           ))}
