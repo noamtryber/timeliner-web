@@ -2,6 +2,7 @@ import { FrustrationCard } from "./frustrations/FrustrationCard";
 import { usePageContent } from "@/hooks/usePageContent";
 import { FrustrationBackground } from "./frustrations/FrustrationBackground";
 import { useInView } from "react-intersection-observer";
+import { Cube, Box, Cylinder, Pyramid } from "lucide-react";
 
 export const Frustrations = () => {
   const { data: content } = usePageContent('frustrations', 'main');
@@ -10,9 +11,28 @@ export const Frustrations = () => {
     threshold: 0.1
   });
 
-  const getContent = (key: string) => {
-    return content?.[key] || '';
-  };
+  const frustrationData = [
+    {
+      icon: Cube,
+      title: "Scattered Files Everywhere",
+      description: "Stop wasting time searching through countless folders and drives for your video files and assets."
+    },
+    {
+      icon: Box,
+      title: "Version Control Chaos",
+      description: "No more confusion about which version is the latest or where different iterations are stored."
+    },
+    {
+      icon: Cylinder,
+      title: "Complex Collaboration",
+      description: "Streamline feedback and approvals with your team and clients in one centralized platform."
+    },
+    {
+      icon: Pyramid,
+      title: "Asset Management",
+      description: "Keep all your project files, footage, and resources organized and easily accessible."
+    }
+  ];
 
   return (
     <section className="relative min-h-screen flex items-center py-20 overflow-hidden">
@@ -23,50 +43,24 @@ export const Frustrations = () => {
       <div className="container mx-auto px-4 relative" ref={ref}>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
-            {getContent('title')}
+            {content?.title || "Common Frustrations in Video Production"}
           </h2>
           <p className="text-lg text-white/70">
-            {getContent('subtitle')}
+            {content?.subtitle || "Let's tackle these challenges together"}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <FrustrationCard
-            title={getContent('card1_title')}
-            description={getContent('card1_description')}
-            index={0}
-            inView={inView}
-          />
-          <FrustrationCard
-            title={getContent('card2_title')}
-            description={getContent('card2_description')}
-            index={1}
-            inView={inView}
-          />
-          <FrustrationCard
-            title={getContent('card3_title')}
-            description={getContent('card3_description')}
-            index={2}
-            inView={inView}
-          />
-          <FrustrationCard
-            title={getContent('card4_title')}
-            description={getContent('card4_description')}
-            index={3}
-            inView={inView}
-          />
-          <FrustrationCard
-            title={getContent('card5_title')}
-            description={getContent('card5_description')}
-            index={4}
-            inView={inView}
-          />
-          <FrustrationCard
-            title={getContent('card6_title')}
-            description={getContent('card6_description')}
-            index={5}
-            inView={inView}
-          />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {frustrationData.map((item, index) => (
+            <FrustrationCard
+              key={index}
+              title={item.title}
+              description={item.description}
+              icon={item.icon}
+              index={index}
+              inView={inView}
+            />
+          ))}
         </div>
       </div>
     </section>
