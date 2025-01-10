@@ -1,13 +1,16 @@
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { Menu, LogOut } from "lucide-react";
 import { useState } from "react";
 import { usePageContent } from "@/hooks/usePageContent";
 import { useToast } from "@/components/ui/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/App";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { toast } = useToast();
   const { data: content, error } = usePageContent('hero', 'nav');
+  const { session } = useAuth();
 
   if (error) {
     toast({
@@ -21,12 +24,15 @@ export const Navbar = () => {
     return content?.[key] || '';
   };
 
-  const handleLoginClick = () => {
-    window.open('https://preview--tmelinersnoam.lovable.app/login', '_blank');
-  };
-
-  const handleSignupClick = () => {
-    window.open('https://timeliner.io/sign-up', '_blank');
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      toast({
+        variant: "destructive",
+        title: "Error signing out",
+        description: error.message
+      });
+    }
   };
 
   return (
@@ -57,12 +63,25 @@ export const Navbar = () => {
               <a href="#blog" className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                 {getContent('blog_link')}
               </a>
-              <Button variant="ghost" className="text-white/70" onClick={handleLoginClick}>
-                {getContent('login_button')}
-              </Button>
-              <Button className="bg-primary hover:bg-primary/90" onClick={handleSignupClick}>
-                {getContent('signup_button')}
-              </Button>
+              {session ? (
+                <Button 
+                  variant="ghost" 
+                  className="text-white/70" 
+                  onClick={handleLogout}
+                >
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Sign out
+                </Button>
+              ) : (
+                <>
+                  <Button variant="ghost" className="text-white/70" onClick={() => window.location.href = '/auth'}>
+                    {getContent('login_button')}
+                  </Button>
+                  <Button className="bg-primary hover:bg-primary/90" onClick={() => window.location.href = '/auth'}>
+                    {getContent('signup_button')}
+                  </Button>
+                </>
+              )}
             </div>
           </div>
           
@@ -89,12 +108,25 @@ export const Navbar = () => {
             <a href="#blog" className="text-white block px-3 py-2 rounded-md text-base font-medium">
               {getContent('blog_link')}
             </a>
-            <Button variant="ghost" className="w-full justify-start" onClick={handleLoginClick}>
-              {getContent('login_button')}
-            </Button>
-            <Button className="w-full bg-primary hover:bg-primary/90" onClick={handleSignupClick}>
-              {getContent('signup_button')}
-            </Button>
+            {session ? (
+              <Button 
+                variant="ghost" 
+                className="w-full justify-start" 
+                onClick={handleLogout}
+              >
+                <LogOut className="h-4 w-4 mr-2" />
+                Sign out
+              </Button>
+            ) : (
+              <>
+                <Button variant="ghost" className="w-full justify-start" onClick={() => window.location.href = '/auth'}>
+                  {getContent('login_button')}
+                </Button>
+                <Button className="w-full bg-primary hover:bg-primary/90" onClick={() => window.location.href = '/auth'}>
+                  {getContent('signup_button')}
+                </Button>
+              </>
+            )}
           </div>
         </div>
       )}
