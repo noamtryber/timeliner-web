@@ -2,7 +2,7 @@ import { FrustrationCard } from "./frustrations/FrustrationCard";
 import { usePageContent } from "@/hooks/usePageContent";
 import { FrustrationBackground } from "./frustrations/FrustrationBackground";
 import { useInView } from "react-intersection-observer";
-import { Cube, Box, Cylinder, Pyramid } from "lucide-react";
+import { Box, Cylinder, Pyramid } from "lucide-react";
 
 export const Frustrations = () => {
   const { data: content } = usePageContent('frustrations', 'main');
@@ -13,23 +13,23 @@ export const Frustrations = () => {
 
   const frustrationData = [
     {
-      icon: Cube,
-      title: "Scattered Files Everywhere",
+      icon: Box,
+      title: "Asset Organization",
       description: "Stop wasting time searching through countless folders and drives for your video files and assets."
     },
     {
-      icon: Box,
-      title: "Version Control Chaos",
+      icon: Cylinder,
+      title: "Version Management",
       description: "No more confusion about which version is the latest or where different iterations are stored."
     },
     {
-      icon: Cylinder,
-      title: "Complex Collaboration",
+      icon: Box,
+      title: "Team Collaboration",
       description: "Streamline feedback and approvals with your team and clients in one centralized platform."
     },
     {
       icon: Pyramid,
-      title: "Asset Management",
+      title: "Resource Handling",
       description: "Keep all your project files, footage, and resources organized and easily accessible."
     }
   ];
