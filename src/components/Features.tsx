@@ -1,10 +1,21 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
+import { useState, useEffect } from "react";
 import { Workflow, FileStack, CreditCard, Users, FolderOpen, UserCircle, Shield } from "lucide-react";
 import { usePageContent } from "@/hooks/usePageContent";
 import { useMediaContent } from "@/hooks/useMediaContent";
 import { useToast } from "@/hooks/use-toast";
 import { FeatureItem } from "./features/FeatureItem";
 import { FeatureDialog } from "./features/FeatureDialog";
+
+const iconComponents = {
+  Workflow,
+  FileStack,
+  CreditCard,
+  Users,
+  FolderOpen,
+  UserCircle,
+  Shield
+} as const;
 
 export const Features = () => {
   const featuresRef = useRef<HTMLDivElement>(null);
@@ -53,16 +64,6 @@ export const Features = () => {
 
   const getFeatureMedia = (sectionId: string, key: string) => {
     return media?.find(item => item.section_id === sectionId && item.media_key === key)?.media_url || '';
-  };
-
-  const iconComponents = {
-    Workflow,
-    FileStack,
-    CreditCard,
-    Users,
-    FolderOpen,
-    UserCircle,
-    Shield
   };
 
   const features = [
@@ -124,7 +125,7 @@ export const Features = () => {
     }
   ];
 
-  const activeFeature = features.find(f => f.title === openDialog);
+  const activeFeature = features.find(f => f.id === openDialog);
 
   return (
     <section id="features" className="py-20 overflow-hidden">
@@ -150,7 +151,7 @@ export const Features = () => {
                 title={feature.title}
                 description={feature.description}
                 videoUrl={feature.videoUrl}
-                onLearnMore={() => setOpenDialog(feature.title)}
+                onLearnMore={() => setOpenDialog(feature.id)}
               />
             );
           })}
