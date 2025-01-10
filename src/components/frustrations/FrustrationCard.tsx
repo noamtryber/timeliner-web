@@ -1,11 +1,9 @@
 import { motion } from "framer-motion";
 
 interface FrustrationCardProps {
-  id: string;
-  illustration: string;
   title: string;
   description: string;
-  subtext?: string;
+  illustration: string;
   index: number;
   inView: boolean;
 }
@@ -14,7 +12,6 @@ export const FrustrationCard = ({
   illustration,
   title,
   description,
-  subtext,
   index,
   inView
 }: FrustrationCardProps) => {
@@ -46,9 +43,6 @@ export const FrustrationCard = ({
         
         <h3 className="text-xl font-semibold mb-3 gradient-text">{title}</h3>
         <p className="text-white/70 mb-3">{description}</p>
-        {subtext && (
-          <p className="text-sm text-white/50">{subtext}</p>
-        )}
       </div>
     </motion.div>
   );
