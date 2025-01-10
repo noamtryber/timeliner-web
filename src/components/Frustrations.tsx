@@ -45,15 +45,9 @@ export const Frustrations = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
             {content?.title || "Common Frustrations in Video Production"}
           </h2>
-          <p className="text-lg text-white/70 mb-4">
-            {content?.subtitle || "These challenges are exactly why we built Timeliner"}
-          </p>
-          <p className="text-md text-white/60">
-            Let's see how we can solve them!
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
           {frustrationData.map((item, index) => (
             <FrustrationCard
               key={index}
@@ -64,6 +58,15 @@ export const Frustrations = () => {
               inView={inView}
             />
           ))}
+        </div>
+
+        <div className="text-center max-w-3xl mx-auto">
+          <p className="text-lg text-white/70 mb-4">
+            These challenges are exactly why we built Timeliner
+          </p>
+          <p className="text-md text-white/60">
+            Let's see how we can solve them!
+          </p>
         </div>
       </div>
     </section>
