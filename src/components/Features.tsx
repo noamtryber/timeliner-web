@@ -6,6 +6,7 @@ import { useMediaContent } from "@/hooks/useMediaContent";
 import { useToast } from "@/hooks/use-toast";
 import { FeatureItem } from "./features/FeatureItem";
 import { FeatureDialog } from "./features/FeatureDialog";
+import { features } from "./features/featureData";
 
 const iconComponents = {
   Workflow,
@@ -66,79 +67,20 @@ export const Features = () => {
     return media?.find(item => item.section_id === sectionId && item.media_key === key)?.media_url || '';
   };
 
-  const features = [
-    {
-      id: 'revision-tracking',
-      icon: 'Workflow',
-      title: getFeatureContent('revision-tracking', 'title'),
-      subtitle: getFeatureContent('revision-tracking', 'subtitle'),
-      description: getFeatureContent('revision-tracking', 'description'),
-      longDescription: getFeatureContent('revision-tracking', 'long_description'),
-      videoUrl: getFeatureMedia('revision-tracking', 'preview'),
-      learnMoreVideo: getFeatureMedia('revision-tracking', 'learn-more')
-    },
-    {
-      id: 'interactive-briefs',
-      icon: 'FileStack',
-      title: getFeatureContent('interactive-briefs', 'title'),
-      description: getFeatureContent('interactive-briefs', 'description'),
-      videoUrl: getFeatureMedia('interactive-briefs', 'preview'),
-      learnMoreVideo: getFeatureMedia('interactive-briefs', 'learn-more')
-    },
-    {
-      id: 'seamless-payments',
-      icon: 'CreditCard',
-      title: getFeatureContent('seamless-payments', 'title'),
-      description: getFeatureContent('seamless-payments', 'description'),
-      videoUrl: getFeatureMedia('seamless-payments', 'preview'),
-      learnMoreVideo: getFeatureMedia('seamless-payments', 'learn-more')
-    },
-    {
-      id: 'client-management',
-      icon: 'Users',
-      title: getFeatureContent('client-management', 'title'),
-      description: getFeatureContent('client-management', 'description'),
-      videoUrl: getFeatureMedia('client-management', 'preview'),
-      learnMoreVideo: getFeatureMedia('client-management', 'learn-more')
-    },
-    {
-      id: 'client-portals',
-      icon: 'FolderOpen',
-      title: getFeatureContent('client-portals', 'title'),
-      description: getFeatureContent('client-portals', 'description'),
-      videoUrl: getFeatureMedia('client-portals', 'preview'),
-      learnMoreVideo: getFeatureMedia('client-portals', 'learn-more')
-    },
-    {
-      id: 'team-collaboration',
-      icon: 'UserCircle',
-      title: getFeatureContent('team-collaboration', 'title'),
-      description: getFeatureContent('team-collaboration', 'description'),
-      videoUrl: getFeatureMedia('team-collaboration', 'preview'),
-      learnMoreVideo: getFeatureMedia('team-collaboration', 'learn-more')
-    },
-    {
-      id: 'secure-media-storage',
-      icon: 'Shield',
-      title: getFeatureContent('secure-media-storage', 'title'),
-      description: getFeatureContent('secure-media-storage', 'description'),
-      videoUrl: getFeatureMedia('secure-media-storage', 'preview'),
-      learnMoreVideo: getFeatureMedia('secure-media-storage', 'learn-more')
-    }
-  ];
-
   const activeFeature = features.find(f => f.id === openDialog);
 
   return (
     <section id="features" className="py-20 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-primary/80 font-medium mb-4 block">FEATURES</span>
+          <span className="text-primary/80 font-medium mb-4 block">
+            {getFeatureContent('header', 'label')}
+          </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
-            Everything You Need to Scale Your Video Business
+            {getFeatureContent('header', 'title')}
           </h2>
           <p className="text-white/70 text-lg">
-            One platform to manage your entire video production workflow, from client onboarding to final delivery
+            {getFeatureContent('header', 'description')}
           </p>
         </div>
         
@@ -150,10 +92,10 @@ export const Features = () => {
                 key={feature.id}
                 index={index}
                 icon={IconComponent}
-                title={feature.title}
-                subtitle={feature.subtitle}
-                description={feature.description}
-                videoUrl={feature.videoUrl}
+                title={getFeatureContent(feature.sectionKey, 'title')}
+                subtitle={getFeatureContent(feature.sectionKey, 'subtitle')}
+                description={getFeatureContent(feature.sectionKey, 'description')}
+                videoUrl={getFeatureMedia(feature.sectionKey, 'preview')}
                 onLearnMore={() => setOpenDialog(feature.id)}
               />
             );
@@ -165,10 +107,10 @@ export const Features = () => {
         <FeatureDialog
           isOpen={!!openDialog}
           onClose={() => setOpenDialog(null)}
-          title={activeFeature.title}
-          subtitle={activeFeature.subtitle}
-          description={activeFeature.longDescription}
-          videoUrl={activeFeature.learnMoreVideo}
+          title={getFeatureContent(activeFeature.sectionKey, 'title')}
+          subtitle={getFeatureContent(activeFeature.sectionKey, 'subtitle')}
+          description={getFeatureContent(activeFeature.sectionKey, 'long_description')}
+          videoUrl={getFeatureMedia(activeFeature.sectionKey, 'learn-more')}
         />
       )}
     </section>
