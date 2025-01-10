@@ -70,7 +70,7 @@ export const Frustrations = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-20 relative overflow-hidden">
+    <section ref={sectionRef} className="md:hidden py-20 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
       <div className="absolute -top-[40%] -right-[20%] w-[70%] h-[100%] bg-primary/10 blur-[120px] rounded-full" />
