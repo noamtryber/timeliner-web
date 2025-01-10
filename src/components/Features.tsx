@@ -102,16 +102,12 @@ export const Features = () => {
                 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center`}
             >
               {/* Video Side */}
-              <div className={`relative order-1 
+              <div className={`overflow-hidden relative order-1 rounded-[24px]
                 ${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
-                <div className="w-full h-full rounded-[32px] overflow-hidden"
-                     style={{
-                       maskImage: 'radial-gradient(white, black)',
-                       WebkitMaskImage: 'radial-gradient(white, black)'
-                     }}>
+                <div className="w-full h-full">
                   <iframe
                     src={feature.videoUrl}
-                    className="w-full h-full"
+                    className="w-full h-full scale-[1.05]"
                     loading="lazy"
                     allow="autoplay; fullscreen; picture-in-picture"
                     style={{
@@ -119,7 +115,10 @@ export const Features = () => {
                       border: 'none',
                       background: 'transparent',
                       transform: 'scale(1.05)',
-                      borderRadius: '32px',
+                      borderRadius: '24px',
+                      overflow: 'hidden',
+                      maskImage: 'radial-gradient(white, black)',
+                      WebkitMaskImage: 'radial-gradient(white, black)'
                     }}
                   />
                 </div>
