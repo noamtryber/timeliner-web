@@ -26,13 +26,12 @@ export const Navbar = () => {
       <div className="glass mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <a href="/" className="flex-shrink-0 flex items-center gap-2">
+            <a href="/" className="flex-shrink-0">
               <img 
                 src="/lovable-uploads/1ad9d673-efdf-41ae-8a29-82d3e976a7ed.png" 
                 alt="Timeliner Logo" 
-                className="h-8"
+                className="h-7" // Reduced from h-8 (approximately 15% smaller)
               />
-              <span className="text-xl font-bold gradient-text">{getContent('brand')}</span>
             </a>
           </div>
           
