@@ -84,16 +84,16 @@ export const Hero = () => {
 
           <div className="grid grid-cols-3 gap-8 mt-16">
             <div>
-              <div className="text-3xl font-bold gradient-text">{getContent('stats_projects')}</div>
-              <div className="text-white/70">{getContent('stats_projects_label')}</div>
+              <div className="text-3xl font-bold gradient-text">32.0%</div>
+              <div className="text-white/70">Faster Revision Rounds</div>
             </div>
             <div>
-              <div className="text-3xl font-bold gradient-text">{getContent('stats_clients')}</div>
-              <div className="text-white/70">{getContent('stats_clients_label')}</div>
+              <div className="text-3xl font-bold gradient-text">19.0%</div>
+              <div className="text-white/70">Increase in Income</div>
             </div>
             <div>
-              <div className="text-3xl font-bold gradient-text">{getContent('stats_revenue')}</div>
-              <div className="text-white/70">{getContent('stats_revenue_label')}</div>
+              <div className="text-3xl font-bold gradient-text">24.0%</div>
+              <div className="text-white/70">Client Retention in Retainers</div>
             </div>
           </div>
         </div>
