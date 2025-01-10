@@ -59,15 +59,8 @@ export const Hero = () => {
               className="border-white/10 text-lg px-8 py-6 h-auto w-full sm:w-auto hover:bg-white/5 relative group overflow-hidden"
               onClick={() => setShowDemo(true)}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 group-hover:animate-[shimmer_2s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity" 
-                style={{ 
-                  backgroundSize: '200% 100%',
-                  animation: 'shimmer 2s linear infinite',
-                  '@keyframes shimmer': {
-                    '0%': { backgroundPosition: '200% 0' },
-                    '100%': { backgroundPosition: '-200% 0' }
-                  }
-                }} 
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity animate-shimmer" 
+                style={{ backgroundSize: '200% 100%' }}
               />
               <Play className="mr-2 h-5 w-5 relative z-10" />
               <span className="relative z-10">{getContent('cta_secondary')}</span>

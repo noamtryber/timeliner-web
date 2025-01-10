@@ -78,12 +78,17 @@ export default {
         "scroll": {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(calc(-50% - 3rem))" }
+        },
+        "shimmer": {
+          "0%": { backgroundPosition: "200% 0" },
+          "100%": { backgroundPosition: "-200% 0" }
         }
       },
       animation: {
         "fade-up": "fade-up 0.5s ease-out",
         "fade-down": "fade-down 0.5s ease-out",
         "scroll": "scroll 25s linear infinite",
+        "shimmer": "shimmer 2s linear infinite",
       },
     },
   },
