@@ -18,6 +18,8 @@ export const FeatureItem = ({
   videoUrl,
   onLearnMore 
 }: FeatureItemProps) => {
+  const videoSrc = `${videoUrl}?autoplay=1&loop=1&autopause=0&background=1&muted=1`;
+  
   return (
     <div className="feature-item opacity-0 translate-y-10 transition-all duration-700 ease-out
       grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -26,7 +28,7 @@ export const FeatureItem = ({
         ${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
         <div className="w-full h-full">
           <iframe
-            src={videoUrl}
+            src={videoSrc}
             className="w-full h-full scale-[1.05] rounded-3xl"
             loading="lazy"
             allow="autoplay; fullscreen; picture-in-picture"
