@@ -3,15 +3,13 @@ import { motion } from "framer-motion";
 interface FrustrationCardProps {
   title: string;
   description: string;
-  illustration?: string;
-  icon?: string;
+  illustration: string;
   index: number;
   inView: boolean;
 }
 
 export const FrustrationCard = ({
   illustration,
-  icon,
   title,
   description,
   index,
