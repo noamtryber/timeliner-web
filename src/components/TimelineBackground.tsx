@@ -61,8 +61,7 @@ export const TimelineBackground = () => {
       
       p.setup = () => {
         const canvas = p.createCanvas(p.windowWidth, p.windowHeight);
-        canvas.position(0, 0);
-        canvas.style('z-index', '-1');
+        canvas.parent(containerRef.current!);
         
         const spacing = p.height / (numTimelines + 1);
         for (let i = 0; i < numTimelines; i++) {
@@ -85,9 +84,9 @@ export const TimelineBackground = () => {
       };
     };
 
-    const p5Instance = new p5(sketch, containerRef.current);
+    const p5Instance = new p5(sketch);
     return () => p5Instance.remove();
   }, []);
 
-  return <div ref={containerRef} className="absolute inset-0 -z-10" />;
+  return <div ref={containerRef} className="absolute inset-0 z-0" />;
 };

@@ -16,8 +16,8 @@ export const ThreeDSection = () => {
       </div>
       
       {/* Gradient overlays for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/80 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/50 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
     </section>
   );
 };
