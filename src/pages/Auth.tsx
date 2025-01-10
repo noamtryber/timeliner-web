@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import ThreeBackground from "@/components/auth/ThreeBackground";
 import AuthForm from "@/components/auth/AuthForm";
 import { getErrorMessage } from "@/utils/auth";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -33,6 +35,14 @@ const Auth = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-card to-background relative overflow-hidden">
+      <Button
+        variant="ghost"
+        size="icon"
+        className="absolute top-4 right-4 z-50 text-white/70 hover:text-white"
+        onClick={() => navigate("/")}
+      >
+        <ArrowLeft className="h-6 w-6" />
+      </Button>
       <ThreeBackground />
       <div className="relative min-h-screen flex items-center justify-center p-4">
         <AuthForm errorMessage={errorMessage} />
