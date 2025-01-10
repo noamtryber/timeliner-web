@@ -8,6 +8,24 @@ interface TransformedContent {
   [key: string]: any;
 }
 
+interface BaseContent {
+  id: string;
+  content_key: string;
+  content_value: string;
+  section_type: string;
+  section_id: string | null;
+  created_at: string | null;
+  updated_at: string | null;
+}
+
+interface TranslationContent extends BaseContent {
+  language: 'en' | 'es' | 'pt' | 'zh' | 'ru' | 'ar' | 'he';
+}
+
+interface PageContent extends BaseContent {
+  section_type: SectionType;
+}
+
 export const usePageContent = (sectionType: SectionType, sectionId?: string) => {
   const { language } = useLanguage();
 
@@ -32,9 +50,12 @@ export const usePageContent = (sectionType: SectionType, sectionId?: string) => 
         const { data: defaultContent, error } = await supabase
           .from('page_content')
           .select('*')
-          .eq('section_type', sectionType)
-          .eq('section_id', sectionId || '');
+          .eq('section_type', sectionType);
         
+        if (sectionId) {
+          query = query.eq('section_id', sectionId);
+        }
+
         if (error) {
           console.error('Error fetching page content:', error);
           throw error;
