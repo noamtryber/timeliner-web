@@ -45,9 +45,9 @@ export const Pricing = () => {
 
   return (
     <section className="py-24 relative overflow-hidden">
-      {/* Background gradients */}
-      <div className="absolute -top-[40%] -left-[20%] w-[70%] h-[100%] bg-primary/20 blur-[120px] rounded-full animate-pulse" />
-      <div className="absolute -bottom-[40%] -right-[20%] w-[70%] h-[100%] bg-secondary/20 blur-[120px] rounded-full animate-pulse delay-1000" />
+      {/* Background gradients with negative z-index */}
+      <div className="absolute -z-10 -top-[40%] -left-[20%] w-[70%] h-[100%] bg-primary/20 blur-[120px] rounded-full animate-pulse" />
+      <div className="absolute -z-10 -bottom-[40%] -right-[20%] w-[70%] h-[100%] bg-secondary/20 blur-[120px] rounded-full animate-pulse delay-1000" />
       
       <div className="container mx-auto px-4">
         <PricingHeader 
