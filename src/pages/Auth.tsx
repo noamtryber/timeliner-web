@@ -38,7 +38,7 @@ const Auth = () => {
       <Button
         variant="ghost"
         size="icon"
-        className="absolute top-4 right-4 z-50 text-white/70 hover:text-white"
+        className="absolute top-4 left-4 z-50 text-white/70 hover:text-white"
         onClick={() => navigate("/")}
       >
         <ArrowLeft className="h-6 w-6" />
