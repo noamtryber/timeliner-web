@@ -13,7 +13,11 @@ export const Footer = () => {
           {/* Left side - Company info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <img src="/favicon.ico" alt="Timeliner" className="w-6 h-6" />
+              <img 
+                src="/lovable-uploads/1ad9d673-efdf-41ae-8a29-82d3e976a7ed.png" 
+                alt="Timeliner Logo" 
+                className="h-7"
+              />
               <span className="text-xl font-semibold">Timeliner</span>
             </div>
             <p className="text-sm text-gray-400 max-w-md">
