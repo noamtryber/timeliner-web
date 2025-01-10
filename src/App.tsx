@@ -50,9 +50,9 @@ const App = () => {
   }, []);
 
   return (
-    <LanguageProvider>
+    <QueryClientProvider client={queryClient}>
       <AuthContext.Provider value={{ session, loading }}>
-        <QueryClientProvider client={queryClient}>
+        <LanguageProvider>
           <TooltipProvider>
             <Toaster />
             <Sonner />
@@ -64,9 +64,9 @@ const App = () => {
               </Routes>
             </BrowserRouter>
           </TooltipProvider>
-        </QueryClientProvider>
+        </LanguageProvider>
       </AuthContext.Provider>
-    </LanguageProvider>
+    </QueryClientProvider>
   );
 };
 
