@@ -59,11 +59,22 @@ export const Hero = () => {
               className="border-white/10 text-lg px-8 py-6 h-auto w-full sm:w-auto hover:bg-white/5 relative group overflow-hidden"
               onClick={() => setShowDemo(true)}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity animate-shimmer" 
+              {/* Outer glow effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-primary opacity-0 group-hover:opacity-75 blur-lg transition-all duration-500 group-hover:duration-200" />
+              
+              {/* Inner gradient animation */}
+              <div className="absolute inset-0.5 bg-card rounded-md" />
+              
+              {/* Shimmer effect */}
+              <div className="absolute inset-0.5 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity animate-shimmer rounded-md" 
                 style={{ backgroundSize: '200% 100%' }}
               />
-              <Play className="mr-2 h-5 w-5 relative z-10" />
-              <span className="relative z-10">{getContent('cta_secondary')}</span>
+              
+              {/* Button content */}
+              <div className="relative z-10 flex items-center">
+                <Play className="mr-2 h-5 w-5" />
+                <span>{getContent('cta_secondary')}</span>
+              </div>
             </Button>
           </div>
 
