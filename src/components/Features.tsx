@@ -14,25 +14,25 @@ const features = [
     icon: Workflow,
     title: "Smart Revision Tracking",
     description: "Reduce back-and-forth by 31% with AI-powered workflow management and version control. Our intelligent system learns from your feedback patterns and helps streamline the revision process.",
-    videoUrl: "https://player.vimeo.com/video/1045525235?autoplay=1&loop=1&muted=1&background=1"
+    videoUrl: "https://player.vimeo.com/video/1045686014?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
   },
   {
     icon: FileStack,
     title: "Interactive Briefs",
     description: "Create crystal-clear project briefs that align expectations from day one. Our interactive brief system ensures nothing gets missed and everyone stays on the same page throughout the project.",
-    videoUrl: "/placeholder.svg"
+    videoUrl: "https://player.vimeo.com/video/1045691116?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
   },
   {
     icon: CreditCard,
     title: "Seamless Payments",
     description: "Get paid faster with automated invoicing and integrated payment processing. Set up milestone payments, automate reminders, and maintain a steady cash flow with our payment tools.",
-    videoUrl: "/placeholder.svg"
+    videoUrl: "https://player.vimeo.com/video/1045691362?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
   },
   {
     icon: Users,
     title: "Client Management",
     description: "Manage all your clients and projects in one centralized dashboard. Keep track of project status, deadlines, and client communications in a single, intuitive interface.",
-    videoUrl: "/placeholder.svg"
+    videoUrl: "https://player.vimeo.com/video/1045691407?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
   },
   {
     icon: FolderOpen,
@@ -101,34 +101,22 @@ export const Features = () => {
               className={`feature-item opacity-0 translate-y-10 transition-all duration-700 ease-out
                 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center`}
             >
-              {/* Video/Animation Side */}
-              <div className={`glass rounded-xl aspect-video overflow-hidden relative order-1 
+              {/* Video Side */}
+              <div className={`glass rounded-xl overflow-hidden relative order-1 
                 ${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
-                {feature.title === "Smart Revision Tracking" ? (
-                  <>
-                    <iframe
-                      src={feature.videoUrl}
-                      className="w-full h-full absolute inset-0 border-0"
-                      loading="lazy"
-                      allow="autoplay; fullscreen; picture-in-picture"
-                      allowFullScreen
-                      style={{ background: 'url(/placeholder.svg) center/cover no-repeat' }}
-                    />
-                    <noscript>
-                      <img 
-                        src="/placeholder.svg" 
-                        alt={feature.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </noscript>
-                  </>
-                ) : (
-                  <img 
-                    src={feature.videoUrl} 
-                    alt={feature.title}
-                    className="w-full h-full object-cover"
+                <div className="aspect-video w-full h-full relative">
+                  <iframe
+                    src={feature.videoUrl}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    loading="lazy"
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      border: 'none',
+                    }}
                   />
-                )}
+                </div>
               </div>
               
               {/* Content Side */}
