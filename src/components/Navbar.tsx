@@ -1,9 +1,25 @@
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { useState } from "react";
+import { usePageContent } from "@/hooks/usePageContent";
+import { useToast } from "@/components/ui/use-toast";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { toast } = useToast();
+  const { data: content, error } = usePageContent('hero', 'nav');
+
+  if (error) {
+    toast({
+      variant: "destructive",
+      title: "Error loading navigation content",
+      description: "Please try refreshing the page"
+    });
+  }
+
+  const getContent = (key: string) => {
+    return content?.find(item => item.content_key === key)?.content_value || '';
+  };
 
   return (
     <nav className="fixed w-full z-50 top-0 animate-fade-down">
@@ -11,29 +27,29 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <a href="/" className="flex-shrink-0 flex items-center gap-2">
-              <span className="text-xl font-bold gradient-text">Timeliner</span>
+              <span className="text-xl font-bold gradient-text">{getContent('brand')}</span>
             </a>
           </div>
           
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-4">
               <a href="#features" className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                Features
+                {getContent('features_link')}
               </a>
               <a href="#testimonials" className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                Testimonials
+                {getContent('testimonials_link')}
               </a>
               <a href="#pricing" className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                Pricing
+                {getContent('pricing_link')}
               </a>
               <a href="#blog" className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                Blog
+                {getContent('blog_link')}
               </a>
               <Button variant="ghost" className="text-white/70">
-                Login
+                {getContent('login_button')}
               </Button>
               <Button className="bg-primary hover:bg-primary/90">
-                Sign Up
+                {getContent('signup_button')}
               </Button>
             </div>
           </div>
@@ -50,22 +66,22 @@ export const Navbar = () => {
         <div className="glass md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <a href="#features" className="text-white block px-3 py-2 rounded-md text-base font-medium">
-              Features
+              {getContent('features_link')}
             </a>
             <a href="#testimonials" className="text-white block px-3 py-2 rounded-md text-base font-medium">
-              Testimonials
+              {getContent('testimonials_link')}
             </a>
             <a href="#pricing" className="text-white block px-3 py-2 rounded-md text-base font-medium">
-              Pricing
+              {getContent('pricing_link')}
             </a>
             <a href="#blog" className="text-white block px-3 py-2 rounded-md text-base font-medium">
-              Blog
+              {getContent('blog_link')}
             </a>
             <Button variant="ghost" className="w-full justify-start">
-              Login
+              {getContent('login_button')}
             </Button>
             <Button className="w-full bg-primary hover:bg-primary/90">
-              Sign Up
+              {getContent('signup_button')}
             </Button>
           </div>
         </div>
