@@ -74,13 +74,13 @@ export const Features = () => {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-primary/80 font-medium mb-4 block">
-            {getFeatureContent('header', 'label')}
+            {content?.['header.label'] || 'Features'}
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
-            {getFeatureContent('header', 'title')}
+            {content?.['header.title'] || 'Powerful Features for Video Creators'}
           </h2>
           <p className="text-white/70 text-lg">
-            {getFeatureContent('header', 'description')}
+            {content?.['header.description'] || 'Streamline your video production workflow with our comprehensive suite of features designed for creators.'}
           </p>
         </div>
         
@@ -92,9 +92,9 @@ export const Features = () => {
                 key={feature.id}
                 index={index}
                 icon={IconComponent}
-                title={getFeatureContent(feature.sectionKey, 'title')}
-                subtitle={getFeatureContent(feature.sectionKey, 'subtitle')}
-                description={getFeatureContent(feature.sectionKey, 'description')}
+                title={getFeatureContent(feature.sectionKey, 'title') || feature.defaultTitle}
+                subtitle={getFeatureContent(feature.sectionKey, 'subtitle') || feature.defaultSubtitle}
+                description={getFeatureContent(feature.sectionKey, 'description') || feature.defaultDescription}
                 videoUrl={getFeatureMedia(feature.sectionKey, 'preview')}
                 onLearnMore={() => setOpenDialog(feature.id)}
               />
@@ -107,9 +107,9 @@ export const Features = () => {
         <FeatureDialog
           isOpen={!!openDialog}
           onClose={() => setOpenDialog(null)}
-          title={getFeatureContent(activeFeature.sectionKey, 'title')}
-          subtitle={getFeatureContent(activeFeature.sectionKey, 'subtitle')}
-          description={getFeatureContent(activeFeature.sectionKey, 'long_description')}
+          title={getFeatureContent(activeFeature.sectionKey, 'title') || activeFeature.defaultTitle}
+          subtitle={getFeatureContent(activeFeature.sectionKey, 'subtitle') || activeFeature.defaultSubtitle}
+          description={getFeatureContent(activeFeature.sectionKey, 'long_description') || activeFeature.defaultLongDescription}
           videoUrl={getFeatureMedia(activeFeature.sectionKey, 'learn-more')}
         />
       )}
