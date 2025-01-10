@@ -12,8 +12,8 @@ export const Frustrations = () => {
     triggerOnce: true,
   });
 
-  const { data: content, error: contentError } = usePageContent('feature');
-  const { data: media, error: mediaError } = useMediaContent('feature');
+  const { data: content, error: contentError } = usePageContent('frustrations');
+  const { data: media, error: mediaError } = useMediaContent('frustrations');
   const { toast } = useToast();
 
   useEffect(() => {

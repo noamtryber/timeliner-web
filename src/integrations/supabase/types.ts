@@ -87,6 +87,7 @@ export type Database = {
         | "testimonial"
         | "pricing"
         | "faq"
+        | "frustrations"
     }
     CompositeTypes: {
       [_ in never]: never
