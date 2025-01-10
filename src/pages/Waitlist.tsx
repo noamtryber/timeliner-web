@@ -2,13 +2,12 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/App";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Star, Percent, Bell } from "lucide-react";
 
 const Waitlist = () => {
   const navigate = useNavigate();
   const { session } = useAuth();
 
-  // Protect the route - redirect to auth if not logged in
   useEffect(() => {
     if (!session) {
       navigate("/auth");
@@ -43,21 +42,44 @@ const Waitlist = () => {
 
         <div className="glass p-8 rounded-lg border border-white/10 backdrop-blur-xl space-y-8">
           <section>
-            <h2 className="text-2xl font-semibold mb-4">What does this mean for you?</h2>
-            <ul className="space-y-4 text-white/80">
-              <li className="flex items-start gap-2">
-                <span className="text-primary">1.</span>
-                When we officially launch the platform, you'll be among the first to receive early access.
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary">2.</span>
-                You've secured a 15% guaranteed discount for the initial period after the launch.
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary">3.</span>
-                We'll keep you updated with important news about our development and progress.
-              </li>
-            </ul>
+            <h2 className="text-2xl font-semibold mb-6">What does this mean for you?</h2>
+            <div className="space-y-6">
+              <div className="flex items-start gap-4 p-4 glass hover:bg-white/5 transition-colors rounded-lg">
+                <div className="p-3 bg-primary/10 rounded-lg">
+                  <Star className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-medium mb-2">Early Access</h3>
+                  <p className="text-white/80">
+                    When we officially launch the platform, you'll be among the first to receive early access.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 p-4 glass hover:bg-white/5 transition-colors rounded-lg">
+                <div className="p-3 bg-primary/10 rounded-lg">
+                  <Percent className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-medium mb-2">Exclusive Discount</h3>
+                  <p className="text-white/80">
+                    You've secured a 15% guaranteed discount for the initial period after the launch.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 p-4 glass hover:bg-white/5 transition-colors rounded-lg">
+                <div className="p-3 bg-primary/10 rounded-lg">
+                  <Bell className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-medium mb-2">Stay Updated</h3>
+                  <p className="text-white/80">
+                    We'll keep you updated with important news about our development and progress.
+                  </p>
+                </div>
+              </div>
+            </div>
           </section>
 
           <section className="pt-4">
@@ -91,15 +113,18 @@ const Waitlist = () => {
               We'd love to hear from you! We're committed to building the best tool for video editors and project management - 
               and that's exactly why your opinion matters to us!
             </p>
-            <p className="text-white/80">
-              Tell us what would make this amazing for you:
-            </p>
-            <Button 
-              className="mt-4"
-              onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSd9soTWB-dwKruXAA_mh4DJ-4rjAcSCw3YaU2k42YkxrE4O7Q/viewform?embedded=true', '_blank')}
-            >
-              Share Your Feedback
-            </Button>
+            <div className="w-full h-[600px] glass rounded-lg overflow-hidden">
+              <iframe 
+                src="https://docs.google.com/forms/d/e/1FAIpQLSd9soTWB-dwKruXAA_mh4DJ-4rjAcSCw3YaU2k42YkxrE4O7Q/viewform?embedded=true"
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                marginHeight={0}
+                marginWidth={0}
+              >
+                Loading form...
+              </iframe>
+            </div>
           </section>
         </div>
       </div>
