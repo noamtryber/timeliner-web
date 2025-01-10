@@ -10,12 +10,13 @@ import { useNavigate } from "react-router-dom";
 
 export const Hero = () => {
   const { data: content, error: contentError } = usePageContent('hero', 'main');
+  const { data: statsContent, error: statsError } = usePageContent('hero', 'stats');
   const { data: media, error: mediaError } = useMediaContent('hero', 'main');
   const { toast } = useToast();
   const [showDemo, setShowDemo] = useState(false);
   const navigate = useNavigate();
 
-  if (contentError || mediaError) {
+  if (contentError || mediaError || statsError) {
     toast({
       variant: "destructive",
       title: "Error loading content",
@@ -62,19 +63,12 @@ export const Hero = () => {
               className="border-white/10 text-lg px-8 py-6 h-auto w-full sm:w-auto hover:bg-white/5 relative group overflow-hidden"
               onClick={() => setShowDemo(true)}
             >
-              {/* Outer glow effect - now always visible */}
               <div className="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-primary opacity-75 blur-lg animate-pulse" />
-              
-              {/* Inner gradient animation */}
               <div className="absolute inset-0.5 bg-card rounded-md" />
-              
-              {/* Shimmer effect - now always active */}
               <div 
                 className="absolute inset-0.5 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 animate-shimmer rounded-md" 
                 style={{ backgroundSize: '200% 100%' }}
               />
-              
-              {/* Button content */}
               <div className="relative z-10 flex items-center">
                 <Play className="mr-2 h-5 w-5" />
                 <span>{getContent('cta_secondary')}</span>
@@ -84,16 +78,16 @@ export const Hero = () => {
 
           <div className="grid grid-cols-3 gap-8 mt-16">
             <div>
-              <div className="text-3xl font-bold gradient-text">32.0%</div>
-              <div className="text-white/70">Faster Revision Rounds</div>
+              <div className="text-3xl font-bold gradient-text">{statsContent?.stat1_value || '32.0%'}</div>
+              <div className="text-white/70">{statsContent?.stat1_label || 'Faster Revision Rounds'}</div>
             </div>
             <div>
-              <div className="text-3xl font-bold gradient-text">19.0%</div>
-              <div className="text-white/70">Increase in Income</div>
+              <div className="text-3xl font-bold gradient-text">{statsContent?.stat2_value || '19.0%'}</div>
+              <div className="text-white/70">{statsContent?.stat2_label || 'Increase in Income'}</div>
             </div>
             <div>
-              <div className="text-3xl font-bold gradient-text">24.0%</div>
-              <div className="text-white/70">Client Retention in Retainers</div>
+              <div className="text-3xl font-bold gradient-text">{statsContent?.stat3_value || '24.0%'}</div>
+              <div className="text-white/70">{statsContent?.stat3_label || 'Client Retention in Retainers'}</div>
             </div>
           </div>
         </div>

@@ -6,6 +6,7 @@ import { AlertCircle, Clock, Wallet, AppWindow } from "lucide-react";
 
 export const Frustrations = () => {
   const { data: content } = usePageContent('frustrations', 'main');
+  const { data: cardsContent } = usePageContent('frustrations', 'cards');
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1
@@ -15,26 +16,26 @@ export const Frustrations = () => {
     {
       icon: AlertCircle,
       iconType: 'expectations' as const,
-      title: "Unclear Expectations",
-      description: "Mismatched client and editor expectations lead to frustration. Revisions and versions scattered across WhatsApp, Email, and G-Drive."
+      title: cardsContent?.card1_title || "Unclear Expectations",
+      description: cardsContent?.card1_description || "Mismatched client and editor expectations lead to frustration. Revisions and versions scattered across WhatsApp, Email, and G-Drive."
     },
     {
       icon: Wallet,
       iconType: 'payments' as const,
-      title: "Payment Delays",
-      description: "Payments take weeks or months to arrive. No automated system to ensure quick payouts after approval."
+      title: cardsContent?.card2_title || "Payment Delays",
+      description: cardsContent?.card2_description || "Payments take weeks or months to arrive. No automated system to ensure quick payouts after approval."
     },
     {
       icon: AppWindow,
       iconType: 'tools' as const,
-      title: "No Centralized Tools",
-      description: "Juggling multiple apps for projects, feedback, and payments wastes time. No seamless way for agencies to manage freelancers or pay them per project milestone."
+      title: cardsContent?.card3_title || "No Centralized Tools",
+      description: cardsContent?.card3_description || "Juggling multiple apps for projects, feedback, and payments wastes time. No seamless way for agencies to manage freelancers or pay them per project milestone."
     },
     {
       icon: Clock,
       iconType: 'time' as const,
-      title: "Time Management",
-      description: "Managing multiple projects, deadlines, and client communications across different platforms leads to inefficiency and missed opportunities."
+      title: cardsContent?.card4_title || "Time Management",
+      description: cardsContent?.card4_description || "Managing multiple projects, deadlines, and client communications across different platforms leads to inefficiency and missed opportunities."
     }
   ];
 
@@ -67,10 +68,10 @@ export const Frustrations = () => {
 
         <div className="text-center max-w-3xl mx-auto">
           <p className="text-lg text-white/70 mb-4">
-            These challenges are exactly why we built Timeliner
+            {content?.subtitle || "These challenges are exactly why we built Timeliner"}
           </p>
           <p className="text-md text-white/60">
-            Let's see how we can solve them!
+            {content?.description || "Let's see how we can solve them!"}
           </p>
         </div>
       </div>
