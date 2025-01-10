@@ -21,6 +21,14 @@ export const Navbar = () => {
     return content?.find(item => item.content_key === key)?.content_value || '';
   };
 
+  const handleLoginClick = () => {
+    window.open('https://preview--tmelinersnoam.lovable.app/login', '_blank');
+  };
+
+  const handleSignupClick = () => {
+    window.open('https://timeliner.io/sign-up', '_blank');
+  };
+
   return (
     <nav className="fixed w-full z-50 top-0 animate-fade-down">
       <div className="glass mx-auto px-4 sm:px-6 lg:px-8">
@@ -30,7 +38,7 @@ export const Navbar = () => {
               <img 
                 src="/lovable-uploads/1ad9d673-efdf-41ae-8a29-82d3e976a7ed.png" 
                 alt="Timeliner Logo" 
-                className="h-7" // Reduced from h-8 (approximately 15% smaller)
+                className="h-7"
               />
             </a>
           </div>
@@ -49,10 +57,10 @@ export const Navbar = () => {
               <a href="#blog" className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                 {getContent('blog_link')}
               </a>
-              <Button variant="ghost" className="text-white/70">
+              <Button variant="ghost" className="text-white/70" onClick={handleLoginClick}>
                 {getContent('login_button')}
               </Button>
-              <Button className="bg-primary hover:bg-primary/90">
+              <Button className="bg-primary hover:bg-primary/90" onClick={handleSignupClick}>
                 {getContent('signup_button')}
               </Button>
             </div>
@@ -81,10 +89,10 @@ export const Navbar = () => {
             <a href="#blog" className="text-white block px-3 py-2 rounded-md text-base font-medium">
               {getContent('blog_link')}
             </a>
-            <Button variant="ghost" className="w-full justify-start">
+            <Button variant="ghost" className="w-full justify-start" onClick={handleLoginClick}>
               {getContent('login_button')}
             </Button>
-            <Button className="w-full bg-primary hover:bg-primary/90">
+            <Button className="w-full bg-primary hover:bg-primary/90" onClick={handleSignupClick}>
               {getContent('signup_button')}
             </Button>
           </div>

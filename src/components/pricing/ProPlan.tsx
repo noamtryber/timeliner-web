@@ -31,8 +31,6 @@ export const ProPlan = ({
   setProStorage, 
   calculatePrice 
 }: ProPlanProps) => {
-  const navigate = useNavigate();
-
   if (!content) return null;
 
   const proPrice = calculatePrice(
@@ -50,6 +48,10 @@ export const ProPlan = ({
       default:
         return proPrice;
     }
+  };
+
+  const handleClick = () => {
+    window.open('https://timeliner.io/sign-up', '_blank');
   };
 
   return (
@@ -121,7 +123,7 @@ export const ProPlan = ({
       
       <Button 
         className="w-full bg-gradient-to-br from-primary to-secondary hover:opacity-90 transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40"
-        onClick={() => navigate(content.button_link)}
+        onClick={handleClick}
       >
         {content.button_text}
       </Button>
