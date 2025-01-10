@@ -6,56 +6,68 @@ import {
   Users, 
   FolderOpen, 
   UserCircle, 
-  Shield 
+  Shield,
+  PlayCircle
 } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 const features = [
   {
     icon: Workflow,
     title: "Smart Revision Tracking",
     description: "Reduce back-and-forth by 31% with AI-powered workflow management and version control. Our intelligent system learns from your feedback patterns and helps streamline the revision process.",
-    videoUrl: "https://player.vimeo.com/video/1045720680?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
+    videoUrl: "https://player.vimeo.com/video/1045720680?autoplay=1&loop=1&muted=1&background=1&quality=1080p",
+    learnMoreVideo: "https://player.vimeo.com/video/1043854758?autoplay=1"
   },
   {
     icon: FileStack,
     title: "Interactive Briefs",
     description: "Create crystal-clear project briefs that align expectations from day one. Our interactive brief system ensures nothing gets missed and everyone stays on the same page throughout the project.",
-    videoUrl: "https://player.vimeo.com/video/1045720890?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
+    videoUrl: "https://player.vimeo.com/video/1045720890?autoplay=1&loop=1&muted=1&background=1&quality=1080p",
+    learnMoreVideo: "https://player.vimeo.com/video/1043854006?autoplay=1"
   },
   {
     icon: CreditCard,
     title: "Seamless Payments",
     description: "Get paid faster with automated invoicing and integrated payment processing. Set up milestone payments, automate reminders, and maintain a steady cash flow with our payment tools.",
-    videoUrl: "https://player.vimeo.com/video/1045721120?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
+    videoUrl: "https://player.vimeo.com/video/1045721120?autoplay=1&loop=1&muted=1&background=1&quality=1080p",
+    learnMoreVideo: "https://player.vimeo.com/video/1043856217?autoplay=1"
   },
   {
     icon: Users,
     title: "Client Management",
     description: "Manage all your clients and projects in one centralized dashboard. Keep track of project status, deadlines, and client communications in a single, intuitive interface.",
-    videoUrl: "https://player.vimeo.com/video/1045721146?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
+    videoUrl: "https://player.vimeo.com/video/1045721146?autoplay=1&loop=1&muted=1&background=1&quality=1080p",
+    learnMoreVideo: "https://player.vimeo.com/video/1043856452?autoplay=1"
   },
   {
     icon: FolderOpen,
     title: "Client Portals",
     description: "Give clients a professional, branded experience for feedback and approvals. Custom-branded portals make it easy for clients to review work and provide timely feedback.",
-    videoUrl: "https://player.vimeo.com/video/1045721261?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
+    videoUrl: "https://player.vimeo.com/video/1045721261?autoplay=1&loop=1&muted=1&background=1&quality=1080p",
+    learnMoreVideo: "https://player.vimeo.com/video/1043854547?autoplay=1"
   },
   {
     icon: UserCircle,
     title: "Team Collaboration",
     description: "Keep your entire team aligned with real-time updates and notifications. Our collaboration tools make it easy to assign tasks, track progress, and maintain clear communication.",
-    videoUrl: "https://player.vimeo.com/video/1045721315?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
+    videoUrl: "https://player.vimeo.com/video/1045721315?autoplay=1&loop=1&muted=1&background=1&quality=1080p",
+    learnMoreVideo: "https://player.vimeo.com/video/1043856320?autoplay=1"
   },
   {
     icon: Shield,
     title: "Secure Media Storage",
     description: "Forget juggling third-party tools. Store all your media securely in the cloud, with everything right where you need it.",
-    videoUrl: "https://player.vimeo.com/video/1045721377?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
+    videoUrl: "https://player.vimeo.com/video/1045721377?autoplay=1&loop=1&muted=1&background=1&quality=1080p",
+    learnMoreVideo: "https://player.vimeo.com/video/1043856167?autoplay=1"
   }
 ];
 
 export const Features = () => {
   const featuresRef = useRef<HTMLDivElement>(null);
+  const [openDialog, setOpenDialog] = useState<string | null>(null);
   
   useEffect(() => {
     const observerOptions = {
@@ -133,11 +145,41 @@ export const Features = () => {
                 <p className="text-lg text-white/70 leading-relaxed">
                   {feature.description}
                 </p>
+                <Button 
+                  onClick={() => setOpenDialog(feature.title)}
+                  className="bg-gradient-to-r from-primary via-accent to-primary shadow-lg hover:shadow-primary/20 transition-all duration-300"
+                >
+                  <PlayCircle className="w-5 h-5 mr-2" /> Learn More
+                </Button>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      {features.map((feature) => (
+        <Dialog key={feature.title} open={openDialog === feature.title} onOpenChange={() => setOpenDialog(null)}>
+          <DialogContent className="sm:max-w-[800px] bg-card/95 backdrop-blur-xl">
+            <DialogHeader>
+              <DialogTitle className="text-2xl">{feature.title}</DialogTitle>
+              <DialogDescription className="text-lg text-white/70">
+                {feature.description}
+              </DialogDescription>
+            </DialogHeader>
+            <div className="mt-4 rounded-xl overflow-hidden aspect-video">
+              <iframe
+                src={feature.learnMoreVideo}
+                className="w-full h-full"
+                allow="autoplay; fullscreen; picture-in-picture"
+                style={{
+                  border: 'none',
+                  background: 'transparent',
+                }}
+              />
+            </div>
+          </DialogContent>
+        </Dialog>
+      ))}
     </section>
   );
 };
