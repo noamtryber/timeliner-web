@@ -59,7 +59,7 @@ export const Features = () => {
   }, []);
 
   const getFeatureContent = (sectionId: string, key: string) => {
-    return content?.find(item => item.section_id === sectionId && item.content_key === key)?.content_value || '';
+    return content?.[`${sectionId}.${key}`] || '';
   };
 
   const getFeatureMedia = (sectionId: string, key: string) => {
