@@ -3,11 +3,14 @@ import { ArrowRight, Play } from "lucide-react";
 import { usePageContent } from "@/hooks/usePageContent";
 import { useMediaContent } from "@/hooks/useMediaContent";
 import { useToast } from "@/components/ui/use-toast";
+import { useState } from "react";
+import { FeatureDialog } from "./features/FeatureDialog";
 
 export const Hero = () => {
   const { data: content, error: contentError } = usePageContent('hero', 'main');
   const { data: media, error: mediaError } = useMediaContent('hero', 'main');
   const { toast } = useToast();
+  const [showDemo, setShowDemo] = useState(false);
 
   if (contentError || mediaError) {
     toast({
@@ -45,6 +48,7 @@ export const Hero = () => {
             <Button 
               size="lg" 
               className="bg-primary hover:bg-primary/90 text-lg px-8 py-6 h-auto w-full sm:w-auto"
+              onClick={() => window.open('https://timeliner.io/sign-up', '_blank')}
             >
               {getContent('cta_primary')}
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -52,10 +56,21 @@ export const Hero = () => {
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-white/10 text-lg px-8 py-6 h-auto w-full sm:w-auto hover:bg-white/5"
+              className="border-white/10 text-lg px-8 py-6 h-auto w-full sm:w-auto hover:bg-white/5 relative group overflow-hidden"
+              onClick={() => setShowDemo(true)}
             >
-              <Play className="mr-2 h-5 w-5" />
-              {getContent('cta_secondary')}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 group-hover:animate-[shimmer_2s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity" 
+                style={{ 
+                  backgroundSize: '200% 100%',
+                  animation: 'shimmer 2s linear infinite',
+                  '@keyframes shimmer': {
+                    '0%': { backgroundPosition: '200% 0' },
+                    '100%': { backgroundPosition: '-200% 0' }
+                  }
+                }} 
+              />
+              <Play className="mr-2 h-5 w-5 relative z-10" />
+              <span className="relative z-10">{getContent('cta_secondary')}</span>
             </Button>
           </div>
 
@@ -75,6 +90,14 @@ export const Hero = () => {
           </div>
         </div>
       </div>
+
+      <FeatureDialog
+        isOpen={showDemo}
+        onClose={() => setShowDemo(false)}
+        title="See How It Works"
+        description="Watch our 2-minute demo to see how Timeliner can streamline your creative workflow and help you manage projects more efficiently."
+        videoUrl="https://player.vimeo.com/video/1042338760?autoplay=1"
+      />
     </div>
   );
 };
