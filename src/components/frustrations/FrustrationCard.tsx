@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { LucideIcon } from "lucide-react";
+import { Frustration3DIcon } from "./Frustration3DIcon";
 
 interface FrustrationCardProps {
   title: string;
@@ -8,6 +9,7 @@ interface FrustrationCardProps {
   icon?: LucideIcon;
   index: number;
   inView: boolean;
+  iconType: 'expectations' | 'payments' | 'tools' | 'time';
 }
 
 export const FrustrationCard = ({
@@ -16,7 +18,8 @@ export const FrustrationCard = ({
   title,
   description,
   index,
-  inView
+  inView,
+  iconType
 }: FrustrationCardProps) => {
   return (
     <motion.div
@@ -32,21 +35,7 @@ export const FrustrationCard = ({
       <div className="relative z-10">
         <div className="mb-6 relative">
           <div className="w-24 h-24 mx-auto rounded-xl overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-            {Icon && (
-              <motion.div
-                animate={{ 
-                  rotateY: [0, 360],
-                  scale: [1, 1.1, 1]
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  repeatType: "reverse"
-                }}
-              >
-                <Icon size={48} className="text-primary" />
-              </motion.div>
-            )}
+            <Frustration3DIcon type={iconType} />
           </div>
           {/* Glow effect */}
           <div className="absolute -inset-4 bg-gradient-to-r from-primary/30 via-accent/30 to-primary/30 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300 -z-10" />

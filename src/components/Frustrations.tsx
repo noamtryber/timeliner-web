@@ -14,21 +14,25 @@ export const Frustrations = () => {
   const frustrationData = [
     {
       icon: AlertCircle,
+      iconType: 'expectations' as const,
       title: "Unclear Expectations",
       description: "Mismatched client and editor expectations lead to frustration. Revisions and versions scattered across WhatsApp, Email, and G-Drive."
     },
     {
       icon: Wallet,
+      iconType: 'payments' as const,
       title: "Payment Delays",
       description: "Payments take weeks or months to arrive. No automated system to ensure quick payouts after approval."
     },
     {
       icon: AppWindow,
+      iconType: 'tools' as const,
       title: "No Centralized Tools",
       description: "Juggling multiple apps for projects, feedback, and payments wastes time. No seamless way for agencies to manage freelancers or pay them per project milestone."
     },
     {
       icon: Clock,
+      iconType: 'time' as const,
       title: "Time Management",
       description: "Managing multiple projects, deadlines, and client communications across different platforms leads to inefficiency and missed opportunities."
     }
@@ -54,6 +58,7 @@ export const Frustrations = () => {
               title={item.title}
               description={item.description}
               icon={item.icon}
+              iconType={item.iconType}
               index={index}
               inView={inView}
             />
