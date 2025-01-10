@@ -49,9 +49,16 @@ export const usePricingContent = () => {
         }
 
         if (item.content_key === 'features') {
-          content[planId][item.content_key] = JSON.parse(item.content_value);
+          try {
+            // Parse the JSON string into an array
+            content[planId].features = JSON.parse(item.content_value);
+          } catch (e) {
+            console.error('Error parsing features JSON:', e);
+            content[planId].features = []; // Fallback to empty array if parsing fails
+          }
         } else {
-          content[planId][item.content_key as keyof PricingContent] = item.content_value;
+          // @ts-ignore - We know these properties exist from the interface
+          content[planId][item.content_key] = item.content_value;
         }
       });
 
