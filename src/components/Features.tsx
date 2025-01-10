@@ -73,7 +73,7 @@ export const Features = () => {
     <section id="features" className="py-20 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-primary/80 font-medium mb-4 block">
+          <span className="subtitle-gradient font-medium mb-4 block">
             {content?.['header.label'] || 'Features'}
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">

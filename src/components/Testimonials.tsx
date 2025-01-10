@@ -107,10 +107,10 @@ export const Testimonials = () => {
       
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <p className="text-sm uppercase tracking-wider text-primary mb-4">
+          <p className="subtitle-gradient mb-4">
             Testimonials
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
             What others are saying
           </h2>
         </div>

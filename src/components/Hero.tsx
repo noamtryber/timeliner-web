@@ -38,7 +38,7 @@ export const Hero = () => {
       
       <div className="container mx-auto px-4 relative animate-fade-up">
         <div className="text-center max-w-4xl mx-auto">
-          <span className="text-primary/80 font-medium mb-4 block tracking-wide">
+          <span className="subtitle-gradient mb-4 block tracking-wide">
             {getContent('subtitle')}
           </span>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 gradient-text tracking-tight leading-tight">

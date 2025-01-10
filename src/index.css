@@ -38,6 +38,14 @@
   }
 
   .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#F1F1F1] via-[#FFFFFF] to-[#F1F1F1];
+  }
+
+  .gradient-text-purple {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary;
+  }
+
+  .subtitle-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#9b87f5] via-[#D6BCFA] to-[#9b87f5] font-medium;
   }
 }

@@ -18,7 +18,6 @@ export const Frustrations = () => {
     <section className="relative min-h-screen flex items-center py-20 overflow-hidden">
       <FrustrationBackground />
       
-      {/* Background gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
       
       <div className="container mx-auto px-4 relative" ref={ref}>

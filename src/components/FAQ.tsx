@@ -49,7 +49,7 @@ export const FAQ = () => {
       
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text animate-fade-up">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
             Your Questions, Answered
           </h2>
           <p className="text-xl text-white/70 animate-fade-up delay-100">
