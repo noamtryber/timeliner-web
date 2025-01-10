@@ -61,7 +61,11 @@ export const usePageContent = (sectionType: SectionType, sectionId?: string) => 
           throw error;
         }
 
-        translatedContent = defaultContent;
+        // Add a language field to match the expected type
+        translatedContent = defaultContent?.map(item => ({
+          ...item,
+          language: 'en' as const // Default to English for non-translated content
+        }));
       }
 
       // Transform the data into a more usable format
