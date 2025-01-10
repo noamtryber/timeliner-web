@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export type SectionType = 'hero' | 'feature' | 'benefit' | 'testimonial' | 'pricing' | 'faq' | 'frustrations';
 
@@ -8,28 +9,43 @@ interface TransformedContent {
 }
 
 export const usePageContent = (sectionType: SectionType, sectionId?: string) => {
+  const { language } = useLanguage();
+
   return useQuery({
-    queryKey: ['page-content', sectionType, sectionId],
+    queryKey: ['page-content', sectionType, sectionId, language],
     queryFn: async () => {
+      // First try to get content in the selected language
       let query = supabase
-        .from('page_content')
+        .from('translations')
         .select('*')
-        .eq('section_type', sectionType);
+        .eq('section_type', sectionType)
+        .eq('language', language);
       
       if (sectionId) {
         query = query.eq('section_id', sectionId);
       }
       
-      const { data, error } = await query;
-      
-      if (error) {
-        console.error('Error fetching page content:', error);
-        throw error;
+      let { data: translatedContent, error: translationError } = await query;
+
+      // If no translation found or error, fallback to default content
+      if (!translatedContent?.length || translationError) {
+        const { data: defaultContent, error } = await supabase
+          .from('page_content')
+          .select('*')
+          .eq('section_type', sectionType)
+          .eq('section_id', sectionId || '');
+        
+        if (error) {
+          console.error('Error fetching page content:', error);
+          throw error;
+        }
+
+        translatedContent = defaultContent;
       }
 
       // Transform the data into a more usable format
       const transformedContent: TransformedContent = {};
-      data?.forEach(item => {
+      translatedContent?.forEach(item => {
         if (item.content_key.includes('.')) {
           // Handle nested objects (e.g., "cards.0.title")
           const [parent, index, child] = item.content_key.split('.');

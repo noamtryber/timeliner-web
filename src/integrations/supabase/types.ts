@@ -96,6 +96,39 @@ export type Database = {
         }
         Relationships: []
       }
+      translations: {
+        Row: {
+          content_key: string
+          content_value: string
+          created_at: string | null
+          id: string
+          language: Database["public"]["Enums"]["supported_language"]
+          section_id: string | null
+          section_type: string
+          updated_at: string | null
+        }
+        Insert: {
+          content_key: string
+          content_value: string
+          created_at?: string | null
+          id?: string
+          language: Database["public"]["Enums"]["supported_language"]
+          section_id?: string | null
+          section_type: string
+          updated_at?: string | null
+        }
+        Update: {
+          content_key?: string
+          content_value?: string
+          created_at?: string | null
+          id?: string
+          language?: Database["public"]["Enums"]["supported_language"]
+          section_id?: string | null
+          section_type?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -112,6 +145,7 @@ export type Database = {
         | "pricing"
         | "faq"
         | "frustrations"
+      supported_language: "en" | "es" | "pt" | "zh" | "ru" | "ar" | "he"
     }
     CompositeTypes: {
       [_ in never]: never

@@ -5,6 +5,7 @@ import { usePageContent } from "@/hooks/usePageContent";
 import { useToast } from "@/components/ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/App";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -63,6 +64,7 @@ export const Navbar = () => {
               <a href="#blog" className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                 {getContent('blog_link')}
               </a>
+              <LanguageSwitcher />
               {session ? (
                 <Button 
                   variant="ghost" 
@@ -108,6 +110,9 @@ export const Navbar = () => {
             <a href="#blog" className="text-white block px-3 py-2 rounded-md text-base font-medium">
               {getContent('blog_link')}
             </a>
+            <div className="px-3 py-2">
+              <LanguageSwitcher />
+            </div>
             {session ? (
               <Button 
                 variant="ghost" 

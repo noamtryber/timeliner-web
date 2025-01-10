@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createContext, useContext, useEffect, useState } from "react";
 import { Session } from "@supabase/supabase-js";
 import { supabase } from "./integrations/supabase/client";
+import { LanguageProvider } from "./contexts/LanguageContext";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Waitlist from "./pages/Waitlist";
@@ -48,21 +49,23 @@ const App = () => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ session, loading }}>
-      <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Routes>
-              <Route path="/auth" element={<Auth />} />
-              <Route path="/waitlist" element={<Waitlist />} />
-              <Route path="/" element={<Index />} />
-            </Routes>
-          </BrowserRouter>
-        </TooltipProvider>
-      </QueryClientProvider>
-    </AuthContext.Provider>
+    <LanguageProvider>
+      <AuthContext.Provider value={{ session, loading }}>
+        <QueryClientProvider client={queryClient}>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <Routes>
+                <Route path="/auth" element={<Auth />} />
+                <Route path="/waitlist" element={<Waitlist />} />
+                <Route path="/" element={<Index />} />
+              </Routes>
+            </BrowserRouter>
+          </TooltipProvider>
+        </QueryClientProvider>
+      </AuthContext.Provider>
+    </LanguageProvider>
   );
 };
 
