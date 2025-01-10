@@ -21,7 +21,7 @@ export const Hero = () => {
   }
 
   const getContent = (key: string) => {
-    return content?.find(item => item.content_key === key)?.content_value || '';
+    return content?.[key] || '';
   };
 
   const getMedia = (key: string) => {
