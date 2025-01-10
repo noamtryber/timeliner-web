@@ -2,7 +2,7 @@ import { FrustrationCard } from "./frustrations/FrustrationCard";
 import { usePageContent } from "@/hooks/usePageContent";
 import { FrustrationBackground } from "./frustrations/FrustrationBackground";
 import { useInView } from "react-intersection-observer";
-import { Box, Cylinder, Pyramid } from "lucide-react";
+import { AlertCircle, Clock, Wallet, AppWindow } from "lucide-react";
 
 export const Frustrations = () => {
   const { data: content } = usePageContent('frustrations', 'main');
@@ -13,24 +13,24 @@ export const Frustrations = () => {
 
   const frustrationData = [
     {
-      icon: Box,
-      title: "Asset Organization",
-      description: "Stop wasting time searching through countless folders and drives for your video files and assets."
+      icon: AlertCircle,
+      title: "Unclear Expectations",
+      description: "Mismatched client and editor expectations lead to frustration. Revisions and versions scattered across WhatsApp, Email, and G-Drive."
     },
     {
-      icon: Cylinder,
-      title: "Version Management",
-      description: "No more confusion about which version is the latest or where different iterations are stored."
+      icon: Wallet,
+      title: "Payment Delays",
+      description: "Payments take weeks or months to arrive. No automated system to ensure quick payouts after approval."
     },
     {
-      icon: Box,
-      title: "Team Collaboration",
-      description: "Streamline feedback and approvals with your team and clients in one centralized platform."
+      icon: AppWindow,
+      title: "No Centralized Tools",
+      description: "Juggling multiple apps for projects, feedback, and payments wastes time. No seamless way for agencies to manage freelancers or pay them per project milestone."
     },
     {
-      icon: Pyramid,
-      title: "Resource Handling",
-      description: "Keep all your project files, footage, and resources organized and easily accessible."
+      icon: Clock,
+      title: "Time Management",
+      description: "Managing multiple projects, deadlines, and client communications across different platforms leads to inefficiency and missed opportunities."
     }
   ];
 
@@ -45,8 +45,11 @@ export const Frustrations = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
             {content?.title || "Common Frustrations in Video Production"}
           </h2>
-          <p className="text-lg text-white/70">
-            {content?.subtitle || "Let's tackle these challenges together"}
+          <p className="text-lg text-white/70 mb-4">
+            {content?.subtitle || "These challenges are exactly why we built Timeliner"}
+          </p>
+          <p className="text-md text-white/60">
+            Let's see how we can solve them!
           </p>
         </div>
 
