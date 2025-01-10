@@ -4,17 +4,16 @@ import { Users } from "lucide-react";
 import { PlanFeature } from "./PlanFeature";
 import { PlanIcon } from "./PlanIcon";
 import { PricingContent } from "@/hooks/usePricingContent";
+import { useNavigate } from "react-router-dom";
 
 interface EnterprisePlanProps {
   content?: PricingContent;
 }
 
 export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
+  const navigate = useNavigate();
+  
   if (!content) return null;
-
-  const handleClick = () => {
-    window.open('https://timeliner.io/sign-up', '_blank');
-  };
 
   return (
     <Card className="glass p-6 flex flex-col animate-fade-up delay-600 hover:scale-105 transition-transform duration-300">
@@ -36,7 +35,7 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
       <Button 
         variant="outline" 
         className="w-full border-primary/50 hover:bg-primary/10 transition-all duration-300"
-        onClick={handleClick}
+        onClick={() => navigate('/auth')}
       >
         {content.button_text}
       </Button>

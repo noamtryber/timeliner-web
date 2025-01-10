@@ -6,12 +6,14 @@ import { useToast } from "@/components/ui/use-toast";
 import { useState } from "react";
 import { FeatureDialog } from "./features/FeatureDialog";
 import { TimelineBackground } from "./TimelineBackground";
+import { useNavigate } from "react-router-dom";
 
 export const Hero = () => {
   const { data: content, error: contentError } = usePageContent('hero', 'main');
   const { data: media, error: mediaError } = useMediaContent('hero', 'main');
   const { toast } = useToast();
   const [showDemo, setShowDemo] = useState(false);
+  const navigate = useNavigate();
 
   if (contentError || mediaError) {
     toast({
@@ -49,7 +51,7 @@ export const Hero = () => {
             <Button 
               size="lg" 
               className="bg-primary hover:bg-primary/90 text-lg px-8 py-6 h-auto w-full sm:w-auto"
-              onClick={() => window.open('https://timeliner.io/sign-up', '_blank')}
+              onClick={() => navigate('/auth')}
             >
               {getContent('cta_primary')}
               <ArrowRight className="ml-2 h-5 w-5" />

@@ -52,10 +52,6 @@ export const BasicPlan = ({
     }
   };
 
-  const handleClick = () => {
-    window.open('https://timeliner.io/sign-up', '_blank');
-  };
-
   return (
     <Card className="glass p-6 flex flex-col animate-fade-up delay-400 hover:scale-105 transition-transform duration-300 relative">
       {/* Most Popular Badge */}
@@ -130,7 +126,7 @@ export const BasicPlan = ({
       
       <Button 
         className="w-full bg-gradient-to-br from-accent to-primary hover:opacity-90 transition-all duration-300 shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/40"
-        onClick={handleClick}
+        onClick={() => navigate('/auth')}
       >
         {content.button_text}
       </Button>
