@@ -102,12 +102,12 @@ export const Features = () => {
                 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center`}
             >
               {/* Video Side */}
-              <div className={`overflow-hidden relative order-1 
+              <div className={`overflow-hidden relative order-1 rounded-2xl
                 ${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
                 <div className="w-full h-full">
                   <iframe
                     src={feature.videoUrl}
-                    className="w-full h-full"
+                    className="w-full h-full scale-[1.02]"
                     loading="lazy"
                     allow="autoplay; fullscreen; picture-in-picture"
                     style={{
