@@ -15,9 +15,8 @@ export const ThreeDSection = () => {
       let mouseYOffset = 0;
       
       p.setup = () => {
-        const canvas = p.createCanvas(p.windowWidth, p.windowHeight * 0.8, p.WEBGL);
-        canvas.position(0, 0);
-        canvas.style('z-index', '-1');
+        const canvas = p.createCanvas(containerRef.current!.offsetWidth, containerRef.current!.offsetHeight, p.WEBGL);
+        canvas.parent(containerRef.current!);
         
         // Generate initial points in a sphere
         for (let i = 0; i < numPoints; i++) {
@@ -35,7 +34,7 @@ export const ThreeDSection = () => {
       
       p.draw = () => {
         p.clear();
-        p.background('rgba(26, 31, 44, 0)');
+        p.background('rgba(26, 31, 44, 0.2)');
         
         // Update mouse offset for smooth movement
         const targetX = (p.mouseX - p.width/2) * 0.1;
@@ -66,7 +65,8 @@ export const ThreeDSection = () => {
       };
       
       p.windowResized = () => {
-        p.resizeCanvas(p.windowWidth, p.windowHeight * 0.8);
+        if (!containerRef.current) return;
+        p.resizeCanvas(containerRef.current.offsetWidth, containerRef.current.offsetHeight);
       };
     };
 
@@ -75,10 +75,10 @@ export const ThreeDSection = () => {
   }, []);
 
   return (
-    <section className="relative h-screen">
-      <div ref={containerRef} className="absolute inset-0 -z-10" />
+    <section className="relative h-[80vh] w-full overflow-hidden">
+      <div ref={containerRef} className="absolute inset-0" />
       <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background/50 to-background" />
-      <div className="container relative z-10 mx-auto px-4 py-24 flex items-center justify-center">
+      <div className="container relative z-10 mx-auto px-4 py-24 flex items-center justify-center h-full">
         <h2 className="text-4xl md:text-5xl font-bold text-center gradient-text">
           Experience the Future of Video Management
         </h2>
