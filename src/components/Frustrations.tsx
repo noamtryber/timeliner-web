@@ -4,6 +4,7 @@ import { useMediaContent } from "@/hooks/useMediaContent";
 import { useToast } from "@/hooks/use-toast";
 import { FrustrationCard } from "./frustrations/FrustrationCard";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 export const Frustrations = () => {
   const { ref: sectionRef, inView } = useInView({
@@ -11,17 +12,19 @@ export const Frustrations = () => {
     triggerOnce: true,
   });
 
-  const { data: content, error: contentError } = usePageContent('frustrations');
-  const { data: media, error: mediaError } = useMediaContent('frustrations');
+  const { data: content, error: contentError } = usePageContent('feature');
+  const { data: media, error: mediaError } = useMediaContent('feature');
   const { toast } = useToast();
 
-  if (contentError || mediaError) {
-    toast({
-      variant: "destructive",
-      title: "Error loading content",
-      description: "Please try refreshing the page"
-    });
-  }
+  useEffect(() => {
+    if (contentError || mediaError) {
+      toast({
+        variant: "destructive",
+        title: "Error loading content",
+        description: "Please try refreshing the page"
+      });
+    }
+  }, [contentError, mediaError, toast]);
 
   const getContent = (sectionId: string, key: string) => {
     return content?.find(item => 
