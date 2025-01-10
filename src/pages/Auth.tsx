@@ -132,7 +132,7 @@ const Auth = () => {
               Welcome to Timeliner
             </h1>
             <p className="text-white/70">
-              Sign in to your account or create a new one
+              Start for free – no credit card required
             </p>
           </div>
 
@@ -178,6 +178,15 @@ const Auth = () => {
                 },
               }}
               providers={[]}
+              options={{
+                emailRedirectTo: `${window.location.origin}/auth/callback`,
+                additionalSignUpFields: {
+                  full_name: {
+                    required: true,
+                    label: 'Full Name',
+                  },
+                },
+              }}
             />
           </div>
         </div>
