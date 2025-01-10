@@ -14,43 +14,43 @@ const features = [
     icon: Workflow,
     title: "Smart Revision Tracking",
     description: "Reduce back-and-forth by 31% with AI-powered workflow management and version control. Our intelligent system learns from your feedback patterns and helps streamline the revision process.",
-    videoUrl: "https://player.vimeo.com/video/1045686014?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
+    videoUrl: "https://player.vimeo.com/video/1045720680?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
   },
   {
     icon: FileStack,
     title: "Interactive Briefs",
     description: "Create crystal-clear project briefs that align expectations from day one. Our interactive brief system ensures nothing gets missed and everyone stays on the same page throughout the project.",
-    videoUrl: "https://player.vimeo.com/video/1045691116?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
+    videoUrl: "https://player.vimeo.com/video/1045720890?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
   },
   {
     icon: CreditCard,
     title: "Seamless Payments",
     description: "Get paid faster with automated invoicing and integrated payment processing. Set up milestone payments, automate reminders, and maintain a steady cash flow with our payment tools.",
-    videoUrl: "https://player.vimeo.com/video/1045691362?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
+    videoUrl: "https://player.vimeo.com/video/1045721120?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
   },
   {
     icon: Users,
     title: "Client Management",
     description: "Manage all your clients and projects in one centralized dashboard. Keep track of project status, deadlines, and client communications in a single, intuitive interface.",
-    videoUrl: "https://player.vimeo.com/video/1045691407?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
+    videoUrl: "https://player.vimeo.com/video/1045721146?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
   },
   {
     icon: FolderOpen,
     title: "Client Portals",
     description: "Give clients a professional, branded experience for feedback and approvals. Custom-branded portals make it easy for clients to review work and provide timely feedback.",
-    videoUrl: "/placeholder.svg"
+    videoUrl: "https://player.vimeo.com/video/1045721261?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
   },
   {
     icon: UserCircle,
     title: "Team Collaboration",
     description: "Keep your entire team aligned with real-time updates and notifications. Our collaboration tools make it easy to assign tasks, track progress, and maintain clear communication.",
-    videoUrl: "/placeholder.svg"
+    videoUrl: "https://player.vimeo.com/video/1045721315?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
   },
   {
     icon: Shield,
-    title: "Enterprise Security",
-    description: "Bank-level encryption and compliance trusted by Netflix and Disney. Your data is protected with industry-leading security measures and regular security audits.",
-    videoUrl: "/placeholder.svg"
+    title: "Secure Media Storage",
+    description: "Forget juggling third-party tools. Store all your media securely in the cloud, with everything right where you need it.",
+    videoUrl: "https://player.vimeo.com/video/1045721377?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
   }
 ];
 
