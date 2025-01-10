@@ -1,23 +1,22 @@
 import { Card } from "@/components/ui/card";
-import { Star } from "lucide-react";
-import { useEffect, useState, useRef } from "react";
 import { Avatar, AvatarImage } from "./ui/avatar";
+import { useEffect, useState, useRef } from "react";
 
 const testimonials = [
   {
-    name: "John Smith",
+    name: "Noga Levi",
     role: "Video Editor",
     quote: "Timeliner has completely streamlined my workflow as a video editor. I save hours every week, allowing me to focus on creativity rather than admin tasks.",
     image: "/lovable-uploads/be9f8176-6ebd-4c6f-a721-34b1f9bd40cd.png"
   },
   {
-    name: "Sarah Johnson",
+    name: "Zohar Vanunu",
     role: "Creative Manager",
     quote: "As a creative manager, managing multiple teams was chaotic. Timeliner brought everything into one platform and increased our efficiency by 40%.",
     image: "/lovable-uploads/6782f7e6-215f-48d2-b9fb-8abfc1b5d97b.png"
   },
   {
-    name: "Michael Lee",
+    name: "Noam Tryber",
     role: "Agency Owner",
     quote: "For my agency, Timeliner not only saves us time but helps retain clients with improved communication and project delivery. Our revenue has increased by 25%!",
     image: "/lovable-uploads/e4c99774-d5fc-4c77-ab34-cabac470ed41.png"
@@ -26,28 +25,20 @@ const testimonials = [
 
 const stats = [
   {
-    value: 11.5,
-    suffix: "M+",
-    label: "Clients Revenue"
+    value: 32,
+    suffix: "%",
+    label: "Faster Revision Rounds"
   },
   {
-    value: 21.9,
-    suffix: "M+",
-    label: "Transactions Recorded"
+    value: 19,
+    suffix: "%",
+    label: "Increase in Income"
   },
   {
-    value: 300,
-    suffix: "+",
-    label: "Projects Done"
+    value: 24,
+    suffix: "%",
+    label: "Client Retention in Retainers"
   }
-];
-
-const logos = [
-  "/lovable-uploads/94a8f111-a09f-4217-80ff-c246e3f328d1.png",
-  "/lovable-uploads/301f83d9-fbbe-4a1f-ad2c-169a8e280ac0.png",
-  "/lovable-uploads/8e8e21c8-1e41-4c91-98e2-bedebf2b90b5.png",
-  "/lovable-uploads/a4781b2d-4caf-447d-ae15-0bf590645911.png",
-  "/lovable-uploads/d70e7b9a-2f8d-4114-a256-55208522d8dd.png"
 ];
 
 const AnimatedNumber = ({ value, suffix = "" }: { value: number, suffix?: string }) => {
@@ -116,12 +107,12 @@ export const Testimonials = () => {
       
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
-            We Are Proud to Have A Great Indicator
-          </h2>
-          <p className="text-xl text-white/70">
-            Trusted by 500+ Brands & Companies
+          <p className="text-sm uppercase tracking-wider text-primary mb-4">
+            Testimonials
           </p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            What others are saying
+          </h2>
         </div>
 
         {/* Statistics */}
@@ -138,19 +129,6 @@ export const Testimonials = () => {
               <p className="text-white/70">{stat.label}</p>
             </Card>
           ))}
-        </div>
-
-        {/* Rating Card */}
-        <div className="flex justify-center mb-24">
-          <Card className="glass p-6 flex items-center gap-4 animate-fade-up">
-            <div className="p-3 rounded-full bg-primary/20">
-              <Star className="w-8 h-8 text-primary" />
-            </div>
-            <div>
-              <h4 className="text-2xl font-bold text-primary mb-1">4.9/5</h4>
-              <p className="text-white/70">Based on 24 reviews on Clutch</p>
-            </div>
-          </Card>
         </div>
 
         {/* Testimonials */}
