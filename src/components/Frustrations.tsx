@@ -30,7 +30,7 @@ export const Frustrations = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <FrustrationCard
             title={getContent('card1_title')}
             description={getContent('card1_description')}
@@ -53,18 +53,6 @@ export const Frustrations = () => {
             title={getContent('card4_title')}
             description={getContent('card4_description')}
             index={3}
-            inView={inView}
-          />
-          <FrustrationCard
-            title={getContent('card5_title')}
-            description={getContent('card5_description')}
-            index={4}
-            inView={inView}
-          />
-          <FrustrationCard
-            title={getContent('card6_title')}
-            description={getContent('card6_description')}
-            index={5}
             inView={inView}
           />
         </div>
