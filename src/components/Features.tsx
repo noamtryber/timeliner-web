@@ -102,7 +102,7 @@ export const Features = () => {
                 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center`}
             >
               {/* Video/Animation Side */}
-              <div className={`glass rounded-xl aspect-video overflow-hidden relative order-1 lg:order-none
+              <div className={`glass rounded-xl aspect-video overflow-hidden relative order-1 
                 ${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
                 {feature.title === "Smart Revision Tracking" ? (
                   <>
@@ -132,7 +132,8 @@ export const Features = () => {
               </div>
               
               {/* Content Side */}
-              <div className={`space-y-6 order-2 lg:order-none ${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
+              <div className={`space-y-6 order-2 
+                ${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
                 <div className="flex items-center space-x-4">
                   <div className="p-3 rounded-xl bg-primary/10 text-primary">
                     <feature.icon className="w-6 h-6" />
