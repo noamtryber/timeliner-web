@@ -5,6 +5,7 @@ interface FeatureItemProps {
   index: number;
   icon: LucideIcon;
   title: string;
+  subtitle?: string;
   description: string;
   videoUrl: string;
   onLearnMore: () => void;
@@ -13,7 +14,8 @@ interface FeatureItemProps {
 export const FeatureItem = ({ 
   index, 
   icon: IconComponent,
-  title, 
+  title,
+  subtitle,
   description, 
   videoUrl,
   onLearnMore 
@@ -50,7 +52,12 @@ export const FeatureItem = ({
           <div className="p-3 rounded-xl bg-primary/10 text-primary">
             <IconComponent className="w-6 h-6" />
           </div>
-          <h3 className="text-2xl font-bold">{title}</h3>
+          <div>
+            <h3 className="text-2xl font-bold">{title}</h3>
+            {subtitle && (
+              <p className="text-primary/80 text-sm font-medium mt-1">{subtitle}</p>
+            )}
+          </div>
         </div>
         <p className="text-lg text-white/70 leading-relaxed">
           {description}

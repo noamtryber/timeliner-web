@@ -71,7 +71,9 @@ export const Features = () => {
       id: 'revision-tracking',
       icon: 'Workflow',
       title: getFeatureContent('revision-tracking', 'title'),
+      subtitle: getFeatureContent('revision-tracking', 'subtitle'),
       description: getFeatureContent('revision-tracking', 'description'),
+      longDescription: getFeatureContent('revision-tracking', 'long_description'),
       videoUrl: getFeatureMedia('revision-tracking', 'preview'),
       learnMoreVideo: getFeatureMedia('revision-tracking', 'learn-more')
     },
@@ -149,6 +151,7 @@ export const Features = () => {
                 index={index}
                 icon={IconComponent}
                 title={feature.title}
+                subtitle={feature.subtitle}
                 description={feature.description}
                 videoUrl={feature.videoUrl}
                 onLearnMore={() => setOpenDialog(feature.id)}
@@ -163,7 +166,8 @@ export const Features = () => {
           isOpen={!!openDialog}
           onClose={() => setOpenDialog(null)}
           title={activeFeature.title}
-          description={activeFeature.description}
+          subtitle={activeFeature.subtitle}
+          description={activeFeature.longDescription}
           videoUrl={activeFeature.learnMoreVideo}
         />
       )}

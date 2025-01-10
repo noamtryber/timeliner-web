@@ -5,6 +5,7 @@ import { useMediaContent } from "@/hooks/useMediaContent";
 import { useToast } from "@/components/ui/use-toast";
 import { useState } from "react";
 import { FeatureDialog } from "./features/FeatureDialog";
+import { TimelineBackground } from "./TimelineBackground";
 
 export const Hero = () => {
   const { data: content, error: contentError } = usePageContent('hero', 'main');
@@ -30,10 +31,10 @@ export const Hero = () => {
 
   return (
     <div className="min-h-screen flex items-center relative overflow-hidden">
+      <TimelineBackground />
+      
       {/* Background gradient effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background" />
-      <div className="absolute -top-[40%] -right-[20%] w-[70%] h-[100%] bg-primary/20 blur-[120px] rounded-full" />
-      <div className="absolute -bottom-[40%] -left-[20%] w-[70%] h-[100%] bg-accent/20 blur-[120px] rounded-full" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background opacity-90" />
       
       <div className="container mx-auto px-4 relative animate-fade-up">
         <div className="text-center max-w-4xl mx-auto">

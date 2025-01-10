@@ -4,16 +4,20 @@ interface FeatureDialogProps {
   isOpen: boolean;
   onClose: () => void;
   title: string;
+  subtitle?: string;
   description: string;
   videoUrl: string;
 }
 
-export const FeatureDialog = ({ isOpen, onClose, title, description, videoUrl }: FeatureDialogProps) => {
+export const FeatureDialog = ({ isOpen, onClose, title, subtitle, description, videoUrl }: FeatureDialogProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[800px] bg-card/95 backdrop-blur-xl">
         <DialogHeader>
           <DialogTitle className="text-2xl">{title}</DialogTitle>
+          {subtitle && (
+            <p className="text-primary/80 text-sm font-medium mt-2">{subtitle}</p>
+          )}
           <DialogDescription className="text-lg text-white/70">
             {description}
           </DialogDescription>
