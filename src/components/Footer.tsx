@@ -1,4 +1,4 @@
-import { Facebook, Twitter, Instagram, ArrowUp } from "lucide-react";
+import { Youtube, Instagram, Mail, Phone, MapPin, ArrowUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { usePageContent } from "@/hooks/usePageContent";
@@ -15,9 +15,8 @@ export const Footer = () => {
     copyright: '',
     designer: '',
     powered_by: '',
-    facebook_url: '',
-    twitter_url: '',
     instagram_url: '',
+    youtube_url: '',
   });
   const [logoUrl, setLogoUrl] = useState('');
 
@@ -31,9 +30,8 @@ export const Footer = () => {
         copyright: translations['copyright'] || '',
         designer: translations['designer'] || '',
         powered_by: translations['powered_by'] || '',
-        facebook_url: translations['facebook_url'] || '',
-        twitter_url: translations['twitter_url'] || '',
         instagram_url: translations['instagram_url'] || '',
+        youtube_url: translations['youtube_url'] || '',
       };
       setFooterContent(content);
     }
@@ -59,18 +57,26 @@ export const Footer = () => {
             <div className="flex items-center space-x-2">
               <img 
                 src={logoUrl || "/lovable-uploads/1ad9d673-efdf-41ae-8a29-82d3e976a7ed.png"}
-                alt="Timeliner Logo" 
+                alt="Logo" 
                 className="h-7"
               />
-              <span className="text-xl font-semibold">Timeliner</span>
             </div>
             <p className="text-sm text-gray-400 max-w-md">
               {footerContent.description}
             </p>
             <div className="space-y-2">
-              <p className="text-sm text-gray-400">Email: {footerContent.email}</p>
-              <p className="text-sm text-gray-400">Phone: {footerContent.phone}</p>
-              <p className="text-sm text-gray-400">Location: {footerContent.location}</p>
+              <div className="flex items-center space-x-2 text-sm text-gray-400">
+                <Mail className="w-4 h-4" />
+                <span>{footerContent.email}</span>
+              </div>
+              <div className="flex items-center space-x-2 text-sm text-gray-400">
+                <Phone className="w-4 h-4" />
+                <span>{footerContent.phone}</span>
+              </div>
+              <div className="flex items-center space-x-2 text-sm text-gray-400">
+                <MapPin className="w-4 h-4" />
+                <span>{footerContent.location}</span>
+              </div>
             </div>
           </div>
 
@@ -78,28 +84,20 @@ export const Footer = () => {
           <div className="flex flex-col md:items-end space-y-6">
             <div className="flex space-x-4">
               <Link 
-                to={footerContent.facebook_url || "#"} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="p-2 rounded-full border border-white/10 hover:bg-white/5 transition-colors"
-              >
-                <Facebook className="w-5 h-5" />
-              </Link>
-              <Link 
-                to={footerContent.twitter_url || "#"} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="p-2 rounded-full border border-white/10 hover:bg-white/5 transition-colors"
-              >
-                <Twitter className="w-5 h-5" />
-              </Link>
-              <Link 
-                to={footerContent.instagram_url || "#"} 
+                to={footerContent.instagram_url} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="p-2 rounded-full border border-white/10 hover:bg-white/5 transition-colors"
               >
                 <Instagram className="w-5 h-5" />
+              </Link>
+              <Link 
+                to={footerContent.youtube_url} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="p-2 rounded-full border border-white/10 hover:bg-white/5 transition-colors"
+              >
+                <Youtube className="w-5 h-5" />
               </Link>
             </div>
             <button
@@ -120,9 +118,15 @@ export const Footer = () => {
               <Link to="/cookies" className="hover:text-white transition-colors">Cookies</Link>
             </div>
             <div className="flex items-center space-x-2">
-              <span>{footerContent.copyright}</span>
-              <span>|</span>
-              <span>Designed by {footerContent.designer}</span>
+              <span>Designed by </span>
+              <Link 
+                to={footerContent.instagram_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors"
+              >
+                {footerContent.designer}
+              </Link>
               <span>|</span>
               <span>Powered by {footerContent.powered_by}</span>
             </div>
