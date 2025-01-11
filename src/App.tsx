@@ -2,9 +2,9 @@ import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { LanguageProvider } from "@/contexts/LanguageContext";
-import { createClient } from "@supabase/supabase-js";
 import { createContext, useContext } from "react";
 import Index from "./pages/Index";
+import { supabase } from "@/integrations/supabase/client";
 
 // Initialize QueryClient
 const queryClient = new QueryClient({
@@ -16,12 +16,7 @@ const queryClient = new QueryClient({
   },
 });
 
-// Create Supabase client and auth context
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
-
+// Create auth context using our configured supabase client
 const AuthContext = createContext({ session: null, supabase });
 export const useAuth = () => useContext(AuthContext);
 
