@@ -1,7 +1,51 @@
-import { Facebook, Linkedin, Dribbble, ArrowUp } from "lucide-react";
+import { Facebook, Twitter, Instagram, ArrowUp } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { usePageContent } from "@/hooks/usePageContent";
+import { useMediaContent } from "@/hooks/useMediaContent";
 
 export const Footer = () => {
+  const { getContent } = usePageContent();
+  const { getMedia } = useMediaContent();
+  const [footerContent, setFooterContent] = useState({
+    email: '',
+    phone: '',
+    location: '',
+    description: '',
+    copyright: '',
+    designer: '',
+    powered_by: '',
+    facebook_url: '',
+    twitter_url: '',
+    instagram_url: '',
+  });
+  const [logoUrl, setLogoUrl] = useState('');
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      const content = {
+        email: await getContent('footer', 'email'),
+        phone: await getContent('footer', 'phone'),
+        location: await getContent('footer', 'location'),
+        description: await getContent('footer', 'description'),
+        copyright: await getContent('footer', 'copyright'),
+        designer: await getContent('footer', 'designer'),
+        powered_by: await getContent('footer', 'powered_by'),
+        facebook_url: await getContent('footer', 'facebook_url'),
+        twitter_url: await getContent('footer', 'twitter_url'),
+        instagram_url: await getContent('footer', 'instagram_url'),
+      };
+      setFooterContent(content);
+
+      const logo = await getMedia('footer', 'footer_logo');
+      if (logo) {
+        setLogoUrl(logo);
+      }
+    };
+
+    fetchContent();
+  }, [getContent, getMedia]);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -14,33 +58,48 @@ export const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <img 
-                src="/lovable-uploads/1ad9d673-efdf-41ae-8a29-82d3e976a7ed.png" 
+                src={logoUrl || "/lovable-uploads/1ad9d673-efdf-41ae-8a29-82d3e976a7ed.png"}
                 alt="Timeliner Logo" 
                 className="h-7"
               />
               <span className="text-xl font-semibold">Timeliner</span>
             </div>
             <p className="text-sm text-gray-400 max-w-md">
-              Revolutionize the video editing industry by making high-quality project management faster
+              {footerContent.description}
             </p>
             <div className="space-y-2">
-              <p className="text-sm text-gray-400">Email: contact@timeliner.com</p>
-              <p className="text-sm text-gray-400">Phone: +1 (208) 120-802</p>
-              <p className="text-sm text-gray-400">Location: Los Angeles, CA</p>
+              <p className="text-sm text-gray-400">Email: {footerContent.email}</p>
+              <p className="text-sm text-gray-400">Phone: {footerContent.phone}</p>
+              <p className="text-sm text-gray-400">Location: {footerContent.location}</p>
             </div>
           </div>
 
           {/* Right side - Links and social */}
           <div className="flex flex-col md:items-end space-y-6">
             <div className="flex space-x-4">
-              <Link to="#" className="p-2 rounded-full border border-white/10 hover:bg-white/5 transition-colors">
+              <Link 
+                to={footerContent.facebook_url} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="p-2 rounded-full border border-white/10 hover:bg-white/5 transition-colors"
+              >
                 <Facebook className="w-5 h-5" />
               </Link>
-              <Link to="#" className="p-2 rounded-full border border-white/10 hover:bg-white/5 transition-colors">
-                <Linkedin className="w-5 h-5" />
+              <Link 
+                to={footerContent.twitter_url} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="p-2 rounded-full border border-white/10 hover:bg-white/5 transition-colors"
+              >
+                <Twitter className="w-5 h-5" />
               </Link>
-              <Link to="#" className="p-2 rounded-full border border-white/10 hover:bg-white/5 transition-colors">
-                <Dribbble className="w-5 h-5" />
+              <Link 
+                to={footerContent.instagram_url} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="p-2 rounded-full border border-white/10 hover:bg-white/5 transition-colors"
+              >
+                <Instagram className="w-5 h-5" />
               </Link>
             </div>
             <button
@@ -61,11 +120,11 @@ export const Footer = () => {
               <Link to="/cookies" className="hover:text-white transition-colors">Cookies</Link>
             </div>
             <div className="flex items-center space-x-2">
-              <span>© 2024 Copyright - Timeliner</span>
+              <span>{footerContent.copyright}</span>
               <span>|</span>
-              <span>Designed by LoganCee</span>
+              <span>Designed by {footerContent.designer}</span>
               <span>|</span>
-              <span>Powered by Framer</span>
+              <span>Powered by {footerContent.powered_by}</span>
             </div>
           </div>
         </div>
