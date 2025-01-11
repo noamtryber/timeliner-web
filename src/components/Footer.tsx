@@ -5,8 +5,8 @@ import { usePageContent } from "@/hooks/usePageContent";
 import { useMediaContent } from "@/hooks/useMediaContent";
 
 export const Footer = () => {
-  const { data: translations } = usePageContent("hero"); // Using hero as temporary type
-  const { data: mediaContent } = useMediaContent("hero"); // Using hero as temporary type
+  const { data: translations } = usePageContent("footer");
+  const { data: mediaContent } = useMediaContent("footer");
   const [footerContent, setFooterContent] = useState({
     email: '',
     phone: '',
@@ -78,7 +78,7 @@ export const Footer = () => {
           <div className="flex flex-col md:items-end space-y-6">
             <div className="flex space-x-4">
               <Link 
-                to={footerContent.facebook_url} 
+                to={footerContent.facebook_url || "#"} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="p-2 rounded-full border border-white/10 hover:bg-white/5 transition-colors"
@@ -86,7 +86,7 @@ export const Footer = () => {
                 <Facebook className="w-5 h-5" />
               </Link>
               <Link 
-                to={footerContent.twitter_url} 
+                to={footerContent.twitter_url || "#"} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="p-2 rounded-full border border-white/10 hover:bg-white/5 transition-colors"
@@ -94,7 +94,7 @@ export const Footer = () => {
                 <Twitter className="w-5 h-5" />
               </Link>
               <Link 
-                to={footerContent.instagram_url} 
+                to={footerContent.instagram_url || "#"} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="p-2 rounded-full border border-white/10 hover:bg-white/5 transition-colors"

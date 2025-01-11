@@ -145,6 +145,7 @@ export type Database = {
         | "pricing"
         | "faq"
         | "frustrations"
+        | "footer"
       supported_language: "en" | "es" | "pt" | "zh" | "ru" | "ar" | "he"
     }
     CompositeTypes: {
