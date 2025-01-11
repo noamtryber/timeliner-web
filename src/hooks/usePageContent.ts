@@ -18,6 +18,8 @@ export const usePageContent = (sectionType: SectionType, sectionId?: string) => 
     queryKey: ['page-content', sectionType, sectionId, language],
     queryFn: async () => {
       try {
+        console.log('Fetching translations for:', { sectionType, sectionId, language });
+        
         let query = supabase
           .from('translations')
           .select('*')
@@ -31,6 +33,7 @@ export const usePageContent = (sectionType: SectionType, sectionId?: string) => 
         const { data: translatedContent, error } = await query;
 
         if (error) {
+          console.error('Translation fetch error:', error);
           toast({
             variant: "destructive",
             title: "Error fetching translations",
@@ -38,6 +41,8 @@ export const usePageContent = (sectionType: SectionType, sectionId?: string) => 
           });
           throw error;
         }
+
+        console.log('Received translations:', translatedContent);
 
         // Transform the data into a more usable format
         const transformedContent: TransformedContent = {};
