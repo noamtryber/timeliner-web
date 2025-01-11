@@ -14,12 +14,13 @@ export const FeatureDialog = ({ isOpen, onClose, title, subtitle, description, v
   const getEmbedUrl = (url: string) => {
     if (!url) return '';
     // If it's already an embed URL, use it as is
-    if (url.includes('/embed/')) return url;
+    if (url.includes('player.vimeo.com')) return url;
     // Convert watch URLs to embed URLs
-    return url.replace('vimeo.com/', 'player.vimeo.com/video/');
+    const vimeoId = url.match(/vimeo\.com\/(\d+)/)?.[1];
+    return vimeoId ? `https://player.vimeo.com/video/${vimeoId}` : '';
   };
 
-  const videoSrc = getEmbedUrl(videoUrl);
+  const videoSrc = videoUrl ? `${getEmbedUrl(videoUrl)}?autoplay=1` : '';
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -34,7 +35,7 @@ export const FeatureDialog = ({ isOpen, onClose, title, subtitle, description, v
           </DialogDescription>
         </DialogHeader>
         <div className="mt-6 rounded-xl overflow-hidden aspect-video">
-          {videoUrl && (
+          {videoUrl && videoSrc && (
             <iframe
               src={videoSrc}
               className="w-full h-full"
