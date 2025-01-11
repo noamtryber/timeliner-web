@@ -18,6 +18,8 @@ export const Hero = () => {
   const navigate = useNavigate();
   const { isRTL } = useLanguage();
 
+  console.log('Hero translations:', { content, statsContent });
+
   if (contentError || mediaError || statsError) {
     toast({
       variant: "destructive",
@@ -72,15 +74,15 @@ export const Hero = () => {
           <div className={`grid grid-cols-3 gap-8 mt-16 ${isRTL ? 'rtl' : ''}`}>
             <div>
               <div className="text-3xl font-bold gradient-text">{statsContent?.stat1_value || '32.0%'}</div>
-              <div className="text-white/70">{content?.stat1_label || 'Faster Revision Rounds'}</div>
+              <div className="text-white/70">{statsContent?.stat1_label || 'Faster Revision Rounds'}</div>
             </div>
             <div>
               <div className="text-3xl font-bold gradient-text">{statsContent?.stat2_value || '19.0%'}</div>
-              <div className="text-white/70">{content?.stat2_label || 'Increase in Income'}</div>
+              <div className="text-white/70">{statsContent?.stat2_label || 'Increase in Income'}</div>
             </div>
             <div>
               <div className="text-3xl font-bold gradient-text">{statsContent?.stat3_value || '24.0%'}</div>
-              <div className="text-white/70">{content?.stat3_label || 'Client Retention in Retainers'}</div>
+              <div className="text-white/70">{statsContent?.stat3_label || 'Client Retention in Retainers'}</div>
             </div>
           </div>
         </div>

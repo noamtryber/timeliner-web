@@ -15,7 +15,7 @@ export const usePageContent = (sectionType: SectionType, sectionId?: string) => 
   const { toast } = useToast();
 
   return useQuery({
-    queryKey: ['page-content', sectionType, sectionId, language],
+    queryKey: ['translations', sectionType, sectionId, language],
     queryFn: async () => {
       try {
         console.log('Fetching translations for:', { sectionType, sectionId, language });

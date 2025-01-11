@@ -29,19 +29,20 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
   const isRTL = RTL_LANGUAGES.includes(language);
 
   const setLanguage = (newLanguage: SupportedLanguage) => {
+    console.log('Setting new language:', newLanguage);
     setLanguageState(newLanguage);
     localStorage.setItem('preferred-language', newLanguage);
     
-    // Invalidate and refetch all queries
+    // Invalidate all translation queries
     queryClient.invalidateQueries({
       predicate: (query) => {
-        // Invalidate all queries that have 'page-content' or 'translations' in their query key
-        return query.queryKey.some(key => 
-          typeof key === 'string' && 
-          (key.includes('page-content') || key.includes('translations'))
-        );
+        const isTranslationQuery = query.queryKey[0] === 'translations';
+        console.log('Checking query for invalidation:', {
+          queryKey: query.queryKey,
+          isTranslationQuery
+        });
+        return isTranslationQuery;
       },
-      refetchType: 'all'
     });
   };
 
