@@ -20,7 +20,16 @@ export const FeatureItem = ({
   videoUrl,
   onLearnMore 
 }: FeatureItemProps) => {
-  const videoSrc = `${videoUrl}?autoplay=1&loop=1&autopause=0&background=1&muted=1`;
+  // Ensure the video URL is properly formatted for embedding
+  const getEmbedUrl = (url: string) => {
+    if (!url) return '';
+    // If it's already an embed URL, use it as is
+    if (url.includes('/embed/')) return url;
+    // Convert watch URLs to embed URLs
+    return url.replace('vimeo.com/', 'player.vimeo.com/video/');
+  };
+  
+  const videoSrc = `${getEmbedUrl(videoUrl)}?autoplay=1&loop=1&autopause=0&background=1&muted=1`;
   
   return (
     <div className="feature-item opacity-0 translate-y-10 transition-all duration-700 ease-out
@@ -29,19 +38,21 @@ export const FeatureItem = ({
       <div className={`overflow-hidden relative order-1 rounded-3xl
         ${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
         <div className="w-full h-full">
-          <iframe
-            src={videoSrc}
-            className="w-full h-full scale-[1.05] rounded-3xl"
-            loading="lazy"
-            allow="autoplay; fullscreen; picture-in-picture"
-            style={{
-              aspectRatio: '16/9',
-              border: 'none',
-              background: 'transparent',
-              transform: 'scale(1.05)',
-              borderRadius: '1.5rem',
-            }}
-          />
+          {videoUrl && (
+            <iframe
+              src={videoSrc}
+              className="w-full h-full scale-[1.05] rounded-3xl"
+              loading="lazy"
+              allow="autoplay; fullscreen; picture-in-picture"
+              style={{
+                aspectRatio: '16/9',
+                border: 'none',
+                background: 'transparent',
+                transform: 'scale(1.05)',
+                borderRadius: '1.5rem',
+              }}
+            />
+          )}
         </div>
       </div>
       

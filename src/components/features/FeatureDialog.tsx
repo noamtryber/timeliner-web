@@ -10,6 +10,17 @@ interface FeatureDialogProps {
 }
 
 export const FeatureDialog = ({ isOpen, onClose, title, subtitle, description, videoUrl }: FeatureDialogProps) => {
+  // Ensure the video URL is properly formatted for embedding
+  const getEmbedUrl = (url: string) => {
+    if (!url) return '';
+    // If it's already an embed URL, use it as is
+    if (url.includes('/embed/')) return url;
+    // Convert watch URLs to embed URLs
+    return url.replace('vimeo.com/', 'player.vimeo.com/video/');
+  };
+
+  const videoSrc = getEmbedUrl(videoUrl);
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[800px] bg-card/95 backdrop-blur-xl">
@@ -23,15 +34,17 @@ export const FeatureDialog = ({ isOpen, onClose, title, subtitle, description, v
           </DialogDescription>
         </DialogHeader>
         <div className="mt-6 rounded-xl overflow-hidden aspect-video">
-          <iframe
-            src={videoUrl}
-            className="w-full h-full"
-            allow="autoplay; fullscreen; picture-in-picture"
-            style={{
-              border: 'none',
-              background: 'transparent',
-            }}
-          />
+          {videoUrl && (
+            <iframe
+              src={videoSrc}
+              className="w-full h-full"
+              allow="autoplay; fullscreen; picture-in-picture"
+              style={{
+                border: 'none',
+                background: 'transparent',
+              }}
+            />
+          )}
         </div>
       </DialogContent>
     </Dialog>
