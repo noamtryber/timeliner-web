@@ -34,8 +34,8 @@ export const Hero = () => {
       
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background opacity-90" />
       
-      <div className="container mx-auto px-4 relative animate-fade-up">
-        <div className={`text-center max-w-4xl mx-auto ${isRTL ? 'rtl' : ''}`}>
+      <div className={`container mx-auto px-4 relative animate-fade-up ${isRTL ? 'rtl' : ''}`}>
+        <div className="text-center max-w-4xl mx-auto">
           <span className="subtitle-gradient mb-4 block tracking-wide">
             {content?.subtitle || 'VIDEO EDITORS & AGENCIES:'}
           </span>
