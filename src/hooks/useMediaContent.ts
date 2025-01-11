@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import { SectionType } from "./usePageContent";
+import { MediaSectionType } from "./usePageContent";
 
 interface MediaContent {
   id: string;
-  section_type: SectionType;
+  section_type: MediaSectionType;
   section_id?: string;
   media_type: string;
   media_key: string;
@@ -13,7 +13,7 @@ interface MediaContent {
   updated_at?: string;
 }
 
-export const useMediaContent = (sectionType: SectionType, sectionId?: string) => {
+export const useMediaContent = (sectionType: MediaSectionType, sectionId?: string) => {
   return useQuery({
     queryKey: ['media-content', sectionType, sectionId],
     queryFn: async () => {
