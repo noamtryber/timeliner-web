@@ -20,12 +20,18 @@ export const useLanguage = () => useContext(LanguageContext);
 const RTL_LANGUAGES = ['ar', 'he'];
 
 export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
-  const [language, setLanguageState] = useState<SupportedLanguage>('en');
+  const [language, setLanguageState] = useState<SupportedLanguage>(() => {
+    // Try to get the language from localStorage, default to 'en'
+    const savedLanguage = localStorage.getItem('preferred-language');
+    return (savedLanguage as SupportedLanguage) || 'en';
+  });
+  
   const queryClient = useQueryClient();
   const isRTL = RTL_LANGUAGES.includes(language);
 
   const setLanguage = (newLanguage: SupportedLanguage) => {
     setLanguageState(newLanguage);
+    localStorage.setItem('preferred-language', newLanguage);
     // Invalidate all queries to trigger refetch with new language
     queryClient.invalidateQueries();
   };
@@ -34,6 +40,13 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
     // Update document direction based on language
     document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
     document.documentElement.lang = language;
+    
+    // Add RTL class to body for global styling
+    if (isRTL) {
+      document.body.classList.add('rtl');
+    } else {
+      document.body.classList.remove('rtl');
+    }
   }, [language, isRTL]);
 
   return (
