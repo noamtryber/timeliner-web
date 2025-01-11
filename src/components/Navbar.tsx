@@ -7,6 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/App";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,6 +15,7 @@ export const Navbar = () => {
   const { data: content, error } = usePageContent('nav');
   const { session } = useAuth();
   const { isRTL } = useLanguage();
+  const navigate = useNavigate();
 
   if (error) {
     toast({
@@ -32,6 +34,10 @@ export const Navbar = () => {
         description: error.message
       });
     }
+  };
+
+  const handleAuthClick = () => {
+    navigate('/auth');
   };
 
   return (
@@ -74,10 +80,10 @@ export const Navbar = () => {
                 </Button>
               ) : (
                 <>
-                  <Button variant="ghost" className="text-white/70" onClick={() => window.location.href = '/auth'}>
+                  <Button variant="ghost" className="text-white/70" onClick={handleAuthClick}>
                     {content?.login_button || 'Login'}
                   </Button>
-                  <Button className="bg-primary hover:bg-primary/90" onClick={() => window.location.href = '/auth'}>
+                  <Button className="bg-primary hover:bg-primary/90" onClick={handleAuthClick}>
                     {content?.signup_button || 'Sign Up'}
                   </Button>
                 </>
@@ -122,10 +128,10 @@ export const Navbar = () => {
               </Button>
             ) : (
               <>
-                <Button variant="ghost" className="w-full justify-start" onClick={() => window.location.href = '/auth'}>
+                <Button variant="ghost" className="w-full justify-start" onClick={handleAuthClick}>
                   {content?.login_button || 'Login'}
                 </Button>
-                <Button className="w-full bg-primary hover:bg-primary/90" onClick={() => window.location.href = '/auth'}>
+                <Button className="w-full bg-primary hover:bg-primary/90" onClick={handleAuthClick}>
                   {content?.signup_button || 'Sign Up'}
                 </Button>
               </>
