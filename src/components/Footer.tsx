@@ -5,8 +5,8 @@ import { usePageContent } from "@/hooks/usePageContent";
 import { useMediaContent } from "@/hooks/useMediaContent";
 
 export const Footer = () => {
-  const { getContent } = usePageContent();
-  const { getMedia } = useMediaContent();
+  const { data: translations } = usePageContent("hero"); // Using hero as temporary type
+  const { data: mediaContent } = useMediaContent("hero"); // Using hero as temporary type
   const [footerContent, setFooterContent] = useState({
     email: '',
     phone: '',
@@ -22,29 +22,29 @@ export const Footer = () => {
   const [logoUrl, setLogoUrl] = useState('');
 
   useEffect(() => {
-    const fetchContent = async () => {
+    if (translations) {
       const content = {
-        email: await getContent('footer', 'email'),
-        phone: await getContent('footer', 'phone'),
-        location: await getContent('footer', 'location'),
-        description: await getContent('footer', 'description'),
-        copyright: await getContent('footer', 'copyright'),
-        designer: await getContent('footer', 'designer'),
-        powered_by: await getContent('footer', 'powered_by'),
-        facebook_url: await getContent('footer', 'facebook_url'),
-        twitter_url: await getContent('footer', 'twitter_url'),
-        instagram_url: await getContent('footer', 'instagram_url'),
+        email: translations['email'] || '',
+        phone: translations['phone'] || '',
+        location: translations['location'] || '',
+        description: translations['description'] || '',
+        copyright: translations['copyright'] || '',
+        designer: translations['designer'] || '',
+        powered_by: translations['powered_by'] || '',
+        facebook_url: translations['facebook_url'] || '',
+        twitter_url: translations['twitter_url'] || '',
+        instagram_url: translations['instagram_url'] || '',
       };
       setFooterContent(content);
+    }
 
-      const logo = await getMedia('footer', 'footer_logo');
+    if (mediaContent && mediaContent.length > 0) {
+      const logo = mediaContent.find(item => item.media_key === 'footer_logo');
       if (logo) {
-        setLogoUrl(logo);
+        setLogoUrl(logo.media_url);
       }
-    };
-
-    fetchContent();
-  }, [getContent, getMedia]);
+    }
+  }, [translations, mediaContent]);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
