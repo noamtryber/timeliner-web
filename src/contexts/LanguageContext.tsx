@@ -36,9 +36,10 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
     // Invalidate all translation queries
     queryClient.invalidateQueries({
       predicate: (query) => {
-        const isTranslationQuery = query.queryKey[0] === 'translations';
+        const queryKey = query.queryKey[0];
+        const isTranslationQuery = queryKey === 'translations';
         console.log('Checking query for invalidation:', {
-          queryKey: query.queryKey,
+          queryKey,
           isTranslationQuery
         });
         return isTranslationQuery;

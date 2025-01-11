@@ -6,7 +6,7 @@ import { createContext, useContext } from "react";
 import Index from "./pages/Index";
 import { supabase } from "@/integrations/supabase/client";
 
-// Initialize QueryClient
+// Initialize QueryClient with proper configuration for translations
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
