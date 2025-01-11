@@ -1,9 +1,11 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { createContext, useContext } from "react";
 import Index from "./pages/Index";
+import Auth from "./pages/Auth";
+import Waitlist from "./pages/Waitlist";
 import { supabase } from "@/integrations/supabase/client";
 
 // Initialize QueryClient with proper configuration for translations
@@ -26,7 +28,11 @@ function App() {
       <LanguageProvider>
         <BrowserRouter>
           <AuthContext.Provider value={{ session: null, supabase }}>
-            <Index />
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/waitlist" element={<Waitlist />} />
+            </Routes>
             <Toaster />
           </AuthContext.Provider>
         </BrowserRouter>
