@@ -39,6 +39,11 @@ export const FeatureItem = ({
 
   // Get translated "Learn More" text
   const learnMoreText = translations?.['common_learn_more'] || 'Learn More';
+
+  if (!IconComponent) {
+    console.error('Icon component is undefined:', { icon: IconComponent });
+    return null;
+  }
   
   return (
     <div className={`feature-item opacity-0 translate-y-10 transition-all duration-700 ease-out

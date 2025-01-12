@@ -59,6 +59,12 @@ export const FeaturesList = ({ onLearnMore }: { onLearnMore: (id: string) => voi
     <div ref={featuresRef} className={`space-y-32 ${isRTL ? 'rtl' : ''}`}>
       {features.map((feature, index) => {
         const IconComponent = iconComponents[feature.icon as keyof typeof iconComponents];
+        
+        if (!IconComponent) {
+          console.error('Icon not found:', feature.icon);
+          return null;
+        }
+
         const title = getFeatureContent(feature.sectionKey, 'title') || feature.defaultTitle;
         const subtitle = getFeatureContent(feature.sectionKey, 'subtitle') || feature.defaultSubtitle;
         const description = getFeatureContent(feature.sectionKey, 'description') || feature.defaultDescription;
@@ -70,7 +76,9 @@ export const FeaturesList = ({ onLearnMore }: { onLearnMore: (id: string) => voi
           subtitle, 
           description, 
           videoUrl,
-          language 
+          language,
+          icon: feature.icon,
+          IconComponent 
         });
 
         return (
