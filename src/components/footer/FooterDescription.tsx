@@ -4,7 +4,7 @@ interface FooterDescriptionProps {
 
 export const FooterDescription = ({ description }: FooterDescriptionProps) => {
   return (
-    <p className="text-sm text-gray-400 max-w-md">
+    <p className="text-sm text-white max-w-md">
       {description}
     </p>
   );

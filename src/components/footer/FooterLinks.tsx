@@ -8,13 +8,13 @@ interface FooterLinksProps {
 
 export const FooterLinks = ({ designer, instagramUrl, poweredBy }: FooterLinksProps) => {
   return (
-    <div className="flex items-center space-x-2">
+    <div className="flex items-center space-x-2 text-white">
       <span>Designed by </span>
       <Link 
         to={instagramUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="hover:text-white transition-colors"
+        className="hover:text-white/80 transition-colors"
       >
         {designer}
       </Link>
