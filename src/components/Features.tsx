@@ -65,8 +65,11 @@ export const Features = () => {
 
   const getFeatureContent = (sectionId: string, key: string) => {
     if (!content) return '';
-    const contentKey = `${sectionId}.${key}`;
-    const foundContent = Object.entries(content).find(([k]) => k === contentKey);
+    // Find content where section_id matches and content_key matches
+    const foundContent = Object.entries(content).find(([_, value]) => 
+      value.includes(sectionId) && value.includes(key)
+    );
+    console.log('Content lookup:', { sectionId, key, content, foundContent });
     return foundContent ? foundContent[1] : '';
   };
 
@@ -76,6 +79,7 @@ export const Features = () => {
       item.section_id === sectionId && 
       item.media_key === key
     );
+    console.log('Media lookup:', { sectionId, key, mediaItem });
     return mediaItem?.media_url || '';
   };
 
@@ -96,6 +100,8 @@ export const Features = () => {
       </section>
     );
   }
+
+  console.log('Rendering Features with:', { content, media });
 
   return (
     <section id="features" className="py-20 overflow-hidden">
@@ -119,6 +125,14 @@ export const Features = () => {
             const subtitle = getFeatureContent(feature.sectionKey, 'subtitle') || feature.defaultSubtitle;
             const description = getFeatureContent(feature.sectionKey, 'description') || feature.defaultDescription;
             const videoUrl = getFeatureMedia(feature.sectionKey, 'preview');
+
+            console.log('Rendering feature:', {
+              sectionKey: feature.sectionKey,
+              title,
+              subtitle,
+              description,
+              videoUrl
+            });
 
             return (
               <FeatureItem
