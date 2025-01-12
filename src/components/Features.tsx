@@ -29,6 +29,8 @@ export const Features = () => {
 
   useEffect(() => {
     if (contentError || mediaError) {
+      console.error('Content error:', contentError);
+      console.error('Media error:', mediaError);
       toast({
         variant: "destructive",
         title: "Error loading content",
@@ -41,7 +43,7 @@ export const Features = () => {
     const observerOptions = {
       root: null,
       rootMargin: "0px",
-      threshold: 0.5,
+      threshold: 0.1,
     };
 
     const observerCallback: IntersectionObserverCallback = (entries) => {
@@ -62,42 +64,68 @@ export const Features = () => {
   }, []);
 
   const getFeatureContent = (sectionId: string, key: string) => {
-    return content?.[`${sectionId}.${key}`] || '';
+    if (!content) return '';
+    const contentKey = `${sectionId}.${key}`;
+    console.log('Looking for content key:', contentKey);
+    return content[contentKey] || '';
   };
 
   const getFeatureMedia = (sectionId: string, key: string) => {
-    return media?.find(item => item.section_id === sectionId && item.media_key === key)?.media_url || '';
+    if (!media) return '';
+    const mediaItem = media.find(item => 
+      item.section_id === sectionId && 
+      item.media_key === key
+    );
+    console.log('Looking for media:', { sectionId, key, found: mediaItem });
+    return mediaItem?.media_url || '';
   };
 
   const activeFeature = features.find(f => f.id === openDialog);
+
+  if (contentLoading || mediaLoading) {
+    return <div className="py-20 text-center">Loading features...</div>;
+  }
 
   return (
     <section id="features" className="py-20 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="subtitle-gradient font-medium mb-4 block">
-            {content?.['header.label'] || 'Features'}
+            {getFeatureContent('header', 'label') || 'Features'}
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
-            {content?.['header.title'] || 'Powerful Features for Video Creators'}
+            {getFeatureContent('header', 'title') || 'Powerful Features for Video Creators'}
           </h2>
           <p className="text-white/70 text-lg">
-            {content?.['header.description'] || 'Streamline your video production workflow with our comprehensive suite of features designed for creators.'}
+            {getFeatureContent('header', 'description') || 'Streamline your video production workflow with our comprehensive suite of features designed for creators.'}
           </p>
         </div>
         
         <div ref={featuresRef} className={`space-y-32 ${isRTL ? 'rtl' : ''}`}>
           {features.map((feature, index) => {
             const IconComponent = iconComponents[feature.icon as keyof typeof iconComponents];
+            const title = getFeatureContent(feature.sectionKey, 'title') || feature.defaultTitle;
+            const subtitle = getFeatureContent(feature.sectionKey, 'subtitle') || feature.defaultSubtitle;
+            const description = getFeatureContent(feature.sectionKey, 'description') || feature.defaultDescription;
+            const videoUrl = getFeatureMedia(feature.sectionKey, 'preview');
+            
+            console.log('Rendering feature:', {
+              id: feature.id,
+              title,
+              subtitle,
+              description,
+              videoUrl
+            });
+
             return (
               <FeatureItem
                 key={feature.id}
                 index={index}
                 icon={IconComponent}
-                title={getFeatureContent(feature.sectionKey, 'title') || feature.defaultTitle}
-                subtitle={getFeatureContent(feature.sectionKey, 'subtitle') || feature.defaultSubtitle}
-                description={getFeatureContent(feature.sectionKey, 'description') || feature.defaultDescription}
-                videoUrl={getFeatureMedia(feature.sectionKey, 'preview')}
+                title={title}
+                subtitle={subtitle}
+                description={description}
+                videoUrl={videoUrl}
                 onLearnMore={() => setOpenDialog(feature.id)}
               />
             );
