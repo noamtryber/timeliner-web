@@ -67,11 +67,22 @@ export const Features = () => {
     return mediaItem?.media_url || '';
   };
 
+  const getLearnMoreText = () => {
+    if (language === 'he') {
+      return 'לצפייה בסרטון';
+    }
+    return getFeatureContent('common', 'learn_more') || 'Learn More';
+  };
+
   return (
     <section id="features" className="py-20 overflow-hidden">
       <div className="container mx-auto px-4">
         <FeaturesHeader getContent={getFeatureContent} />
-        <FeaturesList onLearnMore={setOpenDialog} getContent={getFeatureContent} />
+        <FeaturesList 
+          onLearnMore={setOpenDialog} 
+          getContent={getFeatureContent}
+          learnMoreText={getLearnMoreText()}
+        />
       </div>
 
       {activeFeature && (

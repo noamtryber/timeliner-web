@@ -8,9 +8,10 @@ import { useLanguage } from "@/contexts/LanguageContext";
 interface FeaturesListProps {
   onLearnMore: (id: string) => void;
   getContent: (sectionId: string | null, key: string) => string;
+  learnMoreText: string;
 }
 
-export const FeaturesList = ({ onLearnMore, getContent }: FeaturesListProps) => {
+export const FeaturesList = ({ onLearnMore, getContent, learnMoreText }: FeaturesListProps) => {
   const featuresRef = useRef<HTMLDivElement>(null);
   const { data: media } = useMediaContent('feature');
   const { isRTL, language } = useLanguage();
@@ -57,7 +58,6 @@ export const FeaturesList = ({ onLearnMore, getContent }: FeaturesListProps) => 
         const subtitle = getContent(feature.sectionKey, 'subtitle') || feature.defaultSubtitle;
         const description = getContent(feature.sectionKey, 'description') || feature.defaultDescription;
         const videoUrl = getFeatureMedia(feature.sectionKey, 'preview');
-        const learnMoreText = getContent('common', 'learn_more') || 'Learn More';
 
         console.log('Rendering feature:', { 
           sectionKey: feature.sectionKey, 
