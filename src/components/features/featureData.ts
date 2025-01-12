@@ -24,7 +24,7 @@ export const features = [
     defaultTitle: 'Getting Paid on Time',
     defaultSubtitle: 'No more chasing payments',
     defaultDescription: 'Set up automated payment schedules and reminders, ensuring you get paid on time, every time.',
-    defaultLongDescription: 'Take control of your cash flow with our integrated payment system. Automate invoicing, set up milestone payments, and maintain clear financial records for every project. Get notified when payments are due and when they're received.'
+    defaultLongDescription: 'Take control of your cash flow with our integrated payment system. Automate invoicing, set up milestone payments, and maintain clear financial records for every project. Get notified when payments are due and when they are received.'
   },
   {
     id: 'crm',
