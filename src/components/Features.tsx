@@ -62,7 +62,9 @@ export const Features = () => {
   }, []);
 
   const getFeatureContent = (sectionId: string, key: string) => {
-    return content?.[`${sectionId}.${key}`] || '';
+    const contentKey = `${sectionId}.${key}`;
+    console.log('Getting feature content for:', { sectionId, key, contentKey, content });
+    return content?.[contentKey] || '';
   };
 
   const getFeatureMedia = (sectionId: string, key: string) => {
@@ -70,6 +72,16 @@ export const Features = () => {
   };
 
   const activeFeature = features.find(f => f.id === openDialog);
+
+  if (contentLoading || mediaLoading) {
+    return (
+      <section id="features" className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center">Loading...</div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="features" className="py-20 overflow-hidden">
@@ -89,14 +101,20 @@ export const Features = () => {
         <div ref={featuresRef} className={`space-y-32 ${isRTL ? 'rtl' : ''}`}>
           {features.map((feature, index) => {
             const IconComponent = iconComponents[feature.icon as keyof typeof iconComponents];
+            const title = getFeatureContent(feature.sectionKey, 'title');
+            const subtitle = getFeatureContent(feature.sectionKey, 'subtitle');
+            const description = getFeatureContent(feature.sectionKey, 'description');
+            
+            console.log('Feature content:', { feature: feature.sectionKey, title, subtitle, description });
+            
             return (
               <FeatureItem
                 key={feature.id}
                 index={index}
                 icon={IconComponent}
-                title={getFeatureContent(feature.sectionKey, 'title') || feature.defaultTitle}
-                subtitle={getFeatureContent(feature.sectionKey, 'subtitle') || feature.defaultSubtitle}
-                description={getFeatureContent(feature.sectionKey, 'description') || feature.defaultDescription}
+                title={title || feature.defaultTitle}
+                subtitle={subtitle || feature.defaultSubtitle}
+                description={description || feature.defaultDescription}
                 videoUrl={getFeatureMedia(feature.sectionKey, 'preview')}
                 onLearnMore={() => setOpenDialog(feature.id)}
               />
