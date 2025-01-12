@@ -75,23 +75,9 @@ export const Features = () => {
   const getFeatureContent = (sectionId: string, key: string) => {
     if (!translations) return '';
     
-    // Find the translation for this specific feature and key
-    const translation = (translations as Translation[]).find(
-      (t) => 
-        t.section_id === sectionId && 
-        t.content_key === key && 
-        t.language === language
-    );
-    
-    console.log('Getting feature content for:', { 
-      sectionId, 
-      key,
-      translation,
-      language,
-      allTranslations: translations 
-    });
-    
-    return translation?.content_value || '';
+    // Since translations is now a key-value object, we can directly access it
+    const translationKey = `${sectionId}_${key}_${language}`;
+    return translations[translationKey] || '';
   };
 
   const getFeatureMedia = (sectionId: string, key: string) => {
