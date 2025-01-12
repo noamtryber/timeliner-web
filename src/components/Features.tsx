@@ -22,6 +22,7 @@ const iconComponents = {
 export const Features = () => {
   const featuresRef = useRef<HTMLDivElement>(null);
   const [openDialog, setOpenDialog] = useState<string | null>(null);
+  const { language } = useLanguage();
   const { data: content, isLoading: contentLoading, error: contentError } = usePageContent('feature');
   const { data: media, isLoading: mediaLoading, error: mediaError } = useMediaContent('feature');
   const { toast } = useToast();
@@ -62,9 +63,21 @@ export const Features = () => {
   }, []);
 
   const getFeatureContent = (sectionId: string, key: string) => {
+    if (!content) return '';
+    
+    // Find the translation for this specific feature and key
     const contentKey = `${sectionId}.${key}`;
-    console.log('Getting feature content for:', { sectionId, key, contentKey, content });
-    return content?.[contentKey] || '';
+    const translation = Object.entries(content).find(([k, v]) => k === contentKey);
+    
+    console.log('Getting feature content for:', { 
+      sectionId, 
+      key, 
+      contentKey, 
+      translation,
+      allContent: content 
+    });
+    
+    return translation ? translation[1] : '';
   };
 
   const getFeatureMedia = (sectionId: string, key: string) => {
@@ -105,7 +118,13 @@ export const Features = () => {
             const subtitle = getFeatureContent(feature.sectionKey, 'subtitle');
             const description = getFeatureContent(feature.sectionKey, 'description');
             
-            console.log('Feature content:', { feature: feature.sectionKey, title, subtitle, description });
+            console.log('Feature content:', { 
+              feature: feature.sectionKey, 
+              title, 
+              subtitle, 
+              description,
+              language 
+            });
             
             return (
               <FeatureItem
