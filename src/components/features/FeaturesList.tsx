@@ -8,7 +8,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 export const FeaturesList = ({ onLearnMore }: { onLearnMore: (id: string) => void }) => {
   const featuresRef = useRef<HTMLDivElement>(null);
-  const { data: content } = usePageContent('feature');
+  const { data: translations } = usePageContent('feature');
   const { data: media } = useMediaContent('feature');
   const { language, isRTL } = useLanguage();
 
@@ -37,9 +37,10 @@ export const FeaturesList = ({ onLearnMore }: { onLearnMore: (id: string) => voi
   }, []);
 
   const getFeatureContent = (sectionId: string, key: string) => {
-    if (!content) return '';
-    const contentValue = content[`${sectionId}_${key}`] || '';
-    console.log('Getting content for:', { sectionId, key, contentValue, language });
+    if (!translations) return '';
+    const contentKey = `${sectionId}_${key}`;
+    const contentValue = translations[contentKey] || '';
+    console.log('Getting translation for:', { sectionId, key, contentKey, contentValue, language });
     return contentValue;
   };
 

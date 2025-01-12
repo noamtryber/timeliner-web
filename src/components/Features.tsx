@@ -11,11 +11,11 @@ import { useLanguage } from "@/contexts/LanguageContext";
 export const Features = () => {
   const [openDialog, setOpenDialog] = useState<string | null>(null);
   const { language } = useLanguage();
-  const { data: content, isLoading: contentLoading, error: contentError } = usePageContent('feature');
+  const { data: translations, isLoading: contentLoading, error: contentError } = usePageContent('feature');
   const { data: media, isLoading: mediaLoading, error: mediaError } = useMediaContent('feature');
   const { toast } = useToast();
 
-  console.log('Features content:', { content, language });
+  console.log('Features translations:', { translations, language });
 
   if (contentError || mediaError) {
     console.error('Content error:', contentError);
@@ -46,9 +46,10 @@ export const Features = () => {
   const activeFeature = features.find(f => f.id === openDialog);
   
   const getFeatureContent = (sectionId: string, key: string) => {
-    if (!content) return '';
-    const contentValue = content[`${sectionId}_${key}`] || '';
-    console.log('Getting content for:', { sectionId, key, contentValue, language });
+    if (!translations) return '';
+    const contentKey = `${sectionId}_${key}`;
+    const contentValue = translations[contentKey] || '';
+    console.log('Getting translation for:', { sectionId, key, contentKey, contentValue, language });
     return contentValue;
   };
 
