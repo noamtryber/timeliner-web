@@ -22,11 +22,10 @@ const iconComponents = {
 export const Features = () => {
   const featuresRef = useRef<HTMLDivElement>(null);
   const [openDialog, setOpenDialog] = useState<string | null>(null);
-  const { language } = useLanguage();
-  const { data: content, isLoading: contentLoading, error: contentError } = usePageContent('feature');
+  const { language, isRTL } = useLanguage();
+  const { data: translations, isLoading: contentLoading, error: contentError } = usePageContent('feature');
   const { data: media, isLoading: mediaLoading, error: mediaError } = useMediaContent('feature');
   const { toast } = useToast();
-  const { isRTL } = useLanguage();
 
   useEffect(() => {
     if (contentError || mediaError) {
@@ -63,21 +62,25 @@ export const Features = () => {
   }, []);
 
   const getFeatureContent = (sectionId: string, key: string) => {
-    if (!content) return '';
+    if (!translations) return '';
     
     // Find the translation for this specific feature and key
-    const contentKey = `${sectionId}.${key}`;
-    const translation = Object.entries(content).find(([k, v]) => k === contentKey);
+    const translation = Object.values(translations).find(
+      (t: any) => 
+        t.section_id === sectionId && 
+        t.content_key === key && 
+        t.language === language
+    );
     
     console.log('Getting feature content for:', { 
       sectionId, 
-      key, 
-      contentKey, 
+      key,
       translation,
-      allContent: content 
+      language,
+      allTranslations: translations 
     });
     
-    return translation ? translation[1] : '';
+    return translation?.content_value || '';
   };
 
   const getFeatureMedia = (sectionId: string, key: string) => {
@@ -101,22 +104,22 @@ export const Features = () => {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="subtitle-gradient font-medium mb-4 block">
-            {content?.['header.label'] || 'Features'}
+            {getFeatureContent('header', 'label') || 'Features'}
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
-            {content?.['header.title'] || 'Powerful Features for Video Creators'}
+            {getFeatureContent('header', 'title') || 'Powerful Features for Video Creators'}
           </h2>
           <p className="text-white/70 text-lg">
-            {content?.['header.description'] || 'Streamline your video production workflow with our comprehensive suite of features designed for creators.'}
+            {getFeatureContent('header', 'description') || 'Streamline your video production workflow with our comprehensive suite of features designed for creators.'}
           </p>
         </div>
         
         <div ref={featuresRef} className={`space-y-32 ${isRTL ? 'rtl' : ''}`}>
           {features.map((feature, index) => {
             const IconComponent = iconComponents[feature.icon as keyof typeof iconComponents];
-            const title = getFeatureContent(feature.sectionKey, 'title');
-            const subtitle = getFeatureContent(feature.sectionKey, 'subtitle');
-            const description = getFeatureContent(feature.sectionKey, 'description');
+            const title = getFeatureContent(feature.sectionKey, 'title') || feature.defaultTitle;
+            const subtitle = getFeatureContent(feature.sectionKey, 'subtitle') || feature.defaultSubtitle;
+            const description = getFeatureContent(feature.sectionKey, 'description') || feature.defaultDescription;
             
             console.log('Feature content:', { 
               feature: feature.sectionKey, 
@@ -131,9 +134,9 @@ export const Features = () => {
                 key={feature.id}
                 index={index}
                 icon={IconComponent}
-                title={title || feature.defaultTitle}
-                subtitle={subtitle || feature.defaultSubtitle}
-                description={description || feature.defaultDescription}
+                title={title}
+                subtitle={subtitle}
+                description={description}
                 videoUrl={getFeatureMedia(feature.sectionKey, 'preview')}
                 onLearnMore={() => setOpenDialog(feature.id)}
               />
