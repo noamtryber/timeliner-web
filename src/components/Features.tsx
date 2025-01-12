@@ -9,6 +9,17 @@ import { FeatureDialog } from "./features/FeatureDialog";
 import { features } from "./features/featureData";
 import { useLanguage } from "@/contexts/LanguageContext";
 
+interface Translation {
+  id: string;
+  language: string;
+  section_type: string;
+  section_id: string | null;
+  content_key: string;
+  content_value: string;
+  created_at: string;
+  updated_at: string;
+}
+
 const iconComponents = {
   Workflow,
   FileStack,
@@ -65,8 +76,8 @@ export const Features = () => {
     if (!translations) return '';
     
     // Find the translation for this specific feature and key
-    const translation = Object.values(translations).find(
-      (t: any) => 
+    const translation = (translations as Translation[]).find(
+      (t) => 
         t.section_id === sectionId && 
         t.content_key === key && 
         t.language === language
