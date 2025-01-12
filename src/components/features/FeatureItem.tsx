@@ -1,5 +1,7 @@
 import { LucideIcon, PlayCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { usePageContent } from "@/hooks/usePageContent";
 
 interface FeatureItemProps {
   index: number;
@@ -20,6 +22,9 @@ export const FeatureItem = ({
   videoUrl,
   onLearnMore 
 }: FeatureItemProps) => {
+  const { language } = useLanguage();
+  const { data: translations } = usePageContent('feature');
+
   // Ensure the video URL is properly formatted for embedding
   const getEmbedUrl = (url: string) => {
     if (!url) return '';
@@ -31,10 +36,13 @@ export const FeatureItem = ({
   };
   
   const videoSrc = videoUrl ? `${getEmbedUrl(videoUrl)}?autoplay=1&loop=1&autopause=0&background=1&muted=1` : '';
+
+  // Get translated "Learn More" text
+  const learnMoreText = translations?.['common_learn_more'] || 'Learn More';
   
   return (
-    <div className="feature-item opacity-0 translate-y-10 transition-all duration-700 ease-out
-      grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+    <div className={`feature-item opacity-0 translate-y-10 transition-all duration-700 ease-out
+      grid grid-cols-1 lg:grid-cols-2 gap-8 items-center ${language === 'ar' || language === 'he' ? 'rtl' : ''}`}>
       {/* Video Side */}
       <div className={`overflow-hidden relative order-1 rounded-3xl
         ${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
@@ -78,7 +86,7 @@ export const FeatureItem = ({
           onClick={onLearnMore}
           className="bg-gradient-to-r from-primary via-accent to-primary shadow-lg hover:shadow-primary/20 transition-all duration-300"
         >
-          <PlayCircle className="w-5 h-5 mr-2" /> Learn More
+          <PlayCircle className="w-5 h-5 mr-2" /> {learnMoreText}
         </Button>
       </div>
     </div>

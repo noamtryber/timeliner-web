@@ -10,7 +10,7 @@ export const FeaturesList = ({ onLearnMore }: { onLearnMore: (id: string) => voi
   const featuresRef = useRef<HTMLDivElement>(null);
   const { data: content } = usePageContent('feature');
   const { data: media } = useMediaContent('feature');
-  const { isRTL } = useLanguage();
+  const { language, isRTL } = useLanguage();
 
   useEffect(() => {
     const observerOptions = {
@@ -39,7 +39,7 @@ export const FeaturesList = ({ onLearnMore }: { onLearnMore: (id: string) => voi
   const getFeatureContent = (sectionId: string, key: string) => {
     if (!content) return '';
     const contentValue = content[`${sectionId}_${key}`] || '';
-    console.log('Getting content for:', { sectionId, key, contentValue });
+    console.log('Getting content for:', { sectionId, key, contentValue, language });
     return contentValue;
   };
 
@@ -68,7 +68,8 @@ export const FeaturesList = ({ onLearnMore }: { onLearnMore: (id: string) => voi
           title, 
           subtitle, 
           description, 
-          videoUrl 
+          videoUrl,
+          language 
         });
 
         return (
