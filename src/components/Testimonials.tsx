@@ -1,24 +1,52 @@
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { useEffect, useState, useRef } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const testimonials = [
   {
-    name: "Noga Levi",
-    role: "Video Editor",
-    quote: "Timeliner has completely streamlined my workflow as a video editor. I save hours every week, allowing me to focus on creativity rather than admin tasks.",
+    name: {
+      en: "Noga Levi",
+      he: "נגה לוי"
+    },
+    role: {
+      en: "Video Editor",
+      he: "עורכת וידאו"
+    },
+    quote: {
+      en: "Timeliner has completely streamlined my workflow as a video editor. I save hours every week, allowing me to focus on creativity rather than admin tasks.",
+      he: "טיימליינר שיפר ממש את תהליך העבודה שלי כעורכת וידאו מול לקוחות. אני חוסכת שעות בכל שבוע, ומאפשרת לי להתמקד ביצירתיות במקום במשימות מעצבנות ובלאגן בווצאפ."
+    },
     image: "/lovable-uploads/be9f8176-6ebd-4c6f-a721-34b1f9bd40cd.png"
   },
   {
-    name: "Zohar Vanunu",
-    role: "Creative Manager",
-    quote: "As a creative manager, managing multiple teams was chaotic. Timeliner brought everything into one platform and increased our efficiency by 40%.",
+    name: {
+      en: "Zohar Vanunu",
+      he: "זוהר וענונו"
+    },
+    role: {
+      en: "Creative Manager",
+      he: "מנהל קריאייטיב"
+    },
+    quote: {
+      en: "As a creative manager, managing multiple teams was chaotic. Timeliner brought everything into one platform and increased our efficiency by 40%.",
+      he: "כאיש תלת מימד ובעבודה מול לקוחות בינלאומיים, טיימליינר ריכז את הכל לפלטפורמה אחת והעלה את היעילות שלי והלקוחות שלי לפחות פי 2."
+    },
     image: "/lovable-uploads/6782f7e6-215f-48d2-b9fb-8abfc1b5d97b.png"
   },
   {
-    name: "Noam Tryber",
-    role: "Agency Owner",
-    quote: "For my agency, Timeliner not only saves us time but helps retain clients with improved communication and project delivery. Our revenue has increased by 25%!",
+    name: {
+      en: "Noam Tryber",
+      he: "נועם טרייבר"
+    },
+    role: {
+      en: "Agency Owner",
+      he: "בעל סוכנות"
+    },
+    quote: {
+      en: "For my agency, Timeliner not only saves us time but helps retain clients with improved communication and project delivery. Our revenue has increased by 25%!",
+      he: "Timeliner לא רק חוסך לנו זמן אלא גם מסייע בשימור לקוחות עם תקשורת משופרת ומסירת פרויקטים מדוייקים בזמן. ההכנסות שלנו גדלו ב-15%!"
+    },
     image: "/lovable-uploads/e4c99774-d5fc-4c77-ab34-cabac470ed41.png"
   }
 ];
@@ -27,17 +55,26 @@ const stats = [
   {
     value: 32,
     suffix: "%",
-    label: "Faster Revision Rounds"
+    label: {
+      en: "Faster Revision Rounds",
+      he: "עלייה בסבבי תיקונים מהירים יותר"
+    }
   },
   {
     value: 19,
     suffix: "%",
-    label: "Increase in Income"
+    label: {
+      en: "Increase in Income",
+      he: "עלייה בהכנסה"
+    }
   },
   {
     value: 24,
     suffix: "%",
-    label: "Client Retention in Retainers"
+    label: {
+      en: "Client Retention in Retainers",
+      he: "עלייה בשימור לקוחות ריטיינר"
+    }
   }
 ];
 
@@ -99,6 +136,9 @@ const AnimatedNumber = ({ value, suffix = "" }: { value: number, suffix?: string
 };
 
 export const Testimonials = () => {
+  const { language } = useLanguage();
+  const isHebrew = language === 'he';
+
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background gradient effects */}
@@ -108,10 +148,10 @@ export const Testimonials = () => {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <p className="subtitle-gradient mb-4">
-            Testimonials
+            {isHebrew ? "המלצות" : "Testimonials"}
           </p>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
-            What others are saying
+            {isHebrew ? "מה הלקוחות שלנו מספרים?" : "What others are saying"}
           </h2>
         </div>
 
@@ -126,7 +166,7 @@ export const Testimonials = () => {
               <h3 className="text-3xl md:text-4xl font-bold text-primary mb-3 group-hover:text-accent transition-colors">
                 <AnimatedNumber value={stat.value} suffix={stat.suffix} />
               </h3>
-              <p className="text-white/70">{stat.label}</p>
+              <p className="text-white/70">{isHebrew ? stat.label.he : stat.label.en}</p>
             </Card>
           ))}
         </div>
@@ -141,15 +181,15 @@ export const Testimonials = () => {
             >
               <div className="mb-6">
                 <Avatar className="w-16 h-16 border-2 border-primary">
-                  <AvatarImage src={testimonial.image} alt={testimonial.name} />
+                  <AvatarImage src={testimonial.image} alt={isHebrew ? testimonial.name.he : testimonial.name.en} />
                 </Avatar>
               </div>
               <blockquote className="mb-6 text-lg text-white/90 italic">
-                "{testimonial.quote}"
+                "{isHebrew ? testimonial.quote.he : testimonial.quote.en}"
               </blockquote>
               <div>
-                <h4 className="font-semibold text-lg">{testimonial.name}</h4>
-                <p className="text-white/70">{testimonial.role}</p>
+                <h4 className="font-semibold text-lg">{isHebrew ? testimonial.name.he : testimonial.name.en}</h4>
+                <p className="text-white/70">{isHebrew ? testimonial.role.he : testimonial.role.en}</p>
               </div>
             </Card>
           ))}
