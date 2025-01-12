@@ -89,9 +89,9 @@ export const Features = () => {
         <FeatureDialog
           isOpen={!!openDialog}
           onClose={() => setOpenDialog(null)}
-          title={getFeatureContent(activeFeature.sectionKey, 'title') || activeFeature.defaultTitle}
-          subtitle={getFeatureContent(activeFeature.sectionKey, 'subtitle') || activeFeature.defaultSubtitle}
-          description={getFeatureContent(activeFeature.sectionKey, 'long_description') || activeFeature.defaultLongDescription}
+          title={language === 'he' ? activeFeature.heTitle : (getFeatureContent(activeFeature.sectionKey, 'title') || activeFeature.defaultTitle)}
+          subtitle={language === 'he' ? activeFeature.heSubtitle : (getFeatureContent(activeFeature.sectionKey, 'subtitle') || activeFeature.defaultSubtitle)}
+          description={language === 'he' ? activeFeature.heLongDescription : (getFeatureContent(activeFeature.sectionKey, 'long_description') || activeFeature.defaultLongDescription)}
           videoUrl={getFeatureMedia(activeFeature.sectionKey, 'learn-more')}
         />
       )}

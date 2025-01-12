@@ -7,9 +7,10 @@ export const features = [
     defaultSubtitle: 'Never lose a version again',
     defaultDescription: 'Keep track of every change with our intelligent version control system designed specifically for video editing.',
     defaultLongDescription: 'Our advanced revision tracking system maintains a complete history of your project changes. Easily compare versions, restore previous edits, and collaborate with confidence knowing that every creative decision is preserved.',
-    heTitle: 'ניהול חכם של פרויקטים ותיקונים',
-    heSubtitle: 'לעולם אל תאבדו גרסה שוב',
-    heDescription: 'עקבו אחר כל שינוי עם מערכת בקרת גרסאות חכמה שפותחה במיוחד לעריכת וידאו.'
+    heTitle: 'ניהול סבבי תיקונים חכם',
+    heSubtitle: 'סוף לבלאגנים דרך הווצאפ',
+    heDescription: 'עקבו אחר כל שינוי עם מערכת בקרת גרסאות חכמה שפותחה במיוחד לעריכת וידאו.',
+    heLongDescription: 'מערכת מעקב התיקונים המתקדמת שלנו שומרת על היסטוריה מלאה של שינויים בפרויקט שלכם. השוו גרסאות בקלות, שחזרו עריכות קודמות, ועבדו בשיתוף פעולה עם ביטחון שכל החלטה יצירתית נשמרת.'
   },
   {
     id: 'project-briefs',
@@ -19,9 +20,10 @@ export const features = [
     defaultSubtitle: 'Streamline client communication',
     defaultDescription: 'Create dynamic project briefs that clients can interact with, providing clear feedback and approvals in real-time.',
     defaultLongDescription: 'Transform your client communication with interactive briefs that allow for precise feedback, timestamps, and annotations. Reduce revision rounds and ensure everyone is aligned on project goals.',
-    heTitle: 'תיאום ציפיות? קללל',
-    heSubtitle: 'הפכו את התקשורת מול הלקוחות לפשוטה',
-    heDescription: 'כלי אינטרקטיבי שעוזר לך וללקוח שלך לתאם ציפיות יחד עם כלי בינה מלאכותית לבחירת רפרנסים ויצירת בריף מסודר'
+    heTitle: 'הצעות פרויקטים אינטראקטיביים',
+    heSubtitle: 'פשטו את התקשורת עם הלקוחות',
+    heDescription: 'כלי אינטרקטיבי שעוזר לך וללקוח שלך לתאם ציפיות יחד עם כלי בינה מלאכותית לבחירת רפרנסים ויצירת בריף מסודר',
+    heLongDescription: 'כלי אינטרקטיבי שעוזר לך וללקוח שלך לתאם ציפיות יחד עם כלי בינה מלאכותית לבחירת רפרנסים ויצירת בריף מסודר'
   },
   {
     id: 'payments',
@@ -31,9 +33,10 @@ export const features = [
     defaultSubtitle: 'No more chasing payments',
     defaultDescription: 'Set up automated payment schedules and reminders, ensuring you get paid on time, every time.',
     defaultLongDescription: 'Take control of your cash flow with our integrated payment system. Automate invoicing, set up milestone payments, and maintain clear financial records for every project.',
-    heTitle: 'תשלומים בזמן. תמיד.',
+    heTitle: 'קבלת תשלום בזמן',
     heSubtitle: 'סוף למרדף אחר תשלומים',
-    heDescription: 'מערכת אוטומטית שמעבירה תשלומים מיד עם אישור הפרויקט, הכל מהיר ויעיל.'
+    heDescription: 'מערכת אוטומטית שמעבירה תשלומים מיד עם אישור הפרויקט, הכל מהיר ויעיל.',
+    heLongDescription: 'מערכת אוטומטית שמעבירה תשלומים מיד עם אישור הפרויקט או הסרטון, הכל מהיר ויעיל. תיעוד חשבונאי עם קבלות להכל.'
   },
   {
     id: 'crm',
@@ -43,9 +46,10 @@ export const features = [
     defaultSubtitle: 'Manage client relationships',
     defaultDescription: 'Keep track of all your client interactions, project history, and communication in one place.',
     defaultLongDescription: 'Our integrated CRM system helps you manage client relationships effectively. Track all communications, maintain project history, and ensure nothing falls through the cracks with automated follow-ups and reminders.',
-    heTitle: 'CRM- ניהול לידים ולקוחות',
+    heTitle: 'CRM לניהול לידים ומכירות',
     heSubtitle: 'ניהול מערכות יחסים עם לקוחות',
-    heDescription: 'מערכת פשוטה לניהול לידים, סטטוסים, פולואפ ולקוחות משלמים.'
+    heDescription: 'מערכת פשוטה לניהול לידים, סטטוסים, פולואפ ולקוחות משלמים.',
+    heLongDescription: 'מערכת פשוטה לניהול לידים, סטטוסים, פולואפ ולקוחות משלמים.'
   },
   {
     id: 'client-portals',
@@ -55,9 +59,10 @@ export const features = [
     defaultSubtitle: 'One link for everything',
     defaultDescription: 'Give your clients a dashboard where they can leave feedback, approve work, and download everything in 4K—all with just one link.',
     defaultLongDescription: 'Provide your clients with a professional, branded experience through custom portals. Enable seamless collaboration with easy access to project updates, approvals, and file sharing in one centralized location.',
-    heTitle: 'פורטל אישי ללקוחות',
-    heSubtitle: 'פשוט ונוח',
-    heDescription: 'כל ההערות, האישורים, ההורדות והאחסון מסודרים במקום אחד ופשוט.'
+    heTitle: 'פורטלים פשוטים ללקוחות',
+    heSubtitle: 'קישור אחד להכל',
+    heDescription: 'כל ההערות, האישורים, ההורדות והאחסון מסודרים במקום אחד ופשוט.',
+    heLongDescription: 'ספקו ללקוחותיכם חוויה מקצועית וממותגת באמצעות פורטלים מותאמים אישית. אפשרו שיתוף פעולה חלק עם גישה נוחה לעדכוני פרויקטים, אישורים ושיתוף קבצים במקום מרכזי אחד.'
   },
   {
     id: 'team-management',
@@ -67,9 +72,10 @@ export const features = [
     defaultSubtitle: 'Monitor team performance',
     defaultDescription: "Keep an eye on your team's workload, payments, and performance—all from one easy-to-use dashboard.",
     defaultLongDescription: 'Efficiently manage your entire team with comprehensive tools for tracking workload, monitoring performance metrics, and handling payments. Keep everyone aligned and productive with clear task assignments and progress tracking.',
-    heTitle: 'ניהול צוות קליל',
-    heSubtitle: 'פקחו על ביצועי הצוות שלכם',
-    heDescription: 'עקבו אחרי עומס העבודה של עורכים, צוות, מצב התשלומים ומדדי הביצועים, הכל ממקום אחד.'
+    heTitle: 'ניהול צוות קל ופשוט',
+    heSubtitle: 'פקח על ביצועי הצוות',
+    heDescription: 'עקבו אחרי עומס העבודה של עורכים, צוות, מצב התשלומים ומדדי הביצועים, הכל ממקום אחד.',
+    heLongDescription: 'נהל את כל הצוות שלך ביעילות עם כלים מקיפים למעקב אחר עומסי עבודה, מעקב אחרי מדדי ביצועים וטיפול בתשלומים. שמרו על יישור קו ופרודוקטיביות עם חלוקת משימות ברורה ומעקב אחרי התקדמות.'
   },
   {
     id: 'secure-storage',
@@ -81,6 +87,7 @@ export const features = [
     defaultLongDescription: 'Keep all your media files secure and organized with our cloud storage solution. Access your content from anywhere, maintain version control, and ensure your valuable assets are protected with enterprise-grade security.',
     heTitle: 'אחסון מדיה מאובטח',
     heSubtitle: 'הכל במקום אחד',
-    heDescription: 'גישה מהירה, נוחה ומוגנת לקבצים, הכל בתוך המערכת שלנו וללא צורך בשירותים חיצוניים.'
+    heDescription: 'גישה מהירה, נוחה ומוגנת לקבצים, הכל בתוך המערכת שלנו וללא צורך בשירותים חיצוניים.',
+    heLongDescription: 'שמרו את כל קבצי המדיה שלכם בצורה מאובטחת ומאורגנת עם פתרון האחסון בענן שלנו. גשו לתוכן שלכם מכל מקום, שמרו על בקרת גרסאות, ודאגו שהנכסים שלכם מוגנים עם אבטחה ברמה ארגונית.'
   }
 ] as const;
