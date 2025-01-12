@@ -27,6 +27,15 @@ export const features = [
     defaultLongDescription: 'Take control of your cash flow with our integrated payment system. Automate invoicing, set up milestone payments, and maintain clear financial records for every project.'
   },
   {
+    id: 'crm',
+    icon: 'Users',
+    sectionKey: 'crm',
+    defaultTitle: 'Built-in CRM',
+    defaultSubtitle: 'Manage client relationships',
+    defaultDescription: 'Keep track of all your client interactions, project history, and communication in one place.',
+    defaultLongDescription: 'Our integrated CRM system helps you manage client relationships effectively. Track all communications, maintain project history, and ensure nothing falls through the cracks with automated follow-ups and reminders.'
+  },
+  {
     id: 'client-portals',
     icon: 'UserCircle',
     sectionKey: 'client-portals',
