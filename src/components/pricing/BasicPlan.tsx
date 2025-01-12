@@ -93,7 +93,8 @@ export const BasicPlan = ({
           min={Number(content.base_storage)}
           max={2000}
           step={100}
-          className="mb-4"
+          className={`mb-4 ${isHebrew ? 'direction-rtl' : ''}`}
+          dir={isHebrew ? 'rtl' : 'ltr'}
         />
       </div>
 
