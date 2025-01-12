@@ -17,25 +17,25 @@ export const Frustrations = () => {
     {
       icon: AlertCircle,
       iconType: 'expectations' as const,
-      title: content?.card1_title || "Unclear Expectations",
+      title: content?.expectations || "Unclear Expectations",
       description: content?.card1_description || "Mismatched client and editor expectations lead to frustration. Revisions and versions scattered across WhatsApp, Email, and G-Drive."
     },
     {
       icon: Wallet,
       iconType: 'payments' as const,
-      title: content?.card2_title || "Payment Delays",
+      title: content?.payment || "Payment Delays",
       description: content?.card2_description || "Payments take weeks or months to arrive. No automated system to ensure quick payouts after approval."
     },
     {
       icon: AppWindow,
       iconType: 'tools' as const,
-      title: content?.card3_title || "No Centralized Tools",
+      title: content?.tools || "No Centralized Tools",
       description: content?.card3_description || "Juggling multiple apps for projects, feedback, and payments wastes time. No seamless way for agencies to manage freelancers or pay them per project milestone."
     },
     {
       icon: Clock,
       iconType: 'time' as const,
-      title: content?.card4_title || "Time Management",
+      title: content?.time || "Time Management",
       description: content?.card4_description || "Managing multiple projects, deadlines, and client communications across different platforms leads to inefficiency and missed opportunities."
     }
   ];
@@ -49,14 +49,14 @@ export const Frustrations = () => {
       <div className={`container mx-auto px-4 relative ${isRTL ? 'rtl' : ''}`} ref={ref}>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
-            {content?.title || "Common Frustrations in Video Production"}
+            {content?.challenges_solved || "Common Frustrations in Video Production"}
           </h2>
           <p className="text-lg text-white/70">
-            {content?.subtitle || "These challenges are exactly why we built Timeliner"}
+            {content?.solve_see_how || "These challenges are exactly why we built Timeliner"}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {frustrationData.map((item, index) => (
             <FrustrationCard
               key={index}
@@ -68,12 +68,6 @@ export const Frustrations = () => {
               inView={inView}
             />
           ))}
-        </div>
-
-        <div className="text-center max-w-3xl mx-auto">
-          <p className="text-lg text-white/70 mb-4">
-            {content?.description || "Let's see how we can solve them!"}
-          </p>
         </div>
       </div>
     </section>
