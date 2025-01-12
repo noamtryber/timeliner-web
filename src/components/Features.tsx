@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import { FeatureItem } from "./features/FeatureItem";
 import { FeatureDialog } from "./features/FeatureDialog";
 import { features } from "./features/featureData";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const iconComponents = {
   Workflow,
@@ -24,6 +25,7 @@ export const Features = () => {
   const { data: content, isLoading: contentLoading, error: contentError } = usePageContent('feature');
   const { data: media, isLoading: mediaLoading, error: mediaError } = useMediaContent('feature');
   const { toast } = useToast();
+  const { isRTL } = useLanguage();
 
   useEffect(() => {
     if (contentError || mediaError) {
@@ -84,7 +86,7 @@ export const Features = () => {
           </p>
         </div>
         
-        <div ref={featuresRef} className="space-y-32">
+        <div ref={featuresRef} className={`space-y-32 ${isRTL ? 'rtl' : ''}`}>
           {features.map((feature, index) => {
             const IconComponent = iconComponents[feature.icon as keyof typeof iconComponents];
             return (
