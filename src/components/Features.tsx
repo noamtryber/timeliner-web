@@ -40,6 +40,7 @@ export const Features = () => {
   }
 
   const activeFeature = features.find(f => f.id === openDialog);
+  
   const getFeatureContent = (sectionId: string, key: string) => {
     if (!content) return '';
     return content[`${sectionId}_${key}`] || '';
@@ -51,6 +52,7 @@ export const Features = () => {
       item.section_id === sectionId && 
       item.media_key === key
     );
+    console.log('Looking for media:', { sectionId, key, mediaItem });
     return mediaItem?.media_url || '';
   };
 

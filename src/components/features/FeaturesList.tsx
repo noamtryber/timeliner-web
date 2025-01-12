@@ -37,15 +37,8 @@ export const FeaturesList = ({ onLearnMore }: { onLearnMore: (id: string) => voi
   }, []);
 
   const getFeatureContent = (sectionId: string, key: string) => {
-    if (!content) {
-      console.log('No content available');
-      return '';
-    }
-    
-    console.log('Looking for content:', { sectionId, key, content });
-    const foundContent = content[`${sectionId}_${key}`];
-    console.log('Found content:', foundContent);
-    return foundContent || '';
+    if (!content) return '';
+    return content[`${sectionId}_${key}`] || '';
   };
 
   const getFeatureMedia = (sectionId: string, key: string) => {
