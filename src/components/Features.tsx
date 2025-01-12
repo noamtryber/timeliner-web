@@ -64,14 +64,18 @@ export const Features = () => {
   }, []);
 
   const getFeatureContent = (sectionId: string, key: string) => {
-    if (!content) return '';
+    if (!content) {
+      console.log('No content available');
+      return '';
+    }
+    
+    console.log('Looking for content:', { sectionId, key, content });
+    
     // Find content where section_id and content_key match exactly
-    const foundContent = Object.values(content).find(item => 
-      item.section_id === sectionId && 
-      item.content_key === key
-    );
-    console.log('Content lookup:', { sectionId, key, foundContent });
-    return foundContent?.content_value || '';
+    const foundContent = content[`${sectionId}_${key}`];
+    console.log('Found content:', foundContent);
+    
+    return foundContent || '';
   };
 
   const getFeatureMedia = (sectionId: string, key: string) => {
