@@ -1,16 +1,19 @@
 import { useRef, useEffect } from "react";
-import { usePageContent } from "@/hooks/usePageContent";
 import { useMediaContent } from "@/hooks/useMediaContent";
 import { features } from "./featureData";
 import { FeatureItem } from "./FeatureItem";
 import { iconComponents } from "./iconComponents";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-export const FeaturesList = ({ onLearnMore }: { onLearnMore: (id: string) => void }) => {
+interface FeaturesListProps {
+  onLearnMore: (id: string) => void;
+  getContent: (sectionId: string | null, key: string) => string;
+}
+
+export const FeaturesList = ({ onLearnMore, getContent }: FeaturesListProps) => {
   const featuresRef = useRef<HTMLDivElement>(null);
-  const { data: content } = usePageContent('feature');
   const { data: media } = useMediaContent('feature');
-  const { isRTL } = useLanguage();
+  const { isRTL, language } = useLanguage();
 
   useEffect(() => {
     const observerOptions = {
@@ -36,13 +39,6 @@ export const FeaturesList = ({ onLearnMore }: { onLearnMore: (id: string) => voi
     return () => observer.disconnect();
   }, []);
 
-  const getFeatureContent = (sectionId: string, key: string) => {
-    if (!content) return '';
-    const contentValue = content[`${sectionId}_${key}`] || '';
-    console.log('Getting content for:', { sectionId, key, contentValue });
-    return contentValue;
-  };
-
   const getFeatureMedia = (sectionId: string, key: string) => {
     if (!media) return '';
     const mediaItem = media.find(item => 
@@ -50,21 +46,22 @@ export const FeaturesList = ({ onLearnMore }: { onLearnMore: (id: string) => voi
       item.section_id === sectionId && 
       item.media_key === key
     );
-    console.log('Looking for media:', { sectionId, key, mediaItem });
     return mediaItem?.media_url || '';
   };
 
   return (
     <div ref={featuresRef} className={`space-y-32 ${isRTL ? 'rtl' : ''}`}>
       {features.map((feature, index) => {
-        const IconComponent = iconComponents[feature.icon as keyof typeof iconComponents];
-        const title = getFeatureContent(feature.sectionKey, 'title') || feature.defaultTitle;
-        const subtitle = getFeatureContent(feature.sectionKey, 'subtitle') || feature.defaultSubtitle;
-        const description = getFeatureContent(feature.sectionKey, 'description') || feature.defaultDescription;
+        const IconComponent = iconComponents[feature.icon];
+        const title = getContent(feature.sectionKey, 'title') || feature.defaultTitle;
+        const subtitle = getContent(feature.sectionKey, 'subtitle') || feature.defaultSubtitle;
+        const description = getContent(feature.sectionKey, 'description') || feature.defaultDescription;
         const videoUrl = getFeatureMedia(feature.sectionKey, 'preview');
+        const learnMoreText = getContent('common', 'learn_more') || 'Learn More';
 
         console.log('Rendering feature:', { 
           sectionKey: feature.sectionKey, 
+          language,
           title, 
           subtitle, 
           description, 
@@ -81,6 +78,7 @@ export const FeaturesList = ({ onLearnMore }: { onLearnMore: (id: string) => voi
             description={description}
             videoUrl={videoUrl}
             onLearnMore={() => onLearnMore(feature.id)}
+            learnMoreText={learnMoreText}
           />
         );
       })}

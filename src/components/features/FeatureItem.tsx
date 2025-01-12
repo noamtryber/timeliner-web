@@ -1,5 +1,6 @@
 import { LucideIcon, PlayCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface FeatureItemProps {
   index: number;
@@ -9,6 +10,7 @@ interface FeatureItemProps {
   description: string;
   videoUrl: string;
   onLearnMore: () => void;
+  learnMoreText: string;
 }
 
 export const FeatureItem = ({ 
@@ -18,14 +20,14 @@ export const FeatureItem = ({
   subtitle,
   description, 
   videoUrl,
-  onLearnMore 
+  onLearnMore,
+  learnMoreText
 }: FeatureItemProps) => {
-  // Ensure the video URL is properly formatted for embedding
+  const { isRTL } = useLanguage();
+  
   const getEmbedUrl = (url: string) => {
     if (!url) return '';
-    // If it's already an embed URL, use it as is
     if (url.includes('player.vimeo.com')) return url;
-    // Convert watch URLs to embed URLs
     const vimeoId = url.match(/vimeo\.com\/(\d+)/)?.[1];
     return vimeoId ? `https://player.vimeo.com/video/${vimeoId}` : '';
   };
@@ -33,9 +35,8 @@ export const FeatureItem = ({
   const videoSrc = videoUrl ? `${getEmbedUrl(videoUrl)}?autoplay=1&loop=1&autopause=0&background=1&muted=1` : '';
   
   return (
-    <div className="feature-item opacity-0 translate-y-10 transition-all duration-700 ease-out
-      grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-      {/* Video Side */}
+    <div className={`feature-item opacity-0 translate-y-10 transition-all duration-700 ease-out
+      grid grid-cols-1 lg:grid-cols-2 gap-8 items-center ${isRTL ? 'rtl' : ''}`}>
       <div className={`overflow-hidden relative order-1 rounded-3xl
         ${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
         <div className="w-full h-full">
@@ -57,7 +58,6 @@ export const FeatureItem = ({
         </div>
       </div>
       
-      {/* Content Side */}
       <div className={`space-y-6 order-2 
         ${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
         <div className="flex items-center space-x-4">
@@ -78,7 +78,7 @@ export const FeatureItem = ({
           onClick={onLearnMore}
           className="bg-gradient-to-r from-primary via-accent to-primary shadow-lg hover:shadow-primary/20 transition-all duration-300"
         >
-          <PlayCircle className="w-5 h-5 mr-2" /> Learn More
+          <PlayCircle className="w-5 h-5 mr-2" /> {learnMoreText}
         </Button>
       </div>
     </div>

@@ -6,9 +6,11 @@ import { features } from "./features/featureData";
 import { FeaturesHeader } from "./features/FeaturesHeader";
 import { FeaturesList } from "./features/FeaturesList";
 import { FeatureDialog } from "./features/FeatureDialog";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const Features = () => {
   const [openDialog, setOpenDialog] = useState<string | null>(null);
+  const { language } = useLanguage();
   const { data: content, isLoading: contentLoading, error: contentError } = usePageContent('feature');
   const { data: media, isLoading: mediaLoading, error: mediaError } = useMediaContent('feature');
   const { toast } = useToast();
@@ -41,10 +43,16 @@ export const Features = () => {
 
   const activeFeature = features.find(f => f.id === openDialog);
   
-  const getFeatureContent = (sectionId: string, key: string) => {
+  const getFeatureContent = (sectionId: string | null, key: string) => {
     if (!content) return '';
-    const contentValue = content[`${sectionId}_${key}`] || '';
-    console.log('Getting content for:', { sectionId, key, contentValue });
+    console.log('Getting content for:', { sectionId, key, language });
+    // First try to find content with specific section_id
+    const contentValue = content[`${sectionId}_${key}`] || 
+                        // Then try to find content with null section_id (header content)
+                        (sectionId === null ? content[key] : '') || 
+                        // Finally try common content
+                        content[`common_${key}`] || '';
+    console.log('Found content:', contentValue);
     return contentValue;
   };
 
@@ -62,8 +70,8 @@ export const Features = () => {
   return (
     <section id="features" className="py-20 overflow-hidden">
       <div className="container mx-auto px-4">
-        <FeaturesHeader />
-        <FeaturesList onLearnMore={setOpenDialog} />
+        <FeaturesHeader getContent={getFeatureContent} />
+        <FeaturesList onLearnMore={setOpenDialog} getContent={getFeatureContent} />
       </div>
 
       {activeFeature && (
