@@ -5,8 +5,8 @@ import { usePageContent } from "@/hooks/usePageContent";
 import { useMediaContent } from "@/hooks/useMediaContent";
 
 export const Footer = () => {
-  const { data: translations } = usePageContent("footer");
-  const { data: mediaContent } = useMediaContent("footer");
+  const { data: translations } = usePageContent("footer", "main-footer");
+  const { data: mediaContent } = useMediaContent("footer", "main-footer");
   const [footerContent, setFooterContent] = useState({
     email: '',
     phone: '',
