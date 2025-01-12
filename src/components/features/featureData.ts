@@ -18,21 +18,30 @@ export const features = [
     defaultLongDescription: 'Transform your client communication with interactive briefs that allow for precise feedback, timestamps, and annotations. Reduce revision rounds and ensure everyone is aligned on project goals.'
   },
   {
-    id: 'payments',
-    icon: 'CreditCard',
-    sectionKey: 'payments',
-    defaultTitle: 'Seamless Payments',
-    defaultSubtitle: 'Get paid faster',
-    defaultDescription: 'Integrate secure payment processing directly into your workflow, from deposits to final payments.',
-    defaultLongDescription: 'Handle all financial aspects of your projects with our integrated payment system. Set up milestone payments, automate invoicing, and maintain clear financial records for every project.'
+    id: 'client-portals',
+    icon: 'UserCircle',
+    sectionKey: 'client-portals',
+    defaultTitle: 'Simple Client Portals',
+    defaultSubtitle: 'One link for everything',
+    defaultDescription: 'Give your clients a dashboard where they can leave feedback, approve work, and download everything in 4K—all with just one link.',
+    defaultLongDescription: 'Provide your clients with a professional, branded experience through custom portals. Enable seamless collaboration with easy access to project updates, approvals, and file sharing in one centralized location.'
   },
   {
-    id: 'client-management',
+    id: 'team-management',
     icon: 'Users',
-    sectionKey: 'client-management',
-    defaultTitle: 'Client Management',
-    defaultSubtitle: 'Organize your client relationships',
-    defaultDescription: 'Keep all client information, communication, and project details organized in one central location.',
-    defaultLongDescription: 'Maintain detailed client profiles, track communication history, and manage multiple projects efficiently. Build stronger client relationships with organized, professional project management.'
+    sectionKey: 'team-management',
+    defaultTitle: 'Team Management',
+    defaultSubtitle: 'Monitor team performance',
+    defaultDescription: "Keep an eye on your team's workload, payments, and performance—all from one easy-to-use dashboard.",
+    defaultLongDescription: 'Efficiently manage your entire team with comprehensive tools for tracking workload, monitoring performance metrics, and handling payments. Keep everyone aligned and productive with clear task assignments and progress tracking.'
+  },
+  {
+    id: 'secure-storage',
+    icon: 'Shield',
+    sectionKey: 'secure-storage',
+    defaultTitle: 'Secure Media Storage',
+    defaultSubtitle: 'Everything in one place',
+    defaultDescription: 'Forget juggling third-party tools. Store all your media securely in the cloud, with everything right where you need it.',
+    defaultLongDescription: 'Keep all your media files secure and organized with our cloud storage solution. Access your content from anywhere, maintain version control, and ensure your valuable assets are protected with enterprise-grade security.'
   }
 ] as const;
