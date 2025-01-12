@@ -11,14 +11,14 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 export const Hero = () => {
   const { data: content, error: contentError } = usePageContent('hero', 'main');
-  const { data: statsContent, error: statsError } = usePageContent('hero', 'stats');
+  const { data: statsContent, error: statsError } = usePageContent('hero', 'main');
   const { data: media, error: mediaError } = useMediaContent('hero', 'main');
   const { toast } = useToast();
   const [showDemo, setShowDemo] = useState(false);
   const navigate = useNavigate();
   const { isRTL } = useLanguage();
 
-  console.log('Hero translations:', { content, statsContent });
+  console.log('Hero translations:', { content });
 
   if (contentError || mediaError || statsError) {
     toast({
@@ -37,10 +37,10 @@ export const Hero = () => {
       <div className={`container mx-auto px-4 relative animate-fade-up ${isRTL ? 'rtl' : ''}`}>
         <div className="text-center max-w-4xl mx-auto">
           <span className="subtitle-gradient mb-4 block tracking-wide">
-            {content?.subtitle || 'VIDEO EDITORS & AGENCIES:'}
+            {content?.video_editors || 'VIDEO EDITORS & AGENCIES:'}
           </span>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 gradient-text tracking-tight leading-tight">
-            {content?.title || 'Turn Chaos into Clarity with Smart Video Management'}
+            {content?.turn_chaos_clarity || 'Turn Chaos into Clarity with Smart Video Management'}
           </h1>
           
           <div className={`flex flex-col sm:flex-row items-center justify-center gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
@@ -49,7 +49,7 @@ export const Hero = () => {
               className="bg-primary hover:bg-primary/90 text-lg px-8 py-6 h-auto w-full sm:w-auto"
               onClick={() => navigate('/auth')}
             >
-              {content?.cta_primary || 'Get Started'}
+              {content?.get_started || 'Get Started'}
               <ArrowRight className={`${isRTL ? 'mr-2 rotate-180' : 'ml-2'} h-5 w-5`} />
             </Button>
             <Button 
@@ -66,23 +66,23 @@ export const Hero = () => {
               />
               <div className={`relative z-10 flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
                 <Play className={`${isRTL ? 'ml-2' : 'mr-2'} h-5 w-5`} />
-                <span>{content?.cta_secondary || 'Watch Demo'}</span>
+                <span>{content?.watch_demo || 'Watch Demo'}</span>
               </div>
             </Button>
           </div>
 
           <div className={`grid grid-cols-3 gap-8 mt-16 ${isRTL ? 'rtl' : ''}`}>
             <div>
-              <div className="text-3xl font-bold gradient-text">{statsContent?.stat1_value || '32.0%'}</div>
-              <div className="text-white/70">{statsContent?.stat1_label || 'Faster Revision Rounds'}</div>
+              <div className="text-3xl font-bold gradient-text">32.0%</div>
+              <div className="text-white/70">{content?.faster_revisions || 'Faster Revision Rounds'}</div>
             </div>
             <div>
-              <div className="text-3xl font-bold gradient-text">{statsContent?.stat2_value || '19.0%'}</div>
-              <div className="text-white/70">{statsContent?.stat2_label || 'Increase in Income'}</div>
+              <div className="text-3xl font-bold gradient-text">19.0%</div>
+              <div className="text-white/70">{content?.increase_income || 'Increase in Income'}</div>
             </div>
             <div>
-              <div className="text-3xl font-bold gradient-text">{statsContent?.stat3_value || '24.0%'}</div>
-              <div className="text-white/70">{statsContent?.stat3_label || 'Client Retention in Retainers'}</div>
+              <div className="text-3xl font-bold gradient-text">24.0%</div>
+              <div className="text-white/70">{content?.client_retention || 'Client Retention in Retainers'}</div>
             </div>
           </div>
         </div>

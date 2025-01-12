@@ -83,10 +83,10 @@ export const Navbar = () => {
               ) : (
                 <>
                   <Button variant="ghost" className="text-white/70" onClick={handleAuthClick}>
-                    {content?.login_button || 'Login'}
+                    {content?.login || 'Login'}
                   </Button>
                   <Button className="bg-primary hover:bg-primary/90" onClick={handleAuthClick}>
-                    {content?.signup_button || 'Sign Up'}
+                    {content?.sign_up || 'Sign Up'}
                   </Button>
                 </>
               )}
@@ -131,10 +131,10 @@ export const Navbar = () => {
             ) : (
               <>
                 <Button variant="ghost" className="w-full justify-start" onClick={handleAuthClick}>
-                  {content?.login_button || 'Login'}
+                  {content?.login || 'Login'}
                 </Button>
                 <Button className="w-full bg-primary hover:bg-primary/90" onClick={handleAuthClick}>
-                  {content?.signup_button || 'Sign Up'}
+                  {content?.sign_up || 'Sign Up'}
                 </Button>
               </>
             )}
