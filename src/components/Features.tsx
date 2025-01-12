@@ -49,6 +49,7 @@ export const Features = () => {
   const getFeatureMedia = (sectionId: string, key: string) => {
     if (!media) return '';
     const mediaItem = media.find(item => 
+      item.section_type === 'feature' && 
       item.section_id === sectionId && 
       item.media_key === key
     );
