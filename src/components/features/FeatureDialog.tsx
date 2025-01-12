@@ -28,13 +28,13 @@ export const FeatureDialog = ({ isOpen, onClose, title, subtitle, description, v
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className={`sm:max-w-[800px] bg-card/95 backdrop-blur-xl ${isRTL ? 'rtl' : 'ltr'}`}>
-        <DialogHeader className={isRTL ? 'text-right' : 'text-left'}>
-          <DialogTitle className="text-2xl gradient-text">{title}</DialogTitle>
+      <DialogContent dir={isRTL ? 'rtl' : 'ltr'} className="sm:max-w-[800px] bg-card/95 backdrop-blur-xl">
+        <DialogHeader>
+          <DialogTitle dir={isRTL ? 'rtl' : 'ltr'} className="text-2xl gradient-text text-right">{title}</DialogTitle>
           {subtitle && (
-            <p className="text-primary/80 text-sm font-medium mt-2">{subtitle}</p>
+            <p dir={isRTL ? 'rtl' : 'ltr'} className="text-primary/80 text-sm font-medium mt-2 text-right">{subtitle}</p>
           )}
-          <DialogDescription className="text-lg text-white/70 mt-4 leading-relaxed">
+          <DialogDescription dir={isRTL ? 'rtl' : 'ltr'} className="text-lg text-white/70 mt-4 leading-relaxed text-right">
             {description}
           </DialogDescription>
         </DialogHeader>
