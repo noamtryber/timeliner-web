@@ -66,8 +66,8 @@ export const Features = () => {
   const getFeatureContent = (sectionId: string, key: string) => {
     if (!content) return '';
     const contentKey = `${sectionId}.${key}`;
-    console.log('Looking for content key:', contentKey);
-    return content[contentKey] || '';
+    const foundContent = Object.entries(content).find(([k]) => k === contentKey);
+    return foundContent ? foundContent[1] : '';
   };
 
   const getFeatureMedia = (sectionId: string, key: string) => {
@@ -76,14 +76,25 @@ export const Features = () => {
       item.section_id === sectionId && 
       item.media_key === key
     );
-    console.log('Looking for media:', { sectionId, key, found: mediaItem });
     return mediaItem?.media_url || '';
   };
 
   const activeFeature = features.find(f => f.id === openDialog);
 
   if (contentLoading || mediaLoading) {
-    return <div className="py-20 text-center">Loading features...</div>;
+    return (
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <div className="animate-pulse">
+              <div className="h-4 bg-primary/20 rounded w-24 mx-auto mb-4"></div>
+              <div className="h-8 bg-primary/20 rounded w-64 mx-auto mb-6"></div>
+              <div className="h-4 bg-primary/20 rounded w-96 mx-auto"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
   }
 
   return (
@@ -108,14 +119,6 @@ export const Features = () => {
             const subtitle = getFeatureContent(feature.sectionKey, 'subtitle') || feature.defaultSubtitle;
             const description = getFeatureContent(feature.sectionKey, 'description') || feature.defaultDescription;
             const videoUrl = getFeatureMedia(feature.sectionKey, 'preview');
-            
-            console.log('Rendering feature:', {
-              id: feature.id,
-              title,
-              subtitle,
-              description,
-              videoUrl
-            });
 
             return (
               <FeatureItem
