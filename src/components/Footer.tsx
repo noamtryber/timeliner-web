@@ -8,7 +8,7 @@ import { SocialLinks } from "./footer/SocialLinks";
 import { FooterLinks } from "./footer/FooterLinks";
 
 export const Footer = () => {
-  const { data: translations } = usePageContent("footer", "main-footer");
+  const { data: translations, isLoading } = usePageContent("footer", "main-footer");
   const { data: mediaContent } = useMediaContent("footer", "main-footer");
   const [footerContent, setFooterContent] = useState({
     email: '',
@@ -24,6 +24,7 @@ export const Footer = () => {
   const [logoUrl, setLogoUrl] = useState('');
 
   useEffect(() => {
+    console.log("Translations received:", translations);
     if (translations) {
       const content = {
         email: translations['email'] || '',
@@ -36,6 +37,7 @@ export const Footer = () => {
         instagram_url: translations['instagram_url'] || '',
         youtube_url: translations['youtube_url'] || '',
       };
+      console.log("Setting footer content:", content);
       setFooterContent(content);
     }
 
@@ -50,6 +52,10 @@ export const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <footer className="w-full bg-card/30 backdrop-blur-lg border-t border-white/10 mt-20">
