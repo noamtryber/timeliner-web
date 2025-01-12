@@ -8,7 +8,7 @@ interface PlanFeatureProps {
 export const PlanFeature = ({ text, isRTL }: PlanFeatureProps) => {
   return (
     <div 
-      className={`flex items-center gap-2 text-sm text-white/70 w-full ${isRTL ? 'flex-row-reverse justify-start font-assistant' : ''}`}
+      className={`flex items-center gap-2 text-sm text-white/70 w-full ${isRTL ? 'flex-row-reverse justify-end' : ''}`}
       dir={isRTL ? 'rtl' : 'ltr'}
     >
       <Check className="h-4 w-4 text-primary flex-shrink-0" />
