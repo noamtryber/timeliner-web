@@ -1,4 +1,5 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface FeatureDialogProps {
   isOpen: boolean;
@@ -10,6 +11,9 @@ interface FeatureDialogProps {
 }
 
 export const FeatureDialog = ({ isOpen, onClose, title, subtitle, description, videoUrl }: FeatureDialogProps) => {
+  const { language } = useLanguage();
+  const isRTL = language === 'he';
+
   // Ensure the video URL is properly formatted for embedding
   const getEmbedUrl = (url: string) => {
     if (!url) return '';
@@ -24,8 +28,8 @@ export const FeatureDialog = ({ isOpen, onClose, title, subtitle, description, v
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[800px] bg-card/95 backdrop-blur-xl">
-        <DialogHeader>
+      <DialogContent className={`sm:max-w-[800px] bg-card/95 backdrop-blur-xl ${isRTL ? 'rtl' : 'ltr'}`}>
+        <DialogHeader className={isRTL ? 'text-right' : 'text-left'}>
           <DialogTitle className="text-2xl gradient-text">{title}</DialogTitle>
           {subtitle && (
             <p className="text-primary/80 text-sm font-medium mt-2">{subtitle}</p>
