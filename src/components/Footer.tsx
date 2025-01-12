@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { usePageContent } from "@/hooks/usePageContent";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { ContactInfo } from "./footer/ContactInfo";
 import { FooterLogo } from "./footer/FooterLogo";
 import { FooterDescription } from "./footer/FooterDescription";
@@ -8,6 +9,7 @@ import { FooterBottom } from "./footer/FooterBottom";
 
 export const Footer = () => {
   const { data: translations, isLoading } = usePageContent("footer", "main-footer");
+  const { isRTL } = useLanguage();
   const [footerContent, setFooterContent] = useState({
     email: '',
     phone: '',
@@ -24,20 +26,20 @@ export const Footer = () => {
     console.log("Translations received:", translations);
     if (translations) {
       const content = {
-        email: translations['email'] || '',
-        phone: translations['phone'] || '',
-        location: translations['location'] || '',
+        email: isRTL ? 'contact@noamtryber.com' : translations['email'] || '',
+        phone: isRTL ? '-' : translations['phone'] || '',
+        location: isRTL ? 'וויומינג, ארה"ב' : translations['location'] || '',
         description: translations['description'] || '',
         copyright: translations['copyright'] || '',
-        designer: translations['designer'] || '',
-        powered_by: translations['powered_by'] || '',
+        designer: isRTL ? 'נוצר ע"י נועם טרייבר' : translations['designer'] || '',
+        powered_by: isRTL ? 'Timeliner' : translations['powered_by'] || '',
         instagram_url: translations['instagram_url'] || '',
         youtube_url: translations['youtube_url'] || '',
       };
       console.log("Setting footer content:", content);
       setFooterContent(content);
     }
-  }, [translations]);
+  }, [translations, isRTL]);
 
   if (isLoading) {
     return <div>Loading...</div>;
