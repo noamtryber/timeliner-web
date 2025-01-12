@@ -43,7 +43,7 @@ export const Features = () => {
 
   const activeFeature = features.find(f => f.id === openDialog);
   
-  const getFeatureContent = (sectionId: string | null, key: string) => {
+  const getFeatureContent = (sectionId: string | null, key: string): string => {
     if (!content) return '';
     console.log('Getting content for:', { sectionId, key, language });
     // First try to find content with specific section_id
