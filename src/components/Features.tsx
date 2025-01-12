@@ -65,12 +65,13 @@ export const Features = () => {
 
   const getFeatureContent = (sectionId: string, key: string) => {
     if (!content) return '';
-    // Find content where section_id matches and content_key matches
-    const foundContent = Object.entries(content).find(([_, value]) => 
-      value.includes(sectionId) && value.includes(key)
+    // Find content where section_id and content_key match exactly
+    const foundContent = Object.values(content).find(item => 
+      item.section_id === sectionId && 
+      item.content_key === key
     );
-    console.log('Content lookup:', { sectionId, key, content, foundContent });
-    return foundContent ? foundContent[1] : '';
+    console.log('Content lookup:', { sectionId, key, foundContent });
+    return foundContent?.content_value || '';
   };
 
   const getFeatureMedia = (sectionId: string, key: string) => {
