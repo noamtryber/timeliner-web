@@ -38,7 +38,9 @@ export const FeaturesList = ({ onLearnMore }: { onLearnMore: (id: string) => voi
 
   const getFeatureContent = (sectionId: string, key: string) => {
     if (!content) return '';
-    return content[`${sectionId}_${key}`] || '';
+    const contentValue = content[`${sectionId}_${key}`] || '';
+    console.log('Getting content for:', { sectionId, key, contentValue });
+    return contentValue;
   };
 
   const getFeatureMedia = (sectionId: string, key: string) => {
@@ -48,6 +50,7 @@ export const FeaturesList = ({ onLearnMore }: { onLearnMore: (id: string) => voi
       item.section_id === sectionId && 
       item.media_key === key
     );
+    console.log('Looking for media:', { sectionId, key, mediaItem });
     return mediaItem?.media_url || '';
   };
 
@@ -59,6 +62,14 @@ export const FeaturesList = ({ onLearnMore }: { onLearnMore: (id: string) => voi
         const subtitle = getFeatureContent(feature.sectionKey, 'subtitle') || feature.defaultSubtitle;
         const description = getFeatureContent(feature.sectionKey, 'description') || feature.defaultDescription;
         const videoUrl = getFeatureMedia(feature.sectionKey, 'preview');
+
+        console.log('Rendering feature:', { 
+          sectionKey: feature.sectionKey, 
+          title, 
+          subtitle, 
+          description, 
+          videoUrl 
+        });
 
         return (
           <FeatureItem
