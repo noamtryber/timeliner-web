@@ -6,12 +6,16 @@ import { features } from "./features/featureData";
 import { FeaturesHeader } from "./features/FeaturesHeader";
 import { FeaturesList } from "./features/FeaturesList";
 import { FeatureDialog } from "./features/FeatureDialog";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const Features = () => {
   const [openDialog, setOpenDialog] = useState<string | null>(null);
+  const { language } = useLanguage();
   const { data: content, isLoading: contentLoading, error: contentError } = usePageContent('feature');
   const { data: media, isLoading: mediaLoading, error: mediaError } = useMediaContent('feature');
   const { toast } = useToast();
+
+  console.log('Features content:', { content, language });
 
   if (contentError || mediaError) {
     console.error('Content error:', contentError);
@@ -44,7 +48,7 @@ export const Features = () => {
   const getFeatureContent = (sectionId: string, key: string) => {
     if (!content) return '';
     const contentValue = content[`${sectionId}_${key}`] || '';
-    console.log('Getting content for:', { sectionId, key, contentValue });
+    console.log('Getting content for:', { sectionId, key, contentValue, language });
     return contentValue;
   };
 

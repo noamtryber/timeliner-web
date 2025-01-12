@@ -1,65 +1,58 @@
+import { Boxes, Clock, CreditCard, Users, Database, LayoutDashboard } from "lucide-react";
+
 export const features = [
   {
-    id: 'revision-tracking',
-    icon: 'Workflow',
-    sectionKey: 'revision-tracking',
-    defaultTitle: 'Smart Revision Tracking',
-    defaultSubtitle: 'Never lose a version again',
-    defaultDescription: 'Keep track of every change with our intelligent version control system designed specifically for video editing.',
-    defaultLongDescription: 'Our advanced revision tracking system maintains a complete history of your project changes. Easily compare versions, restore previous edits, and collaborate with confidence knowing that every creative decision is preserved.'
+    id: "revision-tracking",
+    icon: "Boxes",
+    sectionKey: "revision-tracking",
+    defaultTitle: "Smart Revision Tracking",
+    defaultSubtitle: "Never lose a version again",
+    defaultDescription: "Keep track of every change with our intelligent version control system designed specifically for video editing.",
+    defaultLongDescription: "Our intelligent version control system is designed specifically for video editing, allowing you to track every change, comment, and revision in one place. Never lose track of client feedback or previous versions again."
   },
   {
-    id: 'project-briefs',
-    icon: 'FileStack',
-    sectionKey: 'project-briefs',
-    defaultTitle: 'Interactive Project Briefs',
-    defaultSubtitle: 'Streamline client communication',
-    defaultDescription: 'Create dynamic project briefs that clients can interact with, providing clear feedback and approvals in real-time.',
-    defaultLongDescription: 'Transform your client communication with interactive briefs that allow for precise feedback, timestamps, and annotations. Reduce revision rounds and ensure everyone is aligned on project goals.'
+    id: "project-briefs",
+    icon: "LayoutDashboard",
+    sectionKey: "project-briefs",
+    defaultTitle: "Interactive Project Briefs",
+    defaultSubtitle: "Streamline client communication",
+    defaultDescription: "Create dynamic project briefs that clients can interact with, providing clear feedback and approvals in real-time.",
+    defaultLongDescription: "Our interactive project briefs system allows clients to provide clear feedback and approvals in real-time. No more back-and-forth emails or confused communication chains."
   },
   {
-    id: 'payments',
-    icon: 'CreditCard',
-    sectionKey: 'payments',
-    defaultTitle: 'Getting Paid on Time',
-    defaultSubtitle: 'No more chasing payments',
-    defaultDescription: 'Set up automated payment schedules and reminders, ensuring you get paid on time, every time.',
-    defaultLongDescription: 'Take control of your cash flow with our integrated payment system. Automate invoicing, set up milestone payments, and maintain clear financial records for every project.'
+    id: "payments",
+    icon: "CreditCard",
+    sectionKey: "payments",
+    defaultTitle: "Getting Paid on Time",
+    defaultSubtitle: "No more chasing payments",
+    defaultDescription: "Set up automated payment schedules and reminders, ensuring you get paid on time, every time.",
+    defaultLongDescription: "Automate your payment collection with scheduled reminders and integrated payment processing. Get paid faster and more reliably with our streamlined system."
   },
   {
-    id: 'crm',
-    icon: 'Users',
-    sectionKey: 'crm',
-    defaultTitle: 'Built-in CRM',
-    defaultSubtitle: 'Manage client relationships',
-    defaultDescription: 'Keep track of all your client interactions, project history, and communication in one place.',
-    defaultLongDescription: 'Our integrated CRM system helps you manage client relationships effectively. Track all communications, maintain project history, and ensure nothing falls through the cracks with automated follow-ups and reminders.'
+    id: "crm",
+    icon: "Users",
+    sectionKey: "crm",
+    defaultTitle: "Built-in CRM",
+    defaultSubtitle: "Manage client relationships",
+    defaultDescription: "Keep track of all your client interactions, project history, and communication in one place.",
+    defaultLongDescription: "Our built-in CRM helps you manage all client interactions, project history, and communication in one centralized location. Build stronger client relationships with better organization."
   },
   {
-    id: 'client-portals',
-    icon: 'UserCircle',
-    sectionKey: 'client-portals',
-    defaultTitle: 'Simple Client Portals',
-    defaultSubtitle: 'One link for everything',
-    defaultDescription: 'Give your clients a dashboard where they can leave feedback, approve work, and download everything in 4K—all with just one link.',
-    defaultLongDescription: 'Provide your clients with a professional, branded experience through custom portals. Enable seamless collaboration with easy access to project updates, approvals, and file sharing in one centralized location.'
+    id: "client-portals",
+    icon: "Clock",
+    sectionKey: "client-portals",
+    defaultTitle: "Simple Client Portals",
+    defaultSubtitle: "One link for everything",
+    defaultDescription: "Give your clients a dashboard where they can leave feedback, approve work, and download everything in 4K—all with just one link.",
+    defaultLongDescription: "Provide clients with a simple, intuitive dashboard where they can review work, provide feedback, and download deliverables—all through a single, secure link."
   },
   {
-    id: 'team-management',
-    icon: 'Users',
-    sectionKey: 'team-management',
-    defaultTitle: 'Team Management',
-    defaultSubtitle: 'Monitor team performance',
-    defaultDescription: "Keep an eye on your team's workload, payments, and performance—all from one easy-to-use dashboard.",
-    defaultLongDescription: 'Efficiently manage your entire team with comprehensive tools for tracking workload, monitoring performance metrics, and handling payments. Keep everyone aligned and productive with clear task assignments and progress tracking.'
-  },
-  {
-    id: 'secure-storage',
-    icon: 'Shield',
-    sectionKey: 'secure-storage',
-    defaultTitle: 'Secure Media Storage',
-    defaultSubtitle: 'Everything in one place',
-    defaultDescription: 'Forget juggling third-party tools. Store all your media securely in the cloud, with everything right where you need it.',
-    defaultLongDescription: 'Keep all your media files secure and organized with our cloud storage solution. Access your content from anywhere, maintain version control, and ensure your valuable assets are protected with enterprise-grade security.'
+    id: "secure-storage",
+    icon: "Database",
+    sectionKey: "secure-storage",
+    defaultTitle: "Secure Media Storage",
+    defaultSubtitle: "Everything in one place",
+    defaultDescription: "Forget juggling third-party tools. Store all your media securely in the cloud, with everything right where you need it.",
+    defaultLongDescription: "Store and manage all your media files securely in the cloud. No more juggling multiple storage solutions or worrying about backup systems."
   }
-] as const;
+];
