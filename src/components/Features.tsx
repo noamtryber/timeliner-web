@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Workflow, FileStack, CreditCard, Users, FolderOpen, UserCircle, Shield } from "lucide-react";
 import { usePageContent } from "@/hooks/usePageContent";
 import { useMediaContent } from "@/hooks/useMediaContent";
@@ -8,17 +8,8 @@ import { FeatureItem } from "./features/FeatureItem";
 import { FeatureDialog } from "./features/FeatureDialog";
 import { features } from "./features/featureData";
 import { useLanguage } from "@/contexts/LanguageContext";
-
-interface Translation {
-  id: string;
-  language: string;
-  section_type: string;
-  section_id: string | null;
-  content_key: string;
-  content_value: string;
-  created_at: string;
-  updated_at: string;
-}
+import { FeatureHeader } from "./features/FeatureHeader";
+import { useState } from "react";
 
 const iconComponents = {
   Workflow,
@@ -52,7 +43,7 @@ export const Features = () => {
     const observerOptions = {
       root: null,
       rootMargin: "0px",
-      threshold: 0.5,
+      threshold: 0.1, // Reduced threshold for earlier animation trigger
     };
 
     const observerCallback: IntersectionObserverCallback = (entries) => {
@@ -74,8 +65,6 @@ export const Features = () => {
 
   const getFeatureContent = (sectionId: string, key: string) => {
     if (!translations) return '';
-    
-    // Since translations is now a key-value object, we can directly access it
     const translationKey = `${sectionId}_${key}_${language}`;
     return translations[translationKey] || '';
   };
@@ -99,17 +88,7 @@ export const Features = () => {
   return (
     <section id="features" className="py-20 overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="subtitle-gradient font-medium mb-4 block">
-            {getFeatureContent('header', 'label') || 'Features'}
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
-            {getFeatureContent('header', 'title') || 'Powerful Features for Video Creators'}
-          </h2>
-          <p className="text-white/70 text-lg">
-            {getFeatureContent('header', 'description') || 'Streamline your video production workflow with our comprehensive suite of features designed for creators.'}
-          </p>
-        </div>
+        <FeatureHeader />
         
         <div ref={featuresRef} className={`space-y-32 ${isRTL ? 'rtl' : ''}`}>
           {features.map((feature, index) => {
