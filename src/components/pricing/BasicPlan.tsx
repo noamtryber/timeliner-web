@@ -13,6 +13,7 @@ import { PlanFeature } from "./PlanFeature";
 import { PlanIcon } from "./PlanIcon";
 import { PricingContent } from "@/hooks/usePricingContent";
 import { useNavigate } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface BasicPlanProps {
   content?: PricingContent;
@@ -32,6 +33,8 @@ export const BasicPlan = ({
   calculatePrice 
 }: BasicPlanProps) => {
   const navigate = useNavigate();
+  const { language } = useLanguage();
+  const isHebrew = language === 'he';
   
   if (!content) return null;
 
@@ -40,6 +43,17 @@ export const BasicPlan = ({
     Number(content.base_storage), 
     basicStorage
   );
+
+  const hebrewFeatures = [
+    'חשבון אדמין אחד',
+    '5 חברי צוות (עורכי וידאו, מנהלי פרויקטים וכו\')',
+    '25 פרויקטים פעילים',
+    'גישת לקוחות: עד 3 אורחים לפרויקט',
+    'תהליך עבודה מתקדם: מעקב אחר סטטוס',
+    'הערות מבוססות קודי זמן למשוב מדויק',
+    'תפקידי משתמש והרשאות בהתאמה אישית',
+    'אנליטיקה בסיסית למעקב אחרי סטטוס הפרויקט'
+  ];
   
   const getPeriodTotal = () => {
     switch (pricingPeriod) {
@@ -53,27 +67,26 @@ export const BasicPlan = ({
   };
 
   return (
-    <Card className="glass p-6 flex flex-col animate-fade-up delay-400 hover:scale-105 transition-transform duration-300 relative">
-      {/* Most Popular Badge */}
+    <Card className={`glass p-6 flex flex-col animate-fade-up delay-400 hover:scale-105 transition-transform duration-300 relative ${isHebrew ? 'text-right' : ''}`}>
       <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary via-accent to-primary px-4 py-1 rounded-full text-sm font-semibold text-white shadow-lg">
-        Most Popular
+        {isHebrew ? 'הכי פופולרי' : 'Most Popular'}
       </div>
 
       <PlanIcon Icon={Database} color="accent" />
-      <h3 className="text-2xl font-bold mb-2">{content.title}</h3>
-      <p className="text-white/70 mb-6">{content.subtitle}</p>
+      <h3 className="text-2xl font-bold mb-2">{isHebrew ? 'בייסיק' : content.title}</h3>
+      <p className="text-white/70 mb-6">{isHebrew ? 'לפרילנסרים או סוכנויות קטנות' : content.subtitle}</p>
       <div className="text-3xl font-bold mb-4">
         ${basicPrice.toFixed(2)}
-        <span className="text-sm font-normal text-white/70">/month</span>
+        {isHebrew ? ' / לחודש' : <span className="text-sm font-normal text-white/70">/month</span>}
         {pricingPeriod !== 'monthly' && (
           <span className="block text-sm text-primary mt-1">
-            ${getPeriodTotal().toFixed(2)} billed {pricingPeriod}
+            ${getPeriodTotal().toFixed(2)} {isHebrew ? `לתשלום ${pricingPeriod === 'quarterly' ? 'רבעוני' : 'שנתי'}` : `billed ${pricingPeriod}`}
           </span>
         )}
       </div>
       
       <div className="mb-6">
-        <p className="text-sm text-white/70 mb-2">Storage: {basicStorage}GB</p>
+        <p className="text-sm text-white/70 mb-2">{isHebrew ? 'אחסון:' : 'Storage:'} {basicStorage}GB</p>
         <Slider
           value={[basicStorage]}
           onValueChange={(value) => setBasicStorage(value[0])}
@@ -88,12 +101,12 @@ export const BasicPlan = ({
         <DialogTrigger asChild>
           <Button variant="outline" className="w-full mb-6 border-primary/50 hover:bg-primary/10">
             <Play className="w-4 h-4 mr-2" />
-            {content.video_title}
+            {isHebrew ? 'למה בייסיק?' : content.video_title}
           </Button>
         </DialogTrigger>
-        <DialogContent className="glass">
+        <DialogContent className={`glass ${isHebrew ? 'text-right' : ''}`}>
           <DialogHeader>
-            <DialogTitle>{content.video_title}</DialogTitle>
+            <DialogTitle>{isHebrew ? 'למה בייסיק?' : content.video_title}</DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
             {video?.preview ? (
@@ -118,9 +131,9 @@ export const BasicPlan = ({
       </Dialog>
       
       <div className="space-y-4 mb-8 flex-grow">
-        <h4 className="font-semibold">Core Features:</h4>
-        {content.features.map((feature, index) => (
-          <PlanFeature key={index} text={feature} />
+        <h4 className="font-semibold">{isHebrew ? 'פיצ\'רים עיקריים:' : 'Core Features:'}</h4>
+        {(isHebrew ? hebrewFeatures : content.features).map((feature, index) => (
+          <PlanFeature key={index} text={feature} isRTL={isHebrew} />
         ))}
       </div>
       
