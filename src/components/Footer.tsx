@@ -1,15 +1,13 @@
-import { ArrowUp } from "lucide-react";
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { usePageContent } from "@/hooks/usePageContent";
-import { useMediaContent } from "@/hooks/useMediaContent";
 import { ContactInfo } from "./footer/ContactInfo";
-import { SocialLinks } from "./footer/SocialLinks";
-import { FooterLinks } from "./footer/FooterLinks";
+import { FooterLogo } from "./footer/FooterLogo";
+import { FooterDescription } from "./footer/FooterDescription";
+import { FooterSocial } from "./footer/FooterSocial";
+import { FooterBottom } from "./footer/FooterBottom";
 
 export const Footer = () => {
   const { data: translations, isLoading } = usePageContent("footer", "main-footer");
-  const { data: mediaContent } = useMediaContent("footer", "main-footer");
   const [footerContent, setFooterContent] = useState({
     email: '',
     phone: '',
@@ -21,7 +19,6 @@ export const Footer = () => {
     instagram_url: '',
     youtube_url: '',
   });
-  const [logoUrl, setLogoUrl] = useState('');
 
   useEffect(() => {
     console.log("Translations received:", translations);
@@ -40,18 +37,7 @@ export const Footer = () => {
       console.log("Setting footer content:", content);
       setFooterContent(content);
     }
-
-    if (mediaContent && mediaContent.length > 0) {
-      const logo = mediaContent.find(item => item.media_key === 'footer_logo');
-      if (logo) {
-        setLogoUrl(logo.media_url);
-      }
-    }
-  }, [translations, mediaContent]);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  }, [translations]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -63,16 +49,8 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Left side - Company info */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <img 
-                src={logoUrl || "/lovable-uploads/1ad9d673-efdf-41ae-8a29-82d3e976a7ed.png"}
-                alt="Logo" 
-                className="h-7"
-              />
-            </div>
-            <p className="text-sm text-gray-400 max-w-md">
-              {footerContent.description}
-            </p>
+            <FooterLogo />
+            <FooterDescription description={footerContent.description} />
             <ContactInfo 
               email={footerContent.email}
               phone={footerContent.phone}
@@ -80,36 +58,19 @@ export const Footer = () => {
             />
           </div>
 
-          {/* Right side - Links and social */}
-          <div className="flex flex-col md:items-end space-y-6">
-            <SocialLinks 
-              instagramUrl={footerContent.instagram_url}
-              youtubeUrl={footerContent.youtube_url}
-            />
-            <button
-              onClick={scrollToTop}
-              className="flex items-center space-x-2 text-sm text-gray-400 hover:text-white transition-colors"
-            >
-              Back to top <ArrowUp className="w-4 h-4" />
-            </button>
-          </div>
+          {/* Right side - Social links and back to top */}
+          <FooterSocial 
+            instagramUrl={footerContent.instagram_url}
+            youtubeUrl={footerContent.youtube_url}
+          />
         </div>
 
         {/* Bottom section */}
-        <div className="mt-12 pt-6 border-t border-white/10 text-sm text-gray-400">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex space-x-4">
-              <Link to="/terms" className="hover:text-white transition-colors">Terms</Link>
-              <Link to="/privacy" className="hover:text-white transition-colors">Privacy</Link>
-              <Link to="/cookies" className="hover:text-white transition-colors">Cookies</Link>
-            </div>
-            <FooterLinks 
-              designer={footerContent.designer}
-              instagramUrl={footerContent.instagram_url}
-              poweredBy={footerContent.powered_by}
-            />
-          </div>
-        </div>
+        <FooterBottom 
+          designer={footerContent.designer}
+          instagramUrl={footerContent.instagram_url}
+          poweredBy={footerContent.powered_by}
+        />
       </div>
     </footer>
   );
