@@ -50,7 +50,7 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
         className="w-full border-primary/50 hover:bg-primary/10 transition-all duration-300"
         onClick={() => navigate('/auth')}
       >
-        {content.button_text}
+        {isHebrew ? 'צרו קשר' : content.button_text}
       </Button>
     </Card>
   );

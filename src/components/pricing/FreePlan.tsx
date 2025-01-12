@@ -49,7 +49,7 @@ export const FreePlan = ({ content }: FreePlanProps) => {
         className="w-full bg-gradient-to-br from-accent/80 to-accent hover:opacity-90 transition-all duration-300"
         onClick={() => navigate('/auth')}
       >
-        {content.button_text}
+        {isHebrew ? 'התחילו היום בחינם' : content.button_text}
       </Button>
     </Card>
   );

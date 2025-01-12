@@ -141,7 +141,7 @@ export const BasicPlan = ({
         className="w-full bg-gradient-to-br from-accent to-primary hover:opacity-90 transition-all duration-300 shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/40"
         onClick={() => navigate('/auth')}
       >
-        {content.button_text}
+        {isHebrew ? 'התחילו היום בחינם' : content.button_text}
       </Button>
     </Card>
   );
