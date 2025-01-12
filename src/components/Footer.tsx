@@ -1,8 +1,11 @@
-import { Youtube, Instagram, Mail, Phone, MapPin, ArrowUp } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { usePageContent } from "@/hooks/usePageContent";
 import { useMediaContent } from "@/hooks/useMediaContent";
+import { ContactInfo } from "./footer/ContactInfo";
+import { SocialLinks } from "./footer/SocialLinks";
+import { FooterLinks } from "./footer/FooterLinks";
 
 export const Footer = () => {
   const { data: translations } = usePageContent("footer", "main-footer");
@@ -64,42 +67,19 @@ export const Footer = () => {
             <p className="text-sm text-gray-400 max-w-md">
               {footerContent.description}
             </p>
-            <div className="space-y-2">
-              <div className="flex items-center space-x-2 text-sm text-gray-400">
-                <Mail className="w-4 h-4" />
-                <span>{footerContent.email}</span>
-              </div>
-              <div className="flex items-center space-x-2 text-sm text-gray-400">
-                <Phone className="w-4 h-4" />
-                <span>{footerContent.phone}</span>
-              </div>
-              <div className="flex items-center space-x-2 text-sm text-gray-400">
-                <MapPin className="w-4 h-4" />
-                <span>{footerContent.location}</span>
-              </div>
-            </div>
+            <ContactInfo 
+              email={footerContent.email}
+              phone={footerContent.phone}
+              location={footerContent.location}
+            />
           </div>
 
           {/* Right side - Links and social */}
           <div className="flex flex-col md:items-end space-y-6">
-            <div className="flex space-x-4">
-              <Link 
-                to={footerContent.instagram_url} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="p-2 rounded-full border border-white/10 hover:bg-white/5 transition-colors"
-              >
-                <Instagram className="w-5 h-5" />
-              </Link>
-              <Link 
-                to={footerContent.youtube_url} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="p-2 rounded-full border border-white/10 hover:bg-white/5 transition-colors"
-              >
-                <Youtube className="w-5 h-5" />
-              </Link>
-            </div>
+            <SocialLinks 
+              instagramUrl={footerContent.instagram_url}
+              youtubeUrl={footerContent.youtube_url}
+            />
             <button
               onClick={scrollToTop}
               className="flex items-center space-x-2 text-sm text-gray-400 hover:text-white transition-colors"
@@ -117,19 +97,11 @@ export const Footer = () => {
               <Link to="/privacy" className="hover:text-white transition-colors">Privacy</Link>
               <Link to="/cookies" className="hover:text-white transition-colors">Cookies</Link>
             </div>
-            <div className="flex items-center space-x-2">
-              <span>Designed by </span>
-              <Link 
-                to={footerContent.instagram_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition-colors"
-              >
-                {footerContent.designer}
-              </Link>
-              <span>|</span>
-              <span>Powered by {footerContent.powered_by}</span>
-            </div>
+            <FooterLinks 
+              designer={footerContent.designer}
+              instagramUrl={footerContent.instagram_url}
+              poweredBy={footerContent.powered_by}
+            />
           </div>
         </div>
       </div>
