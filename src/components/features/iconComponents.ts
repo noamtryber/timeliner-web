@@ -1,16 +1,4 @@
-import { 
-  Workflow, 
-  FileStack, 
-  CreditCard, 
-  Users, 
-  FolderOpen, 
-  UserCircle, 
-  Shield,
-  Boxes,
-  Clock,
-  Database,
-  LayoutDashboard
-} from "lucide-react";
+import { Workflow, FileStack, CreditCard, Users, FolderOpen, UserCircle, Shield } from "lucide-react";
 
 export const iconComponents = {
   Workflow,
@@ -19,9 +7,5 @@ export const iconComponents = {
   Users,
   FolderOpen,
   UserCircle,
-  Shield,
-  Boxes,
-  Clock,
-  Database,
-  LayoutDashboard
+  Shield
 } as const;

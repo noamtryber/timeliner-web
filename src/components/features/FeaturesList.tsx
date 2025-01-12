@@ -8,9 +8,9 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 export const FeaturesList = ({ onLearnMore }: { onLearnMore: (id: string) => void }) => {
   const featuresRef = useRef<HTMLDivElement>(null);
-  const { data: translations } = usePageContent('feature');
+  const { data: content } = usePageContent('feature');
   const { data: media } = useMediaContent('feature');
-  const { language, isRTL } = useLanguage();
+  const { isRTL } = useLanguage();
 
   useEffect(() => {
     const observerOptions = {
@@ -37,10 +37,9 @@ export const FeaturesList = ({ onLearnMore }: { onLearnMore: (id: string) => voi
   }, []);
 
   const getFeatureContent = (sectionId: string, key: string) => {
-    if (!translations) return '';
-    const contentKey = `${sectionId}_${key}`;
-    const contentValue = translations[contentKey] || '';
-    console.log('Getting translation for:', { sectionId, key, contentKey, contentValue, language });
+    if (!content) return '';
+    const contentValue = content[`${sectionId}_${key}`] || '';
+    console.log('Getting content for:', { sectionId, key, contentValue });
     return contentValue;
   };
 
@@ -59,12 +58,6 @@ export const FeaturesList = ({ onLearnMore }: { onLearnMore: (id: string) => voi
     <div ref={featuresRef} className={`space-y-32 ${isRTL ? 'rtl' : ''}`}>
       {features.map((feature, index) => {
         const IconComponent = iconComponents[feature.icon as keyof typeof iconComponents];
-        
-        if (!IconComponent) {
-          console.error('Icon not found:', feature.icon);
-          return null;
-        }
-
         const title = getFeatureContent(feature.sectionKey, 'title') || feature.defaultTitle;
         const subtitle = getFeatureContent(feature.sectionKey, 'subtitle') || feature.defaultSubtitle;
         const description = getFeatureContent(feature.sectionKey, 'description') || feature.defaultDescription;
@@ -75,10 +68,7 @@ export const FeaturesList = ({ onLearnMore }: { onLearnMore: (id: string) => voi
           title, 
           subtitle, 
           description, 
-          videoUrl,
-          language,
-          icon: feature.icon,
-          IconComponent 
+          videoUrl 
         });
 
         return (
