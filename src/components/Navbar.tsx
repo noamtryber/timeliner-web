@@ -12,10 +12,12 @@ import { useNavigate } from "react-router-dom";
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { toast } = useToast();
-  const { data: content, error } = usePageContent('nav');
+  const { data: content, error } = usePageContent('nav', 'main-nav');
   const { session } = useAuth();
   const { isRTL } = useLanguage();
   const navigate = useNavigate();
+
+  console.log('Navbar translations:', content);
 
   if (error) {
     toast({
