@@ -7,7 +7,7 @@ export const Footer = () => {
   return (
     <footer className="w-full mt-20">
       <div className="container mx-auto px-4 py-8 md:py-12">
-        <div className="bg-white rounded-2xl p-6 md:p-12 shadow-lg relative overflow-hidden">
+        <div className="bg-gradient-to-br from-[#F1F1F1] to-[#e6e9f0] rounded-2xl p-6 md:p-12 shadow-lg relative overflow-hidden">
           {/* Background Image - Hidden on mobile */}
           <div 
             className="absolute top-0 right-0 h-full hidden md:block w-1/2 opacity-70"
