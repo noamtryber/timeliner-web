@@ -13,7 +13,7 @@ const Auth = () => {
 
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      if ((event === 'SIGNED_IN' || event === 'SIGNED_UP') && session) {
+      if (event === 'SIGNED_IN' && session) {
         navigate("/waitlist");
       }
       if (event === 'USER_UPDATED') {
