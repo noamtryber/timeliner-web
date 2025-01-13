@@ -14,9 +14,38 @@ const SignUp = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
 
+  const validatePassword = (password: string) => {
+    const minLength = 8;
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasNumbers = /\d/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    const errors = [];
+    if (password.length < minLength) errors.push("at least 8 characters");
+    if (!hasUpperCase) errors.push("an uppercase letter");
+    if (!hasLowerCase) errors.push("a lowercase letter");
+    if (!hasNumbers) errors.push("a number");
+    if (!hasSpecialChar) errors.push("a special character");
+
+    return errors;
+  };
+
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+
+    // Validate password before submission
+    const passwordErrors = validatePassword(password);
+    if (passwordErrors.length > 0) {
+      toast({
+        variant: "destructive",
+        title: "Invalid Password",
+        description: `Password must contain ${passwordErrors.join(", ")}`,
+      });
+      setLoading(false);
+      return;
+    }
 
     try {
       const { error } = await supabase.auth.signUp({
@@ -38,10 +67,24 @@ const SignUp = () => {
       
       navigate("/waitlist");
     } catch (error: any) {
+      let errorMessage = error.message;
+      
+      // Parse the error message if it's a weak password error
+      if (error.error_type === "http_client_error" && error.body) {
+        try {
+          const bodyError = JSON.parse(error.body);
+          if (bodyError.code === "weak_password") {
+            errorMessage = "Please choose a stronger password. This password is commonly used and easy to guess.";
+          }
+        } catch (e) {
+          // If JSON parsing fails, use the original error message
+        }
+      }
+      
       toast({
         variant: "destructive",
         title: "Error",
-        description: error.message,
+        description: errorMessage,
       });
     } finally {
       setLoading(false);
@@ -98,6 +141,10 @@ const SignUp = () => {
                   required
                   className="bg-gray-50 border-gray-300 text-gray-900"
                 />
+                <p className="mt-1 text-sm text-gray-500">
+                  Password must contain at least 8 characters, including uppercase, lowercase, 
+                  numbers, and special characters.
+                </p>
               </div>
             </div>
 
