@@ -35,7 +35,6 @@ const SignUp = () => {
     e.preventDefault();
     setLoading(true);
 
-    // Validate password before submission
     const passwordErrors = validatePassword(password);
     if (passwordErrors.length > 0) {
       toast({
@@ -61,11 +60,16 @@ const SignUp = () => {
       if (error) throw error;
 
       if (data.user) {
-        toast({
-          title: "Success!",
-          description: "Account created successfully.",
-        });
-        navigate("/waitlist");
+        // Set session immediately after successful signup
+        const { data: sessionData } = await supabase.auth.getSession();
+        if (sessionData.session) {
+          toast({
+            title: "Success!",
+            description: "Account created successfully.",
+          });
+          console.log("Redirecting to waitlist...");
+          navigate("/waitlist", { replace: true });
+        }
       }
     } catch (error: any) {
       let errorMessage = error.message;
