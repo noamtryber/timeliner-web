@@ -27,16 +27,14 @@ export const FrustrationBackground = () => {
           this.size = p.random(4, 8);
           this.speedX = 0;
           this.speedY = 0;
-          this.color = p.random() > 0.5 ? '#9b87f5' : '#7E69AB';
+          this.color = p.random() > 0.5 ? '#D6BCFA' : '#7E69AB';
         }
         
         update(targetX: number, targetY: number) {
-          // Calculate direction to mouse
           const dx = targetX - this.x;
           const dy = targetY - this.y;
           const distance = p.sqrt(dx * dx + dy * dy);
           
-          // Update speed based on mouse position
           if (distance < 200) {
             this.speedX = p.lerp(this.speedX, dx * 0.01, 0.02);
             this.speedY = p.lerp(this.speedY, dy * 0.01, 0.02);
@@ -45,11 +43,9 @@ export const FrustrationBackground = () => {
             this.speedY = p.lerp(this.speedY, 0, 0.1);
           }
           
-          // Update position
           this.x += this.speedX;
           this.y += this.speedY;
           
-          // Wrap around edges
           if (this.x < 0) this.x = p.width;
           if (this.x > p.width) this.x = 0;
           if (this.y < 0) this.y = p.height;
@@ -68,7 +64,6 @@ export const FrustrationBackground = () => {
         canvas.position(0, 0);
         canvas.style('z-index', '-1');
         
-        // Initialize particles
         for (let i = 0; i < numParticles; i++) {
           particles.push(new Particle());
         }
@@ -76,13 +71,11 @@ export const FrustrationBackground = () => {
       
       p.draw = () => {
         p.clear();
-        p.background('rgba(26, 31, 44, 0.1)');
+        p.background('rgba(26, 31, 44, 0.2)');
         
-        // Smooth mouse movement
         mouseX = p.lerp(mouseX, p.mouseX, 0.1);
         mouseY = p.lerp(mouseY, p.mouseY, 0.1);
         
-        // Update and draw particles
         particles.forEach(particle => {
           particle.update(mouseX, mouseY);
           particle.draw();
@@ -98,5 +91,10 @@ export const FrustrationBackground = () => {
     return () => p5Instance.remove();
   }, []);
 
-  return <div ref={containerRef} className="absolute inset-0 -z-10" />;
+  return (
+    <div 
+      ref={containerRef} 
+      className="absolute inset-0 -z-10 bg-gradient-to-b from-accent/20 via-secondary/30 to-background"
+    />
+  );
 };
