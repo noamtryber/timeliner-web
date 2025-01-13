@@ -148,7 +148,7 @@ export const Testimonials = () => {
   const subtitle = language === 'he' ? 'מה הלקוחות שלנו מספרים?' : 'What others are saying';
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section id="testimonials" className="py-24 relative overflow-hidden">
       {/* Background gradient effects */}
       <div className="absolute -top-[40%] -right-[20%] w-[70%] h-[100%] bg-primary/20 blur-[120px] rounded-full" />
       <div className="absolute -bottom-[40%] -left-[20%] w-[70%] h-[100%] bg-accent/20 blur-[120px] rounded-full" />

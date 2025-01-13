@@ -31,7 +31,7 @@ export const Pricing = () => {
 
   if (isLoading) {
     return (
-      <section className="py-24 relative overflow-hidden">
+      <section id="pricing" className="py-24 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[...Array(4)].map((_, i) => (
@@ -44,7 +44,7 @@ export const Pricing = () => {
   }
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section id="pricing" className="py-24 relative overflow-hidden">
       {/* Background gradients with negative z-index */}
       <div className="absolute -z-10 -top-[40%] -left-[20%] w-[70%] h-[100%] bg-primary/20 blur-[120px] rounded-full animate-pulse" />
       <div className="absolute -z-10 -bottom-[40%] -right-[20%] w-[70%] h-[100%] bg-secondary/20 blur-[120px] rounded-full animate-pulse delay-1000" />
