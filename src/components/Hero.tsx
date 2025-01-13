@@ -100,7 +100,7 @@ export const Hero = () => {
             <Button 
               size="lg" 
               className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto w-full sm:w-auto"
-              onClick={() => navigate('/auth')}
+              onClick={() => navigate('/signup')}
             >
               {content?.get_started || 'Get Started'}
               <ArrowRight className={`${isRTL ? 'mr-2 rotate-180' : 'ml-2'} h-4 sm:h-5 w-4 sm:w-5`} />
