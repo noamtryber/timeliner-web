@@ -7,6 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { TimelineBackground } from "@/components/TimelineBackground";
 import { ArrowLeft } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const SignUp = () => {
   const [loading, setLoading] = useState(false);
@@ -17,6 +18,7 @@ const SignUp = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const isHebrew = language === 'he';
+  const isMobile = useIsMobile();
 
   const translations = {
     welcome: {
@@ -111,7 +113,6 @@ const SignUp = () => {
       if (error) throw error;
 
       if (data.user) {
-        // Set session immediately after successful signup
         const { data: sessionData } = await supabase.auth.getSession();
         if (sessionData.session) {
           toast({
@@ -132,7 +133,6 @@ const SignUp = () => {
             errorMessage = "Please choose a stronger password. This password is commonly used and easy to guess.";
           }
         } catch (e) {
-          // If JSON parsing fails, use the original error message
         }
       }
       
@@ -148,7 +148,7 @@ const SignUp = () => {
 
   return (
     <div className="flex min-h-screen">
-      <div className="w-[65%] bg-white p-8 flex items-center justify-center relative">
+      <div className={`${isMobile ? 'w-full' : 'w-[65%]'} bg-white p-4 md:p-8 flex items-center justify-center relative`}>
         <Button
           variant="ghost"
           size="icon"
@@ -157,23 +157,23 @@ const SignUp = () => {
         >
           <ArrowLeft className="h-6 w-6" />
         </Button>
-        <div className="max-w-md w-full space-y-8">
+        <div className="max-w-md w-full space-y-6 md:space-y-8">
           <div className="text-center">
             <img 
               src="/lovable-uploads/18ab741b-81db-4ae3-a1db-e2906b95b9fd.png"
               alt="Timeline Icon"
-              className="w-16 h-16 mx-auto mb-4"
+              className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-4"
             />
-            <h2 className="text-3xl font-bold text-gray-900">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
               {translations.welcome[isHebrew ? 'he' : 'en']}
             </h2>
-            <p className="mt-2 text-gray-600">
+            <p className="mt-2 text-sm md:text-base text-gray-600">
               {translations.subtitle[isHebrew ? 'he' : 'en']}
             </p>
           </div>
 
-          <form onSubmit={handleSignUp} className="mt-8 space-y-6">
-            <div className="space-y-4">
+          <form onSubmit={handleSignUp} className="mt-6 md:mt-8 space-y-4 md:space-y-6">
+            <div className="space-y-3 md:space-y-4">
               <div>
                 <Input
                   type="text"
@@ -203,13 +203,13 @@ const SignUp = () => {
                   required
                   className="bg-gray-50 border-gray-300 text-gray-900"
                 />
-                <p className="mt-1 text-sm text-gray-500">
+                <p className="mt-1 text-xs md:text-sm text-gray-500">
                   {translations.passwordRequirements[isHebrew ? 'he' : 'en']}
                 </p>
               </div>
             </div>
 
-            <div className="text-sm text-gray-600 text-center">
+            <div className="text-xs md:text-sm text-gray-600 text-center">
               {translations.terms[isHebrew ? 'he' : 'en']}{" "}
               <Link to="/terms" className="text-primary hover:underline">
                 {translations.termsLink[isHebrew ? 'he' : 'en']}
@@ -228,7 +228,7 @@ const SignUp = () => {
               {loading ? "Creating account..." : translations.getStarted[isHebrew ? 'he' : 'en']}
             </Button>
 
-            <div className="text-center text-sm text-gray-600">
+            <div className="text-center text-xs md:text-sm text-gray-600">
               Already have an account?{" "}
               <Link to="/login" className="text-primary hover:underline">
                 Log in
@@ -238,9 +238,11 @@ const SignUp = () => {
         </div>
       </div>
 
-      <div className="w-[35%] bg-background relative overflow-hidden">
-        <TimelineBackground />
-      </div>
+      {!isMobile && (
+        <div className="w-[35%] bg-background relative overflow-hidden">
+          <TimelineBackground />
+        </div>
+      )}
     </div>
   );
 };
