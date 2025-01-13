@@ -60,7 +60,7 @@ export const Navbar = () => {
       <button 
         key="features" 
         onClick={() => handleSectionClick('features')} 
-        className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+        className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium ml-8"
       >
         {language === 'he' ? 'פיצ\'רים' : (content?.features_link || 'Features')}
       </button>,
