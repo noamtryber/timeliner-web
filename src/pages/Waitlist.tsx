@@ -10,7 +10,7 @@ const Waitlist = () => {
 
   useEffect(() => {
     if (!session) {
-      navigate("/signup");  // Changed from "/auth" to "/signup"
+      navigate("/signup");
     }
   }, [session, navigate]);
 
