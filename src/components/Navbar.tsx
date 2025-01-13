@@ -17,8 +17,6 @@ export const Navbar = () => {
   const { isRTL, language } = useLanguage();
   const navigate = useNavigate();
 
-  console.log('Navbar translations:', content);
-
   if (error) {
     toast({
       variant: "destructive",
@@ -43,6 +41,11 @@ export const Navbar = () => {
   };
 
   const handleSectionClick = (sectionId: string) => {
+    if (sectionId === 'blog') {
+      navigate('/blog');
+      setIsOpen(false);
+      return;
+    }
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -122,7 +125,7 @@ export const Navbar = () => {
     <nav className="fixed w-full z-50 top-0 animate-fade-down">
       <div className="glass mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`flex items-center justify-between h-16 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''} gap-4`}>
+          <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
             <a href="/" className="flex-shrink-0">
               <img 
                 src="/lovable-uploads/1ad9d673-efdf-41ae-8a29-82d3e976a7ed.png" 

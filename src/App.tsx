@@ -6,6 +6,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import Index from "./pages/Index";
 import SignUp from "./pages/SignUp";
 import Waitlist from "./pages/Waitlist";
+import Blog from "./pages/Blog";
 import { supabase } from "@/integrations/supabase/client";
 import type { Session } from "@supabase/supabase-js";
 
@@ -53,6 +54,7 @@ function App() {
               <Route path="/" element={<Index />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/waitlist" element={<Waitlist />} />
+              <Route path="/blog" element={<Blog />} />
             </Routes>
             <Toaster />
           </AuthContext.Provider>
