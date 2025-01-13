@@ -52,13 +52,19 @@ const Community = () => {
                 <p className="text-white/80">
                   Connect with fellow creators, share your work, get feedback, and stay updated with the latest features and events.
                 </p>
-                <Button 
-                  size="lg"
-                  className="bg-[#5865F2] hover:bg-[#4752C4] text-white px-8 py-6 text-lg flex items-center gap-2 w-full md:w-auto"
+                <a 
+                  href="https://discord.gg/6SPyGYsM9S"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <MessageSquare className="h-5 w-5" />
-                  Join Our Discord
-                </Button>
+                  <Button 
+                    size="lg"
+                    className="bg-[#5865F2] hover:bg-[#4752C4] text-white px-8 py-6 text-lg flex items-center gap-2 w-full md:w-auto"
+                  >
+                    <MessageSquare className="h-5 w-5" />
+                    Join Our Discord
+                  </Button>
+                </a>
               </div>
             </div>
           </div>
