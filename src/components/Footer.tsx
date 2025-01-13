@@ -69,11 +69,11 @@ export const Footer = () => {
             </div>
 
             {/* Image side */}
-            <div className="hidden md:block flex-shrink-0 w-full md:w-1/3">
+            <div className="hidden md:flex flex-shrink-0 w-full md:w-2/5 items-center justify-center">
               <img 
-                src="/lovable-uploads/15b554aa-6de5-4e00-ac39-414e16de8f22.png"
-                alt="Footer illustration"
-                className="rounded-2xl w-full h-auto object-cover shadow-lg"
+                src="/lovable-uploads/70919f9e-4f05-4b85-9711-f9b0d7209c2e.png"
+                alt="Project management dashboard"
+                className="rounded-2xl w-full h-auto object-contain shadow-lg"
               />
             </div>
           </div>
