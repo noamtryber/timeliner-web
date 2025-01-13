@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ArrowLeft, Discord } from "lucide-react";
+import { ArrowLeft, MessageSquare } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Community = () => {
@@ -62,7 +62,7 @@ const Community = () => {
             size="lg"
             className="bg-[#5865F2] hover:bg-[#4752C4] text-white px-8 py-6 text-lg flex items-center gap-2"
           >
-            <Discord className="h-5 w-5" />
+            <MessageSquare className="h-5 w-5" />
             Join Our Discord
           </Button>
           <Button 
