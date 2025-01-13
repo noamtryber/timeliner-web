@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ArrowLeft, MessageSquare } from "lucide-react";
+import { ArrowLeft, MessageSquare, Play } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import Map from "@/components/community/Map";
 
 const Community = () => {
   const navigate = useNavigate();
@@ -35,8 +36,36 @@ const Community = () => {
           </p>
         </div>
 
+        {/* Discord Callout */}
+        <div className="mt-16 max-w-4xl mx-auto">
+          <div className="bg-[#5865F2]/10 backdrop-blur-lg rounded-2xl p-8 md:p-12 border border-[#5865F2]/20">
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="w-32 h-32 md:w-40 md:h-40 flex-shrink-0">
+                <img 
+                  src="/lovable-uploads/b1c9504e-da95-474e-ba33-779d5ce940e3.png"
+                  alt="Discord Logo"
+                  className="w-full h-full object-contain animate-pulse"
+                />
+              </div>
+              <div className="flex-1 space-y-4">
+                <h3 className="text-2xl md:text-3xl font-bold text-white">Join Our Discord Community</h3>
+                <p className="text-white/80">
+                  Connect with fellow creators, share your work, get feedback, and stay updated with the latest features and events.
+                </p>
+                <Button 
+                  size="lg"
+                  className="bg-[#5865F2] hover:bg-[#4752C4] text-white px-8 py-6 text-lg flex items-center gap-2 w-full md:w-auto"
+                >
+                  <MessageSquare className="h-5 w-5" />
+                  Join Our Discord
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Description */}
-        <div className="mt-12 max-w-4xl mx-auto prose prose-invert">
+        <div className="mt-16 max-w-4xl mx-auto prose prose-invert">
           <p className="text-lg text-white/80">
             Step into the heart of the Timeliner experience by joining our exclusive Discord community! Whether you're a freelance editor, agency professional, or content creator, this is your space to:
           </p>
@@ -56,22 +85,10 @@ const Community = () => {
           </ul>
         </div>
 
-        {/* CTA Buttons */}
-        <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button 
-            size="lg"
-            className="bg-[#5865F2] hover:bg-[#4752C4] text-white px-8 py-6 text-lg flex items-center gap-2"
-          >
-            <MessageSquare className="h-5 w-5" />
-            Join Our Discord
-          </Button>
-          <Button 
-            variant="secondary"
-            size="lg"
-            className="px-8 py-6 text-lg"
-          >
-            Explore Community Videos
-          </Button>
+        {/* Interactive Map */}
+        <div className="mt-24">
+          <h2 className="text-3xl font-bold text-center mb-8">Our Global Community</h2>
+          <Map />
         </div>
 
         {/* Community Videos */}
@@ -80,19 +97,22 @@ const Community = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Streamlining Video Editing Workflow",
-                author: "Sarah Creative",
-                thumbnail: "https://img.youtube.com/vi/cIaOwP8jcFw/maxresdefault.jpg"
+                title: "Advanced Video Editing Tips",
+                author: "EditPro",
+                thumbnail: "https://img.youtube.com/vi/kVoWSFbuACY/maxresdefault.jpg",
+                videoId: "kVoWSFbuACY"
               },
               {
-                title: "Advanced Timeline Management",
-                author: "EditPro Studios",
-                thumbnail: "https://img.youtube.com/vi/_WHgqxETirM/maxresdefault.jpg"
-              },
-              {
-                title: "Client Collaboration Made Easy",
+                title: "Mastering Timeline Management",
                 author: "VideoMaster",
-                thumbnail: "https://img.youtube.com/vi/327YDvqSINQ/maxresdefault.jpg"
+                thumbnail: "https://img.youtube.com/vi/VIAzT2ZYcHA/maxresdefault.jpg",
+                videoId: "VIAzT2ZYcHA"
+              },
+              {
+                title: "Professional Editing Workflow",
+                author: "CreativePro",
+                thumbnail: "https://img.youtube.com/vi/5Tcw1rNy_go/maxresdefault.jpg",
+                videoId: "5Tcw1rNy_go"
               }
             ].map((video, index) => (
               <div 
@@ -104,8 +124,9 @@ const Community = () => {
                   alt={video.title}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                  <h3 className="text-lg font-semibold">{video.title}</h3>
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center">
+                  <Play className="h-12 w-12 text-white mb-4" />
+                  <h3 className="text-lg font-semibold text-center px-4">{video.title}</h3>
                   <p className="text-sm text-white/70">by {video.author}</p>
                 </div>
                 <div className="absolute top-2 right-2 bg-primary px-2 py-1 rounded text-xs font-medium">
