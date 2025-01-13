@@ -129,14 +129,14 @@ export const Navbar = () => {
                 {content?.logout_button || 'Sign out'}
               </Button>
             ) : (
-              <>
-                <Button variant="ghost" className="w-full justify-start" onClick={handleAuthClick}>
+              <div className="space-y-2 px-3">
+                <Button variant="secondary" className="w-full text-center" onClick={handleAuthClick}>
                   {content?.login || 'Login'}
                 </Button>
                 <Button className="w-full bg-primary hover:bg-primary/90" onClick={handleAuthClick}>
                   {content?.sign_up || 'Sign Up'}
                 </Button>
-              </>
+              </div>
             )}
           </div>
         </div>
