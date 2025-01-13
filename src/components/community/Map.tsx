@@ -4,18 +4,20 @@ import 'leaflet/dist/leaflet.css';
 
 const Map = () => {
   const mapContainer = useRef<HTMLDivElement>(null);
-  const map = useRef<L.Map | null>(null);
+  const mapRef = useRef<L.Map | null>(null);
+  const styleRef = useRef<HTMLStyleElement | null>(null);
 
   useEffect(() => {
-    if (!mapContainer.current) return;
+    if (!mapContainer.current || mapRef.current) return;
 
     // Initialize map
-    map.current = L.map(mapContainer.current).setView([15, 30], 2);
+    const map = L.map(mapContainer.current).setView([15, 30], 2);
+    mapRef.current = map;
 
     // Add OpenStreetMap tiles
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
-    }).addTo(map.current);
+    }).addTo(map);
 
     // Add markers for community members
     const markers = [
@@ -36,7 +38,7 @@ const Map = () => {
     markers.forEach(marker => {
       L.marker([marker.coordinates[0], marker.coordinates[1]], { icon: customIcon })
         .bindPopup(`<h3 class="font-semibold">${marker.title}</h3>`)
-        .addTo(map.current!);
+        .addTo(map);
     });
 
     // Add dark mode styling
@@ -50,19 +52,32 @@ const Map = () => {
       }
     `;
     document.head.appendChild(style);
+    styleRef.current = style;
+
+    // Force a resize after initialization to ensure proper rendering
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 100);
 
     // Cleanup
     return () => {
-      map.current?.remove();
-      document.head.removeChild(style);
+      if (mapRef.current) {
+        mapRef.current.remove();
+        mapRef.current = null;
+      }
+      if (styleRef.current) {
+        styleRef.current.remove();
+        styleRef.current = null;
+      }
     };
   }, []);
 
   return (
-    <div className="relative w-full h-[500px] rounded-xl overflow-hidden">
-      <div ref={mapContainer} className="absolute inset-0" />
-      <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent to-background/10" />
-    </div>
+    <div 
+      ref={mapContainer} 
+      className="w-full h-[400px] rounded-xl overflow-hidden border border-white/10"
+      style={{ zIndex: 0 }}
+    />
   );
 };
 
