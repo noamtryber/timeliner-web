@@ -41,7 +41,7 @@ export const Footer = () => {
                     ? 'סוף לבלאגן. מערכת חכמה לניהול פרויקטים, תיקונים ותשלומים- הכל במקום אחד'
                     : 'Streamline your workflow with smarter video production tools.'}
                 </h2>
-                <div className={`flex flex-wrap gap-3 md:gap-4 ${isRTL ? 'justify-end' : ''}`}>
+                <div className={`flex flex-wrap gap-3 md:gap-4 ${isRTL ? 'mr-auto' : ''}`}>
                   {isRTL ? (
                     <>
                       <Button 
