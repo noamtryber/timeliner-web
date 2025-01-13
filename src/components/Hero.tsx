@@ -121,8 +121,10 @@ export const Hero = () => {
               className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto w-full sm:w-auto"
               onClick={() => navigate('/signup')}
             >
-              {content?.get_started || 'Get Started'}
-              <ArrowRight className={`${isRTL ? 'mr-2' : 'ml-2'} h-4 sm:h-5 w-4 sm:w-5`} />
+              <span className="flex items-center gap-2">
+                {content?.get_started || 'Get Started'}
+                <ArrowRight className="h-4 sm:h-5 w-4 sm:w-5" />
+              </span>
             </Button>
             
             {!isMobile && (
@@ -138,8 +140,8 @@ export const Hero = () => {
                   className="absolute inset-0.5 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 animate-shimmer rounded-md" 
                   style={{ backgroundSize: '200% 100%' }}
                 />
-                <div className={`relative z-10 flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
-                  <Play className={`${isRTL ? 'ml-2' : 'mr-2'} h-4 sm:h-5 w-4 sm:w-5`} />
+                <div className={`relative z-10 flex items-center gap-2`}>
+                  <Play className="h-4 sm:h-5 w-4 sm:w-5" />
                   <span>{content?.watch_demo || 'Watch Demo'}</span>
                 </div>
               </Button>
