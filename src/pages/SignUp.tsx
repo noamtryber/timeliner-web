@@ -48,7 +48,7 @@ const SignUp = () => {
     }
 
     try {
-      const { error } = await supabase.auth.signUp({
+      const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
@@ -60,16 +60,16 @@ const SignUp = () => {
 
       if (error) throw error;
 
-      toast({
-        title: "Success!",
-        description: "Please check your email to verify your account.",
-      });
-      
-      navigate("/waitlist");
+      if (data.user) {
+        toast({
+          title: "Success!",
+          description: "Account created successfully.",
+        });
+        navigate("/waitlist");
+      }
     } catch (error: any) {
       let errorMessage = error.message;
       
-      // Parse the error message if it's a weak password error
       if (error.error_type === "http_client_error" && error.body) {
         try {
           const bodyError = JSON.parse(error.body);
