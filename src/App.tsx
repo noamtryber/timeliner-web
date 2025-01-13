@@ -4,7 +4,6 @@ import { Toaster } from "@/components/ui/toaster";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { createContext, useContext } from "react";
 import Index from "./pages/Index";
-import Auth from "./pages/Auth";
 import Waitlist from "./pages/Waitlist";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -30,7 +29,6 @@ function App() {
           <AuthContext.Provider value={{ session: null, supabase }}>
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="/auth" element={<Auth />} />
               <Route path="/waitlist" element={<Waitlist />} />
             </Routes>
             <Toaster />
