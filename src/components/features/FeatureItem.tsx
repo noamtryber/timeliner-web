@@ -60,8 +60,8 @@ export const FeatureItem = ({
       
       <div className={`space-y-6 order-2 
         ${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
-        <div className="flex items-center space-x-4">
-          <div className="p-3 rounded-xl bg-primary/10 text-primary">
+        <div className="flex items-center space-x-4 rtl:space-x-reverse">
+          <div className={`p-3 rounded-xl bg-primary/10 text-primary ${isRTL ? 'ml-4' : ''}`}>
             <IconComponent className="w-6 h-6" />
           </div>
           <div>
@@ -78,7 +78,10 @@ export const FeatureItem = ({
           onClick={onLearnMore}
           className="bg-gradient-to-r from-primary via-accent to-primary shadow-lg hover:shadow-primary/20 transition-all duration-300"
         >
-          <PlayCircle className="w-5 h-5 mr-2" /> {learnMoreText}
+          <span className="flex items-center gap-2">
+            <PlayCircle className="w-5 h-5" />
+            {learnMoreText}
+          </span>
         </Button>
       </div>
     </div>
