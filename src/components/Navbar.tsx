@@ -46,19 +46,12 @@ export const Navbar = () => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      setIsOpen(false); // Close mobile menu if open
+      setIsOpen(false);
     }
   };
 
   const renderNavItems = () => {
-    const items = [
-      <Button key="signup" className="bg-primary hover:bg-primary/90" onClick={handleAuthClick}>
-        {content?.sign_up || 'Sign Up'}
-      </Button>,
-      <Button key="login" variant="ghost" className="text-white/70" onClick={handleAuthClick}>
-        {content?.login || 'Login'}
-      </Button>,
-      <LanguageSwitcher key="lang" />,
+    const leftItems = [
       <button 
         key="features" 
         onClick={() => handleSectionClick('features')} 
@@ -89,8 +82,18 @@ export const Navbar = () => {
       </button>
     ];
 
+    const rightItems = [
+      <LanguageSwitcher key="lang" />,
+      <Button key="login" variant="ghost" className="text-white/70" onClick={handleAuthClick}>
+        {content?.login || 'Login'}
+      </Button>,
+      <Button key="signup" className="bg-primary hover:bg-primary/90" onClick={handleAuthClick}>
+        {content?.sign_up || 'Sign Up'}
+      </Button>
+    ];
+
     if (session) {
-      items[0] = (
+      rightItems.splice(1, 2, 
         <Button 
           key="logout"
           variant="ghost" 
@@ -101,19 +104,16 @@ export const Navbar = () => {
           {content?.logout_button || 'Sign out'}
         </Button>
       );
-      items.splice(1, 1); // Remove login button
     }
 
-    // For RTL (Hebrew), reverse the array to show items from right to left
-    // For LTR (English etc), items will be shown from left to right in reverse order
-    return isRTL ? items.reverse() : items.reverse();
+    return isRTL ? [...rightItems, ...leftItems].reverse() : [...leftItems, ...rightItems];
   };
 
   return (
     <nav className="fixed w-full z-50 top-0 animate-fade-down">
       <div className="glass mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`flex items-center justify-between h-16 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <div className="flex items-center">
+          <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''} gap-4`}>
             <a href="/" className="flex-shrink-0">
               <img 
                 src="/lovable-uploads/1ad9d673-efdf-41ae-8a29-82d3e976a7ed.png" 
@@ -121,12 +121,13 @@ export const Navbar = () => {
                 className="h-7"
               />
             </a>
+            <div className="hidden md:flex items-center space-x-4">
+              {isRTL ? renderNavItems().slice(3) : leftItems}
+            </div>
           </div>
           
-          <div className="hidden md:block">
-            <div className={`ml-10 flex items-center space-x-4 ${isRTL ? 'flex-row-reverse space-x-reverse' : ''}`}>
-              {renderNavItems()}
-            </div>
+          <div className="hidden md:flex items-center space-x-4">
+            {isRTL ? renderNavItems().slice(0, 3) : rightItems}
           </div>
           
           <div className="md:hidden">
