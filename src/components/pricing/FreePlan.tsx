@@ -1,37 +1,56 @@
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Zap } from "lucide-react";
 import { PlanFeature } from "./PlanFeature";
 import { PlanIcon } from "./PlanIcon";
-import type { PricingContent } from "@/hooks/usePricingContent";
+import { PricingContent } from "@/hooks/usePricingContent";
+import { useNavigate } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface FreePlanProps {
   content?: PricingContent;
-  onGetStarted: () => void;
 }
 
-export const FreePlan = ({ content, onGetStarted }: FreePlanProps) => {
+export const FreePlan = ({ content }: FreePlanProps) => {
+  const navigate = useNavigate();
+  const { language } = useLanguage();
+  const isHebrew = language === 'he';
+  
   if (!content) return null;
 
+  const hebrewFeatures = [
+    'חשבון אדמין אחד',
+    '2 פרויקטים פעילים',
+    '2GB אחסון',
+    'גישה ללקוחות – אורח אחד לכל פרויקט',
+    'תבניות פרויקטים בסיסיות',
+    'תהליך עבודה בסיסי (עריכה, תיקון, אישור)',
+    'תמיכה בקהילה'
+  ];
+
   return (
-    <div className="glass p-6 rounded-xl">
-      <PlanIcon type="free" />
-      <h3 className="text-xl font-semibold mt-4">{content.title}</h3>
-      <p className="text-white/70 mt-2">{content.subtitle}</p>
-      <div className="mt-4">
-        <span className="text-3xl font-bold">$0</span>
-        <span className="text-white/70">/month</span>
+    <Card className={`glass p-6 flex flex-col animate-fade-up delay-300 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
+      <PlanIcon Icon={Zap} color="accent" />
+      <h3 className="text-2xl font-bold mb-2">{isHebrew ? 'חינמי' : content.title}</h3>
+      <p className="text-white/70 mb-6">{isHebrew ? 'למתחילים או לפרויקטים קטנים' : content.subtitle}</p>
+      <div className="text-3xl font-bold mb-8">
+        {isHebrew ? '$0 / לחודש' : `$${content.price}`}
+        {!isHebrew && <span className="text-sm font-normal text-white/70">/month</span>}
       </div>
-      <Button 
-        className="w-full mt-6" 
-        variant="outline"
-        onClick={onGetStarted}
-      >
-        {content.button_text || 'Get Started Free'}
-      </Button>
-      <div className="mt-6 space-y-4">
-        {content.features?.map((feature, index) => (
-          <PlanFeature key={index} feature={feature} />
+      
+      <div className="space-y-4 mb-8 flex-grow">
+        <h4 className="font-semibold">{isHebrew ? 'פיצ\'רים עיקריים:' : 'Core Features:'}</h4>
+        {(isHebrew ? hebrewFeatures : content.features).map((feature, index) => (
+          <PlanFeature key={index} text={feature} isRTL={isHebrew} />
         ))}
       </div>
-    </div>
+      
+      <Button 
+        className="w-full bg-gradient-to-br from-accent/80 to-accent hover:opacity-90 transition-all duration-300"
+        onClick={() => navigate('/auth')}
+      >
+        {isHebrew ? 'התחילו היום בחינם' : content.button_text}
+      </Button>
+    </Card>
   );
 };
