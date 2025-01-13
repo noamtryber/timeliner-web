@@ -8,6 +8,7 @@ import { FeatureDialog } from "./features/FeatureDialog";
 import { TimelineBackground } from "./TimelineBackground";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export const Hero = () => {
   const { data: content, error: contentError } = usePageContent('hero', 'main');
@@ -17,6 +18,7 @@ export const Hero = () => {
   const [showDemo, setShowDemo] = useState(false);
   const navigate = useNavigate();
   const { isRTL } = useLanguage();
+  const isMobile = useIsMobile();
 
   // Animation states for statistics
   const [animatedStats, setAnimatedStats] = useState({
@@ -71,8 +73,6 @@ export const Hero = () => {
     }, interval);
   };
 
-  console.log('Hero translations:', { content });
-
   if (contentError || mediaError || statsError) {
     toast({
       variant: "destructive",
@@ -89,9 +89,21 @@ export const Hero = () => {
       
       <div className={`container mx-auto px-4 relative animate-fade-up ${isRTL ? 'rtl' : ''}`}>
         <div className="text-center max-w-4xl mx-auto">
+          {isMobile && (
+            <div className="w-full aspect-video mb-8 rounded-lg overflow-hidden">
+              <iframe
+                src="https://player.vimeo.com/video/1046016144"
+                className="w-full h-full"
+                allow="autoplay; fullscreen"
+                allowFullScreen
+              />
+            </div>
+          )}
+          
           <span className="subtitle-gradient mb-4 block tracking-wide text-sm sm:text-base">
             {content?.video_editors || 'VIDEO EDITORS & AGENCIES:'}
           </span>
+          
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 gradient-text tracking-tight leading-tight px-2">
             {content?.turn_chaos_clarity || 'Turn Chaos into Clarity with Smart Video Management'}
           </h1>
@@ -105,23 +117,26 @@ export const Hero = () => {
               {content?.get_started || 'Get Started'}
               <ArrowRight className={`${isRTL ? 'mr-2 rotate-180' : 'ml-2'} h-4 sm:h-5 w-4 sm:w-5`} />
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-white/10 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto w-full sm:w-auto hover:bg-white/5 relative group overflow-hidden"
-              onClick={() => setShowDemo(true)}
-            >
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-primary opacity-75 blur-lg animate-pulse" />
-              <div className="absolute inset-0.5 bg-card rounded-md" />
-              <div 
-                className="absolute inset-0.5 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 animate-shimmer rounded-md" 
-                style={{ backgroundSize: '200% 100%' }}
-              />
-              <div className={`relative z-10 flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
-                <Play className={`${isRTL ? 'ml-2' : 'mr-2'} h-4 sm:h-5 w-4 sm:w-5`} />
-                <span>{content?.watch_demo || 'Watch Demo'}</span>
-              </div>
-            </Button>
+            
+            {!isMobile && (
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-white/10 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto w-full sm:w-auto hover:bg-white/5 relative group overflow-hidden"
+                onClick={() => setShowDemo(true)}
+              >
+                <div className="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-primary opacity-75 blur-lg animate-pulse" />
+                <div className="absolute inset-0.5 bg-card rounded-md" />
+                <div 
+                  className="absolute inset-0.5 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 animate-shimmer rounded-md" 
+                  style={{ backgroundSize: '200% 100%' }}
+                />
+                <div className={`relative z-10 flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                  <Play className={`${isRTL ? 'ml-2' : 'mr-2'} h-4 sm:h-5 w-4 sm:w-5`} />
+                  <span>{content?.watch_demo || 'Watch Demo'}</span>
+                </div>
+              </Button>
+            )}
           </div>
 
           <div 
