@@ -8,18 +8,6 @@ export const Footer = () => {
     <footer className="w-full mt-20">
       <div className="container mx-auto px-4 py-12">
         <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg relative overflow-hidden">
-          {/* Background Image - Hidden on mobile, visible on md and up */}
-          <div 
-            className={`absolute top-0 ${isRTL ? 'left-0' : 'right-0'} h-full w-full md:w-1/2 opacity-70 hidden md:block`}
-            style={{
-              backgroundImage: "url('/lovable-uploads/11468e59-89a9-40e1-93a2-0c4c25262c79.png')",
-              backgroundSize: 'contain',
-              backgroundPosition: `${isRTL ? 'left' : 'right'} center`,
-              backgroundRepeat: 'no-repeat',
-              mixBlendMode: 'multiply'
-            }}
-          />
-          
           {/* Content */}
           <div className={`flex flex-col-reverse md:flex-row items-center gap-8 ${isRTL ? 'md:flex-row-reverse' : ''} relative z-10`}>
             {/* Content side */}
