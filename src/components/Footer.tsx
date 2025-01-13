@@ -33,7 +33,7 @@ export const Footer = () => {
                     ? 'ייעול תהליך העבודה שלך עם כלי הפקת וידאו חכמים יותר.'
                     : 'Streamline your workflow with smarter video production tools.'}
                 </h2>
-                <div className={`flex flex-wrap gap-3 md:gap-4 ${isRTL ? 'justify-start flex-row-reverse' : ''}`}>
+                <div className={`flex flex-wrap gap-3 md:gap-4 ${isRTL ? 'justify-end w-full' : ''}`}>
                   <Button 
                     variant="outline" 
                     className="border-primary/50 hover:bg-primary/10 text-base md:text-lg py-4 md:py-6 px-6 md:px-8 rounded-xl h-auto w-full md:w-auto"
@@ -50,7 +50,7 @@ export const Footer = () => {
 
               {/* Links */}
               <div className="space-y-4 md:space-y-6">
-                <div className={`flex flex-wrap items-center gap-2 md:gap-4 text-sm md:text-base text-black/70 ${isRTL ? 'justify-start flex-row-reverse' : ''}`}>
+                <div className={`flex flex-wrap items-center gap-2 md:gap-4 text-sm md:text-base text-black/70 ${isRTL ? 'justify-end w-full' : ''}`}>
                   <span>support@timeliner.com</span>
                   <span className="hidden md:inline">|</span>
                   <a href="#" className="hover:text-primary">X</a>
@@ -60,7 +60,7 @@ export const Footer = () => {
                   <a href="#" className="hover:text-primary">LinkedIn</a>
                 </div>
 
-                <div className={`flex flex-wrap items-center gap-2 md:gap-4 text-sm md:text-base text-black/70 ${isRTL ? 'justify-start flex-row-reverse' : ''}`}>
+                <div className={`flex flex-wrap items-center gap-2 md:gap-4 text-sm md:text-base text-black/70 ${isRTL ? 'justify-end w-full' : ''}`}>
                   <a href="#" className="hover:text-primary">
                     {isRTL ? 'מדיניות פרטיות' : 'Privacy Policy'}
                   </a>
@@ -70,7 +70,7 @@ export const Footer = () => {
                   </a>
                 </div>
 
-                <div className={`flex flex-wrap items-center gap-2 text-sm md:text-base text-black/70 ${isRTL ? 'justify-start flex-row-reverse' : ''}`}>
+                <div className={`flex flex-wrap items-center gap-2 text-sm md:text-base text-black/70 ${isRTL ? 'justify-end w-full' : ''}`}>
                   <span>© 2025 Timeliner Inc. All rights reserved.</span>
                   <span className="hidden md:inline">|</span>
                   <span>
