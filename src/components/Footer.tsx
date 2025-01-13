@@ -1,6 +1,5 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "./ui/button";
-import { FooterCube } from "./footer/FooterCube";
 
 export const Footer = () => {
   const { isRTL } = useLanguage();
@@ -8,8 +7,21 @@ export const Footer = () => {
   return (
     <footer className="w-full mt-20">
       <div className="container mx-auto px-4 py-12">
-        <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
-          <div className={`flex flex-col-reverse md:flex-row items-center gap-8 ${isRTL ? 'md:flex-row-reverse' : ''}`}>
+        <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg relative overflow-hidden">
+          {/* Background Image */}
+          <div 
+            className={`absolute top-0 ${isRTL ? 'right-0' : 'left-0'} h-full w-full md:w-1/2 opacity-10`}
+            style={{
+              backgroundImage: "url('/lovable-uploads/11084fc2-12b6-4d69-a65f-93794323379d.png')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              mixBlendMode: 'multiply'
+            }}
+          />
+          
+          {/* Content */}
+          <div className={`flex flex-col-reverse md:flex-row items-center gap-8 ${isRTL ? 'md:flex-row-reverse' : ''} relative z-10`}>
             {/* Content side */}
             <div className={`flex-1 space-y-8 ${isRTL ? 'text-right' : 'text-left'}`}>
               <div className="space-y-4">
@@ -68,10 +80,8 @@ export const Footer = () => {
               </div>
             </div>
 
-            {/* 3D Cube side */}
-            <div className="flex-shrink-0">
-              <FooterCube />
-            </div>
+            {/* Spacer div to maintain layout */}
+            <div className="flex-shrink-0 w-full md:w-1/3" />
           </div>
         </div>
       </div>
