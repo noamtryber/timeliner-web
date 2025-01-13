@@ -6,6 +6,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { TimelineBackground } from "@/components/TimelineBackground";
 import { ArrowLeft } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const SignUp = () => {
   const [loading, setLoading] = useState(false);
@@ -14,6 +15,55 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const { toast } = useToast();
   const navigate = useNavigate();
+  const { language } = useLanguage();
+  const isHebrew = language === 'he';
+
+  const translations = {
+    welcome: {
+      en: "Welcome to timeliner.io",
+      he: "ברוכים הבאים ל-timeliner.io"
+    },
+    subtitle: {
+      en: "Get started - it's free. No credit card needed.",
+      he: "מוזמנים להתחיל עכשיו - זה בחינם. אין צורך בכרטיס אשראי."
+    },
+    fullName: {
+      en: "Full name",
+      he: "שם מלא"
+    },
+    email: {
+      en: "Your best email",
+      he: "האימייל הטוב ביותר שלך"
+    },
+    password: {
+      en: "Create a password",
+      he: "צרו סיסמה"
+    },
+    passwordRequirements: {
+      en: "Password must contain at least 8 characters, including uppercase, lowercase, numbers, and special characters.",
+      he: "הסיסמה חייבת להיות באנגלית ולכלול לפחות 8 תווים, כולל אותיות גדולות, אותיות קטנות, מספרים ותווים מיוחדים."
+    },
+    terms: {
+      en: "By proceeding, you agree to the",
+      he: "יחד עם ההרשמה, אתם מסכימים"
+    },
+    getStarted: {
+      en: "Get Started",
+      he: "התחילו עכשיו"
+    },
+    termsLink: {
+      en: "Terms of Service",
+      he: "לתנאי השירות"
+    },
+    and: {
+      en: "and",
+      he: "ול"
+    },
+    privacyLink: {
+      en: "Privacy Policy",
+      he: "מדיניות הפרטיות"
+    }
+  };
 
   const validatePassword = (password: string) => {
     const minLength = 8;
@@ -98,7 +148,6 @@ const SignUp = () => {
 
   return (
     <div className="flex min-h-screen">
-      {/* Left side - Sign up form */}
       <div className="w-[65%] bg-white p-8 flex items-center justify-center relative">
         <Button
           variant="ghost"
@@ -116,10 +165,10 @@ const SignUp = () => {
               className="w-16 h-16 mx-auto mb-4"
             />
             <h2 className="text-3xl font-bold text-gray-900">
-              Welcome to timeliner.io
+              {translations.welcome[isHebrew ? 'he' : 'en']}
             </h2>
             <p className="mt-2 text-gray-600">
-              Get started - it's free. No credit card needed.
+              {translations.subtitle[isHebrew ? 'he' : 'en']}
             </p>
           </div>
 
@@ -128,7 +177,7 @@ const SignUp = () => {
               <div>
                 <Input
                   type="text"
-                  placeholder="Full name"
+                  placeholder={translations.fullName[isHebrew ? 'he' : 'en']}
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   required
@@ -138,7 +187,7 @@ const SignUp = () => {
               <div>
                 <Input
                   type="email"
-                  placeholder="Your best email"
+                  placeholder={translations.email[isHebrew ? 'he' : 'en']}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -148,27 +197,26 @@ const SignUp = () => {
               <div>
                 <Input
                   type="password"
-                  placeholder="Create a password"
+                  placeholder={translations.password[isHebrew ? 'he' : 'en']}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   className="bg-gray-50 border-gray-300 text-gray-900"
                 />
                 <p className="mt-1 text-sm text-gray-500">
-                  Password must contain at least 8 characters, including uppercase, lowercase, 
-                  numbers, and special characters.
+                  {translations.passwordRequirements[isHebrew ? 'he' : 'en']}
                 </p>
               </div>
             </div>
 
             <div className="text-sm text-gray-600 text-center">
-              By proceeding, you agree to the{" "}
+              {translations.terms[isHebrew ? 'he' : 'en']}{" "}
               <Link to="/terms" className="text-primary hover:underline">
-                Terms of Service
+                {translations.termsLink[isHebrew ? 'he' : 'en']}
               </Link>{" "}
-              and{" "}
+              {translations.and[isHebrew ? 'he' : 'en']}{" "}
               <Link to="/privacy" className="text-primary hover:underline">
-                Privacy Policy
+                {translations.privacyLink[isHebrew ? 'he' : 'en']}
               </Link>
             </div>
 
@@ -177,7 +225,7 @@ const SignUp = () => {
               className="w-full"
               disabled={loading}
             >
-              {loading ? "Creating account..." : "Get Started"}
+              {loading ? "Creating account..." : translations.getStarted[isHebrew ? 'he' : 'en']}
             </Button>
 
             <div className="text-center text-sm text-gray-600">
@@ -190,7 +238,6 @@ const SignUp = () => {
         </div>
       </div>
 
-      {/* Right side - Timeline animation */}
       <div className="w-[35%] bg-background relative overflow-hidden">
         <TimelineBackground />
       </div>
