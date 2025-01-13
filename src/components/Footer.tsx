@@ -10,7 +10,7 @@ export const Footer = () => {
         <div className="bg-gradient-to-br from-[#F1F1F1] to-[#e6e9f0] rounded-2xl p-6 md:p-12 shadow-lg relative overflow-hidden">
           {/* Background Image - Hidden on mobile */}
           <div 
-            className="absolute top-0 right-0 h-full hidden md:block w-1/2 opacity-70"
+            className="absolute top-0 right-0 h-full hidden md:block w-1/2 opacity-90"
             style={{
               backgroundImage: "url('/lovable-uploads/15b554aa-6de5-4e00-ac39-414e16de8f22.png')",
               backgroundSize: 'cover',
