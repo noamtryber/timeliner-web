@@ -122,7 +122,7 @@ export const Hero = () => {
               onClick={() => navigate('/signup')}
             >
               {content?.get_started || 'Get Started'}
-              <ArrowRight className={`${isRTL ? 'mr-2 rotate-180' : 'ml-2'} h-4 sm:h-5 w-4 sm:w-5`} />
+              <ArrowRight className={`${isRTL ? 'mr-2' : 'ml-2'} h-4 sm:h-5 w-4 sm:w-5`} />
             </Button>
             
             {!isMobile && (
