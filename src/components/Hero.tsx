@@ -124,18 +124,21 @@ export const Hero = () => {
             </Button>
           </div>
 
-          <div ref={statsRef} className={`grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-16 ${isRTL ? 'rtl' : ''}`}>
-            <div className="glass p-4 rounded-lg">
-              <div className="text-2xl sm:text-3xl font-bold gradient-text">{animatedStats.revisions.toFixed(1)}%</div>
-              <div className="text-white/70 text-sm sm:text-base">{content?.faster_revisions || 'Faster Revision Rounds'}</div>
+          <div 
+            ref={statsRef} 
+            className={`flex flex-row gap-2 mt-12 sm:mt-16 px-2 ${isRTL ? 'rtl' : ''}`}
+          >
+            <div className="glass p-2 sm:p-4 rounded-lg flex-1">
+              <div className="text-lg sm:text-3xl font-bold gradient-text">{animatedStats.revisions.toFixed(1)}%</div>
+              <div className="text-xs sm:text-base text-white/70">{content?.faster_revisions || 'Faster Revision Rounds'}</div>
             </div>
-            <div className="glass p-4 rounded-lg">
-              <div className="text-2xl sm:text-3xl font-bold gradient-text">{animatedStats.income.toFixed(1)}%</div>
-              <div className="text-white/70 text-sm sm:text-base">{content?.increase_income || 'Increase in Income'}</div>
+            <div className="glass p-2 sm:p-4 rounded-lg flex-1">
+              <div className="text-lg sm:text-3xl font-bold gradient-text">{animatedStats.income.toFixed(1)}%</div>
+              <div className="text-xs sm:text-base text-white/70">{content?.increase_income || 'Increase in Income'}</div>
             </div>
-            <div className="glass p-4 rounded-lg">
-              <div className="text-2xl sm:text-3xl font-bold gradient-text">{animatedStats.retention.toFixed(1)}%</div>
-              <div className="text-white/70 text-sm sm:text-base">{content?.client_retention || 'Client Retention in Retainers'}</div>
+            <div className="glass p-2 sm:p-4 rounded-lg flex-1">
+              <div className="text-lg sm:text-3xl font-bold gradient-text">{animatedStats.retention.toFixed(1)}%</div>
+              <div className="text-xs sm:text-base text-white/70">{content?.client_retention || 'Client Retention in Retainers'}</div>
             </div>
           </div>
         </div>
