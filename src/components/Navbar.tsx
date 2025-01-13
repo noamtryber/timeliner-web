@@ -7,7 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/App";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,6 +16,8 @@ export const Navbar = () => {
   const { session } = useAuth();
   const { isRTL, language } = useLanguage();
   const navigate = useNavigate();
+  const location = useLocation();
+  const isBlogPage = location.pathname === '/blog';
 
   if (error) {
     toast({
@@ -54,7 +56,7 @@ export const Navbar = () => {
   };
 
   const renderNavItems = () => {
-    const leftItems = [
+    const leftItems = !isBlogPage ? [
       <button 
         key="features" 
         onClick={() => handleSectionClick('features')} 
@@ -90,17 +92,17 @@ export const Navbar = () => {
       >
         {content?.community_link || 'Community'}
       </button>
-    ];
+    ] : [];
 
     const rightItems = [
-      <LanguageSwitcher key="lang" />,
+      !isBlogPage && <LanguageSwitcher key="lang" />,
       <Button key="login" variant="ghost" className="text-white/70" onClick={handleAuthClick}>
         {content?.login || 'Login'}
       </Button>,
       <Button key="signup" className="bg-primary hover:bg-primary/90" onClick={handleAuthClick}>
         {content?.sign_up || 'Sign Up'}
       </Button>
-    ];
+    ].filter(Boolean);
 
     if (session) {
       rightItems.splice(1, 2, 
@@ -153,39 +155,43 @@ export const Navbar = () => {
       {isOpen && (
         <div className="glass md:hidden">
           <div className={`px-2 pt-2 pb-3 space-y-1 sm:px-3 ${isRTL ? 'text-right' : 'text-left'}`}>
-            <button 
-              onClick={() => handleSectionClick('features')} 
-              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
-            >
-              {language === 'he' ? 'פיצ\'רים' : (content?.features_link || 'Features')}
-            </button>
-            <button 
-              onClick={() => handleSectionClick('testimonials')} 
-              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
-            >
-              {content?.testimonials_link || 'Testimonials'}
-            </button>
-            <button 
-              onClick={() => handleSectionClick('pricing')} 
-              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
-            >
-              {content?.pricing_link || 'Pricing'}
-            </button>
-            <button 
-              onClick={() => handleSectionClick('blog')} 
-              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
-            >
-              {content?.blog_link || 'Blog'}
-            </button>
-            <button 
-              onClick={() => handleSectionClick('community')} 
-              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
-            >
-              {content?.community_link || 'Community'}
-            </button>
-            <div className="px-3 py-2">
-              <LanguageSwitcher />
-            </div>
+            {!isBlogPage && (
+              <>
+                <button 
+                  onClick={() => handleSectionClick('features')} 
+                  className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+                >
+                  {language === 'he' ? 'פיצ\'רים' : (content?.features_link || 'Features')}
+                </button>
+                <button 
+                  onClick={() => handleSectionClick('testimonials')} 
+                  className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+                >
+                  {content?.testimonials_link || 'Testimonials'}
+                </button>
+                <button 
+                  onClick={() => handleSectionClick('pricing')} 
+                  className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+                >
+                  {content?.pricing_link || 'Pricing'}
+                </button>
+                <button 
+                  onClick={() => handleSectionClick('blog')} 
+                  className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+                >
+                  {content?.blog_link || 'Blog'}
+                </button>
+                <button 
+                  onClick={() => handleSectionClick('community')} 
+                  className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+                >
+                  {content?.community_link || 'Community'}
+                </button>
+                <div className="px-3 py-2">
+                  <LanguageSwitcher />
+                </div>
+              </>
+            )}
             {session ? (
               <Button 
                 variant="ghost" 
