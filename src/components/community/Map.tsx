@@ -15,13 +15,13 @@ const Map = () => {
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/dark-v11',
       zoom: 1.5,
-      center: [30, 15],
+      center: [30, 15] as [number, number],
       projection: 'globe',
       pitch: 45,
     });
 
     // Add markers for community members
-    const markers = [
+    const markers: Array<{ coordinates: [number, number]; title: string }> = [
       { coordinates: [-74, 40.7], title: "New York" },
       { coordinates: [-0.1276, 51.5072], title: "London" },
       { coordinates: [139.6917, 35.6895], title: "Tokyo" },
