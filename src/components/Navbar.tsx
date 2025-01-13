@@ -81,7 +81,7 @@ export const Navbar = () => {
       items.splice(1, 1); // Remove login button
     }
 
-    return isRTL ? items : items.reverse();
+    return isRTL ? items.reverse() : items;
   };
 
   return (
