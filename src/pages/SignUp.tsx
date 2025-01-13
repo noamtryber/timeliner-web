@@ -54,6 +54,11 @@ const SignUp = () => {
       <div className="w-[65%] bg-white p-8 flex items-center justify-center">
         <div className="max-w-md w-full space-y-8">
           <div className="text-center">
+            <img 
+              src="/lovable-uploads/18ab741b-81db-4ae3-a1db-e2906b95b9fd.png"
+              alt="Timeline Icon"
+              className="w-16 h-16 mx-auto mb-4"
+            />
             <h2 className="text-3xl font-bold text-gray-900">
               Welcome to timeliner.io
             </h2>
