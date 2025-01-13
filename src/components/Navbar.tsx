@@ -106,8 +106,10 @@ export const Navbar = () => {
       );
     }
 
-    return isRTL ? [...rightItems, ...leftItems].reverse() : [...leftItems, ...rightItems];
+    return { leftItems, rightItems };
   };
+
+  const { leftItems, rightItems } = renderNavItems();
 
   return (
     <nav className="fixed w-full z-50 top-0 animate-fade-down">
@@ -122,12 +124,12 @@ export const Navbar = () => {
               />
             </a>
             <div className="hidden md:flex items-center space-x-4">
-              {isRTL ? renderNavItems().slice(3) : leftItems}
+              {isRTL ? [...leftItems].reverse() : leftItems}
             </div>
           </div>
           
           <div className="hidden md:flex items-center space-x-4">
-            {isRTL ? renderNavItems().slice(0, 3) : rightItems}
+            {isRTL ? [...rightItems].reverse() : rightItems}
           </div>
           
           <div className="md:hidden">
