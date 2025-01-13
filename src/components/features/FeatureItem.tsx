@@ -61,7 +61,7 @@ export const FeatureItem = ({
       <div className={`space-y-6 order-2 
         ${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
         <div className="flex items-center space-x-4 rtl:space-x-reverse">
-          <div className={`p-3 rounded-xl bg-primary/10 text-primary ${isRTL ? 'ml-4' : ''}`}>
+          <div className={`p-3 rounded-xl bg-primary/10 text-primary ${isRTL ? 'ml-2' : ''}`}>
             <IconComponent className="w-6 h-6" />
           </div>
           <div>
