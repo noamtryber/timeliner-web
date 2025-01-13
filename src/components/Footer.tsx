@@ -26,6 +26,10 @@ export const Footer = () => {
     };
   }, []);
 
+  const handleCommunityClick = () => {
+    navigate('/community');
+  };
+
   return (
     <footer className="w-full mt-20">
       <div className="container mx-auto px-4 py-8 md:py-12">
@@ -51,7 +55,8 @@ export const Footer = () => {
                         התחילו בחינם
                       </Button>
                       <Button 
-                        variant="outline" 
+                        variant="outline"
+                        onClick={handleCommunityClick}
                         className="border-primary/50 hover:bg-primary/10 text-base md:text-lg py-4 md:py-6 px-6 md:px-8 rounded-xl h-auto w-full md:w-auto"
                       >
                         הצטרפו לקהילה
@@ -61,7 +66,7 @@ export const Footer = () => {
                     <>
                       <Button 
                         variant="outline"
-                        onClick={() => navigate('/community')}
+                        onClick={handleCommunityClick}
                         className="border-primary/50 hover:bg-primary/10 text-base md:text-lg py-4 md:py-6 px-6 md:px-8 rounded-xl h-auto w-full md:w-auto"
                       >
                         Join the community
