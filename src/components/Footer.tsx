@@ -8,6 +8,18 @@ export const Footer = () => {
     <footer className="w-full mt-20">
       <div className="container mx-auto px-4 py-12">
         <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg relative overflow-hidden">
+          {/* Background Image */}
+          <div 
+            className={`absolute top-0 ${isRTL ? 'left-0' : 'right-0'} h-full w-full md:w-1/2 opacity-70`}
+            style={{
+              backgroundImage: "url('/lovable-uploads/11468e59-89a9-40e1-93a2-0c4c25262c79.png')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              mixBlendMode: 'multiply'
+            }}
+          />
+          
           {/* Content */}
           <div className={`flex flex-col-reverse md:flex-row items-center gap-8 ${isRTL ? 'md:flex-row-reverse' : ''} relative z-10`}>
             {/* Content side */}
@@ -38,7 +50,7 @@ export const Footer = () => {
 
               {/* Links */}
               <div className="space-y-6">
-                <div className={`flex flex-wrap items-center gap-4 text-base text-black/70 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                <div className={`flex items-center gap-4 text-base text-black/70 ${isRTL ? 'flex-row-reverse' : ''}`}>
                   <span>support@timeliner.com</span>
                   <span>|</span>
                   <a href="#" className="hover:text-primary">X</a>
@@ -48,7 +60,7 @@ export const Footer = () => {
                   <a href="#" className="hover:text-primary">LinkedIn</a>
                 </div>
 
-                <div className={`flex flex-wrap items-center gap-4 text-base text-black/70 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                <div className={`flex items-center gap-4 text-base text-black/70 ${isRTL ? 'flex-row-reverse' : ''}`}>
                   <a href="#" className="hover:text-primary">
                     {isRTL ? 'מדיניות פרטיות' : 'Privacy Policy'}
                   </a>
@@ -58,7 +70,7 @@ export const Footer = () => {
                   </a>
                 </div>
 
-                <div className={`flex flex-wrap items-center gap-2 text-base text-black/70 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                <div className={`flex items-center gap-2 text-base text-black/70 ${isRTL ? 'flex-row-reverse' : ''}`}>
                   <span>© 2025 Timeliner Inc. All rights reserved.</span>
                   <span>|</span>
                   <span>
