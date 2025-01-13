@@ -79,6 +79,13 @@ export const Navbar = () => {
         className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
       >
         {content?.blog_link || 'Blog'}
+      </button>,
+      <button 
+        key="community" 
+        onClick={() => handleSectionClick('community')} 
+        className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+      >
+        {content?.community_link || 'Community'}
       </button>
     ];
 
@@ -166,6 +173,12 @@ export const Navbar = () => {
               className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
             >
               {content?.blog_link || 'Blog'}
+            </button>
+            <button 
+              onClick={() => handleSectionClick('community')} 
+              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+            >
+              {content?.community_link || 'Community'}
             </button>
             <div className="px-3 py-2">
               <LanguageSwitcher />
