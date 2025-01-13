@@ -67,6 +67,8 @@ export const Footer = () => {
                   <a href="#" className="hover:text-primary">Youtube</a>
                   <span className="hidden md:inline">|</span>
                   <a href="#" className="hover:text-primary">LinkedIn</a>
+                  <span className="hidden md:inline">|</span>
+                  <a href="https://www.instagram.com/noamtryber/" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Instagram</a>
                 </div>
 
                 <div className={`flex flex-wrap items-center gap-2 md:gap-4 text-sm md:text-base text-black/70 ${isRTL ? 'justify-end' : ''}`}>
