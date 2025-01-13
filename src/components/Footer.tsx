@@ -64,9 +64,9 @@ export const Footer = () => {
                   <span className="hidden md:inline">|</span>
                   <a href="#" className="hover:text-primary">X</a>
                   <span className="hidden md:inline">|</span>
-                  <a href="#" className="hover:text-primary">Youtube</a>
+                  <a href="https://www.youtube.com/@Tryber/videos" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Youtube</a>
                   <span className="hidden md:inline">|</span>
-                  <a href="#" className="hover:text-primary">LinkedIn</a>
+                  <a href="https://www.linkedin.com/in/noam-tryber-b55b46286/" target="_blank" rel="noopener noreferrer" className="hover:text-primary">LinkedIn</a>
                   <span className="hidden md:inline">|</span>
                   <a href="https://www.instagram.com/noamtryber/" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Instagram</a>
                 </div>
@@ -84,9 +84,9 @@ export const Footer = () => {
                 <div className={`flex flex-wrap items-center gap-2 text-sm md:text-base text-black/70 ${isRTL ? 'justify-end' : ''}`}>
                   <span>© 2025 Timeliner Inc. All rights reserved.</span>
                   <span className="hidden md:inline">|</span>
-                  <span>
+                  <a href="https://www.instagram.com/noamtryber/" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
                     {isRTL ? 'עוצב על ידי נועם טרייבר' : 'Designed by Noam Tryber'}
-                  </span>
+                  </a>
                 </div>
               </div>
             </div>
