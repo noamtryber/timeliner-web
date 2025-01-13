@@ -1,9 +1,11 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "./ui/button";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Footer = () => {
   const { isRTL } = useLanguage();
+  const navigate = useNavigate();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -50,6 +52,7 @@ export const Footer = () => {
                     {isRTL ? 'הצטרפו לקהילה' : 'Join the community'}
                   </Button>
                   <Button 
+                    onClick={() => navigate('/signup')}
                     className="bg-gradient-to-br from-primary to-secondary hover:opacity-90 text-base md:text-lg py-4 md:py-6 px-6 md:px-8 rounded-xl h-auto w-full md:w-auto"
                   >
                     {isRTL ? 'התחילו בחינם' : 'Get Started For Free'}
