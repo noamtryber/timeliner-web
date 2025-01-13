@@ -30,7 +30,7 @@ export const Footer = () => {
                 </p>
                 <h2 className="text-xl md:text-3xl font-bold text-black">
                   {isRTL 
-                    ? 'ייעול תהליך העבודה שלך עם כלי הפקת וידאו חכמים יותר.'
+                    ? 'סוף לבלאגן. מערכת חכמה לניהול פרויקטים, תיקונים ותשלומים- הכל במקום אחד'
                     : 'Streamline your workflow with smarter video production tools.'}
                 </h2>
                 <div className={`flex flex-wrap gap-3 md:gap-4 ${isRTL ? 'justify-end' : ''}`}>
