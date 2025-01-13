@@ -13,18 +13,21 @@ const Blog = () => {
       title: "Streamline Revisions with Timelines",
       description: "Master the art of efficient revision management and client feedback loops",
       image: "/lovable-uploads/94a8f111-a09f-4217-80ff-c246e3f328d1.png",
+      videoId: "cIaOwP8jcFw",
       category: "Course",
     },
     {
       title: "Client Management 101",
       description: "Essential strategies for building strong client relationships",
       image: "/lovable-uploads/be00c295-a143-43d3-941f-e93fd5b58525.png",
+      videoId: "_WHgqxETirM",
       category: "Course",
     },
     {
       title: "AI Tools for Video Editors",
       description: "Leverage AI to enhance your video editing workflow",
       image: "/lovable-uploads/98b8bad0-76f5-4b50-af12-b49cd7309a55.png",
+      videoId: "327YDvqSINQ",
       category: "Course",
     },
   ];
@@ -106,12 +109,15 @@ const Blog = () => {
                   className="glass hover:border-primary/50 transition-all duration-300 group cursor-pointer"
                 >
                   <div className="p-6">
-                    <div className="mb-4 overflow-hidden rounded-lg">
+                    <div className="mb-4 overflow-hidden rounded-lg relative">
                       <img
-                        src={course.image}
+                        src={`https://img.youtube.com/vi/${course.videoId}/maxresdefault.jpg`}
                         alt={course.title}
                         className="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300"
                       />
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <Play className="h-12 w-12 text-white" />
+                      </div>
                     </div>
                     <span className="inline-block px-3 py-1 rounded-full text-sm bg-primary/20 text-primary mb-3">
                       {course.category}
