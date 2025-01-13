@@ -97,6 +97,7 @@ const AuthForm = ({ errorMessage }: AuthFormProps) => {
                 email_label: 'Email',
                 password_label: 'Create Password',
                 button_label: 'Sign up',
+                full_name_label: 'Full Name',
               },
               sign_in: {
                 email_label: 'Email',
