@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { TimelineBackground } from "@/components/TimelineBackground";
+import { ArrowLeft } from "lucide-react";
 
 const SignUp = () => {
   const [loading, setLoading] = useState(false);
@@ -98,7 +99,15 @@ const SignUp = () => {
   return (
     <div className="flex min-h-screen">
       {/* Left side - Sign up form */}
-      <div className="w-[65%] bg-white p-8 flex items-center justify-center">
+      <div className="w-[65%] bg-white p-8 flex items-center justify-center relative">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="absolute top-4 left-4 text-gray-600 hover:text-gray-900"
+          onClick={() => navigate(-1)}
+        >
+          <ArrowLeft className="h-6 w-6" />
+        </Button>
         <div className="max-w-md w-full space-y-8">
           <div className="text-center">
             <img 
