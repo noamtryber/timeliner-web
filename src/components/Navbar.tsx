@@ -81,7 +81,9 @@ export const Navbar = () => {
       items.splice(1, 1); // Remove login button
     }
 
-    return isRTL ? items.reverse() : items;
+    // For RTL (Hebrew), reverse the array to show items from right to left
+    // For LTR (English etc), items will be shown from left to right in reverse order
+    return isRTL ? items.reverse() : items.reverse();
   };
 
   return (
