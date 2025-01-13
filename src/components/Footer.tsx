@@ -12,7 +12,7 @@ export const Footer = () => {
           <div 
             className="absolute top-0 right-0 h-full hidden md:block w-1/2 opacity-70"
             style={{
-              backgroundImage: "url('/lovable-uploads/11468e59-89a9-40e1-93a2-0c4c25262c79.png')",
+              backgroundImage: "url('/lovable-uploads/15b554aa-6de5-4e00-ac39-414e16de8f22.png')",
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
