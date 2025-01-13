@@ -52,11 +52,21 @@ export const Pricing = () => {
       <div className="container mx-auto px-4">
         <PricingHeader 
           pricingPeriod={pricingPeriod} 
-          setPricingPeriod={setPricingPeriod} 
+          setPricingPeriod={setPricingPeriod}
+          className="hidden lg:block" 
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <FreePlan content={data?.content.free} />
+          
+          {/* Mobile pricing period selector */}
+          <div className="lg:hidden col-span-1 md:col-span-2">
+            <PricingHeader 
+              pricingPeriod={pricingPeriod} 
+              setPricingPeriod={setPricingPeriod}
+            />
+          </div>
+          
           <BasicPlan 
             content={data?.content.basic}
             video={data?.videos.basic}
