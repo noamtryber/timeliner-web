@@ -38,6 +38,10 @@
     font-family: 'Assistant', 'Inter', sans-serif;
   }
 
+  body[dir="rtl"] svg:not(.no-rtl-mirror) {
+    transform: scaleX(-1);
+  }
+
   .glass {
     @apply bg-card/30 backdrop-blur-lg border border-white/10;
   }
