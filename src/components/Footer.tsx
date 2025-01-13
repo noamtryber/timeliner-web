@@ -10,7 +10,7 @@ export const Footer = () => {
         <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg relative overflow-hidden">
           {/* Background Image */}
           <div 
-            className={`absolute top-0 ${isRTL ? 'left-0' : 'right-0'} h-full w-full md:w-1/2 opacity-70`}
+            className="absolute top-0 right-0 h-full w-full md:w-1/2 opacity-70"
             style={{
               backgroundImage: "url('/lovable-uploads/11468e59-89a9-40e1-93a2-0c4c25262c79.png')",
               backgroundSize: 'cover',
