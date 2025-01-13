@@ -1,25 +1,13 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "./ui/button";
-import { useState } from "react";
 
 export const Footer = () => {
   const { isRTL } = useLanguage();
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    setMousePosition({ x, y });
-  };
 
   return (
     <footer className="w-full mt-20">
       <div className="container mx-auto px-4 py-8 md:py-12">
-        <div 
-          className="bg-gradient-to-br from-[#F1F1F1] to-[#e6e9f0] rounded-2xl p-6 md:p-12 shadow-lg relative overflow-hidden"
-          onMouseMove={handleMouseMove}
-        >
+        <div className="bg-gradient-to-br from-[#F1F1F1] to-[#e6e9f0] rounded-2xl p-6 md:p-12 shadow-lg relative overflow-hidden">
           {/* Content */}
           <div className={`flex flex-col md:flex-row items-start gap-6 md:gap-8 ${isRTL ? 'md:flex-row-reverse' : ''} relative z-10`}>
             {/* Content side */}
@@ -80,21 +68,13 @@ export const Footer = () => {
               </div>
             </div>
 
-            {/* Image side with floating effect */}
+            {/* Image side */}
             <div className="hidden md:flex flex-shrink-0 w-full md:w-2/5 items-center justify-center">
-              <div 
-                className="transform transition-transform duration-200 ease-out hover:scale-[1.02]"
-                style={{
-                  transform: `perspective(1000px) rotateX(${mousePosition.y * 2}deg) rotateY(${mousePosition.x * 2}deg) translateZ(20px)`,
-                  filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.2))'
-                }}
-              >
-                <img 
-                  src="/lovable-uploads/c99b3a9c-c584-4eb7-bcc6-aadf89ffd4a8.png"
-                  alt="Project management dashboard"
-                  className="rounded-2xl w-full h-auto object-contain"
-                />
-              </div>
+              <img 
+                src="/lovable-uploads/70919f9e-4f05-4b85-9711-f9b0d7209c2e.png"
+                alt="Project management dashboard"
+                className="rounded-2xl w-full h-auto object-contain shadow-lg"
+              />
             </div>
           </div>
         </div>
