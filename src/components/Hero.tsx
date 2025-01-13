@@ -17,7 +17,7 @@ export const Hero = () => {
   const { toast } = useToast();
   const [showDemo, setShowDemo] = useState(false);
   const navigate = useNavigate();
-  const { isRTL } = useLanguage();
+  const { isRTL, language } = useLanguage();
   const isMobile = useIsMobile();
 
   // Animation states for statistics
@@ -81,6 +81,13 @@ export const Hero = () => {
     });
   }
 
+  const getVideoUrl = () => {
+    if (isMobile && language === 'he') {
+      return "https://vimeo.com/1044344874";
+    }
+    return "https://vimeo.com/1046016144";
+  };
+
   return (
     <div className="min-h-screen flex items-center relative overflow-hidden">
       <TimelineBackground />
@@ -100,7 +107,7 @@ export const Hero = () => {
           {isMobile && (
             <div className="w-full aspect-video mb-8 rounded-lg overflow-hidden">
               <iframe
-                src="https://player.vimeo.com/video/1046016144"
+                src={getVideoUrl()}
                 className="w-full h-full"
                 allow="autoplay; fullscreen"
                 allowFullScreen
