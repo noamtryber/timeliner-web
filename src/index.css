@@ -57,4 +57,24 @@
   .subtitle-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#9b87f5] via-[#D6BCFA] to-[#9b87f5] font-medium;
   }
+
+  .custom-marker {
+    @apply transition-all duration-300;
+  }
+
+  .custom-marker:hover {
+    transform: scale(1.2);
+  }
+
+  .leaflet-popup-content-wrapper {
+    @apply bg-card text-foreground rounded-lg shadow-lg border border-white/10;
+  }
+
+  .leaflet-popup-tip {
+    @apply bg-card border border-white/10;
+  }
+
+  .leaflet-popup-content {
+    @apply m-2 text-sm;
+  }
 }

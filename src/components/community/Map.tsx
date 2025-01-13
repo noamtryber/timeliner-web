@@ -1,44 +1,60 @@
 import React, { useEffect, useRef } from 'react';
-import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 
 const Map = () => {
   const mapContainer = useRef<HTMLDivElement>(null);
-  const map = useRef<mapboxgl.Map | null>(null);
+  const map = useRef<L.Map | null>(null);
 
   useEffect(() => {
     if (!mapContainer.current) return;
 
-    mapboxgl.accessToken = 'pk.eyJ1Ijoibm9hbXRyeWJlciIsImEiOiJjbHRxbGZlNmQwMGJqMmtvOWd4ZGNxZnF4In0.YeqHpUZs4_u1RsHYMaXk7g';
-    
-    map.current = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/dark-v11',
-      zoom: 1.5,
-      center: [30, 15] as [number, number],
-      projection: 'globe',
-      pitch: 45,
-    });
+    // Initialize map
+    map.current = L.map(mapContainer.current).setView([15, 30], 2);
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map.current);
 
     // Add markers for community members
-    const markers: Array<{ coordinates: [number, number]; title: string }> = [
-      { coordinates: [-74, 40.7], title: "New York" },
-      { coordinates: [-0.1276, 51.5072], title: "London" },
-      { coordinates: [139.6917, 35.6895], title: "Tokyo" },
-      { coordinates: [2.3522, 48.8566], title: "Paris" },
-      { coordinates: [151.2093, -33.8688], title: "Sydney" },
+    const markers = [
+      { coordinates: [40.7, -74], title: "New York" },
+      { coordinates: [51.5072, -0.1276], title: "London" },
+      { coordinates: [35.6895, 139.6917], title: "Tokyo" },
+      { coordinates: [48.8566, 2.3522], title: "Paris" },
+      { coordinates: [-33.8688, 151.2093], title: "Sydney" },
     ];
 
+    // Custom marker icon
+    const customIcon = L.divIcon({
+      className: 'custom-marker',
+      html: `<div class="w-4 h-4 bg-primary rounded-full border-2 border-white shadow-lg"></div>`,
+      iconSize: [16, 16],
+    });
+
     markers.forEach(marker => {
-      new mapboxgl.Marker({ color: "#9b87f5" })
-        .setLngLat(marker.coordinates)
-        .setPopup(new mapboxgl.Popup().setHTML(`<h3>${marker.title}</h3>`))
+      L.marker([marker.coordinates[0], marker.coordinates[1]], { icon: customIcon })
+        .bindPopup(`<h3 class="font-semibold">${marker.title}</h3>`)
         .addTo(map.current!);
     });
+
+    // Add dark mode styling
+    const style = document.createElement('style');
+    style.textContent = `
+      .leaflet-tile-pane {
+        filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+      }
+      .leaflet-container {
+        background: #1a1b1e;
+      }
+    `;
+    document.head.appendChild(style);
 
     // Cleanup
     return () => {
       map.current?.remove();
+      document.head.removeChild(style);
     };
   }, []);
 
