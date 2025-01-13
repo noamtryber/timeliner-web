@@ -101,10 +101,10 @@ export const FAQ = () => {
                 value={`item-${index}`}
                 className="border-b border-white/10 last:border-0"
               >
-                <AccordionTrigger className="text-left hover:text-primary transition-colors">
+                <AccordionTrigger className={`${isHebrew ? 'text-right' : 'text-left'} hover:text-primary transition-colors`}>
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-white/70">
+                <AccordionContent className={`text-white/70 ${isHebrew ? 'text-right' : 'text-left'}`}>
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
