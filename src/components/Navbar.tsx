@@ -122,15 +122,17 @@ export const Navbar = () => {
   return (
     <nav className="fixed w-full z-50 top-0 animate-fade-down">
       <div className="glass mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`flex items-center justify-between h-16 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''} gap-4`}>
-            <a href="/" className="flex-shrink-0">
-              <img 
-                src="/lovable-uploads/1ad9d673-efdf-41ae-8a29-82d3e976a7ed.png" 
-                alt="Timeliner Logo" 
-                className="h-7"
-              />
-            </a>
+        <div className="flex items-center justify-between h-16">
+          <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+            <div className="flex-shrink-0">
+              <a href="/">
+                <img 
+                  src="/lovable-uploads/1ad9d673-efdf-41ae-8a29-82d3e976a7ed.png" 
+                  alt="Timeliner Logo" 
+                  className="h-7"
+                />
+              </a>
+            </div>
             <div className="hidden md:flex items-center space-x-4">
               {isRTL ? [...leftItems].reverse() : leftItems}
             </div>
@@ -140,7 +142,7 @@ export const Navbar = () => {
             {isRTL ? [...rightItems].reverse() : rightItems}
           </div>
           
-          <div className="md:hidden">
+          <div className={`md:hidden ${isRTL ? 'mr-auto' : 'ml-auto'}`}>
             <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
               <Menu className="h-6 w-6" />
             </Button>
@@ -166,18 +168,18 @@ export const Navbar = () => {
                 {session ? (
                   <Button 
                     variant="ghost" 
-                    className="w-full justify-start" 
+                    className="w-full justify-end" 
                     onClick={handleLogout}
                   >
-                    <LogOut className="h-4 w-4 mr-2" />
+                    <LogOut className="h-4 w-4 ml-2" />
                     {content?.logout_button || 'Sign out'}
                   </Button>
                 ) : (
                   <div className="space-y-2 px-3">
-                    <Button variant="secondary" className="w-full text-center" onClick={handleAuthClick}>
+                    <Button variant="secondary" className="w-full text-right" onClick={handleAuthClick}>
                       {language === 'he' ? 'התחברות' : (content?.login || 'Login')}
                     </Button>
-                    <Button className="w-full bg-primary hover:bg-primary/90" onClick={handleAuthClick}>
+                    <Button className="w-full bg-primary hover:bg-primary/90 text-right" onClick={handleAuthClick}>
                       {language === 'he' ? 'הרשמה' : (content?.sign_up || 'Sign Up')}
                     </Button>
                   </div>
@@ -206,10 +208,10 @@ export const Navbar = () => {
                   </Button>
                 ) : (
                   <div className="space-y-2 px-3">
-                    <Button variant="secondary" className="w-full text-center" onClick={handleAuthClick}>
+                    <Button variant="secondary" className="w-full text-left" onClick={handleAuthClick}>
                       {language === 'he' ? 'התחברות' : (content?.login || 'Login')}
                     </Button>
-                    <Button className="w-full bg-primary hover:bg-primary/90" onClick={handleAuthClick}>
+                    <Button className="w-full bg-primary hover:bg-primary/90 text-left" onClick={handleAuthClick}>
                       {language === 'he' ? 'הרשמה' : (content?.sign_up || 'Sign Up')}
                     </Button>
                   </div>
