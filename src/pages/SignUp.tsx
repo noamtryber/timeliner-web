@@ -76,7 +76,7 @@ const SignUp = () => {
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   required
-                  className="bg-gray-50 border-gray-300"
+                  className="bg-gray-50 border-gray-300 text-gray-900"
                 />
               </div>
               <div>
@@ -86,7 +86,7 @@ const SignUp = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="bg-gray-50 border-gray-300"
+                  className="bg-gray-50 border-gray-300 text-gray-900"
                 />
               </div>
               <div>
@@ -96,7 +96,7 @@ const SignUp = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="bg-gray-50 border-gray-300"
+                  className="bg-gray-50 border-gray-300 text-gray-900"
                 />
               </div>
             </div>
