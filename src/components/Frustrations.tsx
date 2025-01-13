@@ -2,7 +2,7 @@ import { FrustrationCard } from "./frustrations/FrustrationCard";
 import { usePageContent } from "@/hooks/usePageContent";
 import { FrustrationBackground } from "./frustrations/FrustrationBackground";
 import { useInView } from "react-intersection-observer";
-import { AlertCircle, Clock, Wallet, AppWindow } from "lucide-react";
+import { AlertOctagon, Wallet2, AppWindow, Clock } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export const Frustrations = () => {
@@ -15,13 +15,13 @@ export const Frustrations = () => {
 
   const frustrationData = [
     {
-      icon: AlertCircle,
+      icon: AlertOctagon,
       iconType: 'expectations' as const,
       title: content?.expectations || "Unclear Expectations",
       description: content?.card1_description || "Mismatched client and editor expectations lead to frustration. Revisions and versions scattered across WhatsApp, Email, and G-Drive."
     },
     {
-      icon: Wallet,
+      icon: Wallet2,
       iconType: 'payments' as const,
       title: content?.payment || "Payment Delays",
       description: content?.card2_description || "Payments take weeks or months to arrive. No automated system to ensure quick payouts after approval."

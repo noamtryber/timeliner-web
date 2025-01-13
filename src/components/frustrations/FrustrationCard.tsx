@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
 import { LucideIcon } from "lucide-react";
-import { Frustration3DIcon } from "./Frustration3DIcon";
 
 interface FrustrationCardProps {
   title: string;
   description: string;
   illustration?: string;
-  icon?: LucideIcon;
+  icon: LucideIcon;
   index: number;
   inView: boolean;
   iconType: 'expectations' | 'payments' | 'tools' | 'time';
@@ -34,8 +33,12 @@ export const FrustrationCard = ({
       {/* Content */}
       <div className="relative z-10">
         <div className="mb-6 relative">
-          <div className="w-24 h-24 mx-auto rounded-xl overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-            <Frustration3DIcon type={iconType} />
+          <div className="w-24 h-24 mx-auto rounded-xl overflow-hidden bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center group-hover:from-primary/20 group-hover:to-accent/20 transition-all duration-300">
+            {/* Shine effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
+            
+            {/* Icon */}
+            <Icon className="w-12 h-12 text-primary group-hover:text-accent transition-colors duration-300" strokeWidth={1.5} />
           </div>
           {/* Glow effect */}
           <div className="absolute -inset-4 bg-gradient-to-r from-primary/30 via-accent/30 to-primary/30 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300 -z-10" />
