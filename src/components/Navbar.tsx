@@ -64,38 +64,38 @@ export const Navbar = () => {
         onClick={() => handleSectionClick('testimonials')} 
         className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
       >
-        {content?.testimonials_link || 'Testimonials'}
+        {language === 'he' ? 'המלצות' : (content?.testimonials_link || 'Testimonials')}
       </button>,
       <button 
         key="pricing" 
         onClick={() => handleSectionClick('pricing')} 
         className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
       >
-        {content?.pricing_link || 'Pricing'}
+        {language === 'he' ? 'תמחור' : (content?.pricing_link || 'Pricing')}
       </button>,
       <button 
         key="blog" 
         onClick={() => handleSectionClick('blog')} 
         className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
       >
-        {content?.blog_link || 'Blog'}
+        {language === 'he' ? 'בלוג' : (content?.blog_link || 'Blog')}
       </button>,
       <button 
         key="community" 
         onClick={() => handleSectionClick('community')} 
         className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
       >
-        {content?.community_link || 'Community'}
+        {language === 'he' ? 'קהילה' : (content?.community_link || 'Community')}
       </button>
     ];
 
     const rightItems = [
       <LanguageSwitcher key="lang" />,
       <Button key="login" variant="ghost" className="text-white/70" onClick={handleAuthClick}>
-        {content?.login || 'Login'}
+        {language === 'he' ? 'התחברות' : (content?.login || 'Login')}
       </Button>,
       <Button key="signup" className="bg-primary hover:bg-primary/90" onClick={handleAuthClick}>
-        {content?.sign_up || 'Sign Up'}
+        {language === 'he' ? 'הרשמה' : (content?.sign_up || 'Sign Up')}
       </Button>
     ];
 
@@ -150,6 +150,40 @@ export const Navbar = () => {
       {isOpen && (
         <div className="glass md:hidden">
           <div className={`px-2 pt-2 pb-3 space-y-1 sm:px-3 ${isRTL ? 'text-right' : 'text-left'}`}>
+            {isRTL ? (
+              <>
+                <button 
+                  onClick={() => handleSectionClick('features')} 
+                  className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-right"
+                >
+                  {language === 'he' ? 'פיצ\'רים' : (content?.features_link || 'Features')}
+                </button>
+                <button 
+                  onClick={() => handleSectionClick('testimonials')} 
+                  className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-right"
+                >
+                  {language === 'he' ? 'המלצות' : (content?.testimonials_link || 'Testimonials')}
+                </button>
+                <button 
+                  onClick={() => handleSectionClick('pricing')} 
+                  className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-right"
+                >
+                  {language === 'he' ? 'תמחור' : (content?.pricing_link || 'Pricing')}
+                </button>
+                <button 
+                  onClick={() => handleSectionClick('blog')} 
+                  className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-right"
+                >
+                  {language === 'he' ? 'בלוג' : (content?.blog_link || 'Blog')}
+                </button>
+                <button 
+                  onClick={() => handleSectionClick('community')} 
+                  className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-right"
+                >
+                  {language === 'he' ? 'קהילה' : (content?.community_link || 'Community')}
+                </button>
+              </>
+            ) : (
             <button 
               onClick={() => handleSectionClick('features')} 
               className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
@@ -180,6 +214,7 @@ export const Navbar = () => {
             >
               {content?.community_link || 'Community'}
             </button>
+            )}
             <div className="px-3 py-2">
               <LanguageSwitcher />
             </div>
@@ -195,10 +230,10 @@ export const Navbar = () => {
             ) : (
               <div className="space-y-2 px-3">
                 <Button variant="secondary" className="w-full text-center" onClick={handleAuthClick}>
-                  {content?.login || 'Login'}
+                  {language === 'he' ? 'התחברות' : (content?.login || 'Login')}
                 </Button>
                 <Button className="w-full bg-primary hover:bg-primary/90" onClick={handleAuthClick}>
-                  {content?.sign_up || 'Sign Up'}
+                  {language === 'he' ? 'הרשמה' : (content?.sign_up || 'Sign Up')}
                 </Button>
               </div>
             )}
