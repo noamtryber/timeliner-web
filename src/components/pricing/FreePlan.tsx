@@ -47,7 +47,7 @@ export const FreePlan = ({ content }: FreePlanProps) => {
       
       <Button 
         className="w-full bg-gradient-to-br from-accent/80 to-accent hover:opacity-90 transition-all duration-300"
-        onClick={() => navigate('/auth')}
+        onClick={() => navigate('/signup')}
       >
         {isHebrew ? 'התחילו היום בחינם' : content.button_text}
       </Button>
