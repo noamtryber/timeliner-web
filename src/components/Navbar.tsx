@@ -152,90 +152,68 @@ export const Navbar = () => {
           <div className={`px-2 pt-2 pb-3 space-y-1 sm:px-3 ${isRTL ? 'text-right' : 'text-left'}`}>
             {isRTL ? (
               <>
-                <button 
-                  onClick={() => handleSectionClick('features')} 
-                  className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-right"
-                >
-                  {language === 'he' ? 'פיצ\'רים' : (content?.features_link || 'Features')}
-                </button>
-                <button 
-                  onClick={() => handleSectionClick('testimonials')} 
-                  className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-right"
-                >
-                  {language === 'he' ? 'המלצות' : (content?.testimonials_link || 'Testimonials')}
-                </button>
-                <button 
-                  onClick={() => handleSectionClick('pricing')} 
-                  className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-right"
-                >
-                  {language === 'he' ? 'תמחור' : (content?.pricing_link || 'Pricing')}
-                </button>
-                <button 
-                  onClick={() => handleSectionClick('blog')} 
-                  className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-right"
-                >
-                  {language === 'he' ? 'בלוג' : (content?.blog_link || 'Blog')}
-                </button>
-                <button 
-                  onClick={() => handleSectionClick('community')} 
-                  className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-right"
-                >
-                  {language === 'he' ? 'קהילה' : (content?.community_link || 'Community')}
-                </button>
+                {[...leftItems].reverse().map((item, index) => (
+                  <div key={index} className="block w-full">
+                    {React.cloneElement(item, {
+                      className: "text-white block px-3 py-2 rounded-md text-base font-medium w-full text-right"
+                    })}
+                  </div>
+                ))}
+                <div className="px-3 py-2">
+                  <LanguageSwitcher />
+                </div>
+                {session ? (
+                  <Button 
+                    variant="ghost" 
+                    className="w-full justify-start" 
+                    onClick={handleLogout}
+                  >
+                    <LogOut className="h-4 w-4 mr-2" />
+                    {content?.logout_button || 'Sign out'}
+                  </Button>
+                ) : (
+                  <div className="space-y-2 px-3">
+                    <Button variant="secondary" className="w-full text-center" onClick={handleAuthClick}>
+                      {language === 'he' ? 'התחברות' : (content?.login || 'Login')}
+                    </Button>
+                    <Button className="w-full bg-primary hover:bg-primary/90" onClick={handleAuthClick}>
+                      {language === 'he' ? 'הרשמה' : (content?.sign_up || 'Sign Up')}
+                    </Button>
+                  </div>
+                )}
               </>
             ) : (
-            <button 
-              onClick={() => handleSectionClick('features')} 
-              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
-            >
-              {language === 'he' ? 'פיצ\'רים' : (content?.features_link || 'Features')}
-            </button>
-            <button 
-              onClick={() => handleSectionClick('testimonials')} 
-              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
-            >
-              {content?.testimonials_link || 'Testimonials'}
-            </button>
-            <button 
-              onClick={() => handleSectionClick('pricing')} 
-              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
-            >
-              {content?.pricing_link || 'Pricing'}
-            </button>
-            <button 
-              onClick={() => handleSectionClick('blog')} 
-              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
-            >
-              {content?.blog_link || 'Blog'}
-            </button>
-            <button 
-              onClick={() => handleSectionClick('community')} 
-              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
-            >
-              {content?.community_link || 'Community'}
-            </button>
-            )}
-            <div className="px-3 py-2">
-              <LanguageSwitcher />
-            </div>
-            {session ? (
-              <Button 
-                variant="ghost" 
-                className="w-full justify-start" 
-                onClick={handleLogout}
-              >
-                <LogOut className="h-4 w-4 mr-2" />
-                {content?.logout_button || 'Sign out'}
-              </Button>
-            ) : (
-              <div className="space-y-2 px-3">
-                <Button variant="secondary" className="w-full text-center" onClick={handleAuthClick}>
-                  {language === 'he' ? 'התחברות' : (content?.login || 'Login')}
-                </Button>
-                <Button className="w-full bg-primary hover:bg-primary/90" onClick={handleAuthClick}>
-                  {language === 'he' ? 'הרשמה' : (content?.sign_up || 'Sign Up')}
-                </Button>
-              </div>
+              <>
+                {leftItems.map((item, index) => (
+                  <div key={index} className="block w-full">
+                    {React.cloneElement(item, {
+                      className: "text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+                    })}
+                  </div>
+                ))}
+                <div className="px-3 py-2">
+                  <LanguageSwitcher />
+                </div>
+                {session ? (
+                  <Button 
+                    variant="ghost" 
+                    className="w-full justify-start" 
+                    onClick={handleLogout}
+                  >
+                    <LogOut className="h-4 w-4 mr-2" />
+                    {content?.logout_button || 'Sign out'}
+                  </Button>
+                ) : (
+                  <div className="space-y-2 px-3">
+                    <Button variant="secondary" className="w-full text-center" onClick={handleAuthClick}>
+                      {language === 'he' ? 'התחברות' : (content?.login || 'Login')}
+                    </Button>
+                    <Button className="w-full bg-primary hover:bg-primary/90" onClick={handleAuthClick}>
+                      {language === 'he' ? 'הרשמה' : (content?.sign_up || 'Sign Up')}
+                    </Button>
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>
