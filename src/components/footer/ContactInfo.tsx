@@ -12,17 +12,44 @@ export const ContactInfo = ({ email, phone, location }: ContactInfoProps) => {
   
   return (
     <div className="space-y-2">
-      <div className={`flex items-center gap-2 text-sm text-gray-400 ${isRTL ? 'flex-row-reverse' : ''}`}>
-        <Mail className="w-4 h-4" />
-        <span>{email}</span>
+      <div className={`flex items-center gap-2 ${isRTL ? 'justify-end' : ''}`}>
+        {isRTL ? (
+          <>
+            <span className="text-sm text-gray-400">{email}</span>
+            <Mail className="w-4 h-4 text-gray-400" />
+          </>
+        ) : (
+          <>
+            <Mail className="w-4 h-4 text-gray-400" />
+            <span className="text-sm text-gray-400">{email}</span>
+          </>
+        )}
       </div>
-      <div className={`flex items-center gap-2 text-sm text-gray-400 ${isRTL ? 'flex-row-reverse' : ''}`}>
-        <Phone className="w-4 h-4" />
-        <span>{phone}</span>
+      <div className={`flex items-center gap-2 ${isRTL ? 'justify-end' : ''}`}>
+        {isRTL ? (
+          <>
+            <span className="text-sm text-gray-400">{phone}</span>
+            <Phone className="w-4 h-4 text-gray-400" />
+          </>
+        ) : (
+          <>
+            <Phone className="w-4 h-4 text-gray-400" />
+            <span className="text-sm text-gray-400">{phone}</span>
+          </>
+        )}
       </div>
-      <div className={`flex items-center gap-2 text-sm text-gray-400 ${isRTL ? 'flex-row-reverse' : ''}`}>
-        <MapPin className="w-4 h-4" />
-        <span>{location}</span>
+      <div className={`flex items-center gap-2 ${isRTL ? 'justify-end' : ''}`}>
+        {isRTL ? (
+          <>
+            <span className="text-sm text-gray-400">{location}</span>
+            <MapPin className="w-4 h-4 text-gray-400" />
+          </>
+        ) : (
+          <>
+            <MapPin className="w-4 h-4 text-gray-400" />
+            <span className="text-sm text-gray-400">{location}</span>
+          </>
+        )}
       </div>
     </div>
   );
