@@ -60,9 +60,9 @@ export const ComparisonTable = () => {
                   <Check className={`text-primary ${isRTL ? 'order-first' : ''}`} />
                 </div>
                 <div className={`grid grid-cols-2 gap-2 text-sm text-white/70`}>
-                  <div className={isRTL ? 'text-right' : 'text-left'}>{isRTL ? ':מחליף' : 'Replaces:'}</div>
+                  <div className={isRTL ? 'text-right' : 'text-left'}>{isRTL ? 'מחליף:' : 'Replaces:'}</div>
                   <div className={isRTL ? 'text-right' : 'text-left'}>{tool.replaces}</div>
-                  <div className={isRTL ? 'text-right' : 'text-left'}>{isRTL ? ':עלות' : 'Their Cost:'}</div>
+                  <div className={isRTL ? 'text-right' : 'text-left'}>{isRTL ? 'עלות:' : 'Their Cost:'}</div>
                   <div className={isRTL ? 'text-right' : 'text-left'}>{tool.cost}</div>
                 </div>
               </div>
