@@ -56,27 +56,29 @@ export const ComparisonTable = () => {
             <div key={index} className="relative glass border border-white/10 p-4 rounded-lg">
               <div className="flex flex-col space-y-2">
                 <div className={`flex justify-between items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
-                  <h3 className="font-medium text-white">{tool.feature}</h3>
-                  <Check className="text-primary" />
+                  <h3 className={`font-medium text-white ${isRTL ? 'text-right' : 'text-left'}`}>{tool.feature}</h3>
+                  <Check className={`text-primary ${isRTL ? 'order-first' : ''}`} />
                 </div>
-                <div className={`grid grid-cols-2 gap-2 text-sm text-white/70 ${isRTL ? 'text-right' : ''}`}>
-                  <div>{isRTL ? ':מחליף' : 'Replaces:'}</div>
-                  <div className={isRTL ? 'text-left' : 'text-right'}>{tool.replaces}</div>
-                  <div>{isRTL ? ':עלות' : 'Their Cost:'}</div>
-                  <div className={isRTL ? 'text-left' : 'text-right'}>{tool.cost}</div>
+                <div className={`grid grid-cols-2 gap-2 text-sm text-white/70`}>
+                  <div className={isRTL ? 'text-right' : 'text-left'}>{isRTL ? ':מחליף' : 'Replaces:'}</div>
+                  <div className={isRTL ? 'text-right' : 'text-left'}>{tool.replaces}</div>
+                  <div className={isRTL ? 'text-right' : 'text-left'}>{isRTL ? ':עלות' : 'Their Cost:'}</div>
+                  <div className={isRTL ? 'text-right' : 'text-left'}>{tool.cost}</div>
                 </div>
               </div>
             </div>
           ))}
 
           <div className="relative glass border border-white/10 p-4 rounded-lg mt-4">
-            <div className={`grid grid-cols-2 gap-2 ${isRTL ? 'text-right' : ''}`}>
-              <div className="font-bold text-white">{isRTL ? 'עלות כוללת' : 'Total Cost'}</div>
-              <div className={`text-white/70 font-bold ${isRTL ? 'text-left' : 'text-right'}`}>
+            <div className={`grid grid-cols-2 gap-2`}>
+              <div className={`font-bold text-white ${isRTL ? 'text-right' : 'text-left'}`}>
+                {isRTL ? 'עלות כוללת' : 'Total Cost'}
+              </div>
+              <div className={`text-white/70 font-bold ${isRTL ? 'text-right' : 'text-left'}`}>
                 {isRTL ? '$138+ לחודש' : '$138+/month'}
               </div>
-              <div className="font-bold text-white">Timeliner</div>
-              <div className={`font-bold text-primary ${isRTL ? 'text-left' : 'text-right'}`}>
+              <div className={`font-bold text-white ${isRTL ? 'text-right' : 'text-left'}`}>Timeliner</div>
+              <div className={`font-bold text-primary ${isRTL ? 'text-right' : 'text-left'}`}>
                 {isRTL ? '$19-$39 לחודש' : '$19-$39/month'}
               </div>
             </div>
