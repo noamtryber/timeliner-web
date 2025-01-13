@@ -50,6 +50,7 @@ export const Pricing = () => {
       <div className="absolute -z-10 -bottom-[40%] -right-[20%] w-[70%] h-[100%] bg-secondary/20 blur-[120px] rounded-full animate-pulse delay-1000" />
       
       <div className="container mx-auto px-4">
+        {/* Desktop header */}
         <PricingHeader 
           pricingPeriod={pricingPeriod} 
           setPricingPeriod={setPricingPeriod}
@@ -59,8 +60,16 @@ export const Pricing = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <FreePlan content={data?.content.free} />
           
-          {/* Mobile pricing period selector */}
+          {/* Mobile header */}
           <div className="lg:hidden col-span-1 md:col-span-2">
+            <div className="text-center max-w-3xl mx-auto mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text animate-fade-up">
+                Find the Perfect Plan for You
+              </h2>
+              <p className="text-xl text-white/70 mb-8 animate-fade-up delay-100">
+                Start for free and scale up as you grow. Choose the plan that fits your workflow.
+              </p>
+            </div>
             <PricingHeader 
               pricingPeriod={pricingPeriod} 
               setPricingPeriod={setPricingPeriod}
