@@ -21,11 +21,14 @@ const languages = [
 export const LanguageSwitcher = () => {
   const { language, setLanguage } = useLanguage();
 
+  const buttonText = language === 'he' ? 'הגדרת שפה' : 'Select Language';
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" className="w-9 px-0">
+        <Button variant="ghost" size="sm" className="flex items-center gap-2">
           <Globe className="h-[1.2rem] w-[1.2rem]" />
+          <span className="hidden md:inline">{buttonText}</span>
           <span className="sr-only">Switch language</span>
         </Button>
       </DropdownMenuTrigger>
