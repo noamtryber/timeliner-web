@@ -95,7 +95,7 @@ const AuthForm = ({ errorMessage }: AuthFormProps) => {
             variables: {
               sign_up: {
                 email_label: 'Email',
-                password_label: 'Create a Password',
+                password_label: 'Create Password',
                 button_label: 'Sign up',
               },
               sign_in: {
@@ -109,6 +109,7 @@ const AuthForm = ({ errorMessage }: AuthFormProps) => {
             full_name: {
               required: true,
               label: 'Full Name',
+              order: 1
             },
           }}
         />
