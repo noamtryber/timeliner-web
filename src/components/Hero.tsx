@@ -83,9 +83,9 @@ export const Hero = () => {
 
   const getVideoUrl = () => {
     if (isMobile && language === 'he') {
-      return "https://vimeo.com/1044344874";
+      return "https://player.vimeo.com/video/1044344874";
     }
-    return "https://vimeo.com/1046016144";
+    return "https://player.vimeo.com/video/1046016144";
   };
 
   return (
