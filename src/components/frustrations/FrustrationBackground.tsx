@@ -71,7 +71,7 @@ export const FrustrationBackground = () => {
       
       p.draw = () => {
         p.clear();
-        p.background('rgba(26, 31, 44, 0.2)');
+        p.background('rgba(26, 31, 44, 0)');
         
         mouseX = p.lerp(mouseX, p.mouseX, 0.1);
         mouseY = p.lerp(mouseY, p.mouseY, 0.1);
@@ -94,7 +94,7 @@ export const FrustrationBackground = () => {
   return (
     <div 
       ref={containerRef} 
-      className="absolute inset-0 -z-10 bg-gradient-to-b from-accent/20 via-secondary/30 to-background"
+      className="absolute inset-0 -z-10 bg-gradient-to-b from-accent via-secondary/40 to-background"
     />
   );
 };
