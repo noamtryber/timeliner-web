@@ -55,6 +55,13 @@ export const Frustrations = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
       
       <div className={`container mx-auto px-4 relative ${isRTL ? 'rtl' : ''}`} ref={ref}>
+        <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text text-center">
+          {headerText}
+        </h2>
+        <p className="text-lg text-white/70 text-center mb-16">
+          {subheaderText}
+        </p>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
           {frustrationData.map((item, index) => (
             <FrustrationCard
@@ -70,12 +77,6 @@ export const Frustrations = () => {
         </div>
 
         <div className="text-center mt-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
-            {headerText}
-          </h2>
-          <p className="text-lg text-white/70 mb-16">
-            {subheaderText}
-          </p>
           <h3 className="text-2xl font-bold mb-4 gradient-text">
             {language === 'he' 
               ? "בדיוק בגלל כל הבלאגן הזה יצרנו את Timeliner"
