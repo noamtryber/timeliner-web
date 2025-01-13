@@ -46,11 +46,8 @@ export const Features = () => {
   const getFeatureContent = (sectionId: string | null, key: string): string => {
     if (!content) return '';
     console.log('Getting content for:', { sectionId, key, language });
-    // First try to find content with specific section_id
     const contentValue = content[`${sectionId}_${key}`] || 
-                        // Then try to find content with null section_id (header content)
                         (sectionId === null ? content[key] : '') || 
-                        // Finally try common content
                         content[`common_${key}`] || '';
     console.log('Found content:', contentValue);
     return contentValue;
@@ -75,8 +72,10 @@ export const Features = () => {
   };
 
   return (
-    <section id="features" className="py-20 overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section id="features" className="py-20 overflow-hidden relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-secondary/5 via-primary/5 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(123,97,255,0.1),rgba(123,97,255,0)_43.89%)] pointer-events-none" />
+      <div className="container mx-auto px-4 relative">
         <FeaturesHeader getContent={getFeatureContent} />
         <FeaturesList 
           onLearnMore={setOpenDialog} 
