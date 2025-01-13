@@ -48,7 +48,7 @@ export const Footer = () => {
   return (
     <footer className="w-full bg-card/30 backdrop-blur-lg border-t border-white/10 mt-20">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 items-center ${isRTL ? 'md:rtl' : ''}`}>
           {/* Left side - Company info */}
           <div className="space-y-4">
             <FooterLogo />

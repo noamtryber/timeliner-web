@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface FooterLinksProps {
   designer: string;
@@ -7,9 +8,11 @@ interface FooterLinksProps {
 }
 
 export const FooterLinks = ({ designer, instagramUrl, poweredBy }: FooterLinksProps) => {
+  const { isRTL } = useLanguage();
+  
   return (
-    <div className="flex items-center space-x-2 text-white">
-      <span>Designed by </span>
+    <div className={`flex items-center ${isRTL ? 'space-x-reverse' : ''} space-x-2 text-white`}>
+      <span>{isRTL ? '' : 'Designed by '}</span>
       <Link 
         to={instagramUrl}
         target="_blank"

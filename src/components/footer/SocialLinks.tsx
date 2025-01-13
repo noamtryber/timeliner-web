@@ -1,5 +1,6 @@
 import { Youtube, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface SocialLinksProps {
   instagramUrl: string;
@@ -7,8 +8,10 @@ interface SocialLinksProps {
 }
 
 export const SocialLinks = ({ instagramUrl, youtubeUrl }: SocialLinksProps) => {
+  const { isRTL } = useLanguage();
+  
   return (
-    <div className="flex space-x-4">
+    <div className={`flex ${isRTL ? 'space-x-reverse' : ''} space-x-4`}>
       <Link 
         to={instagramUrl} 
         target="_blank" 
