@@ -89,6 +89,14 @@ export const Hero = () => {
       
       <div className={`container mx-auto px-4 relative animate-fade-up ${isRTL ? 'rtl' : ''}`}>
         <div className="text-center max-w-4xl mx-auto">
+          <span className="subtitle-gradient mb-4 block tracking-wide text-sm sm:text-base">
+            {content?.video_editors || 'VIDEO EDITORS & AGENCIES:'}
+          </span>
+          
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 gradient-text tracking-tight leading-tight px-2">
+            {content?.turn_chaos_clarity || 'Turn Chaos into Clarity with Smart Video Management'}
+          </h1>
+
           {isMobile && (
             <div className="w-full aspect-video mb-8 rounded-lg overflow-hidden">
               <iframe
@@ -99,14 +107,6 @@ export const Hero = () => {
               />
             </div>
           )}
-          
-          <span className="subtitle-gradient mb-4 block tracking-wide text-sm sm:text-base">
-            {content?.video_editors || 'VIDEO EDITORS & AGENCIES:'}
-          </span>
-          
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 gradient-text tracking-tight leading-tight px-2">
-            {content?.turn_chaos_clarity || 'Turn Chaos into Clarity with Smart Video Management'}
-          </h1>
           
           <div className={`flex flex-col sm:flex-row items-center justify-center gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <Button 
