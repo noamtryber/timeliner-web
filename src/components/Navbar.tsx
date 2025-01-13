@@ -18,8 +18,6 @@ export const Navbar = () => {
   const { isRTL, language } = useLanguage();
   const navigate = useNavigate();
 
-  console.log('Navbar translations:', content);
-
   if (error) {
     toast({
       variant: "destructive",
@@ -123,7 +121,7 @@ export const Navbar = () => {
     <nav className="fixed w-full z-50 top-0 animate-fade-down">
       <div className="glass mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <div className={`flex items-center ${isRTL ? 'flex-row-reverse justify-end w-full' : ''}`}>
             <div className="flex-shrink-0">
               <a href="/">
                 <img 
@@ -133,12 +131,12 @@ export const Navbar = () => {
                 />
               </a>
             </div>
-            <div className="hidden md:flex items-center space-x-4">
+            <div className={`hidden md:flex items-center ${isRTL ? 'mr-4 space-x-4 space-x-reverse' : 'ml-4 space-x-4'}`}>
               {isRTL ? [...leftItems].reverse() : leftItems}
             </div>
           </div>
           
-          <div className="hidden md:flex items-center space-x-4">
+          <div className={`hidden md:flex items-center ${isRTL ? 'space-x-4 space-x-reverse' : 'space-x-4'}`}>
             {isRTL ? [...rightItems].reverse() : rightItems}
           </div>
           
