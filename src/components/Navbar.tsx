@@ -42,6 +42,14 @@ export const Navbar = () => {
     navigate('/signup');
   };
 
+  const handleSectionClick = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsOpen(false); // Close mobile menu if open
+    }
+  };
+
   const renderNavItems = () => {
     const items = [
       <Button key="signup" className="bg-primary hover:bg-primary/90" onClick={handleAuthClick}>
@@ -51,21 +59,36 @@ export const Navbar = () => {
         {content?.login || 'Login'}
       </Button>,
       <LanguageSwitcher key="lang" />,
-      <a key="features" href="#features" className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+      <button 
+        key="features" 
+        onClick={() => handleSectionClick('features')} 
+        className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+      >
         {language === 'he' ? 'פיצ\'רים' : (content?.features_link || 'Features')}
-      </a>,
-      <a key="testimonials" href="#testimonials" className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+      </button>,
+      <button 
+        key="testimonials" 
+        onClick={() => handleSectionClick('testimonials')} 
+        className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+      >
         {content?.testimonials_link || 'Testimonials'}
-      </a>,
-      <a key="pricing" href="#pricing" className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+      </button>,
+      <button 
+        key="pricing" 
+        onClick={() => handleSectionClick('pricing')} 
+        className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+      >
         {content?.pricing_link || 'Pricing'}
-      </a>,
-      <a key="blog" href="#blog" className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+      </button>,
+      <button 
+        key="blog" 
+        onClick={() => handleSectionClick('blog')} 
+        className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+      >
         {content?.blog_link || 'Blog'}
-      </a>
+      </button>
     ];
 
-    // If logged in, replace login/signup buttons with logout
     if (session) {
       items[0] = (
         <Button 
@@ -117,18 +140,30 @@ export const Navbar = () => {
       {isOpen && (
         <div className="glass md:hidden">
           <div className={`px-2 pt-2 pb-3 space-y-1 sm:px-3 ${isRTL ? 'text-right' : 'text-left'}`}>
-            <a href="#features" className="text-white block px-3 py-2 rounded-md text-base font-medium">
+            <button 
+              onClick={() => handleSectionClick('features')} 
+              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+            >
               {language === 'he' ? 'פיצ\'רים' : (content?.features_link || 'Features')}
-            </a>
-            <a href="#testimonials" className="text-white block px-3 py-2 rounded-md text-base font-medium">
+            </button>
+            <button 
+              onClick={() => handleSectionClick('testimonials')} 
+              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+            >
               {content?.testimonials_link || 'Testimonials'}
-            </a>
-            <a href="#pricing" className="text-white block px-3 py-2 rounded-md text-base font-medium">
+            </button>
+            <button 
+              onClick={() => handleSectionClick('pricing')} 
+              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+            >
               {content?.pricing_link || 'Pricing'}
-            </a>
-            <a href="#blog" className="text-white block px-3 py-2 rounded-md text-base font-medium">
+            </button>
+            <button 
+              onClick={() => handleSectionClick('blog')} 
+              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+            >
               {content?.blog_link || 'Blog'}
-            </a>
+            </button>
             <div className="px-3 py-2">
               <LanguageSwitcher />
             </div>
