@@ -78,7 +78,7 @@ export const Footer = () => {
 
               {/* Links */}
               <div className="space-y-4 md:space-y-6">
-                <div className={`flex flex-wrap items-center gap-2 md:gap-4 text-sm md:text-base text-black/70 ${isRTL ? 'justify-end' : ''}`}>
+                <div className={`flex flex-wrap items-center gap-2 md:gap-4 text-sm md:text-base text-black/70 ${isRTL ? 'mr-auto' : ''}`}>
                   <span>support@timeliner.com</span>
                   <span className="hidden md:inline">|</span>
                   <a href="#" className="hover:text-primary">X</a>
@@ -90,7 +90,7 @@ export const Footer = () => {
                   <a href="https://www.instagram.com/noamtryber/" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Instagram</a>
                 </div>
 
-                <div className={`flex flex-wrap items-center gap-2 md:gap-4 text-sm md:text-base text-black/70 ${isRTL ? 'justify-end' : ''}`}>
+                <div className={`flex flex-wrap items-center gap-2 md:gap-4 text-sm md:text-base text-black/70 ${isRTL ? 'mr-auto' : ''}`}>
                   <a href="#" className="hover:text-primary">
                     {isRTL ? 'מדיניות פרטיות' : 'Privacy Policy'}
                   </a>
@@ -100,7 +100,7 @@ export const Footer = () => {
                   </a>
                 </div>
 
-                <div className={`flex flex-wrap items-center gap-2 text-sm md:text-base text-black/70 ${isRTL ? 'justify-end' : ''}`}>
+                <div className={`flex flex-wrap items-center gap-2 text-sm md:text-base text-black/70 ${isRTL ? 'mr-auto' : ''}`}>
                   <span>© 2025 Timeliner Inc. All rights reserved.</span>
                   <span className="hidden md:inline">|</span>
                   <a href="https://www.instagram.com/noamtryber/" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
