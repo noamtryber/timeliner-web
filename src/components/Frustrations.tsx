@@ -49,10 +49,10 @@ export const Frustrations = () => {
     : "Working with clients shouldn't be this hard...";
 
   return (
-    <section className="relative min-h-screen flex items-center py-20 overflow-hidden">
+    <section className="relative min-h-screen flex items-center py-20 overflow-hidden bg-gradient-to-b from-background via-accent/5 to-background">
       <FrustrationBackground />
       
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/30 to-background/90" />
       
       <div className={`container mx-auto px-4 relative ${isRTL ? 'rtl' : ''}`} ref={ref}>
         <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text text-center">

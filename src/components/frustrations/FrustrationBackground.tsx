@@ -94,7 +94,7 @@ export const FrustrationBackground = () => {
   return (
     <div 
       ref={containerRef} 
-      className="absolute inset-0 -z-10 bg-gradient-to-b from-accent via-secondary/40 to-background"
+      className="absolute inset-0 -z-10 bg-gradient-to-b from-accent/80 via-secondary/60 to-background"
     />
   );
 };
