@@ -12,6 +12,15 @@ const Auth = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
+    // Check if user is already authenticated
+    const checkSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        navigate("/waitlist");
+      }
+    };
+    checkSession();
+
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (event === 'SIGNED_IN' && session) {
         navigate("/waitlist");
