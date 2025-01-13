@@ -1,82 +1,72 @@
-import { useEffect, useState } from "react";
-import { usePageContent } from "@/hooks/usePageContent";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { ContactInfo } from "./footer/ContactInfo";
-import { FooterLogo } from "./footer/FooterLogo";
-import { FooterDescription } from "./footer/FooterDescription";
-import { FooterSocial } from "./footer/FooterSocial";
-import { FooterBottom } from "./footer/FooterBottom";
+import { Button } from "./ui/button";
+import { FooterCube } from "./footer/FooterCube";
 
 export const Footer = () => {
-  const { data: translations, isLoading } = usePageContent("footer", "main-footer");
   const { isRTL } = useLanguage();
-  const [footerContent, setFooterContent] = useState({
-    email: '',
-    phone: '',
-    location: '',
-    description: '',
-    copyright: '',
-    designer: '',
-    powered_by: '',
-    instagram_url: '',
-    youtube_url: '',
-  });
-
-  useEffect(() => {
-    console.log("Translations received:", translations);
-    if (translations) {
-      const content = {
-        email: isRTL ? 'contact@noamtryber.com' : translations['email'] || '',
-        phone: isRTL ? '-' : translations['phone'] || '',
-        location: isRTL ? 'וויומינג, ארה"ב' : translations['location'] || '',
-        description: translations['description'] || '',
-        copyright: translations['copyright'] || '',
-        designer: isRTL ? 'נוצר ע"י נועם טרייבר' : translations['designer'] || '',
-        powered_by: isRTL ? 'Timeliner' : translations['powered_by'] || '',
-        instagram_url: translations['instagram_url'] || '',
-        youtube_url: translations['youtube_url'] || '',
-      };
-      console.log("Setting footer content:", content);
-      setFooterContent(content);
-    }
-  }, [translations, isRTL]);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <footer className="w-full bg-card/30 backdrop-blur-lg border-t border-white/10 mt-20">
       <div className="container mx-auto px-4 py-12">
-        <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 ${isRTL ? 'text-right' : 'text-left'}`}>
-          {/* Left side - Company info */}
-          <div className="space-y-4">
-            <div className={isRTL ? 'text-right' : ''}>
-              <FooterLogo />
+        <div className={`flex flex-col-reverse md:flex-row items-center gap-8 ${isRTL ? 'md:flex-row-reverse' : ''}`}>
+          {/* Content side */}
+          <div className={`flex-1 space-y-8 ${isRTL ? 'text-right' : 'text-left'}`}>
+            <div className="space-y-4">
+              <p className="text-primary text-sm font-medium">
+                {isRTL ? 'מוכנים לקחת שליטה?' : 'READY TO TAKE CONTROL?'}
+              </p>
+              <h2 className="text-2xl md:text-3xl font-bold gradient-text">
+                {isRTL 
+                  ? 'ייעול תהליך העבודה שלך עם כלי הפקת וידאו חכמים יותר.'
+                  : 'Streamline your workflow with smarter video production tools.'}
+              </h2>
+              <div className={`flex flex-wrap gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                <Button variant="outline" className="border-primary/50 hover:bg-primary/10">
+                  {isRTL ? 'הצטרפו לקהילה' : 'Join the community'}
+                </Button>
+                <Button className="bg-gradient-to-br from-primary to-secondary hover:opacity-90">
+                  {isRTL ? 'התחילו בחינם' : 'Get Started For Free'}
+                </Button>
+              </div>
             </div>
-            <FooterDescription description={footerContent.description} />
-            <ContactInfo 
-              email={footerContent.email}
-              phone={footerContent.phone}
-              location={footerContent.location}
-            />
+
+            {/* Links */}
+            <div className="space-y-6">
+              <div className={`flex items-center gap-4 text-sm text-white/70 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                <span>support@timeliner.com</span>
+                <span>|</span>
+                <a href="#" className="hover:text-primary">X</a>
+                <span>|</span>
+                <a href="#" className="hover:text-primary">Youtube</a>
+                <span>|</span>
+                <a href="#" className="hover:text-primary">LinkedIn</a>
+              </div>
+
+              <div className={`flex items-center gap-4 text-sm text-white/70 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                <a href="#" className="hover:text-primary">
+                  {isRTL ? 'מדיניות פרטיות' : 'Privacy Policy'}
+                </a>
+                <span>|</span>
+                <a href="#" className="hover:text-primary">
+                  {isRTL ? 'תנאים והגבלות' : 'Terms & Conditions'}
+                </a>
+              </div>
+
+              <div className={`flex items-center gap-2 text-sm text-white/70 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                <span>© 2025 Timeliner Inc. All rights reserved.</span>
+                <span>|</span>
+                <span>
+                  {isRTL ? 'עוצב על ידי נועם טרייבר' : 'Designed by Noam Tryber'}
+                </span>
+              </div>
+            </div>
           </div>
 
-          {/* Right side - Social links and back to top */}
-          <div className={isRTL ? 'md:text-left' : 'md:text-right'}>
-            <FooterSocial 
-              instagramUrl={footerContent.instagram_url}
-              youtubeUrl={footerContent.youtube_url}
-            />
+          {/* 3D Cube side */}
+          <div className="flex-shrink-0">
+            <FooterCube />
           </div>
         </div>
-
-        {/* Bottom section */}
-        <FooterBottom 
-          designer={footerContent.designer}
-          instagramUrl={footerContent.instagram_url}
-          poweredBy={footerContent.powered_by}
-        />
       </div>
     </footer>
   );
