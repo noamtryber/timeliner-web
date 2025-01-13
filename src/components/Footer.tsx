@@ -60,7 +60,8 @@ export const Footer = () => {
                   ) : (
                     <>
                       <Button 
-                        variant="outline" 
+                        variant="outline"
+                        onClick={() => navigate('/community')}
                         className="border-primary/50 hover:bg-primary/10 text-base md:text-lg py-4 md:py-6 px-6 md:px-8 rounded-xl h-auto w-full md:w-auto"
                       >
                         Join the community
