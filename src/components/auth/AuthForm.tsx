@@ -89,8 +89,8 @@ const AuthForm = ({ errorMessage }: AuthFormProps) => {
               divider: 'hidden',
               anchor: 'hidden',
             },
+            extend: true,
           }}
-          providers={[]}
           localization={{
             variables: {
               sign_up: {
@@ -105,9 +105,9 @@ const AuthForm = ({ errorMessage }: AuthFormProps) => {
               },
             },
           }}
-          options={{
-            emailRedirectTo: `${window.location.origin}/auth/callback`,
-          }}
+          providers={[]}
+          redirectTo={`${window.location.origin}/auth/callback`}
+          magicLink={false}
           showLinks={false}
           additionalData={{
             full_name: {
