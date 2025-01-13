@@ -17,7 +17,7 @@ export const Navbar = () => {
   const { isRTL, language } = useLanguage();
   const navigate = useNavigate();
   const location = useLocation();
-  const isBlogPage = location.pathname === '/blog';
+  const hideMainNav = location.pathname === '/blog' || location.pathname === '/community';
 
   if (error) {
     toast({
@@ -56,7 +56,7 @@ export const Navbar = () => {
   };
 
   const renderNavItems = () => {
-    const leftItems = !isBlogPage ? [
+    const leftItems = !hideMainNav ? [
       <button 
         key="features" 
         onClick={() => handleSectionClick('features')} 
@@ -95,7 +95,7 @@ export const Navbar = () => {
     ] : [];
 
     const rightItems = [
-      !isBlogPage && <LanguageSwitcher key="lang" />,
+      !hideMainNav && <LanguageSwitcher key="lang" />,
       <Button key="login" variant="ghost" className="text-white/70" onClick={handleAuthClick}>
         {content?.login || 'Login'}
       </Button>,
@@ -155,7 +155,7 @@ export const Navbar = () => {
       {isOpen && (
         <div className="glass md:hidden">
           <div className={`px-2 pt-2 pb-3 space-y-1 sm:px-3 ${isRTL ? 'text-right' : 'text-left'}`}>
-            {!isBlogPage && (
+            {!hideMainNav && (
               <>
                 <button 
                   onClick={() => handleSectionClick('features')} 
