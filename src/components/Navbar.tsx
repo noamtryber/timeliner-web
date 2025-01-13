@@ -1,3 +1,4 @@
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, LogOut } from "lucide-react";
 import { useState } from "react";
