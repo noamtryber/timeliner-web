@@ -12,7 +12,6 @@ export const Footer = () => {
     const handleMouseMove = (e: MouseEvent) => {
       const rect = document.getElementById('footer-container')?.getBoundingClientRect();
       if (rect) {
-        // Calculate mouse position relative to the container
         const x = (e.clientX - rect.left) / rect.width - 0.5;
         const y = (e.clientY - rect.top) / rect.height - 0.5;
         setMousePosition({ x, y });
@@ -31,9 +30,7 @@ export const Footer = () => {
     <footer className="w-full mt-20">
       <div className="container mx-auto px-4 py-8 md:py-12">
         <div id="footer-container" className="bg-gradient-to-br from-[#F1F1F1] to-[#e6e9f0] rounded-2xl p-6 md:p-12 relative overflow-hidden">
-          {/* Content */}
           <div className={`flex flex-col md:flex-row items-start gap-6 md:gap-8 ${isRTL ? 'md:flex-row-reverse' : ''} relative z-10`}>
-            {/* Content side */}
             <div className={`flex-1 space-y-6 md:space-y-8 ${isRTL ? 'text-right' : 'text-left'}`}>
               <div className="space-y-4">
                 <p className="text-primary text-sm font-medium">
@@ -45,18 +42,37 @@ export const Footer = () => {
                     : 'Streamline your workflow with smarter video production tools.'}
                 </h2>
                 <div className={`flex flex-wrap gap-3 md:gap-4 ${isRTL ? 'justify-end' : ''}`}>
-                  <Button 
-                    variant="outline" 
-                    className="border-primary/50 hover:bg-primary/10 text-base md:text-lg py-4 md:py-6 px-6 md:px-8 rounded-xl h-auto w-full md:w-auto"
-                  >
-                    {isRTL ? 'הצטרפו לקהילה' : 'Join the community'}
-                  </Button>
-                  <Button 
-                    onClick={() => navigate('/signup')}
-                    className="bg-gradient-to-br from-primary to-secondary hover:opacity-90 text-base md:text-lg py-4 md:py-6 px-6 md:px-8 rounded-xl h-auto w-full md:w-auto"
-                  >
-                    {isRTL ? 'התחילו בחינם' : 'Get Started For Free'}
-                  </Button>
+                  {isRTL ? (
+                    <>
+                      <Button 
+                        onClick={() => navigate('/signup')}
+                        className="bg-gradient-to-br from-primary to-secondary hover:opacity-90 text-base md:text-lg py-4 md:py-6 px-6 md:px-8 rounded-xl h-auto w-full md:w-auto"
+                      >
+                        התחילו בחינם
+                      </Button>
+                      <Button 
+                        variant="outline" 
+                        className="border-primary/50 hover:bg-primary/10 text-base md:text-lg py-4 md:py-6 px-6 md:px-8 rounded-xl h-auto w-full md:w-auto"
+                      >
+                        הצטרפו לקהילה
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <Button 
+                        variant="outline" 
+                        className="border-primary/50 hover:bg-primary/10 text-base md:text-lg py-4 md:py-6 px-6 md:px-8 rounded-xl h-auto w-full md:w-auto"
+                      >
+                        Join the community
+                      </Button>
+                      <Button 
+                        onClick={() => navigate('/signup')}
+                        className="bg-gradient-to-br from-primary to-secondary hover:opacity-90 text-base md:text-lg py-4 md:py-6 px-6 md:px-8 rounded-xl h-auto w-full md:w-auto"
+                      >
+                        Get Started For Free
+                      </Button>
+                    </>
+                  )}
                 </div>
               </div>
 
