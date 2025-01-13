@@ -29,10 +29,10 @@ export const LanguageSwitcher = () => {
         <Button 
           variant="ghost" 
           size="sm" 
-          className="flex items-center gap-2 text-white/70 hover:text-white w-full justify-start text-base font-medium md:w-auto md:text-sm"
+          className="flex items-center gap-2 text-white/70 hover:text-white w-full justify-start text-base font-medium md:w-auto md:text-sm md:px-3 px-0"
         >
-          <Globe className="h-[1.2rem] w-[1.2rem]" />
-          <span>{buttonText}</span>
+          <Globe className="h-[1.2rem] w-[1.2rem] md:text-white/70 text-white" />
+          <span className="md:text-white/70 text-white">{buttonText}</span>
           <span className="sr-only">Switch language</span>
         </Button>
       </DropdownMenuTrigger>
