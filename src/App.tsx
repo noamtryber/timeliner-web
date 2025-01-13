@@ -4,20 +4,19 @@ import { Toaster } from "@/components/ui/toaster";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { createContext, useContext } from "react";
 import Index from "./pages/Index";
+import SignUp from "./pages/SignUp";
 import Waitlist from "./pages/Waitlist";
 import { supabase } from "@/integrations/supabase/client";
 
-// Initialize QueryClient with proper configuration for translations
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 1000 * 60 * 5, // 5 minutes
+      staleTime: 1000 * 60 * 5,
       retry: 1,
     },
   },
 });
 
-// Create auth context using our configured supabase client
 const AuthContext = createContext({ session: null, supabase });
 export const useAuth = () => useContext(AuthContext);
 
@@ -29,6 +28,7 @@ function App() {
           <AuthContext.Provider value={{ session: null, supabase }}>
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/signup" element={<SignUp />} />
               <Route path="/waitlist" element={<Waitlist />} />
             </Routes>
             <Toaster />

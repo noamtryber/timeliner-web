@@ -39,7 +39,7 @@ export const Navbar = () => {
   };
 
   const handleAuthClick = () => {
-    navigate('/auth');
+    navigate('/signup');
   };
 
   return (
