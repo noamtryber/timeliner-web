@@ -1,4 +1,3 @@
-import React from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, LogOut } from "lucide-react";
 import { useState } from "react";
@@ -17,6 +16,8 @@ export const Navbar = () => {
   const { session } = useAuth();
   const { isRTL, language } = useLanguage();
   const navigate = useNavigate();
+
+  console.log('Navbar translations:', content);
 
   if (error) {
     toast({
@@ -63,38 +64,38 @@ export const Navbar = () => {
         onClick={() => handleSectionClick('testimonials')} 
         className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
       >
-        {language === 'he' ? 'המלצות' : (content?.testimonials_link || 'Testimonials')}
+        {content?.testimonials_link || 'Testimonials'}
       </button>,
       <button 
         key="pricing" 
         onClick={() => handleSectionClick('pricing')} 
         className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
       >
-        {language === 'he' ? 'תמחור' : (content?.pricing_link || 'Pricing')}
+        {content?.pricing_link || 'Pricing'}
       </button>,
       <button 
         key="blog" 
         onClick={() => handleSectionClick('blog')} 
         className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
       >
-        {language === 'he' ? 'בלוג' : (content?.blog_link || 'Blog')}
+        {content?.blog_link || 'Blog'}
       </button>,
       <button 
         key="community" 
         onClick={() => handleSectionClick('community')} 
         className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
       >
-        {language === 'he' ? 'קהילה' : (content?.community_link || 'Community')}
+        {content?.community_link || 'Community'}
       </button>
     ];
 
     const rightItems = [
       <LanguageSwitcher key="lang" />,
       <Button key="login" variant="ghost" className="text-white/70" onClick={handleAuthClick}>
-        {language === 'he' ? 'התחברות' : (content?.login || 'Login')}
+        {content?.login || 'Login'}
       </Button>,
       <Button key="signup" className="bg-primary hover:bg-primary/90" onClick={handleAuthClick}>
-        {language === 'he' ? 'הרשמה' : (content?.sign_up || 'Sign Up')}
+        {content?.sign_up || 'Sign Up'}
       </Button>
     ];
 
@@ -120,27 +121,25 @@ export const Navbar = () => {
   return (
     <nav className="fixed w-full z-50 top-0 animate-fade-down">
       <div className="glass mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className={`flex items-center ${isRTL ? 'flex-row-reverse justify-end w-full' : ''}`}>
-            <div className="flex-shrink-0">
-              <a href="/">
-                <img 
-                  src="/lovable-uploads/1ad9d673-efdf-41ae-8a29-82d3e976a7ed.png" 
-                  alt="Timeliner Logo" 
-                  className="h-7"
-                />
-              </a>
-            </div>
-            <div className={`hidden md:flex items-center ${isRTL ? 'mr-4 space-x-4 space-x-reverse' : 'ml-4 space-x-4'}`}>
+        <div className={`flex items-center justify-between h-16 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''} gap-4`}>
+            <a href="/" className="flex-shrink-0">
+              <img 
+                src="/lovable-uploads/1ad9d673-efdf-41ae-8a29-82d3e976a7ed.png" 
+                alt="Timeliner Logo" 
+                className="h-7"
+              />
+            </a>
+            <div className="hidden md:flex items-center space-x-4">
               {isRTL ? [...leftItems].reverse() : leftItems}
             </div>
           </div>
           
-          <div className={`hidden md:flex items-center ${isRTL ? 'space-x-4 space-x-reverse' : 'space-x-4'}`}>
+          <div className="hidden md:flex items-center space-x-4">
             {isRTL ? [...rightItems].reverse() : rightItems}
           </div>
           
-          <div className={`md:hidden ${isRTL ? 'mr-auto' : 'ml-auto'}`}>
+          <div className="md:hidden">
             <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
               <Menu className="h-6 w-6" />
             </Button>
@@ -151,70 +150,57 @@ export const Navbar = () => {
       {isOpen && (
         <div className="glass md:hidden">
           <div className={`px-2 pt-2 pb-3 space-y-1 sm:px-3 ${isRTL ? 'text-right' : 'text-left'}`}>
-            {isRTL ? (
-              <>
-                {[...leftItems].reverse().map((item, index) => (
-                  <div key={index} className="block w-full">
-                    {React.cloneElement(item, {
-                      className: "text-white block px-3 py-2 rounded-md text-base font-medium w-full text-right"
-                    })}
-                  </div>
-                ))}
-                <div className="px-3 py-2">
-                  <LanguageSwitcher />
-                </div>
-                {session ? (
-                  <Button 
-                    variant="ghost" 
-                    className="w-full justify-end" 
-                    onClick={handleLogout}
-                  >
-                    <LogOut className="h-4 w-4 ml-2" />
-                    {content?.logout_button || 'Sign out'}
-                  </Button>
-                ) : (
-                  <div className="space-y-2 px-3">
-                    <Button variant="secondary" className="w-full text-right" onClick={handleAuthClick}>
-                      {language === 'he' ? 'התחברות' : (content?.login || 'Login')}
-                    </Button>
-                    <Button className="w-full bg-primary hover:bg-primary/90 text-right" onClick={handleAuthClick}>
-                      {language === 'he' ? 'הרשמה' : (content?.sign_up || 'Sign Up')}
-                    </Button>
-                  </div>
-                )}
-              </>
+            <button 
+              onClick={() => handleSectionClick('features')} 
+              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+            >
+              {language === 'he' ? 'פיצ\'רים' : (content?.features_link || 'Features')}
+            </button>
+            <button 
+              onClick={() => handleSectionClick('testimonials')} 
+              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+            >
+              {content?.testimonials_link || 'Testimonials'}
+            </button>
+            <button 
+              onClick={() => handleSectionClick('pricing')} 
+              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+            >
+              {content?.pricing_link || 'Pricing'}
+            </button>
+            <button 
+              onClick={() => handleSectionClick('blog')} 
+              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+            >
+              {content?.blog_link || 'Blog'}
+            </button>
+            <button 
+              onClick={() => handleSectionClick('community')} 
+              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+            >
+              {content?.community_link || 'Community'}
+            </button>
+            <div className="px-3 py-2">
+              <LanguageSwitcher />
+            </div>
+            {session ? (
+              <Button 
+                variant="ghost" 
+                className="w-full justify-start" 
+                onClick={handleLogout}
+              >
+                <LogOut className="h-4 w-4 mr-2" />
+                {content?.logout_button || 'Sign out'}
+              </Button>
             ) : (
-              <>
-                {leftItems.map((item, index) => (
-                  <div key={index} className="block w-full">
-                    {React.cloneElement(item, {
-                      className: "text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
-                    })}
-                  </div>
-                ))}
-                <div className="px-3 py-2">
-                  <LanguageSwitcher />
-                </div>
-                {session ? (
-                  <Button 
-                    variant="ghost" 
-                    className="w-full justify-start" 
-                    onClick={handleLogout}
-                  >
-                    <LogOut className="h-4 w-4 mr-2" />
-                    {content?.logout_button || 'Sign out'}
-                  </Button>
-                ) : (
-                  <div className="space-y-2 px-3">
-                    <Button variant="secondary" className="w-full text-left" onClick={handleAuthClick}>
-                      {language === 'he' ? 'התחברות' : (content?.login || 'Login')}
-                    </Button>
-                    <Button className="w-full bg-primary hover:bg-primary/90 text-left" onClick={handleAuthClick}>
-                      {language === 'he' ? 'הרשמה' : (content?.sign_up || 'Sign Up')}
-                    </Button>
-                  </div>
-                )}
-              </>
+              <div className="space-y-2 px-3">
+                <Button variant="secondary" className="w-full text-center" onClick={handleAuthClick}>
+                  {content?.login || 'Login'}
+                </Button>
+                <Button className="w-full bg-primary hover:bg-primary/90" onClick={handleAuthClick}>
+                  {content?.sign_up || 'Sign Up'}
+                </Button>
+              </div>
             )}
           </div>
         </div>
