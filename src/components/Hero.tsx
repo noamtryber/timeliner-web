@@ -9,6 +9,7 @@ import { TimelineBackground } from "./TimelineBackground";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 export const Hero = () => {
   const { data: content, error: contentError } = usePageContent('hero', 'main');
@@ -86,6 +87,46 @@ export const Hero = () => {
       return "https://player.vimeo.com/video/1044344874";
     }
     return "https://player.vimeo.com/video/1046016144";
+  };
+
+  const renderDemoDialog = () => {
+    if (language === 'he') {
+      return (
+        <Dialog open={showDemo} onOpenChange={() => setShowDemo(false)}>
+          <DialogContent dir="rtl" className="sm:max-w-[800px] bg-card/95 backdrop-blur-xl">
+            <DialogHeader>
+              <DialogTitle className="text-2xl gradient-text text-right">
+                איך זה תכל'ס עובד?
+              </DialogTitle>
+              <DialogDescription className="text-lg text-white/70 mt-4 leading-relaxed text-right">
+                צפו בסרטון המלא ותבינו למה טיימליינר הוא הכלי היחיד שתצטרכו לניהול פרויקטים, סבבי תיקונים וקבלת תשלומים בזמן. נוצר על ידי יוצרים, עבור יוצרים.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="mt-6 rounded-xl overflow-hidden aspect-video">
+              <iframe
+                src="https://player.vimeo.com/video/1044344874?autoplay=1"
+                className="w-full h-full"
+                allow="autoplay; fullscreen; picture-in-picture"
+                style={{
+                  border: 'none',
+                  background: 'transparent',
+                }}
+              />
+            </div>
+          </DialogContent>
+        </Dialog>
+      );
+    }
+
+    return (
+      <FeatureDialog
+        isOpen={showDemo}
+        onClose={() => setShowDemo(false)}
+        title={content?.demo_title || "See How It Works"}
+        description={content?.demo_description || "Watch our 2-minute demo to see how Timeliner can streamline your creative workflow and help you manage projects more efficiently."}
+        videoUrl={media?.find(item => item.media_key === 'demo')?.media_url || "https://player.vimeo.com/video/1042338760?autoplay=1"}
+      />
+    );
   };
 
   return (
@@ -168,13 +209,7 @@ export const Hero = () => {
         </div>
       </div>
 
-      <FeatureDialog
-        isOpen={showDemo}
-        onClose={() => setShowDemo(false)}
-        title={content?.demo_title || "See How It Works"}
-        description={content?.demo_description || "Watch our 2-minute demo to see how Timeliner can streamline your creative workflow and help you manage projects more efficiently."}
-        videoUrl={media?.find(item => item.media_key === 'demo')?.media_url || "https://player.vimeo.com/video/1042338760?autoplay=1"}
-      />
+      {renderDemoDialog()}
     </div>
   );
 };
