@@ -11,7 +11,7 @@ export const FooterLinks = ({ designer, instagramUrl, poweredBy }: FooterLinksPr
   const { isRTL } = useLanguage();
   
   return (
-    <div className={`flex items-center ${isRTL ? 'space-x-reverse justify-end' : ''} space-x-2 text-white`}>
+    <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''} space-x-2 ${isRTL ? 'space-x-reverse' : ''}`}>
       <span>{isRTL ? '' : 'Designed by '}</span>
       <Link 
         to={instagramUrl}
