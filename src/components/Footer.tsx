@@ -12,7 +12,7 @@ export const Footer = () => {
           <div 
             className={`absolute top-0 ${isRTL ? 'left-0' : 'right-0'} h-full w-full md:w-1/2 opacity-20`}
             style={{
-              backgroundImage: "url('/lovable-uploads/11084fc2-12b6-4d69-a65f-93794323379d.png')",
+              backgroundImage: "url('/lovable-uploads/a53c2f06-958b-483d-b5df-b8481eefc13d.png')",
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
