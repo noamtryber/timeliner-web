@@ -87,7 +87,7 @@ export const Navbar = () => {
       </button>,
       <button 
         key="community" 
-        onClick={() => handleSectionClick('community')} 
+        onClick={() => navigate('/community')} 
         className="text-white/70 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
       >
         {content?.community_link || 'Community'}
