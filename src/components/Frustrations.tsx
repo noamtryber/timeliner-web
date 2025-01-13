@@ -11,7 +11,7 @@ export const Frustrations = () => {
     triggerOnce: true,
     threshold: 0.1
   });
-  const { isRTL } = useLanguage();
+  const { isRTL, language } = useLanguage();
 
   const frustrationData = [
     {
@@ -40,6 +40,14 @@ export const Frustrations = () => {
     }
   ];
 
+  const headerText = language === 'he' 
+    ? "התסכולים שכולנו מכירים (ואולי קצת נמאס לנו מהם)"
+    : content?.challenges_solved || "The Frustrations Every Editor and Agency Knows Too Well";
+
+  const subheaderText = language === 'he'
+    ? "עבודה עם לקוחות לא צריכה להיות כזה כאב ראש..."
+    : content?.solve_see_how || "Working with clients shouldn't be this hard...";
+
   return (
     <section className="relative min-h-screen flex items-center py-20 overflow-hidden">
       <FrustrationBackground />
@@ -48,10 +56,10 @@ export const Frustrations = () => {
       
       <div className={`container mx-auto px-4 relative ${isRTL ? 'rtl' : ''}`} ref={ref}>
         <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text text-center">
-          {content?.challenges_solved || "The Frustrations Every Editor and Agency Knows Too Well"}
+          {headerText}
         </h2>
         <p className="text-lg text-white/70 text-center mb-16">
-          {content?.solve_see_how || "Working with clients shouldn't be this hard..."}
+          {subheaderText}
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
@@ -70,10 +78,10 @@ export const Frustrations = () => {
 
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
-            {content?.challenges_solved || "The Frustrations Every Editor and Agency Knows Too Well"}
+            {headerText}
           </h2>
           <p className="text-lg text-white/70">
-            {content?.solve_see_how || "Working with clients shouldn't be this hard..."}
+            {subheaderText}
           </p>
         </div>
       </div>
