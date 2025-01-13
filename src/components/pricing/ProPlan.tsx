@@ -136,7 +136,7 @@ export const ProPlan = ({
       
       <Button 
         className="w-full bg-gradient-to-br from-primary to-secondary hover:opacity-90 transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40"
-        onClick={() => navigate('/auth')}
+        onClick={() => navigate('/signup')}
       >
         {isHebrew ? 'התחילו היום בחינם' : content.button_text}
       </Button>
