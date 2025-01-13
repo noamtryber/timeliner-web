@@ -105,11 +105,16 @@ const AuthForm = ({ errorMessage }: AuthFormProps) => {
               },
             },
           }}
+          options={{
+            emailRedirectTo: `${window.location.origin}/auth/callback`,
+          }}
+          showLinks={false}
           additionalData={{
             full_name: {
               required: true,
               label: 'Full Name',
-              order: 1
+              type: 'text',
+              order: 1,
             },
           }}
         />
