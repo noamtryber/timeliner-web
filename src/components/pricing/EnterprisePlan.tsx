@@ -1,57 +1,36 @@
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Users } from "lucide-react";
 import { PlanFeature } from "./PlanFeature";
 import { PlanIcon } from "./PlanIcon";
-import { PricingContent } from "@/hooks/usePricingContent";
-import { useNavigate } from "react-router-dom";
-import { useLanguage } from "@/contexts/LanguageContext";
+import type { PricingContent } from "@/hooks/usePricingContent";
 
 interface EnterprisePlanProps {
   content?: PricingContent;
+  onGetStarted: () => void;
 }
 
-export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
-  const navigate = useNavigate();
-  const { language } = useLanguage();
-  const isHebrew = language === 'he';
-  
+export const EnterprisePlan = ({ content, onGetStarted }: EnterprisePlanProps) => {
   if (!content) return null;
 
-  const hebrewFeatures = [
-    'חברי צוות ללא הגבלה',
-    'פרויקטים פעילים ללא הגבלה',
-    'פתרונות אחסון מותאמים אישית',
-    'מנהל חשבון ייעודי',
-    'תמיכה 24/7 בעדיפות גבוהה',
-    'פיתוח אינטגרציות מותאמות אישית',
-    'אפשרויות פריסה באתר'
-  ];
-
   return (
-    <Card className={`glass p-6 flex flex-col animate-fade-up delay-600 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
-      <PlanIcon Icon={Users} color="secondary" />
-      <h3 className="text-2xl font-bold mb-2">{isHebrew ? 'אנטרפרייז' : content.title}</h3>
-      <p className="text-white/70 mb-6">{isHebrew ? 'פתרונות מותאמים לצוותים גדולים' : content.subtitle}</p>
-      <div className="text-3xl font-bold mb-8">
-        {isHebrew ? 'עלות: צרו קשר לתמחור' : content.price}
-        {!isHebrew && <span className="text-sm font-normal text-white/70 block">{content.price_subtitle}</span>}
+    <div className="glass p-6 rounded-xl">
+      <PlanIcon type="enterprise" />
+      <h3 className="text-xl font-semibold mt-4">{content.title}</h3>
+      <p className="text-white/70 mt-2">{content.subtitle}</p>
+      <div className="mt-4">
+        <span className="text-3xl font-bold">Custom</span>
       </div>
-      
-      <div className="space-y-4 mb-8 flex-grow">
-        <h4 className="font-semibold">{isHebrew ? 'הכל ב-Pro, בנוסף:' : 'Everything in Pro, plus:'}</h4>
-        {(isHebrew ? hebrewFeatures : content.features).map((feature, index) => (
-          <PlanFeature key={index} text={feature} isRTL={isHebrew} />
+      <Button 
+        className="w-full mt-6" 
+        variant="outline"
+        onClick={onGetStarted}
+      >
+        {content.button_text || 'Contact Sales'}
+      </Button>
+      <div className="mt-6 space-y-4">
+        {content.features?.map((feature, index) => (
+          <PlanFeature key={index} feature={feature} />
         ))}
       </div>
-      
-      <Button 
-        variant="outline" 
-        className="w-full border-primary/50 hover:bg-primary/10 transition-all duration-300"
-        onClick={() => navigate('/auth')}
-      >
-        {isHebrew ? 'צרו קשר' : content.button_text}
-      </Button>
-    </Card>
+    </div>
   );
 };

@@ -6,11 +6,13 @@ import { ProPlan } from "./pricing/ProPlan";
 import { EnterprisePlan } from "./pricing/EnterprisePlan";
 import { usePricingContent } from "@/hooks/usePricingContent";
 import { Skeleton } from "./ui/skeleton";
+import { useNavigate } from "react-router-dom";
 
 export const Pricing = () => {
   const [pricingPeriod, setPricingPeriod] = useState<'monthly' | 'quarterly' | 'yearly'>('monthly');
   const [basicStorage, setBasicStorage] = useState(250);
   const [proStorage, setProStorage] = useState(500);
+  const navigate = useNavigate();
   
   const { data, isLoading } = usePricingContent();
 
@@ -27,6 +29,10 @@ export const Pricing = () => {
       default:
         return monthlyPrice; // No discount for monthly
     }
+  };
+
+  const handleGetStarted = () => {
+    navigate('/signup');
   };
 
   if (isLoading) {
@@ -56,7 +62,10 @@ export const Pricing = () => {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <FreePlan content={data?.content.free} />
+          <FreePlan 
+            content={data?.content.free} 
+            onGetStarted={handleGetStarted}
+          />
           <BasicPlan 
             content={data?.content.basic}
             video={data?.videos.basic}
@@ -64,6 +73,7 @@ export const Pricing = () => {
             basicStorage={basicStorage}
             setBasicStorage={setBasicStorage}
             calculatePrice={calculatePrice}
+            onGetStarted={handleGetStarted}
           />
           <ProPlan 
             content={data?.content.pro}
@@ -72,8 +82,12 @@ export const Pricing = () => {
             proStorage={proStorage}
             setProStorage={setProStorage}
             calculatePrice={calculatePrice}
+            onGetStarted={handleGetStarted}
           />
-          <EnterprisePlan content={data?.content.enterprise} />
+          <EnterprisePlan 
+            content={data?.content.enterprise} 
+            onGetStarted={handleGetStarted}
+          />
         </div>
       </div>
     </section>
