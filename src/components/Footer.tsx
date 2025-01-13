@@ -1,13 +1,34 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "./ui/button";
+import { useState, useEffect } from "react";
 
 export const Footer = () => {
   const { isRTL } = useLanguage();
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = document.getElementById('footer-container')?.getBoundingClientRect();
+      if (rect) {
+        // Calculate mouse position relative to the container
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        setMousePosition({ x, y });
+      }
+    };
+
+    const container = document.getElementById('footer-container');
+    container?.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      container?.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
 
   return (
     <footer className="w-full mt-20">
       <div className="container mx-auto px-4 py-8 md:py-12">
-        <div className="bg-gradient-to-br from-[#F1F1F1] to-[#e6e9f0] rounded-2xl p-6 md:p-12 shadow-lg relative overflow-hidden">
+        <div id="footer-container" className="bg-gradient-to-br from-[#F1F1F1] to-[#e6e9f0] rounded-2xl p-6 md:p-12 relative overflow-hidden">
           {/* Content */}
           <div className={`flex flex-col md:flex-row items-start gap-6 md:gap-8 ${isRTL ? 'md:flex-row-reverse' : ''} relative z-10`}>
             {/* Content side */}
@@ -68,12 +89,21 @@ export const Footer = () => {
               </div>
             </div>
 
-            {/* Image side */}
-            <div className="hidden md:flex flex-shrink-0 w-full md:w-2/5 items-center justify-center">
+            {/* Image side with 3D floating effect */}
+            <div className="hidden md:flex flex-shrink-0 w-full md:w-2/5 items-center justify-center perspective-1000">
               <img 
-                src="/lovable-uploads/70919f9e-4f05-4b85-9711-f9b0d7209c2e.png"
+                src="/lovable-uploads/4cbfc696-43a6-423d-921e-d2ccac5a5213.png"
                 alt="Project management dashboard"
-                className="rounded-2xl w-full h-auto object-contain shadow-lg"
+                className="rounded-2xl w-full h-auto object-contain transition-transform duration-200 ease-out"
+                style={{
+                  transform: `
+                    perspective(1000px)
+                    rotateX(${mousePosition.y * 5}deg)
+                    rotateY(${mousePosition.x * 5}deg)
+                    translateX(${mousePosition.x * 10}px)
+                    translateY(${mousePosition.y * 10}px)
+                  `
+                }}
               />
             </div>
           </div>
