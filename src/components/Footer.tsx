@@ -8,18 +8,6 @@ export const Footer = () => {
     <footer className="w-full mt-20">
       <div className="container mx-auto px-4 py-8 md:py-12">
         <div className="bg-gradient-to-br from-[#F1F1F1] to-[#e6e9f0] rounded-2xl p-6 md:p-12 shadow-lg relative overflow-hidden">
-          {/* Background Image - Hidden on mobile */}
-          <div 
-            className="absolute top-0 right-0 h-full hidden md:block w-1/2 opacity-90"
-            style={{
-              backgroundImage: "url('/lovable-uploads/15b554aa-6de5-4e00-ac39-414e16de8f22.png')",
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-              mixBlendMode: 'multiply'
-            }}
-          />
-          
           {/* Content */}
           <div className={`flex flex-col md:flex-row items-start gap-6 md:gap-8 ${isRTL ? 'md:flex-row-reverse' : ''} relative z-10`}>
             {/* Content side */}
@@ -80,8 +68,14 @@ export const Footer = () => {
               </div>
             </div>
 
-            {/* Spacer div to maintain layout */}
-            <div className="flex-shrink-0 w-full md:w-1/3" />
+            {/* Image side */}
+            <div className="hidden md:block flex-shrink-0 w-full md:w-1/3">
+              <img 
+                src="/lovable-uploads/15b554aa-6de5-4e00-ac39-414e16de8f22.png"
+                alt="Footer illustration"
+                className="rounded-2xl w-full h-auto object-cover shadow-lg"
+              />
+            </div>
           </div>
         </div>
       </div>
