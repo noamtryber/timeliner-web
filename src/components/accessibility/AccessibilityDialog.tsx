@@ -2,7 +2,6 @@ import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Card } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
 import { useAccessibility } from "@/contexts/AccessibilityContext";
 import { 
   Type, 
@@ -23,7 +22,6 @@ interface AccessibilityDialogProps {
 }
 
 export const AccessibilityDialog = ({ isOpen, onClose }: AccessibilityDialogProps) => {
-  const { toast } = useToast();
   const {
     fontSize,
     setFontSize,
@@ -45,10 +43,6 @@ export const AccessibilityDialog = ({ isOpen, onClose }: AccessibilityDialogProp
 
   const handleFontSizeChange = (value: number[]) => {
     setFontSize(value[0]);
-    toast({
-      title: "Font size updated",
-      description: `Font size set to ${value[0]}%`,
-    });
   };
 
   const resetToDefaults = () => {
@@ -60,10 +54,6 @@ export const AccessibilityDialog = ({ isOpen, onClose }: AccessibilityDialogProp
     setHighlightLinks(false);
     setDyslexicFont(false);
     setContrast('normal');
-    toast({
-      title: "Settings reset",
-      description: "All accessibility settings have been reset to default values",
-    });
   };
 
   return (
@@ -120,13 +110,7 @@ export const AccessibilityDialog = ({ isOpen, onClose }: AccessibilityDialogProp
               
               <Card 
                 className="p-4 text-center cursor-pointer transition-colors hover:border-primary/50"
-                onClick={() => {
-                  setLetterSpacing(letterSpacing === 0 ? 1 : 0);
-                  toast({
-                    title: "Letter spacing updated",
-                    description: `Letter spacing ${letterSpacing === 0 ? 'increased' : 'reset'}`,
-                  });
-                }}
+                onClick={() => setLetterSpacing(letterSpacing === 0 ? 1 : 0)}
               >
                 <ArrowDownWideNarrow className="h-8 w-8 mx-auto mb-2" />
                 <span className="text-sm">Letter Spacing</span>
@@ -134,13 +118,7 @@ export const AccessibilityDialog = ({ isOpen, onClose }: AccessibilityDialogProp
               
               <Card 
                 className="p-4 text-center cursor-pointer transition-colors hover:border-primary/50"
-                onClick={() => {
-                  setLineHeight(lineHeight === 1.5 ? 2 : 1.5);
-                  toast({
-                    title: "Line height updated",
-                    description: `Line height ${lineHeight === 1.5 ? 'increased' : 'reset'}`,
-                  });
-                }}
+                onClick={() => setLineHeight(lineHeight === 1.5 ? 2 : 1.5)}
               >
                 <ArrowUpNarrowWide className="h-8 w-8 mx-auto mb-2" />
                 <span className="text-sm">Line Height</span>
@@ -148,13 +126,7 @@ export const AccessibilityDialog = ({ isOpen, onClose }: AccessibilityDialogProp
               
               <Card 
                 className="p-4 text-center cursor-pointer transition-colors hover:border-primary/50"
-                onClick={() => {
-                  setFontWeight(fontWeight === 400 ? 700 : 400);
-                  toast({
-                    title: "Font weight updated",
-                    description: `Font weight ${fontWeight === 400 ? 'increased' : 'reset'}`,
-                  });
-                }}
+                onClick={() => setFontWeight(fontWeight === 400 ? 700 : 400)}
               >
                 <Bold className="h-8 w-8 mx-auto mb-2" />
                 <span className="text-sm">Font Weight</span>
