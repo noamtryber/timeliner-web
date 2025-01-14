@@ -26,7 +26,7 @@ export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContent
   const { isRTL } = useLanguage();
 
   return (
-    <div className={`text-center lg:text-left ${isRTL ? 'text-right' : ''} animate-fade-up space-y-6`}>
+    <div className={`text-center lg:text-left ${isRTL ? 'text-right' : ''} animate-fade-up space-y-6 pt-20`}>
       <span className={`subtitle-gradient block tracking-wide ${
         isRTL ? 'text-base sm:text-lg font-bold' : 'text-sm sm:text-base'
       }`}>
@@ -40,7 +40,7 @@ export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContent
       {isMobile && (
         <div className="w-full aspect-video rounded-xl overflow-hidden">
           <iframe
-            src="https://player.vimeo.com/video/1044344874?autoplay=0"
+            src="https://player.vimeo.com/video/1044344874?autoplay=1&muted=0"
             className="w-full h-full"
             allow="autoplay; fullscreen; picture-in-picture"
             style={{ border: 'none', background: 'transparent' }}
