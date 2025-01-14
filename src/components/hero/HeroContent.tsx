@@ -26,22 +26,22 @@ export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContent
   const { isRTL } = useLanguage();
 
   return (
-    <div className={`text-left ${isRTL ? 'text-right' : ''} animate-fade-up space-y-6`}>
+    <div className={`text-center lg:text-left ${isRTL ? 'text-right' : ''} animate-fade-up space-y-6`}>
       <span className={`subtitle-gradient block tracking-wide ${
         isRTL ? 'text-base sm:text-lg font-bold' : 'text-sm sm:text-base'
       }`}>
         {translations.video_editors}
       </span>
       
-      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold gradient-text tracking-tight leading-[1.15] max-w-[95%]">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold gradient-text tracking-tight leading-tight max-w-[95%] mx-auto lg:mx-0">
         {translations.main_title}
       </h1>
 
-      <p className="text-lg sm:text-xl text-white/70 leading-relaxed max-w-2xl">
+      <p className="text-lg sm:text-xl text-white/70 leading-relaxed max-w-2xl mx-auto lg:mx-0">
         {translations.subtext}
       </p>
 
-      <div className={`flex flex-col sm:flex-row items-start gap-4 ${
+      <div className={`flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 ${
         isRTL ? 'sm:justify-start' : ''
       }`}>
         <Button 

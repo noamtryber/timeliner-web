@@ -103,11 +103,23 @@ export const Hero = () => {
       
       <div className={`container mx-auto px-4 relative z-50 ${isRTL ? 'rtl' : ''}`}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <HeroContent 
-            translations={translatedContent}
-            onWatchDemo={() => setShowDemo(true)}
-            isMobile={isMobile}
-          />
+          <div className="flex flex-col items-center lg:items-start">
+            <HeroContent 
+              translations={translatedContent}
+              onWatchDemo={() => setShowDemo(true)}
+              isMobile={isMobile}
+            />
+            {isMobile && (
+              <div className="w-full aspect-video rounded-xl overflow-hidden mt-8 mb-6">
+                <iframe
+                  src="https://player.vimeo.com/video/1044344874?autoplay=0"
+                  className="w-full h-full"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  style={{ border: 'none', background: 'transparent' }}
+                />
+              </div>
+            )}
+          </div>
           <HeroImage />
         </div>
       </div>
