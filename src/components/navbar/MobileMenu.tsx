@@ -25,6 +25,9 @@ export const MobileMenu = ({
   return (
     <div className="fixed inset-x-0 top-16 bg-background/80 backdrop-blur-sm border-b border-[#222222]/40 shadow-lg md:hidden">
       <div className={`px-2 pt-2 pb-3 space-y-1 sm:px-3 ${isRTL ? 'text-right' : 'text-left'}`}>
+        <div className="px-3 py-2">
+          <LanguageSwitcher />
+        </div>
         {!hideMainNav && (
           <>
             <button 
@@ -57,9 +60,6 @@ export const MobileMenu = ({
             >
               {content?.community_link || 'Community'}
             </button>
-            <div className="px-3 py-2">
-              <LanguageSwitcher />
-            </div>
           </>
         )}
         <div className="space-y-2 px-3">
