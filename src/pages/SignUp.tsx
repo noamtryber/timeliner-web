@@ -9,6 +9,7 @@ import { TimelineBackground } from "@/components/TimelineBackground";
 import { ArrowLeft } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { usePageContent } from "@/hooks/usePageContent";
 
 const SignUp = () => {
   const [loading, setLoading] = useState(false);
@@ -19,82 +20,10 @@ const SignUp = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const { language } = useLanguage();
-  const isHebrew = language === 'he';
-  const isSpanish = language === 'es';
   const isMobile = useIsMobile();
-
-  const translations = {
-    welcome: {
-      en: "Welcome to timeliner.io",
-      he: "ברוכים הבאים ל-timeliner.io",
-      es: "Bienvenido a timeliner.io"
-    },
-    subtitle: {
-      en: "Get started - it's free. No credit card needed.",
-      he: "מוזמנים להתחיל עכשיו - זה בחינם. אין צורך בכרטיס אשראי.",
-      es: "Comienza - es gratis. No se necesita tarjeta de crédito."
-    },
-    fullName: {
-      en: "Full name",
-      he: "שם מלא",
-      es: "Nombre completo"
-    },
-    email: {
-      en: "Your best email",
-      he: "האימייל הטוב ביותר שלך",
-      es: "Tu mejor correo electrónico"
-    },
-    password: {
-      en: "Create a password",
-      he: "צרו סיסמה",
-      es: "Crea una contraseña"
-    },
-    passwordRequirements: {
-      en: "Password must be at least 6 characters long.",
-      he: "הסיסמה חייבת להכיל לפחות 6 תווים.",
-      es: "La contraseña debe tener al menos 6 caracteres."
-    },
-    terms: {
-      en: "By proceeding, you agree to the",
-      he: "יחד עם ההרשמה, אתם מסכימים",
-      es: "Al continuar, aceptas los"
-    },
-    getStarted: {
-      en: "Get Started",
-      he: "התחילו עכשיו",
-      es: "Comenzar"
-    },
-    termsLink: {
-      en: "Terms of Service",
-      he: "לתנאי השירות",
-      es: "Términos de Servicio"
-    },
-    and: {
-      en: "and",
-      he: "ול",
-      es: "y la"
-    },
-    privacyLink: {
-      en: "Privacy Policy",
-      he: "מדיניות הפרטיות",
-      es: "Política de Privacidad"
-    },
-    alreadyHaveAccount: {
-      en: "Already have an account?",
-      he: "כבר יש לך חשבון?",
-      es: "¿Ya tienes una cuenta?"
-    },
-    logIn: {
-      en: "Log in",
-      he: "התחברות",
-      es: "Iniciar sesión"
-    },
-    creatingAccount: {
-      en: "Creating account...",
-      he: "יוצר חשבון...",
-      es: "Creando cuenta..."
-    }
-  };
+  
+  // Fetch translations using usePageContent
+  const { data: content } = usePageContent('signup');
 
   const calculatePasswordStrength = (password: string) => {
     const minLength = 8;
@@ -124,11 +53,6 @@ const SignUp = () => {
 
     return strength;
   };
-
-  useEffect(() => {
-    const strength = calculatePasswordStrength(password);
-    setPasswordStrength(strength);
-  }, [password]);
 
   const validatePassword = (password: string) => {
     const minLength = 6;
@@ -209,6 +133,26 @@ const SignUp = () => {
     return "bg-green-500";
   };
 
+  const translations = {
+    welcome: content?.welcome || "Welcome to timeliner.io",
+    subtitle: content?.subtitle || "Get started - it's free. No credit card needed.",
+    fullName: content?.fullName || "Full name",
+    email: content?.email || "Your best email",
+    password: content?.password || "Create a password",
+    passwordRequirements: content?.passwordRequirements || "Password must be at least 6 characters long.",
+    terms: content?.terms || "By proceeding, you agree to the",
+    getStarted: content?.getStarted || "Get Started",
+    termsLink: content?.termsLink || "Terms of Service",
+    and: content?.and || "and",
+    privacyLink: content?.privacyLink || "Privacy Policy",
+    alreadyHaveAccount: content?.alreadyHaveAccount || "Already have an account?",
+    logIn: content?.logIn || "Log in",
+    creatingAccount: content?.creatingAccount || "Creating account...",
+    strongPassword: content?.strongPassword || "Strong password",
+    goodPassword: content?.goodPassword || "Good password",
+    weakPassword: content?.weakPassword || "Weak password"
+  };
+
   return (
     <div className="flex min-h-screen">
       <div className={`${isMobile ? 'w-full' : 'w-[65%]'} bg-white p-4 md:p-8 flex items-center justify-center relative`}>
@@ -228,10 +172,10 @@ const SignUp = () => {
               className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-4"
             />
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-              {translations.welcome[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}
+              {translations.welcome}
             </h2>
             <p className="mt-2 text-sm md:text-base text-gray-600">
-              {translations.subtitle[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}
+              {translations.subtitle}
             </p>
           </div>
 
@@ -240,7 +184,7 @@ const SignUp = () => {
               <div>
                 <Input
                   type="text"
-                  placeholder={translations.fullName[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}
+                  placeholder={translations.fullName}
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   required
@@ -250,7 +194,7 @@ const SignUp = () => {
               <div>
                 <Input
                   type="email"
-                  placeholder={translations.email[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}
+                  placeholder={translations.email}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -260,7 +204,7 @@ const SignUp = () => {
               <div>
                 <Input
                   type="password"
-                  placeholder={translations.password[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}
+                  placeholder={translations.password}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
@@ -271,29 +215,29 @@ const SignUp = () => {
                     <Progress value={passwordStrength} className="h-2" />
                     <p className="text-xs text-gray-500">
                       {passwordStrength === 100 ? (
-                        "Strong password"
+                        translations.strongPassword
                       ) : passwordStrength >= 60 ? (
-                        "Good password"
+                        translations.goodPassword
                       ) : (
-                        "Weak password"
+                        translations.weakPassword
                       )}
                     </p>
                   </div>
                 )}
                 <p className="mt-1 text-xs md:text-sm text-gray-500">
-                  {translations.passwordRequirements[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}
+                  {translations.passwordRequirements}
                 </p>
               </div>
             </div>
 
             <div className="text-xs md:text-sm text-gray-600 text-center">
-              {translations.terms[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}{" "}
+              {translations.terms}{" "}
               <Link to="/terms" className="text-primary hover:underline">
-                {translations.termsLink[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}
+                {translations.termsLink}
               </Link>{" "}
-              {translations.and[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}{" "}
+              {translations.and}{" "}
               <Link to="/privacy" className="text-primary hover:underline">
-                {translations.privacyLink[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}
+                {translations.privacyLink}
               </Link>
             </div>
 
@@ -302,13 +246,13 @@ const SignUp = () => {
               className="w-full"
               disabled={loading}
             >
-              {loading ? translations.creatingAccount[isSpanish ? 'es' : isHebrew ? 'he' : 'en'] : translations.getStarted[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}
+              {loading ? translations.creatingAccount : translations.getStarted}
             </Button>
 
             <div className="text-center text-xs md:text-sm text-gray-600">
-              {translations.alreadyHaveAccount[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}{" "}
+              {translations.alreadyHaveAccount}{" "}
               <Link to="/login" className="text-primary hover:underline">
-                {translations.logIn[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}
+                {translations.logIn}
               </Link>
             </div>
           </form>
