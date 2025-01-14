@@ -77,6 +77,24 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     { text: 'Client Access: 10 Guests per project', tooltip: 'Collaborate with 10 clients simultaneously per project', showTooltip: true },
   ];
 
+  const spanishExtraFeatures: Feature[] = [
+    { text: 'Análisis avanzado de proyectos', tooltip: 'Métricas detalladas y reportes personalizados', showTooltip: true },
+    { text: 'Integración con herramientas externas', tooltip: 'Conecta con tus herramientas favoritas', showTooltip: true },
+    { text: 'Soporte prioritario 24/7', tooltip: 'Asistencia técnica dedicada', showTooltip: true },
+  ];
+
+  const hebrewExtraFeatures: Feature[] = [
+    { text: 'ניתוח פרויקטים מתקדם', tooltip: 'מדדים מפורטים ודוחות מותאמים אישית', showTooltip: true },
+    { text: 'אינטגרציה עם כלים חיצוניים', tooltip: 'התחבר לכלים המועדפים עליך', showTooltip: true },
+    { text: 'תמיכה מועדפת 24/7', tooltip: 'תמיכה טכנית ייעודית', showTooltip: true },
+  ];
+
+  const englishExtraFeatures: Feature[] = [
+    { text: 'Advanced project analytics', tooltip: 'Detailed metrics and custom reports', showTooltip: true },
+    { text: 'External tools integration', tooltip: 'Connect with your favorite tools', showTooltip: true },
+    { text: 'Priority 24/7 support', tooltip: 'Dedicated technical assistance', showTooltip: true },
+  ];
+
   const getFeatures = () => {
     switch (language) {
       case 'es':
@@ -85,6 +103,17 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
         return hebrewFeatures;
       default:
         return englishFeatures;
+    }
+  };
+
+  const getExtraFeatures = () => {
+    switch (language) {
+      case 'es':
+        return spanishExtraFeatures;
+      case 'he':
+        return hebrewExtraFeatures;
+      default:
+        return englishExtraFeatures;
     }
   };
 
