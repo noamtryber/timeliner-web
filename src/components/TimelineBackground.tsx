@@ -71,6 +71,12 @@ export const TimelineBackground = () => {
   return (
     <div className="relative w-full h-full">
       <div ref={containerRef} className="absolute inset-0 z-0" />
+      <div 
+        className="absolute inset-0 z-10"
+        style={{
+          background: 'linear-gradient(90deg, rgba(26, 32, 44, 0.9) 0%, rgba(26, 32, 44, 0.7) 50%, rgba(26, 32, 44, 0.5) 100%)',
+        }}
+      />
       <GradientOverlay />
     </div>
   );
