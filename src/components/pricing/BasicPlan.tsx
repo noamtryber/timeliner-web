@@ -39,6 +39,9 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
     'משתמשים: עד 5',
     'פרויקטים פעילים: 25',
     'גישת לקוחות: עד 3 אורחים לפרויקט',
+  ];
+
+  const hebrewExtraFeatures = [
     'מערכת תשלומים חכמה: אוטומציה של תשלומי לקוחות',
     'כלי ניהול צוות',
     'CRM מובנה ואוטומציות',
@@ -51,6 +54,9 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
     'Members: Up to 5',
     'Active Projects: 25',
     'Client Access: Up to 3 Guests per project',
+  ];
+
+  const englishExtraFeatures = [
     'Smart Payment System: Automate client payments',
     'Team Management Tools',
     'Built-in CRM & Automations',
@@ -70,14 +76,14 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
   };
 
   return (
-    <Card className={`glass p-4 flex flex-col animate-fade-up delay-400 hover:scale-105 transition-transform duration-300 relative ${isHebrew ? 'text-right' : ''}`}>
+    <Card className={`glass p-3 flex flex-col animate-fade-up delay-400 hover:scale-105 transition-transform duration-300 relative ${isHebrew ? 'text-right' : ''}`}>
       <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary via-accent to-primary px-4 py-1 rounded-full text-sm font-semibold text-white shadow-lg">
         {isHebrew ? 'הכי פופולרי' : 'Most Popular'}
       </div>
 
       <PlanIcon Icon={Database} color="accent" />
       <h3 className="text-xl font-bold mb-1">{isHebrew ? 'בייסיק' : 'Essentials'}</h3>
-      <p className="text-white/70 mb-2 text-sm">{isHebrew ? 'לצוותים קטנים ופרילנסרים' : 'For Small Teams and Freelancers'}</p>
+      <p className="text-white/70 mb-2 text-xs">{isHebrew ? 'לצוותים קטנים ופרילנסרים' : 'For Small Teams and Freelancers'}</p>
       <div className="text-2xl font-bold mb-2">
         ${price.toFixed(2)}
         {isHebrew ? ' / לחודש' : '/month'}
@@ -90,9 +96,9 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="outline" className="w-full mb-4 border-primary/50 hover:bg-primary/10 text-sm">
+          <Button variant="outline" className="w-full mb-3 border-primary/50 hover:bg-primary/10 text-xs text-right">
             <Play className="w-3 h-3 mr-2" />
-            {isHebrew ? 'למה בייסיק?' : content.video_title}
+            {isHebrew ? 'למה בייסיק?' : 'Why Essentials?'}
           </Button>
         </DialogTrigger>
         <DialogContent className={`glass ${isHebrew ? 'text-right' : ''}`}>
@@ -121,11 +127,17 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
         </DialogContent>
       </Dialog>
       
-      <div className="space-y-2 mb-4 flex-grow">
-        <h4 className="font-semibold text-sm">{isHebrew ? 'הכל בחינמי, בנוסף:' : 'Everything in Free, plus:'}</h4>
+      <div className="space-y-1.5 mb-2 flex-grow">
         {(isHebrew ? hebrewFeatures : englishFeatures).map((feature, index) => (
           <PlanFeature key={index} text={feature} isRTL={isHebrew} />
         ))}
+        
+        <div className="my-3 border-t border-white/10 pt-2">
+          <p className="text-sm font-medium mb-2">{isHebrew ? 'הכל בחינמי, בנוסף:' : 'Everything in Free, plus:'}</p>
+          {(isHebrew ? hebrewExtraFeatures : englishExtraFeatures).map((feature, index) => (
+            <PlanFeature key={`extra-${index}`} text={feature} isRTL={isHebrew} />
+          ))}
+        </div>
       </div>
       
       <Button 

@@ -39,10 +39,13 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     'משתמשים: עד 10',
     'פרויקטים פעילים: 100',
     'גישת לקוחות: עד 10 אורחים לפרויקט',
+  ];
+
+  const hebrewExtraFeatures = [
+    'הרשאות ותפקידים מתקדמים',
     'מיתוג מותאם אישית',
-    'אוטומציה של תהליכי אישור',
-    'ספריית רפרנסים לסגנונות עריכה',
-    'כלים שיתופיים מתקדמים',
+    'ניהול צוות ותשלומים מתקדם',
+    'מצב סוכנות: תזרימי עבודה מותאמים אישית עם תגיות',
     'כתוביות ותרגומים מבוססי AI'
   ];
 
@@ -51,10 +54,13 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     'Members: Up to 10',
     'Active Projects: 100',
     'Client Access: Up to 10 Guests per project',
+  ];
+
+  const englishExtraFeatures = [
+    'Advanced Roles and Permissions',
     'Custom Branding',
-    'Approval Workflow Automation',
-    'Reference Library for Editing Styles',
     'Advanced Team Management & Payments',
+    'Enable Agency Mode: Custom workflows with tags',
     'AI Captions + Translations'
   ];
 
@@ -70,10 +76,10 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
   };
 
   return (
-    <Card className={`glass p-4 flex flex-col border-primary animate-fade-up delay-500 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
+    <Card className={`glass p-3 flex flex-col border-primary animate-fade-up delay-500 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
       <PlanIcon Icon={Crown} color="primary" />
       <h3 className="text-xl font-bold mb-1">{isHebrew ? 'סטודיו' : 'Studio'}</h3>
-      <p className="text-white/70 mb-2 text-sm">{isHebrew ? 'לסוכנויות וצוותים בצמיחה' : 'For Growing Agencies and Teams'}</p>
+      <p className="text-white/70 mb-2 text-xs">{isHebrew ? 'לסוכנויות וצוותים בצמיחה' : 'For Growing Agencies and Teams'}</p>
       <div className="text-2xl font-bold mb-2">
         ${price.toFixed(2)}
         {isHebrew ? ' / לחודש' : '/month'}
@@ -86,9 +92,9 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="outline" className="w-full mb-4 border-primary/50 hover:bg-primary/10 text-sm">
+          <Button variant="outline" className="w-full mb-3 border-primary/50 hover:bg-primary/10 text-xs text-right">
             <Play className="w-3 h-3 mr-2" />
-            {isHebrew ? 'למה סטודיו?' : content.video_title}
+            {isHebrew ? 'למה סטודיו?' : 'Why Studio?'}
           </Button>
         </DialogTrigger>
         <DialogContent className={`glass ${isHebrew ? 'text-right' : ''}`}>
@@ -117,11 +123,17 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
         </DialogContent>
       </Dialog>
       
-      <div className="space-y-2 mb-4 flex-grow">
-        <h4 className="font-semibold text-sm">{isHebrew ? 'הכל בבייסיק, בנוסף:' : 'Everything in Essentials, plus:'}</h4>
+      <div className="space-y-1.5 mb-2 flex-grow">
         {(isHebrew ? hebrewFeatures : englishFeatures).map((feature, index) => (
           <PlanFeature key={index} text={feature} isRTL={isHebrew} />
         ))}
+        
+        <div className="my-3 border-t border-white/10 pt-2">
+          <p className="text-sm font-medium mb-2">{isHebrew ? 'הכל בבייסיק, בנוסף:' : 'Everything in Essentials, plus:'}</p>
+          {(isHebrew ? hebrewExtraFeatures : englishExtraFeatures).map((feature, index) => (
+            <PlanFeature key={`extra-${index}`} text={feature} isRTL={isHebrew} />
+          ))}
+        </div>
       </div>
       
       <Button 
