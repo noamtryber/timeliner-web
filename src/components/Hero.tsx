@@ -137,7 +137,7 @@ export const Hero = () => {
       
       <div className={`container mx-auto px-4 relative animate-fade-up ${isRTL ? 'rtl' : ''}`}>
         <div className="text-center max-w-4xl mx-auto">
-          <span className="subtitle-gradient mb-4 block tracking-wide text-sm sm:text-base">
+          <span className={`subtitle-gradient mb-4 block tracking-wide ${isRTL ? 'text-base sm:text-lg font-bold' : 'text-sm sm:text-base'}`}>
             {content?.video_editors || 'VIDEO EDITORS & AGENCIES:'}
           </span>
           
