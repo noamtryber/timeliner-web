@@ -30,11 +30,13 @@ export const PlanFeature = ({ text, isRTL, tooltip, showTooltip }: PlanFeaturePr
           <Tooltip>
             <TooltipTrigger asChild>
               <HelpCircle 
-                className="flex-shrink-0 w-3.5 h-3.5 text-white/40 hover:text-white/60 cursor-help" 
+                className="flex-shrink-0 w-3.5 h-3.5 text-white/40 hover:text-white/60 cursor-help ml-auto" 
               />
             </TooltipTrigger>
             <TooltipContent 
-              className="max-w-[200px] bg-card/95 backdrop-blur border-primary/20 text-white/90"
+              className="max-w-[200px] bg-card/95 backdrop-blur border-primary/20 text-white/90 z-50"
+              side="top"
+              sideOffset={5}
             >
               {tooltip}
             </TooltipContent>

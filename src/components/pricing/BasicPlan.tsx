@@ -38,13 +38,13 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
     { text: 'אחסון: 1TB', tooltip: 'אחסון מאובטח בענן עם גיבוי אוטומטי' },
     { text: 'משתמשים: עד 5', tooltip: 'ניהול צוות עד 5 משתמשים עם הרשאות שונות' },
     { text: 'פרויקטים פעילים: ללא הגבלה', tooltip: 'עבודה על פרויקטים ללא הגבלה' },
-    { text: 'גישת לקוחות: עד 3 אורחים לפרויקט', tooltip: 'שיתוף פעולה עם עד 3 לקוחות בו זמנית לכל פרויקט' },
+    { text: 'גישת לקוחות: עד 3 אורחים לפרויקט' },
   ];
 
   const hebrewExtraFeatures = [
     { text: 'מערכת תשלומים חכמה', tooltip: 'קבלת תשלומים אוטומטית עם אישור הפרויקט', showTooltip: true },
     { text: 'כלי ניהול צוות', tooltip: 'כלים מתקדמים לניהול משימות וזמנים', showTooltip: true },
-    { text: 'CRM מובנה ואוטומציות', tooltip: 'מערכת ניהול לקוחות מובנית עם אוטומציות', showTooltip: true },
+    { text: 'CRM מובנה ואוטומציות', tooltip: 'מערכת ניהול לקוחות מובנית עם אוטומטיות', showTooltip: true },
     { text: 'בונה תיק עבודות', tooltip: 'כלי מתקדם ליצירת תיק עבודות מקצועי', showTooltip: true },
     { text: 'בריפים אינטראקטיביים לפרויקט', tooltip: 'יצירת בריפים מפורטים עם אפשרות לשיתוף ועריכה', showTooltip: true }
   ];
