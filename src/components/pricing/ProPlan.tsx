@@ -49,9 +49,9 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
   const hebrewExtraFeatures: Feature[] = [
     { text: 'הרשאות ותפקידים מתקדמים', tooltip: 'ניהול הרשאות מתקדם עם תפקידים מותאמים אישית', showTooltip: true },
-    { text: 'מיתוג מותאם אישית', tooltip: 'התאמה מלאה של המיתוג שלך', showTooltip: true },
+    { text: 'מיתוג מותאם אישית', tooltip: 'הוסף תמונות כיסוי, לוגואים ואלמנטים ממותגים לכל לקוח. שתף תיקיות עם סגנונות עריכה של הצוות, נכסים והנחיות', showTooltip: true },
     { text: 'ניהול צוות מתקדם', tooltip: 'כלים מתקדמים לניהול צוות', showTooltip: true },
-    { text: 'מצב סוכנות', tooltip: 'ניהול מתקדם של תהליכי עבודה', showTooltip: true },
+    { text: 'מצב סוכנות', tooltip: 'התאם תהליכי עבודה, הוסף תגיות ועקוב אחר התקדמות עם כלים מבוססי הרשאות המותאמים לסוכנויות', showTooltip: true },
     { text: 'כתוביות ותרגומים מבוססי AI', tooltip: 'יצירה אוטומטית של כתוביות ותרגומים', showTooltip: true }
   ];
 
@@ -64,9 +64,9 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
   const englishExtraFeatures: Feature[] = [
     { text: 'Advanced Roles and Permissions', tooltip: 'Advanced permission management with custom roles', showTooltip: true },
-    { text: 'Custom Branding', tooltip: 'Full customization of your branding', showTooltip: true },
+    { text: 'Custom Branding', tooltip: 'Add cover images, logos, and branded elements per client. Share folders with team editing styles, assets, and guidelines.', showTooltip: true },
     { text: 'Advanced Team Management', tooltip: 'Advanced tools for team management', showTooltip: true },
-    { text: 'Enable Agency Mode', tooltip: 'Advanced workflow management', showTooltip: true },
+    { text: 'Enable Agency Mode', tooltip: 'Customize workflows, add tags, and track progress with permission-based tools tailored for agencies.', showTooltip: true },
     { text: 'AI Captions + Translations', tooltip: 'Automatic generation of captions and translations', showTooltip: true }
   ];
 
@@ -82,7 +82,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
   };
 
   return (
-    <Card className={`glass p-3 flex flex-col border-primary animate-fade-up delay-500 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
+    <Card className={`glass p-3 flex flex-col animate-fade-up delay-500 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
       <PlanIcon Icon={Crown} color="primary" />
       <h3 className="text-xl font-bold mb-1">{isHebrew ? 'סטודיו' : 'Studio'}</h3>
       <p className="text-white/70 mb-2 text-xs">{isHebrew ? 'לסוכנויות וצוותים בצמיחה' : 'For Growing Agencies and Teams'}</p>
@@ -143,7 +143,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
       </div>
       
       <Button 
-        className="w-full bg-gradient-to-br from-primary to-secondary hover:opacity-90 transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40"
+        className="w-full bg-gradient-to-br from-primary to-secondary hover:opacity-90 transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 mt-8"
         onClick={() => navigate('/signup')}
       >
         {isHebrew ? 'התחילו היום בחינם' : 'Start Free Trial'}

@@ -55,7 +55,8 @@ export const FreePlan = ({ content }: FreePlanProps) => {
       </div>
       
       <Button 
-        className="w-full bg-gradient-to-br from-accent/80 to-accent hover:opacity-90 transition-all duration-300"
+        variant="outline" 
+        className="w-full border-primary/50 hover:bg-primary/10 transition-all duration-300 mt-8"
         onClick={() => navigate('/signup')}
       >
         {isHebrew ? 'התחילו היום בחינם' : 'Get Started Free'}

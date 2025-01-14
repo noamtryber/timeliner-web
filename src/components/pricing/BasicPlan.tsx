@@ -48,11 +48,11 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
   ];
 
   const hebrewExtraFeatures: Feature[] = [
-    { text: 'מערכת תשלומים חכמה', tooltip: 'קבלת תשלומים אוטומטית עם אישור הפרויקט', showTooltip: true },
+    { text: 'מערכת תשלומים חכמה', tooltip: 'קבע מודלים של תמחור (לפי וידאו, פרויקט, אבני דרך או ריטיינר). אוטומציה של תשלומים, הפקת קבלות והתאמה לסוג העסק שלך', showTooltip: true },
     { text: 'כלי ניהול צוות', tooltip: 'כלים מתקדמים לניהול משימות וזמנים', showTooltip: true },
-    { text: 'CRM מובנה ואוטומציות', tooltip: 'מערכת ניהול לקוחות מובנית עם אוטומטיות', showTooltip: true },
+    { text: 'CRM מובנה ואוטומציות', tooltip: 'אינטגרציה עם כלים כמו טפסי לידים של פייסבוק ווואטסאפ עסקי. ניהול לידים, מעקב וניהול לקוחות עם צינור הצעות ותקשורת מהירה', showTooltip: true },
     { text: 'בונה תיק עבודות', tooltip: 'כלי מתקדם ליצירת תיק עבודות מקצועי', showTooltip: true },
-    { text: 'בריפים אינטראקטיביים לפרויקט', tooltip: 'יצירת בריפים מפורטים עם אפשרות לשיתוף ועריכה', showTooltip: true }
+    { text: 'בריפים אינטראקטיביים לפרויקט', tooltip: 'השתמש בכלי AI לסיעור מוחות עם לקוחות על רעיונות, הפניות ותנאים. הימנע מציפיות לא תואמות וספק חוויית לקוח חלקה', showTooltip: true }
   ];
 
   const englishFeatures: Feature[] = [
@@ -63,11 +63,11 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
   ];
 
   const englishExtraFeatures: Feature[] = [
-    { text: 'Smart Payment System', tooltip: 'Automatically receive payments upon project approval', showTooltip: true },
+    { text: 'Smart Payment System', tooltip: 'Set pricing models (per video, project, milestones, or retainers). Automate payments, generate receipts, and align with your business type.', showTooltip: true },
     { text: 'Team Management Tools', tooltip: 'Advanced tools for task and time management', showTooltip: true },
-    { text: 'Built-in CRM & Automations', tooltip: 'Integrated customer relationship management with automations', showTooltip: true },
+    { text: 'Built-in CRM & Automations', tooltip: 'Integrate with tools like Facebook Lead Forms and WhatsApp Business. Manage leads, follow-ups, and clients with a pipeline for offers and quick communication.', showTooltip: true },
     { text: 'Portfolio Builder', tooltip: 'Advanced tool for creating professional portfolios', showTooltip: true },
-    { text: 'Interactive Project Briefs', tooltip: 'Create detailed briefs with sharing and editing capabilities', showTooltip: true }
+    { text: 'Interactive Project Briefs', tooltip: 'Use AI tools to brainstorm with clients on ideas, references, and terms. Avoid mismatched expectations and deliver a seamless client experience.', showTooltip: true }
   ];
 
   const getPeriodTotal = () => {
@@ -147,7 +147,7 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
       </div>
       
       <Button 
-        className="w-full bg-gradient-to-br from-accent to-primary hover:opacity-90 transition-all duration-300 shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/40"
+        className="w-full bg-gradient-to-br from-accent to-primary hover:opacity-90 transition-all duration-300 shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/40 mt-8"
         onClick={() => navigate('/signup')}
       >
         {isHebrew ? 'התחילו היום בחינם' : 'Start Free Trial'}
