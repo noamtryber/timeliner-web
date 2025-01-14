@@ -68,7 +68,7 @@ export const NavItems = ({ content, handleSectionClick, hideMainNav }: NavItemsP
         {translations.blog[language as keyof typeof translations.blog] || content?.blog_link || 'Blog'}
       </button>
       <button 
-        onClick={() => handleSectionClick('community')} 
+        onClick={() => navigate('/community')} 
         className="text-white hover:text-white px-3 py-2 rounded-md text-base font-medium"
       >
         {translations.community[language as keyof typeof translations.community] || content?.community_link || 'Community'}
