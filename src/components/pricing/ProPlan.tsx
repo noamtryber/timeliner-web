@@ -33,6 +33,11 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
   
   if (!content) return null;
 
+  const handleSignupClick = () => {
+    const prefix = language === 'en' ? '' : `/${language}`;
+    navigate(`${prefix}/signup`);
+  };
+
   const basePrice = 49;
   const price = pricingPeriod === 'yearly' 
     ? basePrice * 0.75 
@@ -72,30 +77,6 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     { text: 'Client Access: 10 Guests per project', tooltip: 'Collaborate with 10 clients simultaneously per project', showTooltip: true },
   ];
 
-  const spanishExtraFeatures: Feature[] = [
-    { text: 'Roles y Permisos Avanzados', tooltip: 'Gestión avanzada de permisos con roles personalizados', showTooltip: true },
-    { text: 'Marca Personalizada', tooltip: 'Agrega imágenes de portada, logos y elementos de marca por cliente', showTooltip: true },
-    { text: 'Gestión Avanzada de Equipo', tooltip: 'Herramientas avanzadas para la gestión de equipos', showTooltip: true },
-    { text: 'Modo Agencia', tooltip: 'Personaliza flujos de trabajo para agencias', showTooltip: true },
-    { text: 'Subtítulos y Traducciones IA', tooltip: 'Generación automática de subtítulos y traducciones', showTooltip: true }
-  ];
-
-  const hebrewExtraFeatures: Feature[] = [
-    { text: 'תפקידים והרשאות מתקדמים', tooltip: 'ניהול הרשאות מתקדם עם תפקידים מותאמים אישית', showTooltip: true },
-    { text: 'מיתוג מותאם אישית', tooltip: 'הוסף תמונות כותרת, לוגואים ואלמנטים של מותג ללקוח', showTooltip: true },
-    { text: 'ניהול צוות מתקדם', tooltip: 'כלים מתקדמים לניהול צוותים', showTooltip: true },
-    { text: 'מצב סוכנות', tooltip: 'התאם זרימות עבודה לסוכנויות', showTooltip: true },
-    { text: 'כתוביות ותרגומי AI', tooltip: 'יצירה אוטומטית של כתוביות ותרגומים', showTooltip: true }
-  ];
-
-  const englishExtraFeatures: Feature[] = [
-    { text: 'Advanced Roles and Permissions', tooltip: 'Advanced permission management with custom roles', showTooltip: true },
-    { text: 'Custom Branding', tooltip: 'Add cover images, logos, and brand elements per client', showTooltip: true },
-    { text: 'Advanced Team Management', tooltip: 'Advanced tools for team management', showTooltip: true },
-    { text: 'Agency Mode', tooltip: 'Customize workflows for agencies', showTooltip: true },
-    { text: 'AI Captions + Translations', tooltip: 'Automatic caption and translation generation', showTooltip: true }
-  ];
-
   const getFeatures = () => {
     switch (language) {
       case 'es':
@@ -104,17 +85,6 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
         return hebrewFeatures;
       default:
         return englishFeatures;
-    }
-  };
-
-  const getExtraFeatures = () => {
-    switch (language) {
-      case 'es':
-        return spanishExtraFeatures;
-      case 'he':
-        return hebrewExtraFeatures;
-      default:
-        return englishExtraFeatures;
     }
   };
 
@@ -244,7 +214,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
       
       <Button 
         className="w-full bg-gradient-to-br from-primary to-secondary hover:opacity-90 transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 mt-8"
-        onClick={() => navigate('/signup')}
+        onClick={handleSignupClick}
       >
         {getButtonText()}
       </Button>

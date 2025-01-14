@@ -18,6 +18,11 @@ export const FreePlan = ({ content }: FreePlanProps) => {
   
   if (!content) return null;
 
+  const handleSignupClick = () => {
+    const prefix = language === 'en' ? '' : `/${language}`;
+    navigate(`${prefix}/signup`);
+  };
+
   const getFeatures = () => {
     if (language === 'es') {
       return [
@@ -74,7 +79,7 @@ export const FreePlan = ({ content }: FreePlanProps) => {
         return 'Get Started Free';
     }
   };
-
+  
   return (
     <Card className={`relative border border-[#2A2F3C] bg-gradient-to-b from-[#1A1F2C]/50 to-[#1A1F2C] p-4 flex flex-col animate-fade-up delay-300 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
       <PlanIcon Icon={Zap} color="accent" />
@@ -102,7 +107,7 @@ export const FreePlan = ({ content }: FreePlanProps) => {
       <Button 
         variant="outline" 
         className="w-full border-primary/50 hover:bg-primary/10 transition-all duration-300 mt-8"
-        onClick={() => navigate('/signup')}
+        onClick={handleSignupClick}
       >
         {getButtonText()}
       </Button>
