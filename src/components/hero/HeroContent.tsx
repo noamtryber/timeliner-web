@@ -36,7 +36,7 @@ export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContent
   const getStartTrialText = () => {
     switch(language) {
       case 'he':
-        return 'נסו בחינם';
+        return 'התחילו היום בחינם';
       case 'es':
         return 'Comience hoy gratis';
       default:
@@ -87,14 +87,9 @@ export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContent
           className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto w-full sm:w-auto"
           onClick={() => navigate('/signup')}
         >
-          <span className="flex flex-col items-center">
-            <span className="flex items-center gap-2">
-              {getStartTrialText()}
-              <ArrowRight className={`h-4 sm:h-5 w-4 sm:w-5 ${isRTL ? 'rotate-180' : ''}`} />
-            </span>
-            {language === 'he' && (
-              <span className="text-[10px] opacity-70 font-light">ללא צורך בכרטיס אשראי</span>
-            )}
+          <span className="flex items-center gap-2">
+            {getStartTrialText()}
+            <ArrowRight className={`h-4 sm:h-5 w-4 sm:w-5 ${isRTL ? 'rotate-180' : ''}`} />
           </span>
         </Button>
         
