@@ -44,6 +44,11 @@ export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContent
     }
   };
 
+  const handleSignupClick = () => {
+    const prefix = language === 'en' ? '' : `/${language}`;
+    navigate(`${prefix}/signup`);
+  };
+
   return (
     <div className={`text-center lg:text-left ${isRTL ? 'text-center lg:text-right' : ''} animate-fade-up space-y-6 ${isRTL ? 'pt-12' : 'pt-20'}`}>
       <span className={`subtitle-gradient block tracking-wide ${
@@ -85,7 +90,7 @@ export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContent
         <Button 
           size="lg" 
           className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto w-full sm:w-auto"
-          onClick={() => navigate('/signup')}
+          onClick={handleSignupClick}
         >
           <span className="flex items-center gap-2">
             {getStartTrialText()}
