@@ -16,7 +16,7 @@ interface PlanFeatureProps {
 export const PlanFeature = ({ text, isRTL, tooltip, showTooltip }: PlanFeatureProps) => {
   return (
     <div 
-      className={`flex items-center gap-2 text-[0.85rem] text-white/70 w-full ${isRTL ? 'flex-row-reverse' : ''}`}
+      className={`flex items-center gap-2 text-[0.98rem] text-white/70 w-full ${isRTL ? 'flex-row-reverse' : ''}`}
       dir={isRTL ? 'rtl' : 'ltr'}
     >
       <div className={`flex-shrink-0 ${isRTL ? 'order-2' : ''}`}>
