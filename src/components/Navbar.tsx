@@ -100,7 +100,7 @@ export const Navbar = () => {
         {content?.login || 'Login'}
       </Button>,
       <Button key="signup" className="bg-primary hover:bg-primary/90" onClick={handleAuthClick}>
-        {content?.sign_up || 'Sign Up'}
+        {content?.sign_up || 'Start Free Trial'}
       </Button>
     ].filter(Boolean);
 
@@ -207,7 +207,7 @@ export const Navbar = () => {
                   {content?.login || 'Login'}
                 </Button>
                 <Button className="w-full bg-primary hover:bg-primary/90" onClick={handleAuthClick}>
-                  {content?.sign_up || 'Sign Up'}
+                  {content?.sign_up || 'Start Free Trial'}
                 </Button>
               </div>
             )}
