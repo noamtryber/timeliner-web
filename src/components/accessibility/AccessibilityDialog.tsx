@@ -67,7 +67,7 @@ export const AccessibilityDialog = ({ isOpen, onClose }: AccessibilityDialogProp
   };
 
   return (
-    <Sheet open={isOpen} onOpenChange={onClose}>
+    <Sheet open={isOpen} onOpenChange={onClose} modal={false}>
       <SheetContent side="right" className="w-[400px] overflow-y-auto bg-background border-l">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-semibold">Accessibility Menu</h2>
