@@ -71,14 +71,6 @@ export const AccessibilityDialog = ({ isOpen, onClose }: AccessibilityDialogProp
       <SheetContent side="right" className="w-[400px] overflow-y-auto bg-background border-l">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-semibold">Accessibility Menu</h2>
-          <Button 
-            variant="outline" 
-            size="icon"
-            onClick={resetToDefaults}
-            title="Reset to defaults"
-          >
-            <RotateCcw className="h-4 w-4" />
-          </Button>
         </div>
 
         <div className="space-y-6">
@@ -197,6 +189,18 @@ export const AccessibilityDialog = ({ isOpen, onClose }: AccessibilityDialogProp
                 <span className="text-sm">High Contrast</span>
               </Card>
             </div>
+          </div>
+
+          <div className="pt-4 border-t">
+            <Button 
+              variant="outline" 
+              size="sm"
+              onClick={resetToDefaults}
+              className="w-full flex items-center justify-center gap-2"
+            >
+              <RotateCcw className="h-4 w-4" />
+              Reset to Default
+            </Button>
           </div>
         </div>
       </SheetContent>
