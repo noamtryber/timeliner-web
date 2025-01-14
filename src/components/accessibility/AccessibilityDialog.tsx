@@ -13,7 +13,8 @@ import {
   Bold,
   Moon,
   Sun,
-  SunMoon
+  SunMoon,
+  RotateCcw
 } from "lucide-react";
 
 interface AccessibilityDialogProps {
@@ -50,10 +51,35 @@ export const AccessibilityDialog = ({ isOpen, onClose }: AccessibilityDialogProp
     });
   };
 
+  const resetToDefaults = () => {
+    setFontSize(100);
+    setLetterSpacing(0);
+    setLineHeight(1.5);
+    setFontWeight(400);
+    setHighlightTitles(false);
+    setHighlightLinks(false);
+    setDyslexicFont(false);
+    setContrast('normal');
+    toast({
+      title: "Settings reset",
+      description: "All accessibility settings have been reset to default values",
+    });
+  };
+
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
-      <SheetContent side="right" className="w-[400px] overflow-y-auto">
-        <h2 className="text-2xl font-semibold mb-6">Accessibility Menu</h2>
+      <SheetContent side="right" className="w-[400px] overflow-y-auto bg-background border-l">
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-2xl font-semibold">Accessibility Menu</h2>
+          <Button 
+            variant="outline" 
+            size="icon"
+            onClick={resetToDefaults}
+            title="Reset to defaults"
+          >
+            <RotateCcw className="h-4 w-4" />
+          </Button>
+        </div>
 
         <div className="space-y-6">
           <div>
