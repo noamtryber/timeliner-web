@@ -33,6 +33,17 @@ export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContent
     ? "https://vumbnail.com/1044344874.jpg"
     : "https://vumbnail.com/1046016144.jpg";
 
+  const getStartTrialText = () => {
+    switch(language) {
+      case 'he':
+        return 'התחילו היום בחינם';
+      case 'es':
+        return 'Comience hoy gratis';
+      default:
+        return 'Start Free Trial';
+    }
+  };
+
   return (
     <div className={`text-center lg:text-left ${isRTL ? 'text-center lg:text-right' : ''} animate-fade-up space-y-6 ${isRTL ? 'pt-12' : 'pt-20'}`}>
       <span className={`subtitle-gradient block tracking-wide ${
@@ -77,7 +88,7 @@ export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContent
           onClick={() => navigate('/signup')}
         >
           <span className="flex items-center gap-2">
-            Start Free Trial
+            {getStartTrialText()}
             <ArrowRight className={`h-4 sm:h-5 w-4 sm:w-5 ${isRTL ? 'rotate-180' : ''}`} />
           </span>
         </Button>
