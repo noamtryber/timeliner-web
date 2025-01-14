@@ -81,8 +81,12 @@ const SignUp = () => {
   const { language } = useLanguage();
   const isMobile = useIsMobile();
   
-  // Get translations based on language, defaulting to English if language not supported
   const t = translations[language as keyof typeof translations] || translations.en;
+
+  const handleBackClick = () => {
+    const prefix = language === 'en' ? '' : `/${language}`;
+    navigate(prefix || '/');
+  };
 
   const calculatePasswordStrength = (password: string) => {
     const minLength = 8;
@@ -95,19 +99,10 @@ const SignUp = () => {
 
     let strength = 0;
     
-    // Base 20% for minimum length of 6
     if (password.length >= 6) strength += 20;
-    
-    // Additional 20% for length of 8 or more
     if (password.length >= 8) strength += 20;
-
-    // 20% for having uppercase or lowercase
     if (hasUpperCase || hasLowerCase) strength += 20;
-
-    // 20% for having numbers
     if (hasNumbers) strength += 20;
-
-    // 20% for having special characters
     if (hasSpecialChar) strength += 20;
 
     return strength;
@@ -193,7 +188,7 @@ const SignUp = () => {
           variant="ghost"
           size="icon"
           className="absolute top-4 left-4 text-gray-600 hover:text-gray-900"
-          onClick={() => navigate("/")}
+          onClick={handleBackClick}
         >
           <ArrowLeft className="h-6 w-6" />
         </Button>
