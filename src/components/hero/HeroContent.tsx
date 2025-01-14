@@ -34,9 +34,9 @@ export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContent
     : "https://vumbnail.com/1046016144.jpg";
 
   return (
-    <div className={`text-center lg:text-left ${isRTL ? 'text-center lg:text-right' : ''} animate-fade-up space-y-6 pt-20`}>
+    <div className={`text-center lg:text-left ${isRTL ? 'text-center lg:text-right' : ''} animate-fade-up space-y-6 ${isRTL ? 'pt-12' : 'pt-20'}`}>
       <span className={`subtitle-gradient block tracking-wide ${
-        isRTL ? 'text-base sm:text-lg font-bold text-center lg:text-right' : 'text-sm sm:text-base'
+        isRTL ? 'text-base sm:text-lg text-center lg:text-right font-normal' : 'text-sm sm:text-base'
       }`}>
         {translations.video_editors}
       </span>
