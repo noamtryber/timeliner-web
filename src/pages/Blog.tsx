@@ -45,7 +45,7 @@ const Blog = () => {
         backToHome: 'Back to Home',
         title: 'Learn, Grow, and Stay Ahead with Timeliner Academy',
         subtitle: 'Your go-to resource hub for mastering video production, project management, and client collaboration.',
-        description: 'Our blog section is more than just articles – it's your gateway to actionable knowledge and professional growth. Designed for video editors, agencies, and freelancers, this hub features expert content to help you excel in your field.',
+        description: "Our blog section is more than just articles – it's your gateway to actionable knowledge and professional growth. Designed for video editors, agencies, and freelancers, this hub features expert content to help you excel in your field.",
         browseArticles: 'Browse Articles',
         startCourse: 'Start a Course',
         searchPlaceholder: 'Search courses and articles...',
