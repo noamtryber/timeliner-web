@@ -184,11 +184,11 @@ export const Hero = () => {
   return (
     <div className="min-h-screen flex items-center relative overflow-hidden">
       {/* Background with varying opacity */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-0">
         <TimelineBackground />
       </div>
       
-      <div className={`container mx-auto px-4 relative z-10 ${isRTL ? 'rtl' : ''}`}>
+      <div className={`container mx-auto px-4 relative z-50 ${isRTL ? 'rtl' : ''}`}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           {/* Left side - Content */}
           <div className={`text-left ${isRTL ? 'lg:text-right' : ''} animate-fade-up`}>
