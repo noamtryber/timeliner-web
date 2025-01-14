@@ -54,9 +54,24 @@ export const FeaturesList = ({ onLearnMore, getContent, learnMoreText }: Feature
     <div ref={featuresRef} className={`space-y-32 ${isRTL ? 'rtl' : ''}`}>
       {features.map((feature, index) => {
         const IconComponent = iconComponents[feature.icon];
-        const title = language === 'he' ? feature.heTitle : (getContent(feature.sectionKey, 'title') || feature.defaultTitle);
-        const subtitle = language === 'he' ? feature.heSubtitle : (getContent(feature.sectionKey, 'subtitle') || feature.defaultSubtitle);
-        const description = language === 'he' ? feature.heDescription : (getContent(feature.sectionKey, 'description') || feature.defaultDescription);
+        const title = language === 'es' 
+          ? feature.esTitle 
+          : language === 'he' 
+            ? feature.heTitle 
+            : (getContent(feature.sectionKey, 'title') || feature.defaultTitle);
+            
+        const subtitle = language === 'es'
+          ? feature.esSubtitle
+          : language === 'he'
+            ? feature.heSubtitle
+            : (getContent(feature.sectionKey, 'subtitle') || feature.defaultSubtitle);
+            
+        const description = language === 'es'
+          ? feature.esDescription
+          : language === 'he'
+            ? feature.heDescription
+            : (getContent(feature.sectionKey, 'description') || feature.defaultDescription);
+            
         const videoUrl = getFeatureMedia(feature.sectionKey, 'preview');
 
         return (
