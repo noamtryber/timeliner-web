@@ -183,79 +183,92 @@ export const Hero = () => {
 
   return (
     <div className="min-h-screen flex items-center relative overflow-hidden">
-      <TimelineBackground />
+      {/* Background with varying opacity */}
+      <div className="absolute inset-0 grid grid-cols-2">
+        <div className="relative">
+          <TimelineBackground />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/90 to-background/80" />
+        </div>
+        <div className="relative">
+          <TimelineBackground />
+          <div className="absolute inset-0 bg-gradient-to-l from-background/98 via-background/95 to-background/90" />
+        </div>
+      </div>
       
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background opacity-90" />
-      
-      <div className={`container mx-auto px-4 relative animate-fade-up ${isRTL ? 'rtl' : ''}`}>
-        <div className="text-center max-w-4xl mx-auto">
-          <span className={`subtitle-gradient mb-4 block tracking-wide ${isRTL ? 'text-base sm:text-lg font-bold' : 'text-sm sm:text-base'}`}>
-            {getTranslatedContent('video_editors')}
-          </span>
-          
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 gradient-text tracking-tight leading-tight px-2">
-            {getTranslatedContent('main_title')}
-          </h1>
-
-          {isMobile && (
-            <div className="w-full aspect-video mb-8 rounded-lg overflow-hidden">
-              <iframe
-                src={getVideoUrl()}
-                className="w-full h-full"
-                allow="autoplay; fullscreen"
-                allowFullScreen
-              />
-            </div>
-          )}
-          
-          <div className={`flex flex-col sm:flex-row items-center justify-center gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
-            <Button 
-              size="lg" 
-              className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto w-full sm:w-auto"
-              onClick={() => navigate('/signup')}
-            >
-              <span className="flex items-center gap-2">
-                {getTranslatedContent('get_started')}
-                <ArrowRight className="h-4 sm:h-5 w-4 sm:w-5" />
-              </span>
-            </Button>
+      <div className={`container mx-auto px-4 relative z-10 ${isRTL ? 'rtl' : ''}`}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          {/* Left side - Content */}
+          <div className={`text-left ${isRTL ? 'lg:text-right' : ''} animate-fade-up`}>
+            <span className={`subtitle-gradient mb-4 block tracking-wide ${isRTL ? 'text-base sm:text-lg font-bold' : 'text-sm sm:text-base'}`}>
+              {getTranslatedContent('video_editors')}
+            </span>
             
-            {!isMobile && (
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 gradient-text tracking-tight leading-tight">
+              {getTranslatedContent('main_title')}
+            </h1>
+
+            <div className={`flex flex-col sm:flex-row items-start gap-4 mb-12 ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
               <Button 
                 size="lg" 
-                variant="outline" 
-                className="border-white/10 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto w-full sm:w-auto hover:bg-white/5 relative group overflow-hidden"
-                onClick={() => setShowDemo(true)}
+                className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto w-full sm:w-auto"
+                onClick={() => navigate('/signup')}
               >
-                <div className="absolute -inset-3 bg-gradient-to-r from-primary via-accent to-primary opacity-75 blur-lg animate-pulse" />
-                <div className="absolute inset-[1px] bg-card rounded-full" />
-                <div 
-                  className="absolute inset-[1px] bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 animate-shimmer rounded-full" 
-                  style={{ backgroundSize: '200% 100%' }}
-                />
-                <div className={`relative z-10 flex items-center gap-2`}>
-                  <Play className="h-4 sm:h-5 w-4 sm:w-5" />
-                  <span>{getTranslatedContent('watch_demo')}</span>
-                </div>
+                <span className="flex items-center gap-2">
+                  {getTranslatedContent('get_started')}
+                  <ArrowRight className="h-4 sm:h-5 w-4 sm:w-5" />
+                </span>
               </Button>
-            )}
+              
+              {!isMobile && (
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-white/10 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto w-full sm:w-auto hover:bg-white/5 relative group overflow-hidden"
+                  onClick={() => setShowDemo(true)}
+                >
+                  <div className="absolute -inset-3 bg-gradient-to-r from-primary via-accent to-primary opacity-75 blur-lg animate-pulse" />
+                  <div className="absolute inset-[1px] bg-card rounded-full" />
+                  <div 
+                    className="absolute inset-[1px] bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 animate-shimmer rounded-full" 
+                    style={{ backgroundSize: '200% 100%' }}
+                  />
+                  <div className={`relative z-10 flex items-center gap-2`}>
+                    <Play className="h-4 sm:h-5 w-4 sm:w-5" />
+                    <span>{getTranslatedContent('watch_demo')}</span>
+                  </div>
+                </Button>
+              )}
+            </div>
+
+            {/* Stats Section */}
+            <div 
+              ref={statsRef} 
+              className={`grid grid-cols-3 gap-4 ${isRTL ? 'rtl' : ''}`}
+            >
+              <div className="glass p-4 rounded-lg">
+                <div className="text-2xl sm:text-3xl font-bold gradient-text">{animatedStats.revisions.toFixed(1)}%</div>
+                <div className="text-sm sm:text-base text-white/70">{getTranslatedContent('faster_revisions')}</div>
+              </div>
+              <div className="glass p-4 rounded-lg">
+                <div className="text-2xl sm:text-3xl font-bold gradient-text">{animatedStats.income.toFixed(1)}%</div>
+                <div className="text-sm sm:text-base text-white/70">{getTranslatedContent('increase_income')}</div>
+              </div>
+              <div className="glass p-4 rounded-lg">
+                <div className="text-2xl sm:text-3xl font-bold gradient-text">{animatedStats.retention.toFixed(1)}%</div>
+                <div className="text-sm sm:text-base text-white/70">{getTranslatedContent('client_retention')}</div>
+              </div>
+            </div>
           </div>
 
-          <div 
-            ref={statsRef} 
-            className={`flex flex-row gap-2 mt-12 sm:mt-16 px-2 ${isRTL ? 'rtl' : ''}`}
-          >
-            <div className="glass p-2 sm:p-4 rounded-lg flex-1">
-              <div className="text-lg sm:text-3xl font-bold gradient-text">{animatedStats.revisions.toFixed(1)}%</div>
-              <div className="text-xs sm:text-base text-white/70">{getTranslatedContent('faster_revisions')}</div>
-            </div>
-            <div className="glass p-2 sm:p-4 rounded-lg flex-1">
-              <div className="text-lg sm:text-3xl font-bold gradient-text">{animatedStats.income.toFixed(1)}%</div>
-              <div className="text-xs sm:text-base text-white/70">{getTranslatedContent('increase_income')}</div>
-            </div>
-            <div className="glass p-2 sm:p-4 rounded-lg flex-1">
-              <div className="text-lg sm:text-3xl font-bold gradient-text">{animatedStats.retention.toFixed(1)}%</div>
-              <div className="text-xs sm:text-base text-white/70">{getTranslatedContent('client_retention')}</div>
+          {/* Right side - Product Screenshot */}
+          <div className="hidden lg:block relative">
+            <div className="relative rounded-lg overflow-hidden shadow-2xl">
+              <img 
+                src="/lovable-uploads/98b8bad0-76f5-4b50-af12-b49cd7309a55.png"
+                alt="Timeliner Dashboard"
+                className="w-full h-auto rounded-lg"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
             </div>
           </div>
         </div>
