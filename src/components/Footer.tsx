@@ -4,9 +4,10 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const Footer = () => {
-  const { isRTL } = useLanguage();
+  const { isRTL, language } = useLanguage();
   const navigate = useNavigate();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const isSpanish = language === 'es';
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -31,6 +32,42 @@ export const Footer = () => {
     window.scrollTo(0, 0);
   };
 
+  const getContent = () => {
+    if (isRTL) {
+      return {
+        ready: 'מוכנים לקחת שליטה?',
+        description: 'סוף לבלאגן. מערכת חכמה לניהול פרויקטים, תיקונים ותשלומים- הכל במקום אחד',
+        startFree: 'התחילו בחינם',
+        joinCommunity: 'הצטרפו לקהילה',
+        privacy: 'מדיניות פרטיות',
+        terms: 'תנאים והגבלות',
+        designedBy: 'עוצב על ידי נועם טרייבר'
+      };
+    } else if (isSpanish) {
+      return {
+        ready: '¿LISTO PARA TOMAR EL CONTROL?',
+        description: 'Optimiza tu flujo de trabajo con herramientas más inteligentes de producción de video.',
+        startFree: 'Comienza Gratis',
+        joinCommunity: 'Únete a la comunidad',
+        privacy: 'Política de Privacidad',
+        terms: 'Términos y Condiciones',
+        designedBy: 'Diseñado por Noam Tryber'
+      };
+    } else {
+      return {
+        ready: 'READY TO TAKE CONTROL?',
+        description: 'Streamline your workflow with smarter video production tools.',
+        startFree: 'Get Started For Free',
+        joinCommunity: 'Join the community',
+        privacy: 'Privacy Policy',
+        terms: 'Terms & Conditions',
+        designedBy: 'Designed by Noam Tryber'
+      };
+    }
+  };
+
+  const content = getContent();
+
   return (
     <footer className="w-full mt-20">
       <div className="container mx-auto px-4 py-8 md:py-12">
@@ -39,12 +76,10 @@ export const Footer = () => {
             <div className={`flex-1 space-y-6 md:space-y-8 ${isRTL ? 'text-right' : 'text-left'}`}>
               <div className="space-y-4">
                 <p className="text-primary text-sm font-medium">
-                  {isRTL ? 'מוכנים לקחת שליטה?' : 'READY TO TAKE CONTROL?'}
+                  {content.ready}
                 </p>
                 <h2 className="text-xl md:text-3xl font-bold text-black">
-                  {isRTL 
-                    ? 'סוף לבלאגן. מערכת חכמה לניהול פרויקטים, תיקונים ותשלומים- הכל במקום אחד'
-                    : 'Streamline your workflow with smarter video production tools.'}
+                  {content.description}
                 </h2>
                 <div className={`flex flex-wrap gap-3 md:gap-4 ${isRTL ? 'mr-auto' : ''}`}>
                   {isRTL ? (
@@ -53,14 +88,14 @@ export const Footer = () => {
                         onClick={() => navigate('/signup')}
                         className="bg-gradient-to-br from-primary to-secondary hover:opacity-90 text-base md:text-lg py-4 md:py-6 px-6 md:px-8 rounded-xl h-auto w-full md:w-auto"
                       >
-                        התחילו בחינם
+                        {content.startFree}
                       </Button>
                       <Button 
                         variant="outline"
                         onClick={handleCommunityClick}
                         className="border-primary/50 hover:bg-primary/10 text-base md:text-lg py-4 md:py-6 px-6 md:px-8 rounded-xl h-auto w-full md:w-auto"
                       >
-                        הצטרפו לקהילה
+                        {content.joinCommunity}
                       </Button>
                     </>
                   ) : (
@@ -70,13 +105,13 @@ export const Footer = () => {
                         onClick={handleCommunityClick}
                         className="border-primary/50 hover:bg-primary/10 text-base md:text-lg py-4 md:py-6 px-6 md:px-8 rounded-xl h-auto w-full md:w-auto"
                       >
-                        Join the community
+                        {content.joinCommunity}
                       </Button>
                       <Button 
                         onClick={() => navigate('/signup')}
                         className="bg-gradient-to-br from-primary to-secondary hover:opacity-90 text-base md:text-lg py-4 md:py-6 px-6 md:px-8 rounded-xl h-auto w-full md:w-auto"
                       >
-                        Get Started For Free
+                        {content.startFree}
                       </Button>
                     </>
                   )}
@@ -99,11 +134,11 @@ export const Footer = () => {
 
                 <div className={`flex flex-wrap items-center gap-2 md:gap-4 text-sm md:text-base text-black/70 ${isRTL ? 'mr-auto' : ''}`}>
                   <a href="#" className="hover:text-primary">
-                    {isRTL ? 'מדיניות פרטיות' : 'Privacy Policy'}
+                    {content.privacy}
                   </a>
                   <span>|</span>
                   <a href="#" className="hover:text-primary">
-                    {isRTL ? 'תנאים והגבלות' : 'Terms & Conditions'}
+                    {content.terms}
                   </a>
                 </div>
 
@@ -111,7 +146,7 @@ export const Footer = () => {
                   <span>© 2025 Timeliner Inc. All rights reserved.</span>
                   <span className="hidden md:inline">|</span>
                   <a href="https://www.instagram.com/noamtryber/" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
-                    {isRTL ? 'עוצב על ידי נועם טרייבר' : 'Designed by Noam Tryber'}
+                    {content.designedBy}
                   </a>
                 </div>
               </div>
