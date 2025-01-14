@@ -20,6 +20,12 @@ interface BasicPlanProps {
   pricingPeriod: 'monthly' | 'quarterly' | 'yearly';
 }
 
+interface Feature {
+  text: string;
+  tooltip?: string;
+  showTooltip?: boolean;
+}
+
 export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -34,14 +40,14 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
       ? basePrice * 0.85 
       : basePrice;
 
-  const hebrewFeatures = [
-    { text: 'אחסון: 1TB', tooltip: 'אחסון מאובטח בענן עם גיבוי אוטומטי' },
-    { text: 'משתמשים: עד 5', tooltip: 'ניהול צוות עד 5 משתמשים עם הרשאות שונות' },
-    { text: 'פרויקטים פעילים: ללא הגבלה', tooltip: 'עבודה על פרויקטים ללא הגבלה' },
+  const hebrewFeatures: Feature[] = [
+    { text: 'אחסון: 1TB', tooltip: 'אחסון מאובטח בענן עם גיבוי אוטומטי', showTooltip: true },
+    { text: 'משתמשים: עד 5', tooltip: 'ניהול צוות עד 5 משתמשים עם הרשאות שונות', showTooltip: true },
+    { text: 'פרויקטים פעילים: ללא הגבלה', tooltip: 'עבודה על פרויקטים ללא הגבלה', showTooltip: true },
     { text: 'גישת לקוחות: עד 3 אורחים לפרויקט' },
   ];
 
-  const hebrewExtraFeatures = [
+  const hebrewExtraFeatures: Feature[] = [
     { text: 'מערכת תשלומים חכמה', tooltip: 'קבלת תשלומים אוטומטית עם אישור הפרויקט', showTooltip: true },
     { text: 'כלי ניהול צוות', tooltip: 'כלים מתקדמים לניהול משימות וזמנים', showTooltip: true },
     { text: 'CRM מובנה ואוטומציות', tooltip: 'מערכת ניהול לקוחות מובנית עם אוטומטיות', showTooltip: true },
@@ -49,14 +55,14 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
     { text: 'בריפים אינטראקטיביים לפרויקט', tooltip: 'יצירת בריפים מפורטים עם אפשרות לשיתוף ועריכה', showTooltip: true }
   ];
 
-  const englishFeatures = [
-    { text: 'Storage: 1TB', tooltip: 'Secure cloud storage with automatic backup' },
-    { text: 'Members: Up to 5', tooltip: 'Manage a team of up to 5 users with different permissions' },
-    { text: 'Active Projects: Unlimited', tooltip: 'Work on unlimited projects simultaneously' },
+  const englishFeatures: Feature[] = [
+    { text: 'Storage: 1TB', tooltip: 'Secure cloud storage with automatic backup', showTooltip: true },
+    { text: 'Members: Up to 5', tooltip: 'Manage a team of up to 5 users with different permissions', showTooltip: true },
+    { text: 'Active Projects: Unlimited', tooltip: 'Work on unlimited projects simultaneously', showTooltip: true },
     { text: 'Client Access: Up to 3 Guests per project' },
   ];
 
-  const englishExtraFeatures = [
+  const englishExtraFeatures: Feature[] = [
     { text: 'Smart Payment System', tooltip: 'Automatically receive payments upon project approval', showTooltip: true },
     { text: 'Team Management Tools', tooltip: 'Advanced tools for task and time management', showTooltip: true },
     { text: 'Built-in CRM & Automations', tooltip: 'Integrated customer relationship management with automations', showTooltip: true },
