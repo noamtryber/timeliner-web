@@ -3,7 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useToast } from "@/hooks/use-toast";
 
-export type SectionType = "hero" | "feature" | "benefit" | "testimonial" | "pricing" | "faq" | "frustrations" | "footer" | "nav";
+export type SectionType = "hero" | "feature" | "benefit" | "testimonial" | "pricing" | "faq" | "frustrations" | "footer" | "nav" | "signup";
 export type MediaSectionType = Exclude<SectionType, "nav">;
 
 interface TransformedContent {
