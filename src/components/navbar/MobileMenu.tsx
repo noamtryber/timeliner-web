@@ -23,7 +23,7 @@ export const MobileMenu = ({
   if (!isOpen) return null;
 
   return (
-    <div className="glass md:hidden">
+    <div className="fixed inset-x-0 top-16 bg-background/80 backdrop-blur-sm border-b border-[#222222]/40 shadow-lg md:hidden">
       <div className={`px-2 pt-2 pb-3 space-y-1 sm:px-3 ${isRTL ? 'text-right' : 'text-left'}`}>
         {!hideMainNav && (
           <>
