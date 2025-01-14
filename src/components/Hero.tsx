@@ -11,19 +11,19 @@ import { DemoDialog } from "./hero/DemoDialog";
 
 const translations = {
   video_editors: {
-    en: 'VIDEO EDITORS & AGENCIES:',
+    en: 'VIDEO EDITORS & CONTENT AGENCIES:',
     es: 'EDITORES DE VIDEO Y AGENCIAS:',
-    he: 'עורכי וידאו וסוכנויות:'
+    he: 'עורכי וידאו וסוכנויות תוכן'
   },
   main_title: {
-    en: 'Streamline Video Projects with All-in-One Management',
+    en: 'Simplify Video Projects with All-in-One Management',
     es: 'Optimiza Proyectos de Video con Gestión Todo en Uno',
-    he: 'ניהול פרויקטי וידאו בפלטפורמה אחת מאוחדת'
+    he: 'אומרים שלום לבלאגן עם מערכת חכמה לכל פרויקט וידאו'
   },
   subtext: {
-    en: 'Project Management, Revisions, Payments, Expectations, Storage, and AI Tools — Everything You Need in One Place.',
+    en: 'Task coordination, seamless revisions, timely payments, expectation alignment, secure storage, and smart AI tools — everything you need in one platform for a professional client experience and stress-free workflow.',
     es: 'Gestión de Proyectos, Revisiones, Pagos, Expectativas, Almacenamiento y Herramientas de IA — Todo lo que Necesitas en Un Solo Lugar.',
-    he: 'ניהול פרויקטים, תיקונים, תשלומים, ציפיות, אחסון וכלי בינה מלאכותית — הכל במקום אחד.'
+    he: 'ניהול משימות, סבבי תיקונים, תשלומים, תיאום ציפיות, אחסון מהיר וכלי AI — כל מה שאתם צריכים במקום אחד לחוויה מקצועית ויעילה.'
   },
   get_started: {
     en: 'Get Started',
