@@ -37,6 +37,17 @@ export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContent
         {translations.main_title}
       </h1>
 
+      {isMobile && (
+        <div className="w-full aspect-video rounded-xl overflow-hidden">
+          <iframe
+            src="https://player.vimeo.com/video/1044344874?autoplay=0"
+            className="w-full h-full"
+            allow="autoplay; fullscreen; picture-in-picture"
+            style={{ border: 'none', background: 'transparent' }}
+          />
+        </div>
+      )}
+
       <p className="text-lg sm:text-xl text-white/70 leading-relaxed max-w-2xl mx-auto lg:mx-0">
         {translations.subtext}
       </p>

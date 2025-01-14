@@ -109,16 +109,6 @@ export const Hero = () => {
               onWatchDemo={() => setShowDemo(true)}
               isMobile={isMobile}
             />
-            {isMobile && (
-              <div className="w-full aspect-video rounded-xl overflow-hidden mt-8 mb-6">
-                <iframe
-                  src="https://player.vimeo.com/video/1044344874?autoplay=0"
-                  className="w-full h-full"
-                  allow="autoplay; fullscreen; picture-in-picture"
-                  style={{ border: 'none', background: 'transparent' }}
-                />
-              </div>
-            )}
           </div>
           <HeroImage />
         </div>
