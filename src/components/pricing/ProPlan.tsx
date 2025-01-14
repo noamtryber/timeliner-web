@@ -44,7 +44,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     { text: 'אחסון: 2TB', tooltip: 'אחסון מאובטח בענן עם גיבוי אוטומטי', showTooltip: true },
     { text: 'משתמשים: עד 10', tooltip: 'ניהול צוות עד 10 משתמשים עם הרשאות שונות', showTooltip: true },
     { text: 'פרויקטים פעילים: ללא הגבלה', tooltip: 'עבודה על פרויקטים ללא הגבלה', showTooltip: true },
-    { text: 'גישת לקוחות: עד 10 אורחים לפרויקט', tooltip: 'שיתוף פעולה עם עד 10 לקוחות בו זמנית לכל פרויקט', showTooltip: true },
+    { text: 'גישת לקוחות: 10 אורחים לפרויקט', tooltip: 'שיתוף פעולה עם 10 לקוחות בו זמנית לכל פרויקט', showTooltip: true },
   ];
 
   const hebrewExtraFeatures: Feature[] = [
@@ -59,7 +59,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     { text: 'Storage: 2TB', tooltip: 'Secure cloud storage with automatic backup', showTooltip: true },
     { text: 'Members: Up to 10', tooltip: 'Manage a team of up to 10 users with different permissions', showTooltip: true },
     { text: 'Active Projects: Unlimited', tooltip: 'Work on unlimited projects simultaneously', showTooltip: true },
-    { text: 'Client Access: Up to 10 Guests per project', tooltip: 'Collaborate with up to 10 clients simultaneously per project', showTooltip: true },
+    { text: 'Client Access: 10 Guests per project', tooltip: 'Collaborate with 10 clients simultaneously per project', showTooltip: true },
   ];
 
   const englishExtraFeatures: Feature[] = [
