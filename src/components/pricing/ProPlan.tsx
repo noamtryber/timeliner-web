@@ -180,6 +180,9 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
       <p className="text-white/70 mb-2 text-[0.927rem]">{getPlanSubtitle()}</p>
       <div className="text-2xl font-bold mb-2">
         ${price.toFixed(2)}
+        <span className="text-base font-normal">
+          {language === 'es' ? '/mes' : isHebrew ? '/ לחודש' : '/month'}
+        </span>
         {pricingPeriod !== 'monthly' && (
           <span className="block text-sm text-primary mt-1">
             ${getPeriodTotal().toFixed(2)} {

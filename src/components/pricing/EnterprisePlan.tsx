@@ -125,7 +125,12 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
       <PlanIcon Icon={Users} color="secondary" />
       <h3 className="text-xl font-bold mb-1 -mt-2">{getPlanTitle()}</h3>
       <p className="text-white/70 mb-2 text-sm">{getPlanSubtitle()}</p>
-      <div className="text-2xl font-bold mb-6">{getPricing()}</div>
+      <div className="text-2xl font-bold mb-6">
+        {getPricing()}
+        <span className="text-base font-normal">
+          {language === 'es' ? '/mes' : isHebrew ? '/ לחודש' : '/month'}
+        </span>
+      </div>
       
       <div className="space-y-3 mb-4 flex-grow">
         {getFeatures().slice(0, 4).map((feature, index) => (
