@@ -23,11 +23,11 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
     'משתמשים: ללא הגבלה',
     'פרויקטים פעילים: ללא הגבלה',
     'גישת לקוחות: ללא הגבלה',
-    'מיתוג מלא',
-    'מנהל חשבון ייעודי',
-    'אינטגרציית API: חיבור כלים חיצוניים',
-    'אפשרויות פריסה באתר',
-    'תמיכה 24/7 בעדיפות גבוהה'
+    { text: 'מיתוג מלא', tooltip: 'התאמה מלאה של המיתוג והממשק המשתמש', showTooltip: true },
+    { text: 'מנהל חשבון ייעודי', tooltip: 'תמיכה אישית ומקצועית מצוות מומחים', showTooltip: true },
+    { text: 'אינטגרציית API', tooltip: 'חיבור והתממשקות עם מערכות חיצוניות', showTooltip: true },
+    { text: 'אפשרויות פריסה באתר', tooltip: 'התקנה והטמעה בשרתים פרטיים', showTooltip: true },
+    { text: 'תמיכה 24/7 בעדיפות גבוהה', tooltip: 'תמיכה מיידית בכל שעה ובכל יום', showTooltip: true }
   ];
 
   const englishFeatures = [
@@ -35,11 +35,11 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
     'Members: Unlimited',
     'Active Projects: Unlimited',
     'Client Access: Unlimited',
-    'Full White Labeling',
-    'Dedicated Account Manager',
-    'API Integration: Connect external tools',
-    'On-Premise Deployment Options',
-    '24/7 Priority Support'
+    { text: 'Full White Labeling', tooltip: 'Complete customization of branding and user interface', showTooltip: true },
+    { text: 'Dedicated Account Manager', tooltip: 'Personal and professional support from expert team', showTooltip: true },
+    { text: 'API Integration', tooltip: 'Connect and interface with external systems', showTooltip: true },
+    { text: 'On-Premise Deployment Options', tooltip: 'Installation and implementation on private servers', showTooltip: true },
+    { text: '24/7 Priority Support', tooltip: 'Immediate support at any time, any day', showTooltip: true }
   ];
 
   return (
@@ -56,7 +56,13 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
       <div className="space-y-2 mb-4 flex-grow">
         <h4 className="font-semibold text-sm">{isHebrew ? 'הכל בסטודיו, בנוסף:' : 'Everything in Studio, plus:'}</h4>
         {(isHebrew ? hebrewFeatures : englishFeatures).map((feature, index) => (
-          <PlanFeature key={index} text={feature} isRTL={isHebrew} />
+          <PlanFeature 
+            key={index} 
+            text={typeof feature === 'string' ? feature : feature.text}
+            tooltip={typeof feature === 'string' ? undefined : feature.tooltip}
+            showTooltip={typeof feature === 'string' ? false : feature.showTooltip}
+            isRTL={isHebrew}
+          />
         ))}
       </div>
       

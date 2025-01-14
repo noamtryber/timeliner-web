@@ -37,31 +37,31 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
   const hebrewFeatures = [
     { text: 'אחסון: 2TB', tooltip: 'אחסון מאובטח בענן עם גיבוי אוטומטי' },
     { text: 'משתמשים: עד 10', tooltip: 'ניהול צוות עד 10 משתמשים עם הרשאות שונות' },
-    { text: 'פרויקטים פעילים: 100', tooltip: 'עד 100 פרויקטים במקביל' },
+    { text: 'פרויקטים פעילים: ללא הגבלה', tooltip: 'עבודה על פרויקטים ללא הגבלה' },
     { text: 'גישת לקוחות: עד 10 אורחים לפרויקט', tooltip: 'שיתוף פעולה עם עד 10 לקוחות בו זמנית לכל פרויקט' },
   ];
 
   const hebrewExtraFeatures = [
-    { text: 'הרשאות ותפקידים מתקדמים', tooltip: 'ניהול הרשאות מתקדם עם תפקידים מותאמים אישית' },
-    { text: 'מיתוג מותאם אישית', tooltip: 'התאמה מלאה של המיתוג שלך' },
-    { text: 'ניהול צוות ותשלומים מתקדם', tooltip: 'כלים מתקדמים לניהול צוות ותשלומים' },
-    { text: 'מצב סוכנות: תזרימי עבודה מותאמים אישית עם תגיות', tooltip: 'ניהול מתקדם של תהליכי עבודה' },
-    { text: 'כתוביות ותרגומים מבוססי AI', tooltip: 'יצירה אוטומטית של כתוביות ותרגומים' }
+    { text: 'הרשאות ותפקידים מתקדמים', tooltip: 'ניהול הרשאות מתקדם עם תפקידים מותאמים אישית', showTooltip: true },
+    { text: 'מיתוג מותאם אישית', tooltip: 'התאמה מלאה של המיתוג שלך', showTooltip: true },
+    { text: 'ניהול צוות מתקדם', tooltip: 'כלים מתקדמים לניהול צוות', showTooltip: true },
+    { text: 'מצב סוכנות', tooltip: 'ניהול מתקדם של תהליכי עבודה', showTooltip: true },
+    { text: 'כתוביות ותרגומים מבוססי AI', tooltip: 'יצירה אוטומטית של כתוביות ותרגומים', showTooltip: true }
   ];
 
   const englishFeatures = [
     { text: 'Storage: 2TB', tooltip: 'Secure cloud storage with automatic backup' },
     { text: 'Members: Up to 10', tooltip: 'Manage a team of up to 10 users with different permissions' },
-    { text: 'Active Projects: 100', tooltip: 'Work on up to 100 projects simultaneously' },
+    { text: 'Active Projects: Unlimited', tooltip: 'Work on unlimited projects simultaneously' },
     { text: 'Client Access: Up to 10 Guests per project', tooltip: 'Collaborate with up to 10 clients simultaneously per project' },
   ];
 
   const englishExtraFeatures = [
-    { text: 'Advanced Roles and Permissions', tooltip: 'Advanced permission management with custom roles' },
-    { text: 'Custom Branding', tooltip: 'Full customization of your branding' },
-    { text: 'Advanced Team Management & Payments', tooltip: 'Advanced tools for team and payment management' },
-    { text: 'Enable Agency Mode: Custom workflows with tags', tooltip: 'Advanced workflow management' },
-    { text: 'AI Captions + Translations', tooltip: 'Automatic generation of captions and translations' }
+    { text: 'Advanced Roles and Permissions', tooltip: 'Advanced permission management with custom roles', showTooltip: true },
+    { text: 'Custom Branding', tooltip: 'Full customization of your branding', showTooltip: true },
+    { text: 'Advanced Team Management', tooltip: 'Advanced tools for team management', showTooltip: true },
+    { text: 'Enable Agency Mode', tooltip: 'Advanced workflow management', showTooltip: true },
+    { text: 'AI Captions + Translations', tooltip: 'Automatic generation of captions and translations', showTooltip: true }
   ];
 
   const getPeriodTotal = () => {
@@ -145,4 +145,3 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     </Card>
   );
 };
-

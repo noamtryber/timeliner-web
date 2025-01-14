@@ -22,9 +22,9 @@ export const FreePlan = ({ content }: FreePlanProps) => {
     { text: 'אחסון: 3GB', tooltip: 'אחסון בסיסי בענן' },
     { text: 'משתמשים: 1', tooltip: 'חשבון אישי אחד' },
     { text: 'פרויקטים פעילים: 2', tooltip: 'עד 2 פרויקטים במקביל' },
-    { text: 'גישת לקוחות: אורח אחד לפרויקט', tooltip: 'שיתוף פעולה עם לקוח אחד לכל פרויקט' },
-    { text: 'מעקב גרסאות חכם: הערות מבוססות זמן', tooltip: 'מעקב אחר שינויים עם הערות מדויקות לפי זמן' },
-    { text: 'פורטל לקוחות פשוט: קישור אחד למשוב', tooltip: 'פורטל פשוט לשיתוף ומשוב' },
+    { text: 'גישת לקוחות: אורח אחד לפרויקט', tooltip: 'שיתוף פעולה עם לקוח אחד לכל פרויקט', showTooltip: true },
+    { text: 'מעקב גרסאות חכם', tooltip: 'מעקב אחר שינויים עם הערות מדויקות לפי זמן' },
+    { text: 'פורטל לקוחות פשוט', tooltip: 'פורטל פשוט לשיתוף ומשוב', showTooltip: true },
     { text: 'אחסון מדיה מאובטח', tooltip: 'אחסון מאובטח של קבצי מדיה' }
   ];
 
@@ -32,9 +32,9 @@ export const FreePlan = ({ content }: FreePlanProps) => {
     { text: 'Storage: 3GB', tooltip: 'Basic cloud storage' },
     { text: 'Members: 1', tooltip: 'Single personal account' },
     { text: 'Active Projects: 2', tooltip: 'Work on up to 2 projects simultaneously' },
-    { text: 'Client Access: 1 Guest Per Project', tooltip: 'Collaborate with one client per project' },
-    { text: 'Smart Revision Tracking: Timecode based comments', tooltip: 'Track changes with precise timecode-based comments' },
-    { text: 'Simple Client Portals: One link for feedback', tooltip: 'Simple portal for sharing and feedback' },
+    { text: 'Client Access: 1 Guest Per Project', tooltip: 'Collaborate with one client per project', showTooltip: true },
+    { text: 'Smart Revision Tracking', tooltip: 'Track changes with precise timecode-based comments' },
+    { text: 'Simple Client Portals', tooltip: 'Simple portal for sharing and feedback', showTooltip: true },
     { text: 'Secure Media Storage', tooltip: 'Secure storage for media files' }
   ];
 
@@ -50,7 +50,7 @@ export const FreePlan = ({ content }: FreePlanProps) => {
       <div className="space-y-2 mb-4 flex-grow">
         <h4 className="font-semibold text-sm">{isHebrew ? 'פיצ\'רים:' : 'Features:'}</h4>
         {(isHebrew ? hebrewFeatures : englishFeatures).map((feature, index) => (
-          <PlanFeature key={index} text={feature.text} tooltip={feature.tooltip} isRTL={isHebrew} />
+          <PlanFeature key={index} text={feature.text} tooltip={feature.tooltip} showTooltip={feature.showTooltip} isRTL={isHebrew} />
         ))}
       </div>
       

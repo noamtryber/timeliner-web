@@ -10,9 +10,10 @@ interface PlanFeatureProps {
   text: string;
   isRTL?: boolean;
   tooltip?: string;
+  showTooltip?: boolean;
 }
 
-export const PlanFeature = ({ text, isRTL, tooltip }: PlanFeatureProps) => {
+export const PlanFeature = ({ text, isRTL, tooltip, showTooltip }: PlanFeatureProps) => {
   return (
     <div 
       className={`flex items-center gap-2 text-[0.85rem] text-white/70 w-full ${isRTL ? 'flex-row-reverse' : ''}`}
@@ -23,12 +24,12 @@ export const PlanFeature = ({ text, isRTL, tooltip }: PlanFeatureProps) => {
       </div>
       <span className={`${isRTL ? 'text-right w-full order-1' : ''}`}>
         {text}
-        {tooltip && (
+        {showTooltip && tooltip && (
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
                 <HelpCircle 
-                  className="inline-block ml-1.5 w-3.5 h-3.5 text-primary/70 hover:text-primary cursor-help" 
+                  className="inline-block ml-1.5 w-3.5 h-3.5 text-white/40 hover:text-white/60 cursor-help" 
                 />
               </TooltipTrigger>
               <TooltipContent 
