@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -30,9 +30,28 @@ const translations = {
     goodPassword: "Good password",
     weakPassword: "Weak password"
   },
+  es: {
+    welcome: "Bienvenido a timeliner.io",
+    subtitle: "Comienza - es gratis. No se necesita tarjeta de crédito.",
+    fullName: "Nombre completo",
+    email: "Tu mejor correo electrónico",
+    password: "Crea una contraseña",
+    passwordRequirements: "La contraseña debe tener al menos 6 caracteres.",
+    terms: "Al continuar, aceptas los",
+    getStarted: "Comenzar",
+    termsLink: "Términos de Servicio",
+    and: "y",
+    privacyLink: "Política de Privacidad",
+    alreadyHaveAccount: "¿Ya tienes una cuenta?",
+    logIn: "Iniciar sesión",
+    creatingAccount: "Creando cuenta...",
+    strongPassword: "Contraseña fuerte",
+    goodPassword: "Buena contraseña",
+    weakPassword: "Contraseña débil"
+  },
   he: {
     welcome: "ברוכים הבאים ל-timeliner.io",
-    subtitle: "התחילו עכשיו - זה בחינם. אין צורך בכרטיס אשראי.",
+    subtitle: "התחל עכשיו - זה בחינם. אין צורך בכרטיס אשראי.",
     fullName: "שם מלא",
     email: "כתובת האימייל שלך",
     password: "צור סיסמה",
@@ -62,8 +81,8 @@ const SignUp = () => {
   const { language } = useLanguage();
   const isMobile = useIsMobile();
   
-  // Get translations based on language
-  const t = translations[language === 'he' ? 'he' : 'en'];
+  // Get translations based on language, defaulting to English if language not supported
+  const t = translations[language as keyof typeof translations] || translations.en;
 
   const calculatePasswordStrength = (password: string) => {
     const minLength = 8;
@@ -165,12 +184,6 @@ const SignUp = () => {
     } finally {
       setLoading(false);
     }
-  };
-
-  const getStrengthColor = (strength: number) => {
-    if (strength < 40) return "bg-red-500";
-    if (strength < 70) return "bg-yellow-500";
-    return "bg-green-500";
   };
 
   return (
