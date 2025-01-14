@@ -27,13 +27,13 @@ export const TimelineBackground = () => {
       
       p.draw = () => {
         p.clear();
-        p.background('rgba(26, 31, 44, 0.02)'); // Reduced base opacity
+        p.background('rgba(26, 31, 44, 0.1)');
         
         mouseTrailX = p.lerp(mouseTrailX, p.mouseX, 0.1);
         mouseTrailY = p.lerp(mouseTrailY, p.mouseY, 0.1);
         
         p.noFill();
-        p.stroke('rgba(214, 188, 250, 0.15)'); // Reduced trail opacity
+        p.stroke('#D6BCFA');
         p.strokeWeight(1);
         p.circle(mouseTrailX, mouseTrailY, 30);
         
@@ -54,9 +54,9 @@ export const TimelineBackground = () => {
             if (p.mouseX > segX && 
                 p.mouseX < segX + segment.width && 
                 p.abs(p.mouseY - timeline.y) < 10) {
-              segment.color = 'rgba(214, 188, 250, 0.2)'; // Reduced highlight opacity
+              segment.color = '#D6BCFA';
               setTimeout(() => {
-                segment.color = p.random() > 0.5 ? 'rgba(155, 135, 245, 0.1)' : 'rgba(126, 105, 171, 0.1)'; // Reduced segment colors opacity
+                segment.color = p.random() > 0.5 ? '#9b87f5' : '#7E69AB';
               }, 500);
             }
           });

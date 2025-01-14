@@ -39,7 +39,7 @@ export class Timeline {
       segments.push({
         x: currentX,
         width: segWidth,
-        color: this.p.random() > 0.7 ? 'rgba(155, 135, 245, 0.1)' : 'rgba(126, 105, 171, 0.1)', // Reduced opacity
+        color: this.p.random() > 0.7 ? '#9b87f5' : '#7E69AB',
         hovered: false,
         label: `Clip ${segments.length + 1}`
       });
@@ -92,14 +92,14 @@ export class Timeline {
       this.p.rect(segX, this.y - height/2, segment.width, height);
       
       if (mouseOver) {
-        this.p.fill('rgba(255, 255, 255, 0.5)'); // Reduced text opacity
+        this.p.fill(255);
         this.p.textSize(12);
         this.p.textAlign(this.p.CENTER);
         this.p.text(segment.label, segX + segment.width/2, this.y - 15);
       }
     });
     
-    this.p.stroke('rgba(214, 188, 250, 0.15)'); // Reduced playhead opacity
+    this.p.stroke('#D6BCFA');
     this.p.strokeWeight(2);
     this.p.line(this.x + this.playheadX, this.y - 15, this.x + this.playheadX, this.y + 15);
     
