@@ -36,7 +36,7 @@ export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContent
   const getStartTrialText = () => {
     switch(language) {
       case 'he':
-        return 'התחילו היום בחינם';
+        return 'התחילו ניסיון בחינם';
       case 'es':
         return 'Comience hoy gratis';
       default:
