@@ -10,7 +10,11 @@ export const features = [
     heTitle: 'ניהול סבבי תיקונים חכם',
     heSubtitle: 'סוף לבלאגנים דרך הווצאפ',
     heDescription: 'עקבו אחר כל שינוי עם מערכת בקרת גרסאות חכמה שפותחה במיוחד לעריכת וידאו.',
-    heLongDescription: 'מערכת מעקב התיקונים המתקדמת שלנו שומרת על היסטוריה מלאה של שינויים בפרויקט שלכם. השוו גרסאות בקלות, שחזרו עריכות קודמות, ועבדו בשיתוף פעולה עם ביטחון שכל החלטה יצירתית נשמרת.'
+    heLongDescription: 'מערכת מעקב התיקונים המתקדמת שלנו שומרת על היסטוריה מלאה של שינויים בפרויקט שלכם. השוו גרסאות בקלות, שחזרו עריכות קודמות, ועבדו בשיתוף פעולה עם ביטחון שכל החלטה יצירתית נשמרת.',
+    esTitle: 'Control Inteligente de Revisiones',
+    esSubtitle: 'Nunca pierdas una versión',
+    esDescription: 'Mantén un registro de cada cambio con nuestro sistema de control de versiones diseñado específicamente para edición de video.',
+    esLongDescription: 'Nuestro sistema avanzado de seguimiento mantiene un historial completo de los cambios en tu proyecto. Compara versiones fácilmente, restaura ediciones anteriores y colabora con confianza sabiendo que cada decisión creativa está preservada.'
   },
   {
     id: 'project-briefs',
@@ -23,7 +27,11 @@ export const features = [
     heTitle: 'הצעות פרויקטים אינטראקטיביים',
     heSubtitle: 'פשטו את התקשורת עם הלקוחות',
     heDescription: 'כלי אינטרקטיבי שעוזר לך וללקוח שלך לתאם ציפיות יחד עם כלי בינה מלאכותית לבחירת רפרנסים ויצירת בריף מסודר',
-    heLongDescription: 'כלי אינטרקטיבי שעוזר לך וללקוח שלך לתאם ציפיות יחד עם כלי בינה מלאכותית לבחירת רפרנסים ויצירת בריף מסודר'
+    heLongDescription: 'כלי אינטרקטיבי שעוזר לך וללקוח שלך לתאם ציפיות יחד עם כלי בינה מלאכותית לבחירת רפרנסים ויצירת בריף מסודר',
+    esTitle: 'Briefings Interactivos',
+    esSubtitle: 'Simplifica la comunicación',
+    esDescription: 'Crea briefings dinámicos con los que tus clientes pueden interactuar, proporcionando feedback claro y aprobaciones en tiempo real.',
+    esLongDescription: 'Transforma tu comunicación con briefings interactivos que permiten feedback preciso, marcas de tiempo y anotaciones. Reduce las rondas de revisión y asegura que todos estén alineados con los objetivos del proyecto.'
   },
   {
     id: 'payments',
@@ -36,7 +44,11 @@ export const features = [
     heTitle: 'קבלת תשלום בזמן',
     heSubtitle: 'סוף למרדף אחר תשלומים',
     heDescription: 'מערכת אוטומטית שמעבירה תשלומים מיד עם אישור הפרויקט, הכל מהיר ויעיל.',
-    heLongDescription: 'מערכת אוטומטית שמעבירה תשלומים מיד עם אישור הפרויקט או הסרטון, הכל מהיר ויעיל. תיעוד חשבונאי עם קבלות להכל.'
+    heLongDescription: 'מערכת אוטומטית שמעבירה תשלומים מיד עם אישור הפרויקט או הסרטון, הכל מהיר ויעיל. תיעוד חשבונאי עם קבלות להכל.',
+    esTitle: 'Recibiendo Pagos a Tiempo',
+    esSubtitle: 'No más persiguiendo pagos',
+    esDescription: 'Configura horarios de pago automatizados y recordatorios, asegurando que te paguen a tiempo, cada vez.',
+    esLongDescription: 'Toma el control de tu flujo de efectivo con nuestro sistema de pago integrado. Automatiza la facturación, establece pagos por hitos y mantiene registros financieros claros para cada proyecto.'
   },
   {
     id: 'crm',
@@ -49,7 +61,11 @@ export const features = [
     heTitle: 'CRM לניהול לידים ומכירות',
     heSubtitle: 'ניהול מערכות יחסים עם לקוחות',
     heDescription: 'מערכת פשוטה לניהול לידים, סטטוסים, פולואפ ולקוחות משלמים.',
-    heLongDescription: 'מערכת פשוטה לניהול לידים, סטטוסים, פולואפ ולקוחות משלמים.'
+    heLongDescription: 'מערכת פשוטה לניהול לידים, סטטוסים, פולואפ ולקוחות משלמים.',
+    esTitle: 'CRM Integrado',
+    esSubtitle: 'Gestiona las relaciones con los clientes',
+    esDescription: 'Mantén un registro de todas tus interacciones con clientes, historial de proyectos y comunicación en un solo lugar.',
+    esLongDescription: 'Nuestro sistema CRM integrado te ayuda a gestionar las relaciones con los clientes de manera efectiva. Realiza un seguimiento de todas las comunicaciones, mantiene el historial de proyectos y asegura que nada se pierda con seguimientos y recordatorios automatizados.'
   },
   {
     id: 'client-portals',
@@ -62,7 +78,11 @@ export const features = [
     heTitle: 'פורטלים פשוטים ללקוחות',
     heSubtitle: 'קישור אחד להכל',
     heDescription: 'כל ההערות, האישורים, ההורדות והאחסון מסודרים במקום אחד ופשוט.',
-    heLongDescription: 'ספקו ללקוחותיכם חוויה מקצועית וממותגת באמצעות פורטלים מותאמים אישית. אפשרו שיתוף פעולה חלק עם גישה נוחה לעדכוני פרויקטים, אישורים ושיתוף קבצים במקום מרכזי אחד.'
+    heLongDescription: 'ספקו ללקוחותיכם חוויה מקצועית וממותגת באמצעות פורטלים מותאמים אישית. אפשרו שיתוף פעולה חלק עם גישה נוחה לעדכוני פרויקטים, אישורים ושיתוף קבצים במקום מרכזי אחד.',
+    esTitle: 'Portales Simples para Clientes',
+    esSubtitle: 'Un enlace para todo',
+    esDescription: 'Dale a tus clientes un panel donde puedan dejar comentarios, aprobar trabajos y descargar todo en 4K, todo con un solo enlace.',
+    esLongDescription: 'Proporciona a tus clientes una experiencia profesional y de marca a través de portales personalizados. Permite una colaboración fluida con fácil acceso a actualizaciones de proyectos, aprobaciones y compartición de archivos en un solo lugar centralizado.'
   },
   {
     id: 'team-management',
@@ -75,7 +95,11 @@ export const features = [
     heTitle: 'ניהול צוות קל ופשוט',
     heSubtitle: 'פקח על ביצועי הצוות',
     heDescription: 'עקבו אחרי עומס העבודה של עורכים, צוות, מצב התשלומים ומדדי הביצועים, הכל ממקום אחד.',
-    heLongDescription: 'נהל את כל הצוות שלך ביעילות עם כלים מקיפים למעקב אחר עומסי עבודה, מעקב אחרי מדדי ביצועים וטיפול בתשלומים. שמרו על יישור קו ופרודוקטיביות עם חלוקת משימות ברורה ומעקב אחרי התקדמות.'
+    heLongDescription: 'נהל את כל הצוות שלך ביעילות עם כלים מקיפים למעקב אחר עומסי עבודה, מעקב אחרי מדדי ביצועים וטיפול בתשלומים. שמרו על יישור קו ופרודוקטיביות עם חלוקת משימות ברורה ומעקב אחרי התקדמות.',
+    esTitle: 'Gestión de Equipo',
+    esSubtitle: 'Monitorea el rendimiento del equipo',
+    esDescription: 'Mantén un ojo en la carga de trabajo, pagos y rendimiento de tu equipo, todo desde un panel fácil de usar.',
+    esLongDescription: 'Gestiona eficientemente a todo tu equipo con herramientas integrales para rastrear la carga de trabajo, monitorear métricas de rendimiento y manejar pagos. Mantén a todos alineados y productivos con asignaciones de tareas claras y seguimiento del progreso.'
   },
   {
     id: 'secure-storage',
@@ -88,6 +112,10 @@ export const features = [
     heTitle: 'אחסון מדיה מאובטח',
     heSubtitle: 'הכל במקום אחד',
     heDescription: 'גישה מהירה, נוחה ומוגנת לקבצים, הכל בתוך המערכת שלנו וללא צורך בשירותים חיצוניים.',
-    heLongDescription: 'שמרו את כל קבצי המדיה שלכם בצורה מאובטחת ומאורגנת עם פתרון האחסון בענן שלנו. גשו לתוכן שלכם מכל מקום, שמרו על בקרת גרסאות, ודאגו שהנכסים שלכם מוגנים עם אבטחה ברמה ארגונית.'
+    heLongDescription: 'שמרו את כל קבצי המדיה שלכם בצורה מאובטחת ומאורגנת עם פתרון האחסון בענן שלנו. גשו לתוכן שלכם מכל מקום, שמרו על בקרת גרסאות, ודאגו שהנכסים שלכם מוגנים עם אבטחה ברמה ארגונית.',
+    esTitle: 'Almacenamiento Seguro de Medios',
+    esSubtitle: 'Todo en un solo lugar',
+    esDescription: 'Olvídate de malabarear herramientas de terceros. Almacena todos tus medios de forma segura en la nube, con todo justo donde lo necesitas.',
+    esLongDescription: 'Mantén todos tus archivos de medios seguros y organizados con nuestra solución de almacenamiento en la nube. Accede a tu contenido desde cualquier lugar, mantén el control de versiones y asegúrate de que tus activos valiosos estén protegidos con seguridad de nivel empresarial.'
   }
 ] as const;

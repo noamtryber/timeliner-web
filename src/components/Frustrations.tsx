@@ -40,13 +40,49 @@ export const Frustrations = () => {
     }
   ];
 
-  const headerText = language === 'he' 
-    ? "התסכולים שכולנו מכירים (ואולי קצת נמאס לנו מהם)"
-    : "The Frustrations Every Editor and Agency Knows Too Well";
+  const getHeaderText = () => {
+    switch (language) {
+      case 'es':
+        return "Las Frustraciones que Todo Editor y Agencia Conoce Demasiado Bien";
+      case 'he':
+        return "התסכולים שכולנו מכירים (ואולי קצת נמאס לנו מהם)";
+      default:
+        return "The Frustrations Every Editor and Agency Knows Too Well";
+    }
+  };
 
-  const subheaderText = language === 'he'
-    ? "עבודה עם לקוחות לא צריכה להיות כזה כאב ראש..."
-    : "Working with clients shouldn't be this hard...";
+  const getSubheaderText = () => {
+    switch (language) {
+      case 'es':
+        return "Trabajar con clientes no debería ser tan difícil...";
+      case 'he':
+        return "עבודה עם לקוחות לא צריכה להיות כזה כאב ראש...";
+      default:
+        return "Working with clients shouldn't be this hard...";
+    }
+  };
+
+  const getBottomHeaderText = () => {
+    switch (language) {
+      case 'es':
+        return "Por Estos Desafíos Creamos Timeliner";
+      case 'he':
+        return "בדיוק בגלל כל הבלאגן הזה יצרנו את Timeliner";
+      default:
+        return "These challenges are exactly why we built Timeliner";
+    }
+  };
+
+  const getBottomSubheaderText = () => {
+    switch (language) {
+      case 'es':
+        return "¡Veamos cómo podemos resolverlos!";
+      case 'he':
+        return "יאללה, בואו נראה איך אנחנו מפשטים לכם את החיים!";
+      default:
+        return "Let's see how we can solve them!";
+    }
+  };
 
   return (
     <section className="relative min-h-screen flex items-center py-20 overflow-hidden bg-gradient-to-b from-background via-accent/5 to-background">
@@ -56,10 +92,10 @@ export const Frustrations = () => {
       
       <div className={`container mx-auto px-4 relative ${isRTL ? 'rtl' : ''}`} ref={ref}>
         <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text text-center">
-          {headerText}
+          {getHeaderText()}
         </h2>
         <p className="text-lg text-white/70 text-center mb-16">
-          {subheaderText}
+          {getSubheaderText()}
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
@@ -78,14 +114,10 @@ export const Frustrations = () => {
 
         <div className="text-center mt-8">
           <h3 className="text-2xl font-bold mb-4 gradient-text">
-            {language === 'he' 
-              ? "בדיוק בגלל כל הבלאגן הזה יצרנו את Timeliner"
-              : "These challenges are exactly why we built Timeliner"}
+            {getBottomHeaderText()}
           </h3>
           <p className="text-lg text-white/70 mb-4">
-            {language === 'he'
-              ? "יאללה, בואו נראה איך אנחנו מפשטים לכם את החיים!"
-              : "Let's see how we can solve them!"}
+            {getBottomSubheaderText()}
           </p>
         </div>
       </div>

@@ -36,13 +36,34 @@ const benefits = {
       title: "מנהלי פרויקטים",
       description: "ייעלו את תהליך הפקת תוכן קצר/ארוך ואת התיאום בין הצוותים."
     }
+  ],
+  es: [
+    {
+      icon: VideoIcon,
+      title: "Editores de Video",
+      description: "Gestiona las relaciones con clientes y revisiones sin esfuerzo."
+    },
+    {
+      icon: Building2Icon,
+      title: "Agencias Creativas",
+      description: "Supervisa múltiples editores, proyectos y clientes desde una sola plataforma."
+    },
+    {
+      icon: UsersIcon,
+      title: "Gestores de Proyecto",
+      description: "Optimiza la producción de contenido y la coordinación del equipo."
+    }
   ]
 };
 
 export const Benefits = () => {
   const { language } = useLanguage();
-  const content = benefits[language === 'he' ? 'he' : 'en'];
-  const title = language === 'he' ? 'מי מרוויח מטיימליינר?' : 'Who Benefits from Timeliner?';
+  const content = benefits[language === 'he' ? 'he' : language === 'es' ? 'es' : 'en'];
+  const title = language === 'he' 
+    ? 'מי מרוויח מטיימליינר?' 
+    : language === 'es'
+    ? '¿Quién se Beneficia de Timeliner?'
+    : 'Who Benefits from Timeliner?';
 
   return (
     <section className="py-24 relative overflow-hidden">
