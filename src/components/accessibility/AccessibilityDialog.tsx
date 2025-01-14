@@ -7,7 +7,7 @@ import {
   Link, 
   TextSelect, 
   ArrowDownWideNarrow, 
-  ArrowUpNarrow,
+  ArrowUpNarrowWide,
   Bold,
   Moon,
   Sun,
@@ -73,7 +73,7 @@ export const AccessibilityDialog = ({ isOpen, onClose }: AccessibilityDialogProp
               </Card>
               
               <Card className="p-4 text-center hover:border-primary/50 cursor-pointer transition-colors">
-                <ArrowUpNarrow className="h-8 w-8 mx-auto mb-2" />
+                <ArrowUpNarrowWide className="h-8 w-8 mx-auto mb-2" />
                 <span className="text-sm">Line Height</span>
               </Card>
               
