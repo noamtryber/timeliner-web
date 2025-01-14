@@ -60,7 +60,7 @@ export const AuthButtons = ({ content, handleAuthClick }: AuthButtonsProps) => {
     return (
       <Button 
         variant="ghost" 
-        className="text-white/70" 
+        className="text-white text-base" 
         onClick={handleLogout}
       >
         <LogOut className="h-4 w-4 mr-2" />
@@ -71,10 +71,10 @@ export const AuthButtons = ({ content, handleAuthClick }: AuthButtonsProps) => {
 
   return (
     <>
-      <Button variant="ghost" className="text-white/70" onClick={handleAuthClick}>
+      <Button variant="ghost" className="text-white text-base" onClick={handleAuthClick}>
         {translations.login[language] || content?.login}
       </Button>
-      <Button className="bg-primary hover:bg-primary/90" onClick={handleAuthClick}>
+      <Button className="bg-primary hover:bg-primary/90 text-base" onClick={handleAuthClick}>
         {translations.start_free_trial[language] || content?.sign_up}
       </Button>
     </>

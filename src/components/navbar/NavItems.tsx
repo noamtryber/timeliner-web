@@ -45,31 +45,31 @@ export const NavItems = ({ content, handleSectionClick, hideMainNav }: NavItemsP
     <>
       <button 
         onClick={() => handleSectionClick('features')} 
-        className="text-white hover:text-white px-3 py-2 rounded-md text-[1.05em] font-medium ml-8"
+        className="text-white hover:text-white px-3 py-2 rounded-md text-base font-medium ml-8"
       >
         {translations.features[language as keyof typeof translations.features] || content?.features_link || 'Features'}
       </button>
       <button 
         onClick={() => handleSectionClick('testimonials')} 
-        className="text-white hover:text-white px-3 py-2 rounded-md text-[1.05em] font-medium"
+        className="text-white hover:text-white px-3 py-2 rounded-md text-base font-medium"
       >
         {translations.testimonials[language as keyof typeof translations.testimonials] || content?.testimonials_link || 'Testimonials'}
       </button>
       <button 
         onClick={() => handleSectionClick('pricing')} 
-        className="text-white hover:text-white px-3 py-2 rounded-md text-[1.05em] font-medium"
+        className="text-white hover:text-white px-3 py-2 rounded-md text-base font-medium"
       >
         {translations.pricing[language as keyof typeof translations.pricing] || content?.pricing_link || 'Pricing'}
       </button>
       <button 
         onClick={() => handleSectionClick('blog')} 
-        className="text-white hover:text-white px-3 py-2 rounded-md text-[1.05em] font-medium"
+        className="text-white hover:text-white px-3 py-2 rounded-md text-base font-medium"
       >
         {translations.blog[language as keyof typeof translations.blog] || content?.blog_link || 'Blog'}
       </button>
       <button 
         onClick={() => handleSectionClick('community')} 
-        className="text-white hover:text-white px-3 py-2 rounded-md text-[1.05em] font-medium"
+        className="text-white hover:text-white px-3 py-2 rounded-md text-base font-medium"
       >
         {translations.community[language as keyof typeof translations.community] || content?.community_link || 'Community'}
       </button>
