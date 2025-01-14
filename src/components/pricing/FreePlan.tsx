@@ -19,36 +19,36 @@ export const FreePlan = ({ content }: FreePlanProps) => {
   if (!content) return null;
 
   const hebrewFeatures = [
-    'חשבון אישי אחד',
-    '2 פרויקטים פעילים',
-    '3GB אחסון',
-    'ניהול פרויקטים בסיסי',
-    'ניהול משימות בסיסי',
-    'תבניות בסיסיות',
-    'תמיכה בקהילה'
+    'אחסון: 3GB',
+    'משתמשים: 1',
+    'פרויקטים פעילים: 2',
+    'גישת לקוחות: אורח אחד לפרויקט',
+    'מעקב גרסאות חכם: הערות מבוססות זמן',
+    'פורטל לקוחות פשוט: קישור אחד למשוב ואישורים',
+    'אחסון מדיה מאובטח'
   ];
 
   const englishFeatures = [
-    '1 Personal Account',
-    '2 Active Projects',
-    '3GB Storage',
-    'Basic Project Management',
-    'Basic Task Management',
-    'Basic Templates',
-    'Community Support'
+    'Storage: 3GB',
+    'Members: 1',
+    'Active Projects: 2',
+    'Client Access: 1 Guest Per Project',
+    'Smart Revision Tracking: Timecode based comments',
+    'Simple Client Portals: One link for feedback',
+    'Secure Media Storage'
   ];
 
   return (
-    <Card className={`glass p-6 flex flex-col animate-fade-up delay-300 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
+    <Card className={`glass p-4 flex flex-col animate-fade-up delay-300 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
       <PlanIcon Icon={Zap} color="accent" />
-      <h3 className="text-2xl font-bold mb-2">{isHebrew ? 'חינמי' : 'Free'}</h3>
-      <p className="text-white/70 mb-6">{isHebrew ? 'מושלם להתחלה' : 'Perfect for Getting Started'}</p>
-      <div className="text-3xl font-bold mb-8">
+      <h3 className="text-xl font-bold mb-1">{isHebrew ? 'חינמי' : 'Free'}</h3>
+      <p className="text-white/70 mb-2 text-sm">{isHebrew ? 'מושלם להתחלה' : 'Perfect for Getting Started'}</p>
+      <div className="text-2xl font-bold mb-4">
         {isHebrew ? '$0 / לחודש' : '$0/month'}
       </div>
       
-      <div className="space-y-4 mb-8 flex-grow">
-        <h4 className="font-semibold">{isHebrew ? 'פיצ\'רים:' : 'Features:'}</h4>
+      <div className="space-y-2 mb-4 flex-grow">
+        <h4 className="font-semibold text-sm">{isHebrew ? 'פיצ\'רים:' : 'Features:'}</h4>
         {(isHebrew ? hebrewFeatures : englishFeatures).map((feature, index) => (
           <PlanFeature key={index} text={feature} isRTL={isHebrew} />
         ))}

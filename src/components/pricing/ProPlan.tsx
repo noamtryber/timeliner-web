@@ -20,11 +20,7 @@ interface ProPlanProps {
   pricingPeriod: 'monthly' | 'quarterly' | 'yearly';
 }
 
-export const ProPlan = ({ 
-  content,
-  video,
-  pricingPeriod
-}: ProPlanProps) => {
+export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const isHebrew = language === 'he';
@@ -39,27 +35,27 @@ export const ProPlan = ({
       : basePrice;
 
   const hebrewFeatures = [
-    '2TB אחסון',
-    'עד 10 חברי צוות',
-    '100 פרויקטים פעילים',
+    'אחסון: 2TB',
+    'משתמשים: עד 10',
+    'פרויקטים פעילים: 100',
     'גישת לקוחות: עד 10 אורחים לפרויקט',
-    'מיתוג מותאם אישית: הוסיפו לוגו וצבעים',
+    'מיתוג מותאם אישית',
     'אוטומציה של תהליכי אישור',
     'ספריית רפרנסים לסגנונות עריכה',
-    'כלים שיתופיים: משימות משותפות, מועדי יעד ומעקב',
-    'תמיכה בעדיפות גבוהה'
+    'כלים שיתופיים מתקדמים',
+    'כתוביות ותרגומים מבוססי AI'
   ];
 
   const englishFeatures = [
-    '2TB Storage',
-    'Up to 10 Team Members',
-    '100 Active Projects',
-    'Client Access: Up to 10 Guests Per Project',
-    'Custom Branding: Add Your Logo and Colors',
+    'Storage: 2TB',
+    'Members: Up to 10',
+    'Active Projects: 100',
+    'Client Access: Up to 10 Guests per project',
+    'Custom Branding',
     'Approval Workflow Automation',
     'Reference Library for Editing Styles',
-    'Collaborative Tools: Shared Tasks, Deadlines, and Tracking',
-    'Priority Support'
+    'Advanced Team Management & Payments',
+    'AI Captions + Translations'
   ];
 
   const getPeriodTotal = () => {
@@ -74,11 +70,11 @@ export const ProPlan = ({
   };
 
   return (
-    <Card className={`glass p-6 flex flex-col border-primary animate-fade-up delay-500 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
+    <Card className={`glass p-4 flex flex-col border-primary animate-fade-up delay-500 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
       <PlanIcon Icon={Crown} color="primary" />
-      <h3 className="text-2xl font-bold mb-2">{isHebrew ? 'סטודיו' : 'Studio'}</h3>
-      <p className="text-white/70 mb-6">{isHebrew ? 'לסוכנויות וצוותים בצמיחה' : 'For Growing Agencies and Teams'}</p>
-      <div className="text-3xl font-bold mb-4">
+      <h3 className="text-xl font-bold mb-1">{isHebrew ? 'סטודיו' : 'Studio'}</h3>
+      <p className="text-white/70 mb-2 text-sm">{isHebrew ? 'לסוכנויות וצוותים בצמיחה' : 'For Growing Agencies and Teams'}</p>
+      <div className="text-2xl font-bold mb-2">
         ${price.toFixed(2)}
         {isHebrew ? ' / לחודש' : '/month'}
         {pricingPeriod !== 'monthly' && (
@@ -90,8 +86,8 @@ export const ProPlan = ({
 
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="outline" className="w-full mb-6 border-primary/50 hover:bg-primary/10">
-            <Play className="w-4 h-4 mr-2" />
+          <Button variant="outline" className="w-full mb-4 border-primary/50 hover:bg-primary/10 text-sm">
+            <Play className="w-3 h-3 mr-2" />
             {isHebrew ? 'למה סטודיו?' : content.video_title}
           </Button>
         </DialogTrigger>
@@ -114,15 +110,15 @@ export const ProPlan = ({
                 <Play className="w-12 h-12 text-primary animate-pulse" />
               </div>
             )}
-            <p className="text-white/70">
+            <p className="text-white/70 text-sm">
               {content.video_description}
             </p>
           </div>
         </DialogContent>
       </Dialog>
       
-      <div className="space-y-4 mb-8 flex-grow">
-        <h4 className="font-semibold">{isHebrew ? 'הכל בבייסיק, בנוסף:' : 'Everything in Essentials, plus:'}</h4>
+      <div className="space-y-2 mb-4 flex-grow">
+        <h4 className="font-semibold text-sm">{isHebrew ? 'הכל בבייסיק, בנוסף:' : 'Everything in Essentials, plus:'}</h4>
         {(isHebrew ? hebrewFeatures : englishFeatures).map((feature, index) => (
           <PlanFeature key={index} text={feature} isRTL={isHebrew} />
         ))}
