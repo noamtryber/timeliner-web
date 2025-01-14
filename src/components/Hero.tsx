@@ -28,7 +28,7 @@ const translations = {
   get_started: {
     en: 'Get Started',
     es: 'Empezar Ahora',
-    he: 'התחל עכשיו'
+    he: 'התחילו היום בחינם'
   },
   watch_demo: {
     en: 'Watch Demo',

@@ -26,7 +26,7 @@ export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContent
   const { isRTL } = useLanguage();
 
   return (
-    <div className={`text-left ${isRTL ? 'lg:text-right' : ''} animate-fade-up space-y-6`}>
+    <div className={`text-left ${isRTL ? 'text-right' : ''} animate-fade-up space-y-6`}>
       <span className={`subtitle-gradient block tracking-wide ${
         isRTL ? 'text-base sm:text-lg font-bold' : 'text-sm sm:text-base'
       }`}>
@@ -41,8 +41,8 @@ export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContent
         {translations.subtext}
       </p>
 
-      <div className={`flex flex-col sm:flex-row items-start gap-4 pt-6 ${
-        isRTL ? 'sm:flex-row-reverse' : ''
+      <div className={`flex flex-col sm:flex-row items-start gap-4 ${
+        isRTL ? 'sm:justify-start' : ''
       }`}>
         <Button 
           size="lg" 
