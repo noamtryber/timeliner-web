@@ -45,7 +45,7 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="fixed w-full z-50 top-0 animate-fade-down">
+    <nav className="fixed w-full z-[9999] top-0 animate-fade-down">
       <div className="bg-background/80 backdrop-blur-sm border-b border-[#222222]/40 mx-auto px-4 sm:px-6 lg:px-8 text-[1.15em]">
         <div className={`flex items-center justify-between h-16 ${isRTL ? 'flex-row-reverse' : ''}`}>
           <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
