@@ -55,7 +55,16 @@ export function AccessibilityProvider({ children }: { children: React.ReactNode 
       document.documentElement.classList.remove('highlight-links');
     }
 
+    // Apply contrast changes
     document.documentElement.setAttribute('data-contrast', contrast);
+    
+    // Remove any existing contrast classes
+    document.documentElement.classList.remove('contrast-dark', 'contrast-light', 'contrast-high');
+    
+    // Add the appropriate contrast class
+    if (contrast !== 'normal') {
+      document.documentElement.classList.add(`contrast-${contrast}`);
+    }
   }, [fontSize, letterSpacing, lineHeight, fontWeight, highlightTitles, highlightLinks, dyslexicFont, contrast]);
 
   return (
