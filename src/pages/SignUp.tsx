@@ -2,14 +2,54 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Progress } from "@/components/ui/progress"; // Add Progress import
+import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/components/ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { TimelineBackground } from "@/components/TimelineBackground";
 import { ArrowLeft } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { usePageContent } from "@/hooks/usePageContent";
+
+const translations = {
+  en: {
+    welcome: "Welcome to timeliner.io",
+    subtitle: "Get started - it's free. No credit card needed.",
+    fullName: "Full name",
+    email: "Your best email",
+    password: "Create a password",
+    passwordRequirements: "Password must be at least 6 characters long.",
+    terms: "By proceeding, you agree to the",
+    getStarted: "Get Started",
+    termsLink: "Terms of Service",
+    and: "and",
+    privacyLink: "Privacy Policy",
+    alreadyHaveAccount: "Already have an account?",
+    logIn: "Log in",
+    creatingAccount: "Creating account...",
+    strongPassword: "Strong password",
+    goodPassword: "Good password",
+    weakPassword: "Weak password"
+  },
+  he: {
+    welcome: "ברוכים הבאים ל-timeliner.io",
+    subtitle: "התחילו עכשיו - זה בחינם. אין צורך בכרטיס אשראי.",
+    fullName: "שם מלא",
+    email: "כתובת האימייל שלך",
+    password: "צור סיסמה",
+    passwordRequirements: "הסיסמה חייבת להכיל לפחות 6 תווים.",
+    terms: "על ידי המשך, אתה מסכים ל",
+    getStarted: "התחל עכשיו",
+    termsLink: "תנאי השימוש",
+    and: "ו",
+    privacyLink: "מדיניות הפרטיות",
+    alreadyHaveAccount: "כבר יש לך חשבון?",
+    logIn: "התחבר",
+    creatingAccount: "יוצר חשבון...",
+    strongPassword: "סיסמה חזקה",
+    goodPassword: "סיסמה טובה",
+    weakPassword: "סיסמה חלשה"
+  }
+};
 
 const SignUp = () => {
   const [loading, setLoading] = useState(false);
@@ -22,8 +62,8 @@ const SignUp = () => {
   const { language } = useLanguage();
   const isMobile = useIsMobile();
   
-  // Fetch translations using usePageContent
-  const { data: content } = usePageContent('signup');
+  // Get translations based on language
+  const t = translations[language === 'he' ? 'he' : 'en'];
 
   const calculatePasswordStrength = (password: string) => {
     const minLength = 8;
@@ -133,28 +173,8 @@ const SignUp = () => {
     return "bg-green-500";
   };
 
-  const translations = {
-    welcome: content?.welcome || "Welcome to timeliner.io",
-    subtitle: content?.subtitle || "Get started - it's free. No credit card needed.",
-    fullName: content?.fullName || "Full name",
-    email: content?.email || "Your best email",
-    password: content?.password || "Create a password",
-    passwordRequirements: content?.passwordRequirements || "Password must be at least 6 characters long.",
-    terms: content?.terms || "By proceeding, you agree to the",
-    getStarted: content?.getStarted || "Get Started",
-    termsLink: content?.termsLink || "Terms of Service",
-    and: content?.and || "and",
-    privacyLink: content?.privacyLink || "Privacy Policy",
-    alreadyHaveAccount: content?.alreadyHaveAccount || "Already have an account?",
-    logIn: content?.logIn || "Log in",
-    creatingAccount: content?.creatingAccount || "Creating account...",
-    strongPassword: content?.strongPassword || "Strong password",
-    goodPassword: content?.goodPassword || "Good password",
-    weakPassword: content?.weakPassword || "Weak password"
-  };
-
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen" dir={language === 'he' ? 'rtl' : 'ltr'}>
       <div className={`${isMobile ? 'w-full' : 'w-[65%]'} bg-white p-4 md:p-8 flex items-center justify-center relative`}>
         <Button
           variant="ghost"
@@ -172,10 +192,10 @@ const SignUp = () => {
               className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-4"
             />
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-              {translations.welcome}
+              {t.welcome}
             </h2>
             <p className="mt-2 text-sm md:text-base text-gray-600">
-              {translations.subtitle}
+              {t.subtitle}
             </p>
           </div>
 
@@ -184,7 +204,7 @@ const SignUp = () => {
               <div>
                 <Input
                   type="text"
-                  placeholder={translations.fullName}
+                  placeholder={t.fullName}
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   required
@@ -194,7 +214,7 @@ const SignUp = () => {
               <div>
                 <Input
                   type="email"
-                  placeholder={translations.email}
+                  placeholder={t.email}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -204,9 +224,12 @@ const SignUp = () => {
               <div>
                 <Input
                   type="password"
-                  placeholder={translations.password}
+                  placeholder={t.password}
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                    setPasswordStrength(calculatePasswordStrength(e.target.value));
+                  }}
                   required
                   className="bg-gray-50 border-gray-300 text-gray-900"
                 />
@@ -215,29 +238,29 @@ const SignUp = () => {
                     <Progress value={passwordStrength} className="h-2" />
                     <p className="text-xs text-gray-500">
                       {passwordStrength === 100 ? (
-                        translations.strongPassword
+                        t.strongPassword
                       ) : passwordStrength >= 60 ? (
-                        translations.goodPassword
+                        t.goodPassword
                       ) : (
-                        translations.weakPassword
+                        t.weakPassword
                       )}
                     </p>
                   </div>
                 )}
                 <p className="mt-1 text-xs md:text-sm text-gray-500">
-                  {translations.passwordRequirements}
+                  {t.passwordRequirements}
                 </p>
               </div>
             </div>
 
             <div className="text-xs md:text-sm text-gray-600 text-center">
-              {translations.terms}{" "}
+              {t.terms}{" "}
               <Link to="/terms" className="text-primary hover:underline">
-                {translations.termsLink}
+                {t.termsLink}
               </Link>{" "}
-              {translations.and}{" "}
+              {t.and}{" "}
               <Link to="/privacy" className="text-primary hover:underline">
-                {translations.privacyLink}
+                {t.privacyLink}
               </Link>
             </div>
 
@@ -246,13 +269,13 @@ const SignUp = () => {
               className="w-full"
               disabled={loading}
             >
-              {loading ? translations.creatingAccount : translations.getStarted}
+              {loading ? t.creatingAccount : t.getStarted}
             </Button>
 
             <div className="text-center text-xs md:text-sm text-gray-600">
-              {translations.alreadyHaveAccount}{" "}
+              {t.alreadyHaveAccount}{" "}
               <Link to="/login" className="text-primary hover:underline">
-                {translations.logIn}
+                {t.logIn}
               </Link>
             </div>
           </form>
