@@ -30,6 +30,30 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
     { text: 'Soporte Prioritario 24/7', tooltip: 'Soporte inmediato en cualquier momento, cualquier día', showTooltip: true }
   ];
 
+  const hebrewFeatures = [
+    'אחסון: ללא הגבלה',
+    'משתמשים: ללא הגבלה',
+    'פרויקטים פעילים: ללא הגבלה',
+    { text: 'מיתוג מלא', tooltip: 'התאמה מלאה של המותג וממשק המשתמש', showTooltip: true },
+    'גישת לקוחות: ללא הגבלה',
+    { text: 'מנהל לקוח ייעודי', tooltip: 'תמיכה אישית ומקצועית מצוות מומחים', showTooltip: true },
+    { text: 'אינטגרציית API', tooltip: 'התחברות ואינטראקציה עם מערכות חיצוניות', showTooltip: true },
+    { text: 'אפשרויות התקנה מקומית', tooltip: 'התקנה ויישום בשרתים פרטיים', showTooltip: true },
+    { text: 'תמיכה 24/7 בעדיפות גבוהה', tooltip: 'תמיכה מיידית בכל עת, בכל יום', showTooltip: true }
+  ];
+
+  const englishFeatures = [
+    'Storage: Unlimited',
+    'Members: Unlimited',
+    'Active Projects: Unlimited',
+    { text: 'Full White Labeling', tooltip: 'Complete brand and UI customization', showTooltip: true },
+    'Client Access: Unlimited',
+    { text: 'Dedicated Account Manager', tooltip: 'Personal and professional support from expert team', showTooltip: true },
+    { text: 'API Integration', tooltip: 'Connect and interact with external systems', showTooltip: true },
+    { text: 'On-Premise Deployment Options', tooltip: 'Installation and deployment on private servers', showTooltip: true },
+    { text: '24/7 Priority Support', tooltip: 'Immediate support anytime, any day', showTooltip: true }
+  ];
+
   const getFeatures = () => {
     switch (language) {
       case 'es':

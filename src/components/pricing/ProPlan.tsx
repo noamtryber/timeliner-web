@@ -40,6 +40,17 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
       ? basePrice * 0.85 
       : basePrice;
 
+  const getPeriodTotal = () => {
+    switch (pricingPeriod) {
+      case 'quarterly':
+        return price * 3;
+      case 'yearly':
+        return price * 12;
+      default:
+        return price;
+    }
+  };
+
   const spanishFeatures: Feature[] = [
     { text: 'Almacenamiento: 2TB', tooltip: 'Almacenamiento seguro en la nube con respaldo automático', showTooltip: true },
     { text: 'Miembros: Hasta 10', tooltip: 'Gestiona un equipo de hasta 10 usuarios con diferentes permisos', showTooltip: true },
@@ -49,9 +60,9 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
   const spanishExtraFeatures: Feature[] = [
     { text: 'Roles y Permisos Avanzados', tooltip: 'Gestión avanzada de permisos con roles personalizados', showTooltip: true },
-    { text: 'Marca Personalizada', tooltip: 'Agrega imágenes de portada, logos y elementos de marca por cliente. Comparte carpetas con estilos de edición del equipo, recursos y pautas.', showTooltip: true },
+    { text: 'Marca Personalizada', tooltip: 'Agrega imágenes de portada, logos y elementos de marca por cliente', showTooltip: true },
     { text: 'Gestión Avanzada de Equipo', tooltip: 'Herramientas avanzadas para la gestión de equipos', showTooltip: true },
-    { text: 'Modo Agencia', tooltip: 'Personaliza flujos de trabajo, agrega etiquetas y rastrea el progreso con herramientas basadas en permisos diseñadas para agencias.', showTooltip: true },
+    { text: 'Modo Agencia', tooltip: 'Personaliza flujos de trabajo para agencias', showTooltip: true },
     { text: 'Subtítulos y Traducciones IA', tooltip: 'Generación automática de subtítulos y traducciones', showTooltip: true }
   ];
 
@@ -62,11 +73,27 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     { text: 'גישת לקוחות: 10 אורחים לפרויקט', tooltip: 'שיתוף פעולה עם 10 לקוחות בו זמנית לכל פרויקט', showTooltip: true },
   ];
 
+  const hebrewExtraFeatures: Feature[] = [
+    { text: 'תפקידים והרשאות מתקדמים', tooltip: 'ניהול הרשאות מתקדם עם תפקידים מותאמים אישית', showTooltip: true },
+    { text: 'מיתוג מותאם אישית', tooltip: 'הוסף תמונות כותרת, לוגואים ואלמנטים של מותג ללקוח', showTooltip: true },
+    { text: 'ניהול צוות מתקדם', tooltip: 'כלים מתקדמים לניהול צוותים', showTooltip: true },
+    { text: 'מצב סוכנות', tooltip: 'התאם זרימות עבודה לסוכנויות', showTooltip: true },
+    { text: 'כתוביות ותרגומי AI', tooltip: 'יצירה אוטומטית של כתוביות ותרגומים', showTooltip: true }
+  ];
+
   const englishFeatures: Feature[] = [
     { text: 'Storage: 2TB', tooltip: 'Secure cloud storage with automatic backup', showTooltip: true },
     { text: 'Members: Up to 10', tooltip: 'Manage a team of up to 10 users with different permissions', showTooltip: true },
     { text: 'Active Projects: Unlimited', tooltip: 'Work on unlimited projects simultaneously', showTooltip: true },
     { text: 'Client Access: 10 Guests per project', tooltip: 'Collaborate with 10 clients simultaneously per project', showTooltip: true },
+  ];
+
+  const englishExtraFeatures: Feature[] = [
+    { text: 'Advanced Roles and Permissions', tooltip: 'Advanced permission management with custom roles', showTooltip: true },
+    { text: 'Custom Branding', tooltip: 'Add cover images, logos, and brand elements per client', showTooltip: true },
+    { text: 'Advanced Team Management', tooltip: 'Advanced tools for team management', showTooltip: true },
+    { text: 'Agency Mode', tooltip: 'Customize workflows for agencies', showTooltip: true },
+    { text: 'AI Captions + Translations', tooltip: 'Automatic caption and translation generation', showTooltip: true }
   ];
 
   const getFeatures = () => {
