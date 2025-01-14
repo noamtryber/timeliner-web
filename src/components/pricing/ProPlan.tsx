@@ -151,6 +151,17 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     }
   };
 
+  const getWhyButtonText = () => {
+    switch (language) {
+      case 'es':
+        return '¿Por qué Estudio?';
+      case 'he':
+        return 'למה סטודיו?';
+      default:
+        return 'Why Studio?';
+    }
+  };
+
   const getEverythingInText = () => {
     switch (language) {
       case 'es':
