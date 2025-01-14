@@ -34,9 +34,10 @@ export const PlanFeature = ({ text, isRTL, tooltip, showTooltip }: PlanFeaturePr
               />
             </TooltipTrigger>
             <TooltipContent 
-              className="max-w-[200px] bg-card/95 backdrop-blur border-primary/20 text-white/90 z-50"
+              className="max-w-[200px] bg-card/95 backdrop-blur border-primary/20 text-white/90 z-[100]"
               side="top"
               sideOffset={5}
+              align="end"
             >
               {tooltip}
             </TooltipContent>
