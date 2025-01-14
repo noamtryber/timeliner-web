@@ -96,8 +96,8 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="outline" className="w-32 mb-3 border-primary/50 hover:bg-primary/10 text-xs text-left ml-0">
-            <Play className="w-3 h-3 mr-2" />
+          <Button variant="outline" className="w-32 mb-3 border-primary/50 hover:bg-primary/10 text-xs px-2 flex items-center gap-1.5">
+            <Play className="w-3 h-3" />
             {isHebrew ? 'למה בייסיק?' : 'Why Essentials?'}
           </Button>
         </DialogTrigger>
