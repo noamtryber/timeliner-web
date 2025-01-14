@@ -65,10 +65,14 @@ export const Features = () => {
   };
 
   const getLearnMoreText = () => {
-    if (language === 'he') {
-      return 'לצפייה בסרטון';
+    switch (language) {
+      case 'es':
+        return 'Ver Más';
+      case 'he':
+        return 'לצפייה בסרטון';
+      default:
+        return getFeatureContent('common', 'learn_more') || 'Learn More';
     }
-    return getFeatureContent('common', 'learn_more') || 'Learn More';
   };
 
   return (
@@ -88,9 +92,27 @@ export const Features = () => {
         <FeatureDialog
           isOpen={!!openDialog}
           onClose={() => setOpenDialog(null)}
-          title={language === 'he' ? activeFeature.heTitle : (getFeatureContent(activeFeature.sectionKey, 'title') || activeFeature.defaultTitle)}
-          subtitle={language === 'he' ? activeFeature.heSubtitle : (getFeatureContent(activeFeature.sectionKey, 'subtitle') || activeFeature.defaultSubtitle)}
-          description={language === 'he' ? activeFeature.heLongDescription : (getFeatureContent(activeFeature.sectionKey, 'long_description') || activeFeature.defaultLongDescription)}
+          title={
+            language === 'es' 
+              ? activeFeature.esTitle 
+              : language === 'he' 
+                ? activeFeature.heTitle 
+                : (getFeatureContent(activeFeature.sectionKey, 'title') || activeFeature.defaultTitle)
+          }
+          subtitle={
+            language === 'es'
+              ? activeFeature.esSubtitle
+              : language === 'he'
+                ? activeFeature.heSubtitle
+                : (getFeatureContent(activeFeature.sectionKey, 'subtitle') || activeFeature.defaultSubtitle)
+          }
+          description={
+            language === 'es'
+              ? activeFeature.esLongDescription
+              : language === 'he'
+                ? activeFeature.heLongDescription
+                : (getFeatureContent(activeFeature.sectionKey, 'long_description') || activeFeature.defaultLongDescription)
+          }
           videoUrl={getFeatureMedia(activeFeature.sectionKey, 'learn-more')}
         />
       )}
