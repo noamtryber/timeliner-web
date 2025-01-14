@@ -18,9 +18,14 @@ const translations = {
     he: 'עורכי וידאו וסוכנויות:'
   },
   main_title: {
-    en: 'Turn Chaos into Clarity with Smart Video Management',
-    es: 'Convierte el Caos en Claridad con Gestión Inteligente de Video',
-    he: 'סוף לבלאגן! ניהול פרויקטים, תיקונים ותשלומים במקום אחד'
+    en: 'Streamline Video Projects with All-in-One Management',
+    es: 'Optimiza Proyectos de Video con Gestión Todo en Uno',
+    he: 'ניהול פרויקטי וידאו בפלטפורמה אחת מאוחדת'
+  },
+  subtext: {
+    en: 'Project Management, Revisions, Payments, Expectations, Storage, and AI Tools — Everything You Need in One Place.',
+    es: 'Gestión de Proyectos, Revisiones, Pagos, Expectativas, Almacenamiento y Herramientas de IA — Todo lo que Necesitas en Un Solo Lugar.',
+    he: 'ניהול פרויקטים, תיקונים, תשלומים, ציפיות, אחסון וכלי בינה מלאכותית — הכל במקום אחד.'
   },
   get_started: {
     en: 'Get Started',
@@ -200,6 +205,10 @@ export const Hero = () => {
               {getTranslatedContent('main_title')}
             </h1>
 
+            <p className="text-lg sm:text-xl text-white/70 mb-8 leading-relaxed">
+              {getTranslatedContent('subtext')}
+            </p>
+
             <div className={`flex flex-col sm:flex-row items-start gap-4 mb-12 ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
               <Button 
                 size="lg" 
@@ -271,3 +280,5 @@ export const Hero = () => {
     </div>
   );
 };
+
+export default Hero;
