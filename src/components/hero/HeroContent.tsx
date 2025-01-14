@@ -23,7 +23,15 @@ interface HeroContentProps {
 
 export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContentProps) => {
   const navigate = useNavigate();
-  const { isRTL } = useLanguage();
+  const { isRTL, language } = useLanguage();
+
+  const videoUrl = language === 'he' 
+    ? "https://player.vimeo.com/video/1044344874"
+    : "https://player.vimeo.com/video/1046016144";
+
+  const thumbnailUrl = language === 'he'
+    ? "https://vumbnail.com/1044344874.jpg"
+    : "https://vumbnail.com/1046016144.jpg";
 
   return (
     <div className={`text-center lg:text-left ${isRTL ? 'text-right' : ''} animate-fade-up space-y-6 pt-20`}>
@@ -38,10 +46,14 @@ export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContent
       </h1>
 
       {isMobile && (
-        <div className="w-full aspect-video rounded-xl overflow-hidden">
+        <div className="w-full aspect-video rounded-xl overflow-hidden relative">
+          <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${thumbnailUrl})` }}
+          />
           <iframe
-            src="https://player.vimeo.com/video/1044344874?autoplay=1&muted=0"
-            className="w-full h-full"
+            src={`${videoUrl}?autoplay=1&muted=0`}
+            className="w-full h-full relative z-10"
             allow="autoplay; fullscreen; picture-in-picture"
             style={{ border: 'none', background: 'transparent' }}
           />

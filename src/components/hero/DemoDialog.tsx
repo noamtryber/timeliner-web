@@ -15,6 +15,10 @@ interface DemoDialogProps {
 
 export const DemoDialog = ({ showDemo, onClose, content, media, language }: DemoDialogProps) => {
   const { isRTL } = useLanguage();
+  
+  const videoUrl = language === 'he' 
+    ? "https://player.vimeo.com/video/1044344874?autoplay=1"
+    : "https://player.vimeo.com/video/1046016144?autoplay=1";
 
   if (language === 'he') {
     return (
@@ -30,7 +34,7 @@ export const DemoDialog = ({ showDemo, onClose, content, media, language }: Demo
           </DialogHeader>
           <div className="mt-6 rounded-xl overflow-hidden aspect-video">
             <iframe
-              src="https://player.vimeo.com/video/1044344874?autoplay=1"
+              src={videoUrl}
               className="w-full h-full"
               allow="autoplay; fullscreen; picture-in-picture"
               style={{ border: 'none', background: 'transparent' }}
@@ -47,7 +51,7 @@ export const DemoDialog = ({ showDemo, onClose, content, media, language }: Demo
       onClose={onClose}
       title={content?.demo_title || "See How It Works"}
       description={content?.demo_description || "Watch our 2-minute demo to see how Timeliner can streamline your creative workflow and help you manage projects more efficiently."}
-      videoUrl={media?.find(item => item.media_key === 'demo')?.media_url || "https://player.vimeo.com/video/1042338760?autoplay=1"}
+      videoUrl={videoUrl}
     />
   );
 };
