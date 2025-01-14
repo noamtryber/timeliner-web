@@ -25,9 +25,9 @@ export class Timeline {
     this.x = -p.width * 0.2;
     this.width = p.width * 1.4;
     this.speed = p.random(0.5, 2);
+    this.revisionMarkers = []; // Initialize the array before createSegments
     this.segments = this.createSegments();
     this.playheadX = 0;
-    this.revisionMarkers = [];
   }
   
   createSegments() {
