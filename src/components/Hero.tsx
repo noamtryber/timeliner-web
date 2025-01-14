@@ -18,12 +18,12 @@ const translations = {
   main_title: {
     en: 'Simplify Video Projects with All-in-One Management',
     es: 'Optimiza Proyectos de Video con Gestión Todo en Uno',
-    he: 'אומרים שלום לבלאגן עם מערכת חכמה לכל פרויקט וידאו'
+    he: 'אומרים ביי לבלאגן עם מערכת חכמה לניהול פרויקטי עריכת וידאו'
   },
   subtext: {
     en: 'Task coordination, seamless revisions, timely payments, expectation alignment, secure storage, and smart AI tools — everything you need in one platform for a professional client experience and stress-free workflow.',
     es: 'Gestión de Proyectos, Revisiones, Pagos, Expectativas, Almacenamiento y Herramientas de IA — Todo lo que Necesitas en Un Solo Lugar.',
-    he: 'ניהול משימות, סבבי תיקונים, תשלומים, תיאום ציפיות, אחסון מהיר וכלי AI — כל מה שאתם צריכים במקום אחד לחוויה מקצועית ויעילה.'
+    he: 'ניהול משימות, סבבי תיקונים, תשלומים, תיאום ציפיות, אחסון מהיר וכלי AI - כל מה שאתם צריכים במקום אחד לחווית לקוח מקצועית ושקט נפשי.'
   },
   get_started: {
     en: 'Get Started',
