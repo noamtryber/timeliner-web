@@ -48,9 +48,9 @@ const SignUp = () => {
       es: "Crea una contraseña"
     },
     passwordRequirements: {
-      en: "Password must contain at least 8 characters, including uppercase, lowercase, numbers, and special characters.",
-      he: "הסיסמה חייבת להיות באנגלית ולכלול לפחות 8 תווים, כולל אותיות גדולות, אותיות קטנות, מספרים ותווים מיוחדים.",
-      es: "La contraseña debe contener al menos 8 caracteres, incluyendo mayúsculas, minúsculas, números y caracteres especiales."
+      en: "Password must be at least 6 characters long.",
+      he: "הסיסמה חייבת להכיל לפחות 6 תווים.",
+      es: "La contraseña debe tener al menos 6 caracteres."
     },
     terms: {
       en: "By proceeding, you agree to the",
@@ -95,18 +95,12 @@ const SignUp = () => {
   };
 
   const validatePassword = (password: string) => {
-    const minLength = 8;
-    const hasUpperCase = /[A-Z]/.test(password);
-    const hasLowerCase = /[a-z]/.test(password);
-    const hasNumbers = /\d/.test(password);
-    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-
+    const minLength = 6;
     const errors = [];
-    if (password.length < minLength) errors.push("at least 8 characters");
-    if (!hasUpperCase) errors.push("an uppercase letter");
-    if (!hasLowerCase) errors.push("a lowercase letter");
-    if (!hasNumbers) errors.push("a number");
-    if (!hasSpecialChar) errors.push("a special character");
+    
+    if (password.length < minLength) {
+      errors.push("at least 6 characters");
+    }
 
     return errors;
   };
