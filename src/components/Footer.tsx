@@ -28,8 +28,14 @@ export const Footer = () => {
   }, []);
 
   const handleCommunityClick = () => {
-    window.scrollTo(0, 0);
     navigate('/community');
+    // Use setTimeout to ensure navigation completes before scrolling
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }, 100);
   };
 
   const getContent = () => {
