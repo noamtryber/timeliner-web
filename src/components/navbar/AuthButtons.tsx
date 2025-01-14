@@ -64,7 +64,7 @@ export const AuthButtons = ({ content, handleAuthClick }: AuthButtonsProps) => {
         onClick={handleLogout}
       >
         <LogOut className="h-4 w-4 mr-2" />
-        {content?.logout_button || translations.sign_out[language]}
+        {translations.sign_out[language] || content?.logout_button}
       </Button>
     );
   }
@@ -72,10 +72,10 @@ export const AuthButtons = ({ content, handleAuthClick }: AuthButtonsProps) => {
   return (
     <>
       <Button variant="ghost" className="text-white/70" onClick={handleAuthClick}>
-        {content?.login || translations.login[language]}
+        {translations.login[language] || content?.login}
       </Button>
       <Button className="bg-primary hover:bg-primary/90" onClick={handleAuthClick}>
-        {content?.sign_up || translations.start_free_trial[language]}
+        {translations.start_free_trial[language] || content?.sign_up}
       </Button>
     </>
   );
