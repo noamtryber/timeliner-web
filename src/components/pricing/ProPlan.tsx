@@ -40,19 +40,26 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
       ? basePrice * 0.85 
       : basePrice;
 
+  const spanishFeatures: Feature[] = [
+    { text: 'Almacenamiento: 2TB', tooltip: 'Almacenamiento seguro en la nube con respaldo automático', showTooltip: true },
+    { text: 'Miembros: Hasta 10', tooltip: 'Gestiona un equipo de hasta 10 usuarios con diferentes permisos', showTooltip: true },
+    { text: 'Proyectos Activos: Ilimitados', tooltip: 'Trabaja en proyectos ilimitados simultáneamente', showTooltip: true },
+    { text: 'Acceso de Clientes: 10 invitados por proyecto', tooltip: 'Colabora con 10 clientes simultáneamente por proyecto', showTooltip: true },
+  ];
+
+  const spanishExtraFeatures: Feature[] = [
+    { text: 'Roles y Permisos Avanzados', tooltip: 'Gestión avanzada de permisos con roles personalizados', showTooltip: true },
+    { text: 'Marca Personalizada', tooltip: 'Agrega imágenes de portada, logos y elementos de marca por cliente. Comparte carpetas con estilos de edición del equipo, recursos y pautas.', showTooltip: true },
+    { text: 'Gestión Avanzada de Equipo', tooltip: 'Herramientas avanzadas para la gestión de equipos', showTooltip: true },
+    { text: 'Modo Agencia', tooltip: 'Personaliza flujos de trabajo, agrega etiquetas y rastrea el progreso con herramientas basadas en permisos diseñadas para agencias.', showTooltip: true },
+    { text: 'Subtítulos y Traducciones IA', tooltip: 'Generación automática de subtítulos y traducciones', showTooltip: true }
+  ];
+
   const hebrewFeatures: Feature[] = [
     { text: 'אחסון: 2TB', tooltip: 'אחסון מאובטח בענן עם גיבוי אוטומטי', showTooltip: true },
     { text: 'משתמשים: עד 10', tooltip: 'ניהול צוות עד 10 משתמשים עם הרשאות שונות', showTooltip: true },
     { text: 'פרויקטים פעילים: ללא הגבלה', tooltip: 'עבודה על פרויקטים ללא הגבלה', showTooltip: true },
     { text: 'גישת לקוחות: 10 אורחים לפרויקט', tooltip: 'שיתוף פעולה עם 10 לקוחות בו זמנית לכל פרויקט', showTooltip: true },
-  ];
-
-  const hebrewExtraFeatures: Feature[] = [
-    { text: 'הרשאות ותפקידים מתקדמים', tooltip: 'ניהול הרשאות מתקדם עם תפקידים מותאמים אישית', showTooltip: true },
-    { text: 'מיתוג מותאם אישית', tooltip: 'הוסף תמונות כיסוי, לוגואים ואלמנטים ממותגים לכל לקוח. שתף תיקיות עם סגנונות עריכה של הצוות, נכסים והנחיות', showTooltip: true },
-    { text: 'ניהול צוות מתקדם', tooltip: 'כלים מתקדמים לניהול צוות', showTooltip: true },
-    { text: 'מצב סוכנות', tooltip: 'התאם תהליכי עבודה, הוסף תגיות ועקוב אחר התקדמות עם כלים מבוססי הרשאות המותאמים לסוכנויות', showTooltip: true },
-    { text: 'כתוביות ותרגומים מבוססי AI', tooltip: 'יצירה אוטומטית של כתוביות ותרגומים', showTooltip: true }
   ];
 
   const englishFeatures: Feature[] = [
@@ -62,36 +69,100 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     { text: 'Client Access: 10 Guests per project', tooltip: 'Collaborate with 10 clients simultaneously per project', showTooltip: true },
   ];
 
-  const englishExtraFeatures: Feature[] = [
-    { text: 'Advanced Roles and Permissions', tooltip: 'Advanced permission management with custom roles', showTooltip: true },
-    { text: 'Custom Branding', tooltip: 'Add cover images, logos, and branded elements per client. Share folders with team editing styles, assets, and guidelines.', showTooltip: true },
-    { text: 'Advanced Team Management', tooltip: 'Advanced tools for team management', showTooltip: true },
-    { text: 'Enable Agency Mode', tooltip: 'Customize workflows, add tags, and track progress with permission-based tools tailored for agencies.', showTooltip: true },
-    { text: 'AI Captions + Translations', tooltip: 'Automatic generation of captions and translations', showTooltip: true }
-  ];
-
-  const getPeriodTotal = () => {
-    switch (pricingPeriod) {
-      case 'quarterly':
-        return price * 3;
-      case 'yearly':
-        return price * 12;
+  const getFeatures = () => {
+    switch (language) {
+      case 'es':
+        return spanishFeatures;
+      case 'he':
+        return hebrewFeatures;
       default:
-        return price;
+        return englishFeatures;
+    }
+  };
+
+  const getExtraFeatures = () => {
+    switch (language) {
+      case 'es':
+        return spanishExtraFeatures;
+      case 'he':
+        return hebrewExtraFeatures;
+      default:
+        return englishExtraFeatures;
+    }
+  };
+
+  const getPlanTitle = () => {
+    switch (language) {
+      case 'es':
+        return 'Estudio';
+      case 'he':
+        return 'סטודיו';
+      default:
+        return 'Studio';
+    }
+  };
+
+  const getPlanSubtitle = () => {
+    switch (language) {
+      case 'es':
+        return 'Para Agencias y Equipos en Crecimiento';
+      case 'he':
+        return 'לסוכנויות וצוותים בצמיחה';
+      default:
+        return 'For Growing Agencies and Teams';
+    }
+  };
+
+  const getButtonText = () => {
+    switch (language) {
+      case 'es':
+        return 'Comenzar Prueba Gratis';
+      case 'he':
+        return 'התחילו היום בחינם';
+      default:
+        return 'Start Free Trial';
+    }
+  };
+
+  const getWhyButtonText = () => {
+    switch (language) {
+      case 'es':
+        return '¿Por qué Estudio?';
+      case 'he':
+        return 'למה סטודיו?';
+      default:
+        return 'Why Studio?';
+    }
+  };
+
+  const getEverythingInText = () => {
+    switch (language) {
+      case 'es':
+        return 'Todo en Esencial, más:';
+      case 'he':
+        return 'הכל בבייסיק, בנוסף:';
+      default:
+        return 'Everything in Essentials, plus:';
     }
   };
 
   return (
     <Card className={`glass p-3 flex flex-col animate-fade-up delay-500 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
       <PlanIcon Icon={Crown} color="primary" />
-      <h3 className="text-xl font-bold mb-1">{isHebrew ? 'סטודיו' : 'Studio'}</h3>
-      <p className="text-white/70 mb-2 text-xs">{isHebrew ? 'לסוכנויות וצוותים בצמיחה' : 'For Growing Agencies and Teams'}</p>
+      <h3 className="text-xl font-bold mb-1">{getPlanTitle()}</h3>
+      <p className="text-white/70 mb-2 text-xs">{getPlanSubtitle()}</p>
       <div className="text-2xl font-bold mb-2">
         ${price.toFixed(2)}
-        {isHebrew ? ' / לחודש' : '/month'}
+        {language === 'es' ? '/mes' : isHebrew ? ' / לחודש' : '/month'}
         {pricingPeriod !== 'monthly' && (
           <span className="block text-sm text-primary mt-1">
-            ${getPeriodTotal().toFixed(2)} {isHebrew ? `לתשלום ${pricingPeriod === 'quarterly' ? 'רבעוני' : 'שנתי'}` : `billed ${pricingPeriod}`}
+            ${getPeriodTotal().toFixed(2)} {
+              language === 'es' 
+                ? `facturado ${pricingPeriod === 'quarterly' ? 'trimestralmente' : 'anualmente'}`
+                : isHebrew 
+                  ? `לתשלום ${pricingPeriod === 'quarterly' ? 'רבעוני' : 'שנתי'}`
+                  : `billed ${pricingPeriod}`
+            }
           </span>
         )}
       </div>
@@ -100,12 +171,12 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
         <DialogTrigger asChild>
           <Button variant="outline" className="w-32 mb-3 border-primary/50 hover:bg-primary/10 text-xs px-2 flex items-center gap-1.5">
             <Play className="w-3 h-3" />
-            {isHebrew ? 'למה סטודיו?' : 'Why Studio?'}
+            {getWhyButtonText()}
           </Button>
         </DialogTrigger>
         <DialogContent className={`glass ${isHebrew ? 'text-right' : ''}`}>
           <DialogHeader>
-            <DialogTitle>{isHebrew ? 'למה סטודיו?' : content.video_title}</DialogTitle>
+            <DialogTitle>{getWhyButtonText()}</DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
             {video?.preview ? (
@@ -130,13 +201,13 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
       </Dialog>
       
       <div className="space-y-1.5 mb-2 flex-grow">
-        {(isHebrew ? hebrewFeatures : englishFeatures).map((feature, index) => (
+        {getFeatures().map((feature, index) => (
           <PlanFeature key={index} text={feature.text} tooltip={feature.tooltip} showTooltip={feature.showTooltip} isRTL={isHebrew} />
         ))}
         
         <div className="my-3 border-t border-white/10 pt-2">
-          <p className="text-sm font-medium mb-2">{isHebrew ? 'הכל בבייסיק, בנוסף:' : 'Everything in Essentials, plus:'}</p>
-          {(isHebrew ? hebrewExtraFeatures : englishExtraFeatures).map((feature, index) => (
+          <p className="text-sm font-medium mb-2">{getEverythingInText()}</p>
+          {getExtraFeatures().map((feature, index) => (
             <PlanFeature key={`extra-${index}`} text={feature.text} tooltip={feature.tooltip} showTooltip={feature.showTooltip} isRTL={isHebrew} />
           ))}
         </div>
@@ -146,7 +217,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
         className="w-full bg-gradient-to-br from-primary to-secondary hover:opacity-90 transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 mt-8"
         onClick={() => navigate('/signup')}
       >
-        {isHebrew ? 'התחילו היום בחינם' : 'Start Free Trial'}
+        {getButtonText()}
       </Button>
     </Card>
   );
