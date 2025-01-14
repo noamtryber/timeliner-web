@@ -81,7 +81,10 @@ export const FreePlan = ({ content }: FreePlanProps) => {
       <h3 className="text-xl font-bold mb-1 -mt-2">{getTitle()}</h3>
       <p className="text-white/70 mb-2 text-sm">{getSubtitle()}</p>
       <div className="text-2xl font-bold mb-6">
-        {isHebrew ? '$0 / לחודש' : language === 'es' ? '$0/mes' : '$0/month'}
+        {isHebrew ? '$0' : language === 'es' ? '$0' : '$0'}
+        <span className="text-sm font-normal">
+          {language === 'es' ? '/mes' : isHebrew ? '/ לחודש' : '/month'}
+        </span>
       </div>
       
       <div className="space-y-3 mb-4 flex-grow">

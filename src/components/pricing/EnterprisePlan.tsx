@@ -127,9 +127,6 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
       <p className="text-white/70 mb-2 text-sm">{getPlanSubtitle()}</p>
       <div className="text-2xl font-bold mb-6">
         {getPricing()}
-        <span className="text-base font-normal">
-          {language === 'es' ? '/mes' : isHebrew ? '/ לחודש' : '/month'}
-        </span>
       </div>
       
       <div className="space-y-3 mb-4 flex-grow">
