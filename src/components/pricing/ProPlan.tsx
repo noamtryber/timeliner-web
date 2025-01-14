@@ -174,13 +174,12 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
   };
 
   return (
-    <Card className={`glass border-0 p-3 flex flex-col animate-fade-up delay-500 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
+    <Card className={`relative border border-[#2A2F3C] bg-gradient-to-b from-[#1A1F2C]/50 to-[#1A1F2C] p-3 flex flex-col animate-fade-up delay-500 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
       <PlanIcon Icon={Crown} color="primary" />
       <h3 className="text-xl font-bold mb-1">{getPlanTitle()}</h3>
       <p className="text-white/70 mb-2 text-xs">{getPlanSubtitle()}</p>
       <div className="text-2xl font-bold mb-2">
         ${price.toFixed(2)}
-        {language === 'es' ? '/mes' : isHebrew ? ' / לחודש' : '/month'}
         {pricingPeriod !== 'monthly' && (
           <span className="block text-sm text-primary mt-1">
             ${getPeriodTotal().toFixed(2)} {
