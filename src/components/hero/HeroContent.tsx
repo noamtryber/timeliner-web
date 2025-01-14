@@ -82,21 +82,21 @@ export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContent
       <div className={`flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 ${
         isRTL ? 'sm:justify-start' : ''
       }`}>
-        <div className="flex flex-col items-center sm:items-start">
-          <Button 
-            size="lg" 
-            className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto w-full sm:w-auto"
-            onClick={() => navigate('/signup')}
-          >
+        <Button 
+          size="lg" 
+          className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto w-full sm:w-auto"
+          onClick={() => navigate('/signup')}
+        >
+          <span className="flex flex-col items-center">
             <span className="flex items-center gap-2">
               {getStartTrialText()}
               <ArrowRight className={`h-4 sm:h-5 w-4 sm:w-5 ${isRTL ? 'rotate-180' : ''}`} />
             </span>
-          </Button>
-          {language === 'he' && (
-            <span className="text-xs text-white/70 mt-1">ללא צורך בכרטיס אשראי</span>
-          )}
-        </div>
+            {language === 'he' && (
+              <span className="text-[10px] opacity-70 font-light">ללא צורך בכרטיס אשראי</span>
+            )}
+          </span>
+        </Button>
         
         {!isMobile && (
           <Button 
