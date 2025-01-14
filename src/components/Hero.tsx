@@ -191,7 +191,7 @@ export const Hero = () => {
         </div>
         <div className="relative">
           <TimelineBackground />
-          <div className="absolute inset-0 bg-gradient-to-l from-background/98 via-background/95 to-background/90" />
+          <div className="absolute inset-0 bg-gradient-to-l from-background/80 via-background/70 to-background/60" />
         </div>
       </div>
       
@@ -262,11 +262,11 @@ export const Hero = () => {
 
           {/* Right side - Product Screenshot */}
           <div className="hidden lg:block relative">
-            <div className="relative rounded-lg overflow-hidden shadow-2xl">
+            <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(155,135,245,0.2)]">
               <img 
-                src="/lovable-uploads/98b8bad0-76f5-4b50-af12-b49cd7309a55.png"
+                src="/lovable-uploads/7a7300e3-617d-48ce-a15a-212411db6ee8.png"
                 alt="Timeliner Dashboard"
-                className="w-full h-auto rounded-lg"
+                className="w-full h-auto rounded-2xl"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
             </div>
