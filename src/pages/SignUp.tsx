@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,52 +18,79 @@ const SignUp = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const isHebrew = language === 'he';
+  const isSpanish = language === 'es';
   const isMobile = useIsMobile();
 
   const translations = {
     welcome: {
       en: "Welcome to timeliner.io",
-      he: "ברוכים הבאים ל-timeliner.io"
+      he: "ברוכים הבאים ל-timeliner.io",
+      es: "Bienvenido a timeliner.io"
     },
     subtitle: {
       en: "Get started - it's free. No credit card needed.",
-      he: "מוזמנים להתחיל עכשיו - זה בחינם. אין צורך בכרטיס אשראי."
+      he: "מוזמנים להתחיל עכשיו - זה בחינם. אין צורך בכרטיס אשראי.",
+      es: "Comienza - es gratis. No se necesita tarjeta de crédito."
     },
     fullName: {
       en: "Full name",
-      he: "שם מלא"
+      he: "שם מלא",
+      es: "Nombre completo"
     },
     email: {
       en: "Your best email",
-      he: "האימייל הטוב ביותר שלך"
+      he: "האימייל הטוב ביותר שלך",
+      es: "Tu mejor correo electrónico"
     },
     password: {
       en: "Create a password",
-      he: "צרו סיסמה"
+      he: "צרו סיסמה",
+      es: "Crea una contraseña"
     },
     passwordRequirements: {
       en: "Password must contain at least 8 characters, including uppercase, lowercase, numbers, and special characters.",
-      he: "הסיסמה חייבת להיות באנגלית ולכלול לפחות 8 תווים, כולל אותיות גדולות, אותיות קטנות, מספרים ותווים מיוחדים."
+      he: "הסיסמה חייבת להיות באנגלית ולכלול לפחות 8 תווים, כולל אותיות גדולות, אותיות קטנות, מספרים ותווים מיוחדים.",
+      es: "La contraseña debe contener al menos 8 caracteres, incluyendo mayúsculas, minúsculas, números y caracteres especiales."
     },
     terms: {
       en: "By proceeding, you agree to the",
-      he: "יחד עם ההרשמה, אתם מסכימים"
+      he: "יחד עם ההרשמה, אתם מסכימים",
+      es: "Al continuar, aceptas los"
     },
     getStarted: {
       en: "Get Started",
-      he: "התחילו עכשיו"
+      he: "התחילו עכשיו",
+      es: "Comenzar"
     },
     termsLink: {
       en: "Terms of Service",
-      he: "לתנאי השירות"
+      he: "לתנאי השירות",
+      es: "Términos de Servicio"
     },
     and: {
       en: "and",
-      he: "ול"
+      he: "ול",
+      es: "y la"
     },
     privacyLink: {
       en: "Privacy Policy",
-      he: "מדיניות הפרטיות"
+      he: "מדיניות הפרטיות",
+      es: "Política de Privacidad"
+    },
+    alreadyHaveAccount: {
+      en: "Already have an account?",
+      he: "כבר יש לך חשבון?",
+      es: "¿Ya tienes una cuenta?"
+    },
+    logIn: {
+      en: "Log in",
+      he: "התחברות",
+      es: "Iniciar sesión"
+    },
+    creatingAccount: {
+      en: "Creating account...",
+      he: "יוצר חשבון...",
+      es: "Creando cuenta..."
     }
   };
 
@@ -165,10 +192,10 @@ const SignUp = () => {
               className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-4"
             />
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-              {translations.welcome[isHebrew ? 'he' : 'en']}
+              {translations.welcome[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}
             </h2>
             <p className="mt-2 text-sm md:text-base text-gray-600">
-              {translations.subtitle[isHebrew ? 'he' : 'en']}
+              {translations.subtitle[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}
             </p>
           </div>
 
@@ -177,7 +204,7 @@ const SignUp = () => {
               <div>
                 <Input
                   type="text"
-                  placeholder={translations.fullName[isHebrew ? 'he' : 'en']}
+                  placeholder={translations.fullName[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   required
@@ -187,7 +214,7 @@ const SignUp = () => {
               <div>
                 <Input
                   type="email"
-                  placeholder={translations.email[isHebrew ? 'he' : 'en']}
+                  placeholder={translations.email[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -197,26 +224,26 @@ const SignUp = () => {
               <div>
                 <Input
                   type="password"
-                  placeholder={translations.password[isHebrew ? 'he' : 'en']}
+                  placeholder={translations.password[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   className="bg-gray-50 border-gray-300 text-gray-900"
                 />
                 <p className="mt-1 text-xs md:text-sm text-gray-500">
-                  {translations.passwordRequirements[isHebrew ? 'he' : 'en']}
+                  {translations.passwordRequirements[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}
                 </p>
               </div>
             </div>
 
             <div className="text-xs md:text-sm text-gray-600 text-center">
-              {translations.terms[isHebrew ? 'he' : 'en']}{" "}
+              {translations.terms[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}{" "}
               <Link to="/terms" className="text-primary hover:underline">
-                {translations.termsLink[isHebrew ? 'he' : 'en']}
+                {translations.termsLink[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}
               </Link>{" "}
-              {translations.and[isHebrew ? 'he' : 'en']}{" "}
+              {translations.and[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}{" "}
               <Link to="/privacy" className="text-primary hover:underline">
-                {translations.privacyLink[isHebrew ? 'he' : 'en']}
+                {translations.privacyLink[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}
               </Link>
             </div>
 
@@ -225,13 +252,13 @@ const SignUp = () => {
               className="w-full"
               disabled={loading}
             >
-              {loading ? "Creating account..." : translations.getStarted[isHebrew ? 'he' : 'en']}
+              {loading ? translations.creatingAccount[isSpanish ? 'es' : isHebrew ? 'he' : 'en'] : translations.getStarted[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}
             </Button>
 
             <div className="text-center text-xs md:text-sm text-gray-600">
-              Already have an account?{" "}
+              {translations.alreadyHaveAccount[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}{" "}
               <Link to="/login" className="text-primary hover:underline">
-                Log in
+                {translations.logIn[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}
               </Link>
             </div>
           </form>
