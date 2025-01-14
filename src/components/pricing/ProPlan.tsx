@@ -151,17 +151,6 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     }
   };
 
-  const getWhyButtonText = () => {
-    switch (language) {
-      case 'es':
-        return '¿Por qué Estudio?';
-      case 'he':
-        return 'למה סטודיו?';
-      default:
-        return 'Why Studio?';
-    }
-  };
-
   const getEverythingInText = () => {
     switch (language) {
       case 'es':
@@ -177,7 +166,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     <Card className={`relative border border-[#2A2F3C] bg-gradient-to-b from-[#1A1F2C]/50 to-[#1A1F2C] p-3 flex flex-col animate-fade-up delay-500 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
       <PlanIcon Icon={Crown} color="primary" />
       <h3 className="text-xl font-bold mb-1">{getPlanTitle()}</h3>
-      <p className="text-white/70 mb-2 text-xs">{getPlanSubtitle()}</p>
+      <p className="text-white/70 mb-2 text-[0.927rem]">{getPlanSubtitle()}</p>
       <div className="text-2xl font-bold mb-2">
         ${price.toFixed(2)}
         {pricingPeriod !== 'monthly' && (

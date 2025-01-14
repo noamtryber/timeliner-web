@@ -192,7 +192,7 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
       <PlanIcon Icon={Database} color="accent" />
       <h3 className="text-xl font-bold mb-1">{getTitle()}</h3>
-      <p className="text-white/70 mb-2 text-xs">{getSubtitle()}</p>
+      <p className="text-white/70 mb-2 text-[0.927rem]">{getSubtitle()}</p>
       <div className="text-2xl font-bold mb-2">
         ${price.toFixed(2)}
         {language === 'es' ? '/mes' : isHebrew ? ' / לחודש' : '/month'}
