@@ -147,7 +147,7 @@ export const TimelineBackground = () => {
           p.line(this.x + this.playheadX, this.y - 15, this.x + this.playheadX, this.y + 15);
         }
       }
-      
+
       p.setup = () => {
         const canvas = p.createCanvas(p.windowWidth, p.windowHeight);
         canvas.parent(containerRef.current!);
@@ -208,13 +208,15 @@ export const TimelineBackground = () => {
     return () => p5Instance.remove();
   }, []);
 
-  return <div ref={containerRef} className="absolute inset-0 z-0" />;
+  return (
+    <div className="relative w-full h-full">
+      <div ref={containerRef} className="absolute inset-0 z-0" />
+      <div 
+        className="absolute inset-0 z-10"
+        style={{
+          background: 'linear-gradient(90deg, rgba(26, 31, 44, 0.9) 0%, rgba(26, 31, 44, 0.35) 100%)'
+        }}
+      />
+    </div>
+  );
 };
-
-interface Segment {
-  x: number;
-  width: number;
-  color: string;
-  hovered: boolean;
-  label: string;
-}

@@ -184,15 +184,8 @@ export const Hero = () => {
   return (
     <div className="min-h-screen flex items-center relative overflow-hidden">
       {/* Background with varying opacity */}
-      <div className="absolute inset-0 grid grid-cols-2">
-        <div className="relative">
-          <TimelineBackground />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/90 to-background/80" />
-        </div>
-        <div className="relative">
-          <TimelineBackground />
-          <div className="absolute inset-0 bg-gradient-to-l from-background/80 via-background/70 to-background/60" />
-        </div>
+      <div className="absolute inset-0">
+        <TimelineBackground />
       </div>
       
       <div className={`container mx-auto px-4 relative z-10 ${isRTL ? 'rtl' : ''}`}>
