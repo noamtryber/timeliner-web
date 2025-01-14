@@ -1,15 +1,13 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Play } from "lucide-react";
 import { usePageContent } from "@/hooks/usePageContent";
 import { useMediaContent } from "@/hooks/useMediaContent";
 import { useToast } from "@/components/ui/use-toast";
-import { useState, useEffect, useRef } from "react";
-import { FeatureDialog } from "./features/FeatureDialog";
+import { useState } from "react";
 import { TimelineBackground } from "./TimelineBackground";
-import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { HeroContent } from "./hero/HeroContent";
+import { HeroImage } from "./hero/HeroImage";
+import { DemoDialog } from "./hero/DemoDialog";
 
 const translations = {
   video_editors: {
@@ -66,68 +64,13 @@ const translations = {
 
 export const Hero = () => {
   const { data: content, error: contentError } = usePageContent('hero', 'main');
-  const { data: statsContent, error: statsError } = usePageContent('hero', 'main');
   const { data: media, error: mediaError } = useMediaContent('hero', 'main');
   const { toast } = useToast();
   const [showDemo, setShowDemo] = useState(false);
-  const navigate = useNavigate();
   const { isRTL, language } = useLanguage();
   const isMobile = useIsMobile();
 
-  // Animation states for statistics
-  const [animatedStats, setAnimatedStats] = useState({
-    revisions: 0,
-    income: 0,
-    retention: 0
-  });
-  const statsRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          animateStats();
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    if (statsRef.current) {
-      observer.observe(statsRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const animateStats = () => {
-    const duration = 2000; // 2 seconds
-    const steps = 60;
-    const interval = duration / steps;
-    let currentStep = 0;
-
-    const timer = setInterval(() => {
-      if (currentStep >= steps) {
-        clearInterval(timer);
-        setAnimatedStats({
-          revisions: 32.0,
-          income: 19.0,
-          retention: 24.0
-        });
-        return;
-      }
-
-      const progress = currentStep / steps;
-      setAnimatedStats({
-        revisions: 32.0 * progress,
-        income: 19.0 * progress,
-        retention: 24.0 * progress
-      });
-
-      currentStep++;
-    }, interval);
-  };
-
-  if (contentError || mediaError || statsError) {
+  if (contentError || mediaError) {
     toast({
       variant: "destructive",
       title: "Error loading content",
@@ -135,148 +78,47 @@ export const Hero = () => {
     });
   }
 
-  const getVideoUrl = () => {
-    if (isMobile && language === 'he') {
-      return "https://player.vimeo.com/video/1044344874";
-    }
-    return "https://player.vimeo.com/video/1046016144";
-  };
-
-  const renderDemoDialog = () => {
-    if (language === 'he') {
-      return (
-        <Dialog open={showDemo} onOpenChange={() => setShowDemo(false)}>
-          <DialogContent dir="rtl" className="sm:max-w-[800px] bg-card/95 backdrop-blur-xl">
-            <DialogHeader>
-              <DialogTitle className="text-2xl gradient-text text-right">
-                איך זה תכל'ס עובד?
-              </DialogTitle>
-              <DialogDescription className="text-lg text-white/70 mt-4 leading-relaxed text-right">
-                צפו בסרטון המלא ותבינו למה טיימליינר הוא הכלי היחיד שתצטרכו לניהול פרויקטים, סבבי תיקונים וקבלת תשלומים בזמן. נוצר על ידי יוצרים, עבור יוצרים.
-              </DialogDescription>
-            </DialogHeader>
-            <div className="mt-6 rounded-xl overflow-hidden aspect-video">
-              <iframe
-                src="https://player.vimeo.com/video/1044344874?autoplay=1"
-                className="w-full h-full"
-                allow="autoplay; fullscreen; picture-in-picture"
-                style={{
-                  border: 'none',
-                  background: 'transparent',
-                }}
-              />
-            </div>
-          </DialogContent>
-        </Dialog>
-      );
-    }
-
-    return (
-      <FeatureDialog
-        isOpen={showDemo}
-        onClose={() => setShowDemo(false)}
-        title={content?.demo_title || "See How It Works"}
-        description={content?.demo_description || "Watch our 2-minute demo to see how Timeliner can streamline your creative workflow and help you manage projects more efficiently."}
-        videoUrl={media?.find(item => item.media_key === 'demo')?.media_url || "https://player.vimeo.com/video/1042338760?autoplay=1"}
-      />
-    );
-  };
-
   const getTranslatedContent = (key: keyof typeof translations) => {
     return translations[key][language as keyof (typeof translations)[typeof key]] || content?.[key] || translations[key].en;
   };
 
+  const translatedContent = {
+    video_editors: getTranslatedContent('video_editors'),
+    main_title: getTranslatedContent('main_title'),
+    subtext: getTranslatedContent('subtext'),
+    get_started: getTranslatedContent('get_started'),
+    watch_demo: getTranslatedContent('watch_demo'),
+    faster_revisions: getTranslatedContent('faster_revisions'),
+    increase_income: getTranslatedContent('increase_income'),
+    client_retention: getTranslatedContent('client_retention'),
+    demo_title: getTranslatedContent('demo_title'),
+    demo_description: getTranslatedContent('demo_description')
+  };
+
   return (
     <div className="min-h-screen flex items-center relative overflow-hidden">
-      {/* Background with varying opacity */}
       <div className="absolute inset-0 z-0">
         <TimelineBackground />
       </div>
       
       <div className={`container mx-auto px-4 relative z-50 ${isRTL ? 'rtl' : ''}`}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left side - Content */}
-          <div className={`text-left ${isRTL ? 'lg:text-right' : ''} animate-fade-up space-y-6`}>
-            <span className={`subtitle-gradient block tracking-wide ${isRTL ? 'text-base sm:text-lg font-bold' : 'text-sm sm:text-base'}`}>
-              {getTranslatedContent('video_editors')}
-            </span>
-            
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold gradient-text tracking-tight leading-tight">
-              {getTranslatedContent('main_title')}
-            </h1>
-
-            <p className="text-lg sm:text-xl text-white/70 leading-relaxed max-w-2xl">
-              {getTranslatedContent('subtext')}
-            </p>
-
-            <div className={`flex flex-col sm:flex-row items-start gap-4 pt-6 ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
-              <Button 
-                size="lg" 
-                className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto w-full sm:w-auto"
-                onClick={() => navigate('/signup')}
-              >
-                <span className="flex items-center gap-2">
-                  {getTranslatedContent('get_started')}
-                  <ArrowRight className="h-4 sm:h-5 w-4 sm:w-5" />
-                </span>
-              </Button>
-              
-              {!isMobile && (
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="border-white/10 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto w-full sm:w-auto hover:bg-white/5 relative group overflow-hidden"
-                  onClick={() => setShowDemo(true)}
-                >
-                  <div className="absolute -inset-3 bg-gradient-to-r from-primary via-accent to-primary opacity-75 blur-lg animate-pulse" />
-                  <div className="absolute inset-[1px] bg-card rounded-full" />
-                  <div 
-                    className="absolute inset-[1px] bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 animate-shimmer rounded-full" 
-                    style={{ backgroundSize: '200% 100%' }}
-                  />
-                  <div className={`relative z-10 flex items-center gap-2`}>
-                    <Play className="h-4 sm:h-5 w-4 sm:w-5" />
-                    <span>{getTranslatedContent('watch_demo')}</span>
-                  </div>
-                </Button>
-              )}
-            </div>
-
-            {/* Stats Section */}
-            <div 
-              ref={statsRef} 
-              className={`grid grid-cols-3 gap-4 mt-8 ${isRTL ? 'rtl' : ''}`}
-            >
-              <div className="glass p-4 rounded-lg">
-                <div className="text-2xl sm:text-3xl font-bold gradient-text">{animatedStats.revisions.toFixed(1)}%</div>
-                <div className="text-sm sm:text-base text-white/70">{getTranslatedContent('faster_revisions')}</div>
-              </div>
-              <div className="glass p-4 rounded-lg">
-                <div className="text-2xl sm:text-3xl font-bold gradient-text">{animatedStats.income.toFixed(1)}%</div>
-                <div className="text-sm sm:text-base text-white/70">{getTranslatedContent('increase_income')}</div>
-              </div>
-              <div className="glass p-4 rounded-lg">
-                <div className="text-2xl sm:text-3xl font-bold gradient-text">{animatedStats.retention.toFixed(1)}%</div>
-                <div className="text-sm sm:text-base text-white/70">{getTranslatedContent('client_retention')}</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right side - Product Screenshot */}
-          <div className="hidden lg:block relative">
-            <div className="relative rounded-2xl overflow-hidden scale-125 transform translate-x-8">
-              <img 
-                src="/lovable-uploads/7a7300e3-617d-48ce-a15a-212411db6ee8.png"
-                alt="Timeliner Dashboard"
-                className="w-full h-auto rounded-2xl"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
-            </div>
-          </div>
+          <HeroContent 
+            translations={translatedContent}
+            onWatchDemo={() => setShowDemo(true)}
+            isMobile={isMobile}
+          />
+          <HeroImage />
         </div>
       </div>
 
-      {renderDemoDialog()}
+      <DemoDialog
+        showDemo={showDemo}
+        onClose={() => setShowDemo(false)}
+        content={content}
+        media={media}
+        language={language}
+      />
     </div>
   );
 };
