@@ -76,7 +76,7 @@ export const FeatureItem = ({
         </p>
         <Button 
           onClick={onLearnMore}
-          className="bg-gradient-to-r from-primary via-accent to-primary shadow-lg hover:shadow-primary/20 transition-all duration-300"
+          className="bg-gradient-to-r from-secondary via-primary to-secondary shadow-lg hover:shadow-secondary/20 transition-all duration-300"
         >
           <span className="flex items-center gap-2">
             <PlayCircle className="w-5 h-5" />
