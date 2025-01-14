@@ -2,9 +2,11 @@ import { useEffect, useRef } from 'react';
 import p5 from 'p5';
 import { Timeline } from './timeline/Timeline';
 import { GradientOverlay } from './timeline/GradientOverlay';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const TimelineBackground = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { isRTL } = useLanguage();
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -74,7 +76,9 @@ export const TimelineBackground = () => {
       <div 
         className="absolute inset-0 z-10"
         style={{
-          background: 'linear-gradient(90deg, rgba(26, 32, 44, 1) 0%, rgba(26, 32, 44, 0.7) 50%, rgba(26, 32, 44, 0.4) 100%)',
+          background: isRTL
+            ? 'linear-gradient(270deg, rgba(26, 32, 44, 0.4) 0%, rgba(26, 32, 44, 0.7) 50%, rgba(26, 32, 44, 1) 100%)'
+            : 'linear-gradient(90deg, rgba(26, 32, 44, 1) 0%, rgba(26, 32, 44, 0.7) 50%, rgba(26, 32, 44, 0.4) 100%)',
         }}
       />
       <GradientOverlay />
