@@ -36,43 +36,34 @@ const translations = {
 };
 
 export const NavItems = ({ content, handleSectionClick, hideMainNav }: NavItemsProps) => {
-  const { language } = useLanguage();
+  const { language, isRTL } = useLanguage();
   const navigate = useNavigate();
 
   if (hideMainNav) return null;
 
+  const navItems = [
+    { id: 'features', onClick: () => handleSectionClick('features') },
+    { id: 'testimonials', onClick: () => handleSectionClick('testimonials') },
+    { id: 'pricing', onClick: () => handleSectionClick('pricing') },
+    { id: 'blog', onClick: () => handleSectionClick('blog') },
+    { id: 'community', onClick: () => navigate('/community') }
+  ];
+
+  const items = isRTL ? [...navItems].reverse() : navItems;
+
   return (
     <>
-      <button 
-        onClick={() => handleSectionClick('features')} 
-        className="text-white hover:text-white px-3 py-2 rounded-md text-base font-medium ml-8"
-      >
-        {translations.features[language as keyof typeof translations.features] || content?.features_link || 'Features'}
-      </button>
-      <button 
-        onClick={() => handleSectionClick('testimonials')} 
-        className="text-white hover:text-white px-3 py-2 rounded-md text-base font-medium"
-      >
-        {translations.testimonials[language as keyof typeof translations.testimonials] || content?.testimonials_link || 'Testimonials'}
-      </button>
-      <button 
-        onClick={() => handleSectionClick('pricing')} 
-        className="text-white hover:text-white px-3 py-2 rounded-md text-base font-medium"
-      >
-        {translations.pricing[language as keyof typeof translations.pricing] || content?.pricing_link || 'Pricing'}
-      </button>
-      <button 
-        onClick={() => handleSectionClick('blog')} 
-        className="text-white hover:text-white px-3 py-2 rounded-md text-base font-medium"
-      >
-        {translations.blog[language as keyof typeof translations.blog] || content?.blog_link || 'Blog'}
-      </button>
-      <button 
-        onClick={() => navigate('/community')} 
-        className="text-white hover:text-white px-3 py-2 rounded-md text-base font-medium"
-      >
-        {translations.community[language as keyof typeof translations.community] || content?.community_link || 'Community'}
-      </button>
+      {items.map((item) => (
+        <button 
+          key={item.id}
+          onClick={item.onClick} 
+          className="text-white hover:text-white px-3 py-2 rounded-md text-base font-medium"
+        >
+          {translations[item.id as keyof typeof translations][language as keyof typeof translations.features] || 
+           content?.[`${item.id}_link`] || 
+           item.id.charAt(0).toUpperCase() + item.id.slice(1)}
+        </button>
+      ))}
     </>
   );
 };

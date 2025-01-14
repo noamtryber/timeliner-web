@@ -48,7 +48,8 @@ export const Navbar = () => {
     <nav className="fixed w-full z-[9999] top-0 animate-fade-down">
       <div className="bg-background/80 backdrop-blur-sm border-b border-[#222222]/40 mx-auto px-4 sm:px-6 lg:px-8 text-[1.15em]">
         <div className={`flex items-center justify-between h-16 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+          {/* Logo and Nav Items Container */}
+          <div className={`flex items-center gap-8 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <a href="/" className="flex-shrink-0">
               <img 
                 src="/lovable-uploads/1ad9d673-efdf-41ae-8a29-82d3e976a7ed.png" 
@@ -56,7 +57,7 @@ export const Navbar = () => {
                 className="h-7"
               />
             </a>
-            <div className="hidden md:flex items-center space-x-4">
+            <div className={`hidden md:flex items-center ${isRTL ? 'flex-row-reverse space-x-reverse' : 'space-x-4'}`}>
               <NavItems 
                 content={content} 
                 handleSectionClick={handleSectionClick}
@@ -65,11 +66,13 @@ export const Navbar = () => {
             </div>
           </div>
           
-          <div className="hidden md:flex items-center space-x-4">
+          {/* Auth and Language Controls Container */}
+          <div className={`hidden md:flex items-center ${isRTL ? 'flex-row-reverse space-x-4 space-x-reverse' : 'space-x-4'}`}>
             <LanguageSwitcher />
             <AuthButtons content={content} handleAuthClick={handleAuthClick} />
           </div>
           
+          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
               <Menu className="h-6 w-6" />
