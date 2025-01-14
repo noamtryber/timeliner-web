@@ -227,10 +227,10 @@ export const Hero = () => {
                 className="border-white/10 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto w-full sm:w-auto hover:bg-white/5 relative group overflow-hidden"
                 onClick={() => setShowDemo(true)}
               >
-                <div className="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-primary opacity-75 blur-lg animate-pulse" />
-                <div className="absolute inset-0.5 bg-card rounded-md" />
+                <div className="absolute -inset-3 bg-gradient-to-r from-primary via-accent to-primary opacity-75 blur-lg animate-pulse" />
+                <div className="absolute inset-[1px] bg-card rounded-full" />
                 <div 
-                  className="absolute inset-0.5 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 animate-shimmer rounded-md" 
+                  className="absolute inset-[1px] bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 animate-shimmer rounded-full" 
                   style={{ backgroundSize: '200% 100%' }}
                 />
                 <div className={`relative z-10 flex items-center gap-2`}>
