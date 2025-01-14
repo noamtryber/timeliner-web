@@ -1,4 +1,4 @@
-import { Check, CircleQuestion } from "lucide-react";
+import { Check, HelpCircle } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -27,7 +27,7 @@ export const PlanFeature = ({ text, isRTL, tooltip }: PlanFeatureProps) => {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <CircleQuestion 
+                <HelpCircle 
                   className="inline-block ml-1.5 w-3.5 h-3.5 text-primary/70 hover:text-primary cursor-help" 
                 />
               </TooltipTrigger>
