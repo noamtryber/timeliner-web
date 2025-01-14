@@ -28,8 +28,8 @@ export const Footer = () => {
   }, []);
 
   const handleCommunityClick = () => {
-    navigate('/community');
     window.scrollTo(0, 0);
+    navigate('/community');
   };
 
   const getContent = () => {
