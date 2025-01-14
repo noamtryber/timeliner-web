@@ -35,33 +35,33 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
       : basePrice;
 
   const hebrewFeatures = [
-    'אחסון: 2TB',
-    'משתמשים: עד 10',
-    'פרויקטים פעילים: 100',
-    'גישת לקוחות: עד 10 אורחים לפרויקט',
+    { text: 'אחסון: 2TB', tooltip: 'אחסון מאובטח בענן עם גיבוי אוטומטי' },
+    { text: 'משתמשים: עד 10', tooltip: 'ניהול צוות עד 10 משתמשים עם הרשאות שונות' },
+    { text: 'פרויקטים פעילים: 100', tooltip: 'עד 100 פרויקטים במקביל' },
+    { text: 'גישת לקוחות: עד 10 אורחים לפרויקט', tooltip: 'שיתוף פעולה עם עד 10 לקוחות בו זמנית לכל פרויקט' },
   ];
 
   const hebrewExtraFeatures = [
-    'הרשאות ותפקידים מתקדמים',
-    'מיתוג מותאם אישית',
-    'ניהול צוות ותשלומים מתקדם',
-    'מצב סוכנות: תזרימי עבודה מותאמים אישית עם תגיות',
-    'כתוביות ותרגומים מבוססי AI'
+    { text: 'הרשאות ותפקידים מתקדמים', tooltip: 'ניהול הרשאות מתקדם עם תפקידים מותאמים אישית' },
+    { text: 'מיתוג מותאם אישית', tooltip: 'התאמה מלאה של המיתוג שלך' },
+    { text: 'ניהול צוות ותשלומים מתקדם', tooltip: 'כלים מתקדמים לניהול צוות ותשלומים' },
+    { text: 'מצב סוכנות: תזרימי עבודה מותאמים אישית עם תגיות', tooltip: 'ניהול מתקדם של תהליכי עבודה' },
+    { text: 'כתוביות ותרגומים מבוססי AI', tooltip: 'יצירה אוטומטית של כתוביות ותרגומים' }
   ];
 
   const englishFeatures = [
-    'Storage: 2TB',
-    'Members: Up to 10',
-    'Active Projects: 100',
-    'Client Access: Up to 10 Guests per project',
+    { text: 'Storage: 2TB', tooltip: 'Secure cloud storage with automatic backup' },
+    { text: 'Members: Up to 10', tooltip: 'Manage a team of up to 10 users with different permissions' },
+    { text: 'Active Projects: 100', tooltip: 'Work on up to 100 projects simultaneously' },
+    { text: 'Client Access: Up to 10 Guests per project', tooltip: 'Collaborate with up to 10 clients simultaneously per project' },
   ];
 
   const englishExtraFeatures = [
-    'Advanced Roles and Permissions',
-    'Custom Branding',
-    'Advanced Team Management & Payments',
-    'Enable Agency Mode: Custom workflows with tags',
-    'AI Captions + Translations'
+    { text: 'Advanced Roles and Permissions', tooltip: 'Advanced permission management with custom roles' },
+    { text: 'Custom Branding', tooltip: 'Full customization of your branding' },
+    { text: 'Advanced Team Management & Payments', tooltip: 'Advanced tools for team and payment management' },
+    { text: 'Enable Agency Mode: Custom workflows with tags', tooltip: 'Advanced workflow management' },
+    { text: 'AI Captions + Translations', tooltip: 'Automatic generation of captions and translations' }
   ];
 
   const getPeriodTotal = () => {
@@ -125,13 +125,13 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
       
       <div className="space-y-1.5 mb-2 flex-grow">
         {(isHebrew ? hebrewFeatures : englishFeatures).map((feature, index) => (
-          <PlanFeature key={index} text={feature} isRTL={isHebrew} />
+          <PlanFeature key={index} text={feature.text} tooltip={feature.tooltip} isRTL={isHebrew} />
         ))}
         
         <div className="my-3 border-t border-white/10 pt-2">
           <p className="text-sm font-medium mb-2">{isHebrew ? 'הכל בבייסיק, בנוסף:' : 'Everything in Essentials, plus:'}</p>
           {(isHebrew ? hebrewExtraFeatures : englishExtraFeatures).map((feature, index) => (
-            <PlanFeature key={`extra-${index}`} text={feature} isRTL={isHebrew} />
+            <PlanFeature key={`extra-${index}`} text={feature.text} tooltip={feature.tooltip} isRTL={isHebrew} />
           ))}
         </div>
       </div>

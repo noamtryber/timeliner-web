@@ -35,33 +35,33 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
       : basePrice;
 
   const hebrewFeatures = [
-    'אחסון: 1TB',
-    'משתמשים: עד 5',
-    'פרויקטים פעילים: 25',
-    'גישת לקוחות: עד 3 אורחים לפרויקט',
+    { text: 'אחסון: 1TB', tooltip: 'אחסון מאובטח בענן עם גיבוי אוטומטי' },
+    { text: 'משתמשים: עד 5', tooltip: 'ניהול צוות עד 5 משתמשים עם הרשאות שונות' },
+    { text: 'פרויקטים פעילים: 25', tooltip: 'עד 25 פרויקטים במקביל' },
+    { text: 'גישת לקוחות: עד 3 אורחים לפרויקט', tooltip: 'שיתוף פעולה עם עד 3 לקוחות בו זמנית לכל פרויקט' },
   ];
 
   const hebrewExtraFeatures = [
-    'מערכת תשלומים חכמה: אוטומציה של תשלומי לקוחות',
-    'כלי ניהול צוות',
-    'CRM מובנה ואוטומציות',
-    'בונה תיק עבודות',
-    'בריפים אינטראקטיביים לפרויקט'
+    { text: 'מערכת תשלומים חכמה: אוטומציה של תשלומי לקוחות', tooltip: 'קבלת תשלומים אוטומטית עם אישור הפרויקט' },
+    { text: 'כלי ניהול צוות', tooltip: 'כלים מתקדמים לניהול משימות וזמנים' },
+    { text: 'CRM מובנה ואוטומציות', tooltip: 'מערכת ניהול לקוחות מובנית עם אוטומציות' },
+    { text: 'בונה תיק עבודות', tooltip: 'כלי מתקדם ליצירת תיק עבודות מקצועי' },
+    { text: 'בריפים אינטראקטיביים לפרויקט', tooltip: 'יצירת בריפים מפורטים עם אפשרות לשיתוף ועריכה' }
   ];
 
   const englishFeatures = [
-    'Storage: 1TB',
-    'Members: Up to 5',
-    'Active Projects: 25',
-    'Client Access: Up to 3 Guests per project',
+    { text: 'Storage: 1TB', tooltip: 'Secure cloud storage with automatic backup' },
+    { text: 'Members: Up to 5', tooltip: 'Manage a team of up to 5 users with different permissions' },
+    { text: 'Active Projects: 25', tooltip: 'Work on up to 25 projects simultaneously' },
+    { text: 'Client Access: Up to 3 Guests per project', tooltip: 'Collaborate with up to 3 clients simultaneously per project' },
   ];
 
   const englishExtraFeatures = [
-    'Smart Payment System: Automate client payments',
-    'Team Management Tools',
-    'Built-in CRM & Automations',
-    'Portfolio Builder',
-    'Interactive Project Briefs'
+    { text: 'Smart Payment System: Automate client payments', tooltip: 'Automatically receive payments upon project approval' },
+    { text: 'Team Management Tools', tooltip: 'Advanced tools for task and time management' },
+    { text: 'Built-in CRM & Automations', tooltip: 'Integrated customer relationship management with automations' },
+    { text: 'Portfolio Builder', tooltip: 'Advanced tool for creating professional portfolios' },
+    { text: 'Interactive Project Briefs', tooltip: 'Create detailed briefs with sharing and editing capabilities' }
   ];
 
   const getPeriodTotal = () => {
@@ -129,13 +129,13 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
       
       <div className="space-y-1.5 mb-2 flex-grow">
         {(isHebrew ? hebrewFeatures : englishFeatures).map((feature, index) => (
-          <PlanFeature key={index} text={feature} isRTL={isHebrew} />
+          <PlanFeature key={index} text={feature.text} tooltip={feature.tooltip} isRTL={isHebrew} />
         ))}
         
         <div className="my-3 border-t border-white/10 pt-2">
           <p className="text-sm font-medium mb-2">{isHebrew ? 'הכל בחינמי, בנוסף:' : 'Everything in Free, plus:'}</p>
           {(isHebrew ? hebrewExtraFeatures : englishExtraFeatures).map((feature, index) => (
-            <PlanFeature key={`extra-${index}`} text={feature} isRTL={isHebrew} />
+            <PlanFeature key={`extra-${index}`} text={feature.text} tooltip={feature.tooltip} isRTL={isHebrew} />
           ))}
         </div>
       </div>

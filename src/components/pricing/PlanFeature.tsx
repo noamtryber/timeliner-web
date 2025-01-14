@@ -1,20 +1,45 @@
-import { Check } from "lucide-react";
+import { Check, CircleQuestion } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface PlanFeatureProps {
   text: string;
   isRTL?: boolean;
+  tooltip?: string;
 }
 
-export const PlanFeature = ({ text, isRTL }: PlanFeatureProps) => {
+export const PlanFeature = ({ text, isRTL, tooltip }: PlanFeatureProps) => {
   return (
     <div 
-      className={`flex items-center gap-2 text-[0.7rem] text-white/70 w-full ${isRTL ? 'flex-row-reverse' : ''}`}
+      className={`flex items-center gap-2 text-[0.85rem] text-white/70 w-full ${isRTL ? 'flex-row-reverse' : ''}`}
       dir={isRTL ? 'rtl' : 'ltr'}
     >
       <div className={`flex-shrink-0 ${isRTL ? 'order-2' : ''}`}>
         <Check className="h-3 w-3 text-primary" />
       </div>
-      <span className={`${isRTL ? 'text-right w-full order-1' : ''}`}>{text}</span>
+      <span className={`${isRTL ? 'text-right w-full order-1' : ''}`}>
+        {text}
+        {tooltip && (
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <CircleQuestion 
+                  className="inline-block ml-1.5 w-3.5 h-3.5 text-primary/70 hover:text-primary cursor-help" 
+                />
+              </TooltipTrigger>
+              <TooltipContent 
+                className="max-w-[200px] bg-card/95 backdrop-blur border-primary/20 text-white/90"
+              >
+                {tooltip}
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        )}
+      </span>
     </div>
   );
 };
