@@ -18,42 +18,79 @@ export const FreePlan = ({ content }: FreePlanProps) => {
   
   if (!content) return null;
 
-  const hebrewFeatures = [
-    { text: 'אחסון: 3GB', tooltip: 'אחסון בסיסי בענן' },
-    { text: 'משתמשים: 1', tooltip: 'חשבון אישי אחד' },
-    { text: 'פרויקטים פעילים: 2', tooltip: 'עד 2 פרויקטים במקביל' },
-    { text: 'גישת לקוחות: אורח אחד לפרויקט', tooltip: 'שיתוף פעולה עם לקוח אחד לכל פרויקט', showTooltip: true },
-    { text: 'מעקב גרסאות חכם', tooltip: 'מעקב אחר שינויים עם הערות מדויקות לפי זמן' },
-    { text: 'פורטל לקוחות פשוט', tooltip: 'פורטל פשוט לשיתוף ומשוב', showTooltip: true },
-    { text: 'אחסון מדיה מאובטח', tooltip: 'אחסון מאובטח של קבצי מדיה' }
-  ];
+  const getFeatures = () => {
+    if (language === 'es') {
+      return [
+        { text: 'Almacenamiento: 3GB', tooltip: 'Almacenamiento básico en la nube' },
+        { text: 'Miembros: 1', tooltip: 'Una cuenta personal' },
+        { text: 'Proyectos Activos: 2', tooltip: 'Trabaja en hasta 2 proyectos simultáneamente' },
+        { text: 'Acceso de Clientes: 1 Invitado por Proyecto', tooltip: 'Colabora con un cliente por proyecto', showTooltip: true },
+        { text: 'Seguimiento Inteligente de Revisiones', tooltip: 'Deja comentarios precisos con marcas de tiempo, dibuja directamente en los fotogramas y agrega notas de voz. Compara versiones lado a lado.' },
+        { text: 'Portales de Cliente Simples', tooltip: 'Portal simple para compartir y recibir feedback', showTooltip: true },
+        { text: 'Almacenamiento Seguro de Medios', tooltip: 'Almacenamiento seguro para archivos multimedia' }
+      ];
+    }
 
-  const englishFeatures = [
-    { text: 'Storage: 3GB', tooltip: 'Basic cloud storage' },
-    { text: 'Members: 1', tooltip: 'Single personal account' },
-    { text: 'Active Projects: 2', tooltip: 'Work on up to 2 projects simultaneously' },
-    { text: 'Client Access: 1 Guest Per Project', tooltip: 'Collaborate with one client per project', showTooltip: true },
-    { text: 'Smart Revision Tracking', tooltip: 'Leave precise feedback with timecode-based comments, draw directly on frames, and add voice memos. Compare versions side by side with split-screen mode.' },
-    { text: 'Simple Client Portals', tooltip: 'Simple portal for sharing and feedback', showTooltip: true },
-    { text: 'Secure Media Storage', tooltip: 'Secure storage for media files' }
-  ];
+    return [
+      { text: isHebrew ? 'אחסון: 3GB' : 'Storage: 3GB', tooltip: isHebrew ? 'אחסון בסיסי בענן' : 'Basic cloud storage' },
+      { text: isHebrew ? 'משתמשים: 1' : 'Members: 1', tooltip: isHebrew ? 'חשבון אישי אחד' : 'Single personal account' },
+      { text: isHebrew ? 'פרויקטים פעילים: 2' : 'Active Projects: 2', tooltip: isHebrew ? 'עד 2 פרויקטים במקביל' : 'Work on up to 2 projects simultaneously' },
+      { text: isHebrew ? 'גישת לקוחות: אורח אחד לפרויקט' : 'Client Access: 1 Guest Per Project', tooltip: isHebrew ? 'שיתוף פעולה עם לקוח אחד לכל פרויקט' : 'Collaborate with one client per project', showTooltip: true },
+      { text: isHebrew ? 'מעקב גרסאות חכם' : 'Smart Revision Tracking', tooltip: isHebrew ? 'מעקב אחר שינויים עם הערות מדויקות לפי זמן' : 'Leave precise feedback with timecode-based comments, draw directly on frames, and add voice memos. Compare versions side by side with split-screen mode.' },
+      { text: isHebrew ? 'פורטל לקוחות פשוט' : 'Simple Client Portals', tooltip: isHebrew ? 'פורטל פשוט לשיתוף ומשוב' : 'Simple portal for sharing and feedback', showTooltip: true },
+      { text: isHebrew ? 'אחסון מדיה מאובטח' : 'Secure Media Storage', tooltip: isHebrew ? 'אחסון מאובטח של קבצי מדיה' : 'Secure storage for media files' }
+    ];
+  };
+
+  const getTitle = () => {
+    switch (language) {
+      case 'es':
+        return 'Gratis';
+      case 'he':
+        return 'חינמי';
+      default:
+        return 'Free';
+    }
+  };
+
+  const getSubtitle = () => {
+    switch (language) {
+      case 'es':
+        return 'Perfecto para Comenzar';
+      case 'he':
+        return 'מושלם להתחלה';
+      default:
+        return 'Perfect for Getting Started';
+    }
+  };
+
+  const getButtonText = () => {
+    switch (language) {
+      case 'es':
+        return 'Comenzar Gratis';
+      case 'he':
+        return 'התחילו היום בחינם';
+      default:
+        return 'Get Started Free';
+    }
+  };
 
   return (
     <Card className={`glass p-4 flex flex-col animate-fade-up delay-300 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
       <PlanIcon Icon={Zap} color="accent" />
-      <h3 className="text-xl font-bold mb-1 -mt-2">{isHebrew ? 'חינמי' : 'Free'}</h3>
-      <p className="text-white/70 mb-2 text-sm">{isHebrew ? 'מושלם להתחלה' : 'Perfect for Getting Started'}</p>
+      <h3 className="text-xl font-bold mb-1 -mt-2">{getTitle()}</h3>
+      <p className="text-white/70 mb-2 text-sm">{getSubtitle()}</p>
       <div className="text-2xl font-bold mb-6">
-        {isHebrew ? '$0 / לחודש' : '$0/month'}
+        {isHebrew ? '$0 / לחודש' : language === 'es' ? '$0/mes' : '$0/month'}
       </div>
       
       <div className="space-y-3 mb-4 flex-grow">
-        {(isHebrew ? hebrewFeatures : englishFeatures).map((feature, index) => (
+        {getFeatures().map((feature, index) => (
           <PlanFeature 
             key={index} 
-            text={typeof feature === 'string' ? feature : feature.text}
-            tooltip={typeof feature === 'string' ? undefined : feature.tooltip}
-            showTooltip={typeof feature === 'string' ? false : feature.showTooltip}
+            text={feature.text}
+            tooltip={feature.tooltip}
+            showTooltip={feature.showTooltip}
             isRTL={isHebrew}
           />
         ))}
@@ -64,7 +101,7 @@ export const FreePlan = ({ content }: FreePlanProps) => {
         className="w-full border-primary/50 hover:bg-primary/10 transition-all duration-300 mt-8"
         onClick={() => navigate('/signup')}
       >
-        {isHebrew ? 'התחילו היום בחינם' : 'Get Started Free'}
+        {getButtonText()}
       </Button>
     </Card>
   );
