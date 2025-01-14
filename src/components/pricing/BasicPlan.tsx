@@ -38,7 +38,7 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
     { text: 'אחסון: 1TB', tooltip: 'אחסון מאובטח בענן עם גיבוי אוטומטי' },
     { text: 'משתמשים: עד 5', tooltip: 'ניהול צוות עד 5 משתמשים עם הרשאות שונות' },
     { text: 'פרויקטים פעילים: ללא הגבלה', tooltip: 'עבודה על פרויקטים ללא הגבלה' },
-    { text: 'גישת לקוחות: עד 3 אורחים לפרויקט', tooltip: 'שיתוף פעולה עם עד 3 לקוחות בו זמנית לכל פרויקט', showTooltip: true },
+    { text: 'גישת לקוחות: עד 3 אורחים לפרויקט', tooltip: 'שיתוף פעולה עם עד 3 לקוחות בו זמנית לכל פרויקט' },
   ];
 
   const hebrewExtraFeatures = [
@@ -53,7 +53,7 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
     { text: 'Storage: 1TB', tooltip: 'Secure cloud storage with automatic backup' },
     { text: 'Members: Up to 5', tooltip: 'Manage a team of up to 5 users with different permissions' },
     { text: 'Active Projects: Unlimited', tooltip: 'Work on unlimited projects simultaneously' },
-    { text: 'Client Access: Up to 3 Guests per project', tooltip: 'Collaborate with up to 3 clients simultaneously per project', showTooltip: true },
+    { text: 'Client Access: Up to 3 Guests per project' },
   ];
 
   const englishExtraFeatures = [
