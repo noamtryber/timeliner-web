@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=OpenDyslexic:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,6 +8,11 @@
 
 @layer base {
   :root {
+    --base-font-size: 100%;
+    --letter-spacing: 0px;
+    --line-height: 1.5;
+    --font-weight: 400;
+    
     --background: 232 15% 13%;
     --foreground: 0 0% 100%;
     --card: 232 15% 13%;
@@ -29,52 +35,49 @@
     --radius: 0.75rem;
   }
 
+  html {
+    font-size: var(--base-font-size);
+    letter-spacing: var(--letter-spacing);
+    line-height: var(--line-height);
+  }
+
   body {
     @apply bg-background text-foreground font-sans;
     font-family: 'Inter', 'Assistant', sans-serif;
+    font-weight: var(--font-weight);
   }
 
-  body[dir="rtl"] {
-    font-family: 'Assistant', 'Inter', sans-serif;
+  .dyslexic-font {
+    font-family: 'OpenDyslexic', 'Inter', 'Assistant', sans-serif !important;
   }
 
-  body[dir="rtl"] svg:not(.no-rtl-mirror) {
-    transform: scaleX(-1);
+  .highlight-titles h1,
+  .highlight-titles h2,
+  .highlight-titles h3,
+  .highlight-titles h4,
+  .highlight-titles h5,
+  .highlight-titles h6 {
+    @apply bg-primary/20 px-2 py-1 rounded;
   }
 
-  .glass {
-    @apply bg-card/30 backdrop-blur-lg border border-white/10;
+  .highlight-links a {
+    @apply underline decoration-primary decoration-2 underline-offset-4;
   }
 
-  .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#F1F1F1] via-[#FFFFFF] to-[#F1F1F1];
+  [data-contrast="dark"] {
+    --background: 232 15% 10%;
+    --foreground: 0 0% 90%;
   }
 
-  .gradient-text-purple {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary;
+  [data-contrast="light"] {
+    --background: 0 0% 98%;
+    --foreground: 232 15% 13%;
   }
 
-  .subtitle-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#9b87f5] via-[#D6BCFA] to-[#9b87f5] font-medium;
-  }
-
-  .custom-marker {
-    @apply transition-all duration-300;
-  }
-
-  .custom-marker:hover {
-    transform: scale(1.2);
-  }
-
-  .leaflet-popup-content-wrapper {
-    @apply bg-card text-foreground rounded-lg shadow-lg border border-white/10;
-  }
-
-  .leaflet-popup-tip {
-    @apply bg-card border border-white/10;
-  }
-
-  .leaflet-popup-content {
-    @apply m-2 text-sm;
+  [data-contrast="high"] {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
   }
 }
