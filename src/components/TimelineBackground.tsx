@@ -243,7 +243,7 @@ export const TimelineBackground = () => {
       <div 
         className="absolute inset-0 z-10"
         style={{
-          background: 'linear-gradient(90deg, rgba(26, 31, 44, 0.05) 0%, rgba(26, 31, 44, 0.25) 50%, rgba(26, 31, 44, 0.5) 100%)'
+          background: 'linear-gradient(90deg, rgba(26, 31, 44, 0.05) 0%, rgba(26, 31, 44, 0.25) 50%, rgba(26, 31, 44, 0.35) 100%)'
         }}
       />
     </div>
