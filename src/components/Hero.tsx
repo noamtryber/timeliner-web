@@ -262,7 +262,7 @@ export const Hero = () => {
 
           {/* Right side - Product Screenshot */}
           <div className="hidden lg:block relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(155,135,245,0.2)]">
+            <div className="relative rounded-2xl overflow-hidden">
               <img 
                 src="/lovable-uploads/7a7300e3-617d-48ce-a15a-212411db6ee8.png"
                 alt="Timeliner Dashboard"
