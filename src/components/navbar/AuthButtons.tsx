@@ -4,10 +4,11 @@ import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useNavigate } from "react-router-dom";
 
 interface AuthButtonsProps {
   content?: any;
-  handleAuthClick: () => void;
+  handleAuthClick?: () => void;
 }
 
 const translations = {
@@ -40,10 +41,11 @@ const translations = {
   }
 };
 
-export const AuthButtons = ({ content, handleAuthClick }: AuthButtonsProps) => {
+export const AuthButtons = ({ content }: AuthButtonsProps) => {
   const { session } = useAuth();
   const { toast } = useToast();
   const { language } = useLanguage();
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     const { error } = await supabase.auth.signOut();
@@ -56,6 +58,11 @@ export const AuthButtons = ({ content, handleAuthClick }: AuthButtonsProps) => {
     }
   };
 
+  const handleAuthClick = () => {
+    const prefix = language === 'en' ? '' : `/${language}`;
+    navigate(`${prefix}/signup`);
+  };
+
   if (session) {
     return (
       <Button 
@@ -64,7 +71,7 @@ export const AuthButtons = ({ content, handleAuthClick }: AuthButtonsProps) => {
         onClick={handleLogout}
       >
         <LogOut className="h-4 w-4 mr-2" />
-        {translations.sign_out[language] || content?.logout_button}
+        {translations.sign_out[language as keyof typeof translations.sign_out] || content?.logout_button}
       </Button>
     );
   }
@@ -72,10 +79,10 @@ export const AuthButtons = ({ content, handleAuthClick }: AuthButtonsProps) => {
   return (
     <>
       <Button variant="ghost" className="text-white text-base" onClick={handleAuthClick}>
-        {translations.login[language] || content?.login}
+        {translations.login[language as keyof typeof translations.login] || content?.login}
       </Button>
       <Button className="bg-primary hover:bg-primary/90 text-base" onClick={handleAuthClick}>
-        {translations.start_free_trial[language] || content?.sign_up}
+        {translations.start_free_trial[language as keyof typeof translations.start_free_trial] || content?.sign_up}
       </Button>
     </>
   );

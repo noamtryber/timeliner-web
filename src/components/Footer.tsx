@@ -1,11 +1,12 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "./ui/button";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export const Footer = () => {
   const { isRTL, language } = useLanguage();
   const navigate = useNavigate();
+  const location = useLocation();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const isSpanish = language === 'es';
 
@@ -27,8 +28,14 @@ export const Footer = () => {
     };
   }, []);
 
+  const handleSignupClick = () => {
+    const prefix = language === 'en' ? '' : `/${language}`;
+    navigate(`${prefix}/signup`);
+  };
+
   const handleCommunityClick = () => {
-    navigate('/community');
+    const prefix = language === 'en' ? '' : `/${language}`;
+    navigate(`${prefix}/community`);
     // Use setTimeout to ensure navigation completes before scrolling
     setTimeout(() => {
       window.scrollTo({
@@ -91,7 +98,7 @@ export const Footer = () => {
                   {isRTL ? (
                     <>
                       <Button 
-                        onClick={() => navigate('/signup')}
+                        onClick={handleSignupClick}
                         className="bg-gradient-to-br from-primary to-secondary hover:opacity-90 text-base md:text-lg py-4 md:py-6 px-6 md:px-8 rounded-xl h-auto w-full md:w-auto"
                       >
                         {content.startFree}
@@ -114,7 +121,7 @@ export const Footer = () => {
                         {content.joinCommunity}
                       </Button>
                       <Button 
-                        onClick={() => navigate('/signup')}
+                        onClick={handleSignupClick}
                         className="bg-gradient-to-br from-primary to-secondary hover:opacity-90 text-base md:text-lg py-4 md:py-6 px-6 md:px-8 rounded-xl h-auto w-full md:w-auto"
                       >
                         {content.startFree}
