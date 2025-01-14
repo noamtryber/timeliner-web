@@ -77,7 +77,7 @@ export const TimelineBackground = () => {
         className="absolute inset-0 z-10"
         style={{
           background: isRTL
-            ? 'linear-gradient(270deg, rgba(26, 32, 44, 0.4) 0%, rgba(26, 32, 44, 0.7) 50%, rgba(26, 32, 44, 1) 100%)'
+            ? 'linear-gradient(90deg, rgba(26, 32, 44, 0.4) 0%, rgba(26, 32, 44, 0.7) 50%, rgba(26, 32, 44, 1) 100%)'
             : 'linear-gradient(90deg, rgba(26, 32, 44, 1) 0%, rgba(26, 32, 44, 0.7) 50%, rgba(26, 32, 44, 0.4) 100%)',
         }}
       />
