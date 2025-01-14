@@ -196,7 +196,7 @@ export const Hero = () => {
       <div className={`container mx-auto px-4 relative z-50 ${isRTL ? 'rtl' : ''}`}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Content */}
-          <div className={`text-left ${isRTL ? 'lg:text-right' : ''} animate-fade-up space-y-6`}>
+          <div className={`${isRTL ? 'lg:text-right text-right' : 'text-left'} animate-fade-up space-y-6`}>
             <span className={`subtitle-gradient block tracking-wide ${isRTL ? 'text-base sm:text-lg font-bold' : 'text-sm sm:text-base'}`}>
               {getTranslatedContent('video_editors')}
             </span>
@@ -205,19 +205,19 @@ export const Hero = () => {
               {getTranslatedContent('main_title')}
             </h1>
 
-            <p className="text-lg sm:text-xl text-white/70 leading-relaxed max-w-2xl">
+            <p className={`text-lg sm:text-xl text-white/70 leading-relaxed max-w-2xl ${isRTL ? 'mr-0 ml-auto' : ''}`}>
               {getTranslatedContent('subtext')}
             </p>
 
             <div className={`flex flex-col sm:flex-row items-start gap-4 pt-6 ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
               <Button 
                 size="lg" 
-                className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto w-full sm:w-auto"
+                className={`bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto w-full sm:w-auto ${isRTL ? 'flex-row-reverse' : ''}`}
                 onClick={() => navigate('/signup')}
               >
-                <span className="flex items-center gap-2">
+                <span className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
                   {getTranslatedContent('get_started')}
-                  <ArrowRight className="h-4 sm:h-5 w-4 sm:w-5" />
+                  <ArrowRight className={`h-4 sm:h-5 w-4 sm:w-5 ${isRTL ? 'rotate-180' : ''}`} />
                 </span>
               </Button>
               
@@ -225,16 +225,16 @@ export const Hero = () => {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="border-white/10 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto w-full sm:w-auto hover:bg-white/5 relative group overflow-hidden"
+                  className={`border-white/10 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto w-full sm:w-auto hover:bg-white/5 relative group overflow-hidden ${isRTL ? 'flex-row-reverse' : ''}`}
                   onClick={() => setShowDemo(true)}
                 >
                   <div className="absolute -inset-3 bg-gradient-to-r from-primary via-accent to-primary opacity-75 blur-lg animate-pulse" />
                   <div className="absolute inset-[1px] bg-card rounded-full" />
                   <div 
-                    className="absolute inset-[1px] bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 animate-shimmer rounded-full" 
+                    className={`absolute inset-[1px] bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 animate-shimmer rounded-full ${isRTL ? 'rotate-180' : ''}`}
                     style={{ backgroundSize: '200% 100%' }}
                   />
-                  <div className={`relative z-10 flex items-center gap-2`}>
+                  <div className={`relative z-10 flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
                     <Play className="h-4 sm:h-5 w-4 sm:w-5" />
                     <span>{getTranslatedContent('watch_demo')}</span>
                   </div>
@@ -247,15 +247,15 @@ export const Hero = () => {
               ref={statsRef} 
               className={`grid grid-cols-3 gap-4 mt-8 ${isRTL ? 'rtl' : ''}`}
             >
-              <div className="glass p-4 rounded-lg">
+              <div className="glass p-4 rounded-lg text-right">
                 <div className="text-2xl sm:text-3xl font-bold gradient-text">{animatedStats.revisions.toFixed(1)}%</div>
                 <div className="text-sm sm:text-base text-white/70">{getTranslatedContent('faster_revisions')}</div>
               </div>
-              <div className="glass p-4 rounded-lg">
+              <div className="glass p-4 rounded-lg text-right">
                 <div className="text-2xl sm:text-3xl font-bold gradient-text">{animatedStats.income.toFixed(1)}%</div>
                 <div className="text-sm sm:text-base text-white/70">{getTranslatedContent('increase_income')}</div>
               </div>
-              <div className="glass p-4 rounded-lg">
+              <div className="glass p-4 rounded-lg text-right">
                 <div className="text-2xl sm:text-3xl font-bold gradient-text">{animatedStats.retention.toFixed(1)}%</div>
                 <div className="text-sm sm:text-base text-white/70">{getTranslatedContent('client_retention')}</div>
               </div>
@@ -264,13 +264,13 @@ export const Hero = () => {
 
           {/* Right side - Product Screenshot */}
           <div className="hidden lg:block relative">
-            <div className="relative rounded-2xl overflow-hidden scale-125 transform translate-x-8">
+            <div className={`relative rounded-2xl overflow-hidden scale-125 transform ${isRTL ? '-translate-x-8' : 'translate-x-8'}`}>
               <img 
                 src="/lovable-uploads/7a7300e3-617d-48ce-a15a-212411db6ee8.png"
                 alt="Timeliner Dashboard"
                 className="w-full h-auto rounded-2xl"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
+              <div className={`absolute inset-0 bg-gradient-to-r ${isRTL ? 'from-background/40 to-background' : 'from-background to-background/40'}`} />
             </div>
           </div>
         </div>
