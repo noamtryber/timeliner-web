@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { createContext, useContext, useEffect, useState } from "react";
+import { AccessibilityButton } from "@/components/accessibility/AccessibilityButton";
 import Index from "./pages/Index";
 import SignUp from "./pages/SignUp";
 import Waitlist from "./pages/Waitlist";
@@ -58,6 +59,7 @@ function App() {
               <Route path="/blog" element={<Blog />} />
               <Route path="/community" element={<Community />} />
             </Routes>
+            <AccessibilityButton />
             <Toaster />
           </AuthContext.Provider>
         </BrowserRouter>
