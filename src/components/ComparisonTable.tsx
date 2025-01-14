@@ -148,9 +148,13 @@ export const ComparisonTable = () => {
                   <Check className={`text-primary ${isRTL ? 'order-first' : ''}`} />
                 </div>
                 <div className={`grid grid-cols-2 gap-2 text-sm text-white/70`}>
-                  <div className={isRTL ? 'text-right' : 'text-left'}>{isRTL ? 'מחליף:' : 'Replaces:'}</div>
+                  <div className={isRTL ? 'text-right' : 'text-left'}>
+                    {language === 'es' ? 'Reemplaza:' : isRTL ? 'מחליף:' : 'Replaces:'}
+                  </div>
                   <div className={isRTL ? 'text-right' : 'text-left'}>{tool.replaces}</div>
-                  <div className={isRTL ? 'text-right' : 'text-left'}>{isRTL ? 'עלות:' : 'Their Cost:'}</div>
+                  <div className={isRTL ? 'text-right' : 'text-left'}>
+                    {language === 'es' ? 'Su Costo:' : isRTL ? 'עלות:' : 'Their Cost:'}
+                  </div>
                   <div className={isRTL ? 'text-right' : 'text-left'}>{tool.cost}</div>
                 </div>
               </div>
@@ -160,14 +164,14 @@ export const ComparisonTable = () => {
           <div className="relative glass border border-white/10 p-4 rounded-lg mt-4">
             <div className={`grid grid-cols-2 gap-2`}>
               <div className={`font-bold text-white ${isRTL ? 'text-right' : 'text-left'}`}>
-                {isRTL ? 'עלות כוללת' : 'Total Cost'}
+                {language === 'es' ? 'Costo Total' : isRTL ? 'עלות כוללת' : 'Total Cost'}
               </div>
               <div className={`text-white/70 font-bold ${isRTL ? 'text-right' : 'text-left'}`}>
-                {isRTL ? '$138+ לחודש' : '$138+/month'}
+                {language === 'es' ? '$138+/mes' : isRTL ? '$138+ לחודש' : '$138+/month'}
               </div>
               <div className={`font-bold text-white ${isRTL ? 'text-right' : 'text-left'}`}>Timeliner</div>
               <div className={`font-bold text-primary ${isRTL ? 'text-right' : 'text-left'}`}>
-                {isRTL ? '$19-$39 לחודש' : '$19-$39/month'}
+                {language === 'es' ? '$19-$39/mes' : isRTL ? '$19-$39 לחודש' : '$19-$39/month'}
               </div>
             </div>
           </div>
@@ -185,13 +189,13 @@ export const ComparisonTable = () => {
           <TableHeader>
             <TableRow className="hover:bg-transparent">
               <TableHead className={`text-white ${isRTL ? 'text-right' : 'text-left'}`}>
-                {isRTL ? 'פיצ\'רים' : 'Features'}
+                {language === 'es' ? 'Características' : isRTL ? 'פיצ\'רים' : 'Features'}
               </TableHead>
               <TableHead className={`text-white ${isRTL ? 'text-right' : 'text-left'}`}>
-                {isRTL ? 'מחליף' : 'Replaces'}
+                {language === 'es' ? 'Reemplaza' : isRTL ? 'מחליף' : 'Replaces'}
               </TableHead>
               <TableHead className={`text-white ${isRTL ? 'text-right' : 'text-left'}`}>
-                {isRTL ? 'עלות כלים אחרים' : "Other Tools' Cost"}
+                {language === 'es' ? 'Costo de Otras Herramientas' : isRTL ? 'עלות כלים אחרים' : "Other Tools' Cost"}
               </TableHead>
               <TableHead className="text-white text-center bg-gradient-to-r from-primary/40 via-accent/40 to-primary/40">
                 Timeliner
@@ -220,13 +224,13 @@ export const ComparisonTable = () => {
             ))}
             <TableRow className="hover:bg-transparent border-t-2 border-white/10">
               <TableCell colSpan={2} className={`font-bold text-white ${isRTL ? 'text-right' : 'text-left'}`}>
-                {isRTL ? 'עלות כוללת' : 'Total Cost'}
+                {language === 'es' ? 'Costo Total' : isRTL ? 'עלות כוללת' : 'Total Cost'}
               </TableCell>
               <TableCell className={`text-white/70 font-bold ${isRTL ? 'text-right' : 'text-left'}`}>
-                {isRTL ? 'כלים אחרים: $138+ לחודש' : '$138+/month'}
+                {language === 'es' ? 'Otras herramientas: $138+/mes' : isRTL ? 'כלים אחרים: $138+ לחודש' : '$138+/month'}
               </TableCell>
               <TableCell className="text-center font-bold text-primary">
-                {isRTL ? '$19-$39 לחודש' : '$19-$39/month'}
+                {language === 'es' ? '$19-$39/mes' : isRTL ? '$19-$39 לחודש' : '$19-$39/month'}
               </TableCell>
             </TableRow>
           </TableBody>
