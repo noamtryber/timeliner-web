@@ -53,9 +53,23 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
   const spanishFeatures: Feature[] = [
     { text: 'Almacenamiento: 2TB', tooltip: 'Almacenamiento seguro en la nube con respaldo automático', showTooltip: true },
-    { text: 'Miembros: Hasta 10', tooltip: 'Gestiona un equipo de hasta 10 usuarios con diferentes permisos', showTooltip: true },
+    { text: 'Miembros: Hasta 30', tooltip: 'Gestiona un equipo de hasta 30 usuarios con diferentes permisos', showTooltip: true },
     { text: 'Proyectos Activos: Ilimitados', tooltip: 'Trabaja en proyectos ilimitados simultáneamente', showTooltip: true },
     { text: 'Acceso de Clientes: 10 invitados por proyecto', tooltip: 'Colabora con 10 clientes simultáneamente por proyecto', showTooltip: true },
+  ];
+
+  const hebrewFeatures: Feature[] = [
+    { text: 'אחסון: 2TB', tooltip: 'אחסון מאובטח בענן עם גיבוי אוטומטי', showTooltip: true },
+    { text: 'משתמשים: עד 30', tooltip: 'ניהול צוות עד 30 משתמשים עם הרשאות שונות', showTooltip: true },
+    { text: 'פרויקטים פעילים: ללא הגבלה', tooltip: 'עבודה על פרויקטים ללא הגבלה', showTooltip: true },
+    { text: 'גישת לקוחות: 10 אורחים לפרויקט', tooltip: 'שיתוף פעולה עם 10 לקוחות בו זמנית לכל פרויקט', showTooltip: true },
+  ];
+
+  const englishFeatures: Feature[] = [
+    { text: 'Storage: 2TB', tooltip: 'Secure cloud storage with automatic backup', showTooltip: true },
+    { text: 'Members: Up to 30', tooltip: 'Manage a team of up to 30 users with different permissions', showTooltip: true },
+    { text: 'Active Projects: Unlimited', tooltip: 'Work on unlimited projects simultaneously', showTooltip: true },
+    { text: 'Client Access: 10 Guests per project', tooltip: 'Collaborate with 10 clients simultaneously per project', showTooltip: true },
   ];
 
   const spanishExtraFeatures: Feature[] = [
@@ -66,26 +80,12 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     { text: 'Subtítulos y Traducciones IA', tooltip: 'Generación automática de subtítulos y traducciones', showTooltip: true }
   ];
 
-  const hebrewFeatures: Feature[] = [
-    { text: 'אחסון: 2TB', tooltip: 'אחסון מאובטח בענן עם גיבוי אוטומטי', showTooltip: true },
-    { text: 'משתמשים: עד 10', tooltip: 'ניהול צוות עד 10 משתמשים עם הרשאות שונות', showTooltip: true },
-    { text: 'פרויקטים פעילים: ללא הגבלה', tooltip: 'עבודה על פרויקטים ללא הגבלה', showTooltip: true },
-    { text: 'גישת לקוחות: 10 אורחים לפרויקט', tooltip: 'שיתוף פעולה עם 10 לקוחות בו זמנית לכל פרויקט', showTooltip: true },
-  ];
-
   const hebrewExtraFeatures: Feature[] = [
     { text: 'תפקידים והרשאות מתקדמים', tooltip: 'ניהול הרשאות מתקדם עם תפקידים מותאמים אישית', showTooltip: true },
     { text: 'מיתוג מותאם אישית', tooltip: 'הוסף תמונות כותרת, לוגואים ואלמנטים של מותג ללקוח', showTooltip: true },
     { text: 'ניהול צוות מתקדם', tooltip: 'כלים מתקדמים לניהול צוותים', showTooltip: true },
     { text: 'מצב סוכנות', tooltip: 'התאם זרימות עבודה לסוכנויות', showTooltip: true },
     { text: 'כתוביות ותרגומי AI', tooltip: 'יצירה אוטומטית של כתוביות ותרגומים', showTooltip: true }
-  ];
-
-  const englishFeatures: Feature[] = [
-    { text: 'Storage: 2TB', tooltip: 'Secure cloud storage with automatic backup', showTooltip: true },
-    { text: 'Members: Up to 10', tooltip: 'Manage a team of up to 10 users with different permissions', showTooltip: true },
-    { text: 'Active Projects: Unlimited', tooltip: 'Work on unlimited projects simultaneously', showTooltip: true },
-    { text: 'Client Access: 10 Guests per project', tooltip: 'Collaborate with 10 clients simultaneously per project', showTooltip: true },
   ];
 
   const englishExtraFeatures: Feature[] = [
