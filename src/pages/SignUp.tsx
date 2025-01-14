@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Progress } from "@/components/ui/progress"; // Add Progress import
 import { useToast } from "@/components/ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { TimelineBackground } from "@/components/TimelineBackground";
@@ -14,6 +15,7 @@ const SignUp = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordStrength, setPasswordStrength] = useState(0);
   const { toast } = useToast();
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -94,6 +96,40 @@ const SignUp = () => {
     }
   };
 
+  const calculatePasswordStrength = (password: string) => {
+    const minLength = 8;
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasNumbers = /\d/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    if (password.length < 6) return 0;
+
+    let strength = 0;
+    
+    // Base 20% for minimum length of 6
+    if (password.length >= 6) strength += 20;
+    
+    // Additional 20% for length of 8 or more
+    if (password.length >= 8) strength += 20;
+
+    // 20% for having uppercase or lowercase
+    if (hasUpperCase || hasLowerCase) strength += 20;
+
+    // 20% for having numbers
+    if (hasNumbers) strength += 20;
+
+    // 20% for having special characters
+    if (hasSpecialChar) strength += 20;
+
+    return strength;
+  };
+
+  useEffect(() => {
+    const strength = calculatePasswordStrength(password);
+    setPasswordStrength(strength);
+  }, [password]);
+
   const validatePassword = (password: string) => {
     const minLength = 6;
     const errors = [];
@@ -167,6 +203,12 @@ const SignUp = () => {
     }
   };
 
+  const getStrengthColor = (strength: number) => {
+    if (strength < 40) return "bg-red-500";
+    if (strength < 70) return "bg-yellow-500";
+    return "bg-green-500";
+  };
+
   return (
     <div className="flex min-h-screen">
       <div className={`${isMobile ? 'w-full' : 'w-[65%]'} bg-white p-4 md:p-8 flex items-center justify-center relative`}>
@@ -224,6 +266,20 @@ const SignUp = () => {
                   required
                   className="bg-gray-50 border-gray-300 text-gray-900"
                 />
+                {password && (
+                  <div className="mt-2 space-y-1">
+                    <Progress value={passwordStrength} className="h-2" />
+                    <p className="text-xs text-gray-500">
+                      {passwordStrength === 100 ? (
+                        "Strong password"
+                      ) : passwordStrength >= 60 ? (
+                        "Good password"
+                      ) : (
+                        "Weak password"
+                      )}
+                    </p>
+                  </div>
+                )}
                 <p className="mt-1 text-xs md:text-sm text-gray-500">
                   {translations.passwordRequirements[isSpanish ? 'es' : isHebrew ? 'he' : 'en']}
                 </p>
