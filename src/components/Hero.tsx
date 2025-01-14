@@ -11,6 +11,54 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
+const translations = {
+  video_editors: {
+    en: 'VIDEO EDITORS & AGENCIES:',
+    es: 'EDITORES DE VIDEO Y AGENCIAS:',
+    he: 'עורכי וידאו וסוכנויות:'
+  },
+  main_title: {
+    en: 'Turn Chaos into Clarity with Smart Video Management',
+    es: 'Convierte el Caos en Claridad con Gestión Inteligente de Video',
+    he: 'סוף לבלאגן! ניהול פרויקטים, תיקונים ותשלומים במקום אחד'
+  },
+  get_started: {
+    en: 'Get Started',
+    es: 'Empezar Ahora',
+    he: 'התחל עכשיו'
+  },
+  watch_demo: {
+    en: 'Watch Demo',
+    es: 'Ver Demo',
+    he: 'לצפייה בסרטון'
+  },
+  faster_revisions: {
+    en: 'Faster Revision Rounds',
+    es: 'Revisiones más Rápidas',
+    he: 'סבבי תיקונים מהירים יותר'
+  },
+  increase_income: {
+    en: 'Increase in Income',
+    es: 'Aumento de Ingresos',
+    he: 'עלייה בהכנסות'
+  },
+  client_retention: {
+    en: 'Client Retention in Retainers',
+    es: 'Retención de Clientes',
+    he: 'שימור לקוחות'
+  },
+  demo_title: {
+    en: 'See How It Works',
+    es: '¿Cómo Funciona?',
+    he: 'איך זה עובד?'
+  },
+  demo_description: {
+    en: 'Watch our 2-minute demo to see how Timeliner can streamline your creative workflow and help you manage projects more efficiently.',
+    es: 'Mira nuestro demo de 2 minutos para ver cómo Timeliner puede optimizar tu flujo de trabajo creativo y ayudarte a gestionar proyectos de manera más eficiente.',
+    he: 'צפו בסרטון המלא ותבינו למה טיימליינר הוא הכלי היחיד שתצטרכו לניהול פרויקטים, סבבי תיקונים וקבלת תשלומים בזמן.'
+  }
+};
+
 export const Hero = () => {
   const { data: content, error: contentError } = usePageContent('hero', 'main');
   const { data: statsContent, error: statsError } = usePageContent('hero', 'main');
@@ -129,6 +177,10 @@ export const Hero = () => {
     );
   };
 
+  const getTranslatedContent = (key: keyof typeof translations) => {
+    return translations[key][language as keyof (typeof translations)[typeof key]] || content?.[key] || translations[key].en;
+  };
+
   return (
     <div className="min-h-screen flex items-center relative overflow-hidden">
       <TimelineBackground />
@@ -138,11 +190,11 @@ export const Hero = () => {
       <div className={`container mx-auto px-4 relative animate-fade-up ${isRTL ? 'rtl' : ''}`}>
         <div className="text-center max-w-4xl mx-auto">
           <span className={`subtitle-gradient mb-4 block tracking-wide ${isRTL ? 'text-base sm:text-lg font-bold' : 'text-sm sm:text-base'}`}>
-            {content?.video_editors || 'VIDEO EDITORS & AGENCIES:'}
+            {getTranslatedContent('video_editors')}
           </span>
           
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 gradient-text tracking-tight leading-tight px-2">
-            {content?.turn_chaos_clarity || 'Turn Chaos into Clarity with Smart Video Management'}
+            {getTranslatedContent('main_title')}
           </h1>
 
           {isMobile && (
@@ -163,7 +215,7 @@ export const Hero = () => {
               onClick={() => navigate('/signup')}
             >
               <span className="flex items-center gap-2">
-                {content?.get_started || 'Get Started'}
+                {getTranslatedContent('get_started')}
                 <ArrowRight className="h-4 sm:h-5 w-4 sm:w-5" />
               </span>
             </Button>
@@ -183,7 +235,7 @@ export const Hero = () => {
                 />
                 <div className={`relative z-10 flex items-center gap-2`}>
                   <Play className="h-4 sm:h-5 w-4 sm:w-5" />
-                  <span>{content?.watch_demo || 'Watch Demo'}</span>
+                  <span>{getTranslatedContent('watch_demo')}</span>
                 </div>
               </Button>
             )}
@@ -195,15 +247,15 @@ export const Hero = () => {
           >
             <div className="glass p-2 sm:p-4 rounded-lg flex-1">
               <div className="text-lg sm:text-3xl font-bold gradient-text">{animatedStats.revisions.toFixed(1)}%</div>
-              <div className="text-xs sm:text-base text-white/70">{content?.faster_revisions || 'Faster Revision Rounds'}</div>
+              <div className="text-xs sm:text-base text-white/70">{getTranslatedContent('faster_revisions')}</div>
             </div>
             <div className="glass p-2 sm:p-4 rounded-lg flex-1">
               <div className="text-lg sm:text-3xl font-bold gradient-text">{animatedStats.income.toFixed(1)}%</div>
-              <div className="text-xs sm:text-base text-white/70">{content?.increase_income || 'Increase in Income'}</div>
+              <div className="text-xs sm:text-base text-white/70">{getTranslatedContent('increase_income')}</div>
             </div>
             <div className="glass p-2 sm:p-4 rounded-lg flex-1">
               <div className="text-lg sm:text-3xl font-bold gradient-text">{animatedStats.retention.toFixed(1)}%</div>
-              <div className="text-xs sm:text-base text-white/70">{content?.client_retention || 'Client Retention in Retainers'}</div>
+              <div className="text-xs sm:text-base text-white/70">{getTranslatedContent('client_retention')}</div>
             </div>
           </div>
         </div>

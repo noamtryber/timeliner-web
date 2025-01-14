@@ -9,15 +9,20 @@ import { useLanguage } from "@/contexts/LanguageContext";
 export const FAQ = () => {
   const { language } = useLanguage();
   const isHebrew = language === 'he';
+  const isSpanish = language === 'es';
 
   const faqs = [
     {
-      question: isHebrew 
-        ? "מה אם הלקוחות לא רוצים להשתמש במערכת, ואיך לגרום להם להתחיל?"
-        : "What if clients don't want use the system, and how do I get them to start?",
-      answer: isHebrew 
-        ? "Timeliner תוכנן להיות אינטואיטיבי וידידותי למשתמש, מה שמקל על הלקוחות להסתגל. אנו מספקים משאבי הדרכה ותבניות כדי לעזור לכם להציג את המערכת ללקוחות. משתמשים רבים מגלים שברגע שהלקוחות חווים את התקשורת החלקה ותהליך המשוב, הם מעריכים את הערך במהירות."
-        : "Timeliner is designed to be intuitive and user-friendly, making it easy for clients to adapt. We provide onboarding resources and templates to help you introduce the system to clients. Many users find that once clients experience the streamlined communication and feedback process, they quickly appreciate the value."
+      question: isSpanish 
+        ? "¿Qué pasa si los clientes no quieren usar el sistema y cómo los convenzo?"
+        : isHebrew 
+          ? "מה אם הלקוחות לא רוצים להשתמש במערכת, ואיך לגרום להם להתחיל?"
+          : "What if clients don't want use the system, and how do I get them to start?",
+      answer: isSpanish
+        ? "Timeliner está diseñado para ser intuitivo y fácil de usar, lo que facilita la adaptación de los clientes. Proporcionamos recursos de capacitación y plantillas para ayudarte a presentar el sistema. Muchos usuarios descubren que una vez que los clientes experimentan la comunicación fluida y el proceso de retroalimentación, rápidamente aprecian el valor."
+        : isHebrew 
+          ? "Timeliner תוכנן להיות אינטואיטיבי וידידותי למשתמש, מה שמקל על הלקוחות להסתגל. אנו מספקים משאבי הדרכה ותבניות כדי לעזור לכם להציג את המערכת ללקוחות. משתמשים רבים מגלים שברגע שהלקוחות חווים את התקשורת החלקה ותהליך המשוב, הם מעריכים את הערך במהירות."
+          : "Timeliner is designed to be intuitive and user-friendly, making it easy for clients to adapt. We provide onboarding resources and templates to help you introduce the system to clients. Many users find that once clients experience the streamlined communication and feedback process, they quickly appreciate the value."
     },
     {
       question: isHebrew 
@@ -79,17 +84,24 @@ export const FAQ = () => {
 
   return (
     <section className="py-24 relative overflow-hidden">
-      {/* Background gradients */}
-      <div className="absolute -top-[40%] -left-[20%] w-[70%] h-[100%] bg-primary/20 blur-[120px] rounded-full animate-pulse" />
-      <div className="absolute -bottom-[40%] -right-[20%] w-[70%] h-[100%] bg-secondary/20 blur-[120px] rounded-full animate-pulse delay-1000" />
+      <div className="absolute -top-[40%] -right-[20%] w-[70%] h-[100%] bg-primary/20 blur-[120px] rounded-full" />
+      <div className="absolute -bottom-[40%] -left-[20%] w-[70%] h-[100%] bg-secondary/20 blur-[120px] rounded-full" />
       
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
-            {isHebrew ? "כל התשובות לשאלות שלכם" : "Your Questions, Answered"}
+            {isSpanish 
+              ? "Tus Preguntas, Respondidas"
+              : isHebrew 
+                ? "כל התשובות לשאלות שלכם"
+                : "Your Questions, Answered"}
           </h2>
           <p className="text-xl text-white/70 animate-fade-up delay-100">
-            {isHebrew ? "קבלו מענה לשאלות נפוצות על טיימליינר." : "Find answers to commonly asked questions about Timeliner."}
+            {isSpanish
+              ? "Encuentra respuestas a las preguntas más frecuentes sobre Timeliner."
+              : isHebrew 
+                ? "קבלו מענה לשאלות נפוצות על טיימליינר."
+                : "Find answers to commonly asked questions about Timeliner."}
           </p>
         </div>
 

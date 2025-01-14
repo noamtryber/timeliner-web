@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { LogOut } from "lucide-react";
 import { useAuth } from "@/App";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -13,7 +13,7 @@ interface AuthButtonsProps {
 const translations = {
   'start_free_trial': {
     'en': 'Start Free Trial',
-    'es': 'Comenzar Prueba Gratis',
+    'es': 'Prueba Gratuita',
     'pt': 'Iniciar Teste Gratuito',
     'zh': '开始免费试用',
     'ru': 'Начать Бесплатный Период',
