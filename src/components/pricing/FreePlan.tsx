@@ -33,7 +33,7 @@ export const FreePlan = ({ content }: FreePlanProps) => {
     { text: 'Members: 1', tooltip: 'Single personal account' },
     { text: 'Active Projects: 2', tooltip: 'Work on up to 2 projects simultaneously' },
     { text: 'Client Access: 1 Guest Per Project', tooltip: 'Collaborate with one client per project', showTooltip: true },
-    { text: 'Smart Revision Tracking', tooltip: 'Track changes with precise timecode-based comments' },
+    { text: 'Smart Revision Tracking', tooltip: 'Leave precise feedback with timecode-based comments, draw directly on frames, and add voice memos. Compare versions side by side with split-screen mode.' },
     { text: 'Simple Client Portals', tooltip: 'Simple portal for sharing and feedback', showTooltip: true },
     { text: 'Secure Media Storage', tooltip: 'Secure storage for media files' }
   ];
@@ -41,16 +41,21 @@ export const FreePlan = ({ content }: FreePlanProps) => {
   return (
     <Card className={`glass p-4 flex flex-col animate-fade-up delay-300 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
       <PlanIcon Icon={Zap} color="accent" />
-      <h3 className="text-xl font-bold mb-1">{isHebrew ? 'חינמי' : 'Free'}</h3>
+      <h3 className="text-xl font-bold mb-1 -mt-2">{isHebrew ? 'חינמי' : 'Free'}</h3>
       <p className="text-white/70 mb-2 text-sm">{isHebrew ? 'מושלם להתחלה' : 'Perfect for Getting Started'}</p>
-      <div className="text-2xl font-bold mb-4">
+      <div className="text-2xl font-bold mb-6">
         {isHebrew ? '$0 / לחודש' : '$0/month'}
       </div>
       
-      <div className="space-y-2 mb-4 flex-grow">
-        <h4 className="font-semibold text-sm">{isHebrew ? 'פיצ\'רים:' : 'Features:'}</h4>
+      <div className="space-y-3 mb-4 flex-grow">
         {(isHebrew ? hebrewFeatures : englishFeatures).map((feature, index) => (
-          <PlanFeature key={index} text={feature.text} tooltip={feature.tooltip} showTooltip={feature.showTooltip} isRTL={isHebrew} />
+          <PlanFeature 
+            key={index} 
+            text={typeof feature === 'string' ? feature : feature.text}
+            tooltip={typeof feature === 'string' ? undefined : feature.tooltip}
+            showTooltip={typeof feature === 'string' ? false : feature.showTooltip}
+            isRTL={isHebrew}
+          />
         ))}
       </div>
       

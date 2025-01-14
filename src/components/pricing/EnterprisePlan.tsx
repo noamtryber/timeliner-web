@@ -22,8 +22,8 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
     'אחסון: ללא הגבלה',
     'משתמשים: ללא הגבלה',
     'פרויקטים פעילים: ללא הגבלה',
-    'גישת לקוחות: ללא הגבלה',
     { text: 'מיתוג מלא', tooltip: 'התאמה מלאה של המיתוג והממשק המשתמש', showTooltip: true },
+    'גישת לקוחות: ללא הגבלה',
     { text: 'מנהל חשבון ייעודי', tooltip: 'תמיכה אישית ומקצועית מצוות מומחים', showTooltip: true },
     { text: 'אינטגרציית API', tooltip: 'חיבור והתממשקות עם מערכות חיצוניות', showTooltip: true },
     { text: 'אפשרויות פריסה באתר', tooltip: 'התקנה והטמעה בשרתים פרטיים', showTooltip: true },
@@ -34,8 +34,8 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
     'Storage: Unlimited',
     'Members: Unlimited',
     'Active Projects: Unlimited',
-    'Client Access: Unlimited',
     { text: 'Full White Labeling', tooltip: 'Complete customization of branding and user interface', showTooltip: true },
+    'Client Access: Unlimited',
     { text: 'Dedicated Account Manager', tooltip: 'Personal and professional support from expert team', showTooltip: true },
     { text: 'API Integration', tooltip: 'Connect and interface with external systems', showTooltip: true },
     { text: 'On-Premise Deployment Options', tooltip: 'Installation and implementation on private servers', showTooltip: true },
@@ -45,17 +45,16 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
   return (
     <Card className={`glass p-4 flex flex-col animate-fade-up delay-600 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
       <PlanIcon Icon={Users} color="secondary" />
-      <h3 className="text-xl font-bold mb-1">{isHebrew ? 'אנטרפרייז' : 'Enterprise'}</h3>
+      <h3 className="text-xl font-bold mb-1 -mt-2">{isHebrew ? 'אנטרפרייז' : 'Enterprise'}</h3>
       <p className="text-white/70 mb-2 text-sm">
         {isHebrew ? 'פתרונות מותאמים לצוותים גדולים' : 'Custom Solutions for Large Teams'}
       </p>
-      <div className="text-2xl font-bold mb-4">
+      <div className="text-2xl font-bold mb-6">
         {isHebrew ? 'צרו קשר לתמחור' : 'Contact Us for Pricing'}
       </div>
       
-      <div className="space-y-2 mb-4 flex-grow">
-        <h4 className="font-semibold text-sm">{isHebrew ? 'הכל בסטודיו, בנוסף:' : 'Everything in Studio, plus:'}</h4>
-        {(isHebrew ? hebrewFeatures : englishFeatures).map((feature, index) => (
+      <div className="space-y-3 mb-4 flex-grow">
+        {(isHebrew ? hebrewFeatures : englishFeatures).slice(0, 4).map((feature, index) => (
           <PlanFeature 
             key={index} 
             text={typeof feature === 'string' ? feature : feature.text}
@@ -64,11 +63,24 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
             isRTL={isHebrew}
           />
         ))}
+
+        <div className="my-3 border-t border-white/10 pt-3">
+          <p className="text-sm font-medium mb-3">{isHebrew ? 'הכל בסטודיו, בנוסף:' : 'Everything in Studio, plus:'}</p>
+          {(isHebrew ? hebrewFeatures : englishFeatures).slice(4).map((feature, index) => (
+            <PlanFeature 
+              key={`extra-${index}`} 
+              text={typeof feature === 'string' ? feature : feature.text}
+              tooltip={typeof feature === 'string' ? undefined : feature.tooltip}
+              showTooltip={typeof feature === 'string' ? false : feature.showTooltip}
+              isRTL={isHebrew}
+            />
+          ))}
+        </div>
       </div>
       
       <Button 
         variant="outline" 
-        className="w-full border-primary/50 hover:bg-primary/10 transition-all duration-300"
+        className="w-full border-primary/50 hover:bg-primary/10 transition-all duration-300 mt-8"
         onClick={() => navigate('/auth')}
       >
         {isHebrew ? 'צרו קשר' : 'Contact Sales'}
