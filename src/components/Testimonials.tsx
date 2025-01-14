@@ -24,6 +24,26 @@ const testimonials = {
       image: "/lovable-uploads/e4c99774-d5fc-4c77-ab34-cabac470ed41.png"
     }
   ],
+  es: [
+    {
+      name: "Noga Levi",
+      role: "Editora de Video",
+      quote: "Timeliner ha simplificado completamente mi flujo de trabajo como editora de video. Ahorro horas cada semana, permitiéndome concentrarme en la creatividad en lugar de tareas administrativas.",
+      image: "/lovable-uploads/be9f8176-6ebd-4c6f-a721-34b1f9bd40cd.png"
+    },
+    {
+      name: "Zohar Vanunu",
+      role: "Gerente Creativo",
+      quote: "Como gerente creativo, gestionar múltiples equipos era caótico. Timeliner unificó todo en una plataforma y aumentó nuestra eficiencia en un 40%.",
+      image: "/lovable-uploads/6782f7e6-215f-48d2-b9fb-8abfc1b5d97b.png"
+    },
+    {
+      name: "Noam Tryber",
+      role: "Dueño de Agencia",
+      quote: "Para mi agencia, Timeliner no solo nos ahorra tiempo sino que ayuda a retener clientes con una mejor comunicación y entrega de proyectos. ¡Nuestros ingresos han aumentado un 25%!",
+      image: "/lovable-uploads/e4c99774-d5fc-4c77-ab34-cabac470ed41.png"
+    }
+  ],
   he: [
     {
       name: "נגה לוי",
@@ -62,6 +82,23 @@ const stats = {
       value: 24,
       suffix: "%",
       label: "Client Retention in Retainers"
+    }
+  ],
+  es: [
+    {
+      value: 32,
+      suffix: "%",
+      label: "Rondas de Revisión más Rápidas"
+    },
+    {
+      value: 19,
+      suffix: "%",
+      label: "Aumento en Ingresos"
+    },
+    {
+      value: 24,
+      suffix: "%",
+      label: "Retención de Clientes en Contratos"
     }
   ],
   he: [
@@ -142,10 +179,20 @@ const AnimatedNumber = ({ value, suffix = "" }: { value: number, suffix?: string
 
 export const Testimonials = () => {
   const { language } = useLanguage();
-  const content = testimonials[language === 'he' ? 'he' : 'en'];
-  const statsContent = stats[language === 'he' ? 'he' : 'en'];
-  const title = language === 'he' ? 'המלצות' : 'Testimonials';
-  const subtitle = language === 'he' ? 'מה הלקוחות שלנו מספרים?' : 'What others are saying';
+  const content = testimonials[language === 'he' ? 'he' : language === 'es' ? 'es' : 'en'];
+  const statsContent = stats[language === 'he' ? 'he' : language === 'es' ? 'es' : 'en'];
+  
+  const title = {
+    en: 'Testimonials',
+    es: 'Testimonios',
+    he: 'המלצות'
+  }[language === 'he' ? 'he' : language === 'es' ? 'es' : 'en'];
+
+  const subtitle = {
+    en: 'What others are saying',
+    es: '¿Qué dicen nuestros clientes?',
+    he: 'מה הלקוחות שלנו מספרים?'
+  }[language === 'he' ? 'he' : language === 'es' ? 'es' : 'en'];
 
   return (
     <section id="testimonials" className="py-24 relative overflow-hidden">
