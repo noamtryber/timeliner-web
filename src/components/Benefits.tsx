@@ -78,7 +78,7 @@ export const Benefits = () => {
           {content.map((benefit, index) => (
             <Card 
               key={index}
-              className="p-8 bg-background/20 backdrop-blur-sm hover:bg-card/50 transition-all duration-300 cursor-pointer group animate-fade-up border-0"
+              className="p-8 bg-background/20 backdrop-blur-sm hover:bg-card/50 transition-all duration-300 cursor-pointer group animate-fade-up border border-[#333333]"
               style={{ animationDelay: `${index * 200}ms` }}
             >
               <benefit.icon className="w-12 h-12 text-primary mb-6 group-hover:text-accent transition-colors" />
