@@ -215,7 +215,7 @@ export const Testimonials = () => {
           {statsContent.map((stat, index) => (
             <Card 
               key={index}
-              className="p-8 glass hover:bg-card/50 transition-all duration-300 group animate-fade-up"
+              className="p-8 bg-background/40 hover:bg-primary/10 backdrop-blur-sm transition-all duration-300 group animate-fade-up rounded-lg"
               style={{ animationDelay: `${index * 200}ms` }}
             >
               <h3 className="text-3xl md:text-4xl font-bold text-primary mb-3 group-hover:text-accent transition-colors">
@@ -231,7 +231,7 @@ export const Testimonials = () => {
           {content.map((testimonial, index) => (
             <Card 
               key={index}
-              className="p-8 glass hover:bg-card/50 transition-all duration-300 group animate-fade-up"
+              className="p-8 bg-background/40 hover:bg-primary/10 backdrop-blur-sm transition-all duration-300 group animate-fade-up rounded-lg"
               style={{ animationDelay: `${index * 200}ms` }}
             >
               <div className="mb-6">
