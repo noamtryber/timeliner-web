@@ -66,7 +66,7 @@ export const Navbar = () => {
           </div>
           
           <div className="hidden md:flex items-center space-x-4">
-            {!hideMainNav && <LanguageSwitcher />}
+            <LanguageSwitcher />
             <AuthButtons content={content} handleAuthClick={handleAuthClick} />
           </div>
           
