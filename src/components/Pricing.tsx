@@ -9,25 +9,7 @@ import { Skeleton } from "./ui/skeleton";
 
 export const Pricing = () => {
   const [pricingPeriod, setPricingPeriod] = useState<'monthly' | 'quarterly' | 'yearly'>('monthly');
-  const [basicStorage, setBasicStorage] = useState(250);
-  const [proStorage, setProStorage] = useState(500);
-  
   const { data, isLoading } = usePricingContent();
-
-  const calculatePrice = (basePrice: number, baseStorage: number, currentStorage: number) => {
-    const extraStorage = Math.max(0, currentStorage - baseStorage);
-    const extraCost = Math.floor(extraStorage / 100) * 3;
-    const monthlyPrice = basePrice + extraCost;
-    
-    switch (pricingPeriod) {
-      case 'quarterly':
-        return monthlyPrice * 0.85; // 15% off
-      case 'yearly':
-        return monthlyPrice * 0.75; // 25% off
-      default:
-        return monthlyPrice; // No discount for monthly
-    }
-  };
 
   if (isLoading) {
     return (
@@ -61,17 +43,11 @@ export const Pricing = () => {
             content={data?.content.basic}
             video={data?.videos.basic}
             pricingPeriod={pricingPeriod}
-            basicStorage={basicStorage}
-            setBasicStorage={setBasicStorage}
-            calculatePrice={calculatePrice}
           />
           <ProPlan 
             content={data?.content.pro}
             video={data?.videos.pro}
             pricingPeriod={pricingPeriod}
-            proStorage={proStorage}
-            setProStorage={setProStorage}
-            calculatePrice={calculatePrice}
           />
           <EnterprisePlan content={data?.content.enterprise} />
         </div>

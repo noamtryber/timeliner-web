@@ -1,6 +1,5 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Slider } from "@/components/ui/slider";
 import { Crown, Play } from "lucide-react";
 import {
   Dialog,
@@ -19,18 +18,12 @@ interface ProPlanProps {
   content?: PricingContent;
   video?: Record<string, string>;
   pricingPeriod: 'monthly' | 'quarterly' | 'yearly';
-  proStorage: number;
-  setProStorage: (value: number) => void;
-  calculatePrice: (basePrice: number, baseStorage: number, currentStorage: number) => number;
 }
 
 export const ProPlan = ({ 
   content,
   video,
-  pricingPeriod, 
-  proStorage, 
-  setProStorage, 
-  calculatePrice 
+  pricingPeriod
 }: ProPlanProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -38,72 +31,73 @@ export const ProPlan = ({
   
   if (!content) return null;
 
-  const proPrice = calculatePrice(
-    Number(content.base_price), 
-    Number(content.base_storage), 
-    proStorage
-  );
+  const basePrice = 49;
+  const price = pricingPeriod === 'yearly' 
+    ? basePrice * 0.75 
+    : pricingPeriod === 'quarterly' 
+      ? basePrice * 0.85 
+      : basePrice;
 
   const hebrewFeatures = [
-    '3 חשבונות מנהל',
-    '50 חברי צוות (עורכי וידאו, מנהלי פרויקטים ועוד)',
+    '2TB אחסון',
+    'עד 10 חברי צוות',
     '100 פרויקטים פעילים',
     'גישת לקוחות: עד 10 אורחים לפרויקט',
     'מיתוג מותאם אישית: הוסיפו לוגו וצבעים',
-    'תמיכה בעדיפות גבוהה',
+    'אוטומציה של תהליכי אישור',
     'ספריית רפרנסים לסגנונות עריכה',
-    'סקשן לניהול עובדים, בקרת ביצועים ותשלומים על עורכים, מנהלים ולקוחות'
+    'כלים שיתופיים: משימות משותפות, מועדי יעד ומעקב',
+    'תמיכה בעדיפות גבוהה'
+  ];
+
+  const englishFeatures = [
+    '2TB Storage',
+    'Up to 10 Team Members',
+    '100 Active Projects',
+    'Client Access: Up to 10 Guests Per Project',
+    'Custom Branding: Add Your Logo and Colors',
+    'Approval Workflow Automation',
+    'Reference Library for Editing Styles',
+    'Collaborative Tools: Shared Tasks, Deadlines, and Tracking',
+    'Priority Support'
   ];
 
   const getPeriodTotal = () => {
     switch (pricingPeriod) {
       case 'quarterly':
-        return proPrice * 3;
+        return price * 3;
       case 'yearly':
-        return proPrice * 12;
+        return price * 12;
       default:
-        return proPrice;
+        return price;
     }
   };
 
   return (
     <Card className={`glass p-6 flex flex-col border-primary animate-fade-up delay-500 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
       <PlanIcon Icon={Crown} color="primary" />
-      <h3 className="text-2xl font-bold mb-2">{isHebrew ? 'פרו' : content.title}</h3>
-      <p className="text-white/70 mb-6">{isHebrew ? 'לסוכנויות או צוותים בצמיחה' : content.subtitle}</p>
+      <h3 className="text-2xl font-bold mb-2">{isHebrew ? 'סטודיו' : 'Studio'}</h3>
+      <p className="text-white/70 mb-6">{isHebrew ? 'לסוכנויות וצוותים בצמיחה' : 'For Growing Agencies and Teams'}</p>
       <div className="text-3xl font-bold mb-4">
-        ${proPrice.toFixed(2)}
-        {isHebrew ? ' / לחודש' : <span className="text-sm font-normal text-white/70">/month</span>}
+        ${price.toFixed(2)}
+        {isHebrew ? ' / לחודש' : '/month'}
         {pricingPeriod !== 'monthly' && (
           <span className="block text-sm text-primary mt-1">
             ${getPeriodTotal().toFixed(2)} {isHebrew ? `לתשלום ${pricingPeriod === 'quarterly' ? 'רבעוני' : 'שנתי'}` : `billed ${pricingPeriod}`}
           </span>
         )}
       </div>
-      
-      <div className="mb-6">
-        <p className="text-sm text-white/70 mb-2">{isHebrew ? 'אחסון:' : 'Storage:'} {proStorage}GB</p>
-        <Slider
-          value={[proStorage]}
-          onValueChange={(value) => setProStorage(value[0])}
-          min={Number(content.base_storage)}
-          max={5000}
-          step={100}
-          className={`mb-4 ${isHebrew ? 'direction-rtl' : ''}`}
-          dir={isHebrew ? 'rtl' : 'ltr'}
-        />
-      </div>
 
       <Dialog>
         <DialogTrigger asChild>
           <Button variant="outline" className="w-full mb-6 border-primary/50 hover:bg-primary/10">
             <Play className="w-4 h-4 mr-2" />
-            {isHebrew ? 'למה פרו?' : content.video_title}
+            {isHebrew ? 'למה סטודיו?' : content.video_title}
           </Button>
         </DialogTrigger>
         <DialogContent className={`glass ${isHebrew ? 'text-right' : ''}`}>
           <DialogHeader>
-            <DialogTitle>{isHebrew ? 'למה פרו?' : content.video_title}</DialogTitle>
+            <DialogTitle>{isHebrew ? 'למה סטודיו?' : content.video_title}</DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
             {video?.preview ? (
@@ -128,8 +122,8 @@ export const ProPlan = ({
       </Dialog>
       
       <div className="space-y-4 mb-8 flex-grow">
-        <h4 className="font-semibold">{isHebrew ? 'פיצ\'רים עיקריים:' : 'Core Features:'}</h4>
-        {(isHebrew ? hebrewFeatures : content.features).map((feature, index) => (
+        <h4 className="font-semibold">{isHebrew ? 'הכל בבייסיק, בנוסף:' : 'Everything in Essentials, plus:'}</h4>
+        {(isHebrew ? hebrewFeatures : englishFeatures).map((feature, index) => (
           <PlanFeature key={index} text={feature} isRTL={isHebrew} />
         ))}
       </div>
@@ -138,7 +132,7 @@ export const ProPlan = ({
         className="w-full bg-gradient-to-br from-primary to-secondary hover:opacity-90 transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40"
         onClick={() => navigate('/signup')}
       >
-        {isHebrew ? 'התחילו היום בחינם' : content.button_text}
+        {isHebrew ? 'התחילו היום בחינם' : 'Start Free Trial'}
       </Button>
     </Card>
   );

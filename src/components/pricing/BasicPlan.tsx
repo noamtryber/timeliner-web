@@ -1,6 +1,5 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Slider } from "@/components/ui/slider";
 import { Database, Play } from "lucide-react";
 import {
   Dialog,
@@ -19,18 +18,12 @@ interface BasicPlanProps {
   content?: PricingContent;
   video?: Record<string, string>;
   pricingPeriod: 'monthly' | 'quarterly' | 'yearly';
-  basicStorage: number;
-  setBasicStorage: (value: number) => void;
-  calculatePrice: (basePrice: number, baseStorage: number, currentStorage: number) => number;
 }
 
 export const BasicPlan = ({ 
   content,
   video,
-  pricingPeriod, 
-  basicStorage, 
-  setBasicStorage, 
-  calculatePrice 
+  pricingPeriod
 }: BasicPlanProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -38,31 +31,45 @@ export const BasicPlan = ({
   
   if (!content) return null;
 
-  const basicPrice = calculatePrice(
-    Number(content.base_price), 
-    Number(content.base_storage), 
-    basicStorage
-  );
+  const basePrice = 29;
+  const price = pricingPeriod === 'yearly' 
+    ? basePrice * 0.75 
+    : pricingPeriod === 'quarterly' 
+      ? basePrice * 0.85 
+      : basePrice;
 
   const hebrewFeatures = [
     'חשבון אדמין אחד',
-    '5 חברי צוות (עורכי וידאו, מנהלי פרויקטים וכו\')',
+    '1TB אחסון',
+    'עד 5 חברי צוות',
     '25 פרויקטים פעילים',
-    'גישת לקוחות: עד 3 אורחים לפרויקט',
     'תהליך עבודה מתקדם: מעקב אחר סטטוס',
     'הערות מבוססות קודי זמן למשוב מדויק',
-    'תפקידי משתמש והרשאות בהתאמה אישית',
-    'אנליטיקה בסיסית למעקב אחרי סטטוס הפרויקט'
+    'גישת לקוחות: עד 3 אורחים לפרויקט',
+    'תפקידים והרשאות בהתאמה אישית',
+    'אנליטיקה בסיסית למעקב אחר סטטוס הפרויקט'
   ];
-  
+
+  const englishFeatures = [
+    '1 Admin Account',
+    '1TB Storage',
+    'Up to 5 Team Members',
+    '25 Active Projects',
+    'Advanced Project Workflow: Status Tracking',
+    'Timecode-Based Comments for Precise Feedback',
+    'Client Access: Up to 3 Guests Per Project',
+    'Customizable Roles and Permissions',
+    'Basic Analytics to Track Project Statuses'
+  ];
+
   const getPeriodTotal = () => {
     switch (pricingPeriod) {
       case 'quarterly':
-        return basicPrice * 3;
+        return price * 3;
       case 'yearly':
-        return basicPrice * 12;
+        return price * 12;
       default:
-        return basicPrice;
+        return price;
     }
   };
 
@@ -73,29 +80,16 @@ export const BasicPlan = ({
       </div>
 
       <PlanIcon Icon={Database} color="accent" />
-      <h3 className="text-2xl font-bold mb-2">{isHebrew ? 'בייסיק' : content.title}</h3>
-      <p className="text-white/70 mb-6">{isHebrew ? 'לפרילנסרים או סוכנויות קטנות' : content.subtitle}</p>
+      <h3 className="text-2xl font-bold mb-2">{isHebrew ? 'בייסיק' : 'Essentials'}</h3>
+      <p className="text-white/70 mb-6">{isHebrew ? 'לצוותים קטנים ופרילנסרים' : 'For Small Teams and Freelancers'}</p>
       <div className="text-3xl font-bold mb-4">
-        ${basicPrice.toFixed(2)}
-        {isHebrew ? ' / לחודש' : <span className="text-sm font-normal text-white/70">/month</span>}
+        ${price.toFixed(2)}
+        {isHebrew ? ' / לחודש' : '/month'}
         {pricingPeriod !== 'monthly' && (
           <span className="block text-sm text-primary mt-1">
             ${getPeriodTotal().toFixed(2)} {isHebrew ? `לתשלום ${pricingPeriod === 'quarterly' ? 'רבעוני' : 'שנתי'}` : `billed ${pricingPeriod}`}
           </span>
         )}
-      </div>
-      
-      <div className="mb-6">
-        <p className="text-sm text-white/70 mb-2">{isHebrew ? 'אחסון:' : 'Storage:'} {basicStorage}GB</p>
-        <Slider
-          value={[basicStorage]}
-          onValueChange={(value) => setBasicStorage(value[0])}
-          min={Number(content.base_storage)}
-          max={2000}
-          step={100}
-          className={`mb-4 ${isHebrew ? 'direction-rtl' : ''}`}
-          dir={isHebrew ? 'rtl' : 'ltr'}
-        />
       </div>
 
       <Dialog>
@@ -132,8 +126,8 @@ export const BasicPlan = ({
       </Dialog>
       
       <div className="space-y-4 mb-8 flex-grow">
-        <h4 className="font-semibold">{isHebrew ? 'פיצ\'רים עיקריים:' : 'Core Features:'}</h4>
-        {(isHebrew ? hebrewFeatures : content.features).map((feature, index) => (
+        <h4 className="font-semibold">{isHebrew ? 'הכל בחינמי, בנוסף:' : 'Everything in Free, plus:'}</h4>
+        {(isHebrew ? hebrewFeatures : englishFeatures).map((feature, index) => (
           <PlanFeature key={index} text={feature} isRTL={isHebrew} />
         ))}
       </div>
@@ -142,7 +136,7 @@ export const BasicPlan = ({
         className="w-full bg-gradient-to-br from-accent to-primary hover:opacity-90 transition-all duration-300 shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/40"
         onClick={() => navigate('/signup')}
       >
-        {isHebrew ? 'התחילו היום בחינם' : content.button_text}
+        {isHebrew ? 'התחילו היום בחינם' : 'Start Free Trial'}
       </Button>
     </Card>
   );

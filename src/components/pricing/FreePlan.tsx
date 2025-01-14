@@ -19,28 +19,37 @@ export const FreePlan = ({ content }: FreePlanProps) => {
   if (!content) return null;
 
   const hebrewFeatures = [
-    'חשבון אדמין אחד',
+    'חשבון אישי אחד',
     '2 פרויקטים פעילים',
-    '2GB אחסון',
-    'גישה ללקוחות – אורח אחד לכל פרויקט',
-    'תבניות פרויקטים בסיסיות',
-    'תהליך עבודה בסיסי (עריכה, תיקון, אישור)',
+    '3GB אחסון',
+    'ניהול פרויקטים בסיסי',
+    'ניהול משימות בסיסי',
+    'תבניות בסיסיות',
     'תמיכה בקהילה'
+  ];
+
+  const englishFeatures = [
+    '1 Personal Account',
+    '2 Active Projects',
+    '3GB Storage',
+    'Basic Project Management',
+    'Basic Task Management',
+    'Basic Templates',
+    'Community Support'
   ];
 
   return (
     <Card className={`glass p-6 flex flex-col animate-fade-up delay-300 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
       <PlanIcon Icon={Zap} color="accent" />
-      <h3 className="text-2xl font-bold mb-2">{isHebrew ? 'חינמי' : content.title}</h3>
-      <p className="text-white/70 mb-6">{isHebrew ? 'למתחילים או לפרויקטים קטנים' : content.subtitle}</p>
+      <h3 className="text-2xl font-bold mb-2">{isHebrew ? 'חינמי' : 'Free'}</h3>
+      <p className="text-white/70 mb-6">{isHebrew ? 'מושלם להתחלה' : 'Perfect for Getting Started'}</p>
       <div className="text-3xl font-bold mb-8">
-        {isHebrew ? '$0 / לחודש' : `$${content.price}`}
-        {!isHebrew && <span className="text-sm font-normal text-white/70">/month</span>}
+        {isHebrew ? '$0 / לחודש' : '$0/month'}
       </div>
       
       <div className="space-y-4 mb-8 flex-grow">
-        <h4 className="font-semibold">{isHebrew ? 'פיצ\'רים עיקריים:' : 'Core Features:'}</h4>
-        {(isHebrew ? hebrewFeatures : content.features).map((feature, index) => (
+        <h4 className="font-semibold">{isHebrew ? 'פיצ\'רים:' : 'Features:'}</h4>
+        {(isHebrew ? hebrewFeatures : englishFeatures).map((feature, index) => (
           <PlanFeature key={index} text={feature} isRTL={isHebrew} />
         ))}
       </div>
@@ -49,7 +58,7 @@ export const FreePlan = ({ content }: FreePlanProps) => {
         className="w-full bg-gradient-to-br from-accent/80 to-accent hover:opacity-90 transition-all duration-300"
         onClick={() => navigate('/signup')}
       >
-        {isHebrew ? 'התחילו היום בחינם' : content.button_text}
+        {isHebrew ? 'התחילו היום בחינם' : 'Get Started Free'}
       </Button>
     </Card>
   );
