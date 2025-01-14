@@ -140,15 +140,6 @@ export const ComparisonTable = () => {
         <div className="relative">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 blur-xl" />
           
-          <div className="text-center max-w-3xl mx-auto mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
-              {getHeaderText()}
-            </h2>
-            <p className="text-xl text-white/70">
-              {getSubHeaderText()}
-            </p>
-          </div>
-          
           {tools.map((tool, index) => (
             <div key={index} className="relative glass border border-white/10 p-4 rounded-lg">
               <div className="flex flex-col space-y-2">
@@ -194,15 +185,6 @@ export const ComparisonTable = () => {
       <div className="relative">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 blur-xl" />
         
-        <div className="text-center max-w-3xl mx-auto mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
-            {getHeaderText()}
-          </h2>
-          <p className="text-xl text-white/70">
-            {getSubHeaderText()}
-          </p>
-        </div>
-
         <Table className="relative glass border border-white/10">
           <TableHeader>
             <TableRow className="hover:bg-transparent">
@@ -253,14 +235,6 @@ export const ComparisonTable = () => {
             </TableRow>
           </TableBody>
         </Table>
-        <div className="text-center mt-8">
-          <p className="text-xl md:text-2xl font-semibold gradient-text">
-            {getSavingsText()}
-          </p>
-          <p className="text-white/70 mt-2">
-            {getSavingsDescription()}
-          </p>
-        </div>
       </div>
     </div>
   );
