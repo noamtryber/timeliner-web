@@ -121,7 +121,7 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
   };
 
   return (
-    <Card className={`glass p-4 flex flex-col animate-fade-up delay-600 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
+    <Card className={`glass border-0 p-4 flex flex-col animate-fade-up delay-600 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
       <PlanIcon Icon={Users} color="secondary" />
       <h3 className="text-xl font-bold mb-1 -mt-2">{getPlanTitle()}</h3>
       <p className="text-white/70 mb-2 text-sm">{getPlanSubtitle()}</p>

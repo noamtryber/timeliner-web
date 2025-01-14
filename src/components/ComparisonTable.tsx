@@ -24,7 +24,7 @@ export const ComparisonTable = () => {
             />
           ))}
 
-          <div className="relative glass border border-white/10 p-4 rounded-lg mt-4">
+          <div className="relative glass border border-[#222222] p-4 rounded-lg mt-4">
             <div className={`grid grid-cols-2 gap-2`}>
               <div className={`font-bold text-white ${isRTL ? 'text-right' : 'text-left'}`}>
                 {language === 'es' ? 'Costo Total' : isRTL ? 'עלות כוללת' : 'Total Cost'}

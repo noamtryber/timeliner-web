@@ -76,7 +76,7 @@ export const FreePlan = ({ content }: FreePlanProps) => {
   };
 
   return (
-    <Card className={`glass p-4 flex flex-col animate-fade-up delay-300 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
+    <Card className={`glass border-0 p-4 flex flex-col animate-fade-up delay-300 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
       <PlanIcon Icon={Zap} color="accent" />
       <h3 className="text-xl font-bold mb-1 -mt-2">{getTitle()}</h3>
       <p className="text-white/70 mb-2 text-sm">{getSubtitle()}</p>

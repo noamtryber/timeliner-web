@@ -10,7 +10,7 @@ interface ComparisonDesktopTableProps {
 
 export const ComparisonDesktopTable = ({ tools, isRTL, language }: ComparisonDesktopTableProps) => {
   return (
-    <Table className="relative glass border border-white/10">
+    <Table className="relative glass border border-[#222222]">
       <TableHeader>
         <TableRow className="hover:bg-transparent">
           <TableHead className={`text-white ${isRTL ? 'text-right' : 'text-left'}`}>

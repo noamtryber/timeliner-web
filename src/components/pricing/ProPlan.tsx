@@ -174,7 +174,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
   };
 
   return (
-    <Card className={`glass p-3 flex flex-col animate-fade-up delay-500 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
+    <Card className={`glass border-0 p-3 flex flex-col animate-fade-up delay-500 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
       <PlanIcon Icon={Crown} color="primary" />
       <h3 className="text-xl font-bold mb-1">{getPlanTitle()}</h3>
       <p className="text-white/70 mb-2 text-xs">{getPlanSubtitle()}</p>

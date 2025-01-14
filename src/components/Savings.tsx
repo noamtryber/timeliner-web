@@ -67,7 +67,7 @@ export const Savings = () => {
         <ComparisonTable />
 
         <div className="flex flex-col items-center gap-8 mt-16">
-          <Card className="glass p-6 text-center max-w-2xl mx-auto">
+          <Card className="glass border-0 p-6 text-center max-w-2xl mx-auto">
             <p className="text-xl md:text-2xl font-semibold gradient-text">
               {getSavingsText()}
             </p>
