@@ -33,6 +33,11 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
   
   if (!content) return null;
 
+  const handleSignupClick = () => {
+    const prefix = language === 'en' ? '' : `/${language}`;
+    navigate(`${prefix}/signup`);
+  };
+
   const basePrice = 29;
   const price = pricingPeriod === 'yearly' 
     ? basePrice * 0.75 
@@ -259,7 +264,7 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
       
       <Button 
         className="w-full bg-gradient-to-br from-accent to-primary hover:opacity-90 transition-all duration-300 shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/40 mt-8"
-        onClick={() => navigate('/signup')}
+        onClick={handleSignupClick}
       >
         {getTrialButtonText()}
       </Button>
