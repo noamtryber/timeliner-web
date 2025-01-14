@@ -47,12 +47,11 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
     { text: 'גישת לקוחות: עד 3 אורחים לפרויקט' },
   ];
 
-  const hebrewExtraFeatures: Feature[] = [
-    { text: 'מערכת תשלומים חכמה', tooltip: 'קבע מודלים של תמחור (לפי וידאו, פרויקט, אבני דרך או ריטיינר). אוטומציה של תשלומים, הפקת קבלות והתאמה לסוג העסק שלך', showTooltip: true },
-    { text: 'כלי ניהול צוות', tooltip: 'כלים מתקדמים לניהול משימות וזמנים', showTooltip: true },
-    { text: 'CRM מובנה ואוטומציות', tooltip: 'אינטגרציה עם כלים כמו טפסי לידים של פייסבוק ווואטסאפ עסקי. ניהול לידים, מעקב וניהול לקוחות עם צינור הצעות ותקשורת מהירה', showTooltip: true },
-    { text: 'בונה תיק עבודות', tooltip: 'כלי מתקדם ליצירת תיק עבודות מקצועי', showTooltip: true },
-    { text: 'בריפים אינטראקטיביים לפרויקט', tooltip: 'השתמש בכלי AI לסיעור מוחות עם לקוחות על רעיונות, הפניות ותנאים. הימנע מציפיות לא תואמות וספק חוויית לקוח חלקה', showTooltip: true }
+  const spanishFeatures: Feature[] = [
+    { text: 'Almacenamiento: 1TB', tooltip: 'Almacenamiento seguro en la nube con respaldo automático', showTooltip: true },
+    { text: 'Miembros: Hasta 5', tooltip: 'Gestiona un equipo de hasta 5 usuarios con diferentes permisos', showTooltip: true },
+    { text: 'Proyectos Activos: Ilimitados', tooltip: 'Trabaja en proyectos ilimitados simultáneamente', showTooltip: true },
+    { text: 'Acceso de Clientes: Hasta 3 invitados por proyecto' },
   ];
 
   const englishFeatures: Feature[] = [
@@ -62,6 +61,22 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
     { text: 'Client Access: Up to 3 Guests per project' },
   ];
 
+  const hebrewExtraFeatures: Feature[] = [
+    { text: 'מערכת תשלומים חכמה', tooltip: 'קבע מודלים של תמחור (לפי וידאו, פרויקט, אבני דרך או ריטיינר). אוטומציה של תשלומים, הפקת קבלות והתאמה לסוג העסק שלך', showTooltip: true },
+    { text: 'כלי ניהול צוות', tooltip: 'כלים מתקדמים לניהול משימות וזמנים', showTooltip: true },
+    { text: 'CRM מובנה ואוטומציות', tooltip: 'אינטגרציה עם כלים כמו טפסי לידים של פייסבוק ווואטסאפ עסקי. ניהול לידים, מעקב וניהול לקוחות עם צינור הצעות ותקשורת מהירה', showTooltip: true },
+    { text: 'בונה תיק עבודות', tooltip: 'כלי מתקדם ליצירת תיק עבודות מקצועי', showTooltip: true },
+    { text: 'בריפים אינטראקטיביים לפרויקט', tooltip: 'השתמש בכלי AI לסיעור מוחות עם לקוחות על רעיונות, הפניות ותנאים. הימנע מציפיות לא תואמות וספק חוויית לקוח חלקה', showTooltip: true }
+  ];
+
+  const spanishExtraFeatures: Feature[] = [
+    { text: 'Sistema de Pagos Inteligente', tooltip: 'Configura modelos de precios (por video, proyecto, hitos o retainer). Automatiza pagos, genera recibos y adapta a tu tipo de negocio.', showTooltip: true },
+    { text: 'Herramientas de Gestión de Equipo', tooltip: 'Herramientas avanzadas para gestión de tareas y tiempo', showTooltip: true },
+    { text: 'CRM Integrado y Automatizaciones', tooltip: 'Integración con herramientas como Facebook Lead Forms y WhatsApp Business. Gestiona leads, seguimientos y clientes con un pipeline para ofertas y comunicación rápida.', showTooltip: true },
+    { text: 'Constructor de Portafolio', tooltip: 'Herramienta avanzada para crear portafolios profesionales', showTooltip: true },
+    { text: 'Briefings Interactivos de Proyecto', tooltip: 'Usa herramientas de IA para hacer lluvia de ideas con clientes sobre conceptos, referencias y términos. Evita expectativas desalineadas y ofrece una experiencia de cliente fluida.', showTooltip: true }
+  ];
+
   const englishExtraFeatures: Feature[] = [
     { text: 'Smart Payment System', tooltip: 'Set pricing models (per video, project, milestones, or retainers). Automate payments, generate receipts, and align with your business type.', showTooltip: true },
     { text: 'Team Management Tools', tooltip: 'Advanced tools for task and time management', showTooltip: true },
@@ -69,6 +84,28 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
     { text: 'Portfolio Builder', tooltip: 'Advanced tool for creating professional portfolios', showTooltip: true },
     { text: 'Interactive Project Briefs', tooltip: 'Use AI tools to brainstorm with clients on ideas, references, and terms. Avoid mismatched expectations and deliver a seamless client experience.', showTooltip: true }
   ];
+
+  const getFeatures = () => {
+    switch (language) {
+      case 'es':
+        return spanishFeatures;
+      case 'he':
+        return hebrewFeatures;
+      default:
+        return englishFeatures;
+    }
+  };
+
+  const getExtraFeatures = () => {
+    switch (language) {
+      case 'es':
+        return spanishExtraFeatures;
+      case 'he':
+        return hebrewExtraFeatures;
+      default:
+        return englishExtraFeatures;
+    }
+  };
 
   const getPeriodTotal = () => {
     switch (pricingPeriod) {
@@ -81,21 +118,93 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
     }
   };
 
+  const getTitle = () => {
+    switch (language) {
+      case 'es':
+        return 'Esencial';
+      case 'he':
+        return 'בייסיק';
+      default:
+        return 'Essentials';
+    }
+  };
+
+  const getSubtitle = () => {
+    switch (language) {
+      case 'es':
+        return 'Para Equipos Pequeños y Freelancers';
+      case 'he':
+        return 'לצוותים קטנים ופרילנסרים';
+      default:
+        return 'For Small Teams and Freelancers';
+    }
+  };
+
+  const getPopularLabel = () => {
+    switch (language) {
+      case 'es':
+        return 'Más Popular';
+      case 'he':
+        return 'הכי פופולרי';
+      default:
+        return 'Most Popular';
+    }
+  };
+
+  const getWhyButtonText = () => {
+    switch (language) {
+      case 'es':
+        return '¿Por qué Esencial?';
+      case 'he':
+        return 'למה בייסיק?';
+      default:
+        return 'Why Essentials?';
+    }
+  };
+
+  const getTrialButtonText = () => {
+    switch (language) {
+      case 'es':
+        return 'Comenzar Prueba Gratis';
+      case 'he':
+        return 'התחילו היום בחינם';
+      default:
+        return 'Start Free Trial';
+    }
+  };
+
+  const getEverythingInFreeText = () => {
+    switch (language) {
+      case 'es':
+        return 'Todo en Gratis, más:';
+      case 'he':
+        return 'הכל בחינמי, בנוסף:';
+      default:
+        return 'Everything in Free, plus:';
+    }
+  };
+
   return (
     <Card className={`glass p-3 flex flex-col animate-fade-up delay-400 hover:scale-105 transition-transform duration-300 relative ${isHebrew ? 'text-right' : ''}`}>
       <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary via-accent to-primary px-4 py-1 rounded-full text-sm font-semibold text-white shadow-lg">
-        {isHebrew ? 'הכי פופולרי' : 'Most Popular'}
+        {getPopularLabel()}
       </div>
 
       <PlanIcon Icon={Database} color="accent" />
-      <h3 className="text-xl font-bold mb-1">{isHebrew ? 'בייסיק' : 'Essentials'}</h3>
-      <p className="text-white/70 mb-2 text-xs">{isHebrew ? 'לצוותים קטנים ופרילנסרים' : 'For Small Teams and Freelancers'}</p>
+      <h3 className="text-xl font-bold mb-1">{getTitle()}</h3>
+      <p className="text-white/70 mb-2 text-xs">{getSubtitle()}</p>
       <div className="text-2xl font-bold mb-2">
         ${price.toFixed(2)}
-        {isHebrew ? ' / לחודש' : '/month'}
+        {language === 'es' ? '/mes' : isHebrew ? ' / לחודש' : '/month'}
         {pricingPeriod !== 'monthly' && (
           <span className="block text-sm text-primary mt-1">
-            ${getPeriodTotal().toFixed(2)} {isHebrew ? `לתשלום ${pricingPeriod === 'quarterly' ? 'רבעוני' : 'שנתי'}` : `billed ${pricingPeriod}`}
+            ${getPeriodTotal().toFixed(2)} {
+              language === 'es' 
+                ? `facturado ${pricingPeriod === 'quarterly' ? 'trimestralmente' : 'anualmente'}`
+                : isHebrew 
+                  ? `לתשלום ${pricingPeriod === 'quarterly' ? 'רבעוני' : 'שנתי'}`
+                  : `billed ${pricingPeriod}`
+            }
           </span>
         )}
       </div>
@@ -104,12 +213,12 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
         <DialogTrigger asChild>
           <Button variant="outline" className="w-32 mb-3 border-primary/50 hover:bg-primary/10 text-xs px-2 flex items-center gap-1.5">
             <Play className="w-3 h-3" />
-            {isHebrew ? 'למה בייסיק?' : 'Why Essentials?'}
+            {getWhyButtonText()}
           </Button>
         </DialogTrigger>
         <DialogContent className={`glass ${isHebrew ? 'text-right' : ''}`}>
           <DialogHeader>
-            <DialogTitle>{isHebrew ? 'למה בייסיק?' : content.video_title}</DialogTitle>
+            <DialogTitle>{getWhyButtonText()}</DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
             {video?.preview ? (
@@ -134,13 +243,13 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
       </Dialog>
       
       <div className="space-y-1.5 mb-2 flex-grow">
-        {(isHebrew ? hebrewFeatures : englishFeatures).map((feature, index) => (
+        {getFeatures().map((feature, index) => (
           <PlanFeature key={index} text={feature.text} tooltip={feature.tooltip} showTooltip={feature.showTooltip} isRTL={isHebrew} />
         ))}
         
         <div className="my-3 border-t border-white/10 pt-2">
-          <p className="text-sm font-medium mb-2">{isHebrew ? 'הכל בחינמי, בנוסף:' : 'Everything in Free, plus:'}</p>
-          {(isHebrew ? hebrewExtraFeatures : englishExtraFeatures).map((feature, index) => (
+          <p className="text-sm font-medium mb-2">{getEverythingInFreeText()}</p>
+          {getExtraFeatures().map((feature, index) => (
             <PlanFeature key={`extra-${index}`} text={feature.text} tooltip={feature.tooltip} showTooltip={feature.showTooltip} isRTL={isHebrew} />
           ))}
         </div>
@@ -150,7 +259,7 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
         className="w-full bg-gradient-to-br from-accent to-primary hover:opacity-90 transition-all duration-300 shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/40 mt-8"
         onClick={() => navigate('/signup')}
       >
-        {isHebrew ? 'התחילו היום בחינם' : 'Start Free Trial'}
+        {getTrialButtonText()}
       </Button>
     </Card>
   );
