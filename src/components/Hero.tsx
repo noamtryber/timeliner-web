@@ -194,22 +194,22 @@ export const Hero = () => {
       </div>
       
       <div className={`container mx-auto px-4 relative z-50 ${isRTL ? 'rtl' : ''}`}>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Content */}
-          <div className={`text-left ${isRTL ? 'lg:text-right' : ''} animate-fade-up`}>
-            <span className={`subtitle-gradient mb-4 block tracking-wide ${isRTL ? 'text-base sm:text-lg font-bold' : 'text-sm sm:text-base'}`}>
+          <div className={`text-left ${isRTL ? 'lg:text-right' : ''} animate-fade-up space-y-6`}>
+            <span className={`subtitle-gradient block tracking-wide ${isRTL ? 'text-base sm:text-lg font-bold' : 'text-sm sm:text-base'}`}>
               {getTranslatedContent('video_editors')}
             </span>
             
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 gradient-text tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold gradient-text tracking-tight leading-tight">
               {getTranslatedContent('main_title')}
             </h1>
 
-            <p className="text-lg sm:text-xl text-white/70 mb-8 leading-relaxed">
+            <p className="text-lg sm:text-xl text-white/70 leading-relaxed max-w-2xl">
               {getTranslatedContent('subtext')}
             </p>
 
-            <div className={`flex flex-col sm:flex-row items-start gap-4 mb-12 ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
+            <div className={`flex flex-col sm:flex-row items-start gap-4 pt-6 ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
               <Button 
                 size="lg" 
                 className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto w-full sm:w-auto"
@@ -245,7 +245,7 @@ export const Hero = () => {
             {/* Stats Section */}
             <div 
               ref={statsRef} 
-              className={`grid grid-cols-3 gap-4 ${isRTL ? 'rtl' : ''}`}
+              className={`grid grid-cols-3 gap-4 mt-8 ${isRTL ? 'rtl' : ''}`}
             >
               <div className="glass p-4 rounded-lg">
                 <div className="text-2xl sm:text-3xl font-bold gradient-text">{animatedStats.revisions.toFixed(1)}%</div>
@@ -264,7 +264,7 @@ export const Hero = () => {
 
           {/* Right side - Product Screenshot */}
           <div className="hidden lg:block relative">
-            <div className="relative rounded-2xl overflow-hidden scale-125 transform">
+            <div className="relative rounded-2xl overflow-hidden scale-125 transform translate-x-8">
               <img 
                 src="/lovable-uploads/7a7300e3-617d-48ce-a15a-212411db6ee8.png"
                 alt="Timeliner Dashboard"
