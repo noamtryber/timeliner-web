@@ -50,7 +50,7 @@ export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContent
           onClick={() => navigate('/signup')}
         >
           <span className="flex items-center gap-2">
-            {translations.get_started}
+            Start Free Trial
             <ArrowRight className={`h-4 sm:h-5 w-4 sm:w-5 ${isRTL ? 'rotate-180' : ''}`} />
           </span>
         </Button>
