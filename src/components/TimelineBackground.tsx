@@ -1,6 +1,35 @@
 import { useEffect, useRef } from 'react';
 import p5 from 'p5';
 
+interface Segment {
+  x: number;
+  width: number;
+  color: string;
+  hovered: boolean;
+  label: string;
+}
+
+interface RevisionMarker {
+  x: number;
+  y: number;
+  size: number;
+  alpha: number;
+  pulseSize: number;
+  draw: () => void;
+  pulse: () => void;
+}
+
+interface Timeline {
+  x: number;
+  y: number;
+  width: number;
+  speed: number;
+  segments: Segment[];
+  playheadX: number;
+  update: () => void;
+  draw: () => void;
+}
+
 export const TimelineBackground = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -194,7 +223,7 @@ export const TimelineBackground = () => {
             if (p.mouseX > segX && 
                 p.mouseX < segX + segment.width && 
                 p.abs(p.mouseY - timeline.y) < 10) {
-              segment.color = '#D6BCFA'; // Temporarily change color on click
+              segment.color = '#D6BCFA';
               setTimeout(() => {
                 segment.color = p.random() > 0.5 ? '#9b87f5' : '#7E69AB';
               }, 500);
@@ -214,7 +243,7 @@ export const TimelineBackground = () => {
       <div 
         className="absolute inset-0 z-10"
         style={{
-          background: 'linear-gradient(90deg, rgba(26, 31, 44, 0.9) 0%, rgba(26, 31, 44, 0.35) 100%)'
+          background: 'linear-gradient(90deg, rgba(26, 31, 44, 0.05) 0%, rgba(26, 31, 44, 0.25) 50%, rgba(26, 31, 44, 0.5) 100%)'
         }}
       />
     </div>
