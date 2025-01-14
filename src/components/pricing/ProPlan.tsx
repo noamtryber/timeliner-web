@@ -45,6 +45,17 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
       ? basePrice * 0.85 
       : basePrice;
 
+  const getPeriodTotal = () => {
+    switch (pricingPeriod) {
+      case 'quarterly':
+        return price * 3;
+      case 'yearly':
+        return price * 12;
+      default:
+        return price;
+    }
+  };
+
   const spanishFeatures: Feature[] = [
     { text: 'Almacenamiento: 2TB', tooltip: 'Almacenamiento seguro en la nube con respaldo automático', showTooltip: true },
     { text: 'Miembros: Hasta 30', tooltip: 'Gestiona un equipo de hasta 30 usuarios con diferentes permisos', showTooltip: true },
@@ -66,30 +77,6 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     { text: 'Client Access: 10 Guests per project', tooltip: 'Collaborate with 10 clients simultaneously per project', showTooltip: true },
   ];
 
-  const spanishExtraFeatures: Feature[] = [
-    { text: 'Roles y Permisos Avanzados', tooltip: 'Gestión avanzada de permisos con roles personalizados', showTooltip: true },
-    { text: 'Marca Personalizada', tooltip: 'Agrega imágenes de portada, logos y elementos de marca por cliente', showTooltip: true },
-    { text: 'Gestión Avanzada de Equipo', tooltip: 'Herramientas avanzadas para la gestión de equipos', showTooltip: true },
-    { text: 'Modo Agencia', tooltip: 'Personaliza flujos de trabajo para agencias', showTooltip: true },
-    { text: 'Subtítulos y Traducciones IA', tooltip: 'Generación automática de subtítulos y traducciones', showTooltip: true }
-  ];
-
-  const hebrewExtraFeatures: Feature[] = [
-    { text: 'תפקידים והרשאות מתקדמים', tooltip: 'ניהול הרשאות מתקדם עם תפקידים מותאמים אישית', showTooltip: true },
-    { text: 'מיתוג מותאם אישית', tooltip: 'הוסף תמונות כותרת, לוגואים ואלמנטים של מותג ללקוח', showTooltip: true },
-    { text: 'ניהול צוות מתקדם', tooltip: 'כלים מתקדמים לניהול צוותים', showTooltip: true },
-    { text: 'מצב סוכנות', tooltip: 'התאם זרימות עבודה לסוכנויות', showTooltip: true },
-    { text: 'כתוביות ותרגומי AI', tooltip: 'יצירה אוטומטית של כתוביות ותרגומים', showTooltip: true }
-  ];
-
-  const englishExtraFeatures: Feature[] = [
-    { text: 'Advanced Roles and Permissions', tooltip: 'Advanced permission management with custom roles', showTooltip: true },
-    { text: 'Custom Branding', tooltip: 'Add cover images, logos, and brand elements per client', showTooltip: true },
-    { text: 'Advanced Team Management', tooltip: 'Advanced tools for team management', showTooltip: true },
-    { text: 'Agency Mode', tooltip: 'Customize workflows for agencies', showTooltip: true },
-    { text: 'AI Captions + Translations', tooltip: 'Automatic caption and translation generation', showTooltip: true }
-  ];
-
   const getFeatures = () => {
     switch (language) {
       case 'es':
@@ -101,29 +88,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     }
   };
 
-  const getExtraFeatures = () => {
-    switch (language) {
-      case 'es':
-        return spanishExtraFeatures;
-      case 'he':
-        return hebrewExtraFeatures;
-      default:
-        return englishExtraFeatures;
-    }
-  };
-
-  const getPeriodTotal = () => {
-    switch (pricingPeriod) {
-      case 'quarterly':
-        return price * 3;
-      case 'yearly':
-        return price * 12;
-      default:
-        return price;
-    }
-  };
-
-  const getTitle = () => {
+  const getPlanTitle = () => {
     switch (language) {
       case 'es':
         return 'Estudio';
@@ -134,7 +99,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     }
   };
 
-  const getSubtitle = () => {
+  const getPlanSubtitle = () => {
     switch (language) {
       case 'es':
         return 'Para Agencias y Equipos en Crecimiento';
@@ -181,8 +146,8 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
   return (
     <Card className={`relative border border-[#2A2F3C] bg-gradient-to-b from-[#1A1F2C]/50 to-[#1A1F2C] p-3 flex flex-col animate-fade-up delay-500 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
       <PlanIcon Icon={Crown} color="primary" />
-      <h3 className="text-xl font-bold mb-1">{getTitle()}</h3>
-      <p className="text-white/70 mb-2 text-[0.927rem]">{getSubtitle()}</p>
+      <h3 className="text-xl font-bold mb-1">{getPlanTitle()}</h3>
+      <p className="text-white/70 mb-2 text-[0.927rem]">{getPlanSubtitle()}</p>
       <div className="text-2xl font-bold mb-2">
         ${price.toFixed(2)}
         <span className="text-base font-normal">
