@@ -11,9 +11,9 @@ import Waitlist from "@/pages/Waitlist";
 
 function App() {
   return (
-    <AccessibilityProvider>
-      <LanguageProvider>
-        <Router>
+    <Router>
+      <AccessibilityProvider>
+        <LanguageProvider>
           <Routes>
             {/* Language-specific routes */}
             <Route path="/es/*" element={
@@ -80,9 +80,9 @@ function App() {
           </Routes>
           <AccessibilityButton />
           <Toaster />
-        </Router>
-      </LanguageProvider>
-    </AccessibilityProvider>
+        </LanguageProvider>
+      </AccessibilityProvider>
+    </Router>
   );
 }
 
