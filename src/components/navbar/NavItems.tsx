@@ -21,7 +21,7 @@ const translations = {
   pricing: {
     en: 'Pricing',
     es: 'Precios',
-    he: 'מחירים'
+    he: 'תמחור'
   },
   blog: {
     en: 'Blog',
@@ -57,7 +57,7 @@ export const NavItems = ({ content, handleSectionClick, hideMainNav }: NavItemsP
         <button 
           key={item.id}
           onClick={item.onClick} 
-          className="text-white hover:text-white px-3 py-2 rounded-md text-base font-medium"
+          className={`text-white hover:text-white px-3 py-2 rounded-md text-base font-medium w-full ${isRTL ? 'text-right' : 'text-left'}`}
         >
           {translations[item.id as keyof typeof translations][language as keyof typeof translations.features] || 
            content?.[`${item.id}_link`] || 

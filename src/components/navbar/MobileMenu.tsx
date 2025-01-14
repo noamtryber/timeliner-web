@@ -32,31 +32,31 @@ export const MobileMenu = ({
           <>
             <button 
               onClick={() => handleSectionClick('features')} 
-              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+              className={`text-white block px-3 py-2 rounded-md text-base font-medium w-full ${isRTL ? 'text-right' : 'text-left'}`}
             >
               {content?.features_link || 'Features'}
             </button>
             <button 
               onClick={() => handleSectionClick('testimonials')} 
-              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+              className={`text-white block px-3 py-2 rounded-md text-base font-medium w-full ${isRTL ? 'text-right' : 'text-left'}`}
             >
               {content?.testimonials_link || 'Testimonials'}
             </button>
             <button 
               onClick={() => handleSectionClick('pricing')} 
-              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+              className={`text-white block px-3 py-2 rounded-md text-base font-medium w-full ${isRTL ? 'text-right' : 'text-left'}`}
             >
               {content?.pricing_link || 'Pricing'}
             </button>
             <button 
               onClick={() => handleSectionClick('blog')} 
-              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+              className={`text-white block px-3 py-2 rounded-md text-base font-medium w-full ${isRTL ? 'text-right' : 'text-left'}`}
             >
               {content?.blog_link || 'Blog'}
             </button>
             <button 
               onClick={() => handleSectionClick('community')} 
-              className="text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+              className={`text-white block px-3 py-2 rounded-md text-base font-medium w-full ${isRTL ? 'text-right' : 'text-left'}`}
             >
               {content?.community_link || 'Community'}
             </button>
