@@ -1,54 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=OpenDyslexic:wght@400;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+ 
 @layer base {
   :root {
-    --base-font-size: 100%;
-    --letter-spacing: 0px;
-    --line-height: 1.5;
-    --font-weight: 400;
-    
-    --background: 232 15% 13%;
-    --foreground: 0 0% 100%;
-    --card: 232 15% 13%;
-    --card-foreground: 0 0% 100%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+ 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 262 89% 74%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 262 35% 54%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 262 89% 86%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --popover-foreground: 0 0% 3.9%;
+ 
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+ 
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+ 
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+ 
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+ 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 262 89% 74%;
-    --radius: 0.75rem;
-  }
+    --destructive-foreground: 0 0% 98%;
 
-  html {
-    font-size: var(--base-font-size);
-    letter-spacing: var(--letter-spacing);
-    line-height: var(--line-height);
-  }
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+ 
+    --radius: 0.5rem;
 
-  body {
-    @apply bg-background text-foreground font-sans;
-    font-family: 'Inter', 'Assistant', sans-serif;
-    font-weight: var(--font-weight);
+    font-size: var(--base-font-size, 100%);
+    letter-spacing: var(--letter-spacing, 0);
+    line-height: var(--line-height, 1.5);
+    font-weight: var(--font-weight, 400);
   }
 
   .dyslexic-font {
-    font-family: 'OpenDyslexic', 'Inter', 'Assistant', sans-serif !important;
+    font-family: 'OpenDyslexic', sans-serif;
   }
 
   .highlight-titles h1,
@@ -57,26 +50,71 @@
   .highlight-titles h4,
   .highlight-titles h5,
   .highlight-titles h6 {
-    @apply bg-primary/20 px-2 py-1 rounded;
+    background-color: hsl(var(--primary) / 0.1);
+    padding: 0.5rem;
+    border-radius: 0.25rem;
   }
 
   .highlight-links a {
-    @apply underline decoration-primary decoration-2 underline-offset-4;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: hsl(var(--primary));
   }
 
   [data-contrast="dark"] {
-    --background: 232 15% 10%;
-    --foreground: 0 0% 90%;
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
   }
 
   [data-contrast="light"] {
-    --background: 0 0% 98%;
-    --foreground: 232 15% 13%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+    
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
   }
 
   [data-contrast="high"] {
     --background: 0 0% 100%;
     --foreground: 0 0% 0%;
+    
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+    
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+    
     --primary: 0 0% 0%;
     --primary-foreground: 0 0% 100%;
   }
