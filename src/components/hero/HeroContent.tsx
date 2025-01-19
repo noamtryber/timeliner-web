@@ -92,7 +92,7 @@ export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContent
           className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto w-full sm:w-auto"
           onClick={handleSignupClick}
         >
-          <span className="flex items-center gap-2">
+          <span className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
             {getStartTrialText()}
             <ArrowRight className={`h-4 sm:h-5 w-4 sm:w-5 ${isRTL ? 'rotate-180' : ''}`} />
           </span>
