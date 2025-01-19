@@ -1,57 +1,63 @@
-import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
-import { useState } from "react";
-import { usePageContent } from "@/hooks/usePageContent";
-import { useToast } from "@/components/ui/use-toast";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { LanguageSwitcher } from "./LanguageSwitcher";
 import { NavItems } from "./navbar/NavItems";
-import { AuthButtons } from "./navbar/AuthButtons";
 import { MobileMenu } from "./navbar/MobileMenu";
+import { AuthButtons } from "./navbar/AuthButtons";
+import { LanguageSwitcher } from "./LanguageSwitcher";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { usePageContent } from "@/hooks/usePageContent";
 
 export const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const { toast } = useToast();
-  const { data: content, error } = usePageContent('nav', 'main-nav');
-  const { isRTL } = useLanguage();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { data: content } = usePageContent('nav');
   const navigate = useNavigate();
   const location = useLocation();
-  const hideMainNav = location.pathname === '/blog' || location.pathname === '/community';
+  const { isRTL, language } = useLanguage();
 
-  if (error) {
-    toast({
-      variant: "destructive",
-      title: "Error loading navigation content",
-      description: "Please try refreshing the page"
-    });
-  }
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
 
-  const handleAuthClick = () => {
-    navigate('/signup');
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleSectionClick = (section: string) => {
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(section);
+        element?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      const element = document.getElementById(section);
+      element?.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
-  const handleSectionClick = (sectionId: string) => {
-    if (sectionId === 'blog') {
-      navigate('/blog');
-      setIsOpen(false);
-      return;
-    }
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsOpen(false);
-    }
+  const handleAuthClick = (type: 'login' | 'signup') => {
+    const prefix = language === 'en' ? '' : `/${language}`;
+    navigate(`${prefix}/${type}`);
   };
 
   return (
-    <nav className="fixed w-full z-[9999] top-0 animate-fade-down">
-      <div className="bg-background/80 backdrop-blur-sm border-b border-[#222222]/40 mx-auto px-4 sm:px-6 lg:px-8 text-[1.15em]">
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-background/80 backdrop-blur-xl shadow-lg' : ''
+    }`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className={`flex items-center justify-between w-full ${isRTL ? 'flex-row-reverse' : ''}`}>
             {/* Logo and Nav Items Container */}
             <div className="flex items-center gap-8">
-              <a href="/" className={`flex-shrink-0 order-first ${isRTL ? 'order-first' : ''}`}>
+              <a 
+                href={language === 'en' ? '/' : `/${language}`} 
+                className={`flex-shrink-0 ${isRTL ? 'order-first' : ''}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate(language === 'en' ? '/' : `/${language}`);
+                }}
+              >
                 <img 
                   src="/lovable-uploads/1ad9d673-efdf-41ae-8a29-82d3e976a7ed.png" 
                   alt="Timeliner Logo" 
@@ -62,7 +68,6 @@ export const Navbar = () => {
                 <NavItems 
                   content={content} 
                   handleSectionClick={handleSectionClick}
-                  hideMainNav={hideMainNav}
                 />
               </div>
             </div>
@@ -74,24 +79,16 @@ export const Navbar = () => {
                 <AuthButtons content={content} handleAuthClick={handleAuthClick} />
               </div>
             </div>
-          </div>
-          
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
-              <Menu className="h-6 w-6" />
-            </Button>
+
+            {/* Mobile menu button */}
+            <MobileMenu 
+              content={content}
+              handleSectionClick={handleSectionClick}
+              handleAuthClick={handleAuthClick}
+            />
           </div>
         </div>
       </div>
-
-      <MobileMenu 
-        content={content}
-        isOpen={isOpen}
-        hideMainNav={hideMainNav}
-        handleSectionClick={handleSectionClick}
-        handleAuthClick={handleAuthClick}
-      />
     </nav>
   );
 };
