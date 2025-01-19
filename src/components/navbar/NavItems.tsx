@@ -49,7 +49,8 @@ export const NavItems = ({ content, handleSectionClick, hideMainNav }: NavItemsP
     { id: 'community', onClick: () => navigate('/community') }
   ];
 
-  const items = isRTL ? [...navItems].reverse() : navItems;
+  // For RTL, we keep the original order since the container will reverse it
+  const items = navItems;
 
   return (
     <>
@@ -57,7 +58,7 @@ export const NavItems = ({ content, handleSectionClick, hideMainNav }: NavItemsP
         <button 
           key={item.id}
           onClick={item.onClick} 
-          className={`text-white hover:text-white px-3 py-2 rounded-md text-base font-medium w-full ${isRTL ? 'text-right' : 'text-left'}`}
+          className="text-white hover:text-white px-3 py-2 rounded-md text-base font-medium"
         >
           {translations[item.id as keyof typeof translations][language as keyof typeof translations.features] || 
            content?.[`${item.id}_link`] || 
