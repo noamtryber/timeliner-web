@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { HeroStats } from "./HeroStats";
 
 interface ContentTranslations {
   video_editors: string;
@@ -10,9 +9,6 @@ interface ContentTranslations {
   subtext: string;
   get_started: string;
   watch_demo: string;
-  faster_revisions: string;
-  increase_income: string;
-  client_retention: string;
 }
 
 interface HeroContentProps {
@@ -118,8 +114,6 @@ export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContent
           </Button>
         )}
       </div>
-
-      <HeroStats translations={translations} />
     </div>
   );
 };

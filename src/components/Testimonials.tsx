@@ -69,53 +69,53 @@ const testimonials = {
 const stats = {
   en: [
     {
-      value: 32,
-      suffix: "%",
+      value: 2.4,
+      suffix: "X",
       label: "Faster Revision Rounds"
     },
     {
-      value: 19,
+      value: 19.7,
       suffix: "%",
-      label: "Increase in Income"
+      label: "Increase in Earnings"
     },
     {
-      value: 24,
+      value: 24.1,
       suffix: "%",
-      label: "Client Retention in Retainers"
+      label: "Increase of Client Retention in Retainers"
     }
   ],
   es: [
     {
-      value: 32,
-      suffix: "%",
+      value: 2.4,
+      suffix: "X",
       label: "Rondas de Revisión más Rápidas"
     },
     {
-      value: 19,
+      value: 19.7,
       suffix: "%",
-      label: "Aumento en Ingresos"
+      label: "Aumento en Ganancias"
     },
     {
-      value: 24,
+      value: 24.1,
       suffix: "%",
-      label: "Retención de Clientes en Contratos"
+      label: "Aumento en Retención de Clientes"
     }
   ],
   he: [
     {
-      value: 32,
-      suffix: "%",
-      label: "שיפור עם סבבי תיקונים מהירים יותר"
+      value: 2.4,
+      suffix: "X",
+      label: "מהירות סבבי תיקונים"
     },
     {
-      value: 19,
+      value: 19.7,
       suffix: "%",
       label: "עלייה בהכנסות"
     },
     {
-      value: 24,
+      value: 24.1,
       suffix: "%",
-      label: "עלייה בשימור לקוחות ריטיינר"
+      label: "עלייה בשימור לקוחות"
     }
   ]
 };
