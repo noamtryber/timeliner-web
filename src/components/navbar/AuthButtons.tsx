@@ -4,11 +4,10 @@ import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useNavigate } from "react-router-dom";
 
 interface AuthButtonsProps {
   content?: any;
-  handleAuthClick?: () => void;
+  handleAuthClick: (type: 'login' | 'signup') => void;
 }
 
 const translations = {
@@ -41,11 +40,10 @@ const translations = {
   }
 };
 
-export const AuthButtons = ({ content }: AuthButtonsProps) => {
+export const AuthButtons = ({ content, handleAuthClick }: AuthButtonsProps) => {
   const { session } = useAuth();
   const { toast } = useToast();
   const { language } = useLanguage();
-  const navigate = useNavigate();
 
   const handleLogout = async () => {
     const { error } = await supabase.auth.signOut();
@@ -56,11 +54,6 @@ export const AuthButtons = ({ content }: AuthButtonsProps) => {
         description: error.message
       });
     }
-  };
-
-  const handleAuthClick = () => {
-    const prefix = language === 'en' ? '' : `/${language}`;
-    navigate(`${prefix}/signup`);
   };
 
   if (session) {
@@ -78,10 +71,17 @@ export const AuthButtons = ({ content }: AuthButtonsProps) => {
 
   return (
     <>
-      <Button variant="ghost" className="text-white text-base" onClick={handleAuthClick}>
+      <Button 
+        variant="ghost" 
+        className="text-white text-base" 
+        onClick={() => handleAuthClick('login')}
+      >
         {translations.login[language as keyof typeof translations.login] || content?.login}
       </Button>
-      <Button className="bg-primary hover:bg-primary/90 text-base" onClick={handleAuthClick}>
+      <Button 
+        className="bg-primary hover:bg-primary/90 text-base" 
+        onClick={() => handleAuthClick('signup')}
+      >
         {translations.start_free_trial[language as keyof typeof translations.start_free_trial] || content?.sign_up}
       </Button>
     </>
