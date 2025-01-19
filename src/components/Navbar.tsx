@@ -50,15 +50,15 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <div className={`flex items-center justify-between w-full ${isRTL ? 'flex-row-reverse' : ''}`}>
             {/* Logo and Nav Items Container */}
-            <div className={`flex items-center gap-8 ${isRTL ? 'flex-row-reverse' : ''}`}>
-              <a href="/" className="flex-shrink-0">
+            <div className="flex items-center gap-8">
+              <a href="/" className={`flex-shrink-0 order-first ${isRTL ? 'order-first' : ''}`}>
                 <img 
                   src="/lovable-uploads/1ad9d673-efdf-41ae-8a29-82d3e976a7ed.png" 
                   alt="Timeliner Logo" 
                   className="h-7"
                 />
               </a>
-              <div className={`hidden md:flex items-center gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+              <div className={`hidden md:flex items-center gap-4`}>
                 <NavItems 
                   content={content} 
                   handleSectionClick={handleSectionClick}
@@ -68,7 +68,7 @@ export const Navbar = () => {
             </div>
             
             {/* Auth and Language Controls Container */}
-            <div className={`hidden md:flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+            <div className="hidden md:flex items-center">
               <div className={`flex items-center gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
                 <LanguageSwitcher />
                 <AuthButtons content={content} handleAuthClick={handleAuthClick} />

@@ -49,12 +49,9 @@ export const NavItems = ({ content, handleSectionClick, hideMainNav }: NavItemsP
     { id: 'community', onClick: () => navigate('/community') }
   ];
 
-  // For RTL, we keep the original order since the container will reverse it
-  const items = navItems;
-
   return (
-    <>
-      {items.map((item) => (
+    <div className={`flex items-center gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+      {navItems.map((item) => (
         <button 
           key={item.id}
           onClick={item.onClick} 
@@ -65,6 +62,6 @@ export const NavItems = ({ content, handleSectionClick, hideMainNav }: NavItemsP
            item.id.charAt(0).toUpperCase() + item.id.slice(1)}
         </button>
       ))}
-    </>
+    </div>
   );
 };
