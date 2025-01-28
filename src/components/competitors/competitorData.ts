@@ -38,7 +38,7 @@ export const competitors: Competitor[] = [
       },
       {
         name: "No Account Required for Reviewers",
-        competitor: true,
+        competitor: false,
         timeliner: true
       },
       {
@@ -83,8 +83,9 @@ export const competitors: Competitor[] = [
       },
       {
         name: "Costs rise exponentially as team grows",
-        competitor: true,
-        timeliner: false
+        competitor: false,
+        timeliner: true,
+        description: "Flat pricing covers up to 30 users with no extra fees"
       }
     ]
   },
