@@ -1,4 +1,4 @@
-import { ChevronRight } from "lucide-react";
+import { Check, X } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Competitor } from "./competitorData";
@@ -13,7 +13,7 @@ export const ComparisonTable = ({ competitor }: ComparisonTableProps) => {
   return (
     <div className="w-full overflow-x-auto rounded-xl shadow-lg">
       <Table className="w-full border border-primary/20 rounded-xl overflow-hidden">
-        <TableHeader>
+        <TableHeader className="sticky top-0 z-10">
           <TableRow className="hover:bg-transparent border-b border-primary/20">
             <TableHead className={`w-1/3 ${isRTL ? 'text-right' : 'text-left'} bg-background`}>
               {language === 'es' ? 'Características' : 
@@ -49,9 +49,9 @@ export const ComparisonTable = ({ competitor }: ComparisonTableProps) => {
               <TableCell className={`whitespace-pre-line ${isRTL ? 'text-right' : 'text-left'}`}>
                 {typeof feature.competitor === 'boolean' ? (
                   feature.competitor ? (
-                    <ChevronRight className="text-primary h-5 w-5" />
+                    <Check className="text-primary h-5 w-5" />
                   ) : (
-                    <span className="text-primary/40">—</span>
+                    <X className="text-primary/40 h-5 w-5" />
                   )
                 ) : (
                   feature.competitor
@@ -60,9 +60,9 @@ export const ComparisonTable = ({ competitor }: ComparisonTableProps) => {
               <TableCell className={`bg-primary/10 whitespace-pre-line ${isRTL ? 'text-right' : 'text-left'}`}>
                 {typeof feature.timeliner === 'boolean' ? (
                   feature.timeliner ? (
-                    <ChevronRight className="text-primary h-5 w-5" />
+                    <Check className="text-primary h-5 w-5" />
                   ) : (
-                    <span className="text-primary/40">—</span>
+                    <X className="text-primary/40 h-5 w-5" />
                   )
                 ) : (
                   feature.timeliner
