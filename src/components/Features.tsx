@@ -5,13 +5,20 @@ import { useToast } from "@/hooks/use-toast";
 import { FeaturesHeader } from "./features/FeaturesHeader";
 import { FeatureDialog } from "./features/FeatureDialog";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { featureGroups } from "./featureData";
+import { featureGroups } from "./features/featureData";
 import { iconComponents } from "./features/iconComponents";
 import { Button } from "./ui/button";
 
 export const Features = () => {
   const [openDialog, setOpenDialog] = useState<string | null>(null);
-  const [selectedFeature, setSelectedFeature] = useState<string | null>(null);
+  const [selectedFeatures, setSelectedFeatures] = useState<Record<string, string>>(() => {
+    // Initialize with first feature of each group selected
+    return featureGroups.reduce((acc, group) => ({
+      ...acc,
+      [group.id]: group.features[0].id
+    }), {});
+  });
+
   const { language } = useLanguage();
   const { data: content, isLoading: contentLoading, error: contentError } = usePageContent('feature');
   const { data: media, isLoading: mediaLoading, error: mediaError } = useMediaContent('feature');
@@ -44,7 +51,6 @@ export const Features = () => {
   }
 
   const activeFeature = featureGroups.flatMap(group => group.features).find(f => f.id === openDialog);
-  const currentFeature = featureGroups.flatMap(group => group.features).find(f => f.id === (selectedFeature || featureGroups[0].features[0].id));
   
   const getFeatureContent = (sectionId: string | null, key: string): string => {
     if (!content) return '';
@@ -72,23 +78,28 @@ export const Features = () => {
         <FeaturesHeader />
         <div className="space-y-32">
           {featureGroups.map((group) => {
+            const currentFeature = group.features.find(f => f.id === selectedFeatures[group.id]);
             const IconComponent = currentFeature ? iconComponents[currentFeature.icon] : null;
+
             return (
               <div key={group.id} className="space-y-12">
                 <div className="grid grid-cols-12 gap-6 items-center">
                   {/* Left Column - Feature List (15%) */}
-                  <div className="col-span-2 space-y-2 flex flex-col items-center">
+                  <div className="col-span-2 space-y-2 flex flex-col">
                     {group.features.map((feature) => (
                       <button
                         key={feature.id}
-                        onClick={() => setSelectedFeature(feature.id)}
-                        className={`w-full p-3 rounded-lg transition-all duration-300 text-center
-                          ${selectedFeature === feature.id 
+                        onClick={() => setSelectedFeatures(prev => ({
+                          ...prev,
+                          [group.id]: feature.id
+                        }))}
+                        className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center
+                          ${selectedFeatures[group.id] === feature.id 
                             ? 'bg-primary/10 font-semibold text-primary' 
                             : 'hover:bg-card/50 text-white/70'
                           }`}
                       >
-                        <span className="text-sm">{feature.title}</span>
+                        <span className="text-sm text-left">{feature.title}</span>
                       </button>
                     ))}
                   </div>
