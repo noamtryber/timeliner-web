@@ -15,7 +15,7 @@ export const competitors: Competitor[] = [
   {
     id: "frameio",
     name: "Frame.io",
-    logo: "/lovable-uploads/f0899906-47ae-4fe3-8b96-2bdca0cc580f.png",
+    logo: "/lovable-uploads/acfcdad6-1f19-423f-9c1e-ae8fdb3f3620.png",
     features: [
       {
         name: "Time-Synced Comments",
