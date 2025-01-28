@@ -219,7 +219,7 @@ export const competitors: Competitor[] = [
     features: [
       {
         name: "Pricing",
-        competitor: "$19.95/user/month = $99.75/month for 5 users",
+        competitor: "$19.95/user/month = $99.75/month for 5 users\n$598.50/month for 30 users",
         timeliner: "$29/month (up to 5 users)\n$49/month (up to 30 users)",
         keyTakeaways: [
           {
@@ -233,24 +233,34 @@ export const competitors: Competitor[] = [
         ]
       },
       {
-        name: "Storage",
-        competitor: "250 GB",
-        timeliner: "1–2 TB (depending on the plan)"
-      },
-      {
-        name: "Media Review Tools",
-        competitor: "Time-synced comments, annotations",
-        timeliner: "Fully integrated with advanced workflow and review tools"
-      },
-      {
-        name: "No Account Required for Reviewers",
+        name: "Time-Synced Comments",
         competitor: true,
         timeliner: true
       },
       {
-        name: "Advanced Workflow Management",
+        name: "High-Quality Video Previews",
+        competitor: true,
+        timeliner: true
+      },
+      {
+        name: "Client-Friendly Review Links",
+        competitor: true,
+        timeliner: true
+      },
+      {
+        name: "Media Status Tracking Advanced Workflow",
+        competitor: "Basic tags only",
+        timeliner: "List, Kanban, Pool, and Chart Status Groups"
+      },
+      {
+        name: "Intuitive Split Screen Version Comparison",
         competitor: false,
-        timeliner: "Includes List, Kanban, Pool, and Chart views"
+        timeliner: true
+      },
+      {
+        name: "Interactive New Offer Workflow",
+        competitor: false,
+        timeliner: true
       },
       {
         name: "Built-In CRM",
@@ -258,34 +268,39 @@ export const competitors: Competitor[] = [
         timeliner: true
       },
       {
-        name: "AI Tools",
+        name: "WhatsApp & Slack Integrations",
         competitor: false,
-        timeliner: "Automatic caption generation in multiple languages"
+        timeliner: true
       },
       {
-        name: "Audio Comments",
+        name: "Team Monitoring & Productivity Tracking",
         competitor: false,
-        timeliner: "Add comments using voice recordings"
+        timeliner: true
+      },
+      {
+        name: "Add comments using voice recordings",
+        competitor: false,
+        timeliner: true
+      },
+      {
+        name: "Multi-language AI captions (for uncommon languages as well)",
+        competitor: false,
+        timeliner: true
       },
       {
         name: "Pro Portfolio Builder",
         competitor: false,
-        timeliner: "Build and send professional portfolios to clients"
+        timeliner: true
       },
       {
-        name: "Client Area and Permissions",
-        competitor: "Limited",
-        timeliner: "Dedicated client area with advanced permissions"
+        name: "Educational Resources & 1-on-1 Onboarding",
+        competitor: false,
+        timeliner: true
       },
       {
-        name: "Educational Resources",
-        competitor: "Limited",
-        timeliner: "Includes video courses and onboarding guides"
-      },
-      {
-        name: "Scalability",
-        competitor: "Costs increase per user",
-        timeliner: "Flat pricing supports growth up to 30 users for $49/month"
+        name: "Costs rise exponentially as team grows",
+        competitor: "$598.50/month for 30 users",
+        timeliner: "Flat pricing covers up to 30 users with no extra fees"
       }
     ]
   },
