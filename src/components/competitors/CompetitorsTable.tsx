@@ -34,7 +34,7 @@ export const CompetitorsTable = () => {
   return (
     <section className="py-20 relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <h2 className={`text-4xl font-bold mb-4 text-center ${isRTL ? 'text-right' : 'text-left'}`}>
+        <h2 className="text-4xl font-bold mb-4 text-center">
           {getTitle()}
         </h2>
         
