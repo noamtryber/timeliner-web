@@ -76,14 +76,17 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
 
   if (isMobile) {
     return (
-      <div className="space-y-4 px-4" dir={isRTL ? 'rtl' : 'ltr'}>
+      <div className="space-y-2 px-1 snap-y snap-mandatory" dir={isRTL ? 'rtl' : 'ltr'}>
         {competitor.features.map((feature, index) => (
-          <div key={index} className="bg-background/50 backdrop-blur-sm border border-primary/20 rounded-lg p-4 space-y-3 w-full">
+          <div 
+            key={index} 
+            className="bg-background/50 backdrop-blur-sm border border-primary/20 rounded-lg p-3 space-y-2 w-full snap-start"
+          >
             <h3 className={`font-medium text-lg ${isRTL ? 'text-right' : 'text-left'}`}>
               {getFeatureText(feature)}
             </h3>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
+            <div className="grid grid-cols-2 gap-2">
+              <div className="space-y-1">
                 <p className={`text-sm text-muted-foreground ${isRTL ? 'text-right' : 'text-left'}`}>
                   {competitor.name}
                 </p>
@@ -99,7 +102,7 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
                   )}
                 </div>
               </div>
-              <div className="space-y-2">
+              <div className="space-y-1">
                 <p className={`text-sm text-muted-foreground ${isRTL ? 'text-right' : 'text-left'}`}>
                   Timeliner
                 </p>
@@ -119,13 +122,13 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
           </div>
         ))}
 
-        <div className="mt-8 bg-background/50 backdrop-blur-sm border border-primary/20 rounded-lg p-6">
-          <h3 className={`text-xl font-bold mb-4 ${isRTL ? 'text-right' : 'text-left'}`}>
+        <div className="mt-4 bg-background/50 backdrop-blur-sm border border-primary/20 rounded-lg p-4 snap-start">
+          <h3 className={`text-xl font-bold mb-3 ${isRTL ? 'text-right' : 'text-left'}`}>
             {getKeyTakeawaysTitle()}
           </h3>
-          <ul className="space-y-4">
+          <ul className="space-y-3">
             {competitor.features[0].keyTakeaways?.map((takeaway, index) => (
-              <li key={index} className={`flex items-start gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
+              <li key={index} className={`flex items-start gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
                 <span className={`mt-1 flex-shrink-0 ${isRTL ? 'order-last' : ''}`}>
                   {takeaway.type === 'negative' ? 
                     <X className="text-red-500 h-5 w-5" /> : 

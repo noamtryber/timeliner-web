@@ -34,8 +34,8 @@ export const CompetitorsTable = () => {
   };
 
   return (
-    <section className="py-20 relative overflow-hidden">
-      <div className={`container mx-auto ${isMobile ? 'px-2' : 'px-4'}`}>
+    <section className="py-12 relative overflow-auto snap-y snap-mandatory">
+      <div className={`container mx-auto ${isMobile ? 'px-1' : 'px-4'}`}>
         <h2 className={`${isMobile ? 'text-3xl' : 'text-4xl'} font-bold mb-4 text-center`}>
           {getTitle()}
         </h2>
@@ -49,12 +49,10 @@ export const CompetitorsTable = () => {
           <div className="absolute -z-10 -top-[40%] -left-[20%] w-[70%] h-[90%] bg-primary/20 blur-[120px] rounded-full animate-pulse" />
           <div className="absolute -z-10 -bottom-[40%] -right-[20%] w-[70%] h-[90%] bg-secondary/20 blur-[120px] rounded-full animate-pulse delay-1000" />
           
-          <div className={`${isMobile ? 'overflow-x-auto pb-4' : ''}`}>
-            <CompetitorTabs 
-              selectedCompetitor={selectedCompetitor}
-              onSelect={setSelectedCompetitor}
-            />
-          </div>
+          <CompetitorTabs 
+            selectedCompetitor={selectedCompetitor}
+            onSelect={setSelectedCompetitor}
+          />
           
           <ComparisonTable competitor={selectedCompetitor} />
         </div>
