@@ -25,7 +25,7 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
       case 'he':
         return 'נקודות מפתח:';
       case 'es':
-        return 'Puntos Clave:';
+        return 'Puntos clave:';
       default:
         return 'Key Takeaways:';
     }
