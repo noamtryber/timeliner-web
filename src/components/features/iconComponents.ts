@@ -1,11 +1,33 @@
-import { Workflow, FileStack, CreditCard, Users, FolderOpen, UserCircle, Shield } from "lucide-react";
+import { 
+  FileStack, 
+  Users, 
+  FolderOpen, 
+  MessageSquare,
+  Link,
+  FileText,
+  Calendar,
+  DollarSign,
+  Robot,
+  ChartBar,
+  Globe,
+  Slack,
+  Whatsapp,
+  Activity
+} from "lucide-react";
 
 export const iconComponents = {
-  Workflow,
   FileStack,
-  CreditCard,
   Users,
   FolderOpen,
-  UserCircle,
-  Shield
+  MessageSquare,
+  Link,
+  FileText,
+  Calendar,
+  DollarSign,
+  Robot,
+  ChartBar,
+  Globe,
+  Slack,
+  Whatsapp,
+  Activity
 } as const;

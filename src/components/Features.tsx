@@ -6,7 +6,7 @@ import { FeaturesHeader } from "./features/FeaturesHeader";
 import { FeatureDialog } from "./features/FeatureDialog";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { featureGroups } from "./features/featureData";
-import { PlayCircle } from "lucide-react";
+import { iconComponents } from "./features/iconComponents";
 import { Button } from "./ui/button";
 
 export const Features = () => {
@@ -71,71 +71,76 @@ export const Features = () => {
       <div className="container mx-auto px-4 relative">
         <FeaturesHeader />
         <div className="space-y-32">
-          {featureGroups.map((group, index) => (
-            <div key={group.id} className="space-y-12">
-              <h3 className="text-2xl md:text-3xl font-bold text-center gradient-text">
-                {group.headline}
-              </h3>
-              <div className="grid grid-cols-12 gap-6">
-                {/* Left Column - Feature List (15%) */}
-                <div className="col-span-2 space-y-2">
-                  {group.features.map((feature) => (
-                    <button
-                      key={feature.id}
-                      onClick={() => setSelectedFeature(feature.id)}
-                      className={`w-full p-3 rounded-lg transition-all duration-300 text-left
-                        ${selectedFeature === feature.id 
-                          ? 'bg-primary/10 font-semibold text-primary' 
-                          : 'hover:bg-card/50 text-white/70'
-                        }`}
-                    >
-                      <span className="text-sm">{feature.title}</span>
-                    </button>
-                  ))}
-                </div>
+          {featureGroups.map((group, index) => {
+            const IconComponent = currentFeature ? iconComponents[currentFeature.icon] : null;
+            return (
+              <div key={group.id} className="space-y-12">
+                <h3 className="text-2xl md:text-3xl font-bold text-center gradient-text">
+                  {group.headline}
+                </h3>
+                <div className="grid grid-cols-12 gap-6">
+                  {/* Left Column - Feature List (15%) */}
+                  <div className="col-span-2 space-y-2">
+                    {group.features.map((feature) => (
+                      <button
+                        key={feature.id}
+                        onClick={() => setSelectedFeature(feature.id)}
+                        className={`w-full p-3 rounded-lg transition-all duration-300 text-left
+                          ${selectedFeature === feature.id 
+                            ? 'bg-primary/10 font-semibold text-primary' 
+                            : 'hover:bg-card/50 text-white/70'
+                          }`}
+                      >
+                        <span className="text-sm">{feature.title}</span>
+                      </button>
+                    ))}
+                  </div>
 
-                {/* Middle Column - Feature Details (35%) */}
-                {currentFeature && (
-                  <div className="col-span-4 space-y-4">
-                    <div className="flex items-start gap-4">
-                      <div className="p-3 rounded-xl bg-primary/10">
-                        <PlayCircle className="w-8 h-8 text-primary" />
-                      </div>
-                      <div className="space-y-4 flex-1">
-                        <h3 className="text-2xl font-bold leading-tight">{currentFeature.title}</h3>
-                        <p className="text-white/70 text-sm leading-relaxed">{currentFeature.description}</p>
-                        <Button 
-                          onClick={() => setOpenDialog(currentFeature.id)}
-                          variant="outline"
-                          size="sm"
-                          className="mt-2"
-                        >
-                          Learn More
-                        </Button>
+                  {/* Middle Column - Feature Details (25%) */}
+                  {currentFeature && (
+                    <div className="col-span-3 flex items-center">
+                      <div className="space-y-6">
+                        <div className="flex items-start gap-4">
+                          <div className="p-2 rounded-xl bg-primary/10">
+                            {IconComponent && <IconComponent className="w-6 h-6 text-primary" />}
+                          </div>
+                          <div className="space-y-4 flex-1">
+                            <h3 className="text-2xl font-bold leading-tight">{currentFeature.title}</h3>
+                            <p className="text-white/70 text-base leading-relaxed">{currentFeature.description}</p>
+                            <Button 
+                              onClick={() => setOpenDialog(currentFeature.id)}
+                              variant="outline"
+                              size="lg"
+                              className="mt-4"
+                            >
+                              Learn More
+                            </Button>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
-                {/* Right Column - Video Preview (50%) */}
-                <div className="col-span-6">
-                  <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl">
-                    {currentFeature && (
-                      <iframe
-                        src={`${getFeatureMedia(currentFeature.id, 'preview')}?autoplay=1&loop=1&autopause=0&background=1&muted=1`}
-                        className="w-full h-full scale-[1.01]"
-                        allow="autoplay; fullscreen; picture-in-picture"
-                        style={{
-                          border: 'none',
-                          background: 'transparent',
-                        }}
-                      />
-                    )}
+                  {/* Right Column - Video Preview (60%) */}
+                  <div className="col-span-7">
+                    <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl">
+                      {currentFeature && (
+                        <iframe
+                          src={`${getFeatureMedia(currentFeature.id, 'preview')}?autoplay=1&loop=1&autopause=0&background=1&muted=1`}
+                          className="w-full h-full scale-[1.01]"
+                          allow="autoplay; fullscreen; picture-in-picture"
+                          style={{
+                            border: 'none',
+                            background: 'transparent',
+                          }}
+                        />
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
