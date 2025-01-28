@@ -1,52 +1,91 @@
 import { Check, X } from "lucide-react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Feature } from "./types";
+import { Competitor } from "./types";
 
 interface ComparisonDesktopTableProps {
-  tools: Feature[];
+  competitor: Competitor;
   isRTL: boolean;
   language: string;
 }
 
-export const ComparisonDesktopTable = ({ tools, isRTL, language }: ComparisonDesktopTableProps) => {
+export const ComparisonDesktopTable = ({ competitor, isRTL, language }: ComparisonDesktopTableProps) => {
+  const getFeatureTitle = () => {
+    switch (language) {
+      case 'he':
+        return 'תכונות';
+      case 'es':
+        return 'Características';
+      default:
+        return 'Features';
+    }
+  };
+
+  const getKeyTakeawaysTitle = () => {
+    switch (language) {
+      case 'he':
+        return 'נקודות מפתח:';
+      case 'es':
+        return 'Puntos Clave:';
+      default:
+        return 'Key Takeaways:';
+    }
+  };
+  
   return (
-    <div className="space-y-6">
-      <Table className="relative glass border border-[#222222]">
-        <TableHeader>
-          <TableRow className="hover:bg-transparent">
-            <TableHead className={`text-white ${isRTL ? 'text-right' : 'text-left'}`}>
-              {language === 'es' ? 'Características' : isRTL ? 'פיצ\'רים' : 'Features'}
+    <div className="space-y-6" dir={isRTL ? 'rtl' : 'ltr'}>
+      <Table className="w-full border border-primary/20 rounded-xl overflow-hidden">
+        <TableHeader className="sticky top-0 z-10">
+          <TableRow className="hover:bg-transparent border-b border-primary/20">
+            <TableHead className={`w-1/3 ${isRTL ? 'text-right' : 'text-left'} bg-background`}>
+              {getFeatureTitle()}
             </TableHead>
-            <TableHead className={`text-white ${isRTL ? 'text-right' : 'text-left'}`}>
-              Frame.io
+            <TableHead className={`w-1/3 ${isRTL ? 'text-right' : 'text-left'} bg-background`}>
+              {competitor.logo ? (
+                <img 
+                  src={competitor.logo} 
+                  alt={competitor.name}
+                  className="h-8 object-contain"
+                />
+              ) : (
+                competitor.name
+              )}
             </TableHead>
-            <TableHead className="text-white text-center bg-gradient-to-r from-primary/40 via-accent/40 to-primary/40">
-              Timeliner
+            <TableHead className="w-1/3 bg-primary/20 text-center">
+              <img 
+                src="/lovable-uploads/60190412-efc7-4756-b0a5-e9ecd7f0ef3f.png" 
+                alt="Timeliner"
+                className="h-8 mx-auto"
+              />
             </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {tools.map((tool, index) => (
-            <TableRow
-              key={index}
-              className="transition-colors hover:bg-white/5 cursor-pointer group"
-            >
-              <TableCell className={`font-medium text-white ${isRTL ? 'text-right' : 'text-left'}`}>
-                {tool.name}
+          {competitor.features.map((feature, index) => (
+            <TableRow key={index} className="hover:bg-primary/5 transition-colors">
+              <TableCell className={`font-medium ${isRTL ? 'text-right' : 'text-left'}`}>
+                {feature.name}
               </TableCell>
-              <TableCell className={`text-white/70 ${isRTL ? 'text-right' : 'text-left'}`}>
-                {typeof tool.competitor === 'boolean' ? 
-                  (tool.competitor ? 
-                    <Check className="mx-auto text-[#9b87f5] h-5 w-5" /> : 
-                    <X className="mx-auto text-red-500 h-5 w-5" />
-                  ) : tool.competitor}
+              <TableCell className={`whitespace-pre-line ${isRTL ? 'text-right' : 'text-left'}`}>
+                {typeof feature.competitor === 'boolean' ? (
+                  feature.competitor ? (
+                    <Check className="text-primary h-5 w-5" />
+                  ) : (
+                    <X className="text-red-500 h-5 w-5" />
+                  )
+                ) : (
+                  feature.competitor
+                )}
               </TableCell>
-              <TableCell className={`text-white/70 ${isRTL ? 'text-right' : 'text-left'}`}>
-                {typeof tool.timeliner === 'boolean' ? 
-                  (tool.timeliner ? 
-                    <Check className="mx-auto text-[#9b87f5] h-5 w-5" /> : 
-                    <X className="mx-auto text-red-500 h-5 w-5" />
-                  ) : tool.timeliner}
+              <TableCell className={`bg-primary/10 whitespace-pre-line ${isRTL ? 'text-right' : 'text-left'}`}>
+                {typeof feature.timeliner === 'boolean' ? (
+                  feature.timeliner ? (
+                    <Check className="text-primary h-5 w-5" />
+                  ) : (
+                    <X className="text-red-500 h-5 w-5" />
+                  )
+                ) : (
+                  feature.timeliner
+                )}
               </TableCell>
             </TableRow>
           ))}
@@ -54,17 +93,21 @@ export const ComparisonDesktopTable = ({ tools, isRTL, language }: ComparisonDes
       </Table>
 
       <div className="p-6 glass border border-[#222222] rounded-lg">
-        <h3 className="text-xl font-bold text-white mb-4">Key Takeaways:</h3>
-        <ul className="space-y-3 text-white/80">
-          {tools[0].keyTakeaways?.map((takeaway, index) => (
-            <li key={index} className="flex items-start gap-2">
+        <h3 className={`text-xl font-bold text-white mb-4 ${isRTL ? 'text-right' : 'text-left'}`}>
+          {getKeyTakeawaysTitle()}
+        </h3>
+        <ul className={`space-y-3 text-white/80 ${isRTL ? 'text-right' : 'text-left'}`}>
+          {competitor.features[0].keyTakeaways?.map((takeaway, index) => (
+            <li key={index} className={`flex items-start gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
               <span className="mt-1">
                 {takeaway.type === 'negative' ? 
                   <X className="text-red-500 h-4 w-4" /> : 
                   <Check className="text-[#9b87f5] h-4 w-4" />
                 }
               </span>
-              {takeaway.text}
+              <span className={isRTL ? 'text-right' : ''}>
+                {takeaway.text}
+              </span>
             </li>
           ))}
         </ul>
