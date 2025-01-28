@@ -2,11 +2,11 @@ import { useState } from "react";
 import { usePageContent } from "@/hooks/usePageContent";
 import { useMediaContent } from "@/hooks/useMediaContent";
 import { useToast } from "@/hooks/use-toast";
-import { features } from "./features/featureData";
 import { FeaturesHeader } from "./features/FeaturesHeader";
-import { FeaturesList } from "./features/FeaturesList";
+import { FeatureGroups } from "./features/FeatureGroups";
 import { FeatureDialog } from "./features/FeatureDialog";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { featureGroups } from "./features/featureData";
 
 export const Features = () => {
   const [openDialog, setOpenDialog] = useState<string | null>(null);
@@ -41,15 +41,13 @@ export const Features = () => {
     );
   }
 
-  const activeFeature = features.find(f => f.id === openDialog);
+  const activeFeature = featureGroups.flatMap(group => group.features).find(f => f.id === openDialog);
   
   const getFeatureContent = (sectionId: string | null, key: string): string => {
     if (!content) return '';
-    console.log('Getting content for:', { sectionId, key, language });
     const contentValue = content[`${sectionId}_${key}`] || 
                         (sectionId === null ? content[key] : '') || 
                         content[`common_${key}`] || '';
-    console.log('Found content:', contentValue);
     return contentValue;
   };
 
@@ -60,19 +58,7 @@ export const Features = () => {
       item.section_id === sectionId && 
       item.media_key === key
     );
-    console.log('Looking for media:', { sectionId, key, mediaItem });
     return mediaItem?.media_url || '';
-  };
-
-  const getLearnMoreText = () => {
-    switch (language) {
-      case 'es':
-        return 'Ver Más';
-      case 'he':
-        return 'לצפייה בסרטון';
-      default:
-        return getFeatureContent('common', 'learn_more') || 'Learn More';
-    }
   };
 
   return (
@@ -80,11 +66,11 @@ export const Features = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/5 via-primary/5 to-transparent pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(123,97,255,0.1),rgba(123,97,255,0)_43.89%)] pointer-events-none" />
       <div className="container mx-auto px-4 relative">
-        <FeaturesHeader getContent={getFeatureContent} />
-        <FeaturesList 
-          onLearnMore={setOpenDialog} 
+        <FeaturesHeader />
+        <FeatureGroups 
+          onFeatureClick={setOpenDialog}
           getContent={getFeatureContent}
-          learnMoreText={getLearnMoreText()}
+          getMedia={getFeatureMedia}
         />
       </div>
 
@@ -92,28 +78,8 @@ export const Features = () => {
         <FeatureDialog
           isOpen={!!openDialog}
           onClose={() => setOpenDialog(null)}
-          title={
-            language === 'es' 
-              ? activeFeature.esTitle 
-              : language === 'he' 
-                ? activeFeature.heTitle 
-                : (getFeatureContent(activeFeature.sectionKey, 'title') || activeFeature.defaultTitle)
-          }
-          subtitle={
-            language === 'es'
-              ? activeFeature.esSubtitle
-              : language === 'he'
-                ? activeFeature.heSubtitle
-                : (getFeatureContent(activeFeature.sectionKey, 'subtitle') || activeFeature.defaultSubtitle)
-          }
-          description={
-            language === 'es'
-              ? activeFeature.esLongDescription
-              : language === 'he'
-                ? activeFeature.heLongDescription
-                : (getFeatureContent(activeFeature.sectionKey, 'long_description') || activeFeature.defaultLongDescription)
-          }
-          videoUrl={getFeatureMedia(activeFeature.sectionKey, 'learn-more')}
+          feature={activeFeature}
+          videoUrl={getFeatureMedia(activeFeature.id, 'learn-more')}
         />
       )}
     </section>

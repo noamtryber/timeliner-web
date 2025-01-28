@@ -1,121 +1,104 @@
-export const features = [
+export const featureGroups = [
   {
-    id: 'revision-tracking',
-    icon: 'Workflow',
-    sectionKey: 'revision-tracking',
-    defaultTitle: 'Smart Revision Tracking',
-    defaultSubtitle: 'Never lose a version again',
-    defaultDescription: 'Keep track of every change with our intelligent version control system designed specifically for video editing.',
-    defaultLongDescription: 'Our advanced revision tracking system maintains a complete history of your project changes. Easily compare versions, restore previous edits, and collaborate with confidence knowing that every creative decision is preserved.',
-    heTitle: 'ניהול סבבי תיקונים חכם',
-    heSubtitle: 'סוף לבלאגנים דרך הווצאפ',
-    heDescription: 'עקבו אחר כל שינוי עם מערכת בקרת גרסאות חכמה שפותחה במיוחד לעריכת וידאו.',
-    heLongDescription: 'מערכת מעקב התיקונים המתקדמת שלנו שומרת על היסטוריה מלאה של שינויים בפרויקט שלכם. השוו גרסאות בקלות, שחזרו עריכות קודמות, ועבדו בשיתוף פעולה עם ביטחון שכל החלטה יצירתית נשמרת.',
-    esTitle: 'Control Inteligente de Revisiones',
-    esSubtitle: 'Nunca pierdas una versión',
-    esDescription: 'Mantén un registro de cada cambio con nuestro sistema de control de versiones diseñado específicamente para edición de video.',
-    esLongDescription: 'Nuestro sistema avanzado de seguimiento mantiene un historial completo de los cambios en tu proyecto. Compara versiones fácilmente, restaura ediciones anteriores y colabora con confianza sabiendo que cada decisión creativa está preservada.'
+    id: 'smart-management',
+    headline: 'Take control of your workflow with tools that simplify and streamline your editing process.',
+    features: [
+      {
+        id: 'revision-workflow',
+        title: 'Revision Workflow',
+        description: 'Add comments by timecode, draw, record voice memos, and upload files for precise feedback.',
+        icon: 'workflow'
+      },
+      {
+        id: 'task-management',
+        title: 'Task Management by Status',
+        description: 'Organize tasks with clear status updates, and use "Global View" to see everything in one place.',
+        icon: 'list-todo'
+      },
+      {
+        id: 'version-control',
+        title: 'Version Control',
+        description: 'Compare versions side-by-side with split-screen tools and download previous versions easily.',
+        icon: 'git-branch'
+      },
+      {
+        id: 'folder-management',
+        title: 'Smart Folder Management',
+        description: 'Auto-organize files by status, project, or client to eliminate folder clutter.',
+        icon: 'folder'
+      }
+    ]
   },
   {
-    id: 'project-briefs',
-    icon: 'FileStack',
-    sectionKey: 'project-briefs',
-    defaultTitle: 'Interactive Project Briefs',
-    defaultSubtitle: 'Streamline client communication',
-    defaultDescription: 'Create dynamic project briefs that clients can interact with, providing clear feedback and approvals in real-time.',
-    defaultLongDescription: 'Transform your client communication with interactive briefs that allow for precise feedback, timestamps, and annotations. Reduce revision rounds and ensure everyone is aligned on project goals.',
-    heTitle: 'הצעות פרויקטים אינטראקטיביים',
-    heSubtitle: 'פשטו את התקשורת עם הלקוחות',
-    heDescription: 'כלי אינטרקטיבי שעוזר לך וללקוח שלך לתאם ציפיות יחד עם כלי בינה מלאכותית לבחירת רפרנסים ויצירת בריף מסודר',
-    heLongDescription: 'כלי אינטרקטיבי שעוזר לך וללקוח שלך לתאם ציפיות יחד עם כלי בינה מלאכותית לבחירת רפרנסים ויצירת בריף מסודר',
-    esTitle: 'Briefings Interactivos',
-    esSubtitle: 'Simplifica la comunicación',
-    esDescription: 'Crea briefings dinámicos con los que tus clientes pueden interactuar, proporcionando feedback claro y aprobaciones en tiempo real.',
-    esLongDescription: 'Transforma tu comunicación con briefings interactivos que permiten feedback preciso, marcas de tiempo y anotaciones. Reduce las rondas de revisión y asegura que todos estén alineados con los objetivos del proyecto.'
+    id: 'client-collaboration',
+    headline: 'Deliver better results by aligning expectations and making client interactions effortless.',
+    features: [
+      {
+        id: 'project-briefs',
+        title: 'Interactive Project Briefs',
+        description: 'Define deliverables, timelines, and payment terms upfront with dynamic, guided briefs.',
+        icon: 'clipboard'
+      },
+      {
+        id: 'portfolio-builder',
+        title: 'Portfolio Builder',
+        description: 'Showcase your work with customizable templates to impress clients and close deals faster.',
+        icon: 'layout-grid'
+      },
+      {
+        id: 'client-portals',
+        title: 'Customizable Client Portals',
+        description: 'Give clients a sleek dashboard for feedback, approvals, and downloading final deliverables.',
+        icon: 'layout-dashboard'
+      }
+    ]
   },
   {
-    id: 'payments',
-    icon: 'CreditCard',
-    sectionKey: 'payments',
-    defaultTitle: 'Getting Paid on Time',
-    defaultSubtitle: 'No more chasing payments',
-    defaultDescription: 'Set up automated payment schedules and reminders, ensuring you get paid on time, every time.',
-    defaultLongDescription: 'Take control of your cash flow with our integrated payment system. Automate invoicing, set up milestone payments, and maintain clear financial records for every project.',
-    heTitle: 'קבלת תשלום בזמן',
-    heSubtitle: 'סוף למרדף אחר תשלומים',
-    heDescription: 'מערכת אוטומטית שמעבירה תשלומים מיד עם אישור הפרויקט, הכל מהיר ויעיל.',
-    heLongDescription: 'מערכת אוטומטית שמעבירה תשלומים מיד עם אישור הפרויקט או הסרטון, הכל מהיר ויעיל. תיעוד חשבונאי עם קבלות להכל.',
-    esTitle: 'Recibiendo Pagos a Tiempo',
-    esSubtitle: 'No más persiguiendo pagos',
-    esDescription: 'Configura horarios de pago automatizados y recordatorios, asegurando que te paguen a tiempo, cada vez.',
-    esLongDescription: 'Toma el control de tu flujo de efectivo con nuestro sistema de pago integrado. Automatiza la facturación, establece pagos por hitos y mantiene registros financieros claros para cada proyecto.'
+    id: 'team-payments',
+    headline: 'Stay organized, get paid on time, and collaborate more effectively with your team.',
+    features: [
+      {
+        id: 'crm',
+        title: 'Built-In CRM for Creatives',
+        description: 'Track leads, client communications, and project histories in one centralized system.',
+        icon: 'users'
+      },
+      {
+        id: 'team-collaboration',
+        title: 'Team Collaboration Tools',
+        description: 'Assign roles, monitor workloads, and ensure smooth workflows with custom permissions.',
+        icon: 'users-round'
+      },
+      {
+        id: 'payment-tracking',
+        title: 'Transparent Payment Tracking',
+        description: 'Track payments for projects or tasks, and notify team members and clients about due payments.',
+        icon: 'credit-card'
+      }
+    ]
   },
   {
-    id: 'crm',
-    icon: 'Users',
-    sectionKey: 'crm',
-    defaultTitle: 'Built-in CRM',
-    defaultSubtitle: 'Manage client relationships',
-    defaultDescription: 'Keep track of all your client interactions, project history, and communication in one place.',
-    defaultLongDescription: 'Our integrated CRM system helps you manage client relationships effectively. Track all communications, maintain project history, and ensure nothing falls through the cracks with automated follow-ups and reminders.',
-    heTitle: 'CRM לניהול לידים ומכירות',
-    heSubtitle: 'ניהול מערכות יחסים עם לקוחות',
-    heDescription: 'מערכת פשוטה לניהול לידים, סטטוסים, פולואפ ולקוחות משלמים.',
-    heLongDescription: 'מערכת פשוטה לניהול לידים, סטטוסים, פולואפ ולקוחות משלמים.',
-    esTitle: 'CRM Integrado',
-    esSubtitle: 'Gestiona las relaciones con los clientes',
-    esDescription: 'Mantén un registro de todas tus interacciones con clientes, historial de proyectos y comunicación en un solo lugar.',
-    esLongDescription: 'Nuestro sistema CRM integrado te ayuda a gestionar las relaciones con los clientes de manera efectiva. Realiza un seguimiento de todas las comunicaciones, mantiene el historial de proyectos y asegura que nada se pierda con seguimientos y recordatorios automatizados.'
-  },
-  {
-    id: 'client-portals',
-    icon: 'UserCircle',
-    sectionKey: 'client-portals',
-    defaultTitle: 'Simple Client Portals',
-    defaultSubtitle: 'One link for everything',
-    defaultDescription: 'Give your clients a dashboard where they can leave feedback, approve work, and download everything in 4K—all with just one link.',
-    defaultLongDescription: 'Provide your clients with a professional, branded experience through custom portals. Enable seamless collaboration with easy access to project updates, approvals, and file sharing in one centralized location.',
-    heTitle: 'פורטלים פשוטים ללקוחות',
-    heSubtitle: 'קישור אחד להכל',
-    heDescription: 'כל ההערות, האישורים, ההורדות והאחסון מסודרים במקום אחד ופשוט.',
-    heLongDescription: 'ספקו ללקוחותיכם חוויה מקצועית וממותגת באמצעות פורטלים מותאמים אישית. אפשרו שיתוף פעולה חלק עם גישה נוחה לעדכוני פרויקטים, אישורים ושיתוף קבצים במקום מרכזי אחד.',
-    esTitle: 'Portales Simples para Clientes',
-    esSubtitle: 'Un enlace para todo',
-    esDescription: 'Dale a tus clientes un panel donde puedan dejar comentarios, aprobar trabajos y descargar todo en 4K, todo con un solo enlace.',
-    esLongDescription: 'Proporciona a tus clientes una experiencia profesional y de marca a través de portales personalizados. Permite una colaboración fluida con fácil acceso a actualizaciones de proyectos, aprobaciones y compartición de archivos en un solo lugar centralizado.'
-  },
-  {
-    id: 'team-management',
-    icon: 'Users',
-    sectionKey: 'team-management',
-    defaultTitle: 'Team Management',
-    defaultSubtitle: 'Monitor team performance',
-    defaultDescription: "Keep an eye on your team's workload, payments, and performance—all from one easy-to-use dashboard.",
-    defaultLongDescription: 'Efficiently manage your entire team with comprehensive tools for tracking workload, monitoring performance metrics, and handling payments. Keep everyone aligned and productive with clear task assignments and progress tracking.',
-    heTitle: 'ניהול צוות קל ופשוט',
-    heSubtitle: 'פקח על ביצועי הצוות',
-    heDescription: 'עקבו אחרי עומס העבודה של עורכים, צוות, מצב התשלומים ומדדי הביצועים, הכל ממקום אחד.',
-    heLongDescription: 'נהל את כל הצוות שלך ביעילות עם כלים מקיפים למעקב אחר עומסי עבודה, מעקב אחרי מדדי ביצועים וטיפול בתשלומים. שמרו על יישור קו ופרודוקטיביות עם חלוקת משימות ברורה ומעקב אחרי התקדמות.',
-    esTitle: 'Gestión de Equipo',
-    esSubtitle: 'Monitorea el rendimiento del equipo',
-    esDescription: 'Mantén un ojo en la carga de trabajo, pagos y rendimiento de tu equipo, todo desde un panel fácil de usar.',
-    esLongDescription: 'Gestiona eficientemente a todo tu equipo con herramientas integrales para rastrear la carga de trabajo, monitorear métricas de rendimiento y manejar pagos. Mantén a todos alineados y productivos con asignaciones de tareas claras y seguimiento del progreso.'
-  },
-  {
-    id: 'secure-storage',
-    icon: 'Shield',
-    sectionKey: 'secure-storage',
-    defaultTitle: 'Secure Media Storage',
-    defaultSubtitle: 'Everything in one place',
-    defaultDescription: 'Forget juggling third-party tools. Store all your media securely in the cloud, with everything right where you need it.',
-    defaultLongDescription: 'Keep all your media files secure and organized with our cloud storage solution. Access your content from anywhere, maintain version control, and ensure your valuable assets are protected with enterprise-grade security.',
-    heTitle: 'אחסון מדיה מאובטח',
-    heSubtitle: 'הכל במקום אחד',
-    heDescription: 'גישה מהירה, נוחה ומוגנת לקבצים, הכל בתוך המערכת שלנו וללא צורך בשירותים חיצוניים.',
-    heLongDescription: 'שמרו את כל קבצי המדיה שלכם בצורה מאובטחת ומאורגנת עם פתרון האחסון בענן שלנו. גשו לתוכן שלכם מכל מקום, שמרו על בקרת גרסאות, ודאגו שהנכסים שלכם מוגנים עם אבטחה ברמה ארגונית.',
-    esTitle: 'Almacenamiento Seguro de Medios',
-    esSubtitle: 'Todo en un solo lugar',
-    esDescription: 'Olvídate de malabarear herramientas de terceros. Almacena todos tus medios de forma segura en la nube, con todo justo donde lo necesitas.',
-    esLongDescription: 'Mantén todos tus archivos de medios seguros y organizados con nuestra solución de almacenamiento en la nube. Accede a tu contenido desde cualquier lugar, mantén el control de versiones y asegúrate de que tus activos valiosos estén protegidos con seguridad de nivel empresarial.'
+    id: 'advanced-features',
+    headline: 'Enhance productivity with integrations, multilingual support, and AI-powered tools.',
+    features: [
+      {
+        id: 'integrations',
+        title: 'WhatsApp & Slack Integrations',
+        description: 'Communicate directly with clients and teams using tools you already love.',
+        icon: 'message-square'
+      },
+      {
+        id: 'multi-language',
+        title: 'Multi-Language Support',
+        description: 'Fully supports both LTR and RTL languages, making it perfect for global teams.',
+        icon: 'languages'
+      },
+      {
+        id: 'ai-tools',
+        title: 'AI Tools',
+        description: 'Generate auto captions, get workflow suggestions, and speed up editing with smart automation.',
+        icon: 'sparkles'
+      }
+    ]
   }
 ] as const;
