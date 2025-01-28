@@ -109,9 +109,19 @@ export const competitors: Competitor[] = [
     name: "Dropbox Replay",
     features: [
       {
+        name: "Media Review Tools",
+        competitor: "Included with Replay add-on",
+        timeliner: "Fully integrated, with advanced workflow and review tools"
+      },
+      {
+        name: "No Account Required for Reviewers",
+        competitor: true,
+        timeliner: true
+      },
+      {
         name: "Pricing",
-        competitor: "$15/user/month (Standard) = $75/month for 5 users",
-        timeliner: "$29/month (up to 5 users)\n$49/month (up to 30 users)"
+        competitor: "$10/user/month (Replay) + $10/user/month (Plus plan) = $20/user/month",
+        timeliner: "$29/month (fixed up to 5 users)\n$49/month (fixed up to 30 users)"
       },
       {
         name: "Time-Synced Comments",
@@ -119,9 +129,59 @@ export const competitors: Competitor[] = [
         timeliner: true
       },
       {
+        name: "High-Quality Video Previews",
+        competitor: true,
+        timeliner: true
+      },
+      {
+        name: "Client-Friendly Review Links",
+        competitor: true,
+        timeliner: true
+      },
+      {
+        name: "Media Status Tracking Advanced Workflow",
+        competitor: false,
+        timeliner: "Advanced pipeline with List, Kanban, Pool, and Chart views"
+      },
+      {
+        name: "Interactive Offer Workflow",
+        competitor: false,
+        timeliner: true
+      },
+      {
+        name: "Built-In CRM",
+        competitor: false,
+        timeliner: true
+      },
+      {
         name: "Integrations",
-        competitor: "Limited to Dropbox ecosystem",
-        timeliner: "WhatsApp, Gmail, and more"
+        competitor: "Limited to Dropbox ecosystem (Sync, File Storage)",
+        timeliner: "WhatsApp, Gmail, Slack, and more"
+      },
+      {
+        name: "Team Monitoring and Productivity Tracking",
+        competitor: false,
+        timeliner: true
+      },
+      {
+        name: "Client Area and Advanced Permissions",
+        competitor: "Limited to review link access",
+        timeliner: "Advanced permissions and dedicated client areas"
+      },
+      {
+        name: "Publish and Share Folders/Videos",
+        competitor: true,
+        timeliner: true
+      },
+      {
+        name: "Audio Comments",
+        competitor: false,
+        timeliner: "Add comments using voice recordings"
+      },
+      {
+        name: "AI Tools",
+        competitor: false,
+        timeliner: "Automatic caption generation in multiple languages not supported by traditional tools"
       },
       {
         name: "Pro Portfolio Builder",
@@ -129,14 +189,19 @@ export const competitors: Competitor[] = [
         timeliner: true
       },
       {
-        name: "AI Tools",
-        competitor: false,
-        timeliner: "Automatic caption generation in multiple languages"
+        name: "Educational Resources and Onboarding",
+        competitor: "Limited",
+        timeliner: "Includes video courses and onboarding guides"
       },
       {
-        name: "Media Status Tracking",
-        competitor: false,
-        timeliner: "Advanced pipeline with multiple views"
+        name: "Scalability",
+        competitor: "Costs increase significantly as team size grows (e.g., $600/month for 30 users, Replay + Plus)",
+        timeliner: "Flat pricing structure supports growth ($49/month for up to 30 users)"
+      },
+      {
+        name: "Version Management",
+        competitor: "Basic with Replay",
+        timeliner: "Advanced with visual comparisons and history"
       }
     ]
   },
