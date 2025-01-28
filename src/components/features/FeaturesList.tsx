@@ -54,35 +54,14 @@ export const FeaturesList = ({ onLearnMore, getContent, learnMoreText }: Feature
     <div ref={featuresRef} className={`space-y-32 ${isRTL ? 'rtl' : ''}`}>
       {featureGroups.flatMap(group => group.features).map((feature, index) => {
         const IconComponent = iconComponents[feature.icon];
-        const title = language === 'es' 
-          ? feature.esTitle 
-          : language === 'he' 
-            ? feature.heTitle 
-            : (getContent(feature.sectionKey, 'title') || feature.defaultTitle);
-            
-        const subtitle = language === 'es'
-          ? feature.esSubtitle
-          : language === 'he'
-            ? feature.heSubtitle
-            : (getContent(feature.sectionKey, 'subtitle') || feature.defaultSubtitle);
-            
-        const description = language === 'es'
-          ? feature.esDescription
-          : language === 'he'
-            ? feature.heDescription
-            : (getContent(feature.sectionKey, 'description') || feature.defaultDescription);
-            
-        const videoUrl = getFeatureMedia(feature.sectionKey, 'preview');
-
         return (
           <FeatureItem
             key={feature.id}
             index={index}
             icon={IconComponent}
-            title={title}
-            subtitle={subtitle}
-            description={description}
-            videoUrl={videoUrl}
+            title={feature.title}
+            description={feature.description}
+            videoUrl={getFeatureMedia(feature.id, 'preview')}
             onLearnMore={() => onLearnMore(feature.id)}
             learnMoreText={learnMoreText}
           />

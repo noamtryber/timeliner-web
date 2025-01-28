@@ -6,7 +6,7 @@ import { FeaturesHeader } from "./features/FeaturesHeader";
 import { FeatureGroups } from "./features/FeatureGroups";
 import { FeatureDialog } from "./features/FeatureDialog";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { featureGroups, type Feature } from "./features/featureData";
+import { featureGroups } from "./features/featureData";
 
 export const Features = () => {
   const [openDialog, setOpenDialog] = useState<string | null>(null);
@@ -67,11 +67,53 @@ export const Features = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(123,97,255,0.1),rgba(123,97,255,0)_43.89%)] pointer-events-none" />
       <div className="container mx-auto px-4 relative">
         <FeaturesHeader />
-        <FeatureGroups 
-          onFeatureClick={setOpenDialog}
-          getContent={getFeatureContent}
-          getMedia={getFeatureMedia}
-        />
+        <div className="space-y-32">
+          {featureGroups.map((group, index) => (
+            <div key={group.id} className="space-y-12">
+              <h3 className="text-2xl md:text-3xl font-bold text-center gradient-text">
+                {group.headline}
+              </h3>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div className="aspect-video rounded-xl overflow-hidden bg-black/20">
+                  {group.features.map((feature) => (
+                    <div 
+                      key={feature.id}
+                      className={`w-full h-full transition-opacity duration-300 ${
+                        openDialog === feature.id ? 'opacity-100' : 'opacity-0 hidden'
+                      }`}
+                    >
+                      <iframe
+                        src={`${getFeatureMedia(feature.id, 'preview')}?autoplay=1&loop=1&autopause=0&background=1&muted=1`}
+                        className="w-full h-full scale-[1.01]"
+                        allow="autoplay; fullscreen; picture-in-picture"
+                        style={{
+                          border: 'none',
+                          background: 'transparent',
+                        }}
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div className="space-y-4">
+                  {group.features.map((feature) => (
+                    <button
+                      key={feature.id}
+                      onClick={() => setOpenDialog(feature.id)}
+                      className={`w-full p-6 rounded-xl transition-all duration-300 text-left
+                        ${openDialog === feature.id 
+                          ? 'bg-primary/20 shadow-lg shadow-primary/10' 
+                          : 'bg-card/50 hover:bg-card/80'
+                        }`}
+                    >
+                      <h4 className="text-xl font-semibold mb-2">{feature.title}</h4>
+                      <p className="text-white/70">{feature.description}</p>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {activeFeature && (
