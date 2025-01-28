@@ -136,8 +136,8 @@ export const Features = () => {
                   )}
 
                   {/* Right Column - Video Preview (60%) */}
-                  <div className="col-span-5 col-start-7">
-                    <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl">
+                  <div className="col-span-5 col-start-7 relative overflow-visible">
+                    <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl scale-[1.35] origin-left">
                       {currentFeature && (
                         <iframe
                           src={`${getFeatureMedia(currentFeature.id, 'preview')}?autoplay=1&loop=1&autopause=0&background=1&muted=1`}
