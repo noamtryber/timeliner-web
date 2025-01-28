@@ -1,15 +1,4 @@
-export interface Feature {
-  name: string;
-  competitor: boolean | string;
-  timeliner: boolean | string;
-}
-
-export interface Competitor {
-  id: string;
-  name: string;
-  logo?: string;
-  features: Feature[];
-}
+import { Competitor } from "./types";
 
 export const competitors: Competitor[] = [
   {
@@ -274,101 +263,39 @@ export const competitors: Competitor[] = [
     ]
   },
   {
-    id: "vimeo",
-    name: "Vimeo Review",
-    logo: "/lovable-uploads/e612d0f5-d66b-4f48-9de7-f142a4fa9670.png",
+    id: "clickup",
+    name: "ClickUp",
+    logo: "/lovable-uploads/d4d71abe-8984-4b88-baf8-c4dd913ee9b6.png",
     features: [
       {
         name: "Pricing",
-        competitor: "Starter: $12/month (1 seat, 100GB storage)\nStandard: $25/month (2+ seats, 1TB storage)\nAdvanced: $65/month (2+ seats, 5TB storage)",
-        timeliner: "$29/month (up to 5 users, 1TB)\n$49/month (up to 30 users, 2TB)"
+        competitor: "$7/user/month (Unlimited) = $35/month for 5 users",
+        timeliner: "$29/month (up to 5 users)\n$49/month (up to 30 users)"
       },
       {
-        name: "Storage",
-        competitor: "Starter: 100GB\nStandard: 1TB\nAdvanced: 5TB",
-        timeliner: "1–2 TB depending on the plan"
-      },
-      {
-        name: "Media Review Tools",
-        competitor: "Basic tools for comments and annotations",
-        timeliner: "Fully integrated with advanced workflow and review tools"
-      },
-      {
-        name: "No Account Required for Reviewers",
-        competitor: true,
-        timeliner: true
-      },
-      {
-        name: "Advanced Workflow Management",
-        competitor: false,
-        timeliner: "Includes List, Kanban, Pool, and Chart views"
-      },
-      {
-        name: "Built-In CRM",
-        competitor: false,
-        timeliner: true
-      },
-      {
-        name: "AI Tools",
-        competitor: "Limited to AI script generator and auto-captioning (Standard/Advanced)",
-        timeliner: "Advanced AI tools, including automatic multi-language captions"
+        name: "Video Review Tools",
+        competitor: "Basic video review with comments",
+        timeliner: "Advanced review tools with time-synced comments, annotations, and audio comments"
       },
       {
         name: "Audio Comments",
         competitor: false,
-        timeliner: "Add comments using voice recordings"
+        timeliner: "Included"
       },
       {
-        name: "Pro Portfolio Builder",
+        name: "CRM",
         competitor: false,
-        timeliner: "Build and send professional portfolios to clients"
+        timeliner: "Built-in"
       },
       {
-        name: "Client Area and Permissions",
-        competitor: "Limited",
+        name: "WhatsApp Integration",
+        competitor: false,
+        timeliner: "Included"
+      },
+      {
+        name: "Client Collaboration",
+        competitor: "Task sharing with basic permissions",
         timeliner: "Dedicated client area with advanced permissions"
-      },
-      {
-        name: "Educational Resources",
-        competitor: "Limited",
-        timeliner: "Includes video courses and onboarding guides"
-      },
-      {
-        name: "Scalability",
-        competitor: "Costs increase significantly with more users and higher plans",
-        timeliner: "Flat pricing supports growth up to 30 users for $49/month"
-      }
-    ]
-  },
-  {
-    id: "clickup",
-    name: "ClickUp",
-    logo: "/lovable-uploads/549ff6c1-b290-475e-b156-fdc26f5d58d5.png",
-    features: [
-      {
-        name: "Pricing",
-        competitor: "$5/user/month = $25/month for 5 users",
-        timeliner: "$29/month (up to 5 users)\n$49/month (up to 30 users)"
-      },
-      {
-        name: "Workflow Management",
-        competitor: "Strong project/task management tools",
-        timeliner: "Media-focused workflow with multiple views"
-      },
-      {
-        name: "Media Review Tools",
-        competitor: false,
-        timeliner: "Advanced review tools with audio comments"
-      },
-      {
-        name: "Pro Portfolio Builder",
-        competitor: false,
-        timeliner: true
-      },
-      {
-        name: "CRM and Client Management",
-        competitor: "Limited",
-        timeliner: true
       }
     ]
   }
