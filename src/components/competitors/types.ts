@@ -2,7 +2,10 @@ export interface Feature {
   name: string;
   competitor: boolean | string;
   timeliner: boolean | string;
-  description?: string;
+  keyTakeaways?: {
+    type: 'positive' | 'negative';
+    text: string;
+  }[];
 }
 
 export interface Competitor {

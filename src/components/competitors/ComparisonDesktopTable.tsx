@@ -56,22 +56,17 @@ export const ComparisonDesktopTable = ({ tools, isRTL, language }: ComparisonDes
       <div className="p-6 glass border border-[#222222] rounded-lg">
         <h3 className="text-xl font-bold text-white mb-4">Key Takeaways:</h3>
         <ul className="space-y-3 text-white/80">
-          <li className="flex items-start gap-2">
-            <span className="mt-1"><X className="text-red-500 h-4 w-4" /></span>
-            Dropbox Replay is mainly a review add-on, requiring Dropbox Plus for full functionality, making it $20/user/month—which quickly adds up as teams grow.
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="mt-1"><Check className="text-[#9b87f5] h-4 w-4" /></span>
-            Timeliner is a complete media management solution, combining project management, video review, media storage, CRM, marketing tools, and portfolio building in one platform.
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="mt-1"><Check className="text-[#9b87f5] h-4 w-4" /></span>
-            Smart integrations with WhatsApp, Email, and Slack allow seamless team communication and client notifications.
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="mt-1"><Check className="text-[#9b87f5] h-4 w-4" /></span>
-            Flat pricing ensures cost predictability, making Timeliner the more scalable and cost-effective choice for video editors and media teams.
-          </li>
+          {tools[0].keyTakeaways?.map((takeaway, index) => (
+            <li key={index} className="flex items-start gap-2">
+              <span className="mt-1">
+                {takeaway.type === 'negative' ? 
+                  <X className="text-red-500 h-4 w-4" /> : 
+                  <Check className="text-[#9b87f5] h-4 w-4" />
+                }
+              </span>
+              {takeaway.text}
+            </li>
+          ))}
         </ul>
       </div>
     </div>
