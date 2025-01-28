@@ -263,6 +263,73 @@ export const competitors: Competitor[] = [
     ]
   },
   {
+    id: "vimeo",
+    name: "Vimeo Review",
+    logo: "/lovable-uploads/e612d0f5-d66b-4f48-9de7-f142a4fa9670.png",
+    features: [
+      {
+        name: "Pricing",
+        competitor: "Starter: $12/month (1 seat, 100GB storage)\nStandard: $25/month (2+ seats, 1TB storage)\nAdvanced: $65/month (2+ seats, 5TB storage)",
+        timeliner: "$29/month (up to 5 users, 1TB)\n$49/month (up to 30 users, 2TB)"
+      },
+      {
+        name: "Storage",
+        competitor: "Starter: 100GB\nStandard: 1TB\nAdvanced: 5TB",
+        timeliner: "1–2 TB depending on the plan"
+      },
+      {
+        name: "Media Review Tools",
+        competitor: "Basic tools for comments and annotations",
+        timeliner: "Fully integrated with advanced workflow and review tools"
+      },
+      {
+        name: "No Account Required for Reviewers",
+        competitor: true,
+        timeliner: true
+      },
+      {
+        name: "Advanced Workflow Management",
+        competitor: false,
+        timeliner: "Includes List, Kanban, Pool, and Chart views"
+      },
+      {
+        name: "Built-In CRM",
+        competitor: false,
+        timeliner: true
+      },
+      {
+        name: "AI Tools",
+        competitor: "Limited to AI script generator and auto-captioning (Standard/Advanced)",
+        timeliner: "Advanced AI tools, including automatic multi-language captions"
+      },
+      {
+        name: "Audio Comments",
+        competitor: false,
+        timeliner: "Add comments using voice recordings"
+      },
+      {
+        name: "Pro Portfolio Builder",
+        competitor: false,
+        timeliner: "Build and send professional portfolios to clients"
+      },
+      {
+        name: "Client Area and Permissions",
+        competitor: "Limited",
+        timeliner: "Dedicated client area with advanced permissions"
+      },
+      {
+        name: "Educational Resources",
+        competitor: "Limited",
+        timeliner: "Includes video courses and onboarding guides"
+      },
+      {
+        name: "Scalability",
+        competitor: "Costs increase significantly with more users and higher plans",
+        timeliner: "Flat pricing supports growth up to 30 users for $49/month"
+      }
+    ]
+  },
+  {
     id: "clickup",
     name: "ClickUp",
     logo: "/lovable-uploads/d4d71abe-8984-4b88-baf8-c4dd913ee9b6.png",
