@@ -1,4 +1,4 @@
-import { Check } from "lucide-react";
+import { Check, X } from "lucide-react";
 import { Tool } from "./types";
 
 interface ComparisonMobileCardProps {
@@ -13,7 +13,7 @@ export const ComparisonMobileCard = ({ tool, isRTL, language }: ComparisonMobile
       <div className="flex flex-col space-y-2">
         <div className={`flex justify-between items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
           <h3 className={`font-medium text-white ${isRTL ? 'text-right' : 'text-left'}`}>{tool.feature}</h3>
-          <Check className={`text-primary ${isRTL ? 'order-first' : ''}`} />
+          <Check className={`text-[#9b87f5] h-5 w-5 ${isRTL ? 'order-first' : ''}`} />
         </div>
         <div className={`grid grid-cols-2 gap-2 text-sm text-white/70`}>
           <div className={isRTL ? 'text-right' : 'text-left'}>
