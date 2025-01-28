@@ -12,15 +12,15 @@ export const CompetitorsTable = () => {
     <section className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-4">
         <h2 className={`text-4xl font-bold mb-4 text-center ${isRTL ? 'text-right' : 'text-left'}`}>
-          {language === 'es' ? 'Cómo se compara Timeliner con la competencia' : 
-           isRTL ? 'איך Timeliner משתווה למתחרים' : 
-           'How Timeliner Stacks Up Against the Competition'}
+          {language === 'es' ? 'Timeliner vs. el resto: ¿Quién gana?' : 
+           isRTL ? 'Timeliner מול השאר: מי מנצח?' : 
+           'Timeliner vs. The Rest: Who Wins?'}
         </h2>
         
-        <p className={`text-lg text-muted-foreground mb-12 max-w-3xl mx-auto text-center ${isRTL ? 'text-right' : 'text-left'}`}>
-          {language === 'es' ? 'Compare Timeliner con las herramientas líderes de la industria y descubra por qué es la opción más inteligente para equipos de medios, agencias y creativos.' : 
-           isRTL ? 'השוו את Timeliner עם כלים מובילים בתעשייה וגלו למה זו הבחירה החכמה יותר לצוותי מדיה, סוכנויות ויוצרים.' : 
-           "Compare Timeliner with leading industry tools and see why it's the smarter choice for media teams, agencies, and creatives. From advanced workflows to client-ready tools, discover how we outperform the competition in value, features, and scalability."}
+        <p className={`text-lg text-muted-foreground mb-6 max-w-3xl mx-auto text-center ${isRTL ? 'text-right' : 'text-left'}`}>
+          {language === 'es' ? 'Herramientas más inteligentes, funciones listas para clientes y flujos de trabajo para creativos, todo sin romper el banco. ¡Descubre por qué Timeliner es la mejor opción para editores de video y equipos de medios!' : 
+           isRTL ? 'כלים חכמים יותר, תכונות מוכנות ללקוח וזרימות עבודה ליוצרים - הכל במחיר משתלם. גלה למה Timeliner הוא הבחירה המובילה לעורכי וידאו וצוותי מדיה!' : 
+           'Smarter tools, client-ready features, and workflows for creatives—all without breaking the bank. See why Timeliner is the top choice for video editors and media teams!'}
         </p>
         
         <div className="relative">
