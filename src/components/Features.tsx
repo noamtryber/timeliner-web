@@ -74,105 +74,36 @@ export const Features = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/5 via-primary/5 to-transparent pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(123,97,255,0.1),rgba(123,97,255,0)_43.89%)] pointer-events-none" />
       <div className="container mx-auto px-4 relative">
-        <div className="pt-12" /> {/* Added spacing above first row */}
         <FeaturesHeader />
-        <div className="space-y-[60vh] md:space-y-[60vh] md:pb-96">
-          {featureGroups.map((group, groupIndex) => {
+        <div className="space-y-64 md:space-y-96">
+          {featureGroups.map((group) => {
             const currentFeature = group.features.find(f => f.id === selectedFeatures[group.id]);
             const IconComponent = currentFeature ? iconComponents[currentFeature.icon] : null;
 
             return (
-              <div 
-                key={group.id} 
-                className={`space-y-8 md:space-y-12 min-h-[calc(100vh-20rem)] p-8 md:p-12 rounded-3xl transition-all duration-500
-                  ${groupIndex === 0 ? 'bg-secondary/5' : 
-                    groupIndex === 1 ? 'bg-primary/5' : 
-                    groupIndex === 2 ? 'bg-accent/5' : 
-                    'bg-secondary/10'}`}
-              >
-                {/* Mobile Layout */}
-                <div className="md:hidden space-y-8">
-                  {/* Feature List - Now in grid */}
-                  <div className="grid grid-cols-2 gap-4">
-                    {group.features.map((feature) => (
-                      <button
-                        key={feature.id}
-                        onClick={() => setSelectedFeatures(prev => ({
-                          ...prev,
-                          [group.id]: feature.id
-                        }))}
-                        className={`px-4 py-2 rounded-lg transition-all duration-300 text-sm text-left
-                          ${selectedFeatures[group.id] === feature.id 
-                            ? 'bg-primary/10 font-semibold text-primary' 
-                            : 'hover:bg-card/50 text-white'
-                          }`}
-                      >
-                        {feature.title}
-                      </button>
-                    ))}
-                  </div>
-
-                  {/* Feature Content */}
-                  {currentFeature && (
-                    <div className="space-y-6">
-                      <div className="flex items-start space-x-4">
-                        {IconComponent && (
-                          <div className="flex-shrink-0">
-                            <IconComponent className="w-8 h-8 text-primary" />
-                          </div>
-                        )}
-                        <div>
-                          <h3 className="text-xl font-bold leading-tight mb-4">{currentFeature.title}</h3>
-                          <p className="text-white/70 text-base leading-relaxed mb-4">{currentFeature.description}</p>
-                        </div>
-                      </div>
-                      <div className="text-left">
-                        <Button 
-                          onClick={() => setOpenDialog(currentFeature.id)}
-                          variant="outline"
-                          size="sm"
-                          className="text-base"
-                        >
-                          Learn More
-                        </Button>
-                      </div>
-                      <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl">
-                        {currentFeature && (
-                          <iframe
-                            src={`${getFeatureMedia(currentFeature.id, 'preview')}?autoplay=1&loop=1&autopause=0&background=1&muted=1`}
-                            className="w-full h-full scale-[1.01]"
-                            allow="autoplay; fullscreen; picture-in-picture"
-                            style={{
-                              border: 'none',
-                              background: 'transparent',
-                            }}
-                          />
-                        )}
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Desktop Layout */}
-                <div className="hidden md:grid grid-cols-12 gap-8 items-center">
+              <div key={group.id} className="space-y-12">
+                <div className="grid grid-cols-12 gap-12 items-start">
                   {/* Left Column - Feature List (15%) */}
                   <div className="col-span-2 space-y-2 flex flex-col">
-                    {group.features.map((feature) => (
-                      <button
-                        key={feature.id}
-                        onClick={() => setSelectedFeatures(prev => ({
-                          ...prev,
-                          [group.id]: feature.id
-                        }))}
-                        className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center
-                          ${selectedFeatures[group.id] === feature.id 
-                            ? 'bg-primary/10 font-semibold text-primary' 
-                            : 'hover:bg-card/50 text-white'
-                          }`}
-                      >
-                        <span className="text-sm text-left">{feature.title}</span>
-                      </button>
-                    ))}
+                    {group.features.map((feature) => {
+                      const FeatureIcon = iconComponents[feature.icon];
+                      return (
+                        <button
+                          key={feature.id}
+                          onClick={() => setSelectedFeatures(prev => ({
+                            ...prev,
+                            [group.id]: feature.id
+                          }))}
+                          className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center
+                            ${selectedFeatures[group.id] === feature.id 
+                              ? 'bg-primary/10 font-semibold text-primary' 
+                              : 'hover:bg-card/50 text-white'
+                            }`}
+                        >
+                          <span className="text-sm text-left">{feature.title}</span>
+                        </button>
+                      );
+                    })}
                   </div>
 
                   {/* Middle Column - Feature Details (25%) */}
@@ -186,7 +117,7 @@ export const Features = () => {
                             </div>
                           )}
                           <div className="ml-4">
-                            <h3 className="text-2xl font-bold leading-tight mb-4">{currentFeature.title}</h3>
+                            <h3 className="text-2xl font-bold leading-tight mb-4 whitespace-nowrap overflow-hidden text-ellipsis">{currentFeature.title}</h3>
                           </div>
                         </div>
                         <div className="ml-0">
@@ -205,8 +136,8 @@ export const Features = () => {
                   )}
 
                   {/* Right Column - Video Preview (60%) */}
-                  <div className="col-span-5 col-start-7 relative overflow-visible">
-                    <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl scale-[1.35] origin-left">
+                  <div className="col-span-5 col-start-7">
+                    <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl">
                       {currentFeature && (
                         <iframe
                           src={`${getFeatureMedia(currentFeature.id, 'preview')}?autoplay=1&loop=1&autopause=0&background=1&muted=1`}
