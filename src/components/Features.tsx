@@ -75,7 +75,7 @@ export const Features = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(123,97,255,0.1),rgba(123,97,255,0)_43.89%)] pointer-events-none" />
       <div className="container mx-auto px-4 relative">
         <FeaturesHeader />
-        <div className="space-y-64 md:space-y-96"> {/* Increased vertical spacing */}
+        <div className="space-y-64 md:space-y-96">
           {featureGroups.map((group) => {
             const currentFeature = group.features.find(f => f.id === selectedFeatures[group.id]);
             const IconComponent = currentFeature ? iconComponents[currentFeature.icon] : null;
@@ -85,22 +85,25 @@ export const Features = () => {
                 <div className="grid grid-cols-12 gap-6 items-center">
                   {/* Left Column - Feature List (15%) */}
                   <div className="col-span-2 space-y-2 flex flex-col">
-                    {group.features.map((feature) => (
-                      <button
-                        key={feature.id}
-                        onClick={() => setSelectedFeatures(prev => ({
-                          ...prev,
-                          [group.id]: feature.id
-                        }))}
-                        className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center
-                          ${selectedFeatures[group.id] === feature.id 
-                            ? 'bg-primary/10 font-semibold text-primary' 
-                            : 'hover:bg-card/50 text-white'
-                          }`}
-                      >
-                        <span className="text-sm text-left">{feature.title}</span>
-                      </button>
-                    ))}
+                    {group.features.map((feature) => {
+                      const FeatureIcon = iconComponents[feature.icon];
+                      return (
+                        <button
+                          key={feature.id}
+                          onClick={() => setSelectedFeatures(prev => ({
+                            ...prev,
+                            [group.id]: feature.id
+                          }))}
+                          className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center
+                            ${selectedFeatures[group.id] === feature.id 
+                              ? 'bg-primary/10 font-semibold text-primary' 
+                              : 'hover:bg-card/50 text-white'
+                            }`}
+                        >
+                          <span className="text-sm text-left">{feature.title}</span>
+                        </button>
+                      );
+                    })}
                   </div>
 
                   {/* Middle Column - Feature Details (25%) */}
