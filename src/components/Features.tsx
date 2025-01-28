@@ -76,15 +76,16 @@ export const Features = () => {
       <div className="container mx-auto px-4 relative">
         <FeaturesHeader />
         <div className="space-y-64 md:space-y-96">
-          {featureGroups.map((group) => {
+          {featureGroups.map((group, index) => {
             const currentFeature = group.features.find(f => f.id === selectedFeatures[group.id]);
             const IconComponent = currentFeature ? iconComponents[currentFeature.icon] : null;
+            const isAlternate = index === 1 || index === 3;
 
             return (
               <div key={group.id} className="space-y-12">
                 <div className="grid grid-cols-12 gap-12 items-start">
                   {/* Left Column - Feature List (15%) */}
-                  <div className="col-span-2 space-y-2 flex flex-col">
+                  <div className={`col-span-2 space-y-2 flex flex-col ${isAlternate ? 'order-1 md:order-3' : ''}`}>
                     {group.features.map((feature) => {
                       const FeatureIcon = iconComponents[feature.icon];
                       return (
@@ -108,7 +109,7 @@ export const Features = () => {
 
                   {/* Middle Column - Feature Details (25%) */}
                   {currentFeature && (
-                    <div className="col-span-4">
+                    <div className={`col-span-4 ${isAlternate ? 'order-2' : ''}`}>
                       <div className="flex flex-col">
                         <div className="flex items-start">
                           {IconComponent && (
@@ -136,7 +137,7 @@ export const Features = () => {
                   )}
 
                   {/* Right Column - Video Preview (60%) */}
-                  <div className="col-span-5 col-start-7">
+                  <div className={`col-span-5 ${isAlternate ? 'order-3 md:order-1 col-start-1' : 'col-start-7'}`}>
                     <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl">
                       {currentFeature && (
                         <iframe
