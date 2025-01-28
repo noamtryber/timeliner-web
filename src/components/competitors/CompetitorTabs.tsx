@@ -1,4 +1,4 @@
-import { Competitor, competitors } from "./types";
+import { Competitor } from "./types";
 import { competitors } from "./competitorData";
 
 interface CompetitorTabsProps {
