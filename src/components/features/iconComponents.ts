@@ -1,7 +1,7 @@
 import {
-  MessageCircle,
-  FileCheck,
   FolderGit2,
+  FileCheck,
+  MessageCircle,
   FileText,
   Calendar,
   DollarSign,
@@ -10,7 +10,7 @@ import {
   Globe,
   Slack,
   MessageSquare,
-  Activity
+  Users
 } from "lucide-react";
 
 export const iconComponents = {
@@ -25,5 +25,5 @@ export const iconComponents = {
   "multi-language": Globe,
   "slack-integration": Slack,
   "whatsapp-integration": MessageSquare,
-  "team-collaboration": Activity,
+  "team-collaboration": Users,
 } as const;

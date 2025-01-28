@@ -12,7 +12,6 @@ import { Button } from "./ui/button";
 export const Features = () => {
   const [openDialog, setOpenDialog] = useState<string | null>(null);
   const [selectedFeatures, setSelectedFeatures] = useState<Record<string, string>>(() => {
-    // Initialize with first feature of each group selected
     return featureGroups.reduce((acc, group) => ({
       ...acc,
       [group.id]: group.features[0].id
@@ -76,7 +75,7 @@ export const Features = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(123,97,255,0.1),rgba(123,97,255,0)_43.89%)] pointer-events-none" />
       <div className="container mx-auto px-4 relative">
         <FeaturesHeader />
-        <div className="space-y-32">
+        <div className="space-y-64 md:space-y-96"> {/* Increased vertical spacing */}
           {featureGroups.map((group) => {
             const currentFeature = group.features.find(f => f.id === selectedFeatures[group.id]);
             const IconComponent = currentFeature ? iconComponents[currentFeature.icon] : null;
@@ -96,7 +95,7 @@ export const Features = () => {
                         className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center
                           ${selectedFeatures[group.id] === feature.id 
                             ? 'bg-primary/10 font-semibold text-primary' 
-                            : 'hover:bg-card/50 text-white/70'
+                            : 'hover:bg-card/50 text-white'
                           }`}
                       >
                         <span className="text-sm text-left">{feature.title}</span>
@@ -110,7 +109,7 @@ export const Features = () => {
                       <div className="flex items-start space-x-4">
                         <div className="flex-shrink-0">
                           <div className="p-3 rounded-xl bg-primary/10">
-                            {IconComponent && <IconComponent className="w-8 h-8 text-primary" />}
+                            {IconComponent && <IconComponent className="w-6 h-6 text-primary" />}
                           </div>
                         </div>
                         <div className="space-y-4">
