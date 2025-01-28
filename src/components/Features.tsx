@@ -97,7 +97,7 @@ export const Features = () => {
 
             return (
               <div key={group.id} className="space-y-8 md:space-y-12">
-                <div className={`grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-start ${isAlternate ? 'justify-end' : ''}`}>
+                <div className={`grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-center ${isAlternate ? 'justify-end' : ''}`}>
                   {/* Left Column - Feature List */}
                   <div className={`col-span-1 md:col-span-2 space-y-2 flex flex-col order-2 ${isAlternate ? 'md:order-3' : 'md:order-1'}`}>
                     {group.features.map((feature) => {
@@ -124,7 +124,7 @@ export const Features = () => {
                   {/* Middle Column - Feature Details */}
                   {currentFeature && (
                     <div className={`col-span-1 md:col-span-4 order-3 ${isAlternate ? 'md:order-2 md:text-right' : 'md:order-2'}`}>
-                      <div className="flex flex-col">
+                      <div className="flex flex-col justify-center h-full">
                         <div className={`flex items-start ${isAlternate ? 'md:justify-end' : ''}`}>
                           {IconComponent && (
                             <div className="flex-shrink-0">
@@ -155,8 +155,8 @@ export const Features = () => {
                   )}
 
                   {/* Right Column - Video Preview */}
-                  <div className={`col-span-1 md:col-span-5 order-1 ${isAlternate ? 'md:order-1 md:col-start-1' : 'md:col-start-7 md:order-3'}`}>
-                    <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl">
+                  <div className={`col-span-1 md:col-span-5 order-1 ${isAlternate ? 'md:order-1 md:col-start-1' : 'md:col-start-7 md:order-3'} flex items-center`}>
+                    <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl w-full">
                       {currentFeature && (
                         <iframe
                           src={`${getFeatureMedia(currentFeature.id, 'preview')}?autoplay=1&loop=1&autopause=0&background=1&muted=1`}
