@@ -6,7 +6,7 @@ import { FeaturesHeader } from "./features/FeaturesHeader";
 import { FeatureGroups } from "./features/FeatureGroups";
 import { FeatureDialog } from "./features/FeatureDialog";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { featureGroups } from "./features/featureData";
+import { featureGroups, type Feature } from "./features/featureData";
 
 export const Features = () => {
   const [openDialog, setOpenDialog] = useState<string | null>(null);

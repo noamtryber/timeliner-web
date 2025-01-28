@@ -1,4 +1,17 @@
-export const featureGroups = [
+interface FeatureGroup {
+  id: string;
+  headline: string;
+  features: Feature[];
+}
+
+interface Feature {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+}
+
+export const featureGroups: FeatureGroup[] = [
   {
     id: 'smart-management',
     headline: 'Take control of your workflow with tools that simplify and streamline your editing process.',
@@ -102,3 +115,5 @@ export const featureGroups = [
     ]
   }
 ] as const;
+
+export type { FeatureGroup, Feature };

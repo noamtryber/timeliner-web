@@ -1,13 +1,11 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { type Feature } from "./featureData";
 
 interface FeatureDialogProps {
   isOpen: boolean;
   onClose: () => void;
-  feature: {
-    title: string;
-    description: string;
-  };
+  feature: Feature;
   videoUrl: string;
 }
 
