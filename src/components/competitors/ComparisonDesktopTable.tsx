@@ -76,16 +76,16 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
 
   if (isMobile) {
     return (
-      <div className="space-y-2 px-1 snap-y snap-mandatory" dir={isRTL ? 'rtl' : 'ltr'}>
+      <div className="space-y-2 px-1" dir={isRTL ? 'rtl' : 'ltr'}>
         {competitor.features.map((feature, index) => (
           <div 
             key={index} 
-            className="bg-background/50 backdrop-blur-sm border border-primary/20 rounded-lg p-3 space-y-2 w-full snap-start"
+            className="bg-background/50 backdrop-blur-sm border border-primary/20 rounded-lg p-4 space-y-2 w-[95vw] mx-auto"
           >
             <h3 className={`font-medium text-lg ${isRTL ? 'text-right' : 'text-left'}`}>
               {getFeatureText(feature)}
             </h3>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-4">
               <div className="space-y-1">
                 <p className={`text-sm text-muted-foreground ${isRTL ? 'text-right' : 'text-left'}`}>
                   {competitor.name}
@@ -122,7 +122,7 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
           </div>
         ))}
 
-        <div className="mt-4 bg-background/50 backdrop-blur-sm border border-primary/20 rounded-lg p-4 snap-start">
+        <div className="mt-4 bg-background/50 backdrop-blur-sm border border-primary/20 rounded-lg p-4 w-[95vw] mx-auto">
           <h3 className={`text-xl font-bold mb-3 ${isRTL ? 'text-right' : 'text-left'}`}>
             {getKeyTakeawaysTitle()}
           </h3>

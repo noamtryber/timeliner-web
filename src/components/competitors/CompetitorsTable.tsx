@@ -5,10 +5,13 @@ import { ComparisonTable } from "./ComparisonTable";
 import { Competitor } from "./types";
 import { competitors } from "./data";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 export const CompetitorsTable = () => {
   const { language, isRTL } = useLanguage();
   const [selectedCompetitor, setSelectedCompetitor] = useState<Competitor>(competitors[0]);
+  const [isOpen, setIsOpen] = useState(true);
   const isMobile = useIsMobile();
 
   const getTitle = () => {
@@ -34,7 +37,7 @@ export const CompetitorsTable = () => {
   };
 
   return (
-    <section className="py-12 relative overflow-auto snap-y snap-mandatory">
+    <section className="py-12 relative overflow-auto">
       <div className={`container mx-auto ${isMobile ? 'px-1' : 'px-4'}`}>
         <h2 className={`${isMobile ? 'text-3xl' : 'text-4xl'} font-bold mb-4 text-center`}>
           {getTitle()}
@@ -54,7 +57,22 @@ export const CompetitorsTable = () => {
             onSelect={setSelectedCompetitor}
           />
           
-          <ComparisonTable competitor={selectedCompetitor} />
+          {isMobile ? (
+            <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+              <CollapsibleTrigger className="w-full flex items-center justify-center gap-2 py-2 text-primary hover:text-primary/80 transition-colors">
+                {isOpen ? (
+                  <>Hide Comparison <ChevronUp className="h-4 w-4" /></>
+                ) : (
+                  <>Show Comparison <ChevronDown className="h-4 w-4" /></>
+                )}
+              </CollapsibleTrigger>
+              <CollapsibleContent>
+                <ComparisonTable competitor={selectedCompetitor} />
+              </CollapsibleContent>
+            </Collapsible>
+          ) : (
+            <ComparisonTable competitor={selectedCompetitor} />
+          )}
         </div>
       </div>
     </section>
