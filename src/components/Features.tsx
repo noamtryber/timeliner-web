@@ -82,7 +82,7 @@ export const Features = () => {
 
             return (
               <div key={group.id} className="space-y-12">
-                <div className="grid grid-cols-12 gap-12 items-center">
+                <div className="grid grid-cols-12 gap-12 items-start">
                   {/* Left Column - Feature List (15%) */}
                   <div className="col-span-2 space-y-2 flex flex-col">
                     {group.features.map((feature) => {
@@ -109,25 +109,27 @@ export const Features = () => {
                   {/* Middle Column - Feature Details (25%) */}
                   {currentFeature && (
                     <div className="col-span-3">
-                      <div className="flex flex-col space-y-4">
-                        <div className="flex items-start space-x-4">
+                      <div className="flex flex-col">
+                        <div className="flex items-start">
                           {IconComponent && (
-                            <div className="flex-shrink-0 mt-1">
+                            <div className="flex-shrink-0">
                               <IconComponent className="w-8 h-8 text-primary" />
                             </div>
                           )}
-                          <div className="space-y-2">
-                            <h3 className="text-2xl font-bold leading-tight">{currentFeature.title}</h3>
-                            <p className="text-white/70 text-lg leading-relaxed">{currentFeature.description}</p>
-                            <Button 
-                              onClick={() => setOpenDialog(currentFeature.id)}
-                              variant="outline"
-                              size="lg"
-                              className="mt-4 text-lg"
-                            >
-                              Learn More
-                            </Button>
+                          <div className="ml-4">
+                            <h3 className="text-2xl font-bold leading-tight mb-4">{currentFeature.title}</h3>
                           </div>
+                        </div>
+                        <div className="ml-0">
+                          <p className="text-white/70 text-lg leading-relaxed mb-4">{currentFeature.description}</p>
+                          <Button 
+                            onClick={() => setOpenDialog(currentFeature.id)}
+                            variant="outline"
+                            size="lg"
+                            className="text-lg"
+                          >
+                            Learn More
+                          </Button>
                         </div>
                       </div>
                     </div>
