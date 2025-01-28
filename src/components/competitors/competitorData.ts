@@ -7,6 +7,11 @@ export const competitors: Competitor[] = [
     logo: "/lovable-uploads/acfcdad6-1f19-423f-9c1e-ae8fdb3f3620.png",
     features: [
       {
+        name: "Pricing",
+        competitor: "$15/user/month (Basic) = $75/month for 5 users\n$25/user/month (Pro) = $750/month for 30 users",
+        timeliner: "$29/month (fixed up to 5 users)\n$49/month (fixed up to 30 users)"
+      },
+      {
         name: "Time-Synced Comments",
         competitor: true,
         timeliner: true
@@ -22,27 +27,22 @@ export const competitors: Competitor[] = [
         timeliner: true
       },
       {
-        name: "Pricing",
-        competitor: "$15/user/month (Basic) = $75/month for 5 users\n$25/user/month (Pro) = $750/month for 30 users",
-        timeliner: "$29/month (fixed up to 5 users)\n$49/month (fixed up to 30 users)"
-      },
-      {
         name: "Media Status Tracking Advanced Workflow",
-        competitor: "Limited to simple tags",
-        timeliner: "Advanced pipeline with List, Kanban, Pool, and Chart views"
+        competitor: "Basic tags only",
+        timeliner: "List, Kanban, Pool, and Chart Status Groups"
       },
       {
-        name: "Intuitive Version Comparison",
-        competitor: "Limited to file previews",
-        timeliner: true
-      },
-      {
-        name: "No Account Required for Reviewers",
+        name: "Intuitive Split Screen Version Comparison",
         competitor: false,
         timeliner: true
       },
       {
-        name: "Interactive Offer Workflow",
+        name: "No Account Required for Reviewers",
+        competitor: true,
+        timeliner: true
+      },
+      {
+        name: "Interactive New Offer Workflow",
         competitor: false,
         timeliner: true
       },
@@ -52,44 +52,39 @@ export const competitors: Competitor[] = [
         timeliner: true
       },
       {
-        name: "Integrations",
-        competitor: "Limited to Adobe Cloud, Email",
-        timeliner: "WhatsApp, Gmail, Slack, and more"
-      },
-      {
-        name: "Team Monitoring and Productivity Tracking",
+        name: "WhatsApp & Slack Integrations",
         competitor: false,
         timeliner: true
       },
       {
-        name: "Client Area and Advanced Permissions",
-        competitor: "Limited and requires extra cost",
+        name: "Team Monitoring & Productivity Tracking",
+        competitor: false,
         timeliner: true
       },
       {
-        name: "Audio Comments",
+        name: "Add comments using voice recordings",
         competitor: false,
-        timeliner: "Add comments using voice recordings"
+        timeliner: true
       },
       {
-        name: "AI Tools",
+        name: "Multi-language AI captions (for uncommon languages as well)",
         competitor: false,
-        timeliner: "Automatic caption generation in multiple languages not supported by Premiere or DaVinci Resolve"
+        timeliner: true
       },
       {
         name: "Pro Portfolio Builder",
         competitor: false,
-        timeliner: "Build and send professional portfolios to clients"
+        timeliner: true
       },
       {
-        name: "Educational Resources and Onboarding",
-        competitor: "Limited",
-        timeliner: "Includes video courses and onboarding guides"
+        name: "Educational Resources & 1on1 Onboarding",
+        competitor: false,
+        timeliner: true
       },
       {
-        name: "Scalability",
-        competitor: "Costs increase significantly as team size grows (e.g., $750/month for 30 users)",
-        timeliner: "Flat pricing structure supports growth ($49/month for up to 30 users)"
+        name: "Costs rise exponentially as team grows",
+        competitor: true,
+        timeliner: false
       }
     ]
   },

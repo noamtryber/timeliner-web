@@ -9,17 +9,6 @@ interface ComparisonDesktopTableProps {
 }
 
 export const ComparisonDesktopTable = ({ tools, isRTL, language }: ComparisonDesktopTableProps) => {
-  const renderValue = (value: boolean | string) => {
-    if (typeof value === 'boolean') {
-      return value ? (
-        <Check className="mx-auto text-[#9b87f5] h-5 w-5" />
-      ) : (
-        <X className="mx-auto text-red-500 h-5 w-5" />
-      );
-    }
-    return value;
-  };
-
   return (
     <div className="space-y-6">
       <Table className="relative glass border border-[#222222]">
@@ -29,10 +18,7 @@ export const ComparisonDesktopTable = ({ tools, isRTL, language }: ComparisonDes
               {language === 'es' ? 'Características' : isRTL ? 'פיצ\'רים' : 'Features'}
             </TableHead>
             <TableHead className={`text-white ${isRTL ? 'text-right' : 'text-left'}`}>
-              {language === 'es' ? 'Reemplaza' : isRTL ? 'מחליף' : 'Replaces'}
-            </TableHead>
-            <TableHead className={`text-white ${isRTL ? 'text-right' : 'text-left'}`}>
-              {language === 'es' ? 'Costo de Otras Herramientas' : isRTL ? 'עלות כלים אחרים' : "Other Tools' Cost"}
+              Frame.io
             </TableHead>
             <TableHead className="text-white text-center bg-gradient-to-r from-primary/40 via-accent/40 to-primary/40">
               Timeliner
@@ -64,17 +50,6 @@ export const ComparisonDesktopTable = ({ tools, isRTL, language }: ComparisonDes
               </TableCell>
             </TableRow>
           ))}
-          <TableRow className="hover:bg-transparent border-t-2 border-white/10">
-            <TableCell colSpan={2} className={`font-bold text-white ${isRTL ? 'text-right' : 'text-left'}`}>
-              {language === 'es' ? 'Costo Total' : isRTL ? 'עלות כוללת' : 'Total Cost'}
-            </TableCell>
-            <TableCell className={`text-white/70 font-bold ${isRTL ? 'text-right' : 'text-left'}`}>
-              {language === 'es' ? 'Otras herramientas: $138+/mes' : isRTL ? 'כלים אחרים: $138+ לחודש' : '$138+/month'}
-            </TableCell>
-            <TableCell className="text-center font-bold text-primary">
-              {language === 'es' ? '$19-$39/mes' : isRTL ? '$19-$39 לחודש' : '$19-$39/month'}
-            </TableCell>
-          </TableRow>
         </TableBody>
       </Table>
 
