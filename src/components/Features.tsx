@@ -89,17 +89,17 @@ export const Features = () => {
       
       <div className="container mx-auto px-4 relative">
         <FeaturesHeader />
-        <div className="space-y-64 md:space-y-96 pb-[200px]">
+        <div className="space-y-32 md:space-y-64 lg:space-y-96 pb-[200px]">
           {featureGroups.map((group, index) => {
             const currentFeature = group.features.find(f => f.id === selectedFeatures[group.id]);
             const IconComponent = currentFeature ? iconComponents[currentFeature.icon] : null;
             const isAlternate = index === 1 || index === 3;
 
             return (
-              <div key={group.id} className="space-y-12">
-                <div className={`grid grid-cols-12 gap-12 items-start ${isAlternate ? 'justify-end' : ''}`}>
-                  {/* Left Column - Feature List (15%) */}
-                  <div className={`col-span-2 space-y-2 flex flex-col ${isAlternate ? 'order-1 md:order-3' : ''}`}>
+              <div key={group.id} className="space-y-8 md:space-y-12">
+                <div className={`grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-start ${isAlternate ? 'justify-end' : ''}`}>
+                  {/* Left Column - Feature List */}
+                  <div className={`col-span-1 md:col-span-2 space-y-2 flex flex-col order-2 ${isAlternate ? 'md:order-3' : ''}`}>
                     {group.features.map((feature) => {
                       const FeatureIcon = iconComponents[feature.icon];
                       return (
@@ -121,30 +121,30 @@ export const Features = () => {
                     })}
                   </div>
 
-                  {/* Middle Column - Feature Details (25%) */}
+                  {/* Middle Column - Feature Details */}
                   {currentFeature && (
-                    <div className={`col-span-4 ${isAlternate ? 'order-2 text-right' : ''}`}>
+                    <div className={`col-span-1 md:col-span-4 order-3 ${isAlternate ? 'md:order-2 md:text-right' : ''}`}>
                       <div className="flex flex-col">
-                        <div className={`flex items-start ${isAlternate ? 'justify-end' : ''}`}>
+                        <div className={`flex items-start ${isAlternate ? 'md:justify-end' : ''}`}>
                           {IconComponent && (
                             <div className="flex-shrink-0">
                               <IconComponent className="w-8 h-8 text-primary" />
                             </div>
                           )}
-                          <div className={`${isAlternate ? 'mr-4' : 'ml-4'}`}>
-                            <h3 className="text-2xl font-bold leading-tight mb-4 whitespace-nowrap overflow-hidden text-ellipsis">
+                          <div className={`${isAlternate ? 'md:mr-4' : 'ml-4'}`}>
+                            <h3 className="text-xl md:text-2xl font-bold leading-tight mb-4 whitespace-normal md:whitespace-nowrap overflow-hidden text-ellipsis">
                               {currentFeature.title}
                             </h3>
                           </div>
                         </div>
                         <div className="ml-0">
-                          <p className="text-white/70 text-lg leading-relaxed mb-4">{currentFeature.description}</p>
-                          <div className={`${isAlternate ? 'text-right' : ''}`}>
+                          <p className="text-white/70 text-base md:text-lg leading-relaxed mb-4">{currentFeature.description}</p>
+                          <div className={`${isAlternate ? 'md:text-right' : ''}`}>
                             <Button 
                               onClick={() => setOpenDialog(currentFeature.id)}
                               variant="outline"
                               size="lg"
-                              className="text-lg"
+                              className="w-full md:w-auto text-lg"
                             >
                               Learn More
                             </Button>
@@ -154,8 +154,8 @@ export const Features = () => {
                     </div>
                   )}
 
-                  {/* Right Column - Video Preview (60%) */}
-                  <div className={`col-span-5 ${isAlternate ? 'order-3 md:order-1 col-start-1' : 'col-start-7'}`}>
+                  {/* Right Column - Video Preview */}
+                  <div className={`col-span-1 md:col-span-5 order-1 ${isAlternate ? 'md:order-1 md:col-start-1' : 'md:col-start-7'}`}>
                     <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl">
                       {currentFeature && (
                         <iframe
