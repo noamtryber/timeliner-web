@@ -11,20 +11,22 @@ export const CompetitorTabs = ({ selectedCompetitor, onSelect }: CompetitorTabsP
   const isMobile = useIsMobile();
   
   return (
-    <div className={`flex ${isMobile ? 'flex-nowrap gap-2' : 'flex-wrap gap-4'} justify-start mb-8 ${isMobile ? 'px-4' : 'justify-center'}`}>
-      {competitors.map((competitor) => (
-        <button
-          key={competitor.id}
-          onClick={() => onSelect(competitor)}
-          className={`p-3 rounded-lg transition-all whitespace-nowrap ${
-            selectedCompetitor.id === competitor.id
-              ? "bg-primary/20 scale-105"
-              : "bg-white/5 hover:bg-white/10"
-          } ${isMobile ? 'text-sm' : ''}`}
-        >
-          {competitor.name}
-        </button>
-      ))}
+    <div className={`w-full max-w-4xl mx-auto ${isMobile ? 'px-4' : ''}`}>
+      <div className={`grid ${isMobile ? 'grid-cols-3 gap-2' : 'flex flex-wrap justify-center gap-4'} mb-8`}>
+        {competitors.map((competitor) => (
+          <button
+            key={competitor.id}
+            onClick={() => onSelect(competitor)}
+            className={`p-3 rounded-lg transition-all text-center ${
+              selectedCompetitor.id === competitor.id
+                ? "bg-primary/20 scale-105"
+                : "bg-white/5 hover:bg-white/10"
+            } ${isMobile ? 'text-sm' : ''}`}
+          >
+            {competitor.name}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
