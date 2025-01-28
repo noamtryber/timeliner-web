@@ -198,7 +198,7 @@ export const competitors: Competitor[] = [
   {
     id: "wipster",
     name: "Wipster",
-    logo: "/lovable-uploads/d4d71abe-8984-4b88-baf8-c4dd913ee9b6.png",
+    logo: "/lovable-uploads/632bc234-7a2b-4c8a-bf51-2bf57e7f4c7b.png",
     features: [
       {
         name: "Pricing",
