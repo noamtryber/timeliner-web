@@ -97,9 +97,9 @@ export const Features = () => {
 
             return (
               <div key={group.id} className="space-y-8 md:space-y-12">
-                <div className={`grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-center ${isAlternate ? 'md:ml-[10%]' : ''}`}>
+                <div className={`grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-center ${isAlternate ? 'justify-end' : ''}`}>
                   {/* Left Column - Feature List */}
-                  <div className={`col-span-1 md:col-span-2 space-y-2 flex flex-col order-2 ${isAlternate ? 'md:order-3 md:col-start-3' : 'md:order-1'}`}>
+                  <div className={`col-span-1 md:col-span-2 space-y-2 flex flex-col order-2 ${isAlternate ? 'md:order-3' : 'md:order-1'}`}>
                     {group.features.map((feature) => {
                       const FeatureIcon = iconComponents[feature.icon];
                       return (
@@ -123,7 +123,7 @@ export const Features = () => {
 
                   {/* Middle Column - Feature Details */}
                   {currentFeature && (
-                    <div className={`col-span-1 md:col-span-4 order-3 ${isAlternate ? 'md:order-2 md:text-right md:col-start-5' : 'md:order-2'}`}>
+                    <div className={`col-span-1 md:col-span-4 order-3 ${isAlternate ? 'md:order-2 md:text-right' : 'md:order-2'}`}>
                       <div className="flex flex-col justify-center h-full">
                         <div className={`flex items-start ${isAlternate ? 'md:justify-end' : ''}`}>
                           {IconComponent && (
