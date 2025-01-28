@@ -30,6 +30,34 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
         return 'Key Takeaways:';
     }
   };
+
+  const getFeatureText = (feature: any) => {
+    if (language === 'he' && feature.hebrewName) {
+      return feature.hebrewName;
+    }
+    return feature.name;
+  };
+
+  const getCompetitorText = (feature: any) => {
+    if (language === 'he' && feature.hebrewCompetitor) {
+      return feature.hebrewCompetitor;
+    }
+    return feature.competitor;
+  };
+
+  const getTimelinerText = (feature: any) => {
+    if (language === 'he' && feature.hebrewTimeliner) {
+      return feature.hebrewTimeliner;
+    }
+    return feature.timeliner;
+  };
+
+  const getKeyTakeawayText = (takeaway: any) => {
+    if (language === 'he' && takeaway.hebrewText) {
+      return takeaway.hebrewText;
+    }
+    return takeaway.text;
+  };
   
   return (
     <div className="space-y-6" dir={isRTL ? 'rtl' : 'ltr'}>
@@ -63,7 +91,7 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
           {competitor.features.map((feature, index) => (
             <TableRow key={index} className="hover:bg-primary/5 transition-colors">
               <TableCell className={`font-medium ${isRTL ? 'text-right' : 'text-left'}`}>
-                {feature.name}
+                {getFeatureText(feature)}
               </TableCell>
               <TableCell className={`whitespace-pre-line ${isRTL ? 'text-right' : 'text-left'}`}>
                 {typeof feature.competitor === 'boolean' ? (
@@ -73,7 +101,7 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
                     <X className="text-red-500 h-5 w-5" />
                   )
                 ) : (
-                  feature.competitor
+                  getCompetitorText(feature)
                 )}
               </TableCell>
               <TableCell className={`bg-primary/10 whitespace-pre-line ${isRTL ? 'text-right' : 'text-left'}`}>
@@ -84,7 +112,7 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
                     <X className="text-red-500 h-5 w-5" />
                   )
                 ) : (
-                  feature.timeliner
+                  getTimelinerText(feature)
                 )}
               </TableCell>
             </TableRow>
@@ -106,7 +134,7 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
                 }
               </span>
               <span className={isRTL ? 'text-right' : ''}>
-                {takeaway.text}
+                {getKeyTakeawayText(takeaway)}
               </span>
             </li>
           ))}
