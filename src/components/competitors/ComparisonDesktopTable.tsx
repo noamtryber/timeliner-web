@@ -35,12 +35,18 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
     if (language === 'he' && feature.hebrewName) {
       return feature.hebrewName;
     }
+    if (language === 'es' && feature.spanishName) {
+      return feature.spanishName;
+    }
     return feature.name;
   };
 
   const getCompetitorText = (feature: any) => {
     if (language === 'he' && feature.hebrewCompetitor) {
       return feature.hebrewCompetitor;
+    }
+    if (language === 'es' && feature.spanishCompetitor) {
+      return feature.spanishCompetitor;
     }
     return feature.competitor;
   };
@@ -49,12 +55,18 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
     if (language === 'he' && feature.hebrewTimeliner) {
       return feature.hebrewTimeliner;
     }
+    if (language === 'es' && feature.spanishTimeliner) {
+      return feature.spanishTimeliner;
+    }
     return feature.timeliner;
   };
 
   const getKeyTakeawayText = (takeaway: any) => {
     if (language === 'he' && takeaway.hebrewText) {
       return takeaway.hebrewText;
+    }
+    if (language === 'es' && takeaway.spanishText) {
+      return takeaway.spanishText;
     }
     return takeaway.text;
   };
@@ -126,7 +138,7 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
         </h3>
         <ul className="space-y-3 text-white/80">
           {competitor.features[0].keyTakeaways?.map((takeaway, index) => (
-            <li key={index} className="flex items-start gap-2">
+            <li key={index} className={`flex items-start gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
               <span className="mt-1 flex-shrink-0">
                 {takeaway.type === 'negative' ? 
                   <X className="text-red-500 h-4 w-4" /> : 

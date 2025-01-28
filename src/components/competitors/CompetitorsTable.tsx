@@ -14,7 +14,7 @@ export const CompetitorsTable = () => {
       case 'he':
         return 'Timeliner מול השאר: מי מנצח?';
       case 'es':
-        return 'Timeliner vs. el resto: ¿Quién gana?';
+        return '¿Timeliner vs. el resto: ¿Quién gana?';
       default:
         return 'Timeliner vs. The Rest: Who Wins?';
     }
