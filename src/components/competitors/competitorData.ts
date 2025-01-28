@@ -213,28 +213,63 @@ export const competitors: Competitor[] = [
     features: [
       {
         name: "Pricing",
-        competitor: "$19/user/month = $95/month for 5 users",
+        competitor: "$19.95/user/month = $99.75/month for 5 users",
         timeliner: "$29/month (up to 5 users)\n$49/month (up to 30 users)"
       },
       {
-        name: "Media Review Tools",
-        competitor: "Basic review tools",
-        timeliner: "Advanced review tools with audio comments"
+        name: "Storage",
+        competitor: "250 GB",
+        timeliner: "1–2 TB (depending on the plan)"
       },
       {
-        name: "Pro Portfolio Builder",
+        name: "Media Review Tools",
+        competitor: "Time-synced comments, annotations",
+        timeliner: "Fully integrated with advanced workflow and review tools"
+      },
+      {
+        name: "No Account Required for Reviewers",
+        competitor: true,
+        timeliner: true
+      },
+      {
+        name: "Advanced Workflow Management",
+        competitor: false,
+        timeliner: "Includes List, Kanban, Pool, and Chart views"
+      },
+      {
+        name: "Built-In CRM",
         competitor: false,
         timeliner: true
       },
       {
         name: "AI Tools",
         competitor: false,
-        timeliner: true
+        timeliner: "Automatic caption generation in multiple languages"
       },
       {
-        name: "CRM and Client Management",
+        name: "Audio Comments",
         competitor: false,
-        timeliner: true
+        timeliner: "Add comments using voice recordings"
+      },
+      {
+        name: "Pro Portfolio Builder",
+        competitor: false,
+        timeliner: "Build and send professional portfolios to clients"
+      },
+      {
+        name: "Client Area and Permissions",
+        competitor: "Limited",
+        timeliner: "Dedicated client area with advanced permissions"
+      },
+      {
+        name: "Educational Resources",
+        competitor: "Limited",
+        timeliner: "Includes video courses and onboarding guides"
+      },
+      {
+        name: "Scalability",
+        competitor: "Costs increase per user",
+        timeliner: "Flat pricing supports growth up to 30 users for $49/month"
       }
     ]
   },
