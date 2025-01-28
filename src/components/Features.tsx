@@ -109,28 +109,30 @@ export const Features = () => {
 
                   {/* Middle Column - Feature Details (25%) */}
                   {currentFeature && (
-                    <div className={`col-span-4 ${isAlternate ? 'order-2' : ''}`}>
+                    <div className={`col-span-4 ${isAlternate ? 'order-2 text-right' : ''}`}>
                       <div className="flex flex-col">
-                        <div className="flex items-start">
+                        <div className={`flex items-start ${isAlternate ? 'justify-end' : ''}`}>
                           {IconComponent && (
-                            <div className="flex-shrink-0">
+                            <div className={`flex-shrink-0 ${isAlternate ? 'order-2 ml-4' : 'mr-4'}`}>
                               <IconComponent className="w-8 h-8 text-primary" />
                             </div>
                           )}
-                          <div className="ml-4">
+                          <div className={isAlternate ? 'order-1' : ''}>
                             <h3 className="text-2xl font-bold leading-tight mb-4 whitespace-nowrap overflow-hidden text-ellipsis">{currentFeature.title}</h3>
                           </div>
                         </div>
-                        <div className="ml-0">
+                        <div className={`${isAlternate ? 'text-right' : ''}`}>
                           <p className="text-white/70 text-lg leading-relaxed mb-4">{currentFeature.description}</p>
-                          <Button 
-                            onClick={() => setOpenDialog(currentFeature.id)}
-                            variant="outline"
-                            size="lg"
-                            className="text-lg"
-                          >
-                            Learn More
-                          </Button>
+                          <div className={`${isAlternate ? 'text-right' : ''}`}>
+                            <Button 
+                              onClick={() => setOpenDialog(currentFeature.id)}
+                              variant="outline"
+                              size="lg"
+                              className="text-lg"
+                            >
+                              Learn More
+                            </Button>
+                          </div>
                         </div>
                       </div>
                     </div>
