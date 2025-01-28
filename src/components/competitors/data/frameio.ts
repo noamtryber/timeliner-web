@@ -69,7 +69,7 @@ export const frameioData: Competitor = {
       spanishTimeliner: "Listas, Kanban, Pool y Grupos de Estado de Tareas"
     },
     {
-      name: "Intuitive Split Screen Version Comparison",
+      name: "Split Screen Version Comparison",
       hebrewName: "השוואת גרסאות במסך מפוצל",
       spanishName: "Comparación de versiones en pantalla dividida",
       competitor: false,
