@@ -75,13 +75,13 @@ export const Features = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(123,97,255,0.1),rgba(123,97,255,0)_43.89%)] pointer-events-none" />
       <div className="container mx-auto px-4 relative">
         <FeaturesHeader />
-        <div className="space-y-32 md:space-y-64 md:pb-32">
+        <div className="space-y-[100vh] md:space-y-[100vh] md:pb-96">
           {featureGroups.map((group, groupIndex) => {
             const currentFeature = group.features.find(f => f.id === selectedFeatures[group.id]);
             const IconComponent = currentFeature ? iconComponents[currentFeature.icon] : null;
 
             return (
-              <div key={group.id} className="space-y-8 md:space-y-12">
+              <div key={group.id} className="space-y-8 md:space-y-12 min-h-[calc(100vh-20rem)]">
                 {/* Mobile Layout */}
                 <div className="md:hidden space-y-8">
                   {/* Feature List - Now in grid */}
