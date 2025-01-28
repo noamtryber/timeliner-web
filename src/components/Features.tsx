@@ -108,7 +108,7 @@ export const Features = () => {
 
                   {/* Middle Column - Feature Details (25%) */}
                   {currentFeature && (
-                    <div className="col-span-3">
+                    <div className="col-span-4">
                       <div className="flex flex-col">
                         <div className="flex items-start">
                           {IconComponent && (
@@ -117,7 +117,7 @@ export const Features = () => {
                             </div>
                           )}
                           <div className="ml-4">
-                            <h3 className="text-2xl font-bold leading-tight mb-4">{currentFeature.title}</h3>
+                            <h3 className="text-2xl font-bold leading-tight mb-4 whitespace-nowrap overflow-hidden text-ellipsis">{currentFeature.title}</h3>
                           </div>
                         </div>
                         <div className="ml-0">
@@ -136,7 +136,7 @@ export const Features = () => {
                   )}
 
                   {/* Right Column - Video Preview (60%) */}
-                  <div className="col-span-6 col-start-7">
+                  <div className="col-span-5 col-start-7">
                     <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl">
                       {currentFeature && (
                         <iframe
