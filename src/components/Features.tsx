@@ -70,7 +70,7 @@ export const Features = () => {
   const getVimeoEmbedUrl = (url: string) => {
     if (!url) return '';
     const vimeoId = url.match(/vimeo\.com\/(\d+)/)?.[1];
-    return vimeoId ? `https://player.vimeo.com/video/${vimeoId}` : '';
+    return vimeoId ? `https://player.vimeo.com/video/${vimeoId}?autoplay=1&loop=1&muted=1&background=1&quality=1080p` : '';
   };
 
   return (
@@ -170,7 +170,7 @@ export const Features = () => {
                     <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl w-[130%]">
                       {currentFeature && (
                         <iframe
-                          src={`${getVimeoEmbedUrl(getFeatureMedia(currentFeature.id, 'preview'))}?autoplay=1&loop=1&autopause=0&background=1&muted=1`}
+                          src={getVimeoEmbedUrl(getFeatureMedia(currentFeature.id, 'preview'))}
                           className="w-full h-full scale-[1.01]"
                           allow="autoplay; fullscreen; picture-in-picture"
                           style={{
