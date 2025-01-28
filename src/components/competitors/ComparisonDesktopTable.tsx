@@ -1,4 +1,4 @@
-import { Check } from "lucide-react";
+import { Check, X } from "lucide-react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Competitor } from "./types";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -128,7 +128,7 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
               <li key={index} className={`flex items-start gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
                 <span className={`mt-1 flex-shrink-0 ${isRTL ? 'order-last' : ''}`}>
                   {takeaway.type === 'negative' ? 
-                    <span className="text-red-500">✕</span> : 
+                    <X className="text-red-500 h-4 w-4" /> : 
                     <Check className="text-primary h-4 w-4" />
                   }
                 </span>
