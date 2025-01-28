@@ -75,7 +75,7 @@ export const Features = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(123,97,255,0.1),rgba(123,97,255,0)_43.89%)] pointer-events-none" />
       <div className="container mx-auto px-4 relative">
         <FeaturesHeader />
-        <div className="space-y-32 md:space-y-64">
+        <div className="space-y-32 md:space-y-64 md:pb-32">
           {featureGroups.map((group, groupIndex) => {
             const currentFeature = group.features.find(f => f.id === selectedFeatures[group.id]);
             const IconComponent = currentFeature ? iconComponents[currentFeature.icon] : null;
