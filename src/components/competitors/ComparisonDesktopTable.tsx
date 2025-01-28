@@ -139,7 +139,7 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
         <ul className="space-y-3 text-white/80">
           {competitor.features[0].keyTakeaways?.map((takeaway, index) => (
             <li key={index} className={`flex items-start gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
-              <span className="mt-1 flex-shrink-0">
+              <span className={`mt-1 flex-shrink-0 ${isRTL ? 'ml-2' : 'mr-2'}`}>
                 {takeaway.type === 'negative' ? 
                   <X className="text-red-500 h-4 w-4" /> : 
                   <Check className="text-[#9b87f5] h-4 w-4" />

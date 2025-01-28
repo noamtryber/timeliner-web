@@ -30,76 +30,93 @@ export const wipsterData: Competitor = {
         }
       ]
     },
-      {
-        name: "Time-Synced Comments",
-        hebrewName: "תגובות מסונכרנות לזמן הוידאו",
-        competitor: true,
-        timeliner: true
-      },
-      {
-        name: "Client-Friendly Review Links",
-        hebrewName: "קישורי צפייה וביקורת נוחים ללקוחות",
-        competitor: "Requires complex task sharing",
-        hebrewCompetitor: "דורש שיתוף משימות מורכב",
-        timeliner: true
-      },
-      {
-        name: "Intuitive Split Screen Version Comparison",
-        hebrewName: "השוואת גרסאות במסך מפוצל",
-        competitor: false,
-        timeliner: true
-      },
-      {
-        name: "Interactive New Offer Workflow",
-        hebrewName: "מערכת ליצירת הצעות אינטראקטיבית",
-        competitor: false,
-        timeliner: true
-      },
-      {
-        name: "WhatsApp Business Integration",
-        hebrewName: "אינטגרציה עם וואטסאפ",
-        competitor: false,
-        timeliner: true
-      },
-      {
-        name: "Team Monitoring & Productivity Tracking",
-        hebrewName: "מעקב אחר משימות וביצועי צוות",
-        competitor: true,
-        timeliner: "More advanced media-specific tracking",
-        hebrewTimeliner: "מעקב מתקדם יותר המותאם למדיה"
-      },
-      {
-        name: "Add comments using voice recordings",
-        hebrewName: "הוספת הערות באמצעות הקלטות קוליות",
-        competitor: false,
-        timeliner: true
-      },
-      {
-        name: "Fit to RTL languages (Arabic, Hebrew)",
-        hebrewName: "תמיכה בשפות RTL (ערבית, עברית)",
-        competitor: false,
-        timeliner: true
-      },
-      {
-        name: "Pro Portfolio Builder",
-        hebrewName: "בניית תיק עבודות מקצועי",
-        competitor: false,
-        timeliner: true
-      },
-      {
-        name: "Educational Resources & 1-on-1 Onboarding",
-        hebrewName: "הדרכות מותאמות ואונבורדינג 1על1 בזום",
-        competitor: "Limited to project management training",
-        hebrewCompetitor: "מוגבל להדרכות ניהול פרויקטים",
-        timeliner: true
-      },
-      {
-        name: "Costs rise exponentially as team grows",
-        hebrewName: "תמחור גדל ככל שהצוות מתרחב",
-        competitor: "$360/month for 30 users, pricing increases per user",
-        hebrewCompetitor: "$360 לחודש עבור 30 משתמשים, המחיר עולה לפי משתמש",
-        timeliner: "Flat pricing covers up to 30 users with no extra fees",
-        hebrewTimeliner: "תמחור קבוע ללא עלות נוספת – עד 30 משתמשים!"
-      }
+    {
+      name: "Time-Synced Comments",
+      hebrewName: "תגובות מסונכרנות לזמן הוידאו",
+      competitor: true,
+      timeliner: true
+    },
+    {
+      name: "High-Quality Video Previews",
+      hebrewName: "תצוגה מקדימה באיכות גבוהה",
+      competitor: true,
+      timeliner: true
+    },
+    {
+      name: "Client-Friendly Review Links",
+      hebrewName: "קישורי צפייה וביקורת נוחים ללקוחות",
+      competitor: true,
+      timeliner: true
+    },
+    {
+      name: "Media Status Tracking Advanced Workflow",
+      hebrewName: "ניהול מדיה ומעקב אחר סטטוסים",
+      competitor: "Basic tags only",
+      hebrewCompetitor: "תיוגים בסיסיים בלבד",
+      timeliner: "List, Kanban, Pool, and Chart Status Groups",
+      hebrewTimeliner: "מערכת מתקדמת עם רשימות, Kanban, Pool ותרשימים מבוססים סטטוס"
+    },
+    {
+      name: "Intuitive Split Screen Version Comparison",
+      hebrewName: "השוואת גרסאות במסך מפוצל",
+      competitor: false,
+      timeliner: true
+    },
+    {
+      name: "Interactive New Offer Workflow",
+      hebrewName: "מערכת ליצירת הצעות אינטראקטיבית",
+      competitor: false,
+      timeliner: true
+    },
+    {
+      name: "Built-In CRM",
+      hebrewName: "CRM מובנה",
+      competitor: false,
+      timeliner: true
+    },
+    {
+      name: "WhatsApp Business Integration",
+      hebrewName: "אינטגרציה עם וואטסאפ",
+      competitor: false,
+      timeliner: true
+    },
+    {
+      name: "Team Monitoring & Productivity Tracking",
+      hebrewName: "מעקב אחר משימות וביצועי צוות",
+      competitor: false,
+      timeliner: true
+    },
+    {
+      name: "Add comments using voice recordings",
+      hebrewName: "הוספת הערות באמצעות הקלטות קוליות",
+      competitor: false,
+      timeliner: true
+    },
+    {
+      name: "Fit to RTL languages (Arabic, Hebrew)",
+      hebrewName: "תמיכה בשפות RTL (ערבית, עברית)",
+      competitor: false,
+      timeliner: true
+    },
+    {
+      name: "Pro Portfolio Builder",
+      hebrewName: "בניית תיק עבודות מקצועי",
+      competitor: false,
+      timeliner: true
+    },
+    {
+      name: "Educational Resources & 1-on-1 Onboarding",
+      hebrewName: "הדרכות מותאמות ואונבורדינג 1על1 בזום",
+      competitor: false,
+      timeliner: true
+    },
+    {
+      name: "Costs rise exponentially as team grows",
+      hebrewName: "תמחור גדל ככל שהצוות מתרחב",
+      competitor: "$598.50/month for 30 users",
+      hebrewCompetitor: "$598.50 לחודש עבור 30 משתמשים",
+      timeliner: "Flat pricing covers up to 30 users with no extra fees",
+      hebrewTimeliner: "תמחור קבוע ללא עלות נוספת – עד 30 משתמשים!"
+    }
   ]
 };

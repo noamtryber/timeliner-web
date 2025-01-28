@@ -32,103 +32,103 @@ export const frameioData: Competitor = {
           type: 'positive',
           text: 'Flat pricing means no surprise costs, making Timeliner the smarter choice for growing media teams and agencies.',
           hebrewText: 'בזכות תמחור קבוע, אין הפתעות במחיר, מה שהופך את Timeliner לאופציה המשתלמת והמקיפה ביותר עבור עורכי וידאו, צלמים, סוכנויות וצוותי פוסט-פרודקשן.',
-          spanishText: 'El precio fijo significa que no hay costos sorpresa, lo que hace de Timeliner la opción más inteligente para equipos de medios y agencias en crecimiento.'
+          spanishText: 'El precio fijo significa que no hay costos sorpresa, lo que hace de Timeliner la opción más inteligente para equipos de medios והסוכנויות בגדילה.'
         }
       ]
     },
-      {
-        name: "Time-Synced Comments",
-        hebrewName: "תגובות מסונכרנות לזמן הוידאו",
-        competitor: true,
-        timeliner: true
-      },
-      {
-        name: "High-Quality Video Previews",
-        hebrewName: "תצוגה מקדימה באיכות גבוהה",
-        competitor: true,
-        timeliner: true
-      },
-      {
-        name: "Client-Friendly Review Links",
-        hebrewName: "קישורי צפייה וביקורת נוחים ללקוחות",
-        competitor: true,
-        timeliner: true
-      },
-      {
-        name: "Media Status Tracking Advanced Workflow",
-        hebrewName: "ניהול מדיה ומעקב אחר סטטוסים",
-        competitor: "Basic tags only",
-        hebrewCompetitor: "תיוגים בסיסיים בלבד",
-        timeliner: "List, Kanban, Pool, and Chart Status Groups",
-        hebrewTimeliner: "מערכת מתקדמת עם רשימות, Kanban, Pool ותרשימים מבוססים סטטוס"
-      },
-      {
-        name: "Intuitive Split Screen Version Comparison",
-        hebrewName: "השוואת גרסאות במסך מפוצל",
-        competitor: false,
-        timeliner: true
-      },
-      {
-        name: "No Account Required for Reviewers",
-        hebrewName: "גישה ללא צורך בחשבון למבקרים",
-        competitor: false,
-        timeliner: true
-      },
-      {
-        name: "Interactive New Offer Workflow",
-        hebrewName: "מערכת ליצירת הצעות אינטראקטיבית",
-        competitor: false,
-        timeliner: true
-      },
-      {
-        name: "Built-In CRM",
-        hebrewName: "CRM מובנה",
-        competitor: false,
-        timeliner: true
-      },
-      {
-        name: "WhatsApp Business Integration",
-        hebrewName: "אינטגרציה עם וואטסאפ",
-        competitor: false,
-        timeliner: true
-      },
-      {
-        name: "Team Monitoring & Productivity Tracking",
-        hebrewName: "מעקב אחר משימות וביצועי צוות",
-        competitor: false,
-        timeliner: true
-      },
-      {
-        name: "Add comments using voice recordings",
-        hebrewName: "הוספת הערות באמצעות הקלטות קוליות",
-        competitor: false,
-        timeliner: true
-      },
-      {
-        name: "Multi-language AI captions",
-        hebrewName: "כתוביות AI חכמות (גם לעברית)",
-        competitor: false,
-        timeliner: true
-      },
-      {
-        name: "Pro Portfolio Builder",
-        hebrewName: "בניית תיק עבודות מקצועי",
-        competitor: false,
-        timeliner: true
-      },
-      {
-        name: "Educational Resources & 1-on-1 Onboarding",
-        hebrewName: "הדרכות מותאמות ואונבורדינג 1על1 בזום",
-        competitor: false,
-        timeliner: true
-      },
-      {
-        name: "Costs rise exponentially as team grows",
-        hebrewName: "תמחור גדל ככל שהצוות מתרחב",
-        competitor: "$750/month for 30 users",
-        hebrewCompetitor: "$750 לחודש עבור 30 משתמשים",
-        timeliner: "Flat pricing covers up to 30 users with no extra fees",
-        hebrewTimeliner: "תמחור קבוע ללא עלות נוספת – עד 30 משתמשים!"
-      }
+    {
+      name: "Time-Synced Comments",
+      hebrewName: "תגובות מסונכרנות לזמן הוידאו",
+      competitor: true,
+      timeliner: true
+    },
+    {
+      name: "High-Quality Video Previews",
+      hebrewName: "תצוגה מקדימה באיכות גבוהה",
+      competitor: true,
+      timeliner: true
+    },
+    {
+      name: "Client-Friendly Review Links",
+      hebrewName: "קישורי צפייה וביקורת נוחים ללקוחות",
+      competitor: true,
+      timeliner: true
+    },
+    {
+      name: "Media Status Tracking Advanced Workflow",
+      hebrewName: "ניהול מדיה ומעקב אחר סטטוסים",
+      competitor: "Basic tags only",
+      hebrewCompetitor: "תיוגים בסיסיים בלבד",
+      timeliner: "List, Kanban, Pool, and Chart Status Groups",
+      hebrewTimeliner: "מערכת מתקדמת עם רשימות, Kanban, Pool ותרשימים מבוססי סטטוס"
+    },
+    {
+      name: "Intuitive Split Screen Version Comparison",
+      hebrewName: "השוואת גרסאות במסך מפוצל",
+      competitor: false,
+      timeliner: true
+    },
+    {
+      name: "No Account Required for Reviewers",
+      hebrewName: "גישה ללא צורך בחשבון למבקרים",
+      competitor: false,
+      timeliner: true
+    },
+    {
+      name: "Interactive New Offer Workflow",
+      hebrewName: "מערכת ליצירת הצעות אינטראקטיבית",
+      competitor: false,
+      timeliner: true
+    },
+    {
+      name: "Built-In CRM",
+      hebrewName: "CRM מובנה",
+      competitor: false,
+      timeliner: true
+    },
+    {
+      name: "WhatsApp Business Integration",
+      hebrewName: "אינטגרציה עם וואטסאפ",
+      competitor: false,
+      timeliner: true
+    },
+    {
+      name: "Team Monitoring & Productivity Tracking",
+      hebrewName: "מעקב אחר משימות וביצועי צוות",
+      competitor: false,
+      timeliner: true
+    },
+    {
+      name: "Add comments using voice recordings",
+      hebrewName: "הוספת הערות באמצעות הקלטות קוליות",
+      competitor: false,
+      timeliner: true
+    },
+    {
+      name: "Multi-language AI captions",
+      hebrewName: "כתוביות AI חכמות (גם לעברית)",
+      competitor: false,
+      timeliner: true
+    },
+    {
+      name: "Pro Portfolio Builder",
+      hebrewName: "בניית תיק עבודות מקצועי",
+      competitor: false,
+      timeliner: true
+    },
+    {
+      name: "Educational Resources & 1-on-1 Onboarding",
+      hebrewName: "הדרכות מותאמות ואונבורדינג 1על1 בזום",
+      competitor: false,
+      timeliner: true
+    },
+    {
+      name: "Costs rise exponentially as team grows",
+      hebrewName: "תמחור גדל ככל שהצוות מתרחב",
+      competitor: "$750/month for 30 users",
+      hebrewCompetitor: "$750 לחודש עבור 30 משתמשים",
+      timeliner: "Flat pricing covers up to 30 users with no extra fees",
+      hebrewTimeliner: "תמחור קבוע ללא עלות נוספת – עד 30 משתמשים!"
+    }
   ]
 };
