@@ -280,28 +280,63 @@ export const competitors: Competitor[] = [
     features: [
       {
         name: "Pricing",
-        competitor: "Included with Vimeo hosting (starts at $20/month)",
-        timeliner: "$29/month (up to 5 users)\n$49/month (up to 30 users)"
+        competitor: "Starter: $12/month (1 seat, 100GB storage)\nStandard: $25/month (2+ seats, 1TB storage)\nAdvanced: $65/month (2+ seats, 5TB storage)",
+        timeliner: "$29/month (up to 5 users, 1TB)\n$49/month (up to 30 users, 2TB)"
       },
       {
-        name: "Time-Synced Comments",
+        name: "Storage",
+        competitor: "Starter: 100GB\nStandard: 1TB\nAdvanced: 5TB",
+        timeliner: "1–2 TB depending on the plan"
+      },
+      {
+        name: "Media Review Tools",
+        competitor: "Basic tools for comments and annotations",
+        timeliner: "Fully integrated with advanced workflow and review tools"
+      },
+      {
+        name: "No Account Required for Reviewers",
         competitor: true,
         timeliner: true
       },
       {
-        name: "Pro Portfolio Builder",
+        name: "Advanced Workflow Management",
+        competitor: false,
+        timeliner: "Includes List, Kanban, Pool, and Chart views"
+      },
+      {
+        name: "Built-In CRM",
         competitor: false,
         timeliner: true
       },
       {
         name: "AI Tools",
-        competitor: false,
-        timeliner: "Automatic caption generation"
+        competitor: "Limited to AI script generator and auto-captioning (Standard/Advanced)",
+        timeliner: "Advanced AI tools, including automatic multi-language captions"
       },
       {
-        name: "Status Tracking",
+        name: "Audio Comments",
         competitor: false,
-        timeliner: "Advanced pipeline"
+        timeliner: "Add comments using voice recordings"
+      },
+      {
+        name: "Pro Portfolio Builder",
+        competitor: false,
+        timeliner: "Build and send professional portfolios to clients"
+      },
+      {
+        name: "Client Area and Permissions",
+        competitor: "Limited",
+        timeliner: "Dedicated client area with advanced permissions"
+      },
+      {
+        name: "Educational Resources",
+        competitor: "Limited",
+        timeliner: "Includes video courses and onboarding guides"
+      },
+      {
+        name: "Scalability",
+        competitor: "Costs increase significantly with more users and higher plans",
+        timeliner: "Flat pricing supports growth up to 30 users for $49/month"
       }
     ]
   },
