@@ -83,33 +83,30 @@ export const Features = () => {
 
             return (
               <div key={group.id} className="space-y-12">
-                <div className="grid grid-cols-12 gap-8 items-center">
-                  {/* Feature List Column */}
-                  <div className={`${isAlternate ? 'col-span-2 col-start-10' : 'col-span-2 col-start-1'} space-y-2 flex flex-col`}>
-                    {group.features.map((feature) => {
-                      const FeatureIcon = iconComponents[feature.icon];
-                      return (
-                        <button
-                          key={feature.id}
-                          onClick={() => setSelectedFeatures(prev => ({
-                            ...prev,
-                            [group.id]: feature.id
-                          }))}
-                          className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center justify-start
-                            ${selectedFeatures[group.id] === feature.id 
-                              ? 'bg-primary/10 font-semibold text-primary' 
-                              : 'hover:bg-card/50 text-white'
-                            }`}
-                        >
-                          <span className="text-sm">{feature.title}</span>
-                        </button>
-                      );
-                    })}
+                <div className={`grid grid-cols-12 items-center ${isAlternate ? 'flex-row-reverse' : ''}`}>
+                  {/* Feature List Column - 15% width */}
+                  <div className={`${isAlternate ? 'col-span-2 col-start-11' : 'col-span-2 col-start-1'} space-y-2`}>
+                    {group.features.map((feature) => (
+                      <button
+                        key={feature.id}
+                        onClick={() => setSelectedFeatures(prev => ({
+                          ...prev,
+                          [group.id]: feature.id
+                        }))}
+                        className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center justify-start
+                          ${selectedFeatures[group.id] === feature.id 
+                            ? 'bg-primary/10 font-semibold text-primary' 
+                            : 'hover:bg-card/50 text-white'
+                          }`}
+                      >
+                        <span className="text-sm">{feature.title}</span>
+                      </button>
+                    ))}
                   </div>
 
-                  {/* Feature Details Column */}
+                  {/* Feature Details Column - 25% width */}
                   {currentFeature && (
-                    <div className={`col-span-3 ${isAlternate ? 'col-start-6' : 'col-start-3'}`}>
+                    <div className={`${isAlternate ? 'col-span-3 col-start-7' : 'col-span-3 col-start-3'}`}>
                       <div className="flex flex-col">
                         <div className="flex items-start">
                           {IconComponent && (
@@ -140,8 +137,8 @@ export const Features = () => {
                     </div>
                   )}
 
-                  {/* Video Preview Column */}
-                  <div className={`col-span-6 relative overflow-visible ${isAlternate ? 'col-start-1' : 'col-start-6'}`}>
+                  {/* Video Preview Column - 60% width */}
+                  <div className={`${isAlternate ? 'col-span-6 col-start-1' : 'col-span-6 col-start-6'} relative overflow-visible`}>
                     <div className={`aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl scale-[1.35] ${isAlternate ? 'origin-right' : 'origin-left'}`}>
                       {currentFeature && (
                         <iframe
