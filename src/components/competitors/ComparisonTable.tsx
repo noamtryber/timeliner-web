@@ -12,7 +12,7 @@ export const ComparisonTable = ({ competitor }: ComparisonTableProps) => {
   
   return (
     <div className="w-full overflow-x-auto">
-      <Table className="w-full border border-border">
+      <Table className="w-full border border-[#222222] rounded-lg overflow-hidden">
         <TableHeader>
           <TableRow className="hover:bg-transparent">
             <TableHead className={`w-1/3 ${isRTL ? 'text-right' : 'text-left'}`}>
@@ -23,14 +23,18 @@ export const ComparisonTable = ({ competitor }: ComparisonTableProps) => {
             <TableHead className={`w-1/3 ${isRTL ? 'text-right' : 'text-left'}`}>
               {competitor.name}
             </TableHead>
-            <TableHead className={`w-1/3 ${isRTL ? 'text-right' : 'text-left'}`}>
-              Timeliner
+            <TableHead className="w-1/3 bg-primary/20 text-center">
+              <img 
+                src="/lovable-uploads/94a8f111-a09f-4217-80ff-c246e3f328d1.png" 
+                alt="Timeliner"
+                className="h-8 mx-auto"
+              />
             </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {competitor.features.map((feature, index) => (
-            <TableRow key={index}>
+            <TableRow key={index} className="hover:bg-white/5">
               <TableCell className={`font-medium ${isRTL ? 'text-right' : 'text-left'}`}>
                 {feature.name}
               </TableCell>
@@ -45,7 +49,7 @@ export const ComparisonTable = ({ competitor }: ComparisonTableProps) => {
                   feature.competitor
                 )}
               </TableCell>
-              <TableCell className={isRTL ? 'text-right' : 'text-left'}>
+              <TableCell className={`bg-primary/10 ${isRTL ? 'text-right' : 'text-left'}`}>
                 {typeof feature.timeliner === 'boolean' ? (
                   feature.timeliner ? (
                     <Check className="text-green-500" />
