@@ -58,7 +58,7 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
     }
     return takeaway.text;
   };
-  
+
   return (
     <div className="space-y-6" dir={isRTL ? 'rtl' : 'ltr'}>
       <Table className="w-full border border-primary/20 rounded-xl overflow-hidden">
@@ -121,19 +121,19 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
       </Table>
 
       <div className="p-6 glass border border-[#222222] rounded-lg">
-        <h3 className={`text-xl font-bold text-white mb-4 ${isRTL ? 'text-right' : 'text-left'}`}>
+        <h3 className="text-xl font-bold text-white mb-4 text-center">
           {getKeyTakeawaysTitle()}
         </h3>
-        <ul className={`space-y-3 text-white/80 ${isRTL ? 'text-right' : 'text-left'}`}>
+        <ul className="space-y-3 text-white/80">
           {competitor.features[0].keyTakeaways?.map((takeaway, index) => (
-            <li key={index} className={`flex items-start gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+            <li key={index} className="flex items-start gap-2">
               <span className="mt-1 flex-shrink-0">
                 {takeaway.type === 'negative' ? 
                   <X className="text-red-500 h-4 w-4" /> : 
                   <Check className="text-[#9b87f5] h-4 w-4" />
                 }
               </span>
-              <span>
+              <span className={`flex-1 ${isRTL ? 'text-right' : 'text-left'}`}>
                 {getKeyTakeawayText(takeaway)}
               </span>
             </li>
