@@ -223,12 +223,12 @@ export const competitors: Competitor[] = [
         timeliner: "$29/month (up to 5 users)\n$49/month (up to 30 users)",
         keyTakeaways: [
           {
-            type: 'negative',
-            text: 'Wipster is a solid choice for simple video review with time-synced comments and a clean interface, making it great for small teams handling basic client feedback. However, it charges per user ($19.95/month) and storage is capped at 250GB, which limits scalability for larger teams.'
+            type: "negative",
+            text: "Wipster is a solid choice for simple video review with time-synced comments and a clean interface, making it great for small teams handling basic client feedback. However, it charges per user ($19.95/month) and storage is capped at 250GB, which limits scalability for larger teams."
           },
           {
-            type: 'positive',
-            text: 'Timeliner goes beyond just video review—it offers project management, CRM, team monitoring, media storage (1-2TB), marketing tools, and portfolio building in one platform. Plus, with WhatsApp, Slack, and email integrations, your team and clients stay connected without extra tools. Flat pricing means you scale without increasing costs, making it the smarter choice for post-production teams and creative agencies. 🚀'
+            type: "positive",
+            text: "Timeliner goes beyond just video review—it offers project management, CRM, team monitoring, media storage (1-2TB), marketing tools, and portfolio building in one platform. Plus, with WhatsApp Business Integration, your team and clients stay connected without extra tools. Flat pricing means you scale without increasing costs, making it the smarter choice for post-production teams and creative agencies. 🚀"
           }
         ]
       },
@@ -268,7 +268,7 @@ export const competitors: Competitor[] = [
         timeliner: true
       },
       {
-        name: "WhatsApp & Slack Integrations",
+        name: "WhatsApp Business Integration",
         competitor: false,
         timeliner: true
       },
@@ -403,43 +403,73 @@ export const competitors: Competitor[] = [
     features: [
       {
         name: "Pricing",
-        competitor: "$7/user/month (Unlimited) = $35/month for 5 users",
-        timeliner: "$29/month (up to 5 users)\n$49/month (up to 30 users)",
+        competitor: "$7/user/month (Unlimited Plan) = $35/month for 5 users\n$12/user/month (Business Plan) = $60/month for 5 users\n$360/month for 30 users",
+        timeliner: "$29/month (fixed up to 5 users)\n$49/month (fixed up to 30 users)",
         keyTakeaways: [
           {
-            type: 'negative',
-            text: 'ClickUp is a fantastic general project management tool, offering task tracking, automation, and time management—great for businesses handling diverse projects. It even has basic video commenting, but it lacks dedicated video review tools, AI captions, media storage, and advanced creative workflows.'
+            type: "negative",
+            text: "ClickUp is a fantastic general project management tool, offering task tracking, automation, and time management—great for businesses handling diverse projects. It even has basic video commenting, but it lacks dedicated video review tools, AI captions, media storage, and advanced creative workflows."
           },
           {
-            type: 'positive',
-            text: 'Timeliner is tailor-made for video production workflows, combining Kanban-style project tracking, video review tools, media storage, CRM, and client collaboration in one place. Plus, audio comments, AI captions, and WhatsApp & Slack integrations ensure smoother communication for video editors and creative teams. Flat pricing makes it scalable, without the per-user cost of ClickUp.'
+            type: "positive",
+            text: "Timeliner is tailor-made for video production workflows, combining Kanban-style project tracking, video review tools, media storage, CRM, and client collaboration in one place. Plus, audio comments, AI captions, and WhatsApp integrations ensure smoother communication for video editors and creative teams. Flat pricing makes it scalable, without the per-user cost of ClickUp."
           }
         ]
       },
       {
-        name: "Video Review Tools",
-        competitor: "Basic video review with comments",
-        timeliner: "Advanced review tools with time-synced comments, annotations, and audio comments"
+        name: "Time-Synced Comments",
+        competitor: true,
+        timeliner: true
       },
       {
-        name: "Audio Comments",
+        name: "Client-Friendly Review Links",
+        competitor: "Requires complex task sharing",
+        timeliner: true
+      },
+      {
+        name: "Intuitive Split Screen Version Comparison",
         competitor: false,
-        timeliner: "Included"
+        timeliner: true
       },
       {
-        name: "CRM",
+        name: "Interactive New Offer Workflow",
         competitor: false,
-        timeliner: "Built-in"
+        timeliner: true
       },
       {
-        name: "WhatsApp Integration",
+        name: "WhatsApp Integrations",
         competitor: false,
-        timeliner: "Included"
+        timeliner: true
       },
       {
-        name: "Client Collaboration",
-        competitor: "Task sharing with basic permissions",
-        timeliner: "Dedicated client area with advanced permissions"
+        name: "Team Monitoring & Productivity Tracking",
+        competitor: true,
+        timeliner: "More advanced media-specific tracking"
+      },
+      {
+        name: "Add comments using voice recordings",
+        competitor: false,
+        timeliner: true
+      },
+      {
+        name: "FIt to RTL languages (Arabic, Hebrew)",
+        competitor: false,
+        timeliner: true
+      },
+      {
+        name: "Pro Portfolio Builder",
+        competitor: false,
+        timeliner: true
+      },
+      {
+        name: "Educational Resources & 1-on-1 Onboarding",
+        competitor: "Limited to project management training",
+        timeliner: true
+      },
+      {
+        name: "Costs rise exponentially as team grows",
+        competitor: "$360/month for 30 users, pricing increases per user",
+        timeliner: "Flat pricing covers up to 30 users with no extra fees"
       }
     ]
   }
