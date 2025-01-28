@@ -3,7 +3,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { CompetitorTabs } from "./CompetitorTabs";
 import { ComparisonTable } from "./ComparisonTable";
 import { Competitor } from "./types";
-import { competitors } from "./competitorData";
+import { competitors } from "./data";
 
 export const CompetitorsTable = () => {
   const { language, isRTL } = useLanguage();
