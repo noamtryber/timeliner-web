@@ -51,11 +51,9 @@ export const Features = () => {
 
   const activeFeature = featureGroups.flatMap(group => group.features).find(f => f.id === openDialog);
   
-  const getFeatureContent = (sectionId: string | null, key: string): string => {
+  const getFeatureContent = (featureId: string, key: string): string => {
     if (!content) return '';
-    const contentValue = content[`${sectionId}_${key}`] || 
-                        (sectionId === null ? content[key] : '') || 
-                        content[`common_${key}`] || '';
+    const contentValue = content[`${featureId}_${key}`] || content[`common_${key}`] || '';
     return contentValue;
   };
 
@@ -102,6 +100,7 @@ export const Features = () => {
                   <div className={`col-span-1 md:col-span-2 space-y-2 flex flex-col order-2 ${isAlternate ? 'md:order-3' : 'md:order-1'}`}>
                     {group.features.map((feature) => {
                       const FeatureIcon = iconComponents[feature.icon];
+                      const featureTitle = getFeatureContent(feature.id, 'title') || feature.title;
                       return (
                         <button
                           key={feature.id}
@@ -115,7 +114,7 @@ export const Features = () => {
                               : 'hover:bg-card/50 text-white'
                             }`}
                         >
-                          <span className="text-sm text-left">{feature.title}</span>
+                          <span className="text-sm text-left">{featureTitle}</span>
                         </button>
                       );
                     })}
@@ -133,12 +132,14 @@ export const Features = () => {
                           )}
                           <div className={`${isAlternate ? 'md:mr-4' : 'ml-4'}`}>
                             <h3 className="text-xl md:text-2xl font-bold leading-tight mb-4 whitespace-normal md:whitespace-nowrap overflow-hidden text-ellipsis">
-                              {currentFeature.title}
+                              {getFeatureContent(currentFeature.id, 'title') || currentFeature.title}
                             </h3>
                           </div>
                         </div>
                         <div className="ml-0">
-                          <p className="text-white/70 text-base md:text-lg leading-relaxed mb-4">{currentFeature.description}</p>
+                          <p className="text-white/70 text-base md:text-lg leading-relaxed mb-4">
+                            {getFeatureContent(currentFeature.id, 'description') || currentFeature.description}
+                          </p>
                           <div className={`${isAlternate ? 'md:text-right' : ''}`}>
                             <Button 
                               onClick={() => setOpenDialog(currentFeature.id)}
@@ -146,7 +147,7 @@ export const Features = () => {
                               size="lg"
                               className="w-full md:w-auto text-lg"
                             >
-                              Learn More
+                              {language === 'he' ? 'למדו עוד' : 'Learn More'}
                             </Button>
                           </div>
                         </div>
@@ -185,7 +186,11 @@ export const Features = () => {
         <FeatureDialog
           isOpen={!!openDialog}
           onClose={() => setOpenDialog(null)}
-          feature={activeFeature}
+          feature={{
+            ...activeFeature,
+            title: getFeatureContent(activeFeature.id, 'title') || activeFeature.title,
+            description: getFeatureContent(activeFeature.id, 'description') || activeFeature.description
+          }}
           videoUrl={getFeatureMedia(activeFeature.id, 'learn-more')}
         />
       )}
