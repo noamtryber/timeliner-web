@@ -95,18 +95,8 @@ export const competitors: Competitor[] = [
     logo: "/lovable-uploads/16ee0992-d929-4b38-b7b4-bbfb80f50721.png",
     features: [
       {
-        name: "Media Review Tools",
-        competitor: "Included with Replay add-on",
-        timeliner: "Fully integrated, with advanced workflow and review tools"
-      },
-      {
-        name: "No Account Required for Reviewers",
-        competitor: true,
-        timeliner: true
-      },
-      {
         name: "Pricing",
-        competitor: "$10/user/month (Replay) + $10/user/month (Plus plan) = $20/user/month",
+        competitor: "$10/user/month for Replay Add-On\nRequires Dropbox Plus ($10/user/month) = $20/user/month total\n$100/month for 5 users\n$600/month for 30 users",
         timeliner: "$29/month (fixed up to 5 users)\n$49/month (fixed up to 30 users)"
       },
       {
@@ -126,11 +116,21 @@ export const competitors: Competitor[] = [
       },
       {
         name: "Media Status Tracking Advanced Workflow",
-        competitor: false,
-        timeliner: "Advanced pipeline with List, Kanban, Pool, and Chart views"
+        competitor: "Basic file storage and sharing",
+        timeliner: "List, Kanban, Pool, and Chart views"
       },
       {
-        name: "Interactive Offer Workflow",
+        name: "Intuitive Split Screen Version Comparison",
+        competitor: false,
+        timeliner: true
+      },
+      {
+        name: "No Account Required for Reviewers",
+        competitor: true,
+        timeliner: true
+      },
+      {
+        name: "Interactive New Offer Workflow",
         competitor: false,
         timeliner: true
       },
@@ -140,34 +140,24 @@ export const competitors: Competitor[] = [
         timeliner: true
       },
       {
-        name: "Integrations",
-        competitor: "Limited to Dropbox ecosystem (Sync, File Storage)",
-        timeliner: "WhatsApp, Gmail, Slack, and more"
-      },
-      {
-        name: "Team Monitoring and Productivity Tracking",
+        name: "WhatsApp & Slack Integrations",
         competitor: false,
         timeliner: true
       },
       {
-        name: "Client Area and Advanced Permissions",
-        competitor: "Limited to review link access",
-        timeliner: "Advanced permissions and dedicated client areas"
-      },
-      {
-        name: "Publish and Share Folders/Videos",
-        competitor: true,
+        name: "Team Monitoring & Productivity Tracking",
+        competitor: false,
         timeliner: true
       },
       {
-        name: "Audio Comments",
+        name: "Add comments using voice recordings",
         competitor: false,
-        timeliner: "Add comments using voice recordings"
+        timeliner: true
       },
       {
-        name: "AI Tools",
+        name: "Multi-language AI captions (for uncommon languages as well)",
         competitor: false,
-        timeliner: "Automatic caption generation in multiple languages not supported by traditional tools"
+        timeliner: true
       },
       {
         name: "Pro Portfolio Builder",
@@ -175,19 +165,101 @@ export const competitors: Competitor[] = [
         timeliner: true
       },
       {
-        name: "Educational Resources and Onboarding",
-        competitor: "Limited",
-        timeliner: "Includes video courses and onboarding guides"
+        name: "Educational Resources & 1-on-1 Onboarding",
+        competitor: false,
+        timeliner: true
       },
       {
-        name: "Scalability",
-        competitor: "Costs increase significantly as team size grows (e.g., $600/month for 30 users, Replay + Plus)",
-        timeliner: "Flat pricing structure supports growth ($49/month for up to 30 users)"
+        name: "Costs rise exponentially as team grows",
+        competitor: "$600/month for 30 users (Replay + Dropbox Plus required)",
+        timeliner: "Flat pricing covers up to 30 users with no extra fees"
+      }
+    ]
+  },
+  {
+    id: "dropbox",
+    name: "Dropbox Replay",
+    logo: "/lovable-uploads/16ee0992-d929-4b38-b7b4-bbfb80f50721.png",
+    features: [
+      {
+        name: "Pricing",
+        competitor: "$10/user/month for Replay Add-On\nRequires Dropbox Plus ($10/user/month) = $20/user/month total\n$100/month for 5 users\n$600/month for 30 users",
+        timeliner: "$29/month (fixed up to 5 users)\n$49/month (fixed up to 30 users)"
       },
       {
-        name: "Version Management",
-        competitor: "Basic with Replay",
-        timeliner: "Advanced with visual comparisons and history"
+        name: "Time-Synced Comments",
+        competitor: true,
+        timeliner: true
+      },
+      {
+        name: "High-Quality Video Previews",
+        competitor: true,
+        timeliner: true
+      },
+      {
+        name: "Client-Friendly Review Links",
+        competitor: true,
+        timeliner: true
+      },
+      {
+        name: "Media Status Tracking Advanced Workflow",
+        competitor: "Basic file storage and sharing",
+        timeliner: "List, Kanban, Pool, and Chart views"
+      },
+      {
+        name: "Intuitive Split Screen Version Comparison",
+        competitor: false,
+        timeliner: true
+      },
+      {
+        name: "No Account Required for Reviewers",
+        competitor: true,
+        timeliner: true
+      },
+      {
+        name: "Interactive New Offer Workflow",
+        competitor: false,
+        timeliner: true
+      },
+      {
+        name: "Built-In CRM",
+        competitor: false,
+        timeliner: true
+      },
+      {
+        name: "WhatsApp & Slack Integrations",
+        competitor: false,
+        timeliner: true
+      },
+      {
+        name: "Team Monitoring & Productivity Tracking",
+        competitor: false,
+        timeliner: true
+      },
+      {
+        name: "Add comments using voice recordings",
+        competitor: false,
+        timeliner: true
+      },
+      {
+        name: "Multi-language AI captions (for uncommon languages as well)",
+        competitor: false,
+        timeliner: true
+      },
+      {
+        name: "Pro Portfolio Builder",
+        competitor: false,
+        timeliner: true
+      },
+      {
+        name: "Educational Resources & 1-on-1 Onboarding",
+        competitor: false,
+        timeliner: true
+      },
+      {
+        name: "Costs rise exponentially as team grows",
+        competitor: "$600/month for 30 users (Replay + Dropbox Plus required)",
+        timeliner: "Flat pricing covers up to 30 users with no extra fees"
       }
     ]
   },

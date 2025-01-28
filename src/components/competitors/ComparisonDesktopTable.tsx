@@ -58,19 +58,19 @@ export const ComparisonDesktopTable = ({ tools, isRTL, language }: ComparisonDes
         <ul className="space-y-3 text-white/80">
           <li className="flex items-start gap-2">
             <span className="mt-1"><X className="text-red-500 h-4 w-4" /></span>
-            Frame.io is great for quick storage and video review, but it becomes costly as teams grow and lacks advanced workflow, CRM, and marketing tools.
+            Dropbox Replay is mainly a review add-on, requiring Dropbox Plus for full functionality, making it $20/user/month—which quickly adds up as teams grow.
           </li>
           <li className="flex items-start gap-2">
             <span className="mt-1"><Check className="text-[#9b87f5] h-4 w-4" /></span>
-            Timeliner is an all-in-one solution, combining project management, video review, media storage, CRM, marketing tools, and portfolio building in one platform.
+            Timeliner is a complete media management solution, combining project management, video review, media storage, CRM, marketing tools, and portfolio building in one platform.
           </li>
           <li className="flex items-start gap-2">
             <span className="mt-1"><Check className="text-[#9b87f5] h-4 w-4" /></span>
-            Seamless smart integrations with WhatsApp, Email, and Slack ensure effortless client collaboration and team notifications.
+            Smart integrations with WhatsApp, Email, and Slack allow seamless team communication and client notifications.
           </li>
           <li className="flex items-start gap-2">
             <span className="mt-1"><Check className="text-[#9b87f5] h-4 w-4" /></span>
-            Flat pricing means no surprise costs, making Timeliner the smarter choice for growing media teams and agencies.
+            Flat pricing ensures cost predictability, making Timeliner the more scalable and cost-effective choice for video editors and media teams.
           </li>
         </ul>
       </div>
