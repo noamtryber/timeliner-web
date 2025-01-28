@@ -51,7 +51,7 @@ export const ComparisonTable = ({ competitor }: ComparisonTableProps) => {
                   feature.competitor ? (
                     <Check className="text-primary h-5 w-5" />
                   ) : (
-                    <X className="text-primary/40 h-5 w-5" />
+                    <X className="text-red-500 h-5 w-5" />
                   )
                 ) : (
                   feature.competitor
@@ -62,7 +62,7 @@ export const ComparisonTable = ({ competitor }: ComparisonTableProps) => {
                   feature.timeliner ? (
                     <Check className="text-primary h-5 w-5" />
                   ) : (
-                    <X className="text-primary/40 h-5 w-5" />
+                    <X className="text-red-500 h-5 w-5" />
                   )
                 ) : (
                   feature.timeliner
@@ -72,6 +72,28 @@ export const ComparisonTable = ({ competitor }: ComparisonTableProps) => {
           ))}
         </TableBody>
       </Table>
+
+      <div className="p-6 glass border border-[#222222] rounded-lg">
+        <h3 className="text-xl font-bold text-white mb-4">Key Takeaways:</h3>
+        <ul className="space-y-3 text-white/80">
+          <li className="flex items-start gap-2">
+            <span className="mt-1"><X className="text-red-500 h-4 w-4" /></span>
+            Frame.io is great for quick storage and video review, but it becomes costly as teams grow and lacks advanced workflow, CRM, and marketing tools.
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="mt-1"><Check className="text-[#9b87f5] h-4 w-4" /></span>
+            Timeliner is an all-in-one solution, combining project management, video review, media storage, CRM, marketing tools, and portfolio building in one platform.
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="mt-1"><Check className="text-[#9b87f5] h-4 w-4" /></span>
+            Seamless smart integrations with WhatsApp, Email, and Slack ensure effortless client collaboration and team notifications.
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="mt-1"><Check className="text-[#9b87f5] h-4 w-4" /></span>
+            Flat pricing means no surprise costs, making Timeliner the smarter choice for growing media teams and agencies.
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };
