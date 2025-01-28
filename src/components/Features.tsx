@@ -99,7 +99,7 @@ export const Features = () => {
               <div key={group.id} className="space-y-8 md:space-y-12">
                 <div className={`grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-start ${isAlternate ? 'justify-end' : ''}`}>
                   {/* Left Column - Feature List */}
-                  <div className={`col-span-1 md:col-span-2 space-y-2 flex flex-col order-2 ${isAlternate ? 'md:order-3' : ''}`}>
+                  <div className={`col-span-1 md:col-span-2 space-y-2 flex flex-col order-2 ${isAlternate ? 'md:order-3' : 'md:order-1'}`}>
                     {group.features.map((feature) => {
                       const FeatureIcon = iconComponents[feature.icon];
                       return (
@@ -123,7 +123,7 @@ export const Features = () => {
 
                   {/* Middle Column - Feature Details */}
                   {currentFeature && (
-                    <div className={`col-span-1 md:col-span-4 order-3 ${isAlternate ? 'md:order-2 md:text-right' : ''}`}>
+                    <div className={`col-span-1 md:col-span-4 order-3 ${isAlternate ? 'md:order-2 md:text-right' : 'md:order-2'}`}>
                       <div className="flex flex-col">
                         <div className={`flex items-start ${isAlternate ? 'md:justify-end' : ''}`}>
                           {IconComponent && (
@@ -155,7 +155,7 @@ export const Features = () => {
                   )}
 
                   {/* Right Column - Video Preview */}
-                  <div className={`col-span-1 md:col-span-5 order-1 ${isAlternate ? 'md:order-1 md:col-start-1' : 'md:col-start-7'}`}>
+                  <div className={`col-span-1 md:col-span-5 order-1 ${isAlternate ? 'md:order-1 md:col-start-1' : 'md:col-start-7 md:order-3'}`}>
                     <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl">
                       {currentFeature && (
                         <iframe
