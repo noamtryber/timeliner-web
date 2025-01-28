@@ -74,14 +74,22 @@ export const Features = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/5 via-primary/5 to-transparent pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(123,97,255,0.1),rgba(123,97,255,0)_43.89%)] pointer-events-none" />
       <div className="container mx-auto px-4 relative">
+        <div className="pt-12" /> {/* Added spacing above first row */}
         <FeaturesHeader />
-        <div className="space-y-[100vh] md:space-y-[100vh] md:pb-96">
+        <div className="space-y-[60vh] md:space-y-[60vh] md:pb-96">
           {featureGroups.map((group, groupIndex) => {
             const currentFeature = group.features.find(f => f.id === selectedFeatures[group.id]);
             const IconComponent = currentFeature ? iconComponents[currentFeature.icon] : null;
 
             return (
-              <div key={group.id} className="space-y-8 md:space-y-12 min-h-[calc(100vh-20rem)]">
+              <div 
+                key={group.id} 
+                className={`space-y-8 md:space-y-12 min-h-[calc(100vh-20rem)] p-8 md:p-12 rounded-3xl transition-all duration-500
+                  ${groupIndex === 0 ? 'bg-secondary/5' : 
+                    groupIndex === 1 ? 'bg-primary/5' : 
+                    groupIndex === 2 ? 'bg-accent/5' : 
+                    'bg-secondary/10'}`}
+              >
                 {/* Mobile Layout */}
                 <div className="md:hidden space-y-8">
                   {/* Feature List - Now in grid */}
