@@ -83,9 +83,9 @@ export const Features = () => {
 
             return (
               <div key={group.id} className="space-y-12">
-                <div className="grid grid-cols-12 gap-12 items-center">
+                <div className="grid grid-cols-12 gap-8 items-center">
                   {/* Feature List Column */}
-                  <div className={`col-span-2 space-y-2 flex flex-col ${isAlternate ? 'col-start-10' : 'col-start-1'}`}>
+                  <div className={`${isAlternate ? 'col-span-2 col-start-10' : 'col-span-2 col-start-1'} space-y-2 flex flex-col`}>
                     {group.features.map((feature) => {
                       const FeatureIcon = iconComponents[feature.icon];
                       return (
@@ -109,7 +109,7 @@ export const Features = () => {
 
                   {/* Feature Details Column */}
                   {currentFeature && (
-                    <div className={`col-span-4 ${isAlternate ? 'col-start-5' : 'col-start-3'}`}>
+                    <div className={`col-span-3 ${isAlternate ? 'col-start-6' : 'col-start-3'}`}>
                       <div className="flex flex-col">
                         <div className="flex items-start">
                           {IconComponent && (
@@ -141,7 +141,7 @@ export const Features = () => {
                   )}
 
                   {/* Video Preview Column */}
-                  <div className={`col-span-5 relative overflow-visible ${isAlternate ? 'col-start-1' : 'col-start-7'}`}>
+                  <div className={`col-span-6 relative overflow-visible ${isAlternate ? 'col-start-1' : 'col-start-6'}`}>
                     <div className={`aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl scale-[1.35] ${isAlternate ? 'origin-right' : 'origin-left'}`}>
                       {currentFeature && (
                         <iframe
