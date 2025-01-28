@@ -1,4 +1,4 @@
-import { Check, X } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Competitor } from "./competitorData";
@@ -11,16 +11,16 @@ export const ComparisonTable = ({ competitor }: ComparisonTableProps) => {
   const { language, isRTL } = useLanguage();
   
   return (
-    <div className="w-full overflow-x-auto">
-      <Table className="w-full border border-[#222222] rounded-lg overflow-hidden">
+    <div className="w-full overflow-x-auto rounded-xl shadow-lg">
+      <Table className="w-full border border-primary/20 rounded-xl overflow-hidden">
         <TableHeader>
-          <TableRow className="hover:bg-transparent">
-            <TableHead className={`w-1/3 ${isRTL ? 'text-right' : 'text-left'}`}>
+          <TableRow className="hover:bg-transparent border-b border-primary/20">
+            <TableHead className={`w-1/3 ${isRTL ? 'text-right' : 'text-left'} bg-background`}>
               {language === 'es' ? 'Características' : 
                isRTL ? 'תכונות' : 
                'Features'}
             </TableHead>
-            <TableHead className={`w-1/3 ${isRTL ? 'text-right' : 'text-left'}`}>
+            <TableHead className={`w-1/3 ${isRTL ? 'text-right' : 'text-left'} bg-background`}>
               {competitor.name}
             </TableHead>
             <TableHead className="w-1/3 bg-primary/20 text-center">
@@ -34,16 +34,16 @@ export const ComparisonTable = ({ competitor }: ComparisonTableProps) => {
         </TableHeader>
         <TableBody>
           {competitor.features.map((feature, index) => (
-            <TableRow key={index} className="hover:bg-white/5">
+            <TableRow key={index} className="hover:bg-primary/5 transition-colors">
               <TableCell className={`font-medium ${isRTL ? 'text-right' : 'text-left'}`}>
                 {feature.name}
               </TableCell>
               <TableCell className={isRTL ? 'text-right' : 'text-left'}>
                 {typeof feature.competitor === 'boolean' ? (
                   feature.competitor ? (
-                    <Check className="text-green-500" />
+                    <ChevronRight className="text-primary h-5 w-5" />
                   ) : (
-                    <X className="text-red-500" />
+                    <span className="text-primary/40">—</span>
                   )
                 ) : (
                   feature.competitor
@@ -52,9 +52,9 @@ export const ComparisonTable = ({ competitor }: ComparisonTableProps) => {
               <TableCell className={`bg-primary/10 ${isRTL ? 'text-right' : 'text-left'}`}>
                 {typeof feature.timeliner === 'boolean' ? (
                   feature.timeliner ? (
-                    <Check className="text-green-500" />
+                    <ChevronRight className="text-primary h-5 w-5" />
                   ) : (
-                    <X className="text-red-500" />
+                    <span className="text-primary/40">—</span>
                   )
                 ) : (
                   feature.timeliner
