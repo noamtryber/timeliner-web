@@ -19,18 +19,18 @@ export const competitors: Competitor[] = [
     features: [
       {
         name: "Time-Synced Comments",
-        competitor: "Included",
-        timeliner: "Included"
+        competitor: true,
+        timeliner: true
       },
       {
         name: "High-Quality Video Previews",
-        competitor: "Included",
-        timeliner: "Included"
+        competitor: true,
+        timeliner: true
       },
       {
         name: "Client-Friendly Review Links",
-        competitor: "Included",
-        timeliner: "Included"
+        competitor: true,
+        timeliner: true
       },
       {
         name: "Pricing",
@@ -45,12 +45,12 @@ export const competitors: Competitor[] = [
       {
         name: "Intuitive Version Comparison",
         competitor: "Limited to file previews",
-        timeliner: "Included"
+        timeliner: true
       },
       {
         name: "No Account Required for Reviewers",
-        competitor: "Included",
-        timeliner: "Included"
+        competitor: true,
+        timeliner: true
       },
       {
         name: "Interactive Offer Workflow",
@@ -75,7 +75,7 @@ export const competitors: Competitor[] = [
       {
         name: "Client Area and Advanced Permissions",
         competitor: "Limited and requires extra cost",
-        timeliner: "Included"
+        timeliner: true
       },
       {
         name: "Audio Comments",
