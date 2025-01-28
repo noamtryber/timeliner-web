@@ -1,9 +1,9 @@
 import { Check, X } from "lucide-react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Tool } from "./types";
+import { Feature } from "./types";
 
 interface ComparisonDesktopTableProps {
-  tools: Tool[];
+  tools: Feature[];
   isRTL: boolean;
   language: string;
 }
@@ -46,16 +46,21 @@ export const ComparisonDesktopTable = ({ tools, isRTL, language }: ComparisonDes
               className="transition-colors hover:bg-white/5 cursor-pointer group"
             >
               <TableCell className={`font-medium text-white ${isRTL ? 'text-right' : 'text-left'}`}>
-                {tool.feature}
+                {tool.name}
               </TableCell>
               <TableCell className={`text-white/70 ${isRTL ? 'text-right' : 'text-left'}`}>
-                {tool.replaces}
+                {typeof tool.competitor === 'boolean' ? 
+                  (tool.competitor ? 
+                    <Check className="mx-auto text-[#9b87f5] h-5 w-5" /> : 
+                    <X className="mx-auto text-red-500 h-5 w-5" />
+                  ) : tool.competitor}
               </TableCell>
               <TableCell className={`text-white/70 ${isRTL ? 'text-right' : 'text-left'}`}>
-                {tool.cost}
-              </TableCell>
-              <TableCell className="text-center">
-                <Check className="mx-auto text-[#9b87f5] group-hover:text-accent transition-colors h-5 w-5" />
+                {typeof tool.timeliner === 'boolean' ? 
+                  (tool.timeliner ? 
+                    <Check className="mx-auto text-[#9b87f5] h-5 w-5" /> : 
+                    <X className="mx-auto text-red-500 h-5 w-5" />
+                  ) : tool.timeliner}
               </TableCell>
             </TableRow>
           ))}

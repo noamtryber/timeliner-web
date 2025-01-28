@@ -1,3 +1,9 @@
+export interface Tool {
+  feature: string;
+  replaces: string;
+  cost: string;
+}
+
 export interface Feature {
   name: string;
   competitor: boolean | string;
