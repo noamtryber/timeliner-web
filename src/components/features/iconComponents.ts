@@ -7,11 +7,10 @@ import {
   FileText,
   Calendar,
   DollarSign,
-  Robot,
+  Bot,
   ChartBar,
   Globe,
   Slack,
-  Whatsapp,
   Activity
 } from "lucide-react";
 
@@ -24,10 +23,10 @@ export const iconComponents = {
   FileText,
   Calendar,
   DollarSign,
-  Robot,
+  Bot,
   ChartBar,
   Globe,
   Slack,
-  Whatsapp,
+  MessageSquare,
   Activity
 } as const;
