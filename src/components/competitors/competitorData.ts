@@ -315,12 +315,12 @@ export const competitors: Competitor[] = [
         timeliner: "$29/month (up to 5 users, 1TB)\n$49/month (up to 30 users, 2TB)",
         keyTakeaways: [
           {
-            type: 'negative',
-            text: 'Vimeo Review is great for content creators already in the Vimeo ecosystem, offering video hosting, review tools, and team collaboration. It's useful for independent filmmakers and brands, especially with AI-generated scripts and auto-captioning in higher tiers. However, its review tools are basic, and pricing scales per user ($25+/month), making it costly for growing teams.'
+            type: "negative",
+            text: "Vimeo Review is great for content creators already in the Vimeo ecosystem, offering video hosting, review tools, and team collaboration. It's useful for independent filmmakers and brands, especially with AI-generated scripts and auto-captioning in higher tiers. However, its review tools are basic, and pricing scales per user ($25+/month), making it costly for growing teams."
           },
           {
-            type: 'positive',
-            text: 'Timeliner is purpose-built for video editors and post-production teams, with advanced version control, team monitoring, client portals, and AI-powered captions in multiple languages—not just English. It also integrates with WhatsApp, Slack, and email for streamlined client collaboration. No per-user pricing means agencies and video teams save money while getting more features. 🎬'
+            type: "positive",
+            text: "Timeliner is purpose-built for video editors and post-production teams, with advanced version control, team monitoring, client portals, and AI-powered captions in multiple languages—not just English. It also integrates with WhatsApp, Slack, and email for streamlined client collaboration. No per-user pricing means agencies and video teams save money while getting more features. 🎬"
           }
         ]
       },
