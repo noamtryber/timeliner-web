@@ -84,8 +84,8 @@ export const Features = () => {
               <div key={group.id} className="space-y-8 md:space-y-12">
                 {/* Mobile Layout */}
                 <div className="md:hidden space-y-8">
-                  {/* Feature List */}
-                  <div className="flex overflow-x-auto pb-4 space-x-4 scrollbar-hide">
+                  {/* Feature List - Now in grid */}
+                  <div className="grid grid-cols-2 gap-4">
                     {group.features.map((feature) => (
                       <button
                         key={feature.id}
@@ -93,7 +93,7 @@ export const Features = () => {
                           ...prev,
                           [group.id]: feature.id
                         }))}
-                        className={`flex-shrink-0 px-4 py-2 rounded-lg transition-all duration-300 whitespace-nowrap
+                        className={`px-4 py-2 rounded-lg transition-all duration-300 text-sm text-left
                           ${selectedFeatures[group.id] === feature.id 
                             ? 'bg-primary/10 font-semibold text-primary' 
                             : 'hover:bg-card/50 text-white'
@@ -118,14 +118,16 @@ export const Features = () => {
                           <p className="text-white/70 text-base leading-relaxed mb-4">{currentFeature.description}</p>
                         </div>
                       </div>
-                      <Button 
-                        onClick={() => setOpenDialog(currentFeature.id)}
-                        variant="outline"
-                        size="lg"
-                        className="w-full justify-center text-lg"
-                      >
-                        Learn More
-                      </Button>
+                      <div className="text-left">
+                        <Button 
+                          onClick={() => setOpenDialog(currentFeature.id)}
+                          variant="outline"
+                          size="sm"
+                          className="text-base"
+                        >
+                          Learn More
+                        </Button>
+                      </div>
                       <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl">
                         {currentFeature && (
                           <iframe
