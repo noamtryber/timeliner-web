@@ -76,16 +76,15 @@ export const Features = () => {
       <div className="container mx-auto px-4 relative">
         <FeaturesHeader />
         <div className="space-y-64 md:space-y-96">
-          {featureGroups.map((group, groupIndex) => {
+          {featureGroups.map((group) => {
             const currentFeature = group.features.find(f => f.id === selectedFeatures[group.id]);
             const IconComponent = currentFeature ? iconComponents[currentFeature.icon] : null;
-            const isAlternate = groupIndex % 2 === 1; // For 2nd and 4th rows
 
             return (
               <div key={group.id} className="space-y-12">
                 <div className="grid grid-cols-12 gap-12 items-center justify-center">
-                  {/* Feature List Column */}
-                  <div className={`col-span-2 space-y-2 flex flex-col ${isAlternate ? 'col-start-11' : ''}`}>
+                  {/* Left Column - Feature List (15%) */}
+                  <div className="col-span-2 space-y-2 flex flex-col">
                     {group.features.map((feature) => {
                       const FeatureIcon = iconComponents[feature.icon];
                       return (
@@ -107,9 +106,9 @@ export const Features = () => {
                     })}
                   </div>
 
-                  {/* Feature Details Column */}
+                  {/* Middle Column - Feature Details (25%) */}
                   {currentFeature && (
-                    <div className={`col-span-4 ${isAlternate ? 'col-start-6' : ''}`}>
+                    <div className="col-span-4">
                       <div className="flex flex-col">
                         <div className="flex items-start">
                           {IconComponent && (
@@ -136,8 +135,8 @@ export const Features = () => {
                     </div>
                   )}
 
-                  {/* Video Preview Column */}
-                  <div className={`col-span-5 relative overflow-visible ${isAlternate ? 'col-start-1' : 'col-start-7'}`}>
+                  {/* Right Column - Video Preview (60%) */}
+                  <div className="col-span-5 col-start-7 relative overflow-visible">
                     <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl scale-[1.35] origin-left">
                       {currentFeature && (
                         <iframe
