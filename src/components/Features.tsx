@@ -78,22 +78,40 @@ export const Features = () => {
               </h3>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <div className="order-2 lg:order-1 space-y-4">
-                  {group.features.map((feature) => (
-                    <button
-                      key={feature.id}
-                      onClick={() => setSelectedFeature(feature.id)}
-                      className={`w-full p-6 rounded-xl transition-all duration-300 text-left
-                        ${selectedFeature === feature.id 
-                          ? 'bg-primary/20 shadow-lg shadow-primary/10' 
-                          : 'bg-card/50 hover:bg-card/80'
-                        }`}
-                    >
-                      <h4 className="text-xl font-semibold">{feature.title}</h4>
-                    </button>
-                  ))}
+                  <div className="space-y-2">
+                    {group.features.map((feature) => (
+                      <button
+                        key={feature.id}
+                        onClick={() => setSelectedFeature(feature.id)}
+                        className={`w-full p-4 rounded-lg transition-all duration-300 text-left
+                          ${selectedFeature === feature.id 
+                            ? 'bg-primary/10 font-semibold text-primary' 
+                            : 'hover:bg-card/50 text-white/70'
+                          }`}
+                      >
+                        <span className="text-base">{feature.title}</span>
+                      </button>
+                    ))}
+                  </div>
+                  {currentFeature && (
+                    <div className="pt-8 space-y-4">
+                      <div className="flex items-center gap-3">
+                        <h3 className="text-2xl font-bold">{currentFeature.title}</h3>
+                      </div>
+                      <p className="text-white/70 text-base leading-relaxed">{currentFeature.description}</p>
+                      <Button 
+                        onClick={() => setOpenDialog(currentFeature.id)}
+                        className="mt-4"
+                        variant="outline"
+                      >
+                        <PlayCircle className="w-5 h-5 mr-2" />
+                        Learn More
+                      </Button>
+                    </div>
+                  )}
                 </div>
-                <div className="order-1 lg:order-2 space-y-8">
-                  <div className="aspect-video rounded-xl overflow-hidden bg-black/20">
+                <div className="order-1 lg:order-2">
+                  <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl">
                     {currentFeature && (
                       <iframe
                         src={`${getFeatureMedia(currentFeature.id, 'preview')}?autoplay=1&loop=1&autopause=0&background=1&muted=1`}
@@ -106,19 +124,6 @@ export const Features = () => {
                       />
                     )}
                   </div>
-                  {currentFeature && (
-                    <div className="space-y-4">
-                      <h3 className="text-2xl font-bold">{currentFeature.title}</h3>
-                      <p className="text-white/70">{currentFeature.description}</p>
-                      <Button 
-                        onClick={() => setOpenDialog(currentFeature.id)}
-                        className="w-full sm:w-auto"
-                      >
-                        <PlayCircle className="w-5 h-5 mr-2" />
-                        Learn More
-                      </Button>
-                    </div>
-                  )}
                 </div>
               </div>
             </div>
