@@ -107,6 +107,7 @@ export const competitors: Competitor[] = [
   {
     id: "dropbox",
     name: "Dropbox Replay",
+    logo: "/lovable-uploads/16ee0992-d929-4b38-b7b4-bbfb80f50721.png",
     features: [
       {
         name: "Media Review Tools",
@@ -208,6 +209,7 @@ export const competitors: Competitor[] = [
   {
     id: "wipster",
     name: "Wipster",
+    logo: "/lovable-uploads/d4d71abe-8984-4b88-baf8-c4dd913ee9b6.png",
     features: [
       {
         name: "Pricing",
@@ -239,6 +241,7 @@ export const competitors: Competitor[] = [
   {
     id: "vimeo",
     name: "Vimeo Review",
+    logo: "/lovable-uploads/e612d0f5-d66b-4f48-9de7-f142a4fa9670.png",
     features: [
       {
         name: "Pricing",
@@ -270,6 +273,7 @@ export const competitors: Competitor[] = [
   {
     id: "clickup",
     name: "ClickUp",
+    logo: "/lovable-uploads/549ff6c1-b290-475e-b156-fdc26f5d58d5.png",
     features: [
       {
         name: "Pricing",
