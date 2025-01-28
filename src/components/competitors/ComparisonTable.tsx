@@ -25,7 +25,7 @@ export const ComparisonTable = ({ competitor }: ComparisonTableProps) => {
                 <img 
                   src={competitor.logo} 
                   alt={competitor.name}
-                  className="h-8 object-contain"
+                  className="h-12 object-contain" // Increased from h-8 to h-12
                 />
               ) : (
                 competitor.name
@@ -35,7 +35,7 @@ export const ComparisonTable = ({ competitor }: ComparisonTableProps) => {
               <img 
                 src="/lovable-uploads/60190412-efc7-4756-b0a5-e9ecd7f0ef3f.png" 
                 alt="Timeliner"
-                className="h-8 mx-auto"
+                className="h-12 mx-auto" // Increased from h-8 to h-12 for consistency
               />
             </TableHead>
           </TableRow>

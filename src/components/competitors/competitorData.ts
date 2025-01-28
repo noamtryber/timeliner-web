@@ -49,7 +49,7 @@ export const competitors: Competitor[] = [
       },
       {
         name: "No Account Required for Reviewers",
-        competitor: true,
+        competitor: false,
         timeliner: true
       },
       {
