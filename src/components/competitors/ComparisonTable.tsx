@@ -25,7 +25,7 @@ export const ComparisonTable = ({ competitor }: ComparisonTableProps) => {
             </TableHead>
             <TableHead className="w-1/3 bg-primary/20 text-center">
               <img 
-                src="/lovable-uploads/94a8f111-a09f-4217-80ff-c246e3f328d1.png" 
+                src="/lovable-uploads/60190412-efc7-4756-b0a5-e9ecd7f0ef3f.png" 
                 alt="Timeliner"
                 className="h-8 mx-auto"
               />
