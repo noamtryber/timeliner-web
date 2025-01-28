@@ -1,7 +1,7 @@
 import { Check, X } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Competitor } from "./competitorData";
+import { Competitor } from "./types";
 
 interface ComparisonTableProps {
   competitor: Competitor;

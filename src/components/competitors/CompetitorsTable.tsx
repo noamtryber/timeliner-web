@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { CompetitorTabs } from "./CompetitorTabs";
 import { ComparisonTable } from "./ComparisonTable";
-import { Competitor, competitors } from "./competitorData";
+import { Competitor } from "./types";
+import { competitors } from "./competitorData";
 
 export const CompetitorsTable = () => {
   const { language, isRTL } = useLanguage();

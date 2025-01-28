@@ -1,4 +1,5 @@
-import { Competitor, competitors } from "./competitorData";
+import { Competitor, competitors } from "./types";
+import { competitors } from "./competitorData";
 
 interface CompetitorTabsProps {
   selectedCompetitor: Competitor;
