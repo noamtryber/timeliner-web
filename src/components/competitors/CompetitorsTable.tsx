@@ -20,7 +20,7 @@ export const CompetitorsTable = () => {
         <p className={`text-lg text-muted-foreground mb-12 max-w-3xl mx-auto text-center ${isRTL ? 'text-right' : 'text-left'}`}>
           {language === 'es' ? 'Compare Timeliner con las herramientas líderes de la industria y descubra por qué es la opción más inteligente para equipos de medios, agencias y creativos.' : 
            isRTL ? 'השוו את Timeliner עם כלים מובילים בתעשייה וגלו למה זו הבחירה החכמה יותר לצוותי מדיה, סוכנויות ויוצרים.' : 
-           'Compare Timeliner with leading industry tools and see why it's the smarter choice for media teams, agencies, and creatives. From advanced workflows to client-ready tools, discover how we outperform the competition in value, features, and scalability.'}
+           "Compare Timeliner with leading industry tools and see why it's the smarter choice for media teams, agencies, and creatives. From advanced workflows to client-ready tools, discover how we outperform the competition in value, features, and scalability."}
         </p>
         
         <div className="relative">
