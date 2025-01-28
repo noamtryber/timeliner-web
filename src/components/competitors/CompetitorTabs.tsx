@@ -18,15 +18,7 @@ export const CompetitorTabs = ({ selectedCompetitor, onSelect }: CompetitorTabsP
               : "bg-white/5 hover:bg-white/10"
           }`}
         >
-          {competitor.logo ? (
-            <img 
-              src={competitor.logo} 
-              alt={competitor.name} 
-              className="h-8 object-contain"
-            />
-          ) : (
-            competitor.name
-          )}
+          {competitor.name}
         </button>
       ))}
     </div>
