@@ -76,41 +76,49 @@ export const Features = () => {
               <h3 className="text-2xl md:text-3xl font-bold text-center gradient-text">
                 {group.headline}
               </h3>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div className="order-2 lg:order-1 space-y-4">
-                  <div className="space-y-2">
-                    {group.features.map((feature) => (
-                      <button
-                        key={feature.id}
-                        onClick={() => setSelectedFeature(feature.id)}
-                        className={`w-full p-4 rounded-lg transition-all duration-300 text-left
-                          ${selectedFeature === feature.id 
-                            ? 'bg-primary/10 font-semibold text-primary' 
-                            : 'hover:bg-card/50 text-white/70'
-                          }`}
-                      >
-                        <span className="text-base">{feature.title}</span>
-                      </button>
-                    ))}
-                  </div>
-                  {currentFeature && (
-                    <div className="pt-8 space-y-4">
-                      <div className="flex items-center gap-3">
-                        <h3 className="text-2xl font-bold">{currentFeature.title}</h3>
-                      </div>
-                      <p className="text-white/70 text-base leading-relaxed">{currentFeature.description}</p>
-                      <Button 
-                        onClick={() => setOpenDialog(currentFeature.id)}
-                        className="mt-4"
-                        variant="outline"
-                      >
-                        <PlayCircle className="w-5 h-5 mr-2" />
-                        Learn More
-                      </Button>
-                    </div>
-                  )}
+              <div className="grid grid-cols-12 gap-6">
+                {/* Left Column - Feature List (15%) */}
+                <div className="col-span-2 space-y-2">
+                  {group.features.map((feature) => (
+                    <button
+                      key={feature.id}
+                      onClick={() => setSelectedFeature(feature.id)}
+                      className={`w-full p-3 rounded-lg transition-all duration-300 text-left
+                        ${selectedFeature === feature.id 
+                          ? 'bg-primary/10 font-semibold text-primary' 
+                          : 'hover:bg-card/50 text-white/70'
+                        }`}
+                    >
+                      <span className="text-sm">{feature.title}</span>
+                    </button>
+                  ))}
                 </div>
-                <div className="order-1 lg:order-2">
+
+                {/* Middle Column - Feature Details (35%) */}
+                {currentFeature && (
+                  <div className="col-span-4 space-y-4">
+                    <div className="flex items-start gap-4">
+                      <div className="p-3 rounded-xl bg-primary/10">
+                        <PlayCircle className="w-8 h-8 text-primary" />
+                      </div>
+                      <div className="space-y-4 flex-1">
+                        <h3 className="text-2xl font-bold leading-tight">{currentFeature.title}</h3>
+                        <p className="text-white/70 text-sm leading-relaxed">{currentFeature.description}</p>
+                        <Button 
+                          onClick={() => setOpenDialog(currentFeature.id)}
+                          variant="outline"
+                          size="sm"
+                          className="mt-2"
+                        >
+                          Learn More
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Right Column - Video Preview (50%) */}
+                <div className="col-span-6">
                   <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl">
                     {currentFeature && (
                       <iframe
