@@ -5,7 +5,7 @@ import { useToast } from "@/hooks/use-toast";
 import { FeaturesHeader } from "./features/FeaturesHeader";
 import { FeatureDialog } from "./features/FeatureDialog";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { featureGroups } from "./features/featureData";
+import { featureGroups } from "./featureData";
 import { iconComponents } from "./features/iconComponents";
 import { Button } from "./ui/button";
 
@@ -95,24 +95,24 @@ export const Features = () => {
 
                   {/* Middle Column - Feature Details (25%) */}
                   {currentFeature && (
-                    <div className="col-span-3 flex items-center">
-                      <div className="space-y-6">
-                        <div className="flex items-start gap-4">
-                          <div className="p-2 rounded-xl bg-primary/10">
-                            {IconComponent && <IconComponent className="w-6 h-6 text-primary" />}
+                    <div className="col-span-3">
+                      <div className="flex items-start space-x-4">
+                        <div className="flex-shrink-0">
+                          <div className="p-3 rounded-xl bg-primary/10">
+                            {IconComponent && <IconComponent className="w-8 h-8 text-primary" />}
                           </div>
-                          <div className="space-y-4 flex-1">
-                            <h3 className="text-2xl font-bold leading-tight">{currentFeature.title}</h3>
-                            <p className="text-white/70 text-base leading-relaxed">{currentFeature.description}</p>
-                            <Button 
-                              onClick={() => setOpenDialog(currentFeature.id)}
-                              variant="outline"
-                              size="lg"
-                              className="mt-4"
-                            >
-                              Learn More
-                            </Button>
-                          </div>
+                        </div>
+                        <div className="space-y-4">
+                          <h3 className="text-2xl font-bold leading-tight">{currentFeature.title}</h3>
+                          <p className="text-white/70 text-lg leading-relaxed">{currentFeature.description}</p>
+                          <Button 
+                            onClick={() => setOpenDialog(currentFeature.id)}
+                            variant="outline"
+                            size="lg"
+                            className="mt-6 text-lg"
+                          >
+                            Learn More
+                          </Button>
                         </div>
                       </div>
                     </div>
