@@ -69,25 +69,17 @@ export const Features = () => {
     return mediaItem?.media_url || '';
   };
 
-  const getGradientClass = (index: number) => {
-    switch (index) {
-      case 0:
-        return "before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_30%_20%,rgba(123,97,255,0.1),rgba(123,97,255,0)_40%)] before:opacity-60 before:transition-opacity before:duration-1000 hover:before:opacity-100";
-      case 1:
-        return "before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_70%_30%,rgba(214,188,250,0.15),rgba(214,188,250,0)_45%)] before:opacity-60 before:transition-opacity before:duration-1000 hover:before:opacity-100";
-      case 2:
-        return "before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_40%_50%,rgba(155,135,245,0.12),rgba(155,135,245,0)_50%)] before:opacity-60 before:transition-opacity before:duration-1000 hover:before:opacity-100";
-      case 3:
-        return "before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_60%_40%,rgba(126,105,171,0.15),rgba(126,105,171,0)_55%)] before:opacity-60 before:transition-opacity before:duration-1000 hover:before:opacity-100";
-      default:
-        return "";
-    }
-  };
-
   return (
     <section id="features" className="py-20 overflow-hidden relative">
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/5 via-primary/5 to-transparent pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(123,97,255,0.1),rgba(123,97,255,0)_43.89%)] pointer-events-none" />
+      
+      {/* Organic gradient spots */}
+      <div className="absolute top-[20%] left-[30%] w-[40vw] h-[40vw] bg-[radial-gradient(circle_at_center,rgba(123,97,255,0.08),rgba(123,97,255,0)_70%)] blur-3xl pointer-events-none" />
+      <div className="absolute top-[50%] right-[20%] w-[35vw] h-[35vw] bg-[radial-gradient(circle_at_center,rgba(214,188,250,0.12),rgba(214,188,250,0)_70%)] blur-3xl pointer-events-none" />
+      <div className="absolute top-[80%] left-[40%] w-[45vw] h-[45vw] bg-[radial-gradient(circle_at_center,rgba(155,135,245,0.1),rgba(155,135,245,0)_70%)] blur-3xl pointer-events-none" />
+      <div className="absolute top-[110%] right-[30%] w-[50vw] h-[50vw] bg-[radial-gradient(circle_at_center,rgba(126,105,171,0.15),rgba(126,105,171,0)_70%)] blur-3xl pointer-events-none" />
+      
       <div className="container mx-auto px-4 relative">
         <FeaturesHeader />
         <div className="space-y-64 md:space-y-96">
@@ -97,7 +89,7 @@ export const Features = () => {
             const isAlternate = index === 1 || index === 3;
 
             return (
-              <div key={group.id} className={`space-y-12 relative ${getGradientClass(index)}`}>
+              <div key={group.id} className="space-y-12">
                 <div className={`grid grid-cols-12 gap-12 items-start ${isAlternate ? 'justify-end' : ''}`}>
                   {/* Left Column - Feature List (15%) */}
                   <div className={`col-span-2 space-y-2 flex flex-col ${isAlternate ? 'order-1 md:order-3' : ''}`}>
