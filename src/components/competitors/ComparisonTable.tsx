@@ -21,7 +21,15 @@ export const ComparisonTable = ({ competitor }: ComparisonTableProps) => {
                'Features'}
             </TableHead>
             <TableHead className={`w-1/3 ${isRTL ? 'text-right' : 'text-left'} bg-background`}>
-              {competitor.name}
+              {competitor.logo ? (
+                <img 
+                  src={competitor.logo} 
+                  alt={competitor.name}
+                  className="h-8 object-contain"
+                />
+              ) : (
+                competitor.name
+              )}
             </TableHead>
             <TableHead className="w-1/3 bg-primary/20 text-center">
               <img 
@@ -38,7 +46,7 @@ export const ComparisonTable = ({ competitor }: ComparisonTableProps) => {
               <TableCell className={`font-medium ${isRTL ? 'text-right' : 'text-left'}`}>
                 {feature.name}
               </TableCell>
-              <TableCell className={isRTL ? 'text-right' : 'text-left'}>
+              <TableCell className={`whitespace-pre-line ${isRTL ? 'text-right' : 'text-left'}`}>
                 {typeof feature.competitor === 'boolean' ? (
                   feature.competitor ? (
                     <ChevronRight className="text-primary h-5 w-5" />
@@ -49,7 +57,7 @@ export const ComparisonTable = ({ competitor }: ComparisonTableProps) => {
                   feature.competitor
                 )}
               </TableCell>
-              <TableCell className={`bg-primary/10 ${isRTL ? 'text-right' : 'text-left'}`}>
+              <TableCell className={`bg-primary/10 whitespace-pre-line ${isRTL ? 'text-right' : 'text-left'}`}>
                 {typeof feature.timeliner === 'boolean' ? (
                   feature.timeliner ? (
                     <ChevronRight className="text-primary h-5 w-5" />
