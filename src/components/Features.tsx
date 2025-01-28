@@ -70,7 +70,7 @@ export const Features = () => {
   };
 
   return (
-    <section id="features" className="py-20 overflow-hidden relative">
+    <section id="features" className="py-20 overflow-hidden relative" dir="ltr">
       {/* Main gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/10 via-primary/5 to-transparent pointer-events-none" />
       
