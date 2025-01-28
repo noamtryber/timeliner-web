@@ -155,8 +155,12 @@ export const Features = () => {
                   )}
 
                   {/* Right Column - Video Preview */}
-                  <div className={`col-span-1 md:col-span-5 order-1 ${isAlternate ? 'md:order-1 md:col-start-1' : 'md:col-start-7 md:order-3'} flex items-center`}>
-                    <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl w-full">
+                  <div className={`col-span-1 md:col-span-5 order-1 flex items-center
+                    ${isAlternate 
+                      ? 'md:order-1 md:col-start-1 md:-ml-[30%]' 
+                      : 'md:col-start-7 md:order-3 md:-mr-[30%]'
+                    }`}>
+                    <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl w-[130%]">
                       {currentFeature && (
                         <iframe
                           src={`${getFeatureMedia(currentFeature.id, 'preview')}?autoplay=1&loop=1&autopause=0&background=1&muted=1`}
