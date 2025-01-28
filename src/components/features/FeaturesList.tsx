@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import { useMediaContent } from "@/hooks/useMediaContent";
-import { features } from "./featureData";
+import { featureGroups } from "./featureData";
 import { FeatureItem } from "./FeatureItem";
 import { iconComponents } from "./iconComponents";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -52,7 +52,7 @@ export const FeaturesList = ({ onLearnMore, getContent, learnMoreText }: Feature
 
   return (
     <div ref={featuresRef} className={`space-y-32 ${isRTL ? 'rtl' : ''}`}>
-      {features.map((feature, index) => {
+      {featureGroups.flatMap(group => group.features).map((feature, index) => {
         const IconComponent = iconComponents[feature.icon];
         const title = language === 'es' 
           ? feature.esTitle 
