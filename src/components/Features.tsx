@@ -82,7 +82,7 @@ export const Features = () => {
 
             return (
               <div key={group.id} className="space-y-12">
-                <div className="grid grid-cols-12 gap-12 items-center"> {/* Increased gap from 6 to 12 */}
+                <div className="grid grid-cols-12 gap-12 items-center">
                   {/* Left Column - Feature List (15%) */}
                   <div className="col-span-2 space-y-2 flex flex-col">
                     {group.features.map((feature) => {
@@ -132,7 +132,7 @@ export const Features = () => {
                   )}
 
                   {/* Right Column - Video Preview (60%) */}
-                  <div className="col-span-6 col-start-7"> {/* Changed from col-span-7 to col-span-6 and added col-start-7 */}
+                  <div className="col-span-6 col-start-7">
                     <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl">
                       {currentFeature && (
                         <iframe
