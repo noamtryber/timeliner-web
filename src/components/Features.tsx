@@ -83,7 +83,7 @@ export const Features = () => {
 
             return (
               <div key={group.id} className="space-y-12">
-                <div className="grid grid-cols-12 gap-12 items-start">
+                <div className={`grid grid-cols-12 gap-12 items-start ${isAlternate ? 'justify-end' : ''}`}>
                   {/* Left Column - Feature List (15%) */}
                   <div className={`col-span-2 space-y-2 flex flex-col ${isAlternate ? 'order-1 md:order-3' : ''}`}>
                     {group.features.map((feature) => {
