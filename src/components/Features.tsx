@@ -76,37 +76,39 @@ export const Features = () => {
       <div className="container mx-auto px-4 relative">
         <FeaturesHeader />
         <div className="space-y-64 md:space-y-96">
-          {featureGroups.map((group, groupIndex) => {
+          {featureGroups.map((group) => {
             const currentFeature = group.features.find(f => f.id === selectedFeatures[group.id]);
             const IconComponent = currentFeature ? iconComponents[currentFeature.icon] : null;
-            const isAlternate = groupIndex % 2 !== 0;
 
             return (
               <div key={group.id} className="space-y-12">
-                <div className={`grid grid-cols-12 items-center ${isAlternate ? 'flex-row-reverse' : ''}`}>
-                  {/* Feature List Column - 15% width */}
-                  <div className={`${isAlternate ? 'col-span-2 col-start-11' : 'col-span-2 col-start-1'} space-y-2`}>
-                    {group.features.map((feature) => (
-                      <button
-                        key={feature.id}
-                        onClick={() => setSelectedFeatures(prev => ({
-                          ...prev,
-                          [group.id]: feature.id
-                        }))}
-                        className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center justify-start
-                          ${selectedFeatures[group.id] === feature.id 
-                            ? 'bg-primary/10 font-semibold text-primary' 
-                            : 'hover:bg-card/50 text-white'
-                          }`}
-                      >
-                        <span className="text-sm">{feature.title}</span>
-                      </button>
-                    ))}
+                <div className="grid grid-cols-12 gap-12 items-center justify-center">
+                  {/* Left Column - Feature List (15%) */}
+                  <div className="col-span-2 space-y-2 flex flex-col">
+                    {group.features.map((feature) => {
+                      const FeatureIcon = iconComponents[feature.icon];
+                      return (
+                        <button
+                          key={feature.id}
+                          onClick={() => setSelectedFeatures(prev => ({
+                            ...prev,
+                            [group.id]: feature.id
+                          }))}
+                          className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center
+                            ${selectedFeatures[group.id] === feature.id 
+                              ? 'bg-primary/10 font-semibold text-primary' 
+                              : 'hover:bg-card/50 text-white'
+                            }`}
+                        >
+                          <span className="text-sm text-left">{feature.title}</span>
+                        </button>
+                      );
+                    })}
                   </div>
 
-                  {/* Feature Details Column - 25% width */}
+                  {/* Middle Column - Feature Details (25%) */}
                   {currentFeature && (
-                    <div className={`${isAlternate ? 'col-span-3 col-start-7' : 'col-span-3 col-start-3'}`}>
+                    <div className="col-span-4">
                       <div className="flex flex-col">
                         <div className="flex items-start">
                           {IconComponent && (
@@ -115,15 +117,11 @@ export const Features = () => {
                             </div>
                           )}
                           <div className="ml-4">
-                            <h3 className="text-2xl font-bold leading-tight mb-4">
-                              {currentFeature.title}
-                            </h3>
+                            <h3 className="text-2xl font-bold leading-tight mb-4 whitespace-nowrap overflow-hidden text-ellipsis">{currentFeature.title}</h3>
                           </div>
                         </div>
                         <div className="ml-0">
-                          <p className="text-white/70 text-lg leading-relaxed mb-4">
-                            {currentFeature.description}
-                          </p>
+                          <p className="text-white/70 text-lg leading-relaxed mb-4">{currentFeature.description}</p>
                           <Button 
                             onClick={() => setOpenDialog(currentFeature.id)}
                             variant="outline"
@@ -137,9 +135,9 @@ export const Features = () => {
                     </div>
                   )}
 
-                  {/* Video Preview Column - 60% width */}
-                  <div className={`${isAlternate ? 'col-span-6 col-start-1' : 'col-span-6 col-start-6'} relative overflow-visible`}>
-                    <div className={`aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl scale-[1.35] ${isAlternate ? 'origin-right' : 'origin-left'}`}>
+                  {/* Right Column - Video Preview (60%) */}
+                  <div className="col-span-5 col-start-7 relative overflow-visible">
+                    <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl scale-[1.35] origin-left">
                       {currentFeature && (
                         <iframe
                           src={`${getFeatureMedia(currentFeature.id, 'preview')}?autoplay=1&loop=1&autopause=0&background=1&muted=1`}
