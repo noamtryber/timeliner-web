@@ -80,7 +80,7 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
         {competitor.features.map((feature, index) => (
           <div 
             key={index} 
-            className="bg-background/50 backdrop-blur-sm border border-primary/20 rounded-lg p-4 space-y-2 w-[95vw] mx-auto"
+            className="bg-background/50 backdrop-blur-sm border border-primary/20 rounded-lg p-4 space-y-2 w-[85vw] mx-auto"
           >
             <h3 className={`font-medium text-lg ${isRTL ? 'text-right' : 'text-left'}`}>
               {getFeatureText(feature)}
@@ -122,7 +122,7 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
           </div>
         ))}
 
-        <div className="mt-4 bg-background/50 backdrop-blur-sm border border-primary/20 rounded-lg p-4 w-[95vw] mx-auto">
+        <div className="mt-4 bg-background/50 backdrop-blur-sm border border-primary/20 rounded-lg p-4 w-[85vw] mx-auto">
           <h3 className={`text-xl font-bold mb-3 ${isRTL ? 'text-right' : 'text-left'}`}>
             {getKeyTakeawaysTitle()}
           </h3>
