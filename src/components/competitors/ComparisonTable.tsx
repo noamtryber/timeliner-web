@@ -11,7 +11,7 @@ export const ComparisonTable = ({ competitor }: ComparisonTableProps) => {
   const { language, isRTL } = useLanguage();
   
   return (
-    <div className="w-full overflow-x-auto rounded-xl shadow-lg">
+    <div className="w-[75%] mx-auto overflow-x-auto rounded-xl shadow-lg scale-90">
       <Table className="w-full border border-primary/20 rounded-xl overflow-hidden">
         <TableHeader className="sticky top-0 z-10">
           <TableRow className="hover:bg-transparent border-b border-primary/20">
