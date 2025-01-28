@@ -92,7 +92,7 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
                     feature.competitor ? (
                       <Check className="text-primary h-5 w-5" />
                     ) : (
-                      <span className="text-red-500">✕</span>
+                      <X className="text-red-500 h-5 w-5" />
                     )
                   ) : (
                     <p className="text-sm">{getCompetitorText(feature)}</p>
@@ -108,7 +108,7 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
                     feature.timeliner ? (
                       <Check className="text-primary h-5 w-5" />
                     ) : (
-                      <span className="text-red-500">✕</span>
+                      <X className="text-red-500 h-5 w-5" />
                     )
                   ) : (
                     <p className="text-sm">{getTimelinerText(feature)}</p>
