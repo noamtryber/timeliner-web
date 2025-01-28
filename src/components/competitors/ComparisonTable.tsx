@@ -1,14 +1,14 @@
 import { useLanguage } from "@/contexts/LanguageContext";
-import { CompetitorTabs } from "./CompetitorTabs";
 import { ComparisonDesktopTable } from "./ComparisonDesktopTable";
 import { Competitor } from "./types";
-import { competitors } from "./competitorData";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export const ComparisonTable = ({ competitor }: { competitor: Competitor }) => {
   const { language, isRTL } = useLanguage();
+  const isMobile = useIsMobile();
   
   return (
-    <div className="w-[75%] mx-auto overflow-x-auto rounded-xl shadow-lg scale-90">
+    <div className={`${isMobile ? 'w-full px-2' : 'w-[75%] mx-auto'} overflow-x-auto rounded-xl shadow-lg ${isMobile ? 'scale-100' : 'scale-90'}`}>
       <ComparisonDesktopTable 
         competitor={competitor}
         isRTL={isRTL}

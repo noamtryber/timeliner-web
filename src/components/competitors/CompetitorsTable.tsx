@@ -37,8 +37,8 @@ export const CompetitorsTable = () => {
   };
 
   return (
-    <section className="py-12 relative overflow-auto">
-      <div className={`container mx-auto ${isMobile ? 'px-1' : 'px-4'}`}>
+    <section className="py-12 relative overflow-hidden">
+      <div className={`container mx-auto ${isMobile ? 'px-0' : 'px-4'}`}>
         <h2 className={`${isMobile ? 'text-3xl' : 'text-4xl'} font-bold mb-4 text-center`}>
           {getTitle()}
         </h2>
@@ -58,16 +58,18 @@ export const CompetitorsTable = () => {
           />
           
           {isMobile ? (
-            <Collapsible open={isOpen} onOpenChange={setIsOpen}>
-              <CollapsibleTrigger className="w-full flex items-center justify-center gap-2 py-2 text-primary hover:text-primary/80 transition-colors">
+            <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-full">
+              <CollapsibleTrigger className="w-full flex items-center justify-center gap-2 py-2 mt-2 text-primary hover:text-primary/80 transition-colors">
                 {isOpen ? (
                   <>Hide Comparison <ChevronUp className="h-4 w-4" /></>
                 ) : (
                   <>Show Comparison <ChevronDown className="h-4 w-4" /></>
                 )}
               </CollapsibleTrigger>
-              <CollapsibleContent>
-                <ComparisonTable competitor={selectedCompetitor} />
+              <CollapsibleContent className="w-full">
+                <div className="mt-2">
+                  <ComparisonTable competitor={selectedCompetitor} />
+                </div>
               </CollapsibleContent>
             </Collapsible>
           ) : (
