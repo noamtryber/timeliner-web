@@ -89,7 +89,7 @@ export const Features = () => {
       
       <div className="container mx-auto px-4 relative">
         <FeaturesHeader />
-        <div className="space-y-64 md:space-y-96 pb-[100px]">
+        <div className="space-y-64 md:space-y-96 pb-[200px]">
           {featureGroups.map((group, index) => {
             const currentFeature = group.features.find(f => f.id === selectedFeatures[group.id]);
             const IconComponent = currentFeature ? iconComponents[currentFeature.icon] : null;
