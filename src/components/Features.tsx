@@ -71,14 +71,21 @@ export const Features = () => {
 
   return (
     <section id="features" className="py-20 overflow-hidden relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-secondary/5 via-primary/5 to-transparent pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(123,97,255,0.1),rgba(123,97,255,0)_43.89%)] pointer-events-none" />
+      {/* Main gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-secondary/10 via-primary/5 to-transparent pointer-events-none" />
       
-      {/* Organic gradient spots */}
-      <div className="absolute top-[20%] left-[30%] w-[40vw] h-[40vw] bg-[radial-gradient(circle_at_center,rgba(123,97,255,0.08),rgba(123,97,255,0)_70%)] blur-3xl pointer-events-none" />
-      <div className="absolute top-[50%] right-[20%] w-[35vw] h-[35vw] bg-[radial-gradient(circle_at_center,rgba(214,188,250,0.12),rgba(214,188,250,0)_70%)] blur-3xl pointer-events-none" />
-      <div className="absolute top-[80%] left-[40%] w-[45vw] h-[45vw] bg-[radial-gradient(circle_at_center,rgba(155,135,245,0.1),rgba(155,135,245,0)_70%)] blur-3xl pointer-events-none" />
-      <div className="absolute top-[110%] right-[30%] w-[50vw] h-[50vw] bg-[radial-gradient(circle_at_center,rgba(126,105,171,0.15),rgba(126,105,171,0)_70%)] blur-3xl pointer-events-none" />
+      {/* Enhanced upper radial gradient */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(123,97,255,0.15),rgba(123,97,255,0)_50%)] pointer-events-none" />
+      
+      {/* Organic gradient spots with enhanced positioning and sizes */}
+      <div className="absolute -top-[10%] left-[20%] w-[60vw] h-[60vw] bg-[radial-gradient(circle_at_center,rgba(123,97,255,0.12),rgba(123,97,255,0)_70%)] blur-3xl pointer-events-none animate-pulse" />
+      <div className="absolute top-[30%] right-[10%] w-[45vw] h-[45vw] bg-[radial-gradient(circle_at_center,rgba(214,188,250,0.15),rgba(214,188,250,0)_70%)] blur-3xl pointer-events-none" />
+      <div className="absolute top-[60%] left-[30%] w-[50vw] h-[50vw] bg-[radial-gradient(circle_at_center,rgba(155,135,245,0.12),rgba(155,135,245,0)_70%)] blur-3xl pointer-events-none" />
+      <div className="absolute top-[90%] right-[20%] w-[55vw] h-[55vw] bg-[radial-gradient(circle_at_center,rgba(126,105,171,0.18),rgba(126,105,171,0)_70%)] blur-3xl pointer-events-none" />
+      
+      {/* Additional subtle accent gradients */}
+      <div className="absolute top-[5%] right-[40%] w-[30vw] h-[30vw] bg-[radial-gradient(circle_at_center,rgba(214,188,250,0.08),rgba(214,188,250,0)_70%)] blur-2xl pointer-events-none animate-pulse" />
+      <div className="absolute top-[45%] left-[10%] w-[25vw] h-[25vw] bg-[radial-gradient(circle_at_center,rgba(155,135,245,0.06),rgba(155,135,245,0)_70%)] blur-2xl pointer-events-none" />
       
       <div className="container mx-auto px-4 relative">
         <FeaturesHeader />
