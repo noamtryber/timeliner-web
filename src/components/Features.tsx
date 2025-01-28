@@ -71,21 +71,18 @@ export const Features = () => {
       <div className="container mx-auto px-4 relative">
         <FeaturesHeader />
         <div className="space-y-32">
-          {featureGroups.map((group, index) => {
+          {featureGroups.map((group) => {
             const IconComponent = currentFeature ? iconComponents[currentFeature.icon] : null;
             return (
               <div key={group.id} className="space-y-12">
-                <h3 className="text-2xl md:text-3xl font-bold text-center gradient-text">
-                  {group.headline}
-                </h3>
-                <div className="grid grid-cols-12 gap-6">
+                <div className="grid grid-cols-12 gap-6 items-center">
                   {/* Left Column - Feature List (15%) */}
-                  <div className="col-span-2 space-y-2">
+                  <div className="col-span-2 space-y-2 flex flex-col items-center">
                     {group.features.map((feature) => (
                       <button
                         key={feature.id}
                         onClick={() => setSelectedFeature(feature.id)}
-                        className={`w-full p-3 rounded-lg transition-all duration-300 text-left
+                        className={`w-full p-3 rounded-lg transition-all duration-300 text-center
                           ${selectedFeature === feature.id 
                             ? 'bg-primary/10 font-semibold text-primary' 
                             : 'hover:bg-card/50 text-white/70'
