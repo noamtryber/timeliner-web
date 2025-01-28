@@ -3,13 +3,15 @@ import { usePageContent } from "@/hooks/usePageContent";
 import { useMediaContent } from "@/hooks/useMediaContent";
 import { useToast } from "@/hooks/use-toast";
 import { FeaturesHeader } from "./features/FeaturesHeader";
-import { FeatureGroups } from "./features/FeatureGroups";
 import { FeatureDialog } from "./features/FeatureDialog";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { featureGroups } from "./features/featureData";
+import { PlayCircle } from "lucide-react";
+import { Button } from "./ui/button";
 
 export const Features = () => {
   const [openDialog, setOpenDialog] = useState<string | null>(null);
+  const [selectedFeature, setSelectedFeature] = useState<string | null>(null);
   const { language } = useLanguage();
   const { data: content, isLoading: contentLoading, error: contentError } = usePageContent('feature');
   const { data: media, isLoading: mediaLoading, error: mediaError } = useMediaContent('feature');
@@ -42,6 +44,7 @@ export const Features = () => {
   }
 
   const activeFeature = featureGroups.flatMap(group => group.features).find(f => f.id === openDialog);
+  const currentFeature = featureGroups.flatMap(group => group.features).find(f => f.id === (selectedFeature || featureGroups[0].features[0].id));
   
   const getFeatureContent = (sectionId: string | null, key: string): string => {
     if (!content) return '';
@@ -74,16 +77,26 @@ export const Features = () => {
                 {group.headline}
               </h3>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div className="aspect-video rounded-xl overflow-hidden bg-black/20">
+                <div className="order-2 lg:order-1 space-y-4">
                   {group.features.map((feature) => (
-                    <div 
+                    <button
                       key={feature.id}
-                      className={`w-full h-full transition-opacity duration-300 ${
-                        openDialog === feature.id ? 'opacity-100' : 'opacity-0 hidden'
-                      }`}
+                      onClick={() => setSelectedFeature(feature.id)}
+                      className={`w-full p-6 rounded-xl transition-all duration-300 text-left
+                        ${selectedFeature === feature.id 
+                          ? 'bg-primary/20 shadow-lg shadow-primary/10' 
+                          : 'bg-card/50 hover:bg-card/80'
+                        }`}
                     >
+                      <h4 className="text-xl font-semibold">{feature.title}</h4>
+                    </button>
+                  ))}
+                </div>
+                <div className="order-1 lg:order-2 space-y-8">
+                  <div className="aspect-video rounded-xl overflow-hidden bg-black/20">
+                    {currentFeature && (
                       <iframe
-                        src={`${getFeatureMedia(feature.id, 'preview')}?autoplay=1&loop=1&autopause=0&background=1&muted=1`}
+                        src={`${getFeatureMedia(currentFeature.id, 'preview')}?autoplay=1&loop=1&autopause=0&background=1&muted=1`}
                         className="w-full h-full scale-[1.01]"
                         allow="autoplay; fullscreen; picture-in-picture"
                         style={{
@@ -91,24 +104,21 @@ export const Features = () => {
                           background: 'transparent',
                         }}
                       />
+                    )}
+                  </div>
+                  {currentFeature && (
+                    <div className="space-y-4">
+                      <h3 className="text-2xl font-bold">{currentFeature.title}</h3>
+                      <p className="text-white/70">{currentFeature.description}</p>
+                      <Button 
+                        onClick={() => setOpenDialog(currentFeature.id)}
+                        className="w-full sm:w-auto"
+                      >
+                        <PlayCircle className="w-5 h-5 mr-2" />
+                        Learn More
+                      </Button>
                     </div>
-                  ))}
-                </div>
-                <div className="space-y-4">
-                  {group.features.map((feature) => (
-                    <button
-                      key={feature.id}
-                      onClick={() => setOpenDialog(feature.id)}
-                      className={`w-full p-6 rounded-xl transition-all duration-300 text-left
-                        ${openDialog === feature.id 
-                          ? 'bg-primary/20 shadow-lg shadow-primary/10' 
-                          : 'bg-card/50 hover:bg-card/80'
-                        }`}
-                    >
-                      <h4 className="text-xl font-semibold mb-2">{feature.title}</h4>
-                      <p className="text-white/70">{feature.description}</p>
-                    </button>
-                  ))}
+                  )}
                 </div>
               </div>
             </div>
