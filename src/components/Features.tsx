@@ -75,35 +75,94 @@ export const Features = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(123,97,255,0.1),rgba(123,97,255,0)_43.89%)] pointer-events-none" />
       <div className="container mx-auto px-4 relative">
         <FeaturesHeader />
-        <div className="space-y-64 md:space-y-96">
-          {featureGroups.map((group) => {
+        <div className="space-y-32 md:space-y-64">
+          {featureGroups.map((group, groupIndex) => {
             const currentFeature = group.features.find(f => f.id === selectedFeatures[group.id]);
             const IconComponent = currentFeature ? iconComponents[currentFeature.icon] : null;
 
             return (
-              <div key={group.id} className="space-y-12">
-                <div className="grid grid-cols-12 gap-12 items-center justify-center">
+              <div key={group.id} className="space-y-8 md:space-y-12">
+                {/* Mobile Layout */}
+                <div className="md:hidden space-y-8">
+                  {/* Feature List */}
+                  <div className="flex overflow-x-auto pb-4 space-x-4 scrollbar-hide">
+                    {group.features.map((feature) => (
+                      <button
+                        key={feature.id}
+                        onClick={() => setSelectedFeatures(prev => ({
+                          ...prev,
+                          [group.id]: feature.id
+                        }))}
+                        className={`flex-shrink-0 px-4 py-2 rounded-lg transition-all duration-300 whitespace-nowrap
+                          ${selectedFeatures[group.id] === feature.id 
+                            ? 'bg-primary/10 font-semibold text-primary' 
+                            : 'hover:bg-card/50 text-white'
+                          }`}
+                      >
+                        {feature.title}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Feature Content */}
+                  {currentFeature && (
+                    <div className="space-y-6">
+                      <div className="flex items-start space-x-4">
+                        {IconComponent && (
+                          <div className="flex-shrink-0">
+                            <IconComponent className="w-8 h-8 text-primary" />
+                          </div>
+                        )}
+                        <div>
+                          <h3 className="text-xl font-bold leading-tight mb-4">{currentFeature.title}</h3>
+                          <p className="text-white/70 text-base leading-relaxed mb-4">{currentFeature.description}</p>
+                        </div>
+                      </div>
+                      <Button 
+                        onClick={() => setOpenDialog(currentFeature.id)}
+                        variant="outline"
+                        size="lg"
+                        className="w-full justify-center text-lg"
+                      >
+                        Learn More
+                      </Button>
+                      <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl">
+                        {currentFeature && (
+                          <iframe
+                            src={`${getFeatureMedia(currentFeature.id, 'preview')}?autoplay=1&loop=1&autopause=0&background=1&muted=1`}
+                            className="w-full h-full scale-[1.01]"
+                            allow="autoplay; fullscreen; picture-in-picture"
+                            style={{
+                              border: 'none',
+                              background: 'transparent',
+                            }}
+                          />
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Desktop Layout */}
+                <div className="hidden md:grid grid-cols-12 gap-8 items-center">
                   {/* Left Column - Feature List (15%) */}
                   <div className="col-span-2 space-y-2 flex flex-col">
-                    {group.features.map((feature) => {
-                      const FeatureIcon = iconComponents[feature.icon];
-                      return (
-                        <button
-                          key={feature.id}
-                          onClick={() => setSelectedFeatures(prev => ({
-                            ...prev,
-                            [group.id]: feature.id
-                          }))}
-                          className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center
-                            ${selectedFeatures[group.id] === feature.id 
-                              ? 'bg-primary/10 font-semibold text-primary' 
-                              : 'hover:bg-card/50 text-white'
-                            }`}
-                        >
-                          <span className="text-sm text-left">{feature.title}</span>
-                        </button>
-                      );
-                    })}
+                    {group.features.map((feature) => (
+                      <button
+                        key={feature.id}
+                        onClick={() => setSelectedFeatures(prev => ({
+                          ...prev,
+                          [group.id]: feature.id
+                        }))}
+                        className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center
+                          ${selectedFeatures[group.id] === feature.id 
+                            ? 'bg-primary/10 font-semibold text-primary' 
+                            : 'hover:bg-card/50 text-white'
+                          }`}
+                      >
+                        <span className="text-sm text-left">{feature.title}</span>
+                      </button>
+                    ))}
                   </div>
 
                   {/* Middle Column - Feature Details (25%) */}
@@ -117,7 +176,7 @@ export const Features = () => {
                             </div>
                           )}
                           <div className="ml-4">
-                            <h3 className="text-2xl font-bold leading-tight mb-4 whitespace-nowrap overflow-hidden text-ellipsis">{currentFeature.title}</h3>
+                            <h3 className="text-2xl font-bold leading-tight mb-4">{currentFeature.title}</h3>
                           </div>
                         </div>
                         <div className="ml-0">
