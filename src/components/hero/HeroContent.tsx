@@ -46,7 +46,7 @@ export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContent
   };
 
   return (
-    <div className={`text-center lg:text-left ${isRTL ? 'text-center lg:text-right' : ''} animate-fade-up space-y-6 ${isRTL ? 'pt-12' : 'pt-20'}`}>
+    <div className={`text-center lg:text-left ${isRTL ? 'text-center lg:text-right' : ''} animate-fade-up space-y-6 ${isRTL ? 'pt-8' : 'pt-12'}`}>
       <span className={`subtitle-gradient block tracking-wide ${
         isRTL ? 'text-base sm:text-lg text-center lg:text-right font-normal' : 'text-sm sm:text-base'
       }`}>
