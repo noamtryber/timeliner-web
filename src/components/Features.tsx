@@ -109,13 +109,13 @@ export const Features = () => {
                             ...prev,
                             [group.id]: feature.id
                           }))}
-                          className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center
+                          className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center text-left
                             ${selectedFeatures[group.id] === feature.id 
                               ? 'bg-primary/10 font-semibold text-primary' 
                               : 'hover:bg-card/50 text-white'
                             }`}
                         >
-                          <span className="text-sm text-left">{featureTitle}</span>
+                          <span className="text-sm">{featureTitle}</span>
                         </button>
                       );
                     })}
@@ -125,13 +125,13 @@ export const Features = () => {
                   {currentFeature && (
                     <div className={`col-span-1 md:col-span-4 order-3 ${isAlternate ? 'md:order-2' : 'md:order-2'}`}>
                       <div className="flex flex-col justify-center h-full">
-                        <div className={`flex items-start ${isAlternate ? 'md:justify-end' : ''}`}>
+                        <div className="flex items-start">
                           {IconComponent && (
                             <div className="flex-shrink-0">
                               <IconComponent className="w-8 h-8 text-primary" />
                             </div>
                           )}
-                          <div className={`${isAlternate ? 'md:mr-4' : 'ml-4'}`}>
+                          <div className="ml-4">
                             <h3 className="text-xl md:text-2xl font-bold leading-tight mb-4 text-left">
                               {getFeatureContent(currentFeature.id, 'title') || currentFeature.title}
                             </h3>
@@ -141,7 +141,7 @@ export const Features = () => {
                           <p className="text-white/70 text-base md:text-lg leading-relaxed mb-4 text-left">
                             {getFeatureContent(currentFeature.id, 'description') || currentFeature.description}
                           </p>
-                          <div className={`${isAlternate ? 'md:text-right' : ''}`}>
+                          <div className="text-left">
                             <Button 
                               onClick={() => setOpenDialog(currentFeature.id)}
                               variant="outline"
