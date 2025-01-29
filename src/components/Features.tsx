@@ -7,6 +7,7 @@ import { FeatureDialog } from "./features/FeatureDialog";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { featureGroups } from "./features/featureData";
 import { featureGroupsHe } from "./features/featureDataHe";
+import { featureGroupsAr } from "./features/featureDataAr";
 import { iconComponents } from "./features/iconComponents";
 import { Button } from "./ui/button";
 
@@ -17,8 +18,17 @@ export const Features = () => {
   const { data: media, isLoading: mediaLoading, error: mediaError } = useMediaContent('feature');
   const { toast } = useToast();
 
-  // Use Hebrew data when in Hebrew mode, otherwise use English data
-  const currentFeatureGroups = language === 'he' ? featureGroupsHe : featureGroups;
+  // Use appropriate data based on language
+  const currentFeatureGroups = (() => {
+    switch (language) {
+      case 'he':
+        return featureGroupsHe;
+      case 'ar':
+        return featureGroupsAr;
+      default:
+        return featureGroups;
+    }
+  })();
 
   const [selectedFeatures, setSelectedFeatures] = useState<Record<string, string>>(() => {
     return currentFeatureGroups.reduce((acc, group) => ({
@@ -153,7 +163,7 @@ export const Features = () => {
                               size="lg"
                               className="w-full md:w-auto text-lg"
                             >
-                              {language === 'he' ? 'למדו עוד' : 'Learn More'}
+                              {language === 'he' ? 'למדו עוד' : language === 'ar' ? 'اعرف المزيد' : 'Learn More'}
                             </Button>
                           </div>
                         </div>
