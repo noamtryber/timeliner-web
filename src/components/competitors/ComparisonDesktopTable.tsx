@@ -180,7 +180,7 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
               <TableCell className={`font-medium ${isRTL ? 'text-right' : 'text-left'}`}>
                 {getFeatureText(feature)}
               </TableCell>
-              <TableCell className="text-left whitespace-pre-line">
+              <TableCell className="text-left">
                 {typeof feature.competitor === 'boolean' ? (
                   feature.competitor ? (
                     <Check className="text-primary h-5 w-5" />
@@ -191,7 +191,7 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
                   getCompetitorText(feature)
                 )}
               </TableCell>
-              <TableCell className="bg-primary/10 text-left whitespace-pre-line">
+              <TableCell className="bg-primary/10 text-left">
                 {typeof feature.timeliner === 'boolean' ? (
                   feature.timeliner ? (
                     <Check className="text-primary h-5 w-5" />
