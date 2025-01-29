@@ -53,7 +53,18 @@ export const Features = () => {
   
   const getFeatureContent = (featureId: string, key: string): string => {
     if (!content) return '';
-    const contentValue = content[`${featureId}_${key}`] || content[`common_${key}`] || '';
+    const contentKey = `${featureId}_${key}`;
+    const commonKey = `common_${key}`;
+    
+    // First try to get language-specific content
+    const contentValue = content[contentKey] || content[commonKey] || '';
+    
+    // If we're in English mode and no content is found, return empty string
+    // This ensures we don't fall back to Hebrew content in English mode
+    if (language === 'en' && !contentValue) {
+      return '';
+    }
+    
     return contentValue;
   };
 
