@@ -97,9 +97,10 @@ export const Features = () => {
 
             return (
               <div key={group.id} className="space-y-8 md:space-y-12">
-                <div className={`grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-center ${isAlternate ? 'justify-end' : ''}`}>
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-center">
                   {/* Left Column - Feature List */}
-                  <div className={`col-span-1 md:col-span-2 space-y-2 flex flex-col order-2 ${isAlternate ? 'md:order-3' : 'md:order-1'}`}>
+                  <div className={`col-span-1 md:col-span-2 space-y-2 flex flex-col order-2 
+                    ${isAlternate ? 'md:order-3' : 'md:order-1'}`}>
                     {group.features.map((feature) => {
                       const featureTitle = getFeatureContent(feature.id, 'title') || feature.title;
                       return (
@@ -157,16 +158,12 @@ export const Features = () => {
                   )}
 
                   {/* Right Column - Video Preview */}
-                  <div className={`col-span-1 md:col-span-5 order-1 flex items-center
-                    ${isRTL 
-                      ? isAlternate 
-                        ? 'md:order-1 md:col-start-1 md:-ml-[30%]' 
-                        : 'md:order-3 md:col-start-7 md:-mr-[30%]'
-                      : isAlternate 
-                        ? 'md:order-1 md:col-start-1 md:-ml-[30%]' 
-                        : 'md:col-start-7 md:order-3 md:-mr-[30%]'
+                  <div className={`col-span-1 md:col-span-6 order-1 flex items-center
+                    ${isAlternate 
+                      ? 'md:order-1 md:col-start-1' 
+                      : 'md:col-start-7 md:order-3'
                     }`}>
-                    <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl w-[130%]">
+                    <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl w-full">
                       {currentFeature && (
                         <iframe
                           src={getVimeoEmbedUrl(getFeatureMedia(currentFeature.id, 'preview'))}
