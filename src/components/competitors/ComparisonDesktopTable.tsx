@@ -170,12 +170,12 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
             <TableHead className={`w-1/3 ${isRTL ? 'text-right' : 'text-left'} bg-background`}>
               {getFeatureTitle()}
             </TableHead>
-            <TableHead className="w-1/3 text-left bg-background">
+            <TableHead className={`w-1/3 ${isRTL ? 'text-right' : 'text-left'} bg-background`}>
               {competitor.logo ? (
                 <img 
                   src={competitor.logo} 
                   alt={competitor.name}
-                  className="h-8 object-contain"
+                  className={`h-8 object-contain ${isRTL ? 'mr-0 ml-auto' : ''}`}
                 />
               ) : (
                 competitor.name
@@ -196,23 +196,31 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
               <TableCell className={`font-medium ${isRTL ? 'text-right' : 'text-left'}`}>
                 {getFeatureText(feature)}
               </TableCell>
-              <TableCell className="text-left">
+              <TableCell className={isRTL ? 'text-right' : 'text-left'}>
                 {typeof feature.competitor === 'boolean' ? (
                   feature.competitor ? (
-                    <Check className="text-primary h-5 w-5" />
+                    <div className={`flex ${isRTL ? 'justify-end' : 'justify-start'}`}>
+                      <Check className="text-primary h-5 w-5" />
+                    </div>
                   ) : (
-                    <X className="text-red-500 h-5 w-5" />
+                    <div className={`flex ${isRTL ? 'justify-end' : 'justify-start'}`}>
+                      <X className="text-red-500 h-5 w-5" />
+                    </div>
                   )
                 ) : (
                   getCompetitorText(feature)
                 )}
               </TableCell>
-              <TableCell className="bg-primary/10 text-left">
+              <TableCell className={`bg-primary/10 ${isRTL ? 'text-right' : 'text-left'}`}>
                 {typeof feature.timeliner === 'boolean' ? (
                   feature.timeliner ? (
-                    <Check className="text-primary h-5 w-5" />
+                    <div className={`flex ${isRTL ? 'justify-end' : 'justify-start'}`}>
+                      <Check className="text-primary h-5 w-5" />
+                    </div>
                   ) : (
-                    <X className="text-red-500 h-5 w-5" />
+                    <div className={`flex ${isRTL ? 'justify-end' : 'justify-start'}`}>
+                      <X className="text-red-500 h-5 w-5" />
+                    </div>
                   )
                 ) : (
                   getTimelinerText(feature)
