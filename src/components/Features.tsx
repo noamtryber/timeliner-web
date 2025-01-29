@@ -18,7 +18,7 @@ export const Features = () => {
     }), {});
   });
 
-  const { language, isRTL } = useLanguage();
+  const { language } = useLanguage();
   const { data: content, isLoading: contentLoading, error: contentError } = usePageContent('feature');
   const { data: media, isLoading: mediaLoading, error: mediaError } = useMediaContent('feature');
   const { toast } = useToast();
@@ -74,7 +74,7 @@ export const Features = () => {
   };
 
   return (
-    <section id="features" className="py-20 overflow-hidden relative">
+    <section id="features" className="py-20 overflow-hidden relative" dir="ltr">
       {/* Main gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/10 via-primary/5 to-transparent pointer-events-none" />
       
@@ -99,10 +99,9 @@ export const Features = () => {
               <div key={group.id} className="space-y-8 md:space-y-12">
                 <div className={`grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-center ${isAlternate ? 'justify-end' : ''}`}>
                   {/* Left Column - Feature List */}
-                  <div className={`col-span-1 md:col-span-2 space-y-2 flex flex-col order-2 
-                    ${isAlternate ? 'md:order-3' : 'md:order-1'}`}>
+                  <div className={`col-span-1 md:col-span-2 space-y-2 flex flex-col order-2 ${isAlternate ? 'md:order-3' : 'md:order-1'}`}>
                     {group.features.map((feature) => {
-                      const featureTitle = language === 'he' ? feature.hebrewTitle : (getFeatureContent(feature.id, 'title') || feature.title);
+                      const featureTitle = getFeatureContent(feature.id, 'title') || feature.title;
                       return (
                         <button
                           key={feature.id}
@@ -110,12 +109,11 @@ export const Features = () => {
                             ...prev,
                             [group.id]: feature.id
                           }))}
-                          className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center
+                          className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center text-left
                             ${selectedFeatures[group.id] === feature.id 
                               ? 'bg-primary/10 font-semibold text-primary' 
                               : 'hover:bg-card/50 text-white'
-                            }
-                            ${isRTL ? 'text-right' : 'text-left'}`}
+                            }`}
                         >
                           <span className="text-sm">{featureTitle}</span>
                         </button>
@@ -127,23 +125,23 @@ export const Features = () => {
                   {currentFeature && (
                     <div className={`col-span-1 md:col-span-4 order-3 ${isAlternate ? 'md:order-2' : 'md:order-2'}`}>
                       <div className="flex flex-col justify-center h-full">
-                        <div className={`flex items-start ${isRTL ? 'flex-row-reverse' : ''}`}>
+                        <div className="flex items-start">
                           {IconComponent && (
                             <div className="flex-shrink-0">
                               <IconComponent className="w-8 h-8 text-primary" />
                             </div>
                           )}
-                          <div className={`${isRTL ? 'mr-4' : 'ml-4'}`}>
-                            <h3 className={`text-xl md:text-2xl font-bold leading-tight mb-4 ${isRTL ? 'text-right' : 'text-left'}`}>
-                              {language === 'he' ? currentFeature.hebrewTitle : (getFeatureContent(currentFeature.id, 'title') || currentFeature.title)}
+                          <div className="ml-4">
+                            <h3 className="text-xl md:text-2xl font-bold leading-tight mb-4 text-left">
+                              {getFeatureContent(currentFeature.id, 'title') || currentFeature.title}
                             </h3>
                           </div>
                         </div>
-                        <div className={isRTL ? 'mr-12' : 'ml-12'}>
-                          <p className={`text-white/70 text-base md:text-lg leading-relaxed mb-4 ${isRTL ? 'text-right' : 'text-left'}`}>
-                            {language === 'he' ? currentFeature.hebrewDescription : (getFeatureContent(currentFeature.id, 'description') || currentFeature.description)}
+                        <div className="ml-0">
+                          <p className="text-white/70 text-base md:text-lg leading-relaxed mb-4 text-left">
+                            {getFeatureContent(currentFeature.id, 'description') || currentFeature.description}
                           </p>
-                          <div className={isRTL ? 'text-right' : 'text-left'}>
+                          <div className="text-left">
                             <Button 
                               onClick={() => setOpenDialog(currentFeature.id)}
                               variant="outline"
@@ -161,15 +159,10 @@ export const Features = () => {
                   {/* Right Column - Video Preview */}
                   <div className={`col-span-1 md:col-span-5 order-1 flex items-center
                     ${isAlternate 
-                      ? isRTL
-                        ? 'md:order-1 md:col-start-1 md:-ml-[80%]'
-                        : 'md:order-1 md:col-start-1 md:-ml-[40%]'
-                      : isRTL
-                        ? 'md:col-start-7 md:order-3 md:-mr-[80%]'
-                        : 'md:col-start-7 md:order-3 md:-mr-[40%]'
+                      ? 'md:order-1 md:col-start-1 md:-ml-[30%]' 
+                      : 'md:col-start-7 md:order-3 md:-mr-[30%]'
                     }`}>
-                    <div className={`aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl 
-                      ${isRTL ? 'w-[65%]' : 'w-[130%]'}`}>
+                    <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl w-[130%]">
                       {currentFeature && (
                         <iframe
                           src={getVimeoEmbedUrl(getFeatureMedia(currentFeature.id, 'preview'))}
@@ -196,8 +189,8 @@ export const Features = () => {
           onClose={() => setOpenDialog(null)}
           feature={{
             ...activeFeature,
-            title: language === 'he' ? activeFeature.hebrewTitle : (getFeatureContent(activeFeature.id, 'title') || activeFeature.title),
-            description: language === 'he' ? activeFeature.hebrewDescription : (getFeatureContent(activeFeature.id, 'description') || activeFeature.description)
+            title: getFeatureContent(activeFeature.id, 'title') || activeFeature.title,
+            description: getFeatureContent(activeFeature.id, 'description') || activeFeature.description
           }}
           videoUrl={getFeatureMedia(activeFeature.id, 'learn-more')}
         />
