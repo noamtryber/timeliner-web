@@ -27,11 +27,11 @@ export const FeatureDialog = ({ isOpen, onClose, feature, videoUrl }: FeatureDia
         className="sm:max-w-[800px] bg-card/95 backdrop-blur-xl"
         dir={isRTL ? "rtl" : "ltr"}
       >
-        <DialogHeader className={isRTL ? "text-right" : "text-left"}>
-          <DialogTitle className="text-2xl gradient-text">
+        <DialogHeader>
+          <DialogTitle className={`text-2xl gradient-text ${isRTL ? 'text-right' : 'text-left'}`}>
             {feature.title}
           </DialogTitle>
-          <DialogDescription className="text-lg text-white/70 mt-4 leading-relaxed">
+          <DialogDescription className={`text-lg text-white/70 mt-4 leading-relaxed ${isRTL ? 'text-right' : 'text-left'}`}>
             {feature.description}
           </DialogDescription>
         </DialogHeader>
