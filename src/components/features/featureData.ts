@@ -18,26 +18,26 @@ export const featureGroups: FeatureGroup[] = [
     features: [
       {
         id: 'revision-workflow',
-        title: 'סבבי תיקונים חכמים',
-        description: 'אתם והלקוחות שלכם יכולים להוסיף הערות לפי קוד זמן, לצייר , להקליט הערות קוליות ולהעלות קבצים לקבלת פידבק מדויק ולחסוך חתוך ועכבר.',
+        title: 'Smart Revision Workflow',
+        description: 'You and your clients can add timecode-based comments, draw annotations, record voice notes, and upload files for precise feedback, eliminating back-and-forth.',
         icon: 'workflow'
       },
       {
         id: 'task-management',
-        title: 'ניהול משימות לפי סטטוס',
-        description: 'ארגנו משימות עם עדכוני סטטוס ברורים, והשתמשו ב"מבט" את כל המשימות כדי לראות את כל המשימות מכל הלקוחות לפי סטטוס במקום אחד.',
+        title: 'Status-Based Task Management',
+        description: 'Organize tasks with clear status updates, and use the "All Tasks View" to see every task from all clients by status in one place.',
         icon: 'list-todo'
       },
       {
         id: 'version-control',
-        title: 'ניהול גרסאות',
-        description: 'השוו בין גרסאות עם כלי מסך מפוצל והורידו בקלות גרסאות עדכניות / ישנות.',
+        title: 'Version Control',
+        description: 'Compare versions with split-screen tools and easily download latest/previous versions.',
         icon: 'git-branch'
       },
       {
         id: 'folder-management',
-        title: 'ניהול תיקיות',
-        description: 'ארגנו קבצים אוטומטית לפי סטטוס, פרויקט או לקוח, וחסלו את הבלגן בתיקיות מפוזרות בין פלטפורומות שונות.',
+        title: 'Folder Management',
+        description: 'Automatically organize files by status, project, or client, and eliminate the mess of scattered folders across platforms.',
         icon: 'folder'
       }
     ]
@@ -48,20 +48,20 @@ export const featureGroups: FeatureGroup[] = [
     features: [
       {
         id: 'project-briefs',
-        title: 'תיאום ציפיות מושלם',
-        description: 'כלי אינטראקטיבי לתיאום ציפיות בינך לבין הלקוח שלך. בחירת רפרנסים, לוחות זמנים ותנאי תשלום מראש עם תקצירי פרוייקט דינמיים וברורים.',
+        title: 'Perfect Expectation Alignment',
+        description: 'Interactive tool for aligning expectations between you and your client. Choose references, timelines, and payment terms upfront with clear, dynamic project briefs.',
         icon: 'clipboard'
       },
       {
         id: 'portfolio-builder',
-        title: 'בניית תיק עבודות',
-        description: 'סוף ללשלוח ללקוחות את העבודות שלכם מבולגנים בדרייב. הציגו את העבודות שלכם עם תבניות איכותיות מותאמות אישית כדי להרשים לקוחות ולסגור עסקאות מהר יותר.',
+        title: 'Portfolio Builder',
+        description: 'Stop sending your work to clients in messy drives. Present your work with quality, customized templates to impress clients and close deals faster.',
         icon: 'layout-grid'
       },
       {
         id: 'client-portals',
-        title: 'פורטלים מותאמים ללקוחות',
-        description: 'ספקו ללקוחות לוח בקרה אלגנטי לשליחת הערות, פידבק, אישורים והורדת תוצרים סופיים.',
+        title: 'Custom Client Portals',
+        description: 'Provide clients with an elegant dashboard for submitting comments, feedback, approvals, and downloading final deliverables.',
         icon: 'layout-dashboard'
       }
     ]
@@ -72,20 +72,20 @@ export const featureGroups: FeatureGroup[] = [
     features: [
       {
         id: 'crm',
-        title: 'CRM מובנה',
-        description: 'עקבו אחרי סטטוס לידים, פולואפ, לקוחות עם CRM איכותי שחוסך אוטומציות צד שלישי וכאב ראש.',
+        title: 'Built-in CRM',
+        description: 'Track lead status, follow-ups, and clients with a quality CRM that saves third-party automations and headaches.',
         icon: 'users'
       },
       {
         id: 'team-collaboration',
-        title: 'כלי שיתוף פעולה לצוותים',
-        description: 'נהלו את הצוות שלכם ממבט על, הרשאות לפי תפקידים, בקרה על עובדים, כמה כסף אתם חייבים לצוות, עקבו אחרי עומסי עבודה והבטיחו שהכל זורם.',
+        title: 'Team Collaboration Tools',
+        description: 'Manage your team from an overview, role-based permissions, employee control, how much money you owe the team, track workloads, and ensure everything flows.',
         icon: 'users-round'
       },
       {
         id: 'payment-tracking',
-        title: 'מעקב תשלומים שקוף',
-        description: 'עקבו אחרי תשלומים לפרויקטים או משימות, והודיעו לחברי צוות וללקוחות על תשלומים שמועד פירעונם מתקרב.',
+        title: 'Transparent Payment Tracking',
+        description: 'Track payments for projects or tasks, and notify team members and clients about upcoming payment due dates.',
         icon: 'credit-card'
       }
     ]
@@ -96,20 +96,20 @@ export const featureGroups: FeatureGroup[] = [
     features: [
       {
         id: 'integrations',
-        title: 'אינטגרציות ל-WhatsApp ול-Slack',
-        description: 'הגדירו איזה התראות הלקוחות והצוות שלכם יקבלו ואיפה. למשל- כשסרטון מחכה לאישור, אוטומטית הלקוח יקבל התראה לווצאפ עם לינק לצפייה.',
+        title: 'WhatsApp & Slack Integrations',
+        description: 'Set which notifications your clients and team receive and where. For example - when a video is waiting for approval, the client automatically receives a WhatsApp notification with a viewing link.',
         icon: 'message-square'
       },
       {
         id: 'multi-language',
-        title: 'תמיכה רב-לשונית',
-        description: 'המערכת היחידה בעולם שמשלבת ניהול פרוייקטים ובקרה על סרטונים שמותאמת מימין לשמאל! תומך באופן מלא בשפות ימין-לשמאל ושמאל-לימין, אידיאלי לצוותים גלובליים.',
+        title: 'Multilingual Support',
+        description: 'The only system in the world that combines project management and video control adapted from right to left! Fully supports right-to-left and left-to-right languages, ideal for global teams.',
         icon: 'languages'
       },
       {
         id: 'ai-tools',
-        title: 'כלי AI',
-        description: 'צרו כתוביות אוטומטיות בעברית (אין צורך לבזבז כסף על כלים אחרים), קבלו המלצות לייעול העבודה, וזרזו את תהליך העריכה עם אוטומציה חכמה.',
+        title: 'AI Tools',
+        description: 'Create automatic subtitles in Hebrew (no need to waste money on other tools), get recommendations for work efficiency, and speed up the editing process with smart automation.',
         icon: 'sparkles'
       }
     ]
