@@ -18,7 +18,7 @@ export const Features = () => {
     }), {});
   });
 
-  const { language, isRTL } = useLanguage();
+  const { language } = useLanguage();
   const { data: content, isLoading: contentLoading, error: contentError } = usePageContent('feature');
   const { data: media, isLoading: mediaLoading, error: mediaError } = useMediaContent('feature');
   const { toast } = useToast();
@@ -96,14 +96,11 @@ export const Features = () => {
 
             return (
               <div key={group.id} className="space-y-8 md:space-y-12">
-                <h3 className="text-2xl md:text-3xl font-bold text-center gradient-text">
-                  {language === 'he' ? group.hebrewHeadline : group.headline}
-                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-center">
                   {/* Left Column - Feature List */}
                   <div className="col-span-1 md:col-span-2 space-y-2 flex flex-col md:order-1">
                     {group.features.map((feature) => {
-                      const featureTitle = language === 'he' ? feature.hebrewTitle : (getFeatureContent(feature.id, 'title') || feature.title);
+                      const featureTitle = getFeatureContent(feature.id, 'title') || feature.title;
                       return (
                         <button
                           key={feature.id}
@@ -135,17 +132,13 @@ export const Features = () => {
                           )}
                           <div className="mr-4">
                             <h3 className="text-xl md:text-2xl font-bold leading-tight mb-4 text-right">
-                              {language === 'he' 
-                                ? currentFeature.hebrewTitle 
-                                : (getFeatureContent(currentFeature.id, 'title') || currentFeature.title)}
+                              {getFeatureContent(currentFeature.id, 'title') || currentFeature.title}
                             </h3>
                           </div>
                         </div>
                         <div className="mr-0">
                           <p className="text-white/70 text-base md:text-lg leading-relaxed mb-4 text-right">
-                            {language === 'he'
-                              ? currentFeature.hebrewDescription
-                              : (getFeatureContent(currentFeature.id, 'description') || currentFeature.description)}
+                            {getFeatureContent(currentFeature.id, 'description') || currentFeature.description}
                           </p>
                           <div className="text-right">
                             <Button 
@@ -191,12 +184,8 @@ export const Features = () => {
           onClose={() => setOpenDialog(null)}
           feature={{
             ...activeFeature,
-            title: language === 'he' 
-              ? activeFeature.hebrewTitle || activeFeature.title
-              : (getFeatureContent(activeFeature.id, 'title') || activeFeature.title),
-            description: language === 'he'
-              ? activeFeature.hebrewDescription || activeFeature.description
-              : (getFeatureContent(activeFeature.id, 'description') || activeFeature.description)
+            title: getFeatureContent(activeFeature.id, 'title') || activeFeature.title,
+            description: getFeatureContent(activeFeature.id, 'description') || activeFeature.description
           }}
           videoUrl={getFeatureMedia(activeFeature.id, 'learn-more')}
         />
