@@ -52,13 +52,16 @@ export const Features = () => {
   const activeFeature = featureGroups.flatMap(group => group.features).find(f => f.id === openDialog);
   
   const getFeatureContent = (featureId: string, key: string): string => {
-    // Only use translations from database when in Hebrew mode
+    // For Hebrew mode, use translations from database
     if (language === 'he' && content) {
       const contentKey = `${featureId}_${key}`;
-      return content[contentKey] || '';
+      const translation = content[contentKey];
+      if (translation) {
+        return translation;
+      }
     }
     
-    // For all other languages, use the default English text from featureData
+    // For all other languages or if no Hebrew translation found, use default English text
     const feature = featureGroups.flatMap(g => g.features).find(f => f.id === featureId);
     if (feature && key in feature) {
       return feature[key as keyof typeof feature] as string;
@@ -96,6 +99,7 @@ export const Features = () => {
 
   return (
     <section id="features" className="py-20 overflow-hidden relative" dir={isRTL ? 'rtl' : 'ltr'}>
+      {/* Background gradients */}
       {/* Main gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/10 via-primary/5 to-transparent pointer-events-none" />
       
@@ -119,7 +123,7 @@ export const Features = () => {
             return (
               <div key={group.id} className="space-y-8 md:space-y-12">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-center">
-                  {/* Left Column - Feature List */}
+                  {/* Feature List */}
                   <div className={`col-span-1 md:col-span-2 space-y-2 flex flex-col order-2 
                     ${isAlternate ? 'md:order-3' : 'md:order-1'}`}>
                     {group.features.map((feature) => (
@@ -140,7 +144,7 @@ export const Features = () => {
                     ))}
                   </div>
 
-                  {/* Middle Column - Feature Details */}
+                  {/* Feature Details */}
                   {currentFeature && (
                     <div className={`col-span-1 md:col-span-4 order-3 ${isAlternate ? 'md:order-2' : 'md:order-2'}`}>
                       <div className="flex flex-col justify-center h-full">
@@ -175,6 +179,7 @@ export const Features = () => {
                     </div>
                   )}
 
+                  {/* Video Preview */}
                   {/* Right Column - Video Preview */}
                   <div className={`col-span-1 md:col-span-6 order-1 flex items-center
                     ${isAlternate 
