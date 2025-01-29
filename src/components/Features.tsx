@@ -6,22 +6,26 @@ import { FeaturesHeader } from "./features/FeaturesHeader";
 import { FeatureDialog } from "./features/FeatureDialog";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { featureGroups } from "./features/featureData";
+import { featureGroupsHe } from "./features/featureDataHe";
 import { iconComponents } from "./features/iconComponents";
 import { Button } from "./ui/button";
 
 export const Features = () => {
   const [openDialog, setOpenDialog] = useState<string | null>(null);
-  const [selectedFeatures, setSelectedFeatures] = useState<Record<string, string>>(() => {
-    return featureGroups.reduce((acc, group) => ({
-      ...acc,
-      [group.id]: group.features[0].id
-    }), {});
-  });
-
   const { language, isRTL } = useLanguage();
   const { data: content, isLoading: contentLoading, error: contentError } = usePageContent('feature');
   const { data: media, isLoading: mediaLoading, error: mediaError } = useMediaContent('feature');
   const { toast } = useToast();
+
+  // Use Hebrew data when in Hebrew mode, otherwise use English data
+  const currentFeatureGroups = language === 'he' ? featureGroupsHe : featureGroups;
+
+  const [selectedFeatures, setSelectedFeatures] = useState<Record<string, string>>(() => {
+    return currentFeatureGroups.reduce((acc, group) => ({
+      ...acc,
+      [group.id]: group.features[0].id
+    }), {});
+  });
 
   if (contentError || mediaError) {
     console.error('Content error:', contentError);
@@ -33,40 +37,13 @@ export const Features = () => {
     });
   }
 
-  if (contentLoading || mediaLoading) {
-    return (
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <div className="animate-pulse">
-              <div className="h-4 bg-primary/20 rounded w-24 mx-auto mb-4"></div>
-              <div className="h-8 bg-primary/20 rounded w-64 mx-auto mb-6"></div>
-              <div className="h-4 bg-primary/20 rounded w-96 mx-auto"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  const activeFeature = featureGroups.flatMap(group => group.features).find(f => f.id === openDialog);
+  const activeFeature = currentFeatureGroups.flatMap(group => group.features).find(f => f.id === openDialog);
   
   const getFeatureContent = (featureId: string, key: string): string => {
-    // For Hebrew mode, use translations from database
-    if (language === 'he' && content) {
-      const contentKey = `${featureId}_${key}`;
-      const translation = content[contentKey];
-      if (translation) {
-        return translation;
-      }
-    }
-    
-    // For all other languages or if no Hebrew translation found, use default English text
-    const feature = featureGroups.flatMap(g => g.features).find(f => f.id === featureId);
+    const feature = currentFeatureGroups.flatMap(g => g.features).find(f => f.id === featureId);
     if (feature && key in feature) {
       return feature[key as keyof typeof feature] as string;
     }
-    
     return '';
   };
 
@@ -86,16 +63,21 @@ export const Features = () => {
     return vimeoId ? `https://player.vimeo.com/video/${vimeoId}?autoplay=1&loop=1&muted=1&background=1&quality=1080p` : '';
   };
 
-  const getLearnMoreText = () => {
-    switch (language) {
-      case 'he':
-        return 'למדו עוד';
-      case 'es':
-        return 'Más información';
-      default:
-        return 'Learn More';
-    }
-  };
+  if (contentLoading || mediaLoading) {
+    return (
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <div className="animate-pulse">
+              <div className="h-4 bg-primary/20 rounded w-24 mx-auto mb-4"></div>
+              <div className="h-8 bg-primary/20 rounded w-64 mx-auto mb-6"></div>
+              <div className="h-4 bg-primary/20 rounded w-96 mx-auto"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="features" className="py-20 overflow-hidden relative" dir={isRTL ? 'rtl' : 'ltr'}>
@@ -111,11 +93,11 @@ export const Features = () => {
       <div className="absolute top-[30%] right-[10%] w-[45vw] h-[45vw] bg-[radial-gradient(circle_at_center,rgba(214,188,250,0.15),rgba(214,188,250,0)_70%)] blur-3xl pointer-events-none" />
       <div className="absolute top-[60%] left-[30%] w-[50vw] h-[50vw] bg-[radial-gradient(circle_at_center,rgba(155,135,245,0.12),rgba(155,135,245,0)_70%)] blur-3xl pointer-events-none" />
       <div className="absolute top-[90%] right-[20%] w-[55vw] h-[55vw] bg-[radial-gradient(circle_at_center,rgba(126,105,171,0.18),rgba(126,105,171,0)_70%)] blur-3xl pointer-events-none" />
-      
+
       <div className="container mx-auto px-4 relative">
         <FeaturesHeader />
         <div className="space-y-32 md:space-y-64 lg:space-y-96 pb-[200px]">
-          {featureGroups.map((group, index) => {
+          {currentFeatureGroups.map((group, index) => {
             const currentFeature = group.features.find(f => f.id === selectedFeatures[group.id]);
             const IconComponent = currentFeature ? iconComponents[currentFeature.icon] : null;
             const isAlternate = index === 1 || index === 3;
@@ -139,7 +121,7 @@ export const Features = () => {
                             : 'hover:bg-card/50 text-white'
                           }`}
                       >
-                        <span className="text-sm">{getFeatureContent(feature.id, 'title')}</span>
+                        <span className="text-sm">{feature.title}</span>
                       </button>
                     ))}
                   </div>
@@ -156,13 +138,13 @@ export const Features = () => {
                           )}
                           <div className={`${isRTL ? 'mr-4 text-right' : 'ml-4 text-left'}`}>
                             <h3 className="text-xl md:text-2xl font-bold leading-tight mb-4">
-                              {getFeatureContent(currentFeature.id, 'title')}
+                              {currentFeature.title}
                             </h3>
                           </div>
                         </div>
                         <div className={`${isRTL ? 'text-right' : 'text-left'}`}>
                           <p className="text-white/70 text-base md:text-lg leading-relaxed mb-4">
-                            {getFeatureContent(currentFeature.id, 'description')}
+                            {currentFeature.description}
                           </p>
                           <div>
                             <Button 
@@ -171,7 +153,7 @@ export const Features = () => {
                               size="lg"
                               className="w-full md:w-auto text-lg"
                             >
-                              {getLearnMoreText()}
+                              {language === 'he' ? 'למדו עוד' : 'Learn More'}
                             </Button>
                           </div>
                         </div>
@@ -180,7 +162,6 @@ export const Features = () => {
                   )}
 
                   {/* Video Preview */}
-                  {/* Right Column - Video Preview */}
                   <div className={`col-span-1 md:col-span-6 order-1 flex items-center
                     ${isAlternate 
                       ? 'md:order-1 md:col-start-1' 
@@ -211,11 +192,7 @@ export const Features = () => {
         <FeatureDialog
           isOpen={!!openDialog}
           onClose={() => setOpenDialog(null)}
-          feature={{
-            ...activeFeature,
-            title: getFeatureContent(activeFeature.id, 'title'),
-            description: getFeatureContent(activeFeature.id, 'description')
-          }}
+          feature={activeFeature}
           videoUrl={getFeatureMedia(activeFeature.id, 'learn-more')}
         />
       )}
