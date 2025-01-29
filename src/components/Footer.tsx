@@ -9,6 +9,7 @@ export const Footer = () => {
   const location = useLocation();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const isSpanish = language === 'es';
+  const isArabic = language === 'ar';
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -65,6 +66,16 @@ export const Footer = () => {
         privacy: 'Política de Privacidad',
         terms: 'Términos y Condiciones',
         designedBy: 'Diseñado por Noam Tryber'
+      };
+    } else if (isArabic) {
+      return {
+        ready: 'هل أنت مستعد لتولي زمام الأمور؟',
+        description: 'قم بتبسيط سير عملك باستخدام أدوات إنتاج فيديو أكثر ذكاءً.',
+        startFree: 'ابدأ مجاناً',
+        joinCommunity: 'انضم إلى المجتمع',
+        privacy: 'سياسة الخصوصية',
+        terms: 'الشروط والأحكام',
+        designedBy: 'تصميم نوعم ترايبر'
       };
     } else {
       return {
