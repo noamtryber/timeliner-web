@@ -102,7 +102,7 @@ export const Features = () => {
                   <div className={`col-span-1 md:col-span-2 space-y-2 flex flex-col order-2 
                     ${isAlternate ? 'md:order-3' : 'md:order-1'}`}>
                     {group.features.map((feature) => {
-                      const featureTitle = getFeatureContent(feature.id, 'title') || feature.title;
+                      const featureTitle = language === 'he' ? feature.hebrewTitle : (getFeatureContent(feature.id, 'title') || feature.title);
                       return (
                         <button
                           key={feature.id}
@@ -135,13 +135,13 @@ export const Features = () => {
                           )}
                           <div className={`${isRTL ? 'mr-4' : 'ml-4'}`}>
                             <h3 className={`text-xl md:text-2xl font-bold leading-tight mb-4 ${isRTL ? 'text-right' : 'text-left'}`}>
-                              {getFeatureContent(currentFeature.id, 'title') || currentFeature.title}
+                              {language === 'he' ? currentFeature.hebrewTitle : (getFeatureContent(currentFeature.id, 'title') || currentFeature.title)}
                             </h3>
                           </div>
                         </div>
                         <div className={isRTL ? 'mr-12' : 'ml-12'}>
                           <p className={`text-white/70 text-base md:text-lg leading-relaxed mb-4 ${isRTL ? 'text-right' : 'text-left'}`}>
-                            {getFeatureContent(currentFeature.id, 'description') || currentFeature.description}
+                            {language === 'he' ? currentFeature.hebrewDescription : (getFeatureContent(currentFeature.id, 'description') || currentFeature.description)}
                           </p>
                           <div className={isRTL ? 'text-right' : 'text-left'}>
                             <Button 
@@ -161,8 +161,12 @@ export const Features = () => {
                   {/* Right Column - Video Preview */}
                   <div className={`col-span-1 md:col-span-5 order-1 flex items-center
                     ${isAlternate 
-                      ? 'md:order-1 md:col-start-1 md:-ml-[40%]' 
-                      : 'md:col-start-7 md:order-3 md:-mr-[40%]'
+                      ? isRTL
+                        ? 'md:order-1 md:col-start-1 md:-ml-[60%]'
+                        : 'md:order-1 md:col-start-1 md:-ml-[40%]'
+                      : isRTL
+                        ? 'md:col-start-7 md:order-3 md:-mr-[60%]'
+                        : 'md:col-start-7 md:order-3 md:-mr-[40%]'
                     }`}>
                     <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl w-[130%]">
                       {currentFeature && (
@@ -191,8 +195,8 @@ export const Features = () => {
           onClose={() => setOpenDialog(null)}
           feature={{
             ...activeFeature,
-            title: getFeatureContent(activeFeature.id, 'title') || activeFeature.title,
-            description: getFeatureContent(activeFeature.id, 'description') || activeFeature.description
+            title: language === 'he' ? activeFeature.hebrewTitle : (getFeatureContent(activeFeature.id, 'title') || activeFeature.title),
+            description: language === 'he' ? activeFeature.hebrewDescription : (getFeatureContent(activeFeature.id, 'description') || activeFeature.description)
           }}
           videoUrl={getFeatureMedia(activeFeature.id, 'learn-more')}
         />
