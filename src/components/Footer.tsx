@@ -10,6 +10,7 @@ export const Footer = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const isSpanish = language === 'es';
   const isArabic = language === 'ar';
+  const isHebrew = language === 'he';
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -47,7 +48,7 @@ export const Footer = () => {
   };
 
   const getContent = () => {
-    if (isRTL) {
+    if (isHebrew) {
       return {
         ready: 'מוכנים לקחת שליטה?',
         description: 'סוף לבלאגן. מערכת חכמה לניהול פרויקטים, תיקונים ותשלומים- הכל במקום אחד',
@@ -56,16 +57,6 @@ export const Footer = () => {
         privacy: 'מדיניות פרטיות',
         terms: 'תנאים והגבלות',
         designedBy: 'עוצב על ידי נועם טרייבר'
-      };
-    } else if (isSpanish) {
-      return {
-        ready: '¿LISTO PARA TOMAR EL CONTROL?',
-        description: 'Optimiza tu flujo de trabajo con herramientas más inteligentes de producción de video.',
-        startFree: 'Comienza Gratis',
-        joinCommunity: 'Únete a la comunidad',
-        privacy: 'Política de Privacidad',
-        terms: 'Términos y Condiciones',
-        designedBy: 'Diseñado por Noam Tryber'
       };
     } else if (isArabic) {
       return {
@@ -76,6 +67,16 @@ export const Footer = () => {
         privacy: 'سياسة الخصوصية',
         terms: 'الشروط والأحكام',
         designedBy: 'تصميم نوعم ترايبر'
+      };
+    } else if (isSpanish) {
+      return {
+        ready: '¿LISTO PARA TOMAR EL CONTROL?',
+        description: 'Optimiza tu flujo de trabajo con herramientas más inteligentes de producción de video.',
+        startFree: 'Comienza Gratis',
+        joinCommunity: 'Únete a la comunidad',
+        privacy: 'Política de Privacidad',
+        terms: 'Términos y Condiciones',
+        designedBy: 'Diseñado por Noam Tryber'
       };
     } else {
       return {
