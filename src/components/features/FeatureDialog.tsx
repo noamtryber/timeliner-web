@@ -23,11 +23,8 @@ export const FeatureDialog = ({ isOpen, onClose, feature, videoUrl }: FeatureDia
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent 
-        className="sm:max-w-[800px] bg-card/95 backdrop-blur-xl"
-        dir={isRTL ? "rtl" : "ltr"}
-      >
-        <DialogHeader className={isRTL ? "text-right" : "text-left"}>
+      <DialogContent className="sm:max-w-[800px] bg-card/95 backdrop-blur-xl">
+        <DialogHeader>
           <DialogTitle className="text-2xl gradient-text">
             {feature.title}
           </DialogTitle>
