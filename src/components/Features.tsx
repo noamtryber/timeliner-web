@@ -52,25 +52,25 @@ export const Features = () => {
   const activeFeature = featureGroups.flatMap(group => group.features).find(f => f.id === openDialog);
   
   const getFeatureContent = (featureId: string, key: string): string => {
-    if (!content) return '';
-    
-    // Construct the content key
-    const contentKey = `${featureId}_${key}`;
-    
-    // Get the content value for the current language
-    const contentValue = content[contentKey];
-    
-    // If we're in English mode and no translation exists, return the default English text
-    if (language === 'en') {
-      if (!contentValue) {
-        const feature = featureGroups.flatMap(g => g.features).find(f => f.id === featureId);
-        if (feature && key in feature) {
-          return feature[key as keyof typeof feature] as string;
-        }
-      }
+    // If we're in Hebrew mode, use the translations from the database
+    if (language === 'he' && content) {
+      const contentKey = `${featureId}_${key}`;
+      return content[contentKey] || '';
     }
     
-    return contentValue || '';
+    // In English mode, use the default English text from featureData
+    const feature = featureGroups.flatMap(g => g.features).find(f => f.id === featureId);
+    if (feature && key in feature) {
+      return feature[key as keyof typeof feature] as string;
+    }
+    
+    // For group headlines in English mode
+    if (key === 'headline') {
+      const group = featureGroups.find(g => g.id === featureId);
+      return group?.headline || '';
+    }
+    
+    return '';
   };
 
   const getFeatureMedia = (sectionId: string, key: string) => {

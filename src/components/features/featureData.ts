@@ -14,102 +14,102 @@ interface Feature {
 export const featureGroups: FeatureGroup[] = [
   {
     id: 'smart-management',
-    headline: 'Take control of your workflow with tools that simplify and streamline your editing process.',
+    headline: 'Smart Project and Revision Management',
     features: [
       {
         id: 'revision-workflow',
-        title: 'סבבי תיקונים חכמים',
-        description: 'אתם והלקוחות שלכם יכולים להוסיף הערות לפי קוד זמן, לצייר , להקליט הערות קוליות ולהעלות קבצים לקבלת פידבק מדויק ולחסוך חתוך ועכבר.',
+        title: 'Revision Workflow',
+        description: 'Timecode comments, draw, voice memo, file upload',
         icon: 'workflow'
       },
       {
         id: 'task-management',
-        title: 'ניהול משימות לפי סטטוס',
-        description: 'ארגנו משימות עם עדכוני סטטוס ברורים, והשתמשו ב"מבט" את כל המשימות כדי לראות את כל המשימות מכל הלקוחות לפי סטטוס במקום אחד.',
+        title: 'Task Management by Status',
+        description: 'Global View to track all projects at once',
         icon: 'list-todo'
       },
       {
         id: 'version-control',
-        title: 'ניהול גרסאות',
-        description: 'השוו בין גרסאות עם כלי מסך מפוצל והורידו בקלות גרסאות עדכניות / ישנות.',
+        title: 'Version Control',
+        description: 'Split-screen compare, download previous versions',
         icon: 'git-branch'
       },
       {
         id: 'folder-management',
-        title: 'ניהול תיקיות',
-        description: 'ארגנו קבצים אוטומטית לפי סטטוס, פרויקט או לקוח, וחסלו את הבלגן בתיקיות מפוזרות בין פלטפורומות שונות.',
+        title: 'Smart Folder Management',
+        description: 'Auto-organized file structure per project',
         icon: 'folder'
       }
     ]
   },
   {
     id: 'client-collaboration',
-    headline: 'Deliver better results by aligning expectations and making client interactions effortless.',
+    headline: 'Simplified Client Collaboration',
     features: [
       {
         id: 'project-briefs',
-        title: 'תיאום ציפיות מושלם',
-        description: 'כלי אינטראקטיבי לתיאום ציפיות בינך לבין הלקוח שלך. בחירת רפרנסים, לוחות זמנים ותנאי תשלום מראש עם תקצירי פרוייקט דינמיים וברורים.',
+        title: 'Interactive Project Briefs',
+        description: 'Align expectations before work begins',
         icon: 'clipboard'
       },
       {
         id: 'portfolio-builder',
-        title: 'בניית תיק עבודות',
-        description: 'סוף ללשלוח ללקוחות את העבודות שלכם מבולגנים בדרייב. הציגו את העבודות שלכם עם תבניות איכותיות מותאמות אישית כדי להרשים לקוחות ולסגור עסקאות מהר יותר.',
+        title: 'Portfolio Builder',
+        description: 'Showcase past work with shareable templates',
         icon: 'layout-grid'
       },
       {
         id: 'client-portals',
-        title: 'פורטלים מותאמים ללקוחות',
-        description: 'ספקו ללקוחות לוח בקרה אלגנטי לשליחת הערות, פידבק, אישורים והורדת תוצרים סופיים.',
+        title: 'Customizable Client Portals',
+        description: 'Clients review, approve, and download work easily',
         icon: 'layout-dashboard'
       }
     ]
   },
   {
     id: 'team-payments',
-    headline: 'Stay organized, get paid on time, and collaborate more effectively with your team.',
+    headline: 'Powerful Tools for Teams and Payments',
     features: [
       {
         id: 'crm',
-        title: 'CRM מובנה',
-        description: 'עקבו אחרי סטטוס לידים, פולואפ, לקוחות עם CRM איכותי שחוסך אוטומציות צד שלישי וכאב ראש.',
+        title: 'Built-In CRM for Creatives',
+        description: 'Track client interactions, leads, and projects',
         icon: 'users'
       },
       {
         id: 'team-collaboration',
-        title: 'כלי שיתוף פעולה לצוותים',
-        description: 'נהלו את הצוות שלכם ממבט על, הרשאות לפי תפקידים, בקרה על עובדים, כמה כסף אתם חייבים לצוות, עקבו אחרי עומסי עבודה והבטיחו שהכל זורם.',
+        title: 'Team Collaboration Tools',
+        description: 'Assign roles, monitor workloads, and permissions',
         icon: 'users-round'
       },
       {
         id: 'payment-tracking',
-        title: 'מעקב תשלומים שקוף',
-        description: 'עקבו אחרי תשלומים לפרויקטים או משימות, והודיעו לחברי צוות וללקוחות על תשלומים שמועד פירעונם מתקרב.',
+        title: 'Transparent Payment Tracking',
+        description: 'See payments owed, notify team members/clients',
         icon: 'credit-card'
       }
     ]
   },
   {
     id: 'advanced-features',
-    headline: 'Enhance productivity with integrations, multilingual support, and AI-powered tools.',
+    headline: 'Advanced Features for Seamless Workflow',
     features: [
       {
         id: 'integrations',
-        title: 'אינטגרציות ל-WhatsApp ול-Slack',
-        description: 'הגדירו איזה התראות הלקוחות והצוות שלכם יקבלו ואיפה. למשל- כשסרטון מחכה לאישור, אוטומטית הלקוח יקבל התראה לווצאפ עם לינק לצפייה.',
+        title: 'WhatsApp & Slack Integrations',
+        description: 'Communicate with clients directly inside Timeliner',
         icon: 'message-square'
       },
       {
         id: 'multi-language',
-        title: 'תמיכה רב-לשונית',
-        description: 'המערכת היחידה בעולם שמשלבת ניהול פרוייקטים ובקרה על סרטונים שמותאמת מימין לשמאל! תומך באופן מלא בשפות ימין-לשמאל ושמאל-לימין, אידיאלי לצוותים גלובליים.',
+        title: 'Multi-Language Support',
+        description: 'LTR + RTL interface for global teams',
         icon: 'languages'
       },
       {
         id: 'ai-tools',
-        title: 'כלי AI',
-        description: 'צרו כתוביות אוטומטיות בעברית (אין צורך לבזבז כסף על כלים אחרים), קבלו המלצות לייעול העבודה, וזרזו את תהליך העריכה עם אוטומציה חכמה.',
+        title: 'AI Tools',
+        description: 'Auto captions, smart suggestions for faster workflow',
         icon: 'sparkles'
       }
     ]
