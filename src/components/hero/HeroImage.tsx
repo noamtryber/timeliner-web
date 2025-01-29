@@ -3,9 +3,13 @@ import { useMediaContent } from "@/hooks/useMediaContent";
 
 export const HeroImage = () => {
   const { isRTL } = useLanguage();
-  const { data: media } = useMediaContent('hero', 'main');
+  const { data: media, isLoading } = useMediaContent('hero', 'main');
   
-  const heroImage = media?.find(item => item.media_key === 'hero_image')?.media_url || '/lovable-uploads/7a7300e3-617d-48ce-a15a-212411db6ee8.png';
+  const heroImage = media?.find(item => item.media_key === 'hero_image')?.media_url;
+  
+  if (isLoading || !heroImage) {
+    return null;
+  }
   
   return (
     <div className="hidden lg:block relative">
@@ -16,6 +20,7 @@ export const HeroImage = () => {
           src={heroImage}
           alt="Timeliner Dashboard"
           className="w-full h-auto rounded-2xl"
+          loading="eager"
         />
         <div className={`absolute inset-0 bg-gradient-to-t from-background/20 to-transparent ${
           isRTL ? 'bg-gradient-to-l' : 'bg-gradient-to-r'
