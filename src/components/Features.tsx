@@ -169,7 +169,7 @@ export const Features = () => {
                         : 'md:col-start-7 md:order-3 md:-mr-[40%]'
                     }`}>
                     <div className={`aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl 
-                      ${isRTL ? 'w-[110%]' : 'w-[130%]'}`}>
+                      ${isRTL ? 'w-[65%]' : 'w-[130%]'}`}>
                       {currentFeature && (
                         <iframe
                           src={getVimeoEmbedUrl(getFeatureMedia(currentFeature.id, 'preview'))}
