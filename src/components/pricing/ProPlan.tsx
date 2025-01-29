@@ -45,34 +45,49 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
       ? basePrice * 0.85 
       : basePrice;
 
+  const hebrewFeatures: Feature[] = [
+    { text: 'אחסון: 2TB', tooltip: 'אחסון מאובטח בענן עם גיבוי אוטומטי', showTooltip: true },
+    { text: 'משתמשים: עד 30', tooltip: 'ניהול צוות של עד 30 משתמשים עם הרשאות שונות', showTooltip: true },
+    { text: 'פרויקטים פעילים: ללא הגבלה', tooltip: 'עבודה על פרויקטים ללא הגבלה במקביל', showTooltip: true },
+    { text: 'גישת לקוחות: 10 אורחים לפרויקט', tooltip: 'שיתוף פעולה עם 10 לקוחות במקביל לכל פרויקט', showTooltip: true }
+  ];
+
+  const hebrewExtraFeatures: Feature[] = [
+    { text: 'ניתוח פרויקטים מתקדם', tooltip: 'מדדים מפורטים ודוחות מותאמים אישית', showTooltip: true },
+    { text: 'אינטגרציה עם כלים חיצוניים', tooltip: 'התחבר לכלים המועדפים עליך', showTooltip: true },
+    { text: 'תמיכה מועדפת 24/7', tooltip: 'סיוע טכני ייעודי', showTooltip: true }
+  ];
+
   const arabicFeatures: Feature[] = [
     { text: 'التخزين: 2TB', tooltip: 'تخزين آمن على السحابة مع نسخ احتياطي تلقائي', showTooltip: true },
     { text: 'الأعضاء: حتى 30', tooltip: 'إدارة فريق يصل إلى 30 مستخدم بأذونات مختلفة', showTooltip: true },
     { text: 'المشاريع النشطة: غير محدود', tooltip: 'العمل على مشاريع غير محدودة في وقت واحد', showTooltip: true },
-    { text: 'وصول العملاء: 10 ضيوف لكل مشروع', tooltip: 'التعاون مع 10 عملاء في وقت واحد لكل مشروع', showTooltip: true },
+    { text: 'وصول العملاء: 10 ضيوف لكل مشروع', tooltip: 'التعاون مع 10 عملاء في وقت واحد لكل مشروع', showTooltip: true }
   ];
 
   const arabicExtraFeatures: Feature[] = [
     { text: 'تحليلات المشروع المتقدمة', tooltip: 'مقاييس مفصلة وتقارير مخصصة', showTooltip: true },
     { text: 'تكامل مع الأدوات الخارجية', tooltip: 'اتصل بأدواتك المفضلة', showTooltip: true },
-    { text: 'دعم متميز 24/7', tooltip: 'مساعدة تقنية مخصصة', showTooltip: true },
+    { text: 'دعم متميز 24/7', tooltip: 'مساعدة تقنية مخصصة', showTooltip: true }
   ];
 
   const englishFeatures: Feature[] = [
     { text: 'Storage: 2TB', tooltip: 'Secure cloud storage with automatic backup', showTooltip: true },
     { text: 'Members: Up to 30', tooltip: 'Manage a team of up to 30 users with different permissions', showTooltip: true },
     { text: 'Active Projects: Unlimited', tooltip: 'Work on unlimited projects simultaneously', showTooltip: true },
-    { text: 'Client Access: 10 Guests per project', tooltip: 'Collaborate with 10 clients simultaneously per project', showTooltip: true },
+    { text: 'Client Access: 10 Guests per project', tooltip: 'Collaborate with 10 clients simultaneously per project', showTooltip: true }
   ];
 
   const englishExtraFeatures: Feature[] = [
     { text: 'Advanced project analytics', tooltip: 'Detailed metrics and custom reports', showTooltip: true },
     { text: 'External tools integration', tooltip: 'Connect with your favorite tools', showTooltip: true },
-    { text: 'Priority 24/7 support', tooltip: 'Dedicated technical assistance', showTooltip: true },
+    { text: 'Priority 24/7 support', tooltip: 'Dedicated technical assistance', showTooltip: true }
   ];
 
   const getFeatures = () => {
     switch (language) {
+      case 'he':
+        return hebrewFeatures;
       case 'ar':
         return arabicFeatures;
       default:
@@ -82,6 +97,8 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
   const getExtraFeatures = () => {
     switch (language) {
+      case 'he':
+        return hebrewExtraFeatures;
       case 'ar':
         return arabicExtraFeatures;
       default:
@@ -89,8 +106,10 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     }
   };
 
-  const getPlanTitle = () => {
+  const getTitle = () => {
     switch (language) {
+      case 'he':
+        return 'פרו';
       case 'ar':
         return 'الاحترافي';
       default:
@@ -98,8 +117,10 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     }
   };
 
-  const getPlanSubtitle = () => {
+  const getSubtitle = () => {
     switch (language) {
+      case 'he':
+        return 'לסוכנויות וצוותים בצמיחה';
       case 'ar':
         return 'للوكالات والفرق النامية';
       default:
@@ -109,6 +130,8 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
   const getButtonText = () => {
     switch (language) {
+      case 'he':
+        return 'התחילו היום בחינם';
       case 'ar':
         return 'ابدأ النسخة التجريبية المجانية';
       default:
@@ -118,6 +141,8 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
   const getWhyButtonText = () => {
     switch (language) {
+      case 'he':
+        return 'למה פרו?';
       case 'ar':
         return 'لماذا الاحترافي؟';
       default:
@@ -127,6 +152,8 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
   const getEverythingInText = () => {
     switch (language) {
+      case 'he':
+        return 'הכל בבייסיק, בנוסף:';
       case 'ar':
         return 'كل شيء في الأساسي، بالإضافة إلى:';
       default:
@@ -137,21 +164,23 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
   return (
     <Card className={`relative border border-[#2A2F3C] bg-gradient-to-b from-[#1A1F2C]/50 to-[#1A1F2C] p-3 flex flex-col animate-fade-up delay-500 hover:scale-105 transition-transform duration-300 ${isRTL ? 'text-right' : ''}`}>
       <PlanIcon Icon={Crown} color="primary" />
-      <h3 className="text-xl font-bold mb-1">{getPlanTitle()}</h3>
+      <h3 className="text-xl font-bold mb-1">{getTitle()}</h3>
       <p className="text-white/70 mb-2">
-        {getPlanSubtitle()}
+        {getSubtitle()}
       </p>
       <div className="text-2xl font-bold mb-2">
         ${price.toFixed(2)}
         <span className="text-base font-normal">
-          {language === 'ar' ? '/شهر' : '/month'}
+          {language === 'he' ? '/ לחודש' : language === 'ar' ? '/شهر' : '/month'}
         </span>
         {pricingPeriod !== 'monthly' && (
           <span className="block text-sm text-primary mt-1">
-            ${price.toFixed(2)} {
-              language === 'ar' 
-                ? `مفوتر ${pricingPeriod === 'quarterly' ? 'ربع سنوي' : 'سنوي'}`
-                : `billed ${pricingPeriod}`
+            ${(price * (pricingPeriod === 'yearly' ? 12 : 3)).toFixed(2)} {
+              language === 'he'
+                ? `לתשלום ${pricingPeriod === 'quarterly' ? 'רבעוני' : 'שנתי'}`
+                : language === 'ar'
+                  ? `مدفوع ${pricingPeriod === 'quarterly' ? 'ربع سنوي' : 'سنوي'}`
+                  : `billed ${pricingPeriod}`
             }
           </span>
         )}

@@ -45,11 +45,26 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
       ? basePrice * 0.85 
       : basePrice;
 
+  const hebrewFeatures: Feature[] = [
+    { text: 'אחסון: 1TB', tooltip: 'אחסון מאובטח בענן עם גיבוי אוטומטי', showTooltip: true },
+    { text: 'משתמשים: עד 5', tooltip: 'ניהול צוות של עד 5 משתמשים עם הרשאות שונות', showTooltip: true },
+    { text: 'פרויקטים פעילים: ללא הגבלה', tooltip: 'עבודה על פרויקטים ללא הגבלה במקביל', showTooltip: true },
+    { text: 'גישת לקוחות: עד 3 אורחים לפרויקט' }
+  ];
+
+  const hebrewExtraFeatures: Feature[] = [
+    { text: 'מערכת תשלומים חכמה', tooltip: 'הגדרת מודלים לתמחור (לפי וידאו, פרויקט, שלבים או חוזים). אוטומציה של תשלומים, הפקת קבלות והתאמה לסוג העסק שלך.', showTooltip: true },
+    { text: 'כלי ניהול צוות', tooltip: 'כלים מתקדמים לניהול משימות וזמן', showTooltip: true },
+    { text: 'CRM מובנה ואוטומציה', tooltip: 'אינטגרציה עם כלים כמו טפסי לידים של פייסבוק ו-WhatsApp Business. ניהול לידים, מעקבים ולקוחות עם צינור הצעות ותקשורת מהירה.', showTooltip: true },
+    { text: 'בונה תיק עבודות', tooltip: 'כלי מתקדם ליצירת תיקי עבודות מקצועיים', showTooltip: true },
+    { text: 'תקצירי פרויקט אינטראקטיביים', tooltip: 'השתמש בכלי AI לסיעור מוחות עם לקוחות על רעיונות, רפרנסים ותנאים. מנע ציפיות לא מתואמות וספק חוויית לקוח חלקה.', showTooltip: true }
+  ];
+
   const arabicFeatures: Feature[] = [
     { text: 'التخزين: 1TB', tooltip: 'تخزين آمن على السحابة مع نسخ احتياطي تلقائي', showTooltip: true },
     { text: 'الأعضاء: حتى 5', tooltip: 'إدارة فريق يصل إلى 5 مستخدمين بأذونات مختلفة', showTooltip: true },
     { text: 'المشاريع النشطة: غير محدود', tooltip: 'العمل على مشاريع غير محدودة في وقت واحد', showTooltip: true },
-    { text: 'وصول العملاء: حتى 3 ضيوف لكل مشروع' },
+    { text: 'وصول العملاء: حتى 3 ضيوف لكل مشروع' }
   ];
 
   const arabicExtraFeatures: Feature[] = [
@@ -60,26 +75,11 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
     { text: 'ملخصات المشروع التفاعلية', tooltip: 'استخدم أدوات الذكاء الاصطناعي للعصف الذهني مع العملاء حول الأفكار والمراجع والشروط. تجنب التوقعات غير المتطابقة وقدم تجربة عميل سلسة.', showTooltip: true }
   ];
 
-  const spanishFeatures: Feature[] = [
-    { text: 'Almacenamiento: 1TB', tooltip: 'Almacenamiento seguro en la nube con respaldo automático', showTooltip: true },
-    { text: 'Miembros: Hasta 5', tooltip: 'Gestiona un equipo de hasta 5 usuarios con diferentes permisos', showTooltip: true },
-    { text: 'Proyectos Activos: Ilimitados', tooltip: 'Trabaja en proyectos ilimitados simultáneamente', showTooltip: true },
-    { text: 'Acceso de Clientes: Hasta 3 invitados por proyecto' },
-  ];
-
-  const spanishExtraFeatures: Feature[] = [
-    { text: 'Sistema de pago inteligente', tooltip: 'Define modelos de precios (por video, proyecto, etapas o contratos). Automatiza pagos, genera recibos y adapta a tu tipo de negocio.', showTooltip: true },
-    { text: 'Herramientas de gestión de equipo', tooltip: 'Herramientas avanzadas para gestión de tareas y tiempo', showTooltip: true },
-    { text: 'CRM integrado y automatización', tooltip: 'Integración con herramientas como formularios de leads de Facebook y WhatsApp Business. Gestiona leads, seguimientos y clientes con pipeline de propuestas y comunicación rápida.', showTooltip: true },
-    { text: 'Creador de portafolio', tooltip: 'Herramienta avanzada para crear portafolios profesionales', showTooltip: true },
-    { text: 'Resúmenes de proyecto interactivos', tooltip: 'Usa herramientas de IA para hacer brainstorming con clientes sobre ideas, referencias y términos. Evita expectativas desalineadas y ofrece una experiencia de cliente fluida.', showTooltip: true }
-  ];
-
   const englishFeatures: Feature[] = [
     { text: 'Storage: 1TB', tooltip: 'Secure cloud storage with automatic backup', showTooltip: true },
     { text: 'Members: Up to 5', tooltip: 'Manage a team of up to 5 users with different permissions', showTooltip: true },
     { text: 'Active Projects: Unlimited', tooltip: 'Work on unlimited projects simultaneously', showTooltip: true },
-    { text: 'Client Access: Up to 3 Guests per project' },
+    { text: 'Client Access: Up to 3 Guests per project' }
   ];
 
   const englishExtraFeatures: Feature[] = [
@@ -92,10 +92,10 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
   const getFeatures = () => {
     switch (language) {
+      case 'he':
+        return hebrewFeatures;
       case 'ar':
         return arabicFeatures;
-      case 'es':
-        return spanishFeatures;
       default:
         return englishFeatures;
     }
@@ -103,34 +103,23 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
   const getExtraFeatures = () => {
     switch (language) {
+      case 'he':
+        return hebrewExtraFeatures;
       case 'ar':
         return arabicExtraFeatures;
-      case 'es':
-        return spanishExtraFeatures;
       default:
         return englishExtraFeatures;
     }
   };
 
-  const getPeriodTotal = () => {
-    switch (pricingPeriod) {
-      case 'quarterly':
-        return price * 3;
-      case 'yearly':
-        return price * 12;
-      default:
-        return price;
-    }
-  };
-
   const getTitle = () => {
     switch (language) {
+      case 'he':
+        return 'בייסיק';
       case 'ar':
         return 'الأساسي';
       case 'es':
         return 'Básico';
-      case 'he':
-        return 'בייסיק';
       default:
         return 'Essentials';
     }
@@ -138,12 +127,12 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
   const getSubtitle = () => {
     switch (language) {
+      case 'he':
+        return 'לצוותים קטנים ופרילנסרים';
       case 'ar':
         return 'للفرق الصغيرة والمستقلين';
       case 'es':
         return 'Para Equipos Pequeños y Freelancers';
-      case 'he':
-        return 'לצוותים קטנים ופרילנסרים';
       default:
         return 'For Small Teams and Freelancers';
     }
@@ -151,12 +140,12 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
   const getPopularLabel = () => {
     switch (language) {
+      case 'he':
+        return 'הכי פופולרי';
       case 'ar':
         return 'الأكثر شعبية';
       case 'es':
         return 'Más Popular';
-      case 'he':
-        return 'הכי פופולרי';
       default:
         return 'Most Popular';
     }
@@ -164,12 +153,12 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
   const getWhyButtonText = () => {
     switch (language) {
+      case 'he':
+        return 'למה בייסיק?';
       case 'ar':
         return 'لماذا الأساسي؟';
       case 'es':
         return '¿Por qué Básico?';
-      case 'he':
-        return 'למה בייסיק?';
       default:
         return 'Why Essentials?';
     }
@@ -177,12 +166,12 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
   const getTrialButtonText = () => {
     switch (language) {
+      case 'he':
+        return 'התחילו היום בחינם';
       case 'ar':
         return 'ابدأ النسخة التجريبية المجانية';
       case 'es':
         return 'Comenzar Prueba Gratis';
-      case 'he':
-        return 'התחילו היום בחינם';
       default:
         return 'Start Free Trial';
     }
@@ -190,12 +179,12 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
   const getEverythingInFreeText = () => {
     switch (language) {
+      case 'he':
+        return 'הכל בחינמי, בנוסף:';
       case 'ar':
         return 'كل شيء في المجاني، بالإضافة إلى:';
       case 'es':
         return 'Todo en Gratis, más:';
-      case 'he':
-        return 'הכל בחינמי, בנוסף:';
       default:
         return 'Everything in Free, plus:';
     }
@@ -213,17 +202,17 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
       <div className="text-2xl font-bold mb-2">
         ${price.toFixed(2)}
         <span className="text-base font-normal">
-          {language === 'ar' ? '/شهر' : language === 'es' ? '/mes' : isRTL ? '/ לחודש' : '/month'}
+          {language === 'he' ? '/ לחודש' : language === 'ar' ? '/شهر' : language === 'es' ? '/mes' : '/month'}
         </span>
         {pricingPeriod !== 'monthly' && (
           <span className="block text-sm text-primary mt-1">
-            ${getPeriodTotal().toFixed(2)} {
-              language === 'ar' 
-                ? `مدفوع ${pricingPeriod === 'quarterly' ? 'ربع سنوي' : 'سنوي'}`
-                : language === 'es' 
-                  ? `facturado ${pricingPeriod === 'quarterly' ? 'trimestralmente' : 'anualmente'}`
-                  : isRTL 
-                    ? `לתשלום ${pricingPeriod === 'quarterly' ? 'רבעוני' : 'שנתי'}`
+            ${(price * (pricingPeriod === 'yearly' ? 12 : 3)).toFixed(2)} {
+              language === 'he'
+                ? `לתשלום ${pricingPeriod === 'quarterly' ? 'רבעוני' : 'שנתי'}`
+                : language === 'ar'
+                  ? `مدفوع ${pricingPeriod === 'quarterly' ? 'ربع سنوي' : 'سنوي'}`
+                  : language === 'es'
+                    ? `facturado ${pricingPeriod === 'quarterly' ? 'trimestralmente' : 'anualmente'}`
                     : `billed ${pricingPeriod}`
             }
           </span>
