@@ -60,15 +60,14 @@ export const Features = () => {
     // Get the content value for the current language
     const contentValue = content[contentKey];
     
-    // If we're in English mode and the content is missing, return the default English text from featureData
-    if (language === 'en' && !contentValue) {
-      const group = featureGroups.find(g => g.id === featureId);
-      if (group) return group[key as keyof typeof group] || '';
-      
-      const feature = featureGroups.flatMap(g => g.features).find(f => f.id === featureId);
-      if (feature) return feature[key as keyof typeof feature] || '';
-      
-      return '';
+    // If we're in English mode and no translation exists, return the default English text
+    if (language === 'en') {
+      if (!contentValue) {
+        const feature = featureGroups.flatMap(g => g.features).find(f => f.id === featureId);
+        if (feature && key in feature) {
+          return feature[key as keyof typeof feature] as string;
+        }
+      }
     }
     
     return contentValue || '';
@@ -122,13 +121,9 @@ export const Features = () => {
             const currentFeature = group.features.find(f => f.id === selectedFeatures[group.id]);
             const IconComponent = currentFeature ? iconComponents[currentFeature.icon] : null;
             const isAlternate = index === 1 || index === 3;
-            const groupHeadline = getFeatureContent(group.id, 'headline');
 
             return (
               <div key={group.id} className="space-y-8 md:space-y-12">
-                <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 gradient-text">
-                  {groupHeadline || group.headline}
-                </h2>
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-center">
                   {/* Left Column - Feature List */}
                   <div className={`col-span-1 md:col-span-2 space-y-2 flex flex-col order-2 
