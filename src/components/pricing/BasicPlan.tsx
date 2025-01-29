@@ -53,7 +53,7 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
   ];
 
   const hebrewExtraFeatures: Feature[] = [
-    { text: 'מערכת תשלומים חכמה', tooltip: 'הגדרת מודלים לתמחור (לפי וידאו, פרויקט, שלבים או חוזים). אוטומציה של תשלומים, הפקת קבלות והתאמה לסוג העסק שלך.', showTooltip: true },
+    { text: 'מערכת התראות תשלומים חכמה', tooltip: 'הגדרת מודלים לתמחור (לפי וידאו, פרויקט, שלבים או חוזים). אוטומציה של התראות תשלומים ומעקב כדי להבטיח שאף תשלום לא יוחמץ.', showTooltip: true },
     { text: 'כלי ניהול צוות', tooltip: 'כלים מתקדמים לניהול משימות וזמן', showTooltip: true },
     { text: 'CRM מובנה ואוטומציה', tooltip: 'אינטגרציה עם כלים כמו טפסי לידים של פייסבוק ו-WhatsApp Business. ניהול לידים, מעקבים ולקוחות עם צינור הצעות ותקשורת מהירה.', showTooltip: true },
     { text: 'בונה תיק עבודות', tooltip: 'כלי מתקדם ליצירת תיקי עבודות מקצועיים', showTooltip: true },
@@ -68,7 +68,7 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
   ];
 
   const arabicExtraFeatures: Feature[] = [
-    { text: 'نظام دفع ذكي', tooltip: 'حدد نماذج التسعير (لكل فيديو، مشروع، مراحل، أو عقود). أتمتة المدفوعات، إنشاء الإيصالات، والتوافق مع نوع عملك.', showTooltip: true },
+    { text: 'نظام إشعارات الدفع الذكي', tooltip: 'حدد نماذج التسعير (لكل فيديو، مشروع، مراحل، أو عقود). أتمتة إشعارات الدفع والتتبع للتأكد من عدم فقدان أي دفعة.', showTooltip: true },
     { text: 'أدوات إدارة الفريق', tooltip: 'أدوات متقدمة لإدارة المهام والوقت', showTooltip: true },
     { text: 'CRM مدمج وأتمتة', tooltip: 'التكامل مع أدوات مثل نماذج العملاء المحتملين من فيسبوك وواتساب للأعمال. إدارة العملاء المحتملين والمتابعات والعملاء مع خط أنابيب للعروض والتواصل السريع.', showTooltip: true },
     { text: 'منشئ المحفظة', tooltip: 'أداة متقدمة لإنشاء محافظ احترافية', showTooltip: true },
@@ -83,7 +83,7 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
   ];
 
   const englishExtraFeatures: Feature[] = [
-    { text: 'Smart payment system', tooltip: 'Define pricing models (per video, project, stages, or contracts). Automate payments, generate receipts, and adapt to your business type.', showTooltip: true },
+    { text: 'Smart payment notifications', tooltip: 'Define pricing models (per video, project, stages, or contracts). Automate payment notifications, and track to make sure no payment is missed.', showTooltip: true },
     { text: 'Team management tools', tooltip: 'Advanced tools for task and time management', showTooltip: true },
     { text: 'Built-in CRM & automation', tooltip: 'Integration with tools like Facebook lead forms and WhatsApp Business. Manage leads, follow-ups, and clients with proposal pipeline and quick communication.', showTooltip: true },
     { text: 'Portfolio builder', tooltip: 'Advanced tool for creating professional portfolios', showTooltip: true },
