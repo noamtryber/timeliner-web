@@ -12,19 +12,15 @@ export const HeroImage = () => {
   }
   
   return (
-    <div className="hidden lg:block relative w-full h-full">
-      <div className={`relative rounded-2xl overflow-hidden transform transition-transform duration-300 hover:scale-105 ${
-        isRTL ? '-translate-x-8' : 'translate-x-0'
+    <div className="hidden lg:block relative">
+      <div className={`relative rounded-2xl overflow-hidden scale-125 transform ${
+        isRTL ? '-translate-x-8' : 'translate-x-8'
       }`}>
         <img 
           src={heroImage}
           alt="Timeliner Dashboard"
-          className="w-full h-auto max-w-[150%] lg:max-w-[160%] xl:max-w-[170%] 2xl:max-w-[180%] rounded-2xl object-cover"
+          className="w-full h-auto rounded-2xl"
           loading="eager"
-          style={{
-            transform: `scale(${isRTL ? '0.9' : '1'})`,
-            transformOrigin: isRTL ? 'right center' : 'left center'
-          }}
         />
         <div className={`absolute inset-0 bg-gradient-to-t from-background/20 to-transparent ${
           isRTL ? 'bg-gradient-to-l' : 'bg-gradient-to-r'
