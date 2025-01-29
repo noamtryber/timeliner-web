@@ -16,6 +16,8 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
     switch (language) {
       case 'he':
         return 'פיצ\'רים';
+      case 'ar':
+        return 'الميزات';
       case 'es':
         return 'Características';
       default:
@@ -27,6 +29,8 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
     switch (language) {
       case 'he':
         return 'נקודות מפתח:';
+      case 'ar':
+        return 'النقاط الرئيسية:';
       case 'es':
         return 'Puntos clave:';
       default:
@@ -38,6 +42,9 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
     if (language === 'he' && feature.hebrewName) {
       return feature.hebrewName;
     }
+    if (language === 'ar' && feature.arabicName) {
+      return feature.arabicName;
+    }
     if (language === 'es' && feature.spanishName) {
       return feature.spanishName;
     }
@@ -47,6 +54,9 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
   const getCompetitorText = (feature: any) => {
     if (language === 'he' && feature.hebrewCompetitor) {
       return feature.hebrewCompetitor;
+    }
+    if (language === 'ar' && feature.arabicCompetitor) {
+      return feature.arabicCompetitor;
     }
     if (language === 'es' && feature.spanishCompetitor) {
       return feature.spanishCompetitor;
@@ -58,6 +68,9 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
     if (language === 'he' && feature.hebrewTimeliner) {
       return feature.hebrewTimeliner;
     }
+    if (language === 'ar' && feature.arabicTimeliner) {
+      return feature.arabicTimeliner;
+    }
     if (language === 'es' && feature.spanishTimeliner) {
       return feature.spanishTimeliner;
     }
@@ -67,6 +80,9 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
   const getKeyTakeawayText = (takeaway: any) => {
     if (language === 'he' && takeaway.hebrewText) {
       return takeaway.hebrewText;
+    }
+    if (language === 'ar' && takeaway.arabicText) {
+      return takeaway.arabicText;
     }
     if (language === 'es' && takeaway.spanishText) {
       return takeaway.spanishText;
