@@ -18,26 +18,26 @@ export const featureGroups: FeatureGroup[] = [
     features: [
       {
         id: 'revision-workflow',
-        title: 'Revision Workflow',
-        description: 'Add comments by timecode, draw, record voice memos, and upload files for precise feedback.',
+        title: 'סבבי תיקונים חכמים',
+        description: 'אתם והלקוחות שלכם יכולים להוסיף הערות לפי קוד זמן, לצייר , להקליט הערות קוליות ולהעלות קבצים לקבלת פידבק מדויק ולחסוך חתוך ועכבר.',
         icon: 'workflow'
       },
       {
         id: 'task-management',
-        title: 'Task Management by Status',
-        description: 'Organize tasks with clear status updates, and use "Global View" to see everything in one place.',
+        title: 'ניהול משימות לפי סטטוס',
+        description: 'ארגנו משימות עם עדכוני סטטוס ברורים, והשתמשו ב"מבט" את כל המשימות כדי לראות את כל המשימות מכל הלקוחות לפי סטטוס במקום אחד.',
         icon: 'list-todo'
       },
       {
         id: 'version-control',
-        title: 'Version Control',
-        description: 'Compare versions side-by-side with split-screen tools and download previous versions easily.',
+        title: 'ניהול גרסאות',
+        description: 'השוו בין גרסאות עם כלי מסך מפוצל והורידו בקלות גרסאות עדכניות / ישנות.',
         icon: 'git-branch'
       },
       {
         id: 'folder-management',
-        title: 'Smart Folder Management',
-        description: 'Auto-organize files by status, project, or client to eliminate folder clutter.',
+        title: 'ניהול תיקיות',
+        description: 'ארגנו קבצים אוטומטית לפי סטטוס, פרויקט או לקוח, וחסלו את הבלגן בתיקיות מפוזרות בין פלטפורומות שונות.',
         icon: 'folder'
       }
     ]
@@ -48,20 +48,20 @@ export const featureGroups: FeatureGroup[] = [
     features: [
       {
         id: 'project-briefs',
-        title: 'Interactive Project Briefs',
-        description: 'Define deliverables, timelines, and payment terms upfront with dynamic, guided briefs.',
+        title: 'תיאום ציפיות מושלם',
+        description: 'כלי אינטראקטיבי לתיאום ציפיות בינך לבין הלקוח שלך. בחירת רפרנסים, לוחות זמנים ותנאי תשלום מראש עם תקצירי פרוייקט דינמיים וברורים.',
         icon: 'clipboard'
       },
       {
         id: 'portfolio-builder',
-        title: 'Portfolio Builder',
-        description: 'Showcase your work with customizable templates to impress clients and close deals faster.',
+        title: 'בניית תיק עבודות',
+        description: 'סוף ללשלוח ללקוחות את העבודות שלכם מבולגנים בדרייב. הציגו את העבודות שלכם עם תבניות איכותיות מותאמות אישית כדי להרשים לקוחות ולסגור עסקאות מהר יותר.',
         icon: 'layout-grid'
       },
       {
         id: 'client-portals',
-        title: 'Customizable Client Portals',
-        description: 'Give clients a sleek dashboard for feedback, approvals, and downloading final deliverables.',
+        title: 'פורטלים מותאמים ללקוחות',
+        description: 'ספקו ללקוחות לוח בקרה אלגנטי לשליחת הערות, פידבק, אישורים והורדת תוצרים סופיים.',
         icon: 'layout-dashboard'
       }
     ]
@@ -72,20 +72,20 @@ export const featureGroups: FeatureGroup[] = [
     features: [
       {
         id: 'crm',
-        title: 'Built-In CRM for Creatives',
-        description: 'Track leads, client communications, and project histories in one centralized system.',
+        title: 'CRM מובנה',
+        description: 'עקבו אחרי סטטוס לידים, פולואפ, לקוחות עם CRM איכותי שחוסך אוטומציות צד שלישי וכאב ראש.',
         icon: 'users'
       },
       {
         id: 'team-collaboration',
-        title: 'Team Collaboration Tools',
-        description: 'Assign roles, monitor workloads, and ensure smooth workflows with custom permissions.',
+        title: 'כלי שיתוף פעולה לצוותים',
+        description: 'נהלו את הצוות שלכם ממבט על, הרשאות לפי תפקידים, בקרה על עובדים, כמה כסף אתם חייבים לצוות, עקבו אחרי עומסי עבודה והבטיחו שהכל זורם.',
         icon: 'users-round'
       },
       {
         id: 'payment-tracking',
-        title: 'Transparent Payment Tracking',
-        description: 'Track payments for projects or tasks, and notify team members and clients about due payments.',
+        title: 'מעקב תשלומים שקוף',
+        description: 'עקבו אחרי תשלומים לפרויקטים או משימות, והודיעו לחברי צוות וללקוחות על תשלומים שמועד פירעונם מתקרב.',
         icon: 'credit-card'
       }
     ]
@@ -96,20 +96,20 @@ export const featureGroups: FeatureGroup[] = [
     features: [
       {
         id: 'integrations',
-        title: 'WhatsApp & Slack Integrations',
-        description: 'Communicate directly with clients and teams using tools you already love.',
+        title: 'אינטגרציות ל-WhatsApp ול-Slack',
+        description: 'הגדירו איזה התראות הלקוחות והצוות שלכם יקבלו ואיפה. למשל- כשסרטון מחכה לאישור, אוטומטית הלקוח יקבל התראה לווצאפ עם לינק לצפייה.',
         icon: 'message-square'
       },
       {
         id: 'multi-language',
-        title: 'Multi-Language Support',
-        description: 'Fully supports both LTR and RTL languages, making it perfect for global teams.',
+        title: 'תמיכה רב-לשונית',
+        description: 'המערכת היחידה בעולם שמשלבת ניהול פרוייקטים ובקרה על סרטונים שמותאמת מימין לשמאל! תומך באופן מלא בשפות ימין-לשמאל ושמאל-לימין, אידיאלי לצוותים גלובליים.',
         icon: 'languages'
       },
       {
         id: 'ai-tools',
-        title: 'AI Tools',
-        description: 'Generate auto captions, get workflow suggestions, and speed up editing with smart automation.',
+        title: 'כלי AI',
+        description: 'צרו כתוביות אוטומטיות בעברית (אין צורך לבזבז כסף על כלים אחרים), קבלו המלצות לייעול העבודה, וזרזו את תהליך העריכה עם אוטומציה חכמה.',
         icon: 'sparkles'
       }
     ]
