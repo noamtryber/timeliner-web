@@ -18,7 +18,7 @@ export const Features = () => {
     }), {});
   });
 
-  const { language } = useLanguage();
+  const { language, isRTL } = useLanguage();
   const { data: content, isLoading: contentLoading, error: contentError } = usePageContent('feature');
   const { data: media, isLoading: mediaLoading, error: mediaError } = useMediaContent('feature');
   const { toast } = useToast();
@@ -74,7 +74,7 @@ export const Features = () => {
   };
 
   return (
-    <section id="features" className="py-20 overflow-hidden relative" dir="ltr">
+    <section id="features" className="py-20 overflow-hidden relative" dir={isRTL ? 'rtl' : 'ltr'}>
       {/* Main gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/10 via-primary/5 to-transparent pointer-events-none" />
       
@@ -109,7 +109,7 @@ export const Features = () => {
                             ...prev,
                             [group.id]: feature.id
                           }))}
-                          className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center text-left
+                          className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center ${isRTL ? 'text-right' : 'text-left'}
                             ${selectedFeatures[group.id] === feature.id 
                               ? 'bg-primary/10 font-semibold text-primary' 
                               : 'hover:bg-card/50 text-white'
@@ -131,17 +131,17 @@ export const Features = () => {
                               <IconComponent className="w-8 h-8 text-primary" />
                             </div>
                           )}
-                          <div className="ml-4">
-                            <h3 className="text-xl md:text-2xl font-bold leading-tight mb-4 text-left">
+                          <div className={`${isRTL ? 'mr-4 text-right' : 'ml-4 text-left'}`}>
+                            <h3 className="text-xl md:text-2xl font-bold leading-tight mb-4">
                               {getFeatureContent(currentFeature.id, 'title') || currentFeature.title}
                             </h3>
                           </div>
                         </div>
-                        <div className="ml-0">
-                          <p className="text-white/70 text-base md:text-lg leading-relaxed mb-4 text-left">
+                        <div className={`${isRTL ? 'text-right' : 'text-left'}`}>
+                          <p className="text-white/70 text-base md:text-lg leading-relaxed mb-4">
                             {getFeatureContent(currentFeature.id, 'description') || currentFeature.description}
                           </p>
-                          <div className="text-left">
+                          <div>
                             <Button 
                               onClick={() => setOpenDialog(currentFeature.id)}
                               variant="outline"
