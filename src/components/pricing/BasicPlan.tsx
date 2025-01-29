@@ -60,11 +60,34 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
     { text: 'ملخصات المشروع التفاعلية', tooltip: 'استخدم أدوات الذكاء الاصطناعي للعصف الذهني مع العملاء حول الأفكار والمراجع والشروط. تجنب التوقعات غير المتطابقة وقدم تجربة عميل سلسة.', showTooltip: true }
   ];
 
+  const spanishFeatures: Feature[] = [
+    { text: 'Almacenamiento: 1TB', tooltip: 'Almacenamiento seguro en la nube con respaldo automático', showTooltip: true },
+    { text: 'Miembros: Hasta 5', tooltip: 'Gestiona un equipo de hasta 5 usuarios con diferentes permisos', showTooltip: true },
+    { text: 'Proyectos Activos: Ilimitados', tooltip: 'Trabaja en proyectos ilimitados simultáneamente', showTooltip: true },
+    { text: 'Acceso de Clientes: Hasta 3 invitados por proyecto' },
+  ];
+
+  const spanishExtraFeatures: Feature[] = [
+    { text: 'Sistema de pago inteligente', tooltip: 'Define modelos de precios (por video, proyecto, etapas o contratos). Automatiza pagos, genera recibos y adapta a tu tipo de negocio.', showTooltip: true },
+    { text: 'Herramientas de gestión de equipo', tooltip: 'Herramientas avanzadas para gestión de tareas y tiempo', showTooltip: true },
+    { text: 'CRM integrado y automatización', tooltip: 'Integración con herramientas como formularios de leads de Facebook y WhatsApp Business. Gestiona leads, seguimientos y clientes con pipeline de propuestas y comunicación rápida.', showTooltip: true },
+    { text: 'Creador de portafolio', tooltip: 'Herramienta avanzada para crear portafolios profesionales', showTooltip: true },
+    { text: 'Resúmenes de proyecto interactivos', tooltip: 'Usa herramientas de IA para hacer brainstorming con clientes sobre ideas, referencias y términos. Evita expectativas desalineadas y ofrece una experiencia de cliente fluida.', showTooltip: true }
+  ];
+
   const englishFeatures: Feature[] = [
     { text: 'Storage: 1TB', tooltip: 'Secure cloud storage with automatic backup', showTooltip: true },
     { text: 'Members: Up to 5', tooltip: 'Manage a team of up to 5 users with different permissions', showTooltip: true },
     { text: 'Active Projects: Unlimited', tooltip: 'Work on unlimited projects simultaneously', showTooltip: true },
     { text: 'Client Access: Up to 3 Guests per project' },
+  ];
+
+  const englishExtraFeatures: Feature[] = [
+    { text: 'Smart payment system', tooltip: 'Define pricing models (per video, project, stages, or contracts). Automate payments, generate receipts, and adapt to your business type.', showTooltip: true },
+    { text: 'Team management tools', tooltip: 'Advanced tools for task and time management', showTooltip: true },
+    { text: 'Built-in CRM & automation', tooltip: 'Integration with tools like Facebook lead forms and WhatsApp Business. Manage leads, follow-ups, and clients with proposal pipeline and quick communication.', showTooltip: true },
+    { text: 'Portfolio builder', tooltip: 'Advanced tool for creating professional portfolios', showTooltip: true },
+    { text: 'Interactive project briefs', tooltip: 'Use AI tools to brainstorm with clients about ideas, references, and terms. Avoid misaligned expectations and deliver a smooth client experience.', showTooltip: true }
   ];
 
   const getFeatures = () => {

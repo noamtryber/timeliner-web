@@ -35,15 +35,27 @@ export const FreePlan = ({ content }: FreePlanProps) => {
         { text: 'تخزين آمن للوسائط', tooltip: 'تخزين آمن لملفات الوسائط' }
       ];
     }
+    
+    if (language === 'he') {
+      return [
+        { text: 'אחסון: 3GB', tooltip: 'אחסון בסיסי בענן' },
+        { text: 'משתמשים: 1', tooltip: 'חשבון אישי אחד' },
+        { text: 'פרויקטים פעילים: 2', tooltip: 'עד 2 פרויקטים במקביל' },
+        { text: 'גישת לקוחות: אורח אחד לפרויקט', tooltip: 'שיתוף פעולה עם לקוח אחד לכל פרויקט', showTooltip: true },
+        { text: 'מעקב גרסאות חכם', tooltip: 'מעקב אחר שינויים עם הערות מדויקות לפי זמן' },
+        { text: 'פורטל לקוחות פשוט', tooltip: 'פורטל פשוט לשיתוף ומשוב', showTooltip: true },
+        { text: 'אחסון מדיה מאובטח', tooltip: 'אחסון מאובטח של קבצי מדיה' }
+      ];
+    }
 
     return [
-      { text: isHebrew ? 'אחסון: 3GB' : 'Storage: 3GB', tooltip: isHebrew ? 'אחסון בסיסי בענן' : 'Basic cloud storage' },
-      { text: isHebrew ? 'משתמשים: 1' : 'Members: 1', tooltip: isHebrew ? 'חשבון אישי אחד' : 'Single personal account' },
-      { text: isHebrew ? 'פרויקטים פעילים: 2' : 'Active Projects: 2', tooltip: isHebrew ? 'עד 2 פרויקטים במקביל' : 'Work on up to 2 projects simultaneously' },
-      { text: isHebrew ? 'גישת לקוחות: אורח אחד לפרויקט' : 'Client Access: 1 Guest Per Project', tooltip: isHebrew ? 'שיתוף פעולה עם לקוח אחד לכל פרויקט' : 'Collaborate with one client per project', showTooltip: true },
-      { text: isHebrew ? 'מעקב גרסאות חכם' : 'Smart Revision Tracking', tooltip: isHebrew ? 'מעקב אחר שינויים עם הערות מדויקות לפי זמן' : 'Leave precise feedback with timecode-based comments, draw directly on frames, and add voice memos. Compare versions side by side with split-screen mode.' },
-      { text: isHebrew ? 'פורטל לקוחות פשוט' : 'Simple Client Portals', tooltip: isHebrew ? 'פורטל פשוט לשיתוף ומשוב' : 'Simple portal for sharing and feedback', showTooltip: true },
-      { text: isHebrew ? 'אחסון מדיה מאובטח' : 'Secure Media Storage', tooltip: isHebrew ? 'אחסון מאובטח של קבצי מדיה' : 'Secure storage for media files' }
+      { text: 'Storage: 3GB', tooltip: 'Basic cloud storage' },
+      { text: 'Members: 1', tooltip: 'Single personal account' },
+      { text: 'Active Projects: 2', tooltip: 'Work on up to 2 projects simultaneously' },
+      { text: 'Client Access: 1 Guest Per Project', tooltip: 'Collaborate with one client per project', showTooltip: true },
+      { text: 'Smart Revision Tracking', tooltip: 'Leave precise feedback with timecode-based comments, draw directly on frames, and add voice memos. Compare versions side by side with split-screen mode.' },
+      { text: 'Simple Client Portals', tooltip: 'Simple portal for sharing and feedback', showTooltip: true },
+      { text: 'Secure Media Storage', tooltip: 'Secure storage for media files' }
     ];
   };
 
