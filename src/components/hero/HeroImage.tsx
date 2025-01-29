@@ -1,7 +1,11 @@
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useMediaContent } from "@/hooks/useMediaContent";
 
 export const HeroImage = () => {
   const { isRTL } = useLanguage();
+  const { data: media } = useMediaContent('hero', 'main');
+  
+  const heroImage = media?.find(item => item.media_key === 'hero_image')?.media_url || '/lovable-uploads/7a7300e3-617d-48ce-a15a-212411db6ee8.png';
   
   return (
     <div className="hidden lg:block relative">
@@ -9,7 +13,7 @@ export const HeroImage = () => {
         isRTL ? '-translate-x-8' : 'translate-x-8'
       }`}>
         <img 
-          src="/lovable-uploads/7a7300e3-617d-48ce-a15a-212411db6ee8.png"
+          src={heroImage}
           alt="Timeliner Dashboard"
           className="w-full h-auto rounded-2xl"
         />
