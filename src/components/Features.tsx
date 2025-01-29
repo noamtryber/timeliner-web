@@ -96,7 +96,7 @@ export const Features = () => {
 
             return (
               <div key={group.id} className="space-y-8 md:space-y-12">
-                <h3 className="text-2xl md:text-3xl font-bold text-center gradient-text">
+                <h3 className="text-2xl md:text-3xl font-bold text-center text-white">
                   {language === 'he' ? group.hebrewHeadline : group.headline}
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-center">
