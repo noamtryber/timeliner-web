@@ -18,6 +18,18 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
   
   if (!content) return null;
 
+  const hebrewFeatures = [
+    'אחסון: ללא הגבלה',
+    'משתמשים: ללא הגבלה',
+    'פרויקטים פעילים: ללא הגבלה',
+    { text: 'מיתוג מלא', tooltip: 'התאמה מלאה של המותג וממשק המשתמש', showTooltip: true },
+    'גישת לקוחות: ללא הגבלה',
+    { text: 'מנהל חשבון ייעודי', tooltip: 'תמיכה אישית ומקצועית מצוות מומחים', showTooltip: true },
+    { text: 'אינטגרציית API', tooltip: 'התחברות ואינטראקציה עם מערכות חיצוניות', showTooltip: true },
+    { text: 'אפשרויות התקנה מקומית', tooltip: 'התקנה ופריסה על שרתים פרטיים', showTooltip: true },
+    { text: 'תמיכה מועדפת 24/7', tooltip: 'תמיכה מיידית בכל זמן, בכל יום', showTooltip: true }
+  ];
+
   const arabicFeatures = [
     'التخزين: غير محدود',
     'الأعضاء: غير محدود',
@@ -44,6 +56,8 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
 
   const getFeatures = () => {
     switch (language) {
+      case 'he':
+        return hebrewFeatures;
       case 'ar':
         return arabicFeatures;
       default:
@@ -53,6 +67,8 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
 
   const getPlanTitle = () => {
     switch (language) {
+      case 'he':
+        return 'ארגוני';
       case 'ar':
         return 'المؤسسات';
       default:
@@ -62,6 +78,8 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
 
   const getPlanSubtitle = () => {
     switch (language) {
+      case 'he':
+        return 'פתרונות מותאמים לצוותים גדולים';
       case 'ar':
         return 'حلول مخصصة للفرق الكبيرة';
       default:
@@ -71,6 +89,8 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
 
   const getPricing = () => {
     switch (language) {
+      case 'he':
+        return 'צור קשר לקבלת הצעת מחיר';
       case 'ar':
         return 'اتصل بنا للحصول على الأسعار';
       default:
@@ -80,6 +100,8 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
 
   const getEverythingInText = () => {
     switch (language) {
+      case 'he':
+        return 'כל מה שיש בתוכנית Pro, ובנוסף:';
       case 'ar':
         return 'كل شيء في الاحترافي، بالإضافة إلى:';
       default:
@@ -89,6 +111,8 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
 
   const getButtonText = () => {
     switch (language) {
+      case 'he':
+        return 'צור קשר עם המכירות';
       case 'ar':
         return 'اتصل بالمبيعات';
       default:
