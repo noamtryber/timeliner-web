@@ -81,15 +81,11 @@ export const Features = () => {
       {/* Enhanced upper radial gradient */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(123,97,255,0.15),rgba(123,97,255,0)_50%)] pointer-events-none" />
       
-      {/* Organic gradient spots with enhanced positioning and sizes */}
+      {/* Organic gradient spots */}
       <div className="absolute -top-[10%] left-[20%] w-[60vw] h-[60vw] bg-[radial-gradient(circle_at_center,rgba(123,97,255,0.12),rgba(123,97,255,0)_70%)] blur-3xl pointer-events-none animate-pulse" />
       <div className="absolute top-[30%] right-[10%] w-[45vw] h-[45vw] bg-[radial-gradient(circle_at_center,rgba(214,188,250,0.15),rgba(214,188,250,0)_70%)] blur-3xl pointer-events-none" />
       <div className="absolute top-[60%] left-[30%] w-[50vw] h-[50vw] bg-[radial-gradient(circle_at_center,rgba(155,135,245,0.12),rgba(155,135,245,0)_70%)] blur-3xl pointer-events-none" />
       <div className="absolute top-[90%] right-[20%] w-[55vw] h-[55vw] bg-[radial-gradient(circle_at_center,rgba(126,105,171,0.18),rgba(126,105,171,0)_70%)] blur-3xl pointer-events-none" />
-      
-      {/* Additional subtle accent gradients */}
-      <div className="absolute top-[5%] right-[40%] w-[30vw] h-[30vw] bg-[radial-gradient(circle_at_center,rgba(214,188,250,0.08),rgba(214,188,250,0)_70%)] blur-2xl pointer-events-none animate-pulse" />
-      <div className="absolute top-[45%] left-[10%] w-[25vw] h-[25vw] bg-[radial-gradient(circle_at_center,rgba(155,135,245,0.06),rgba(155,135,245,0)_70%)] blur-2xl pointer-events-none" />
       
       <div className="container mx-auto px-4 relative">
         <FeaturesHeader />
@@ -105,7 +101,6 @@ export const Features = () => {
                   {/* Left Column - Feature List */}
                   <div className={`col-span-1 md:col-span-2 space-y-2 flex flex-col order-2 ${isAlternate ? 'md:order-3' : 'md:order-1'}`}>
                     {group.features.map((feature) => {
-                      const FeatureIcon = iconComponents[feature.icon];
                       const featureTitle = getFeatureContent(feature.id, 'title') || feature.title;
                       return (
                         <button
@@ -128,7 +123,7 @@ export const Features = () => {
 
                   {/* Middle Column - Feature Details */}
                   {currentFeature && (
-                    <div className={`col-span-1 md:col-span-4 order-3 ${isAlternate ? 'md:order-2 md:text-right' : 'md:order-2'}`}>
+                    <div className={`col-span-1 md:col-span-4 order-3 ${isAlternate ? 'md:order-2' : 'md:order-2'}`}>
                       <div className="flex flex-col justify-center h-full">
                         <div className={`flex items-start ${isAlternate ? 'md:justify-end' : ''}`}>
                           {IconComponent && (
@@ -137,13 +132,13 @@ export const Features = () => {
                             </div>
                           )}
                           <div className={`${isAlternate ? 'md:mr-4' : 'ml-4'}`}>
-                            <h3 className="text-xl md:text-2xl font-bold leading-tight mb-4 whitespace-normal md:whitespace-nowrap overflow-hidden text-ellipsis">
+                            <h3 className="text-xl md:text-2xl font-bold leading-tight mb-4 text-left">
                               {getFeatureContent(currentFeature.id, 'title') || currentFeature.title}
                             </h3>
                           </div>
                         </div>
                         <div className="ml-0">
-                          <p className="text-white/70 text-base md:text-lg leading-relaxed mb-4">
+                          <p className="text-white/70 text-base md:text-lg leading-relaxed mb-4 text-left">
                             {getFeatureContent(currentFeature.id, 'description') || currentFeature.description}
                           </p>
                           <div className={`${isAlternate ? 'md:text-right' : ''}`}>
