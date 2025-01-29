@@ -52,22 +52,16 @@ export const Features = () => {
   const activeFeature = featureGroups.flatMap(group => group.features).find(f => f.id === openDialog);
   
   const getFeatureContent = (featureId: string, key: string): string => {
-    // If we're in Hebrew mode, use the translations from the database
+    // Only use translations from database when in Hebrew mode
     if (language === 'he' && content) {
       const contentKey = `${featureId}_${key}`;
       return content[contentKey] || '';
     }
     
-    // In English mode, use the default English text from featureData
+    // For all other languages, use the default English text from featureData
     const feature = featureGroups.flatMap(g => g.features).find(f => f.id === featureId);
     if (feature && key in feature) {
       return feature[key as keyof typeof feature] as string;
-    }
-    
-    // For group headlines in English mode
-    if (key === 'headline') {
-      const group = featureGroups.find(g => g.id === featureId);
-      return group?.headline || '';
     }
     
     return '';
@@ -128,25 +122,22 @@ export const Features = () => {
                   {/* Left Column - Feature List */}
                   <div className={`col-span-1 md:col-span-2 space-y-2 flex flex-col order-2 
                     ${isAlternate ? 'md:order-3' : 'md:order-1'}`}>
-                    {group.features.map((feature) => {
-                      const featureTitle = getFeatureContent(feature.id, 'title') || feature.title;
-                      return (
-                        <button
-                          key={feature.id}
-                          onClick={() => setSelectedFeatures(prev => ({
-                            ...prev,
-                            [group.id]: feature.id
-                          }))}
-                          className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center ${isRTL ? 'text-right' : 'text-left'}
-                            ${selectedFeatures[group.id] === feature.id 
-                              ? 'bg-primary/10 font-semibold text-primary' 
-                              : 'hover:bg-card/50 text-white'
-                            }`}
-                        >
-                          <span className="text-sm">{featureTitle}</span>
-                        </button>
-                      );
-                    })}
+                    {group.features.map((feature) => (
+                      <button
+                        key={feature.id}
+                        onClick={() => setSelectedFeatures(prev => ({
+                          ...prev,
+                          [group.id]: feature.id
+                        }))}
+                        className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center ${isRTL ? 'text-right' : 'text-left'}
+                          ${selectedFeatures[group.id] === feature.id 
+                            ? 'bg-primary/10 font-semibold text-primary' 
+                            : 'hover:bg-card/50 text-white'
+                          }`}
+                      >
+                        <span className="text-sm">{getFeatureContent(feature.id, 'title')}</span>
+                      </button>
+                    ))}
                   </div>
 
                   {/* Middle Column - Feature Details */}
@@ -161,13 +152,13 @@ export const Features = () => {
                           )}
                           <div className={`${isRTL ? 'mr-4 text-right' : 'ml-4 text-left'}`}>
                             <h3 className="text-xl md:text-2xl font-bold leading-tight mb-4">
-                              {getFeatureContent(currentFeature.id, 'title') || currentFeature.title}
+                              {getFeatureContent(currentFeature.id, 'title')}
                             </h3>
                           </div>
                         </div>
                         <div className={`${isRTL ? 'text-right' : 'text-left'}`}>
                           <p className="text-white/70 text-base md:text-lg leading-relaxed mb-4">
-                            {getFeatureContent(currentFeature.id, 'description') || currentFeature.description}
+                            {getFeatureContent(currentFeature.id, 'description')}
                           </p>
                           <div>
                             <Button 
@@ -217,8 +208,8 @@ export const Features = () => {
           onClose={() => setOpenDialog(null)}
           feature={{
             ...activeFeature,
-            title: getFeatureContent(activeFeature.id, 'title') || activeFeature.title,
-            description: getFeatureContent(activeFeature.id, 'description') || activeFeature.description
+            title: getFeatureContent(activeFeature.id, 'title'),
+            description: getFeatureContent(activeFeature.id, 'description')
           }}
           videoUrl={getFeatureMedia(activeFeature.id, 'learn-more')}
         />
