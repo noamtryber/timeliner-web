@@ -53,19 +53,25 @@ export const Features = () => {
   
   const getFeatureContent = (featureId: string, key: string): string => {
     if (!content) return '';
+    
+    // Construct the content key
     const contentKey = `${featureId}_${key}`;
-    const commonKey = `common_${key}`;
     
-    // First try to get language-specific content
-    const contentValue = content[contentKey] || content[commonKey] || '';
+    // Get the content value for the current language
+    const contentValue = content[contentKey];
     
-    // If we're in English mode and no content is found, return empty string
-    // This ensures we don't fall back to Hebrew content in English mode
+    // If we're in English mode and the content is missing, return the default English text from featureData
     if (language === 'en' && !contentValue) {
+      const group = featureGroups.find(g => g.id === featureId);
+      if (group) return group[key as keyof typeof group] || '';
+      
+      const feature = featureGroups.flatMap(g => g.features).find(f => f.id === featureId);
+      if (feature) return feature[key as keyof typeof feature] || '';
+      
       return '';
     }
     
-    return contentValue;
+    return contentValue || '';
   };
 
   const getFeatureMedia = (sectionId: string, key: string) => {
@@ -121,7 +127,7 @@ export const Features = () => {
             return (
               <div key={group.id} className="space-y-8 md:space-y-12">
                 <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 gradient-text">
-                  {groupHeadline}
+                  {groupHeadline || group.headline}
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-center">
                   {/* Left Column - Feature List */}
