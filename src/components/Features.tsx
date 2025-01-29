@@ -130,13 +130,13 @@ export const Features = () => {
                               <IconComponent className="w-8 h-8 text-primary" />
                             </div>
                           )}
-                          <div className={`${isRTL ? 'mr-4' : 'ml-4'}`}>
+                          <div className={isRTL ? 'mr-4' : 'ml-4'}>
                             <h3 className={`text-xl md:text-2xl font-bold leading-tight mb-4 ${isRTL ? 'text-right' : 'text-left'}`}>
                               {getFeatureContent(currentFeature.id, 'title') || currentFeature.title}
                             </h3>
                           </div>
                         </div>
-                        <div className="ml-0">
+                        <div className={`${isRTL ? 'mr-12' : 'ml-12'}`}>
                           <p className={`text-white/70 text-base md:text-lg leading-relaxed mb-4 ${isRTL ? 'text-right' : 'text-left'}`}>
                             {getFeatureContent(currentFeature.id, 'description') || currentFeature.description}
                           </p>
