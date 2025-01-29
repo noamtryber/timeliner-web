@@ -73,6 +73,17 @@ export const Features = () => {
     return vimeoId ? `https://player.vimeo.com/video/${vimeoId}?autoplay=1&loop=1&muted=1&background=1&quality=1080p` : '';
   };
 
+  const getLearnMoreText = () => {
+    switch (language) {
+      case 'he':
+        return 'למדו עוד';
+      case 'es':
+        return 'Más información';
+      default:
+        return 'Learn More';
+    }
+  };
+
   return (
     <section id="features" className="py-20 overflow-hidden relative" dir={isRTL ? 'rtl' : 'ltr'}>
       {/* Main gradient overlay */}
@@ -149,7 +160,7 @@ export const Features = () => {
                               size="lg"
                               className="w-full md:w-auto text-lg"
                             >
-                              {language === 'he' ? 'למדו עוד' : 'Learn More'}
+                              {getLearnMoreText()}
                             </Button>
                           </div>
                         </div>
