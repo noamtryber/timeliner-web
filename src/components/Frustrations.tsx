@@ -46,6 +46,8 @@ export const Frustrations = () => {
         return "Las Frustraciones que Todo Editor y Agencia Conoce Demasiado Bien";
       case 'he':
         return "התסכולים שכולנו מכירים (ואולי קצת נמאס לנו מהם)";
+      case 'ar':
+        return "المعاناة اللي كل محرر فيديو ووكالة محتوى يعرفونها";
       default:
         return "The Frustrations Every Editor and Agency Knows Too Well";
     }
@@ -57,6 +59,8 @@ export const Frustrations = () => {
         return "Trabajar con clientes no debería ser tan difícil...";
       case 'he':
         return "עבודה עם לקוחות לא צריכה להיות כזה כאב ראש...";
+      case 'ar':
+        return "التعامل مع العملاء ما المفروض يكون كذا صعب...";
       default:
         return "Working with clients shouldn't be this hard...";
     }
@@ -68,6 +72,8 @@ export const Frustrations = () => {
         return "Por Estos Desafíos Creamos Timeliner";
       case 'he':
         return "בדיוק בגלל כל הבלאגן הזה יצרנו את Timeliner";
+      case 'ar':
+        return "عشان كذا بنينا Timeliner";
       default:
         return "These challenges are exactly why we built Timeliner";
     }
@@ -79,6 +85,8 @@ export const Frustrations = () => {
         return "¡Veamos cómo podemos resolverlos!";
       case 'he':
         return "יאללה, בואו נראה איך אנחנו מפשטים לכם את החיים!";
+      case 'ar':
+        return "خلّينا نشوف كيف نقدر نحل المشكلة!";
       default:
         return "Let's see how we can solve them!";
     }

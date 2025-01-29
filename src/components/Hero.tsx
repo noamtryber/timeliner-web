@@ -13,52 +13,32 @@ const translations = {
   video_editors: {
     en: 'VIDEO EDITORS & CONTENT AGENCIES:',
     es: 'EDITORES DE VIDEO Y AGENCIAS:',
-    he: 'עורכי וידאו וסוכנויות תוכן'
+    he: 'עורכי וידאו וסוכנויות תוכן',
+    ar: 'محررو الفيديو ووكالات المحتوى:'
   },
   main_title: {
     en: 'Simplify Video Projects with All-in-One Management',
     es: 'Optimiza Proyectos de Video con Gestión Todo en Uno',
-    he: 'אומרים ביי לבלאגן עם מערכת חכמה לניהול פרויקטי עריכת וידאו'
+    he: 'אומרים ביי לבלאגן עם מערכת חכמה לניהול פרויקטי עריכת וידאו',
+    ar: 'إدارة مشاريع الفيديو بسهولة في مكان واحد'
   },
   subtext: {
     en: 'Task coordination, seamless revisions, timely payments, expectation alignment, secure storage, and smart AI tools — everything you need in one platform for a professional client experience and stress-free workflow.',
     es: 'Gestión de Proyectos, Revisiones, Pagos, Expectativas, Almacenamiento y Herramientas de IA — Todo lo que Necesitas en Un Solo Lugar.',
-    he: 'ניהול משימות, סבבי תיקונים, תשלומים, תיאום ציפיות, אחסון מהיר וכלי AI - כל מה שאתם צריכים במקום אחד לחווית לקוח מקצועית ושקט נפשי.'
+    he: 'ניהול משימות, סבבי תיקונים, תשלומים, תיאום ציפיות, אחסון מהיר וכלי AI - כל מה שאתם צריכים במקום אחד לחווית לקוח מקצועית ושקט נפשי.',
+    ar: 'كل شيء تحت السيطرة – تنسيق المهام، مراجعات سلسة، مدفوعات في وقتها، توقعات واضحة، تخزين آمن، وأدوات ذكاء اصطناعي ذكية. كل اللي تحتاجه لمنصة احترافية وتجربة عميل مريحة، بدون وجع راس.'
   },
   get_started: {
     en: 'Get Started',
     es: 'Empezar Ahora',
-    he: 'התחילו היום בחינם'
+    he: 'התחילו היום בחינם',
+    ar: 'ابدأ التجربة المجانية الآن'
   },
   watch_demo: {
     en: 'Watch Demo',
     es: 'Ver Demo',
-    he: 'לצפייה בסרטון'
-  },
-  faster_revisions: {
-    en: 'Faster Revision Rounds',
-    es: 'Revisiones más Rápidas',
-    he: 'סבבי תיקונים מהירים יותר'
-  },
-  increase_income: {
-    en: 'Increase in Income',
-    es: 'Aumento de Ingresos',
-    he: 'עלייה בהכנסות'
-  },
-  client_retention: {
-    en: 'Client Retention in Retainers',
-    es: 'Retención de Clientes',
-    he: 'שימור לקוחות'
-  },
-  demo_title: {
-    en: 'See How It Works',
-    es: '¿Cómo Funciona?',
-    he: 'איך זה עובד?'
-  },
-  demo_description: {
-    en: 'Watch our 2-minute demo to see how Timeliner can streamline your creative workflow and help you manage projects more efficiently.',
-    es: 'Mira nuestro demo de 2 minutos para ver cómo Timeliner puede optimizar tu flujo de trabajo creativo y ayudarte a gestionar proyectos de manera más eficiente.',
-    he: 'צפו בסרטון המלא ותבינו למה טיימליינר הוא הכלי היחיד שתצטרכו לניהול פרויקטים, סבבי תיקונים וקבלת תשלומים בזמן.'
+    he: 'לצפייה בסרטון',
+    ar: 'شاهد العرض التوضيحي'
   }
 };
 
@@ -87,12 +67,7 @@ export const Hero = () => {
     main_title: getTranslatedContent('main_title'),
     subtext: getTranslatedContent('subtext'),
     get_started: getTranslatedContent('get_started'),
-    watch_demo: getTranslatedContent('watch_demo'),
-    faster_revisions: getTranslatedContent('faster_revisions'),
-    increase_income: getTranslatedContent('increase_income'),
-    client_retention: getTranslatedContent('client_retention'),
-    demo_title: getTranslatedContent('demo_title'),
-    demo_description: getTranslatedContent('demo_description')
+    watch_demo: getTranslatedContent('watch_demo')
   };
 
   return (

@@ -53,16 +53,35 @@ const benefits = {
       title: "Gestores de Proyecto",
       description: "Optimiza la producción de contenido y la coordinación del equipo."
     }
+  ],
+  ar: [
+    {
+      icon: VideoIcon,
+      title: "محررو الفيديو",
+      description: "إدارة العملاء والمراجعات بكل سهولة."
+    },
+    {
+      icon: Building2Icon,
+      title: "وكالات المحتوى",
+      description: "تحكم كامل بالمحررين، المشاريع، والعملاء من منصة واحدة."
+    },
+    {
+      icon: UsersIcon,
+      title: "مديرو المشاريع",
+      description: "تنسيق إنتاج المحتوى القصير وإدارة الفرق بدون تعقيد."
+    }
   ]
 };
 
 export const Benefits = () => {
   const { language } = useLanguage();
-  const content = benefits[language === 'he' ? 'he' : language === 'es' ? 'es' : 'en'];
+  const content = benefits[language === 'he' ? 'he' : language === 'es' ? 'es' : language === 'ar' ? 'ar' : 'en'];
   const title = language === 'he' 
     ? 'מי מרוויח מטיימליינר?' 
     : language === 'es'
     ? '¿Quién se Beneficia de Timeliner?'
+    : language === 'ar'
+    ? 'مين بيستفيد من Timeliner؟'
     : 'Who Benefits from Timeliner?';
 
   return (

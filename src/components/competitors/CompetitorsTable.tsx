@@ -20,6 +20,8 @@ export const CompetitorsTable = () => {
         return 'Timeliner מול השאר: מי מנצח?';
       case 'es':
         return 'Timeliner vs. el resto: ¿Quién gana?';
+      case 'ar':
+        return 'Timeliner مقابل البقية: من الفائز؟';
       default:
         return 'Timeliner vs. The Rest: Who Wins?';
     }
@@ -31,6 +33,8 @@ export const CompetitorsTable = () => {
         return 'כלים חכמים יותר, תכונות מוכנות ללקוח וזרימות עבודה ליוצרים - הכל במחיר משתלם. גלה למה Timeliner הוא הבחירה המובילה לעורכי וידאו וצוותי מדיה!';
       case 'es':
         return 'Herramientas más inteligentes, funciones listas para clientes y flujos de trabajo para creativos, todo sin romper el banco. ¡Descubre por qué Timeliner es la mejor opción para editores de video y equipos de medios!';
+      case 'ar':
+        return 'أدوات أذكى، ميزات مجهزة للعملاء، وسير عمل مصمم للمبدعين – وكل هذا بدون ما تدفع مبلغ وقدره. شوف بنفسك ليش Timeliner هو الخيار الأول لمحرري الفيديو وفرق الإنتاج الإعلامي!';
       default:
         return 'Smarter tools, client-ready features, and workflows for creatives—all without breaking the bank. See why Timeliner is the top choice for video editors and media teams!';
     }
