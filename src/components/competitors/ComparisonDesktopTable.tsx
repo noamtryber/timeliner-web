@@ -154,7 +154,7 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
             <TableHead className={`w-1/3 ${isRTL ? 'text-right' : 'text-left'} bg-background`}>
               {getFeatureTitle()}
             </TableHead>
-            <TableHead className={`w-1/3 ${isRTL ? 'text-right' : 'text-left'} bg-background`}>
+            <TableHead className="w-1/3 text-left bg-background">
               {competitor.logo ? (
                 <img 
                   src={competitor.logo} 
@@ -180,7 +180,7 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
               <TableCell className={`font-medium ${isRTL ? 'text-right' : 'text-left'}`}>
                 {getFeatureText(feature)}
               </TableCell>
-              <TableCell className={`whitespace-pre-line ${isRTL ? 'text-right' : 'text-left'}`}>
+              <TableCell className="text-left whitespace-pre-line">
                 {typeof feature.competitor === 'boolean' ? (
                   feature.competitor ? (
                     <Check className="text-primary h-5 w-5" />
@@ -191,7 +191,7 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
                   getCompetitorText(feature)
                 )}
               </TableCell>
-              <TableCell className={`bg-primary/10 whitespace-pre-line ${isRTL ? 'text-right' : 'text-left'}`}>
+              <TableCell className="bg-primary/10 text-left whitespace-pre-line">
                 {typeof feature.timeliner === 'boolean' ? (
                   feature.timeliner ? (
                     <Check className="text-primary h-5 w-5" />
