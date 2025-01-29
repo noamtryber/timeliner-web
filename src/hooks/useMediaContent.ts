@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { MediaSectionType } from "./usePageContent";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface MediaContent {
   id: string;
@@ -14,8 +15,10 @@ interface MediaContent {
 }
 
 export const useMediaContent = (sectionType: MediaSectionType, sectionId?: string) => {
+  const { language } = useLanguage();
+
   return useQuery({
-    queryKey: ['media-content', sectionType, sectionId],
+    queryKey: ['media-content', sectionType, sectionId, language],
     queryFn: async () => {
       let query = supabase
         .from('media_content')
