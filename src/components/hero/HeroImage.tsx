@@ -19,7 +19,7 @@ export const HeroImage = () => {
         <img 
           src={heroImage}
           alt="Timeliner Dashboard"
-          className="w-full h-auto max-w-[120%] lg:max-w-[130%] xl:max-w-[140%] 2xl:max-w-[150%] rounded-2xl object-cover"
+          className="w-full h-auto max-w-[150%] lg:max-w-[160%] xl:max-w-[170%] 2xl:max-w-[180%] rounded-2xl object-cover"
           loading="eager"
           style={{
             transform: `scale(${isRTL ? '0.9' : '1'})`,
