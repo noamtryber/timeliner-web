@@ -162,13 +162,14 @@ export const Features = () => {
                   <div className={`col-span-1 md:col-span-5 order-1 flex items-center
                     ${isAlternate 
                       ? isRTL
-                        ? 'md:order-1 md:col-start-1 md:-ml-[60%]'
+                        ? 'md:order-1 md:col-start-1 md:-ml-[80%]'
                         : 'md:order-1 md:col-start-1 md:-ml-[40%]'
                       : isRTL
-                        ? 'md:col-start-7 md:order-3 md:-mr-[60%]'
+                        ? 'md:col-start-7 md:order-3 md:-mr-[80%]'
                         : 'md:col-start-7 md:order-3 md:-mr-[40%]'
                     }`}>
-                    <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl w-[130%]">
+                    <div className={`aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl 
+                      ${isRTL ? 'w-[110%]' : 'w-[130%]'}`}>
                       {currentFeature && (
                         <iframe
                           src={getVimeoEmbedUrl(getFeatureMedia(currentFeature.id, 'preview'))}
