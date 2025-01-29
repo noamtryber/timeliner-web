@@ -10,10 +10,12 @@ interface PricingHeaderProps {
 export const PricingHeader = ({ pricingPeriod, setPricingPeriod }: PricingHeaderProps) => {
   const { language } = useLanguage();
   const { data: content } = usePageContent('pricing', 'header');
-  const isHebrew = language === 'he';
+  const isRTL = language === 'he' || language === 'ar';
 
   const getTitle = () => {
     switch (language) {
+      case 'ar':
+        return 'اختر الخطة المثالية لك';
       case 'es':
         return 'Encuentra el Plan Perfecto para Ti';
       case 'he':
@@ -25,6 +27,8 @@ export const PricingHeader = ({ pricingPeriod, setPricingPeriod }: PricingHeader
 
   const getSubtitle = () => {
     switch (language) {
+      case 'ar':
+        return 'ابدأ مجانًا وتوسع مع نمو أعمالك. اختر الخطة التي تناسب سير عملك.';
       case 'es':
         return 'Comienza gratis y escala mientras creces. Elige el plan que se ajuste a tu flujo de trabajo.';
       case 'he':
@@ -36,6 +40,15 @@ export const PricingHeader = ({ pricingPeriod, setPricingPeriod }: PricingHeader
 
   const getPeriodText = (period: 'monthly' | 'quarterly' | 'yearly') => {
     switch (language) {
+      case 'ar':
+        switch (period) {
+          case 'monthly':
+            return 'شهري';
+          case 'quarterly':
+            return 'ربع سنوي';
+          case 'yearly':
+            return 'سنوي';
+        }
       case 'es':
         switch (period) {
           case 'monthly':
@@ -68,6 +81,8 @@ export const PricingHeader = ({ pricingPeriod, setPricingPeriod }: PricingHeader
 
   const getDiscountText = (discount: '15%' | '25%') => {
     switch (language) {
+      case 'ar':
+        return `خصم ${discount}`;
       case 'es':
         return `${discount} de descuento`;
       case 'he':

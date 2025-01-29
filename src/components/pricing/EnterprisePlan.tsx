@@ -14,32 +14,20 @@ interface EnterprisePlanProps {
 export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
-  const isHebrew = language === 'he';
+  const isRTL = language === 'he' || language === 'ar';
   
   if (!content) return null;
 
-  const spanishFeatures = [
-    'Almacenamiento: Ilimitado',
-    'Miembros: Ilimitados',
-    'Proyectos Activos: Ilimitados',
-    { text: 'Marca Blanca Completa', tooltip: 'Personalización completa de marca e interfaz de usuario', showTooltip: true },
-    'Acceso de Clientes: Ilimitado',
-    { text: 'Gerente de Cuenta Dedicado', tooltip: 'Soporte personal y profesional de equipo experto', showTooltip: true },
-    { text: 'Integración API', tooltip: 'Conecta e interactúa con sistemas externos', showTooltip: true },
-    { text: 'Opciones de Implementación Local', tooltip: 'Instalación e implementación en servidores privados', showTooltip: true },
-    { text: 'Soporte Prioritario 24/7', tooltip: 'Soporte inmediato en cualquier momento, cualquier día', showTooltip: true }
-  ];
-
-  const hebrewFeatures = [
-    'אחסון: ללא הגבלה',
-    'משתמשים: ללא הגבלה',
-    'פרויקטים פעילים: ללא הגבלה',
-    { text: 'מיתוג מלא', tooltip: 'התאמה מלאה של המותג וממשק המשתמש', showTooltip: true },
-    'גישת לקוחות: ללא הגבלה',
-    { text: 'מנהל לקוח ייעודי', tooltip: 'תמיכה אישית ומקצועית מצוות מומחים', showTooltip: true },
-    { text: 'אינטגרציית API', tooltip: 'התחברות ואינטראקציה עם מערכות חיצוניות', showTooltip: true },
-    { text: 'אפשרויות התקנה מקומית', tooltip: 'התקנה ויישום בשרתים פרטיים', showTooltip: true },
-    { text: 'תמיכה 24/7 בעדיפות גבוהה', tooltip: 'תמיכה מיידית בכל עת, בכל יום', showTooltip: true }
+  const arabicFeatures = [
+    'التخزين: غير محدود',
+    'الأعضاء: غير محدود',
+    'المشاريع النشطة: غير محدود',
+    { text: 'تخصيص العلامة التجارية بالكامل', tooltip: 'تخصيص كامل للعلامة التجارية وواجهة المستخدم', showTooltip: true },
+    'وصول العملاء: غير محدود',
+    { text: 'مدير حساب مخصص', tooltip: 'دعم شخصي ومهني من فريق خبير', showTooltip: true },
+    { text: 'تكامل API', tooltip: 'الاتصال والتفاعل مع الأنظمة الخارجية', showTooltip: true },
+    { text: 'خيارات النشر المحلي', tooltip: 'التثبيت والنشر على خوادم خاصة', showTooltip: true },
+    { text: 'دعم متميز 24/7', tooltip: 'دعم فوري في أي وقت، أي يوم', showTooltip: true }
   ];
 
   const englishFeatures = [
@@ -56,10 +44,8 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
 
   const getFeatures = () => {
     switch (language) {
-      case 'es':
-        return spanishFeatures;
-      case 'he':
-        return hebrewFeatures;
+      case 'ar':
+        return arabicFeatures;
       default:
         return englishFeatures;
     }
@@ -67,10 +53,8 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
 
   const getPlanTitle = () => {
     switch (language) {
-      case 'es':
-        return 'Empresa';
-      case 'he':
-        return 'אנטרפרייז';
+      case 'ar':
+        return 'المؤسسات';
       default:
         return 'Enterprise';
     }
@@ -78,10 +62,8 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
 
   const getPlanSubtitle = () => {
     switch (language) {
-      case 'es':
-        return 'Soluciones Personalizadas para Grandes Equipos';
-      case 'he':
-        return 'פתרונות מותאמים לצוותים גדולים';
+      case 'ar':
+        return 'حلول مخصصة للفرق الكبيرة';
       default:
         return 'Custom Solutions for Large Teams';
     }
@@ -89,10 +71,8 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
 
   const getPricing = () => {
     switch (language) {
-      case 'es':
-        return 'Contáctanos para Precios';
-      case 'he':
-        return 'צרו קשר לתמחור';
+      case 'ar':
+        return 'اتصل بنا للحصول على الأسعار';
       default:
         return 'Contact Us for Pricing';
     }
@@ -100,10 +80,8 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
 
   const getEverythingInText = () => {
     switch (language) {
-      case 'es':
-        return 'Todo en Estudio, más:';
-      case 'he':
-        return 'הכל בסטודיו, בנוסף:';
+      case 'ar':
+        return 'كل شيء في الاحترافي، بالإضافة إلى:';
       default:
         return 'Everything in Studio, plus:';
     }
@@ -111,17 +89,15 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
 
   const getButtonText = () => {
     switch (language) {
-      case 'es':
-        return 'Contactar Ventas';
-      case 'he':
-        return 'צרו קשר';
+      case 'ar':
+        return 'اتصل بالمبيعات';
       default:
         return 'Contact Sales';
     }
   };
 
   return (
-    <Card className={`relative border border-[#2A2F3C] bg-gradient-to-b from-[#1A1F2C]/50 to-[#1A1F2C] p-4 flex flex-col animate-fade-up delay-600 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
+    <Card className={`relative border border-[#2A2F3C] bg-gradient-to-b from-[#1A1F2C]/50 to-[#1A1F2C] p-4 flex flex-col animate-fade-up delay-600 hover:scale-105 transition-transform duration-300 ${isRTL ? 'text-right' : ''}`}>
       <PlanIcon Icon={Users} color="secondary" />
       <h3 className="text-xl font-bold mb-1 -mt-2">{getPlanTitle()}</h3>
       <p className="text-white/70 mb-2 text-sm">{getPlanSubtitle()}</p>
@@ -136,7 +112,7 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
             text={typeof feature === 'string' ? feature : feature.text}
             tooltip={typeof feature === 'string' ? undefined : feature.tooltip}
             showTooltip={typeof feature === 'string' ? false : feature.showTooltip}
-            isRTL={isHebrew}
+            isRTL={isRTL}
           />
         ))}
 
@@ -148,7 +124,7 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
               text={typeof feature === 'string' ? feature : feature.text}
               tooltip={typeof feature === 'string' ? undefined : feature.tooltip}
               showTooltip={typeof feature === 'string' ? false : feature.showTooltip}
-              isRTL={isHebrew}
+              isRTL={isRTL}
             />
           ))}
         </div>

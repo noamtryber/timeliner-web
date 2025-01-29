@@ -14,7 +14,7 @@ interface FreePlanProps {
 export const FreePlan = ({ content }: FreePlanProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
-  const isHebrew = language === 'he';
+  const isRTL = language === 'he' || language === 'ar';
   
   if (!content) return null;
 
@@ -24,15 +24,15 @@ export const FreePlan = ({ content }: FreePlanProps) => {
   };
 
   const getFeatures = () => {
-    if (language === 'es') {
+    if (language === 'ar') {
       return [
-        { text: 'Almacenamiento: 3GB', tooltip: 'Almacenamiento básico en la nube' },
-        { text: 'Miembros: 1', tooltip: 'Una cuenta personal' },
-        { text: 'Proyectos Activos: 2', tooltip: 'Trabaja en hasta 2 proyectos simultáneamente' },
-        { text: 'Acceso de Clientes: 1 Invitado por Proyecto', tooltip: 'Colabora con un cliente por proyecto', showTooltip: true },
-        { text: 'Seguimiento Inteligente de Revisiones', tooltip: 'Deja comentarios precisos con marcas de tiempo, dibuja directamente en los fotogramas y agrega notas de voz. Compara versiones lado a lado.' },
-        { text: 'Portales de Cliente Simples', tooltip: 'Portal simple para compartir y recibir feedback', showTooltip: true },
-        { text: 'Almacenamiento Seguro de Medios', tooltip: 'Almacenamiento seguro para archivos multimedia' }
+        { text: 'التخزين: 3GB', tooltip: 'تخزين أساسي على السحابة' },
+        { text: 'الأعضاء: 1', tooltip: 'حساب شخصي واحد' },
+        { text: 'المشاريع النشطة: 2', tooltip: 'العمل على مشروعين في وقت واحد' },
+        { text: 'وصول العملاء: ضيف واحد لكل مشروع', tooltip: 'التعاون مع عميل واحد لكل مشروع', showTooltip: true },
+        { text: 'تتبع ذكي للمراجعات', tooltip: 'اترك ملاحظات دقيقة مع تعليقات مرتبطة بالوقت، ارسم مباشرة على الإطارات، وأضف مذكرات صوتية. قارن الإصدارات جنبًا إلى جنب.' },
+        { text: 'بوابات عملاء بسيطة', tooltip: 'بوابة بسيطة للمشاركة والتعليقات', showTooltip: true },
+        { text: 'تخزين آمن للوسائط', tooltip: 'تخزين آمن لملفات الوسائط' }
       ];
     }
 
@@ -49,6 +49,8 @@ export const FreePlan = ({ content }: FreePlanProps) => {
 
   const getTitle = () => {
     switch (language) {
+      case 'ar':
+        return 'مجاني';
       case 'es':
         return 'Gratis';
       case 'he':
@@ -60,6 +62,8 @@ export const FreePlan = ({ content }: FreePlanProps) => {
 
   const getSubtitle = () => {
     switch (language) {
+      case 'ar':
+        return 'مثالي للبدء';
       case 'es':
         return 'Perfecto para Comenzar';
       case 'he':
@@ -71,6 +75,8 @@ export const FreePlan = ({ content }: FreePlanProps) => {
 
   const getButtonText = () => {
     switch (language) {
+      case 'ar':
+        return 'ابدأ مجانًا';
       case 'es':
         return 'Comenzar Gratis';
       case 'he':
@@ -81,14 +87,14 @@ export const FreePlan = ({ content }: FreePlanProps) => {
   };
   
   return (
-    <Card className={`relative border border-[#2A2F3C] bg-gradient-to-b from-[#1A1F2C]/50 to-[#1A1F2C] p-4 flex flex-col animate-fade-up delay-300 hover:scale-105 transition-transform duration-300 ${isHebrew ? 'text-right' : ''}`}>
+    <Card className={`relative border border-[#2A2F3C] bg-gradient-to-b from-[#1A1F2C]/50 to-[#1A1F2C] p-4 flex flex-col animate-fade-up delay-300 hover:scale-105 transition-transform duration-300 ${isRTL ? 'text-right' : ''}`}>
       <PlanIcon Icon={Zap} color="accent" />
       <h3 className="text-xl font-bold mb-1 -mt-2">{getTitle()}</h3>
       <p className="text-white/70 mb-2 text-sm">{getSubtitle()}</p>
       <div className="text-2xl font-bold mb-6">
-        {isHebrew ? '$0' : language === 'es' ? '$0' : '$0'}
+        {isRTL ? '$0' : language === 'es' ? '$0' : '$0'}
         <span className="text-sm font-normal">
-          {language === 'es' ? '/mes' : isHebrew ? '/ לחודש' : '/month'}
+          {language === 'ar' ? '/شهر' : language === 'es' ? '/mes' : isRTL ? '/ לחודש' : '/month'}
         </span>
       </div>
       
@@ -99,7 +105,7 @@ export const FreePlan = ({ content }: FreePlanProps) => {
             text={feature.text}
             tooltip={feature.tooltip}
             showTooltip={feature.showTooltip}
-            isRTL={isHebrew}
+            isRTL={isRTL}
           />
         ))}
       </div>
