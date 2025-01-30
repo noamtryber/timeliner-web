@@ -198,30 +198,26 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
               </TableCell>
               <TableCell className={isRTL ? 'text-right' : 'text-left'}>
                 {typeof feature.competitor === 'boolean' ? (
-                  feature.competitor ? (
-                    <div className={`flex ${isRTL ? 'justify-end' : 'justify-start'}`}>
+                  <div className={`flex ${isRTL ? 'justify-end' : 'justify-start'}`}>
+                    {feature.competitor ? (
                       <Check className="text-primary h-5 w-5" />
-                    </div>
-                  ) : (
-                    <div className={`flex ${isRTL ? 'justify-end' : 'justify-start'}`}>
+                    ) : (
                       <X className="text-red-500 h-5 w-5" />
-                    </div>
-                  )
+                    )}
+                  </div>
                 ) : (
                   getCompetitorText(feature)
                 )}
               </TableCell>
               <TableCell className={`bg-primary/10 ${isRTL ? 'text-right' : 'text-left'}`}>
                 {typeof feature.timeliner === 'boolean' ? (
-                  feature.timeliner ? (
-                    <div className={`flex ${isRTL ? 'justify-end' : 'justify-start'}`}>
+                  <div className={`flex ${isRTL ? 'justify-end' : 'justify-start'}`}>
+                    {feature.timeliner ? (
                       <Check className="text-primary h-5 w-5" />
-                    </div>
-                  ) : (
-                    <div className={`flex ${isRTL ? 'justify-end' : 'justify-start'}`}>
+                    ) : (
                       <X className="text-red-500 h-5 w-5" />
-                    </div>
-                  )
+                    )}
+                  </div>
                 ) : (
                   getTimelinerText(feature)
                 )}
