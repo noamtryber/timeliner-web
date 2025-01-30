@@ -198,7 +198,7 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
               </TableCell>
               <TableCell className={isRTL ? 'text-right' : 'text-left'}>
                 {typeof feature.competitor === 'boolean' ? (
-                  <div className={`flex ${isRTL ? 'justify-end' : 'justify-start'}`}>
+                  <div className="w-full flex justify-end">
                     {feature.competitor ? (
                       <Check className="text-primary h-5 w-5" />
                     ) : (
@@ -211,7 +211,7 @@ export const ComparisonDesktopTable = ({ competitor, isRTL, language }: Comparis
               </TableCell>
               <TableCell className={`bg-primary/10 ${isRTL ? 'text-right' : 'text-left'}`}>
                 {typeof feature.timeliner === 'boolean' ? (
-                  <div className={`flex ${isRTL ? 'justify-end' : 'justify-start'}`}>
+                  <div className="w-full flex justify-end">
                     {feature.timeliner ? (
                       <Check className="text-primary h-5 w-5" />
                     ) : (
