@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePageContent } from "@/hooks/usePageContent";
 import { useToast } from "@/components/ui/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -12,12 +12,34 @@ import { MobileMenu } from "./navbar/MobileMenu";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  
   const { toast } = useToast();
   const { data: content, error } = usePageContent('nav', 'main-nav');
   const { isRTL } = useLanguage();
   const navigate = useNavigate();
   const location = useLocation();
   const hideMainNav = location.pathname === '/blog' || location.pathname === '/community';
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY < lastScrollY) {
+        // Scrolling up
+        setVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down and not at the top
+        setVisible(false);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   if (error) {
     toast({
@@ -45,7 +67,9 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="fixed w-full z-[9999] top-0 animate-fade-down px-20">
+    <nav className={`fixed w-full z-[9999] top-0 transition-transform duration-300 ${
+      visible ? 'translate-y-0 animate-fade-down' : '-translate-y-full'
+    } px-[110px]`}>
       <div className="bg-background/60 backdrop-blur-xl border border-[#222222]/20 mx-auto rounded-full text-[1.15em] my-4">
         <div className={`flex items-center justify-between h-16 px-8 ${isRTL ? 'flex-row-reverse' : ''}`}>
           {/* Logo and Nav Items Container */}
