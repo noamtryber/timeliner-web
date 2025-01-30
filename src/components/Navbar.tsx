@@ -69,7 +69,7 @@ export const Navbar = () => {
   return (
     <nav className={`fixed w-full z-[9999] top-0 transition-transform duration-300 ${
       visible ? 'translate-y-0 animate-fade-down' : '-translate-y-full'
-    } md:px-[110px] px-4`}>
+    } md:px-[137.5px] px-4`}>
       <div className="bg-background/60 backdrop-blur-xl border border-[#222222]/20 mx-auto rounded-full text-[1.15em] my-4">
         <div className={`flex items-center justify-between h-16 px-8 ${isRTL ? 'flex-row-reverse' : ''}`}>
           {/* Logo and Nav Items Container */}
