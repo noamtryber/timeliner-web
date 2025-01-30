@@ -35,6 +35,8 @@ export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContent
         return 'התחילו היום בחינם';
       case 'es':
         return 'Comience hoy gratis';
+      case 'ar':
+        return 'جرّب مجاناً الآن';
       default:
         return 'Start Free Trial';
     }
