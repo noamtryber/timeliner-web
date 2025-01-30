@@ -9,12 +9,14 @@ export const FeaturesHeader = () => {
     if (language === 'ar') {
       return {
         title: "أدوات مبتكرة لصناع المحتوى",
+        subtitle: "أدوات جبارة لصناع الفيديو",
         description: "سهّل وبسّط سير عملك في مرحلة ما بعد الإنتاج بميزات مصممة خصيصاً لمحرري الفيديو، المصورين، وكالات المحتوى، وفرق الإنتاج الكبيرة."
       };
     }
     
     return {
       title: content?.features_title || "Features",
+      subtitle: content?.features_subtitle || "Revolutionary Tools for Video Creators",
       description: content?.features_description || 
         "Simplify and streamline your entire video post production workflow with features built specifically for video editors, videographers, content agencies, and big post-production teams."
     };
@@ -28,7 +30,7 @@ export const FeaturesHeader = () => {
         {headerContent.title}
       </span>
       <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
-        {content?.features_subtitle || "Revolutionary Tools for Video Creators"}
+        {headerContent.subtitle}
       </h2>
       <p className="text-white/70 text-lg leading-relaxed">
         {headerContent.description}
