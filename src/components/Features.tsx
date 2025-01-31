@@ -121,7 +121,7 @@ export const Features = () => {
                     {/* Mobile view: 2 buttons per row */}
                     <div className="grid grid-cols-2 gap-2 md:hidden">
                       {featurePairs.map((pair, pairIndex) => (
-                        <div key={pairIndex} className="col-span-2 grid grid-cols-2 gap-2">
+                        <div key={pairIndex} className={`col-span-2 grid ${pair.length === 1 ? 'grid-cols-1 justify-items-center' : 'grid-cols-2'} gap-2`}>
                           {pair.map((feature) => (
                             <button
                               key={feature.id}
