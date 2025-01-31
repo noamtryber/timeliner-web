@@ -14,102 +14,102 @@ interface Feature {
 export const featureGroups: FeatureGroup[] = [
   {
     id: 'smart-management',
-    headline: 'Gestión Inteligente de Proyectos y Revisiones',
+    headline: 'Smart Project and Revision Management',
     features: [
       {
         id: 'revision-workflow',
-        title: 'Flujo de Revisiones',
-        description: 'Comentarios con código de tiempo, dibujos, notas de voz, carga de archivos',
+        title: 'Revision Workflow',
+        description: 'Timecode comments, draw, voice memo, file upload',
         icon: 'workflow'
       },
       {
         id: 'task-management',
-        title: 'Gestión de Tareas por Estado',
-        description: 'Vista global para seguir todos los proyectos a la vez',
+        title: 'Task Management by Status',
+        description: 'Global View to track all projects at once',
         icon: 'list-todo'
       },
       {
         id: 'version-control',
-        title: 'Control de Versiones',
-        description: 'Comparación en pantalla dividida, descarga de versiones anteriores',
+        title: 'Version Control',
+        description: 'Split-screen compare, download previous versions',
         icon: 'git-branch'
       },
       {
         id: 'folder-management',
-        title: 'Gestión Inteligente de Carpetas',
-        description: 'Estructura de archivos auto-organizada por proyecto',
+        title: 'Smart Folder Management',
+        description: 'Auto-organized file structure per project',
         icon: 'folder'
       }
     ]
   },
   {
     id: 'client-collaboration',
-    headline: 'Colaboración Simplificada con Clientes',
+    headline: 'Simplified Client Collaboration',
     features: [
       {
         id: 'project-briefs',
-        title: 'Briefings Interactivos',
-        description: 'Alinear expectativas antes de comenzar el trabajo',
+        title: 'Interactive Project Briefs',
+        description: 'Align expectations before work begins',
         icon: 'clipboard'
       },
       {
         id: 'portfolio-builder',
-        title: 'Constructor de Portafolio',
-        description: 'Muestra trabajos anteriores con plantillas compartibles',
+        title: 'Portfolio Builder',
+        description: 'Showcase past work with shareable templates',
         icon: 'layout-grid'
       },
       {
         id: 'client-portals',
-        title: 'Portales Personalizables',
-        description: 'Los clientes revisan, aprueban y descargan trabajos fácilmente',
+        title: 'Customizable Client Portals',
+        description: 'Clients review, approve, and download work easily',
         icon: 'layout-dashboard'
       }
     ]
   },
   {
     id: 'team-payments',
-    headline: 'Herramientas Potentes para Equipos y Pagos',
+    headline: 'Powerful Tools for Teams and Payments',
     features: [
       {
         id: 'crm',
-        title: 'CRM Integrado para Creativos',
-        description: 'Seguimiento de interacciones, leads y proyectos',
+        title: 'Built-In CRM for Creatives',
+        description: 'Track client interactions, leads, and projects',
         icon: 'users'
       },
       {
         id: 'team-collaboration',
-        title: 'Herramientas de Colaboración',
-        description: 'Asignar roles, monitorear cargas de trabajo y permisos',
+        title: 'Team Collaboration Tools',
+        description: 'Assign roles, monitor workloads, and permissions',
         icon: 'users-round'
       },
       {
         id: 'payment-tracking',
-        title: 'Seguimiento Transparente de Pagos',
-        description: 'Ver pagos pendientes, notificar a miembros/clientes',
+        title: 'Transparent Payment Tracking',
+        description: 'See payments owed, notify team members/clients',
         icon: 'credit-card'
       }
     ]
   },
   {
     id: 'advanced-features',
-    headline: 'Funciones Avanzadas para un Flujo de Trabajo Sin Problemas',
+    headline: 'Advanced Features for Seamless Workflow',
     features: [
       {
         id: 'integrations',
-        title: 'Integraciones WhatsApp y Slack',
-        description: 'Comunícate con clientes directamente dentro de Timeliner',
+        title: 'WhatsApp & Slack Integrations',
+        description: 'Communicate with clients directly inside Timeliner',
         icon: 'message-square'
       },
       {
         id: 'multi-language',
-        title: 'Soporte Multiidioma',
-        description: 'Interfaz LTR + RTL para equipos globales',
+        title: 'Multi-Language Support',
+        description: 'LTR + RTL interface for global teams',
         icon: 'languages'
       },
       {
         id: 'ai-tools',
-        title: 'Herramientas de IA',
-        description: 'Subtítulos automáticos, sugerencias inteligentes para un flujo más rápido',
+        title: 'AI Tools',
+        description: 'Auto captions, smart suggestions for faster workflow',
         icon: 'sparkles'
       }
     ]

@@ -18,18 +18,6 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
   
   if (!content) return null;
 
-  const spanishFeatures = [
-    'Almacenamiento: Ilimitado',
-    'Miembros: Ilimitados',
-    'Proyectos Activos: Ilimitados',
-    { text: 'Marca Blanca Completa', tooltip: 'Personalización completa de marca e interfaz', showTooltip: true },
-    'Acceso de Clientes: Ilimitado',
-    { text: 'Gerente de Cuenta Dedicado', tooltip: 'Soporte personal y profesional del equipo experto', showTooltip: true },
-    { text: 'Integración API', tooltip: 'Conecta e interactúa con sistemas externos', showTooltip: true },
-    { text: 'Opciones de Implementación Local', tooltip: 'Instalación y despliegue en servidores privados', showTooltip: true },
-    { text: 'Soporte Prioritario 24/7', tooltip: 'Soporte inmediato en cualquier momento', showTooltip: true }
-  ];
-
   const hebrewFeatures = [
     'אחסון: ללא הגבלה',
     'משתמשים: ללא הגבלה',
@@ -68,8 +56,6 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
 
   const getFeatures = () => {
     switch (language) {
-      case 'es':
-        return spanishFeatures;
       case 'he':
         return hebrewFeatures;
       case 'ar':
@@ -79,10 +65,8 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
     }
   };
 
-  const getTitle = () => {
+  const getPlanTitle = () => {
     switch (language) {
-      case 'es':
-        return 'Empresarial';
       case 'he':
         return 'ארגוני';
       case 'ar':
@@ -92,10 +76,8 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
     }
   };
 
-  const getSubtitle = () => {
+  const getPlanSubtitle = () => {
     switch (language) {
-      case 'es':
-        return 'Soluciones Personalizadas para Equipos Grandes';
       case 'he':
         return 'פתרונות מותאמים לצוותים גדולים';
       case 'ar':
@@ -107,8 +89,6 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
 
   const getPricing = () => {
     switch (language) {
-      case 'es':
-        return 'Contacta para Precios';
       case 'he':
         return 'צור קשר לקבלת הצעת מחיר';
       case 'ar':
@@ -120,8 +100,6 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
 
   const getEverythingInText = () => {
     switch (language) {
-      case 'es':
-        return 'Todo en Profesional, más:';
       case 'he':
         return 'כל מה שיש בתוכנית Pro, ובנוסף:';
       case 'ar':
@@ -133,8 +111,6 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
 
   const getButtonText = () => {
     switch (language) {
-      case 'es':
-        return 'Contactar Ventas';
       case 'he':
         return 'צור קשר עם המכירות';
       case 'ar':
@@ -147,8 +123,8 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
   return (
     <Card className={`relative border border-[#2A2F3C] bg-gradient-to-b from-[#1A1F2C]/50 to-[#1A1F2C] p-4 flex flex-col animate-fade-up delay-600 hover:scale-105 transition-transform duration-300 ${isRTL ? 'text-right' : ''}`}>
       <PlanIcon Icon={Users} color="secondary" />
-      <h3 className="text-xl font-bold mb-1 -mt-2">{getTitle()}</h3>
-      <p className="text-white/70 mb-2 text-sm">{getSubtitle()}</p>
+      <h3 className="text-xl font-bold mb-1 -mt-2">{getPlanTitle()}</h3>
+      <p className="text-white/70 mb-2 text-sm">{getPlanSubtitle()}</p>
       <div className="text-2xl font-bold mb-6">
         {getPricing()}
       </div>

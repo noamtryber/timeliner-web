@@ -6,14 +6,6 @@ export const FeaturesHeader = () => {
   const { data: content } = usePageContent('feature');
   
   const getHeaderContent = () => {
-    if (language === 'es') {
-      return {
-        title: "Características",
-        subtitle: "Herramientas Revolucionarias para Creadores de Video",
-        description: "Simplifica y optimiza todo tu flujo de trabajo de post-producción de video con funciones diseñadas específicamente para editores de video, videógrafos, agencias de contenido y grandes equipos de post-producción."
-      };
-    }
-    
     if (language === 'ar') {
       return {
         title: "أدوات مبتكرة لصناع المحتوى",

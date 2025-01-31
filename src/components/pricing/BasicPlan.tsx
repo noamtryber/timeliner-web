@@ -45,21 +45,6 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
       ? basePrice * 0.85 
       : basePrice;
 
-  const spanishFeatures: Feature[] = [
-    { text: 'Almacenamiento: 1TB', tooltip: 'Almacenamiento seguro en la nube con respaldo automático', showTooltip: true },
-    { text: 'Miembros: Hasta 5', tooltip: 'Gestiona un equipo de hasta 5 usuarios con diferentes permisos', showTooltip: true },
-    { text: 'Proyectos Activos: Ilimitados', tooltip: 'Trabaja en proyectos ilimitados simultáneamente', showTooltip: true },
-    { text: 'Acceso de Clientes: 3 Invitados por proyecto', tooltip: 'Colabora con tres clientes por proyecto', showTooltip: true }
-  ];
-
-  const spanishExtraFeatures: Feature[] = [
-    { text: 'Sistema de notificaciones de pago inteligente', tooltip: 'Define modelos de precios (por video, proyecto, etapas o contratos). Automatiza las notificaciones de pago y el seguimiento para asegurarte de que no se pierda ningún pago.', showTooltip: true },
-    { text: 'Herramientas de gestión de equipo', tooltip: 'Herramientas avanzadas para la gestión de tareas y tiempo', showTooltip: true },
-    { text: 'CRM integrado y automatización', tooltip: 'Integración con herramientas como formularios de Facebook y WhatsApp Business. Gestiona leads, seguimientos y clientes con pipeline de propuestas y comunicación rápida.', showTooltip: true },
-    { text: 'Creador de portafolio', tooltip: 'Herramienta avanzada para crear portafolios profesionales', showTooltip: true },
-    { text: 'Briefings interactivos de proyecto', tooltip: 'Usa herramientas de IA para hacer lluvia de ideas con clientes sobre ideas, referencias y términos. Evita expectativas desalineadas y ofrece una experiencia fluida al cliente.', showTooltip: true }
-  ];
-
   const hebrewFeatures: Feature[] = [
     { text: 'אחסון: 1TB', tooltip: 'אחסון מאובטח בענן עם גיבוי אוטומטי', showTooltip: true },
     { text: 'משתמשים: עד 5', tooltip: 'ניהול צוות של עד 5 משתמשים עם הרשאות שונות', showTooltip: true },
@@ -107,8 +92,6 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
   const getFeatures = () => {
     switch (language) {
-      case 'es':
-        return spanishFeatures;
       case 'he':
         return hebrewFeatures;
       case 'ar':
@@ -120,8 +103,6 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
   const getExtraFeatures = () => {
     switch (language) {
-      case 'es':
-        return spanishExtraFeatures;
       case 'he':
         return hebrewExtraFeatures;
       case 'ar':
@@ -133,12 +114,12 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
   const getTitle = () => {
     switch (language) {
-      case 'es':
-        return 'Básico';
       case 'he':
         return 'בייסיק';
       case 'ar':
         return 'الأساسي';
+      case 'es':
+        return 'Básico';
       default:
         return 'Essentials';
     }
@@ -146,12 +127,12 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
   const getSubtitle = () => {
     switch (language) {
-      case 'es':
-        return 'Para Equipos Pequeños y Freelancers';
       case 'he':
         return 'לצוותים קטנים ופרילנסרים';
       case 'ar':
         return 'للفرق الصغيرة والمستقلين';
+      case 'es':
+        return 'Para Equipos Pequeños y Freelancers';
       default:
         return 'For Small Teams and Freelancers';
     }
@@ -159,12 +140,12 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
   const getPopularLabel = () => {
     switch (language) {
-      case 'es':
-        return 'Más Popular';
       case 'he':
         return 'הכי פופולרי';
       case 'ar':
         return 'الأكثر شعبية';
+      case 'es':
+        return 'Más Popular';
       default:
         return 'Most Popular';
     }
@@ -172,12 +153,12 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
   const getWhyButtonText = () => {
     switch (language) {
-      case 'es':
-        return '¿Por qué Básico?';
       case 'he':
         return 'למה בייסיק?';
       case 'ar':
         return 'لماذا الأساسي؟';
+      case 'es':
+        return '¿Por qué Básico?';
       default:
         return 'Why Essentials?';
     }
@@ -185,12 +166,12 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
   const getTrialButtonText = () => {
     switch (language) {
-      case 'es':
-        return 'Comenzar Prueba Gratis';
       case 'he':
         return 'התחילו היום בחינם';
       case 'ar':
         return 'ابدأ النسخة التجريبية المجانية';
+      case 'es':
+        return 'Comenzar Prueba Gratis';
       default:
         return 'Start Free Trial';
     }
@@ -198,12 +179,12 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
   const getEverythingInFreeText = () => {
     switch (language) {
-      case 'es':
-        return 'Todo en Gratis, más:';
       case 'he':
         return 'הכל בחינמי, בנוסף:';
       case 'ar':
         return 'كل شيء في المجاني، بالإضافة إلى:';
+      case 'es':
+        return 'Todo en Gratis, más:';
       default:
         return 'Everything in Free, plus:';
     }
@@ -217,7 +198,7 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
       <PlanIcon Icon={Database} color="accent" />
       <h3 className="text-xl font-bold mb-1">{getTitle()}</h3>
-      <p className="text-white/70 mb-2">{getSubtitle()}</p>
+      <p className="text-white/70 mb-2 text-[0.927rem]">{getSubtitle()}</p>
       <div className="text-2xl font-bold mb-2">
         ${price.toFixed(2)}
         <span className="text-base font-normal">
