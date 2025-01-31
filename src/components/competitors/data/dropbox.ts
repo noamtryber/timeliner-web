@@ -14,7 +14,7 @@ export const dropboxData: Competitor = {
       spanishCompetitor: "$10/usuario/mes para el complemento Replay\nRequiere Dropbox Plus ($10/usuario/mes) = $20/usuario/mes total\n$100/mes para 5 usuarios\n$600/mes para 30 usuarios",
       timeliner: "$29/month (fixed up to 5 users)\n$49/month (fixed up to 30 users)",
       hebrewTimeliner: "$29 לחודש (עד 5 משתמשים)\n$49 לחודש (עד 30 משתמשים)",
-      spanishTimeliner: "$29/mes (fijo hasta 5 usuarios)\n$49/mes (fijo hasta 30 usuarios)",
+      spanishTimeliner: "$29/mes (hasta 5 usuarios)\n$49/mes (hasta 30 usuarios)",
       keyTakeaways: [
         {
           type: 'negative',
@@ -27,12 +27,6 @@ export const dropboxData: Competitor = {
           text: 'Timeliner is a complete media management solution, combining project management, video review, media storage, CRM, marketing tools, and portfolio building in one platform.',
           hebrewText: 'Timeliner היא פלטפורמה מלאה לניהול מדיה, המשלבת ניהול פרויקטים, ביקורת וידאו, אחסון מדיה, CRM, כלי שיווק ובניית תיק עבודות במקום אחד.',
           spanishText: 'Timeliner es una solución completa de gestión de medios que combina gestión de proyectos, revisión de videos, almacenamiento de medios, CRM, herramientas de marketing y creación de portafolios en una plataforma.'
-        },
-        {
-          type: 'positive',
-          text: 'Smart integrations with WhatsApp, Email, and Slack allow seamless team communication and client notifications.',
-          hebrewText: 'אינטגרציות חכמות עם וואטסאפ, אימייל וסלאק מאפשרות תקשורת חלקה בין הצוות והתראות ללקוחות.',
-          spanishText: 'Las integraciones inteligentes con WhatsApp, correo electrónico y Slack permiten una comunicación fluida del equipo y notificaciones a los clientes.'
         }
       ]
     },
