@@ -8,10 +8,9 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { featureGroups } from "./features/featureData";
 import { featureGroupsHe } from "./features/featureDataHe";
 import { featureGroupsAr } from "./features/featureDataAr";
+import { featureGroupsEs } from "./features/featureData";
 import { iconComponents } from "./features/iconComponents";
 import { Button } from "./ui/button";
-
-// ... keep existing code (imports and initial setup)
 
 export const Features = () => {
   const [openDialog, setOpenDialog] = useState<string | null>(null);
@@ -27,6 +26,8 @@ export const Features = () => {
         return featureGroupsHe;
       case 'ar':
         return featureGroupsAr;
+      case 'es':
+        return featureGroupsEs;
       default:
         return featureGroups;
     }
@@ -90,6 +91,19 @@ export const Features = () => {
       </section>
     );
   }
+
+  const getLearnMoreText = () => {
+    switch (language) {
+      case 'he':
+        return 'למדו עוד';
+      case 'ar':
+        return 'اعرف المزيد';
+      case 'es':
+        return 'Saber más';
+      default:
+        return 'Learn More';
+    }
+  };
 
   return (
     <section id="features" className="py-20 overflow-hidden relative" dir={isRTL ? 'rtl' : 'ltr'}>
@@ -188,7 +202,7 @@ export const Features = () => {
                               size="lg"
                               className="w-1/2 md:w-auto text-lg"
                             >
-                              {language === 'he' ? 'למדו עוד' : language === 'ar' ? 'اعرف المزيد' : 'Learn More'}
+                              {getLearnMoreText()}
                             </Button>
                           </div>
                         </div>
