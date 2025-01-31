@@ -18,6 +18,7 @@ export const Features = () => {
   const { data: media, isLoading: mediaLoading, error: mediaError } = useMediaContent('feature');
   const { toast } = useToast();
 
+  // Use appropriate data based on language
   const currentFeatureGroups = (() => {
     switch (language) {
       case 'he':
@@ -93,7 +94,11 @@ export const Features = () => {
       {/* Background gradients */}
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/10 via-primary/5 to-transparent pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(123,97,255,0.15),rgba(123,97,255,0)_50%)] pointer-events-none" />
-      
+      <div className="absolute -top-[10%] left-[20%] w-[60vw] h-[60vw] bg-[radial-gradient(circle_at_center,rgba(123,97,255,0.12),rgba(123,97,255,0)_70%)] blur-3xl pointer-events-none animate-pulse" />
+      <div className="absolute top-[30%] right-[10%] w-[45vw] h-[45vw] bg-[radial-gradient(circle_at_center,rgba(214,188,250,0.15),rgba(214,188,250,0)_70%)] blur-3xl pointer-events-none" />
+      <div className="absolute top-[60%] left-[30%] w-[50vw] h-[50vw] bg-[radial-gradient(circle_at_center,rgba(155,135,245,0.12),rgba(155,135,245,0)_70%)] blur-3xl pointer-events-none" />
+      <div className="absolute top-[90%] right-[20%] w-[55vw] h-[55vw] bg-[radial-gradient(circle_at_center,rgba(126,105,171,0.18),rgba(126,105,171,0)_70%)] blur-3xl pointer-events-none" />
+
       <div className="container mx-auto px-4 relative">
         <FeaturesHeader />
         <div className="space-y-32 md:space-y-64 lg:space-y-96 pb-[200px]">
@@ -109,24 +114,8 @@ export const Features = () => {
             }
 
             return (
-              <div key={group.id} className="relative space-y-8 md:space-y-12">
-                {/* Mobile Spotlight Backgrounds - Different for each row */}
-                <div className="absolute md:hidden inset-0 overflow-visible">
-                  {index === 0 && (
-                    <div className="absolute inset-0 -inset-x-24 -inset-y-12 bg-[radial-gradient(circle_at_30%_50%,rgba(155,135,245,0.15),transparent_70%)]" />
-                  )}
-                  {index === 1 && (
-                    <div className="absolute inset-0 -inset-x-24 -inset-y-12 bg-[radial-gradient(circle_at_70%_30%,rgba(214,188,250,0.2),transparent_70%)]" />
-                  )}
-                  {index === 2 && (
-                    <div className="absolute inset-0 -inset-x-24 -inset-y-12 bg-[radial-gradient(circle_at_40%_60%,rgba(126,105,171,0.15),transparent_70%)]" />
-                  )}
-                  {index === 3 && (
-                    <div className="absolute inset-0 -inset-x-24 -inset-y-12 bg-[radial-gradient(circle_at_60%_40%,rgba(123,97,255,0.2),transparent_70%)]" />
-                  )}
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-center relative">
+              <div key={group.id} className="space-y-8 md:space-y-12">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-center">
                   {/* Feature List - Mobile: Top, Desktop: Side */}
                   <div className={`col-span-1 md:col-span-2 space-y-2 flex flex-col order-1 md:order-${isAlternate ? '3' : '1'}`}>
                     {/* Mobile view: 2 buttons per row */}
@@ -140,7 +129,7 @@ export const Features = () => {
                                 ...prev,
                                 [group.id]: feature.id
                               }))}
-                              className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center justify-center backdrop-blur-sm bg-black/5 ${isRTL ? 'text-right' : 'text-left'}
+                              className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center justify-center ${isRTL ? 'text-right' : 'text-left'}
                                 ${selectedFeatures[group.id] === feature.id 
                                   ? 'bg-primary/10 font-semibold text-primary' 
                                   : 'hover:bg-card/50 text-white'
@@ -152,7 +141,7 @@ export const Features = () => {
                         </div>
                       ))}
                     </div>
-                    
+                    {/* Desktop view: vertical list */}
                     <div className="hidden md:flex md:flex-col space-y-2">
                       {group.features.map((feature) => (
                         <button
