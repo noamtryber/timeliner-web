@@ -204,7 +204,7 @@ export const Features = () => {
                               onClick={() => setOpenDialog(currentFeature.id)}
                               variant="outline"
                               size="lg"
-                              className="w-full md:w-auto text-lg"
+                              className="w-1/2 md:w-auto text-lg ml-0"
                             >
                               {language === 'he' ? 'למדו עוד' : language === 'ar' ? 'اعرف المزيد' : 'Learn More'}
                             </Button>
