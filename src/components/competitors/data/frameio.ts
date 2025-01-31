@@ -25,123 +25,123 @@ export const frameioData: Competitor = {
         {
           type: 'positive',
           text: 'Timeliner is an all-in-one solution, combining project management, video review, media storage, CRM, marketing tools, and portfolio building in one platform.',
-          spanishText: 'Timeliner es una solución todo en uno que combina gestión de proyectos, revisión de videos, almacenamiento de medios, CRM, herramientas de marketing y creación de portafolio en una sola plataforma.',
+          spanishText: 'Timeliner es una solución todo en uno que combina gestión de proyectos, revisión de videos, almacenamiento de medios, CRM, herramientas de marketing y creación de portafolio en una plataforma.',
           hebrewText: 'Timeliner מספקת את כל הכלים במקום אחד – ניהול פרויקטים, הערות על וידאו, אחסון מדיה, CRM, כלים שיווקיים, בניית תיק עבודות, ואינטגרציות חכמות עם וואטסאפ, מייל וסלאק.'
         }
       ]
     },
     {
       name: "Time-Synced Comments",
+      spanishName: "Comentarios sincronizados con el tiempo",
       hebrewName: "תגובות מסונכרנות לזמן הוידאו",
-      arabicName: "تعليقات متزامنة مع الوقت",
       competitor: true,
       timeliner: true
     },
     {
       name: "High-Quality Video Previews",
+      spanishName: "Vista previa de video en alta calidad",
       hebrewName: "תצוגה מקדימה באיכות גבוהה",
-      arabicName: "معاينة فيديو عالية الجودة",
       competitor: true,
       timeliner: true
     },
     {
       name: "Client-Friendly Review Links",
+      spanishName: "Enlaces de revisión fáciles de usar para clientes",
       hebrewName: "קישורי צפייה וביקורת נוחים ללקוחות",
-      arabicName: "روابط مراجعة سهلة للعملاء",
       competitor: true,
       timeliner: true
     },
     {
       name: "Media Status Tracking Advanced Workflow",
+      spanishName: "Flujo de trabajo avanzado para seguimiento de estado de medios",
       hebrewName: "ניהול מדיה ומעקב אחר סטטוסים",
-      arabicName: "تتبع حالة الوسائط وسير العمل المتقدم",
       competitor: "Basic tags only",
+      spanishCompetitor: "Solo etiquetas básicas",
       hebrewCompetitor: "תיוגים בסיסיים בלבד",
-      arabicCompetitor: "علامات أساسية فقط",
       timeliner: "List, Kanban, Pool, and Chart Status Groups",
-      hebrewTimeliner: "מערכת מתקדמת עם רשימות, Kanban, Pool ותרשימים מבוססי סטטוס",
-      arabicTimeliner: "قوائم، كانبان، مجموعات، ومخططات حالة متقدمة"
+      spanishTimeliner: "Grupos de estado en Lista, Kanban, Pool y Gráficos",
+      hebrewTimeliner: "מערכת מתקדמת עם רשימות, Kanban, Pool ותרשימים מבוססי סטטוס"
     },
     {
       name: "Intuitive Split Screen Version Comparison",
+      spanishName: "Comparación de versiones en pantalla dividida intuitiva",
       hebrewName: "השוואת גרסאות במסך מפוצל",
-      arabicName: "مقارنة الإصدارات على الشاشة المنقسمة",
       competitor: false,
       timeliner: true
     },
     {
       name: "No Account Required for Reviewers",
+      spanishName: "No se requiere cuenta para los revisores",
       hebrewName: "גישה ללא צורך בחשבון למבקרים",
-      arabicName: "لا حاجة لحساب للمراجعين",
       competitor: false,
       timeliner: true
     },
     {
       name: "Interactive New Offer Workflow",
+      spanishName: "Flujo de trabajo interactivo para nuevas ofertas",
       hebrewName: "מערכת ליצירת הצעות אינטראקטיבית",
-      arabicName: "نظام لإنشاء عروض تفاعلية",
       competitor: false,
       timeliner: true
     },
     {
       name: "Built-In CRM",
+      spanishName: "CRM integrado",
       hebrewName: "CRM מובנה",
-      arabicName: "نظام CRM مدمج",
       competitor: false,
       timeliner: true
     },
     {
       name: "WhatsApp Business Integration",
+      spanishName: "Integración con WhatsApp Business",
       hebrewName: "אינטגרציה עם וואטסאפ",
-      arabicName: "تكامل مع واتساب للأعمال",
       competitor: false,
       timeliner: true
     },
     {
       name: "Team Monitoring & Productivity Tracking",
+      spanishName: "Seguimiento de equipo y productividad",
       hebrewName: "מעקב אחר משימות וביצועי צוות",
-      arabicName: "مراقبة الفريق وتتبع الإنتاجية",
       competitor: false,
       timeliner: true
     },
     {
       name: "Add comments using voice recordings",
+      spanishName: "Agregar comentarios usando grabaciones de voz",
       hebrewName: "הוספת הערות באמצעות הקלטות קוליות",
-      arabicName: "إضافة تعليقات باستخدام تسجيلات صوتية",
       competitor: false,
       timeliner: true
     },
     {
       name: "Multi-language AI captions",
+      spanishName: "Subtítulos de IA en múltiples idiomas",
       hebrewName: "כתוביות AI חכמות (גם לעברית)",
-      arabicName: "ترجمات AI متعددة اللغات",
       competitor: false,
       timeliner: true
     },
     {
       name: "Pro Portfolio Builder",
+      spanishName: "Constructor de portafolio profesional",
       hebrewName: "בניית תיק עבודות מקצועי",
-      arabicName: "منشئ بورتفوليو احترافي",
       competitor: false,
       timeliner: true
     },
     {
       name: "Educational Resources & 1-on-1 Onboarding",
+      spanishName: "Recursos educativos y capacitación personalizada",
       hebrewName: "הדרכות מותאמות ואונבורדינג 1על1 בזום",
-      arabicName: "موارد تعليمية وتوجيه فردي",
       competitor: false,
       timeliner: true
     },
     {
       name: "Costs rise exponentially as team grows",
+      spanishName: "Los costos aumentan exponencialmente con el crecimiento del equipo",
       hebrewName: "תמחור גדל ככל שהצוות מתרחב",
-      arabicName: "تزداد التكاليف بشكل متسارع مع نمو الفريق",
       competitor: "$750/month for 30 users",
+      spanishCompetitor: "$750/mes para 30 usuarios",
       hebrewCompetitor: "$750 לחודש עבור 30 משתמשים",
-      arabicCompetitor: "$750/شهر لـ 30 مستخدم",
       timeliner: "Flat pricing covers up to 30 users with no extra fees",
-      hebrewTimeliner: "תמחור קבוע ללא עלות נוספת – עד 30 משתמשים!",
-      arabicTimeliner: "تسعير ثابت يغطي حتى 30 مستخدمًا بدون رسوم إضافية"
+      spanishTimeliner: "Precio fijo cubre hasta 30 usuarios sin cargos adicionales",
+      hebrewTimeliner: "תמחור קבוע ללא עלות נוספת – עד 30 משתמשים!"
     }
   ]
 };

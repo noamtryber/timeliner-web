@@ -7,26 +7,26 @@ export const wipsterData: Competitor = {
   features: [
     {
       name: "Pricing",
-      hebrewName: "תמחור",
       spanishName: "Precios",
+      hebrewName: "תמחור",
       competitor: "$19.95/user/month = $99.75/month for 5 users\n$598.50/month for 30 users",
-      hebrewCompetitor: "$19.95 למשתמש לחודש = $99.75 לחודש עבור 5 משתמשים\n$598.50 לחודש עבור 30 משתמשים",
       spanishCompetitor: "$19.95/usuario/mes = $99.75/mes para 5 usuarios\n$598.50/mes para 30 usuarios",
+      hebrewCompetitor: "$19.95 למשתמש לחודש = $99.75 לחודש עבור 5 משתמשים\n$598.50 לחודש עבור 30 משתמשים",
       timeliner: "$29/month (up to 5 users)\n$49/month (up to 30 users)",
-      hebrewTimeliner: "$29 לחודש (עד 5 משתמשים)\n$49 לחודש (עד 30 משתמשים)",
       spanishTimeliner: "$29/mes (hasta 5 usuarios)\n$49/mes (hasta 30 usuarios)",
+      hebrewTimeliner: "$29 לחודש (עד 5 משתמשים)\n$49 לחודש (עד 30 משתמשים)",
       keyTakeaways: [
         {
           type: "negative",
           text: "Wipster is a solid choice for simple video review with time-synced comments and a clean interface, making it great for small teams handling basic client feedback. However, it charges per user ($19.95/month) and storage is capped at 250GB, which limits scalability for larger teams.",
-          hebrewText: "Wipster היא בחירה טובה לביקורת וידאו פשוטה עם הערות מסונכרנות וממשק נקי, מה שהופך אותה למעולה לצוותים קטנים המטפלים במשוב בסיסי מלקוחות. עם זאת, היא גובה לפי משתמש ($19.95 לחודש) והאחסון מוגבל ל-250GB, מה שמגביל את הסקייליות לצוותים גדולים יותר.",
-          spanishText: "Wipster es una buena opción para la revisión simple de videos con comentarios sincronizados y una interfaz limpia, lo que la hace excelente para equipos pequeños que manejan comentarios básicos de clientes. Sin embargo, cobra por usuario ($19.95/mes) y el almacenamiento está limitado a 250GB, lo que limita la escalabilidad para equipos más grandes."
+          spanishText: "Wipster es una buena opción para la revisión simple de videos con comentarios sincronizados y una interfaz limpia, lo que la hace excelente para equipos pequeños que manejan comentarios básicos de clientes. Sin embargo, cobra por usuario ($19.95/mes) y el almacenamiento está limitado a 250GB, lo que limita la escalabilidad para equipos más grandes.",
+          hebrewText: "Wipster היא בחירה טובה לביקורת וידאו פשוטה עם הערות מסונכרנות וממשק נקי, מה שהופך אותה למעולה לצוותים קטנים המטפלים במשוב בסיסי מלקוחות. עם זאת, היא גובה לפי משתמש ($19.95 לחודש) והאחסון מוגבל ל-250GB, מה שמגביל את הסקייליות לצוותים גדולים יותר."
         },
         {
           type: "positive",
           text: "Timeliner goes beyond just video review—it offers project management, CRM, team monitoring, media storage (1-2TB), marketing tools, and portfolio building in one platform. Plus, with WhatsApp Business Integration, your team and clients stay connected without extra tools. Flat pricing means you scale without increasing costs, making it the smarter choice for post-production teams and creative agencies. 🚀",
-          hebrewText: "Timeliner היא הרבה מעבר לביקורת וידאו - היא מציעה ניהול פרויקטים, CRM, מעקב אחר צוותים, אחסון מדיה (1-2TB), כלי שיווק ובניית תיק עבודות בפלטפורמה אחת. בנוסף, עם אינטגרציה לוואטסאפ עסקי, הצוות והלקוחות שלך נשארים מחוברים ללא כלים נוספים. תמחור קבוע מאפשר לך לצמוח ללא הגדלת עלויות, מה שהופך אותה לבחירה החכמה יותר לצוותי פוסט-פרודקשן וסוכנויות יצירתיות. 🚀",
-          spanishText: "Timeliner va más allá de la simple revisión de videos: ofrece gestión de proyectos, CRM, monitoreo de equipos, almacenamiento de medios (1-2TB), herramientas de marketing y creación de portafolios en una plataforma. Además, con la integración de WhatsApp Business, tu equipo y clientes permanecen conectados sin herramientas adicionales. El precio fijo significa que puedes escalar sin aumentar los costos, lo que la convierte en la opción más inteligente para equipos de postproducción y agencias creativas. 🚀"
+          spanishText: "Timeliner va más allá de la simple revisión de videos: ofrece gestión de proyectos, CRM, monitoreo de equipos, almacenamiento de medios (1-2TB), herramientas de marketing y creación de portafolios en una plataforma. Además, con la integración de WhatsApp Business, tu equipo y clientes permanecen conectados sin herramientas adicionales. El precio fijo significa que puedes escalar sin aumentar los costos, lo que la convierte en la opción más inteligente para equipos de postproducción y agencias creativas. 🚀",
+          hebrewText: "Timeliner היא הרבה מעבר לביקורת וידאו - היא מציעה ניהול פרויקטים, CRM, מעקב אחר צוותים, אחסון מדיה (1-2TB), כלי שיווק ובניית תיק עבודות בפלטפורמה אחת. בנוסף, עם אינטגרציה לוואטסאפ עסקי, הצוות והלקוחות שלך נשארים מחוברים ללא כלים נוספים. תמחור קבוע מאפשר לך לצמוח ללא הגדלת עלויות, מה שהופך אותה לבחירה החכמה יותר לצוותי פוסט-פרודקשן וסוכנויות יצירתיות. 🚀"
         }
       ]
     },
