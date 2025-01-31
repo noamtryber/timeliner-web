@@ -27,10 +27,8 @@ export const Navbar = () => {
       const currentScrollY = window.scrollY;
       
       if (currentScrollY < lastScrollY) {
-        // Scrolling up
         setVisible(true);
       } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down and not at the top
         setVisible(false);
       }
       
@@ -69,11 +67,11 @@ export const Navbar = () => {
   return (
     <nav className={`fixed w-full z-[9999] top-0 transition-transform duration-300 ${
       visible ? 'translate-y-0 animate-fade-down' : '-translate-y-full'
-    } md:px-[137.5px] px-4`}>
+    } lg:px-[137.5px] md:px-8 px-4`}>
       <div className="bg-background/60 backdrop-blur-xl border border-[#222222]/20 mx-auto rounded-full text-[1.15em] my-4">
-        <div className={`flex items-center justify-between h-16 px-8 ${isRTL ? 'flex-row-reverse' : ''}`}>
+        <div className={`flex items-center justify-between h-16 lg:px-8 md:px-6 px-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
           {/* Logo and Nav Items Container */}
-          <div className={`flex items-center gap-8 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <div className={`flex items-center lg:gap-8 md:gap-6 gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <a href="/" className="flex-shrink-0">
               <img 
                 src="/lovable-uploads/1ad9d673-efdf-41ae-8a29-82d3e976a7ed.png" 
@@ -81,7 +79,7 @@ export const Navbar = () => {
                 className="h-7"
               />
             </a>
-            <div className={`hidden md:flex items-center ${isRTL ? 'flex-row-reverse space-x-reverse' : 'space-x-4'}`}>
+            <div className={`hidden md:flex items-center ${isRTL ? 'flex-row-reverse space-x-reverse' : ''} lg:space-x-6 md:space-x-4`}>
               <NavItems 
                 content={content} 
                 handleSectionClick={handleSectionClick}
@@ -91,7 +89,7 @@ export const Navbar = () => {
           </div>
           
           {/* Auth and Language Controls Container */}
-          <div className={`hidden md:flex items-center ${isRTL ? 'flex-row-reverse space-x-4 space-x-reverse' : 'space-x-4'}`}>
+          <div className={`hidden md:flex items-center ${isRTL ? 'flex-row-reverse space-x-reverse' : ''} lg:space-x-6 md:space-x-4`}>
             <LanguageSwitcher />
             <AuthButtons content={content} handleAuthClick={handleAuthClick} />
           </div>
