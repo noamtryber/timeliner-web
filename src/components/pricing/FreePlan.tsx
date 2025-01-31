@@ -43,6 +43,16 @@ export const FreePlan = ({ content }: FreePlanProps) => {
     { text: 'تخزين آمن للوسائط', tooltip: 'تخزين آمن لملفات الوسائط' }
   ];
 
+  const spanishFeatures = [
+    { text: 'Almacenamiento: 3GB', tooltip: 'Almacenamiento básico en la nube' },
+    { text: 'Miembros: 1', tooltip: 'Una cuenta personal' },
+    { text: 'Proyectos activos: 2', tooltip: 'Trabaja en hasta 2 proyectos simultáneamente' },
+    { text: 'Acceso de clientes: 1 invitado por proyecto', tooltip: 'Colabora con un cliente por proyecto', showTooltip: true },
+    { text: 'Seguimiento inteligente de revisiones', tooltip: 'Deja comentarios precisos con marcas de tiempo' },
+    { text: 'Portales de cliente simples', tooltip: 'Portal simple para compartir y recibir feedback', showTooltip: true },
+    { text: 'Almacenamiento seguro de medios', tooltip: 'Almacenamiento seguro para archivos multimedia' }
+  ];
+
   const englishFeatures = [
     { text: 'Storage: 3GB', tooltip: 'Basic cloud storage' },
     { text: 'Members: 1', tooltip: 'Single personal account' },
@@ -59,6 +69,8 @@ export const FreePlan = ({ content }: FreePlanProps) => {
         return hebrewFeatures;
       case 'ar':
         return arabicFeatures;
+      case 'es':
+        return spanishFeatures;
       default:
         return englishFeatures;
     }

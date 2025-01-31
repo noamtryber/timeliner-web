@@ -18,6 +18,18 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
   
   if (!content) return null;
 
+  const spanishFeatures = [
+    'Almacenamiento: Ilimitado',
+    'Miembros: Ilimitados',
+    'Proyectos activos: Ilimitados',
+    { text: 'Marca blanca completa', tooltip: 'Personalización completa de marca e interfaz', showTooltip: true },
+    'Acceso de clientes: Ilimitado',
+    { text: 'Gestor de cuenta dedicado', tooltip: 'Soporte personal y profesional del equipo experto', showTooltip: true },
+    { text: 'Integración API', tooltip: 'Conecta e interactúa con sistemas externos', showTooltip: true },
+    { text: 'Opciones de implementación local', tooltip: 'Instalación y despliegue en servidores privados', showTooltip: true },
+    { text: 'Soporte prioritario 24/7', tooltip: 'Soporte inmediato en cualquier momento, cualquier día', showTooltip: true }
+  ];
+
   const hebrewFeatures = [
     'אחסון: ללא הגבלה',
     'משתמשים: ללא הגבלה',
@@ -60,6 +72,8 @@ export const EnterprisePlan = ({ content }: EnterprisePlanProps) => {
         return hebrewFeatures;
       case 'ar':
         return arabicFeatures;
+      case 'es':
+        return spanishFeatures;
       default:
         return englishFeatures;
     }

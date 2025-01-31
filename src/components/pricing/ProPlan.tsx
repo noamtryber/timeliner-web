@@ -84,12 +84,27 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     { text: 'Priority 24/7 support', tooltip: 'Dedicated technical assistance', showTooltip: true }
   ];
 
+  const spanishFeatures: Feature[] = [
+    { text: 'Almacenamiento: 2TB', tooltip: 'Almacenamiento seguro en la nube con respaldo automático', showTooltip: true },
+    { text: 'Miembros: Hasta 30', tooltip: 'Gestiona un equipo de hasta 30 usuarios con diferentes permisos', showTooltip: true },
+    { text: 'Proyectos activos: Ilimitados', tooltip: 'Trabaja en proyectos ilimitados simultáneamente', showTooltip: true },
+    { text: 'Acceso de clientes: 10 invitados por proyecto', tooltip: 'Colabora con 10 clientes simultáneamente por proyecto', showTooltip: true }
+  ];
+
+  const spanishExtraFeatures: Feature[] = [
+    { text: 'Análisis avanzado de proyectos', tooltip: 'Métricas detalladas e informes personalizados', showTooltip: true },
+    { text: 'Integración con herramientas externas', tooltip: 'Conéctate con tus herramientas favoritas', showTooltip: true },
+    { text: 'Soporte prioritario 24/7', tooltip: 'Asistencia técnica dedicada', showTooltip: true }
+  ];
+
   const getFeatures = () => {
     switch (language) {
       case 'he':
         return hebrewFeatures;
       case 'ar':
         return arabicFeatures;
+      case 'es':
+        return spanishFeatures;
       default:
         return englishFeatures;
     }
@@ -101,6 +116,8 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
         return hebrewExtraFeatures;
       case 'ar':
         return arabicExtraFeatures;
+      case 'es':
+        return spanishExtraFeatures;
       default:
         return englishExtraFeatures;
     }
@@ -112,6 +129,8 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
         return 'פרו';
       case 'ar':
         return 'الاحترافي';
+      case 'es':
+        return 'Estudio';
       default:
         return 'Studio';
     }
@@ -123,6 +142,8 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
         return 'לסוכנויות וצוותים בצמיחה';
       case 'ar':
         return 'للوكالات والفرق النامية';
+      case 'es':
+        return 'Para Agencias y Equipos en Crecimiento';
       default:
         return 'For Growing Agencies and Teams';
     }
@@ -134,6 +155,8 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
         return 'התחילו היום בחינם';
       case 'ar':
         return 'ابدأ النسخة التجريبية المجانية';
+      case 'es':
+        return 'Comenzar Prueba Gratis';
       default:
         return 'Start Free Trial';
     }
@@ -145,6 +168,8 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
         return 'למה פרו?';
       case 'ar':
         return 'لماذا الاحترافي؟';
+      case 'es':
+        return '¿Por qué Estudio?';
       default:
         return 'Why Studio?';
     }
@@ -156,6 +181,8 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
         return 'הכל בבייסיק, בנוסף:';
       case 'ar':
         return 'كل شيء في الأساسي، بالإضافة إلى:';
+      case 'es':
+        return 'Todo en Esenciales, más:';
       default:
         return 'Everything in Essentials, plus:';
     }
@@ -171,7 +198,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
       <div className="text-2xl font-bold mb-2">
         ${price.toFixed(2)}
         <span className="text-base font-normal">
-          {language === 'he' ? '/ לחודש' : language === 'ar' ? '/شهر' : '/month'}
+          {language === 'he' ? '/ לחודש' : language === 'ar' ? '/شهر' : language === 'es' ? '/mes' : '/month'}
         </span>
         {pricingPeriod !== 'monthly' && (
           <span className="block text-sm text-primary mt-1">
@@ -180,7 +207,9 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
                 ? `לתשלום ${pricingPeriod === 'quarterly' ? 'רבעוני' : 'שנתי'}`
                 : language === 'ar'
                   ? `مدفوع ${pricingPeriod === 'quarterly' ? 'ربع سنوي' : 'سنوي'}`
-                  : `billed ${pricingPeriod}`
+                  : language === 'es'
+                    ? `facturado ${pricingPeriod === 'quarterly' ? 'trimestralmente' : 'anualmente'}`
+                    : `billed ${pricingPeriod}`
             }
           </span>
         )}

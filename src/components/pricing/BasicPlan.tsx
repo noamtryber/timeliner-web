@@ -90,12 +90,29 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
     { text: 'Interactive project briefs', tooltip: 'Use AI tools to brainstorm with clients about ideas, references, and terms. Avoid misaligned expectations and deliver a smooth client experience.', showTooltip: true }
   ];
 
+  const spanishFeatures: Feature[] = [
+    { text: 'Almacenamiento: 1TB', tooltip: 'Almacenamiento seguro en la nube con respaldo automático', showTooltip: true },
+    { text: 'Miembros: Hasta 5', tooltip: 'Gestiona un equipo de hasta 5 usuarios con diferentes permisos', showTooltip: true },
+    { text: 'Proyectos activos: Ilimitados', tooltip: 'Trabaja en proyectos ilimitados simultáneamente', showTooltip: true },
+    { text: 'Acceso de clientes: Hasta 3 invitados por proyecto' }
+  ];
+
+  const spanishExtraFeatures: Feature[] = [
+    { text: 'Notificaciones inteligentes de pago', tooltip: 'Define modelos de precios (por video, proyecto, etapas o contratos). Automatiza notificaciones de pago y seguimiento para asegurar que no se pierda ningún pago.', showTooltip: true },
+    { text: 'Herramientas de gestión de equipo', tooltip: 'Herramientas avanzadas para gestión de tareas y tiempo', showTooltip: true },
+    { text: 'CRM integrado y automatización', tooltip: 'Integración con herramientas como formularios de leads de Facebook y WhatsApp Business. Gestiona leads, seguimientos y clientes con pipeline de propuestas y comunicación rápida.', showTooltip: true },
+    { text: 'Constructor de portafolio', tooltip: 'Herramienta avanzada para crear portafolios profesionales', showTooltip: true },
+    { text: 'Briefings interactivos de proyecto', tooltip: 'Usa herramientas de IA para hacer lluvia de ideas con clientes sobre ideas, referencias y términos. Evita expectativas desalineadas y ofrece una experiencia fluida al cliente.', showTooltip: true }
+  ];
+
   const getFeatures = () => {
     switch (language) {
       case 'he':
         return hebrewFeatures;
       case 'ar':
         return arabicFeatures;
+      case 'es':
+        return spanishFeatures;
       default:
         return englishFeatures;
     }
@@ -107,6 +124,8 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
         return hebrewExtraFeatures;
       case 'ar':
         return arabicExtraFeatures;
+      case 'es':
+        return spanishExtraFeatures;
       default:
         return englishExtraFeatures;
     }
