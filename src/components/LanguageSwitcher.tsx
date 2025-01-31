@@ -11,9 +11,6 @@ import { useLanguage } from "@/contexts/LanguageContext";
 const languages = [
   { code: 'en', name: 'English' },
   { code: 'es', name: 'Español' },
-  { code: 'pt', name: 'Português' },
-  { code: 'zh', name: '中文' },
-  { code: 'ru', name: 'Русский' },
   { code: 'ar', name: 'العربية' },
   { code: 'he', name: 'עברית' },
 ] as const;
