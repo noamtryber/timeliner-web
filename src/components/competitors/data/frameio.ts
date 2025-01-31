@@ -7,26 +7,26 @@ export const frameioData: Competitor = {
   features: [
     {
       name: "Pricing",
+      spanishName: "Precios",
       hebrewName: "תמחור",
-      arabicName: "التسعير",
       competitor: "$15/user/month (Basic) = $75/month for 5 users\n$25/user/month (Pro) = $750/month for 30 users",
+      spanishCompetitor: "$15/usuario/mes (Básico) = $75/mes para 5 usuarios\n$25/usuario/mes (Pro) = $750/mes para 30 usuarios",
       hebrewCompetitor: "$15 למשתמש בייסיק = $75 לחודש עבור 5 משתמשים\n$25 למשתמש פרו = $750 לחודש עבור 30 משתמשים",
-      arabicCompetitor: "$15 للمستخدم/شهر (أساسي) = $75/شهر لـ 5 مستخدمين\n$25 للمستخدم/شهر (محترف) = $750/شهر لـ 30 مستخدم",
       timeliner: "$29/month (fixed up to 5 users)\n$49/month (fixed up to 30 users)",
+      spanishTimeliner: "$29/mes (tarifa fija hasta 5 usuarios)\n$49/mes (tarifa fija hasta 30 usuarios)",
       hebrewTimeliner: "$29 לחודש (עד 5 משתמשים)\n$49 לחודש (עד 30 משתמשים)",
-      arabicTimeliner: "$29/شهر (ثابت حتى 5 مستخدمين)\n$49/شهر (ثابت حتى 30 مستخدم)",
       keyTakeaways: [
         {
           type: 'negative',
           text: 'Frame.io is great for quick storage and video review, but it becomes costly as teams grow and lacks advanced workflow, CRM, and marketing tools.',
-          hebrewText: 'Frame.io מצוינת לאחסון מהיר ולכתיבת הערות, אבל העלות שלה גדלה משמעותית ככל שהצוות מתרחב ואין לה פתרונות CRM, ניהול פרויקטים או כלי שיווק.',
-          arabicText: 'Frame.io ممتاز للتخزين السريع ومراجعة الفيديو، لكن تكلفته تزداد مع نمو الفريق ويفتقر إلى سير العمل المتقدم وإدارة علاقات العملاء وأدوات التسويق.'
+          spanishText: 'Frame.io es excelente para almacenamiento rápido y revisión de videos, pero se vuelve costoso a medida que los equipos crecen y carece de flujo de trabajo avanzado, CRM y herramientas de marketing.',
+          hebrewText: 'Frame.io מצוינת לאחסון מהיר ולכתיבת הערות, אבל העלות שלה גדלה משמעותית ככל שהצוות מתרחב ואין לה פתרונות CRM, ניהול פרויקטים או כלי שיווק.'
         },
         {
           type: 'positive',
           text: 'Timeliner is an all-in-one solution, combining project management, video review, media storage, CRM, marketing tools, and portfolio building in one platform.',
-          hebrewText: 'Timeliner מספקת את כל הכלים במקום אחד – ניהול פרויקטים, הערות על וידאו, אחסון מדיה, CRM, כלים שיווקיים, בניית תיק עבודות, ואינטגרציות חכמות עם וואטסאפ, מייל וסלאק.',
-          arabicText: 'Timeliner هو حل شامل يجمع بين إدارة المشاريع، مراجعة الفيديو، تخزين الوسائط، إدارة علاقات العملاء، أدوات التسويق، وبناء المحفظة في منصة واحدة.'
+          spanishText: 'Timeliner es una solución todo en uno que combina gestión de proyectos, revisión de videos, almacenamiento de medios, CRM, herramientas de marketing y creación de portafolio en una sola plataforma.',
+          hebrewText: 'Timeliner מספקת את כל הכלים במקום אחד – ניהול פרויקטים, הערות על וידאו, אחסון מדיה, CRM, כלים שיווקיים, בניית תיק עבודות, ואינטגרציות חכמות עם וואטסאפ, מייל וסלאק.'
         }
       ]
     },
@@ -59,7 +59,7 @@ export const frameioData: Competitor = {
       hebrewCompetitor: "תיוגים בסיסיים בלבד",
       arabicCompetitor: "علامات أساسية فقط",
       timeliner: "List, Kanban, Pool, and Chart Status Groups",
-      hebrewTimeliner: "מערכת מתקדמת עם רשימות, Kanban, Pool ותרשימים מבוססים סטטוס",
+      hebrewTimeliner: "מערכת מתקדמת עם רשימות, Kanban, Pool ותרשימים מבוססי סטטוס",
       arabicTimeliner: "قوائم، كانبان، مجموعات، ومخططات حالة متقدمة"
     },
     {
