@@ -45,6 +45,21 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
       ? basePrice * 0.85 
       : basePrice;
 
+  const spanishFeatures: Feature[] = [
+    { text: 'Almacenamiento: 1TB', tooltip: 'Almacenamiento seguro en la nube con respaldo automático', showTooltip: true },
+    { text: 'Miembros: Hasta 5', tooltip: 'Gestiona un equipo de hasta 5 usuarios con diferentes permisos', showTooltip: true },
+    { text: 'Proyectos Activos: Ilimitados', tooltip: 'Trabaja en proyectos ilimitados simultáneamente', showTooltip: true },
+    { text: 'Acceso de Clientes: 3 Invitados por proyecto', tooltip: 'Colabora con tres clientes por proyecto', showTooltip: true }
+  ];
+
+  const spanishExtraFeatures: Feature[] = [
+    { text: 'Sistema de notificaciones de pago inteligente', tooltip: 'Define modelos de precios (por video, proyecto, etapas o contratos). Automatiza las notificaciones de pago y el seguimiento para asegurarte de que no se pierda ningún pago.', showTooltip: true },
+    { text: 'Herramientas de gestión de equipo', tooltip: 'Herramientas avanzadas para la gestión de tareas y tiempo', showTooltip: true },
+    { text: 'CRM integrado y automatización', tooltip: 'Integración con herramientas como formularios de Facebook y WhatsApp Business. Gestiona leads, seguimientos y clientes con pipeline de propuestas y comunicación rápida.', showTooltip: true },
+    { text: 'Creador de portafolio', tooltip: 'Herramienta avanzada para crear portafolios profesionales', showTooltip: true },
+    { text: 'Briefings interactivos de proyecto', tooltip: 'Usa herramientas de IA para hacer lluvia de ideas con clientes sobre ideas, referencias y términos. Evita expectativas desalineadas y ofrece una experiencia fluida al cliente.', showTooltip: true }
+  ];
+
   const hebrewFeatures: Feature[] = [
     { text: 'אחסון: 1TB', tooltip: 'אחסון מאובטח בענן עם גיבוי אוטומטי', showTooltip: true },
     { text: 'משתמשים: עד 5', tooltip: 'ניהול צוות של עד 5 משתמשים עם הרשאות שונות', showTooltip: true },
