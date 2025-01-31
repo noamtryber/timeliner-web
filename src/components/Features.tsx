@@ -113,19 +113,11 @@ export const Features = () => {
               featurePairs.push(group.features.slice(i, i + 2));
             }
 
-            // Define spotlight backgrounds for mobile view
-            const spotlightClasses = [
-              "md:bg-none bg-[radial-gradient(ellipse_at_center,rgba(155,135,245,0.15),rgba(155,135,245,0)_70%)] relative before:absolute before:inset-0 before:bg-gradient-to-b before:from-primary/5 before:via-transparent before:to-primary/5 before:opacity-50",
-              "md:bg-none bg-[radial-gradient(ellipse_at_center,rgba(214,188,250,0.2),rgba(214,188,250,0)_70%)] relative before:absolute before:inset-0 before:bg-gradient-to-b before:from-accent/10 before:via-transparent before:to-accent/10 before:opacity-50",
-              "md:bg-none bg-[radial-gradient(ellipse_at_center,rgba(126,105,171,0.15),rgba(126,105,171,0)_70%)] relative before:absolute before:inset-0 before:bg-gradient-to-b before:from-secondary/5 before:via-transparent before:to-secondary/5 before:opacity-50",
-              "md:bg-none bg-[radial-gradient(ellipse_at_center,rgba(123,97,255,0.2),rgba(123,97,255,0)_70%)] relative before:absolute before:inset-0 before:bg-gradient-to-b before:from-primary/10 before:via-transparent before:to-primary/10 before:opacity-50"
-            ][index];
-
             return (
               <div key={group.id} className="space-y-8 md:space-y-12">
-                <div className={`grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-center p-4 md:p-0 rounded-xl ${spotlightClasses}`}>
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-center">
                   {/* Feature List - Mobile: Top, Desktop: Side */}
-                  <div className={`col-span-1 md:col-span-2 space-y-2 flex flex-col order-1 md:order-${isAlternate ? '3' : '1'} relative z-10`}>
+                  <div className={`col-span-1 md:col-span-2 space-y-2 flex flex-col order-1 md:order-${isAlternate ? '3' : '1'}`}>
                     {/* Mobile view: 2 buttons per row */}
                     <div className="grid grid-cols-2 gap-2 md:hidden">
                       {featurePairs.map((pair, pairIndex) => (
