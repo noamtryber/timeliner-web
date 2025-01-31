@@ -45,6 +45,19 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
       ? basePrice * 0.85 
       : basePrice;
 
+  const spanishFeatures: Feature[] = [
+    { text: 'Almacenamiento: 2TB', tooltip: 'Almacenamiento seguro en la nube con respaldo automático', showTooltip: true },
+    { text: 'Miembros: Hasta 30', tooltip: 'Gestiona un equipo de hasta 30 usuarios con diferentes permisos', showTooltip: true },
+    { text: 'Proyectos Activos: Ilimitados', tooltip: 'Trabaja en proyectos ilimitados simultáneamente', showTooltip: true },
+    { text: 'Acceso de Clientes: 10 Invitados por proyecto', tooltip: 'Colabora con 10 clientes simultáneamente por proyecto', showTooltip: true }
+  ];
+
+  const spanishExtraFeatures: Feature[] = [
+    { text: 'Análisis avanzado de proyectos', tooltip: 'Métricas detalladas e informes personalizados', showTooltip: true },
+    { text: 'Integración con herramientas externas', tooltip: 'Conéctate con tus herramientas favoritas', showTooltip: true },
+    { text: 'Soporte prioritario 24/7', tooltip: 'Asistencia técnica dedicada', showTooltip: true }
+  ];
+
   const hebrewFeatures: Feature[] = [
     { text: 'אחסון: 2TB', tooltip: 'אחסון מאובטח בענן עם גיבוי אוטומטי', showTooltip: true },
     { text: 'משתמשים: עד 30', tooltip: 'ניהול צוות של עד 30 משתמשים עם הרשאות שונות', showTooltip: true },
@@ -86,6 +99,8 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
   const getFeatures = () => {
     switch (language) {
+      case 'es':
+        return spanishFeatures;
       case 'he':
         return hebrewFeatures;
       case 'ar':
@@ -97,6 +112,8 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
   const getExtraFeatures = () => {
     switch (language) {
+      case 'es':
+        return spanishExtraFeatures;
       case 'he':
         return hebrewExtraFeatures;
       case 'ar':
@@ -108,6 +125,8 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
   const getTitle = () => {
     switch (language) {
+      case 'es':
+        return 'Profesional';
       case 'he':
         return 'פרו';
       case 'ar':
@@ -119,6 +138,8 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
   const getSubtitle = () => {
     switch (language) {
+      case 'es':
+        return 'Para Agencias y Equipos en Crecimiento';
       case 'he':
         return 'לסוכנויות וצוותים בצמיחה';
       case 'ar':
@@ -130,6 +151,8 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
   const getButtonText = () => {
     switch (language) {
+      case 'es':
+        return 'Comenzar Prueba Gratis';
       case 'he':
         return 'התחילו היום בחינם';
       case 'ar':
@@ -141,6 +164,8 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
   const getWhyButtonText = () => {
     switch (language) {
+      case 'es':
+        return '¿Por qué Profesional?';
       case 'he':
         return 'למה פרו?';
       case 'ar':
@@ -152,6 +177,8 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
   const getEverythingInText = () => {
     switch (language) {
+      case 'es':
+        return 'Todo en Básico, más:';
       case 'he':
         return 'הכל בבייסיק, בנוסף:';
       case 'ar':

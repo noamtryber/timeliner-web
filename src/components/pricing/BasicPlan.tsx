@@ -92,6 +92,8 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
   const getFeatures = () => {
     switch (language) {
+      case 'es':
+        return spanishFeatures;
       case 'he':
         return hebrewFeatures;
       case 'ar':
@@ -103,6 +105,8 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
   const getExtraFeatures = () => {
     switch (language) {
+      case 'es':
+        return spanishExtraFeatures;
       case 'he':
         return hebrewExtraFeatures;
       case 'ar':
@@ -114,12 +118,12 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
   const getTitle = () => {
     switch (language) {
+      case 'es':
+        return 'Básico';
       case 'he':
         return 'בייסיק';
       case 'ar':
         return 'الأساسي';
-      case 'es':
-        return 'Básico';
       default:
         return 'Essentials';
     }
@@ -127,12 +131,12 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
   const getSubtitle = () => {
     switch (language) {
+      case 'es':
+        return 'Para Equipos Pequeños y Freelancers';
       case 'he':
         return 'לצוותים קטנים ופרילנסרים';
       case 'ar':
         return 'للفرق الصغيرة والمستقلين';
-      case 'es':
-        return 'Para Equipos Pequeños y Freelancers';
       default:
         return 'For Small Teams and Freelancers';
     }
@@ -140,12 +144,12 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
   const getPopularLabel = () => {
     switch (language) {
+      case 'es':
+        return 'Más Popular';
       case 'he':
         return 'הכי פופולרי';
       case 'ar':
         return 'الأكثر شعبية';
-      case 'es':
-        return 'Más Popular';
       default:
         return 'Most Popular';
     }
@@ -153,12 +157,12 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
   const getWhyButtonText = () => {
     switch (language) {
+      case 'es':
+        return '¿Por qué Básico?';
       case 'he':
         return 'למה בייסיק?';
       case 'ar':
         return 'لماذا الأساسي؟';
-      case 'es':
-        return '¿Por qué Básico?';
       default:
         return 'Why Essentials?';
     }
@@ -166,12 +170,12 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
   const getTrialButtonText = () => {
     switch (language) {
+      case 'es':
+        return 'Comenzar Prueba Gratis';
       case 'he':
         return 'התחילו היום בחינם';
       case 'ar':
         return 'ابدأ النسخة التجريبية المجانية';
-      case 'es':
-        return 'Comenzar Prueba Gratis';
       default:
         return 'Start Free Trial';
     }
@@ -179,12 +183,12 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
   const getEverythingInFreeText = () => {
     switch (language) {
+      case 'es':
+        return 'Todo en Gratis, más:';
       case 'he':
         return 'הכל בחינמי, בנוסף:';
       case 'ar':
         return 'كل شيء في المجاني، بالإضافة إلى:';
-      case 'es':
-        return 'Todo en Gratis, más:';
       default:
         return 'Everything in Free, plus:';
     }
@@ -198,7 +202,7 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
 
       <PlanIcon Icon={Database} color="accent" />
       <h3 className="text-xl font-bold mb-1">{getTitle()}</h3>
-      <p className="text-white/70 mb-2 text-[0.927rem]">{getSubtitle()}</p>
+      <p className="text-white/70 mb-2">{getSubtitle()}</p>
       <div className="text-2xl font-bold mb-2">
         ${price.toFixed(2)}
         <span className="text-base font-normal">

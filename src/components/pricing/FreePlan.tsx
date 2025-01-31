@@ -23,6 +23,16 @@ export const FreePlan = ({ content }: FreePlanProps) => {
     navigate(`${prefix}/signup`);
   };
 
+  const spanishFeatures = [
+    { text: 'Almacenamiento: 3GB', tooltip: 'Almacenamiento básico en la nube' },
+    { text: 'Miembros: 1', tooltip: 'Una cuenta personal' },
+    { text: 'Proyectos Activos: 2', tooltip: 'Trabaja en hasta 2 proyectos simultáneamente' },
+    { text: 'Acceso de Clientes: 1 Invitado Por Proyecto', tooltip: 'Colabora con un cliente por proyecto', showTooltip: true },
+    { text: 'Seguimiento Inteligente de Revisiones', tooltip: 'Deja comentarios precisos con marcas de tiempo' },
+    { text: 'Portales de Cliente Simples', tooltip: 'Portal simple para compartir y recibir feedback', showTooltip: true },
+    { text: 'Almacenamiento Seguro de Medios', tooltip: 'Almacenamiento seguro para archivos multimedia' }
+  ];
+
   const hebrewFeatures = [
     { text: 'אחסון: 3GB', tooltip: 'אחסון בסיסי בענן' },
     { text: 'משתמשים: 1', tooltip: 'חשבון אישי אחד' },
@@ -55,6 +65,8 @@ export const FreePlan = ({ content }: FreePlanProps) => {
 
   const getFeatures = () => {
     switch (language) {
+      case 'es':
+        return spanishFeatures;
       case 'he':
         return hebrewFeatures;
       case 'ar':
@@ -66,12 +78,12 @@ export const FreePlan = ({ content }: FreePlanProps) => {
 
   const getTitle = () => {
     switch (language) {
+      case 'es':
+        return 'Gratis';
       case 'he':
         return 'חינמי';
       case 'ar':
         return 'مجاني';
-      case 'es':
-        return 'Gratis';
       default:
         return 'Free';
     }
@@ -79,12 +91,12 @@ export const FreePlan = ({ content }: FreePlanProps) => {
 
   const getSubtitle = () => {
     switch (language) {
+      case 'es':
+        return 'Perfecto para Comenzar';
       case 'he':
         return 'מושלם להתחלה';
       case 'ar':
         return 'مثالي للبدء';
-      case 'es':
-        return 'Perfecto para Comenzar';
       default:
         return 'Perfect for Getting Started';
     }
@@ -92,12 +104,12 @@ export const FreePlan = ({ content }: FreePlanProps) => {
 
   const getButtonText = () => {
     switch (language) {
+      case 'es':
+        return 'Comenzar Gratis';
       case 'he':
         return 'התחילו היום בחינם';
       case 'ar':
         return 'ابدأ مجانًا';
-      case 'es':
-        return 'Comenzar Gratis';
       default:
         return 'Get Started Free';
     }
