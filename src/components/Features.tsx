@@ -112,7 +112,7 @@ export const Features = () => {
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-center">
                   {/* Feature List - Mobile: First */}
                   <div className={`col-span-1 md:col-span-2 md:space-y-2 flex flex-col order-1 md:${isAlternate ? 'order-3' : 'order-1'}`}>
-                    <div className="grid grid-cols-2 md:grid-cols-1 gap-2 mb-6 md:mb-0">
+                    <div className={`grid grid-cols-2 md:grid-cols-1 gap-2 mb-6 md:mb-0 ${group.features.length === 1 ? 'grid-cols-1 justify-items-center' : ''}`}>
                       {group.features.map((feature, idx) => (
                         <button
                           key={feature.id}
@@ -120,8 +120,8 @@ export const Features = () => {
                             ...prev,
                             [group.id]: feature.id
                           }))}
-                          className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center justify-center md:justify-start
-                            ${group.features.length === 1 ? 'col-span-2 max-w-[200px] mx-auto' : ''}
+                          className={`p-3 rounded-lg transition-all duration-300 flex items-center justify-center md:justify-start
+                            ${group.features.length === 1 ? 'w-1/2 mx-auto md:w-full md:mx-0' : 'w-full'}
                             ${selectedFeatures[group.id] === feature.id 
                               ? 'bg-primary/10 font-semibold text-primary' 
                               : 'hover:bg-card/50 text-white'
