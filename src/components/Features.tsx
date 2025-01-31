@@ -11,6 +11,8 @@ import { featureGroupsAr } from "./features/featureDataAr";
 import { iconComponents } from "./features/iconComponents";
 import { Button } from "./ui/button";
 
+// ... keep existing code (imports and initial setup)
+
 export const Features = () => {
   const [openDialog, setOpenDialog] = useState<string | null>(null);
   const { language, isRTL } = useLanguage();
@@ -113,18 +115,22 @@ export const Features = () => {
                   {/* Feature List - Mobile: First */}
                   <div className={`col-span-1 md:col-span-2 md:space-y-2 flex flex-col order-1 md:${isAlternate ? 'order-3' : 'order-1'}`}>
                     <div className={`grid grid-cols-2 md:grid-cols-1 gap-2 mb-6 md:mb-0 ${group.features.length === 1 ? 'grid-cols-1 justify-items-center' : ''}`}>
-                      {group.features.map((feature, idx) => (
+                      {group.features.map((feature) => (
                         <button
                           key={feature.id}
                           onClick={() => setSelectedFeatures(prev => ({
                             ...prev,
                             [group.id]: feature.id
                           }))}
-                          className={`p-3 rounded-lg transition-all duration-300 flex items-center justify-center md:justify-start
+                          className={`p-3 rounded-lg transition-all duration-300 flex items-center 
                             ${group.features.length === 1 ? 'w-1/2 mx-auto md:w-full md:mx-0' : 'w-full'}
                             ${selectedFeatures[group.id] === feature.id 
                               ? 'bg-primary/10 font-semibold text-primary' 
                               : 'hover:bg-card/50 text-white'
+                            }
+                            ${feature.title.includes('WhatsApp') || feature.title.includes('Slack') || feature.title.includes('Transparent Payment Tracking') 
+                              ? 'justify-start' 
+                              : 'justify-center md:justify-start'
                             }`}
                         >
                           <span className="text-sm">{feature.title}</span>
@@ -133,6 +139,7 @@ export const Features = () => {
                     </div>
                   </div>
 
+                  {/* Rest of the component */}
                   {/* Video Preview - Mobile: Second */}
                   <div className={`col-span-1 md:col-span-6 order-2 
                     ${isAlternate 
