@@ -92,13 +92,8 @@ export const Features = () => {
   return (
     <section id="features" className="py-20 overflow-hidden relative" dir={isRTL ? 'rtl' : 'ltr'}>
       {/* Background gradients */}
-      {/* Main gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/10 via-primary/5 to-transparent pointer-events-none" />
-      
-      {/* Enhanced upper radial gradient */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(123,97,255,0.15),rgba(123,97,255,0)_50%)] pointer-events-none" />
-      
-      {/* Organic gradient spots */}
       <div className="absolute -top-[10%] left-[20%] w-[60vw] h-[60vw] bg-[radial-gradient(circle_at_center,rgba(123,97,255,0.12),rgba(123,97,255,0)_70%)] blur-3xl pointer-events-none animate-pulse" />
       <div className="absolute top-[30%] right-[10%] w-[45vw] h-[45vw] bg-[radial-gradient(circle_at_center,rgba(214,188,250,0.15),rgba(214,188,250,0)_70%)] blur-3xl pointer-events-none" />
       <div className="absolute top-[60%] left-[30%] w-[50vw] h-[50vw] bg-[radial-gradient(circle_at_center,rgba(155,135,245,0.12),rgba(155,135,245,0)_70%)] blur-3xl pointer-events-none" />
@@ -115,28 +110,51 @@ export const Features = () => {
             return (
               <div key={group.id} className="space-y-8 md:space-y-12">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-center">
-                  {/* Feature List */}
-                  <div className={`col-span-1 md:col-span-2 space-y-2 flex flex-col order-2 
-                    ${isAlternate ? 'md:order-3' : 'md:order-1'}`}>
-                    {group.features.map((feature) => (
-                      <button
-                        key={feature.id}
-                        onClick={() => setSelectedFeatures(prev => ({
-                          ...prev,
-                          [group.id]: feature.id
-                        }))}
-                        className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center ${isRTL ? 'text-right' : 'text-left'}
-                          ${selectedFeatures[group.id] === feature.id 
-                            ? 'bg-primary/10 font-semibold text-primary' 
-                            : 'hover:bg-card/50 text-white'
-                          }`}
-                      >
-                        <span className="text-sm">{feature.title}</span>
-                      </button>
-                    ))}
+                  {/* Feature List - Mobile: First */}
+                  <div className={`col-span-1 md:col-span-2 md:space-y-2 flex flex-col order-1 md:${isAlternate ? 'order-3' : 'order-1'}`}>
+                    <div className="grid grid-cols-2 md:grid-cols-1 gap-2 mb-6 md:mb-0">
+                      {group.features.map((feature, idx) => (
+                        <button
+                          key={feature.id}
+                          onClick={() => setSelectedFeatures(prev => ({
+                            ...prev,
+                            [group.id]: feature.id
+                          }))}
+                          className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center justify-center md:justify-start
+                            ${group.features.length === 1 ? 'col-span-2 max-w-[200px] mx-auto' : ''}
+                            ${selectedFeatures[group.id] === feature.id 
+                              ? 'bg-primary/10 font-semibold text-primary' 
+                              : 'hover:bg-card/50 text-white'
+                            }`}
+                        >
+                          <span className="text-sm">{feature.title}</span>
+                        </button>
+                      ))}
+                    </div>
                   </div>
 
-                  {/* Feature Details */}
+                  {/* Video Preview - Mobile: Second */}
+                  <div className={`col-span-1 md:col-span-6 order-2 
+                    ${isAlternate 
+                      ? 'md:order-1 md:col-start-1' 
+                      : 'md:col-start-7 md:order-3'
+                    }`}>
+                    <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl w-full">
+                      {currentFeature && (
+                        <iframe
+                          src={getVimeoEmbedUrl(getFeatureMedia(currentFeature.id, 'preview'))}
+                          className="w-full h-full scale-[1.01]"
+                          allow="autoplay; fullscreen; picture-in-picture"
+                          style={{
+                            border: 'none',
+                            background: 'transparent',
+                          }}
+                        />
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Feature Details - Mobile: Third */}
                   {currentFeature && (
                     <div className={`col-span-1 md:col-span-4 order-3 ${isAlternate ? 'md:order-2' : 'md:order-2'}`}>
                       <div className="flex flex-col justify-center h-full">
@@ -161,7 +179,7 @@ export const Features = () => {
                               onClick={() => setOpenDialog(currentFeature.id)}
                               variant="outline"
                               size="lg"
-                              className="w-full md:w-auto text-lg"
+                              className="w-1/2 md:w-auto text-lg"
                             >
                               {language === 'he' ? 'למדו עוד' : language === 'ar' ? 'اعرف المزيد' : 'Learn More'}
                             </Button>
@@ -170,27 +188,6 @@ export const Features = () => {
                       </div>
                     </div>
                   )}
-
-                  {/* Video Preview */}
-                  <div className={`col-span-1 md:col-span-6 order-1 flex items-center
-                    ${isAlternate 
-                      ? 'md:order-1 md:col-start-1' 
-                      : 'md:col-start-7 md:order-3'
-                    }`}>
-                    <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl w-full">
-                      {currentFeature && (
-                        <iframe
-                          src={getVimeoEmbedUrl(getFeatureMedia(currentFeature.id, 'preview'))}
-                          className="w-full h-full scale-[1.01]"
-                          allow="autoplay; fullscreen; picture-in-picture"
-                          style={{
-                            border: 'none',
-                            background: 'transparent',
-                          }}
-                        />
-                      )}
-                    </div>
-                  </div>
                 </div>
               </div>
             );
