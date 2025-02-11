@@ -39,7 +39,7 @@ export const Pricing = () => {
           setPricingPeriod={setPricingPeriod} 
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-[1]">
           <FreePlan content={data?.content.free} />
           <BasicPlan 
             content={data?.content.basic}
