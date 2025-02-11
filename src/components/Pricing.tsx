@@ -1,18 +1,15 @@
-
 import { useState } from "react";
 import { PricingHeader } from "./pricing/PricingHeader";
+import { FreePlan } from "./pricing/FreePlan";
 import { BasicPlan } from "./pricing/BasicPlan";
 import { ProPlan } from "./pricing/ProPlan";
 import { EnterprisePlan } from "./pricing/EnterprisePlan";
-import { usePricingData } from "@/hooks/usePricingData";
+import { usePricingContent } from "@/hooks/usePricingContent";
 import { Skeleton } from "./ui/skeleton";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 export const Pricing = () => {
   const [pricingPeriod, setPricingPeriod] = useState<'monthly' | 'quarterly' | 'yearly'>('monthly');
-  const { language } = useLanguage();
-  const { data, isLoading } = usePricingData();
-  const isRTL = language === 'he' || language === 'ar';
+  const { data, isLoading } = usePricingContent();
 
   if (isLoading) {
     return (
@@ -28,35 +25,9 @@ export const Pricing = () => {
     );
   }
 
-  const getPlanData = (planId: string) => {
-    return data?.plans.find(plan => plan.plan_id === planId);
-  };
-
-  const getPlanRules = (planId: string) => {
-    return data?.rules.filter(rule => rule.plan_id === planId) || [];
-  };
-
-  // Calculate prices based on period
-  const getPeriodMultiplier = () => {
-    switch (pricingPeriod) {
-      case 'yearly':
-        return { multiplier: 12, discount: 0.25 }; // 25% discount for yearly
-      case 'quarterly':
-        return { multiplier: 3, discount: 0.15 }; // 15% discount for quarterly
-      default:
-        return { multiplier: 1, discount: 0 };
-    }
-  };
-
-  const calculatePrice = (basePrice: number | null) => {
-    if (!basePrice) return null;
-    const { multiplier, discount } = getPeriodMultiplier();
-    return (basePrice * multiplier * (1 - discount));
-  };
-
   return (
     <section id="pricing" className="py-24 relative overflow-hidden">
-      {/* Background gradients */}
+      {/* Background gradients with negative z-index */}
       <div className="absolute -z-10 -top-[40%] -left-[20%] w-[70%] h-[100%] bg-primary/20 blur-[120px] rounded-full animate-pulse" />
       <div className="absolute -z-10 -bottom-[40%] -right-[20%] w-[70%] h-[100%] bg-secondary/20 blur-[120px] rounded-full animate-pulse delay-1000" />
       
@@ -66,20 +37,19 @@ export const Pricing = () => {
           setPricingPeriod={setPricingPeriod} 
         />
 
-        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ${isRTL ? 'direction-rtl' : ''}`}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <FreePlan content={data?.content.free} />
           <BasicPlan 
-            planData={getPlanData('basic')}
+            content={data?.content.basic}
+            video={data?.videos.basic}
             pricingPeriod={pricingPeriod}
-            calculatePrice={calculatePrice}
           />
           <ProPlan 
-            planData={getPlanData('pro')}
+            content={data?.content.pro}
+            video={data?.videos.pro}
             pricingPeriod={pricingPeriod}
-            calculatePrice={calculatePrice}
           />
-          <EnterprisePlan 
-            planData={getPlanData('enterprise')}
-          />
+          <EnterprisePlan content={data?.content.enterprise} />
         </div>
       </div>
     </section>
