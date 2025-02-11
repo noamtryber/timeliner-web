@@ -48,6 +48,104 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     navigate(`${prefix}/signup`);
   };
 
+  const getTitle = () => {
+    switch (language) {
+      case 'he':
+        return 'סטודיו';
+      case 'ar':
+        return 'ستوديو';
+      case 'es':
+        return 'Estudio';
+      default:
+        return 'Studio';
+    }
+  };
+
+  const getSubtitle = () => {
+    switch (language) {
+      case 'he':
+        return 'לסוכנויות וצוותים בצמיחה';
+      case 'ar':
+        return 'للوكالات والفرق النامية';
+      case 'es':
+        return 'Para Agencias y Equipos en Crecimiento';
+      default:
+        return 'For Growing Agencies and Teams';
+    }
+  };
+
+  const getWhyButtonText = () => {
+    switch (language) {
+      case 'he':
+        return 'למה סטודיו?';
+      case 'ar':
+        return 'لماذا ستوديو؟';
+      case 'es':
+        return '¿Por qué Estudio?';
+      default:
+        return 'Why Studio?';
+    }
+  };
+
+  const getButtonText = () => {
+    switch (language) {
+      case 'he':
+        return 'התחל עכשיו';
+      case 'ar':
+        return 'ابدأ الآن';
+      case 'es':
+        return 'Comenzar ahora';
+      default:
+        return 'Get Started';
+    }
+  };
+
+  const getEverythingInText = () => {
+    switch (language) {
+      case 'he':
+        return 'כולל גם:';
+      case 'ar':
+        return 'يشمل أيضاً:';
+      case 'es':
+        return 'También incluye:';
+      default:
+        return 'Also includes:';
+    }
+  };
+
+  const getExtraFeatures = () => {
+    switch (language) {
+      case 'he':
+        return [
+          { text: 'תכונות AI מתקדמות', tooltip: 'כלים מתקדמים מבוססי AI' },
+          { text: 'יצוא מותאם אישית', tooltip: 'אפשרויות יצוא מותאמות אישית' },
+          { text: 'גיבוי מתקדם', tooltip: 'גיבוי אוטומטי ושחזור' },
+          { text: 'תמיכה VIP', tooltip: 'תמיכה מועדפת ומענה מהיר' }
+        ];
+      case 'ar':
+        return [
+          { text: 'ميزات AI متقدمة', tooltip: 'أدوات متقدمة قائمة على الذكاء الاصطناعي' },
+          { text: 'تصدير مخصص', tooltip: 'خيارات تصدير مخصصة' },
+          { text: 'نسخ احتياطي متقدم', tooltip: 'نسخ احتياطي تلقائي واستعادة' },
+          { text: 'دعم VIP', tooltip: 'دعم ذو أولوية واستجابة سريعة' }
+        ];
+      case 'es':
+        return [
+          { text: 'Funciones AI avanzadas', tooltip: 'Herramientas avanzadas basadas en IA' },
+          { text: 'Exportación personalizada', tooltip: 'Opciones de exportación personalizadas' },
+          { text: 'Respaldo avanzado', tooltip: 'Respaldo automático y recuperación' },
+          { text: 'Soporte VIP', tooltip: 'Soporte prioritario y respuesta rápida' }
+        ];
+      default:
+        return [
+          { text: 'Advanced AI features', tooltip: 'Advanced AI-powered tools' },
+          { text: 'Custom export', tooltip: 'Custom export options' },
+          { text: 'Advanced backup', tooltip: 'Automatic backup and recovery' },
+          { text: 'VIP support', tooltip: 'Priority support and fast response' }
+        ];
+    }
+  };
+
   const totalStorage = 2 + (extraStorage * 0.1); // Base 2TB + extra storage in TB
   const totalMembers = 5 + extraMembers; // Base 5 members + extra members
   
