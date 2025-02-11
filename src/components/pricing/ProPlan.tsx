@@ -435,7 +435,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
             <Check className="h-3 w-3 text-primary flex-shrink-0" />
             <span className="w-20 flex-shrink-0">{getProjectsLabel()}</span>
           </div>
-          <div className={`flex items-center gap-1.5 ${isRTL ? 'flex-row-reverse order-0' : ''}`}>
+          <div className={`flex items-center gap-1.5 ${isRTL ? 'flex-row-reverse order-0 justify-end' : ''}`}>
             <span>{getUnlimitedText()}</span>
           </div>
         </div>
@@ -445,7 +445,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
             <Check className="h-3 w-3 text-primary flex-shrink-0" />
             <span className="w-20 flex-shrink-0">{getClientsLabel()}</span>
           </div>
-          <div className={`flex items-center gap-1.5 ${isRTL ? 'flex-row-reverse order-0' : ''}`}>
+          <div className={`flex items-center gap-1.5 flex-1 ${isRTL ? 'flex-row-reverse order-0 justify-end' : ''}`}>
             <span>{getUnlimitedText()}</span>
           </div>
         </div>
