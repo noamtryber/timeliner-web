@@ -97,13 +97,13 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
   const getEverythingInText = () => {
     switch (language) {
       case 'he':
-        return 'כולל גם:';
+        return 'כל מה שכלול בחבילה הבסיסית, ובנוסף:';
       case 'ar':
-        return 'يشمل أيضاً:';
+        return 'كل ما هو متضمن في الأساسي، بالإضافة إلى:';
       case 'es':
-        return 'También incluye:';
+        return 'Todo lo incluido en Esencial, más:';
       default:
-        return 'Also includes:';
+        return 'Everything in Essentials, plus:';
     }
   };
 
@@ -212,7 +212,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
         </DialogContent>
       </Dialog>
 
-      <div className="space-y-2 flex-grow">
+      <div className="space-y-1.5 flex-grow">
         <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
           <Check className="h-3 w-3 text-primary flex-shrink-0" />
           <span className="w-20 flex-shrink-0">Storage:</span>
@@ -224,7 +224,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
               step={1}
               value={[extraStorage]}
               onValueChange={([value]) => setExtraStorage(value)}
-              className="w-16 flex-shrink-0"
+              className="w-20 flex-shrink-0"
             />
             {extraStorage > 0 && (
               <span className="text-xs text-primary whitespace-nowrap">+${(extraStorage * 1.5).toFixed(2)}/mo</span>
@@ -243,7 +243,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
               step={1}
               value={[extraMembers]}
               onValueChange={([value]) => setExtraMembers(value)}
-              className="w-16 flex-shrink-0"
+              className="w-20 flex-shrink-0"
             />
             {extraMembers > 0 && (
               <span className="text-xs text-primary whitespace-nowrap">+${(extraMembers * 7).toFixed(2)}/mo</span>
@@ -259,7 +259,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
           </div>
         </div>
 
-        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 mb-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 mb-1.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
           <Check className="h-3 w-3 text-primary flex-shrink-0" />
           <span className="w-20 flex-shrink-0">Clients:</span>
           <div className="flex items-center gap-1.5">
