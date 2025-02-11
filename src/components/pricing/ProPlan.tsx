@@ -293,9 +293,9 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
   const getPricePerMonthText = () => {
     switch (language) {
       case 'he':
-        return 'ש"ח/לחודש';
+        return 'דולר/לחודש';
       case 'ar':
-        return 'شهر/دولار';
+        return 'دولارات/شهر';
       case 'es':
         return '$/mes';
       default:
