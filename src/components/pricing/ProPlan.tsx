@@ -363,8 +363,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
               step={1}
               value={[extraStorage]}
               onValueChange={([value]) => setExtraStorage(value)}
-              className={`w-20 flex-shrink-0 ${isRTL ? 'scale-x-[-1]' : ''}`}
-              dir={isRTL ? 'rtl' : 'ltr'}
+              className="w-20 flex-shrink-0"
             />
             {extraStorage > 0 && (
               <span className="text-xs text-primary whitespace-nowrap">+${storagePrice.toFixed(2)}/mo</span>
@@ -423,8 +422,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
               step={1}
               value={[extraMembers]}
               onValueChange={([value]) => handleMemberLimit(value)}
-              className={`w-20 flex-shrink-0 ${isRTL ? 'scale-x-[-1]' : ''}`}
-              dir={isRTL ? 'rtl' : 'ltr'}
+              className="w-20 flex-shrink-0"
             />
             {extraMembers > 0 && (
               <span className="text-xs text-primary whitespace-nowrap">+${membersPrice.toFixed(2)}/mo</span>
@@ -438,7 +436,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
             <span>{getProjectsLabel()}</span>
           </div>
           <div className="flex-1" />
-          <span className={isRTL ? 'text-right' : ''}>{getUnlimitedText()}</span>
+          <span>{getUnlimitedText()}</span>
         </div>
 
         <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 mb-1.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
@@ -447,7 +445,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
             <span>{getClientsLabel()}</span>
           </div>
           <div className="flex-1" />
-          <span className={isRTL ? 'text-right' : ''}>{getUnlimitedText()}</span>
+          <span>{getUnlimitedText()}</span>
         </div>
 
         <div className="border-t border-white/10 pt-2">
