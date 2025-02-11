@@ -52,7 +52,7 @@ export const ComparisonDialog = () => {
             {getButtonText()}
           </Button>
         </DialogTrigger>
-        <DialogContent className="max-w-[90vw] max-h-[90vh] overflow-y-auto bg-[#1A1F2C]/95 backdrop-blur-sm border-primary/20">
+        <DialogContent className="max-w-[90vw] max-h-[90vh] overflow-y-auto bg-[#1A1F2C]/95 backdrop-blur-sm border-primary/20 z-[9999]">
           <DialogHeader>
             <DialogTitle className="text-xl font-bold">{getTitleText()}</DialogTitle>
           </DialogHeader>
