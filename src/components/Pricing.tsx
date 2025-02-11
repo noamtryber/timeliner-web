@@ -1,9 +1,11 @@
+
 import { useState } from "react";
 import { PricingHeader } from "./pricing/PricingHeader";
 import { FreePlan } from "./pricing/FreePlan";
 import { BasicPlan } from "./pricing/BasicPlan";
 import { ProPlan } from "./pricing/ProPlan";
 import { EnterprisePlan } from "./pricing/EnterprisePlan";
+import { ComparisonDialog } from "./pricing/ComparisonDialog";
 import { usePricingContent } from "@/hooks/usePricingContent";
 import { Skeleton } from "./ui/skeleton";
 
@@ -51,6 +53,8 @@ export const Pricing = () => {
           />
           <EnterprisePlan content={data?.content.enterprise} />
         </div>
+
+        <ComparisonDialog />
       </div>
     </section>
   );
