@@ -49,14 +49,43 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
   };
 
   const basePrice = 49;
-  const storagePrice = extraStorage * 1.80;
-  const membersPrice = extraMembers * 9.99;
+  const storagePrice = extraStorage * 1.5; // $1.50 per 100GB
+  const membersPrice = extraMembers * 7; // $7 per extra member
   
   const totalPrice = pricingPeriod === 'yearly' 
     ? (basePrice + storagePrice + membersPrice) * 0.75 
     : pricingPeriod === 'quarterly' 
       ? (basePrice + storagePrice + membersPrice) * 0.85 
       : (basePrice + storagePrice + membersPrice);
+
+  const totalStorage = 2000 + (extraStorage * 100); // Base 2TB (2000GB) + extra storage
+  const totalMembers = 5 + extraMembers; // Base 5 members + extra members
+
+  const getStorageSummary = () => {
+    switch (language) {
+      case 'he':
+        return `סה״כ אחסון: ${totalStorage >= 1000 ? (totalStorage / 1000).toFixed(1) + 'TB' : totalStorage + 'GB'}`;
+      case 'ar':
+        return `إجمالي التخزين: ${totalStorage >= 1000 ? (totalStorage / 1000).toFixed(1) + 'TB' : totalStorage + 'GB'}`;
+      case 'es':
+        return `Almacenamiento total: ${totalStorage >= 1000 ? (totalStorage / 1000).toFixed(1) + 'TB' : totalStorage + 'GB'}`;
+      default:
+        return `Total Storage: ${totalStorage >= 1000 ? (totalStorage / 1000).toFixed(1) + 'TB' : totalStorage + 'GB'}`;
+    }
+  };
+
+  const getMembersSummary = () => {
+    switch (language) {
+      case 'he':
+        return `סה״כ משתמשים: ${totalMembers}`;
+      case 'ar':
+        return `إجمالي الأعضاء: ${totalMembers}`;
+      case 'es':
+        return `Total miembros: ${totalMembers}`;
+      default:
+        return `Total Members: ${totalMembers}`;
+    }
+  };
 
   const hebrewFeatures: Feature[] = [
     { text: 'אחסון: 2TB', tooltip: 'אחסון מאובטח בענן עם גיבוי אוטומטי', showTooltip: true },
@@ -205,7 +234,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     switch (language) {
       case 'he':
         return `חברי צוות = גישה מלאה לצוות הפנימי שלך (עריכה, הקצאת משימות, ניהול פרויקטים).
-אורחי לקוח = מאשרים, לא עורכים (יכולים לצפות, להגיב, לאשר, להוריד ולהעלות קבצים גולמיים).
+אורחי לקוח = מאשרים, ל�� עורכים (יכולים לצפות, להגיב, לאשר, להוריד ולהעלות קבצים גולמיים).
 למה לשלם על יותר חברים?
 יותר חברי צוות = זמן סיום פרויקט מהיר יותר ושיתוף פעולה טוב יותר.
 יותר עורכים = קיבולת עבודה גבוהה יותר ויעילות.
@@ -295,59 +324,65 @@ More structure = less confusion, clear ownership per task.`;
       </Dialog>
       
       <div className="space-y-1.5 mb-2 flex-grow">
-        {getFeatures().map((feature, index) => (
+        {getFeatures().slice(0, 1).map((feature, index) => (
           <PlanFeature key={index} text={feature.text} tooltip={feature.tooltip} showTooltip={feature.showTooltip} isRTL={isRTL} />
         ))}
-        
+
+        <div className="space-y-4 my-4">
+          <div>
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-white/70">Extra Members (+{extraMembers})</span>
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <HelpCircle className="h-4 w-4 text-white/40 hover:text-white/60 cursor-help" />
+                    </TooltipTrigger>
+                    <TooltipContent className="max-w-[300px] bg-card/95 backdrop-blur border-primary/20 text-white/90 whitespace-pre-line">
+                      {getMemberSeatsTooltip()}
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
+              <span className="text-sm text-primary">+${(extraMembers * 7).toFixed(2)}/mo</span>
+            </div>
+            <Slider
+              defaultValue={[0]}
+              max={20}
+              step={1}
+              value={[extraMembers]}
+              onValueChange={([value]) => setExtraMembers(value)}
+              className="my-4"
+            />
+            <p className="text-sm text-white/70 text-right">{getMembersSummary()}</p>
+          </div>
+
+          <div>
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm text-white/70">Extra Storage ({extraStorage * 100}GB)</span>
+              <span className="text-sm text-primary">+${(extraStorage * 1.5).toFixed(2)}/mo</span>
+            </div>
+            <Slider
+              defaultValue={[0]}
+              max={50}
+              step={1}
+              value={[extraStorage]}
+              onValueChange={([value]) => setExtraStorage(value)}
+              className="my-4"
+            />
+            <p className="text-sm text-white/70 text-right">{getStorageSummary()}</p>
+          </div>
+        </div>
+
+        {getFeatures().slice(1).map((feature, index) => (
+          <PlanFeature key={`main-${index}`} text={feature.text} tooltip={feature.tooltip} showTooltip={feature.showTooltip} isRTL={isRTL} />
+        ))}
+
         <div className="my-3 border-t border-white/10 pt-2">
           <p className="text-sm font-medium mb-2">{getEverythingInText()}</p>
           {getExtraFeatures().map((feature, index) => (
             <PlanFeature key={`extra-${index}`} text={feature.text} tooltip={feature.tooltip} showTooltip={feature.showTooltip} isRTL={isRTL} />
           ))}
-        </div>
-      </div>
-
-      <div className="space-y-4 my-4">
-        <div>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-white/70">Extra Storage ({extraStorage * 100}GB)</span>
-            <span className="text-sm text-primary">+${(extraStorage * 1.80).toFixed(2)}/mo</span>
-          </div>
-          <Slider
-            defaultValue={[0]}
-            max={100}
-            step={1}
-            value={[extraStorage]}
-            onValueChange={([value]) => setExtraStorage(value)}
-            className="my-4"
-          />
-        </div>
-
-        <div>
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-white/70">Extra Members (+{extraMembers})</span>
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <HelpCircle className="h-4 w-4 text-white/40 hover:text-white/60 cursor-help" />
-                  </TooltipTrigger>
-                  <TooltipContent className="max-w-[300px] bg-card/95 backdrop-blur border-primary/20 text-white/90 whitespace-pre-line">
-                    {getMemberSeatsTooltip()}
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </div>
-            <span className="text-sm text-primary">+${(extraMembers * 9.99).toFixed(2)}/mo</span>
-          </div>
-          <Slider
-            defaultValue={[0]}
-            max={25}
-            step={1}
-            value={[extraMembers]}
-            onValueChange={([value]) => setExtraMembers(value)}
-            className="my-4"
-          />
         </div>
       </div>
       
