@@ -84,7 +84,7 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
         return [
           { text: 'מערכת התראות תשלומים חכמה', tooltip: 'הגדרת מודלים לתמחור (לפי וידאו, פרויקט, שלבים או חוזים). אוטומציה של התראות תשלומים ומעקב כדי להבטיח שאף תשלום לא יוחמץ.', showTooltip: true },
           { text: 'כלי ניהול צוות', tooltip: 'כלים מתקדמים לניהול משימות וזמן', showTooltip: true },
-          { text: 'CRM מובנה ואוטומציה', tooltip: 'אינטגרציה עם כלים כמו טפסי לידים של פייסבוק ו-WhatsApp Business. ניהול לידים, מעקבים ולקוחות עם צינור הצעות ותקשורת מהירה.', showTooltip: true },
+          { text: 'CRM מובנה ואוטומציה', tooltip: 'אינטגרציה עם כלים כמו טפסי לידים של פייסבוק ו-WhatsApp Business. ניהול לידים, מ��קבים ולקוחות עם צינור הצעות ותקשורת מהירה.', showTooltip: true },
           { text: 'בונה תיק עבודות', tooltip: 'כלי מתקדם ליצירת תיקי עבודות מקצועיים', showTooltip: true },
           { text: 'תקצירי פרויקט אינטראקטיביים', tooltip: 'השתמש בכלי AI לסיעור מוחות עם לקוחות על רעיונות, רפרנסים ותנאים. מנע ציפיות לא מתואמות וספק חוויית לקוח חלקה.', showTooltip: true }
         ];
@@ -194,7 +194,7 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
   };
 
   return (
-    <Card className={`relative border border-[#2A2F3C] bg-gradient-to-b from-[#1A1F2C]/50 to-[#1A1F2C] p-3 flex flex-col animate-fade-up delay-400 hover:scale-105 transition-transform duration-300 relative ${isRTL ? 'text-right' : ''}`}>
+    <Card className={`relative border border-[#2A2F3C] bg-[#151a25] p-3 flex flex-col animate-fade-up delay-400 hover:scale-105 transition-transform duration-300 relative ${isRTL ? 'text-right' : ''}`}>
       <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary via-accent to-primary px-4 py-1 rounded-full text-sm font-semibold text-white shadow-lg">
         {getPopularLabel()}
       </div>
