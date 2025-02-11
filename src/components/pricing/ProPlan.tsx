@@ -1,4 +1,3 @@
-
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Crown, Play, Check, HelpCircle } from "lucide-react";
@@ -91,13 +90,13 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
   const getButtonText = () => {
     switch (language) {
       case 'he':
-        return 'התחל עכשיו';
+        return 'התחילו היום בחינם';
       case 'ar':
-        return 'ابدأ الآن';
+        return 'جرّب مجاناً الآن';
       case 'es':
-        return 'Comenzar ahora';
+        return 'Prueba Gratuita';
       default:
-        return 'Get Started';
+        return 'Start Free Trial';
     }
   };
 
