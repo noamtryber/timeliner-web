@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Crown, Play, HelpCircle } from "lucide-react";
+import { Crown, Play, Check } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -15,12 +15,6 @@ import { PricingContent } from "@/hooks/usePricingContent";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useState } from "react";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 
 interface ProPlanProps {
   content?: PricingContent;
