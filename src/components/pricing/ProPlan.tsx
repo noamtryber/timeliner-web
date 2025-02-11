@@ -290,6 +290,19 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     }
   };
 
+  const getPricePerMonthText = () => {
+    switch (language) {
+      case 'he':
+        return 'ש"ח/לחודש';
+      case 'ar':
+        return 'شهر/دولار';
+      case 'es':
+        return '$/mes';
+      default:
+        return '$/mo';
+    }
+  };
+
   return (
     <Card className={`relative border border-[#2A2F3C] bg-[#151a25] p-3 flex flex-col animate-fade-up delay-500 hover:scale-105 transition-transform duration-300 ${isRTL ? 'text-right' : ''}`}>
       <PlanIcon Icon={Crown} color="primary" />
@@ -363,10 +376,11 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
               step={1}
               value={[extraStorage]}
               onValueChange={([value]) => setExtraStorage(value)}
-              className="w-20 flex-shrink-0"
+              className={`w-20 flex-shrink-0 ${isRTL ? 'scale-x-[-1]' : ''}`}
+              dir={isRTL ? 'rtl' : 'ltr'}
             />
             {extraStorage > 0 && (
-              <span className="text-xs text-primary whitespace-nowrap">+${storagePrice.toFixed(2)}/mo</span>
+              <span className="text-xs text-primary whitespace-nowrap">+${storagePrice.toFixed(2)}{getPricePerMonthText()}</span>
             )}
           </div>
         </div>
@@ -422,10 +436,11 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
               step={1}
               value={[extraMembers]}
               onValueChange={([value]) => handleMemberLimit(value)}
-              className="w-20 flex-shrink-0"
+              className={`w-20 flex-shrink-0 ${isRTL ? 'scale-x-[-1]' : ''}`}
+              dir={isRTL ? 'rtl' : 'ltr'}
             />
             {extraMembers > 0 && (
-              <span className="text-xs text-primary whitespace-nowrap">+${membersPrice.toFixed(2)}/mo</span>
+              <span className="text-xs text-primary whitespace-nowrap">+${membersPrice.toFixed(2)}{getPricePerMonthText()}</span>
             )}
           </div>
         </div>
