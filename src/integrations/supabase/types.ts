@@ -72,6 +72,117 @@ export type Database = {
         }
         Relationships: []
       }
+      plan_features: {
+        Row: {
+          created_at: string
+          feature_key: string
+          feature_tooltip: string | null
+          feature_value: string
+          id: number
+          language: string
+          plan_id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          feature_key: string
+          feature_tooltip?: string | null
+          feature_value: string
+          id?: number
+          language?: string
+          plan_id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          feature_key?: string
+          feature_tooltip?: string | null
+          feature_value?: string
+          id?: number
+          language?: string
+          plan_id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      pricing_plans: {
+        Row: {
+          base_members: number | null
+          base_price: number | null
+          base_storage: number | null
+          created_at: string
+          id: number
+          language: string
+          max_client_guests: number | null
+          plan_id: string
+          subtitle: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          base_members?: number | null
+          base_price?: number | null
+          base_storage?: number | null
+          created_at?: string
+          id?: number
+          language?: string
+          max_client_guests?: number | null
+          plan_id: string
+          subtitle: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          base_members?: number | null
+          base_price?: number | null
+          base_storage?: number | null
+          created_at?: string
+          id?: number
+          language?: string
+          max_client_guests?: number | null
+          plan_id?: string
+          subtitle?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      pricing_rules: {
+        Row: {
+          created_at: string
+          id: number
+          max_units: number
+          min_units: number
+          plan_id: string
+          rule_type: string
+          unit_price: number
+          unit_size: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          max_units: number
+          min_units: number
+          plan_id: string
+          rule_type: string
+          unit_price: number
+          unit_size: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          max_units?: number
+          min_units?: number
+          plan_id?: string
+          rule_type?: string
+          unit_price?: number
+          unit_size?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
