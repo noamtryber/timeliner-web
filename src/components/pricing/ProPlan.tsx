@@ -1,3 +1,4 @@
+
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Crown, Play, Check, HelpCircle } from "lucide-react";
@@ -264,7 +265,12 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
                 <TooltipTrigger asChild>
                   <HelpCircle className="h-3.5 w-3.5 text-primary/70 cursor-help" />
                 </TooltipTrigger>
-                <TooltipContent side="right" className="max-w-[300px] p-4 space-y-3">
+                <TooltipContent 
+                  side="right" 
+                  className="max-w-[300px] p-4 space-y-3 bg-[#1A1F2C]/95 backdrop-blur-sm z-[10000] border border-primary/20 rounded-lg shadow-xl"
+                  sideOffset={5}
+                  align="end"
+                >
                   <div>
                     <p className="font-semibold mb-1">Member Seats</p>
                     <p className="text-sm text-white/70">Full access for your internal team (edit, assign tasks, manage projects).</p>
