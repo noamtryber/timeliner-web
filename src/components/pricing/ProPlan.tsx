@@ -223,7 +223,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
           desc2: 'موافقون، ليسوا محررين (يمكنهم العرض، التعليق، الموافقة، التنزيل، ورفع الملفات).',
           title3: 'لماذا تدفع مقابل المزيد من الأعضاء؟',
           desc3: 'المزيد من الأعضاء = وقت استجابة أسرع، تعاون منظم.',
-          desc4: 'المزيد ����ن المحررين = توزيع أفضل لعبء العمل، تسليم أسرع.',
+          desc4: 'المزيد ������ن المحررين = توزيع أفضل لعبء العمل، تسليم أسرع.',
           enterprise: 'اتصل بمبيعات Enterprise'
         };
       case 'es':
@@ -430,24 +430,22 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
           </div>
         </div>
 
-        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse justify-start' : ''}`}>
-          <div className={`flex items-center gap-2 ${isRTL ? 'order-1' : ''}`}>
+        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <div className={`flex items-center gap-2 ${isRTL ? 'mr-0' : ''}`}>
             <Check className="h-3 w-3 text-primary flex-shrink-0" />
-            <span className="w-20 flex-shrink-0">{getProjectsLabel()}</span>
+            <span>{getProjectsLabel()}</span>
           </div>
-          <div className={`flex items-center gap-1.5 ${isRTL ? 'flex-row-reverse order-0 justify-end' : ''}`}>
-            <span>{getUnlimitedText()}</span>
-          </div>
+          <div className="flex-1" />
+          <span>{getUnlimitedText()}</span>
         </div>
 
-        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 mb-1.5 ${isRTL ? 'flex-row-reverse justify-start' : ''}`}>
-          <div className={`flex items-center gap-2 ${isRTL ? 'order-1' : ''}`}>
+        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 mb-1.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <div className={`flex items-center gap-2 ${isRTL ? 'mr-0' : ''}`}>
             <Check className="h-3 w-3 text-primary flex-shrink-0" />
-            <span className="w-20 flex-shrink-0">{getClientsLabel()}</span>
+            <span>{getClientsLabel()}</span>
           </div>
-          <div className={`flex-1 flex items-center gap-1.5 ${isRTL ? 'flex-row-reverse order-0 justify-end' : ''}`}>
-            <span>{getUnlimitedText()}</span>
-          </div>
+          <div className="flex-1" />
+          <span>{getUnlimitedText()}</span>
         </div>
 
         <div className="border-t border-white/10 pt-2">
