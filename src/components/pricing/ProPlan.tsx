@@ -176,6 +176,120 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     }
   };
 
+  const getStorageLabel = () => {
+    switch (language) {
+      case 'he':
+        return 'אחסון:';
+      case 'ar':
+        return 'التخزين:';
+      case 'es':
+        return 'Almacenamiento:';
+      default:
+        return 'Storage:';
+    }
+  };
+
+  const getMembersLabel = () => {
+    switch (language) {
+      case 'he':
+        return 'חברי צוות:';
+      case 'ar':
+        return 'الأعضاء:';
+      case 'es':
+        return 'Miembros:';
+      default:
+        return 'Members:';
+    }
+  };
+
+  const getMembersTooltipContent = () => {
+    switch (language) {
+      case 'he':
+        return {
+          title1: 'מקומות לחברי צוות',
+          desc1: 'גישה מלאה לצוות הפנימי שלך (עריכה, הקצאת משימות, ניהול פרויקטים).',
+          title2: 'אורחים-לקוחות',
+          desc2: 'מאשרים, לא עורכים (יכולים לצפות, להגיב, לאשר, להוריד ולהעלות קבצים).',
+          title3: 'למה לשלם על חברי צוות נוספים?',
+          desc3: 'יותר חברי צוות = זמן תגובה מהיר יותר, שיתוף פעולה מובנה.',
+          desc4: 'יותר עורכים = חלוקת עומס טובה יותר, משלוח מהיר יותר.',
+          enterprise: 'צור קשר עם מכירות Enterprise'
+        };
+      case 'ar':
+        return {
+          title1: 'مقاعد الأعضاء',
+          desc1: 'وصول كامل لفريقك الداخلي (تحرير، تعيين المهام، إدارة المشاريع).',
+          title2: 'ضيوف العملاء',
+          desc2: 'موافقون، ليسوا محررين (يمكنهم العرض، التعليق، الموافقة، التنزيل، ورفع الملفات).',
+          title3: 'لماذا تدفع مقابل المزيد من الأعضاء؟',
+          desc3: 'المزيد من الأعضاء = وقت استجابة أسرع، تعاون منظم.',
+          desc4: 'المزيد من المحررين = توزيع أفضل لعبء العمل، تسليم أسرع.',
+          enterprise: 'اتصل بمبيعات Enterprise'
+        };
+      case 'es':
+        return {
+          title1: 'Asientos de Miembros',
+          desc1: 'Acceso completo para tu equipo interno (editar, asignar tareas, gestionar proyectos).',
+          title2: 'Invitados Clientes',
+          desc2: 'Aprobadores, no editores (pueden ver, comentar, aprobar, descargar y subir archivos).',
+          title3: '¿Por qué pagar por más miembros?',
+          desc3: 'Más miembros = respuesta más rápida, colaboración estructurada.',
+          desc4: 'Más editores = mejor distribución de trabajo, entrega más rápida.',
+          enterprise: 'Contactar Ventas Enterprise'
+        };
+      default:
+        return {
+          title1: 'Member Seats',
+          desc1: 'Full access for your internal team (edit, assign tasks, manage projects).',
+          title2: 'Client Guests',
+          desc2: 'Approvers, not editors (can view, comment, approve, download, and upload raw files).',
+          title3: 'Why pay for more members?',
+          desc3: 'More members = faster turnaround, structured collaboration.',
+          desc4: 'More editors = better workload distribution, faster delivery.',
+          enterprise: 'Contact Enterprise Sales'
+        };
+    }
+  };
+
+  const getProjectsLabel = () => {
+    switch (language) {
+      case 'he':
+        return 'פרויקטים:';
+      case 'ar':
+        return 'المشاريع:';
+      case 'es':
+        return 'Proyectos:';
+      default:
+        return 'Projects:';
+    }
+  };
+
+  const getClientsLabel = () => {
+    switch (language) {
+      case 'he':
+        return 'לקוחות:';
+      case 'ar':
+        return 'العملاء:';
+      case 'es':
+        return 'Clientes:';
+      default:
+        return 'Clients:';
+    }
+  };
+
+  const getUnlimitedText = () => {
+    switch (language) {
+      case 'he':
+        return 'ללא הגבלה';
+      case 'ar':
+        return 'غير محدود';
+      case 'es':
+        return 'Ilimitado';
+      default:
+        return 'Unlimited';
+    }
+  };
+
   return (
     <Card className={`relative border border-[#2A2F3C] bg-[#151a25] p-3 flex flex-col animate-fade-up delay-500 hover:scale-105 transition-transform duration-300 ${isRTL ? 'text-right' : ''}`}>
       <PlanIcon Icon={Crown} color="primary" />
@@ -238,7 +352,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
       <div className="space-y-1.5 flex-grow">
         <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
           <Check className="h-3 w-3 text-primary flex-shrink-0" />
-          <span className="w-20 flex-shrink-0">Storage:</span>
+          <span className="w-20 flex-shrink-0">{getStorageLabel()}</span>
           <div className="flex items-center gap-1.5 flex-1 min-w-0">
             <span className="whitespace-nowrap">{totalStorage.toFixed(1)}TB</span>
             <Slider
@@ -258,7 +372,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
         <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
           <Check className="h-3 w-3 text-primary flex-shrink-0" />
           <div className="w-20 flex-shrink-0 flex items-center gap-1">
-            <span>Members:</span>
+            <span>{getMembersLabel()}</span>
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
@@ -271,17 +385,17 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
                   align="end"
                 >
                   <div>
-                    <p className="font-semibold mb-1">Member Seats</p>
-                    <p className="text-sm text-white/70">Full access for your internal team (edit, assign tasks, manage projects).</p>
+                    <p className="font-semibold mb-1">{getMembersTooltipContent().title1}</p>
+                    <p className="text-sm text-white/70">{getMembersTooltipContent().desc1}</p>
                   </div>
                   <div>
-                    <p className="font-semibold mb-1">Client Guests</p>
-                    <p className="text-sm text-white/70">Approvers, not editors (can view, comment, approve, download, and upload raw files).</p>
+                    <p className="font-semibold mb-1">{getMembersTooltipContent().title2}</p>
+                    <p className="text-sm text-white/70">{getMembersTooltipContent().desc2}</p>
                   </div>
                   <div>
-                    <p className="font-semibold mb-1">Why pay for more members?</p>
-                    <p className="text-sm text-white/70">More members = faster turnaround, structured collaboration.</p>
-                    <p className="text-sm text-white/70">More editors = better workload distribution, faster delivery.</p>
+                    <p className="font-semibold mb-1">{getMembersTooltipContent().title3}</p>
+                    <p className="text-sm text-white/70">{getMembersTooltipContent().desc3}</p>
+                    <p className="text-sm text-white/70">{getMembersTooltipContent().desc4}</p>
                   </div>
                   {totalMembers >= 20 && (
                     <Button 
@@ -289,7 +403,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
                       className="w-full mt-2 border-primary/50"
                       onClick={() => window.location.href = '/enterprise'}
                     >
-                      Contact Enterprise Sales
+                      {getMembersTooltipContent().enterprise}
                     </Button>
                   )}
                 </TooltipContent>
@@ -314,17 +428,17 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
         <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
           <Check className="h-3 w-3 text-primary flex-shrink-0" />
-          <span className="w-20 flex-shrink-0">Projects:</span>
+          <span className="w-20 flex-shrink-0">{getProjectsLabel()}</span>
           <div className="flex items-center gap-1.5">
-            <span>Unlimited</span>
+            <span>{getUnlimitedText()}</span>
           </div>
         </div>
 
         <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 mb-1.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
           <Check className="h-3 w-3 text-primary flex-shrink-0" />
-          <span className="w-20 flex-shrink-0">Clients:</span>
+          <span className="w-20 flex-shrink-0">{getClientsLabel()}</span>
           <div className="flex items-center gap-1.5">
-            <span>Unlimited</span>
+            <span>{getUnlimitedText()}</span>
           </div>
         </div>
 
