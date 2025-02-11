@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Crown, Play, Check } from "lucide-react";
+import { Crown, Play, Check, HelpCircle } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -8,6 +8,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { Slider } from "@/components/ui/slider";
 import { PlanFeature } from "./PlanFeature";
 import { PlanIcon } from "./PlanIcon";
@@ -164,8 +170,14 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
       ? (basePrice + storagePrice + membersPrice) * 0.85 
       : (basePrice + storagePrice + membersPrice);
 
+  const handleMemberLimit = (value: number) => {
+    if (value <= 15) {
+      setExtraMembers(value);
+    }
+  };
+
   return (
-    <Card className={`relative border border-[#2A2F3C] bg-gradient-to-b from-[#1A1F2C]/50 to-[#1A1F2C] p-3 flex flex-col animate-fade-up delay-500 hover:scale-105 transition-transform duration-300 ${isRTL ? 'text-right' : ''}`}>
+    <Card className={`relative border border-[#2A2F3C] bg-gradient-to-b from-[#1A1F2C]/80 to-[#1A1F2C] p-3 flex flex-col animate-fade-up delay-500 hover:scale-105 transition-transform duration-300 ${isRTL ? 'text-right' : ''}`}>
       <PlanIcon Icon={Crown} color="primary" />
       <h3 className="text-xl font-bold mb-1">{getTitle()}</h3>
       <p className="text-white/70 mb-2">{getSubtitle()}</p>
@@ -245,7 +257,40 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
         <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
           <Check className="h-3 w-3 text-primary flex-shrink-0" />
-          <span className="w-20 flex-shrink-0">Members:</span>
+          <div className="w-20 flex-shrink-0 flex items-center gap-1">
+            <span>Members:</span>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <HelpCircle className="h-3.5 w-3.5 text-primary/70 cursor-help" />
+                </TooltipTrigger>
+                <TooltipContent side="right" className="max-w-[300px] p-4 space-y-3">
+                  <div>
+                    <p className="font-semibold mb-1">Member Seats</p>
+                    <p className="text-sm text-white/70">Full access for your internal team (edit, assign tasks, manage projects).</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-1">Client Guests</p>
+                    <p className="text-sm text-white/70">Approvers, not editors (can view, comment, approve, download, and upload raw files).</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-1">Why pay for more members?</p>
+                    <p className="text-sm text-white/70">More members = faster turnaround, structured collaboration.</p>
+                    <p className="text-sm text-white/70">More editors = better workload distribution, faster delivery.</p>
+                  </div>
+                  {totalMembers >= 20 && (
+                    <Button 
+                      variant="outline" 
+                      className="w-full mt-2 border-primary/50"
+                      onClick={() => window.location.href = '/enterprise'}
+                    >
+                      Contact Enterprise Sales
+                    </Button>
+                  )}
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
           <div className="flex items-center gap-1.5 flex-1 min-w-0">
             <span className="whitespace-nowrap">{totalMembers}</span>
             <Slider
@@ -253,7 +298,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
               max={15}
               step={1}
               value={[extraMembers]}
-              onValueChange={([value]) => setExtraMembers(value)}
+              onValueChange={([value]) => handleMemberLimit(value)}
               className="w-20 flex-shrink-0"
             />
             {extraMembers > 0 && (
