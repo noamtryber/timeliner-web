@@ -181,7 +181,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="outline" className="w-32 mb-8 border-primary/50 hover:bg-primary/10 text-xs px-2 flex items-center gap-1.5">
+          <Button variant="outline" className="w-32 mb-3 border-primary/50 hover:bg-primary/10 text-xs px-2 flex items-center gap-1.5">
             <Play className="w-3 h-3" />
             {getWhyButtonText()}
           </Button>
@@ -213,10 +213,10 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
       </Dialog>
 
       <div className="space-y-4 flex-grow">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-[#8E9196] text-[0.927rem] w-24">Storage:</span>
+        <div className={`flex items-center gap-3 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <span className="w-24">Storage:</span>
           <div className="flex items-center gap-2 flex-1">
-            <span className="text-[#8E9196] text-[0.927rem]">{totalStorage.toFixed(1)}TB</span>
+            <span>{totalStorage.toFixed(1)}TB</span>
             <Slider
               defaultValue={[0]}
               max={30}
@@ -231,10 +231,10 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-[#8E9196] text-[0.927rem] w-24">Members:</span>
+        <div className={`flex items-center gap-3 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <span className="w-24">Members:</span>
           <div className="flex items-center gap-2 flex-1">
-            <span className="text-[#8E9196] text-[0.927rem]">{totalMembers}</span>
+            <span>{totalMembers}</span>
             <Slider
               defaultValue={[0]}
               max={15}
@@ -249,23 +249,23 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-[#8E9196] text-[0.927rem] w-24">Active Projects:</span>
+        <div className={`flex items-center gap-3 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <span className="w-24">Active Projects:</span>
           <div className="flex items-center gap-2">
-            <Check className="h-3.5 w-3.5 text-primary" />
-            <span className="text-[#8E9196] text-[0.927rem]">Unlimited</span>
+            <Check className="h-3 w-3 text-primary" />
+            <span>Unlimited</span>
           </div>
         </div>
 
-        <div className="flex items-center justify-between">
-          <span className="text-[#8E9196] text-[0.927rem] w-24">Client Access:</span>
+        <div className={`flex items-center gap-3 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <span className="w-24">Client Access:</span>
           <div className="flex items-center gap-2">
-            <Check className="h-3.5 w-3.5 text-primary" />
-            <span className="text-[#8E9196] text-[0.927rem]">Unlimited</span>
+            <Check className="h-3 w-3 text-primary" />
+            <span>Unlimited</span>
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-4 mt-4">
+        <div className="my-3 border-t border-white/10 pt-2">
           <p className="text-sm font-medium mb-2">{getEverythingInText()}</p>
           {getExtraFeatures().map((feature, index) => (
             <PlanFeature 
