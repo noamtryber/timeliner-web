@@ -1,3 +1,4 @@
+
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { usePageContent } from "@/hooks/usePageContent";
@@ -123,7 +124,10 @@ export const PricingHeader = ({ pricingPeriod, setPricingPeriod }: PricingHeader
           )}
         >
           {getPeriodText('quarterly')}
-          <span className="block text-xs text-primary">
+          <span className={cn(
+            "block text-xs",
+            pricingPeriod === 'quarterly' ? "text-white" : "text-primary"
+          )}>
             {getDiscountText('15%')}
           </span>
         </button>
@@ -137,7 +141,10 @@ export const PricingHeader = ({ pricingPeriod, setPricingPeriod }: PricingHeader
           )}
         >
           {getPeriodText('yearly')}
-          <span className="block text-xs text-primary">
+          <span className={cn(
+            "block text-xs",
+            pricingPeriod === 'yearly' ? "text-white" : "text-primary"
+          )}>
             {getDiscountText('25%')}
           </span>
         </button>
