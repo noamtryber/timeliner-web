@@ -183,7 +183,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
       case 'ar':
         return 'التخزين:';
       case 'es':
-        return 'Almacenamiento:';
+        return 'Espacio:';
       default:
         return 'Storage:';
     }
@@ -350,10 +350,12 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
       </Dialog>
 
       <div className="space-y-1.5 flex-grow">
-        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <Check className="h-3 w-3 text-primary flex-shrink-0" />
-          <span className="w-20 flex-shrink-0">{getStorageLabel()}</span>
-          <div className="flex items-center gap-1.5 flex-1 min-w-0">
+        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse justify-start' : ''}`}>
+          <div className={`flex items-center gap-2 ${isRTL ? 'order-1' : ''}`}>
+            <Check className="h-3 w-3 text-primary flex-shrink-0" />
+            <span className="w-20 flex-shrink-0">{getStorageLabel()}</span>
+          </div>
+          <div className={`flex items-center gap-1.5 flex-1 min-w-0 ${isRTL ? 'flex-row-reverse order-0' : ''}`}>
             <span className="whitespace-nowrap">{totalStorage.toFixed(1)}TB</span>
             <Slider
               defaultValue={[0]}
@@ -369,48 +371,50 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
           </div>
         </div>
 
-        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <Check className="h-3 w-3 text-primary flex-shrink-0" />
-          <div className="w-20 flex-shrink-0 flex items-center gap-1">
-            <span>{getMembersLabel()}</span>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <HelpCircle className="h-3.5 w-3.5 text-primary/70 cursor-help" />
-                </TooltipTrigger>
-                <TooltipContent 
-                  side="right" 
-                  className="max-w-[300px] p-4 space-y-3 bg-[#1A1F2C]/95 backdrop-blur-sm z-[10000] border border-primary/20 rounded-lg shadow-xl"
-                  sideOffset={5}
-                  align="end"
-                >
-                  <div>
-                    <p className="font-semibold mb-1">{getMembersTooltipContent().title1}</p>
-                    <p className="text-sm text-white/70">{getMembersTooltipContent().desc1}</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold mb-1">{getMembersTooltipContent().title2}</p>
-                    <p className="text-sm text-white/70">{getMembersTooltipContent().desc2}</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold mb-1">{getMembersTooltipContent().title3}</p>
-                    <p className="text-sm text-white/70">{getMembersTooltipContent().desc3}</p>
-                    <p className="text-sm text-white/70">{getMembersTooltipContent().desc4}</p>
-                  </div>
-                  {totalMembers >= 20 && (
-                    <Button 
-                      variant="outline" 
-                      className="w-full mt-2 border-primary/50"
-                      onClick={() => window.location.href = '/enterprise'}
-                    >
-                      {getMembersTooltipContent().enterprise}
-                    </Button>
-                  )}
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse justify-start' : ''}`}>
+          <div className={`flex items-center gap-2 ${isRTL ? 'order-1' : ''}`}>
+            <Check className="h-3 w-3 text-primary flex-shrink-0" />
+            <div className="w-20 flex-shrink-0 flex items-center gap-1">
+              <span>{getMembersLabel()}</span>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <HelpCircle className="h-3.5 w-3.5 text-primary/70 cursor-help" />
+                  </TooltipTrigger>
+                  <TooltipContent 
+                    side={isRTL ? "left" : "right"}
+                    className="max-w-[300px] p-4 space-y-3 bg-[#1A1F2C]/95 backdrop-blur-sm z-[10000] border border-primary/20 rounded-lg shadow-xl"
+                    sideOffset={5}
+                    align="end"
+                  >
+                    <div>
+                      <p className="font-semibold mb-1">{getMembersTooltipContent().title1}</p>
+                      <p className="text-sm text-white/70">{getMembersTooltipContent().desc1}</p>
+                    </div>
+                    <div>
+                      <p className="font-semibold mb-1">{getMembersTooltipContent().title2}</p>
+                      <p className="text-sm text-white/70">{getMembersTooltipContent().desc2}</p>
+                    </div>
+                    <div>
+                      <p className="font-semibold mb-1">{getMembersTooltipContent().title3}</p>
+                      <p className="text-sm text-white/70">{getMembersTooltipContent().desc3}</p>
+                      <p className="text-sm text-white/70">{getMembersTooltipContent().desc4}</p>
+                    </div>
+                    {totalMembers >= 20 && (
+                      <Button 
+                        variant="outline" 
+                        className="w-full mt-2 border-primary/50"
+                        onClick={() => window.location.href = '/enterprise'}
+                      >
+                        {getMembersTooltipContent().enterprise}
+                      </Button>
+                    )}
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
           </div>
-          <div className="flex items-center gap-1.5 flex-1 min-w-0">
+          <div className={`flex items-center gap-1.5 flex-1 min-w-0 ${isRTL ? 'flex-row-reverse order-0' : ''}`}>
             <span className="whitespace-nowrap">{totalMembers}</span>
             <Slider
               defaultValue={[0]}
@@ -426,18 +430,22 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
           </div>
         </div>
 
-        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <Check className="h-3 w-3 text-primary flex-shrink-0" />
-          <span className="w-20 flex-shrink-0">{getProjectsLabel()}</span>
-          <div className="flex items-center gap-1.5">
+        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse justify-start' : ''}`}>
+          <div className={`flex items-center gap-2 ${isRTL ? 'order-1' : ''}`}>
+            <Check className="h-3 w-3 text-primary flex-shrink-0" />
+            <span className="w-20 flex-shrink-0">{getProjectsLabel()}</span>
+          </div>
+          <div className={`flex items-center gap-1.5 ${isRTL ? 'flex-row-reverse order-0' : ''}`}>
             <span>{getUnlimitedText()}</span>
           </div>
         </div>
 
-        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 mb-1.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <Check className="h-3 w-3 text-primary flex-shrink-0" />
-          <span className="w-20 flex-shrink-0">{getClientsLabel()}</span>
-          <div className="flex items-center gap-1.5">
+        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 mb-1.5 ${isRTL ? 'flex-row-reverse justify-start' : ''}`}>
+          <div className={`flex items-center gap-2 ${isRTL ? 'order-1' : ''}`}>
+            <Check className="h-3 w-3 text-primary flex-shrink-0" />
+            <span className="w-20 flex-shrink-0">{getClientsLabel()}</span>
+          </div>
+          <div className={`flex items-center gap-1.5 ${isRTL ? 'flex-row-reverse order-0' : ''}`}>
             <span>{getUnlimitedText()}</span>
           </div>
         </div>
