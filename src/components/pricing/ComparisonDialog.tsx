@@ -41,22 +41,24 @@ export const ComparisonDialog = () => {
   };
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button 
-          variant="outline" 
-          className="mx-auto mt-8 border-primary/50 hover:bg-primary/10"
-        >
-          <ChartBar className="w-4 h-4 mr-2" />
-          {getButtonText()}
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="max-w-[90vw] max-h-[90vh] overflow-y-auto bg-[#1A1F2C]/95 backdrop-blur-sm border-primary/20">
-        <DialogHeader>
-          <DialogTitle className="text-xl font-bold">{getTitleText()}</DialogTitle>
-        </DialogHeader>
-        <ComparisonTable />
-      </DialogContent>
-    </Dialog>
+    <div className="flex justify-center">
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button 
+            variant="outline" 
+            className="mt-8 border-primary/50 hover:bg-primary/10"
+          >
+            <ChartBar className="w-4 h-4 mr-2" />
+            {getButtonText()}
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="max-w-[90vw] max-h-[90vh] overflow-y-auto bg-[#1A1F2C]/95 backdrop-blur-sm border-primary/20">
+          <DialogHeader>
+            <DialogTitle className="text-xl font-bold">{getTitleText()}</DialogTitle>
+          </DialogHeader>
+          <ComparisonTable />
+        </DialogContent>
+      </Dialog>
+    </div>
   );
 };
