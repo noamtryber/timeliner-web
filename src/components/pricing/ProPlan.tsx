@@ -196,13 +196,33 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
   const getExtraFeatures = () => {
     switch (language) {
       case 'he':
-        return hebrewExtraFeatures;
+        return [
+          { text: 'תכונות AI מתקדמות', tooltip: 'כלים מתקדמים מבוססי AI', showTooltip: true },
+          { text: 'יצוא מותאם אישית', tooltip: 'אפשרויות יצוא מותאמות אישית', showTooltip: true },
+          { text: 'גיבוי מתקדם', tooltip: 'גיבוי אוטומטי ושחזור', showTooltip: true },
+          { text: 'תמיכה VIP', tooltip: 'תמיכה מועדפת ומענה מהיר', showTooltip: true }
+        ];
       case 'ar':
-        return arabicExtraFeatures;
+        return [
+          { text: 'ميزات AI متقدمة', tooltip: 'أدوات متقدمة قائمة على الذكاء الاصطناعي', showTooltip: true },
+          { text: 'تصدير مخصص', tooltip: 'خيارات تصدير مخصصة', showTooltip: true },
+          { text: 'نسخ احتياطي متقدم', tooltip: 'نسخ احتياطي تلقائي واستعادة', showTooltip: true },
+          { text: 'دعم VIP', tooltip: 'دعم ذو أولوية واستجابة سريعة', showTooltip: true }
+        ];
       case 'es':
-        return spanishExtraFeatures;
+        return [
+          { text: 'Funciones AI avanzadas', tooltip: 'Herramientas avanzadas basadas en IA', showTooltip: true },
+          { text: 'Exportación personalizada', tooltip: 'Opciones de exportación personalizadas', showTooltip: true },
+          { text: 'Respaldo avanzado', tooltip: 'Respaldo automático y recuperación', showTooltip: true },
+          { text: 'Soporte VIP', tooltip: 'Soporte prioritario y respuesta rápida', showTooltip: true }
+        ];
       default:
-        return englishExtraFeatures;
+        return [
+          { text: 'Advanced AI features', tooltip: 'Advanced AI-powered tools', showTooltip: true },
+          { text: 'Custom export', tooltip: 'Custom export options', showTooltip: true },
+          { text: 'Advanced backup', tooltip: 'Automatic backup and recovery', showTooltip: true },
+          { text: 'VIP support', tooltip: 'Priority support and fast response', showTooltip: true }
+        ];
     }
   };
 
