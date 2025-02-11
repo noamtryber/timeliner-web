@@ -117,31 +117,31 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     switch (language) {
       case 'he':
         return [
-          { text: 'תכונות AI מתקדמות', tooltip: 'כלים מתקדמים מבוססי AI' },
-          { text: 'יצוא מותאם אישית', tooltip: 'אפשרויות יצוא מותאמות אישית' },
-          { text: 'גיבוי מתקדם', tooltip: 'גיבוי אוטומטי ושחזור' },
-          { text: 'תמיכה VIP', tooltip: 'תמיכה מועדפת ומענה מהיר' }
+          { text: 'תכונות AI מתקדמות', tooltip: 'כלים מתקדמים מבוססי AI', showTooltip: true },
+          { text: 'יצוא מותאם אישית', tooltip: 'אפשרויות יצוא מותאמות אישית', showTooltip: true },
+          { text: 'גיבוי מתקדם', tooltip: 'גיבוי אוטומטי ושחזור', showTooltip: true },
+          { text: 'תמיכה VIP', tooltip: 'תמיכה מועדפת ומענה מהיר', showTooltip: true }
         ];
       case 'ar':
         return [
-          { text: 'ميزات AI متقدمة', tooltip: 'أدوات متقدمة قائمة على الذكاء الاصطناعي' },
-          { text: 'تصدير مخصص', tooltip: 'خيارات تصدير مخصصة' },
-          { text: 'نسخ احتياطي متقدم', tooltip: 'نسخ احتياطي تلقائي واستعادة' },
-          { text: 'دعم VIP', tooltip: 'دعم ذو أولوية واستجابة سريعة' }
+          { text: 'ميزات AI متقدمة', tooltip: 'أدوات متقدمة قائمة على الذكاء الاصطناعي', showTooltip: true },
+          { text: 'تصدير مخصص', tooltip: 'خيارات تصدير مخصصة', showTooltip: true },
+          { text: 'نسخ احتياطي متقدم', tooltip: 'نسخ احتياطي تلقائي واستعادة', showTooltip: true },
+          { text: 'دعم VIP', tooltip: 'دعم ذو أولوية واستجابة سريعة', showTooltip: true }
         ];
       case 'es':
         return [
-          { text: 'Funciones AI avanzadas', tooltip: 'Herramientas avanzadas basadas en IA' },
-          { text: 'Exportación personalizada', tooltip: 'Opciones de exportación personalizadas' },
-          { text: 'Respaldo avanzado', tooltip: 'Respaldo automático y recuperación' },
-          { text: 'Soporte VIP', tooltip: 'Soporte prioritario y respuesta rápida' }
+          { text: 'Funciones AI avanzadas', tooltip: 'Herramientas avanzadas basadas en IA', showTooltip: true },
+          { text: 'Exportación personalizada', tooltip: 'Opciones de exportación personalizadas', showTooltip: true },
+          { text: 'Respaldo avanzado', tooltip: 'Respaldo automático y recuperación', showTooltip: true },
+          { text: 'Soporte VIP', tooltip: 'Soporte prioritario y respuesta rápida', showTooltip: true }
         ];
       default:
         return [
-          { text: 'Advanced AI features', tooltip: 'Advanced AI-powered tools' },
-          { text: 'Custom export', tooltip: 'Custom export options' },
-          { text: 'Advanced backup', tooltip: 'Automatic backup and recovery' },
-          { text: 'VIP support', tooltip: 'Priority support and fast response' }
+          { text: 'Advanced AI features', tooltip: 'Advanced AI-powered tools', showTooltip: true },
+          { text: 'Custom export', tooltip: 'Custom export options', showTooltip: true },
+          { text: 'Advanced backup', tooltip: 'Automatic backup and recovery', showTooltip: true },
+          { text: 'VIP support', tooltip: 'Priority support and fast response', showTooltip: true }
         ];
     }
   };
@@ -218,38 +218,51 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
         </DialogContent>
       </Dialog>
 
-      <div className="space-y-6 flex-grow">
-        <div className="flex items-center gap-4">
-          <span className="text-white/90 flex-shrink-0">Storage: {totalStorage.toFixed(1)}TB</span>
-          <Slider
-            defaultValue={[0]}
-            max={30}
-            step={1}
-            value={[extraStorage]}
-            onValueChange={([value]) => setExtraStorage(value)}
-            className="w-32 flex-shrink-0"
-          />
-          {extraStorage > 0 && (
-            <span className="text-xs text-primary">+${(extraStorage * 1.5).toFixed(2)}/mo</span>
-          )}
+      <div className="space-y-4 flex-grow">
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-white/90 w-24">Storage:</span>
+          <div className="flex items-center gap-2 flex-1">
+            <span className="text-white/90">{totalStorage.toFixed(1)}TB</span>
+            <Slider
+              defaultValue={[0]}
+              max={30}
+              step={1}
+              value={[extraStorage]}
+              onValueChange={([value]) => setExtraStorage(value)}
+              className="w-24 flex-shrink-0"
+            />
+            {extraStorage > 0 && (
+              <span className="text-xs text-primary">+${(extraStorage * 1.5).toFixed(2)}/mo</span>
+            )}
+          </div>
         </div>
 
-        <div className="flex items-center gap-4">
-          <span className="text-white/90 flex-shrink-0">{totalMembers} members</span>
-          <Slider
-            defaultValue={[0]}
-            max={15}
-            step={1}
-            value={[extraMembers]}
-            onValueChange={([value]) => setExtraMembers(value)}
-            className="w-32 flex-shrink-0"
-          />
-          {extraMembers > 0 && (
-            <span className="text-xs text-primary">+${(extraMembers * 7).toFixed(2)}/mo</span>
-          )}
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-white/90 w-24">Members:</span>
+          <div className="flex items-center gap-2 flex-1">
+            <span className="text-white/90">{totalMembers}</span>
+            <Slider
+              defaultValue={[0]}
+              max={15}
+              step={1}
+              value={[extraMembers]}
+              onValueChange={([value]) => setExtraMembers(value)}
+              className="w-24 flex-shrink-0"
+            />
+            {extraMembers > 0 && (
+              <span className="text-xs text-primary">+${(extraMembers * 7).toFixed(2)}/mo</span>
+            )}
+          </div>
         </div>
 
-        <div className="border-t border-white/10 pt-4">
+        <div className="flex items-center justify-between">
+          <span className="text-white/90 w-24">Client Access:</span>
+          <div className="flex items-center gap-2 flex-1">
+            <span className="text-white/90">Unlimited</span>
+          </div>
+        </div>
+
+        <div className="border-t border-white/10 pt-4 mt-4">
           <p className="text-sm font-medium mb-2">{getEverythingInText()}</p>
           {getExtraFeatures().map((feature, index) => (
             <PlanFeature 
