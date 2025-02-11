@@ -140,12 +140,23 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     }
   };
 
+  const getDiscountedPrice = (price: number) => {
+    switch (pricingPeriod) {
+      case 'yearly':
+        return price * 0.75; // 25% off
+      case 'quarterly':
+        return price * 0.85; // 15% off
+      default:
+        return price;
+    }
+  };
+
   const totalStorage = 2 + (extraStorage * 0.1); // Base 2TB + extra storage in TB
   const totalMembers = 5 + extraMembers; // Base 5 members + extra members
   
   const basePrice = 49;
-  const storagePrice = extraStorage * 1.5; // $1.50 per 100GB
-  const membersPrice = extraMembers * 7; // $7 per extra member
+  const storagePrice = getDiscountedPrice(extraStorage * 1.5); // $1.50 per 100GB with discount
+  const membersPrice = getDiscountedPrice(extraMembers * 7); // $7 per extra member with discount
   
   const totalPrice = pricingPeriod === 'yearly' 
     ? (basePrice + storagePrice + membersPrice) * 0.75 
@@ -227,7 +238,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
               className="w-20 flex-shrink-0"
             />
             {extraStorage > 0 && (
-              <span className="text-xs text-primary whitespace-nowrap">+${(extraStorage * 1.5).toFixed(2)}/mo</span>
+              <span className="text-xs text-primary whitespace-nowrap">+${storagePrice.toFixed(2)}/mo</span>
             )}
           </div>
         </div>
@@ -246,7 +257,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
               className="w-20 flex-shrink-0"
             />
             {extraMembers > 0 && (
-              <span className="text-xs text-primary whitespace-nowrap">+${(extraMembers * 7).toFixed(2)}/mo</span>
+              <span className="text-xs text-primary whitespace-nowrap">+${membersPrice.toFixed(2)}/mo</span>
             )}
           </div>
         </div>
