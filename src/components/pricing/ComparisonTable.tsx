@@ -1,4 +1,3 @@
-
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Check, X } from "lucide-react";
 
@@ -228,7 +227,7 @@ const getFeatureData = (language: string): FeatureRow[] => {
           enterprise: true
         },
         {
-          feature: "בקרת גרסאות והיסטוריה",
+          feature: "בקרת גרסאות והistorיה",
           free: false,
           essentials: true,
           studio: true,
@@ -589,29 +588,38 @@ const getFeatureData = (language: string): FeatureRow[] => {
   }
 };
 
+const renderValue = (value: boolean | string, rowFeature?: string) => {
+  if (typeof value === "boolean") {
+    return value ? (
+      <Check className="w-5 h-5 text-primary mx-auto" />
+    ) : (
+      <X className="w-5 h-5 text-red-500/70 mx-auto" />
+    );
+  }
+  
+  // Special handling for "Unlimited" text in LTR languages and specific rows
+  if (!isRTL && (language === 'en' || language === 'es')) {
+    const unlimitedText = language === 'es' ? 'Ilimitado' : 'Unlimited';
+    if (value === unlimitedText && (
+      rowFeature?.toLowerCase().includes('project') || 
+      rowFeature?.toLowerCase().includes('client') ||
+      rowFeature?.toLowerCase().includes('proyecto') || 
+      rowFeature?.toLowerCase().includes('cliente')
+    )) {
+      return <span className="text-sm text-white/70 -ml-4">{value}</span>;
+    }
+    // For other unlimited values
+    if (value === unlimitedText) {
+      return <span className="text-sm text-white/70 -ml-3">{value}</span>;
+    }
+  }
+  
+  return <span className="text-sm text-white/70">{value}</span>;
+};
+
 const ComparisonTable = () => {
   const { language, isRTL } = useLanguage();
   const features = getFeatureData(language);
-
-  const renderValue = (value: boolean | string) => {
-    if (typeof value === "boolean") {
-      return value ? (
-        <Check className="w-5 h-5 text-primary mx-auto" />
-      ) : (
-        <X className="w-5 h-5 text-red-500/70 mx-auto" />
-      );
-    }
-    
-    // Special handling for "Unlimited" text in LTR languages
-    if (!isRTL && (language === 'en' || language === 'es')) {
-      const unlimitedText = language === 'es' ? 'Ilimitado' : 'Unlimited';
-      if (value === unlimitedText) {
-        return <span className="text-sm text-white/70 -ml-3">{value}</span>;
-      }
-    }
-    
-    return <span className="text-sm text-white/70">{value}</span>;
-  };
 
   return (
     <div className={`w-full overflow-x-auto ${isRTL ? 'rtl' : 'ltr'}`}>
@@ -646,10 +654,10 @@ const ComparisonTable = () => {
                   <span className="text-sm text-white/90">{row.feature}</span>
                 </div>
               </td>
-              <td className="p-4 text-center">{renderValue(row.free)}</td>
-              <td className="p-4 text-center">{renderValue(row.essentials)}</td>
-              <td className="p-4 text-center">{renderValue(row.studio)}</td>
-              <td className="p-4 text-center">{renderValue(row.enterprise)}</td>
+              <td className="p-4 text-center">{renderValue(row.free, row.feature)}</td>
+              <td className="p-4 text-center">{renderValue(row.essentials, row.feature)}</td>
+              <td className="p-4 text-center">{renderValue(row.studio, row.feature)}</td>
+              <td className="p-4 text-center">{renderValue(row.enterprise, row.feature)}</td>
             </tr>
           ))}
         </tbody>
