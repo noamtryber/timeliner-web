@@ -212,62 +212,62 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
         </DialogContent>
       </Dialog>
 
-      <div className="space-y-4 flex-grow">
-        <div className={`flex items-center gap-3 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <Check className="h-3 w-3 text-primary" />
-          <span className="w-24">Storage:</span>
-          <div className="flex items-center gap-2 flex-1">
-            <span>{totalStorage.toFixed(1)}TB</span>
+      <div className="space-y-2 flex-grow">
+        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <Check className="h-3 w-3 text-primary flex-shrink-0" />
+          <span className="w-20 flex-shrink-0">Storage:</span>
+          <div className="flex items-center gap-1.5 flex-1 min-w-0">
+            <span className="whitespace-nowrap">{totalStorage.toFixed(1)}TB</span>
             <Slider
               defaultValue={[0]}
               max={30}
               step={1}
               value={[extraStorage]}
               onValueChange={([value]) => setExtraStorage(value)}
-              className="w-24 flex-shrink-0"
+              className="w-16 flex-shrink-0"
             />
             {extraStorage > 0 && (
-              <span className="text-xs text-primary">+${(extraStorage * 1.5).toFixed(2)}/mo</span>
+              <span className="text-xs text-primary whitespace-nowrap">+${(extraStorage * 1.5).toFixed(2)}/mo</span>
             )}
           </div>
         </div>
 
-        <div className={`flex items-center gap-3 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <Check className="h-3 w-3 text-primary" />
-          <span className="w-24">Members:</span>
-          <div className="flex items-center gap-2 flex-1">
-            <span>{totalMembers}</span>
+        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <Check className="h-3 w-3 text-primary flex-shrink-0" />
+          <span className="w-20 flex-shrink-0">Members:</span>
+          <div className="flex items-center gap-1.5 flex-1 min-w-0">
+            <span className="whitespace-nowrap">{totalMembers}</span>
             <Slider
               defaultValue={[0]}
               max={15}
               step={1}
               value={[extraMembers]}
               onValueChange={([value]) => setExtraMembers(value)}
-              className="w-24 flex-shrink-0"
+              className="w-16 flex-shrink-0"
             />
             {extraMembers > 0 && (
-              <span className="text-xs text-primary">+${(extraMembers * 7).toFixed(2)}/mo</span>
+              <span className="text-xs text-primary whitespace-nowrap">+${(extraMembers * 7).toFixed(2)}/mo</span>
             )}
           </div>
         </div>
 
-        <div className={`flex items-center gap-3 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <Check className="h-3 w-3 text-primary" />
-          <span className="w-24">Active Projects:</span>
-          <div className="flex items-center gap-2">
+        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <Check className="h-3 w-3 text-primary flex-shrink-0" />
+          <span className="w-20 flex-shrink-0">Projects:</span>
+          <div className="flex items-center gap-1.5">
             <span>Unlimited</span>
           </div>
         </div>
 
-        <div className={`flex items-center gap-3 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <Check className="h-3 w-3 text-primary" />
-          <span className="w-24">Client Access:</span>
-          <div className="flex items-center gap-2">
+        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 mb-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <Check className="h-3 w-3 text-primary flex-shrink-0" />
+          <span className="w-20 flex-shrink-0">Clients:</span>
+          <div className="flex items-center gap-1.5">
             <span>Unlimited</span>
           </div>
         </div>
 
-        <div className="my-3 border-t border-white/10 pt-2">
+        <div className="border-t border-white/10 pt-2">
           <p className="text-sm font-medium mb-2">{getEverythingInText()}</p>
           {getExtraFeatures().map((feature, index) => (
             <PlanFeature 
