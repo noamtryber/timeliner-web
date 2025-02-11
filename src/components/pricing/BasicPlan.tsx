@@ -45,89 +45,73 @@ export const BasicPlan = ({ content, video, pricingPeriod }: BasicPlanProps) => 
       ? basePrice * 0.85 
       : basePrice;
 
-  const hebrewFeatures: Feature[] = [
-    { text: 'אחסון: 1TB', tooltip: 'אחסון מאובטח בענן עם גיבוי אוטומטי', showTooltip: true },
-    { text: 'משתמשים: עד 5', tooltip: 'ניהול צוות של עד 5 משתמשים עם הרשאות שונות', showTooltip: true },
-    { text: 'פרויקטים פעילים: ללא הגבלה', tooltip: 'עבודה על פרויקטים ללא הגבלה במקביל', showTooltip: true },
-    { text: 'גישת לקוחות: עד 3 אורחים לפרויקט' }
-  ];
-
-  const hebrewExtraFeatures: Feature[] = [
-    { text: 'מערכת התראות תשלומים חכמה', tooltip: 'הגדרת מודלים לתמחור (לפי וידאו, פרויקט, שלבים או חוזים). אוטומציה של התראות תשלומים ומעקב כדי להבטיח שאף תשלום לא יוחמץ.', showTooltip: true },
-    { text: 'כלי ניהול צוות', tooltip: 'כלים מתקדמים לניהול משימות וזמן', showTooltip: true },
-    { text: 'CRM מובנה ואוטומציה', tooltip: 'אינטגרציה עם כלים כמו טפסי לידים של פייסבוק ו-WhatsApp Business. ניהול לידים, מעקבים ולקוחות עם צינור הצעות ותקשורת מהירה.', showTooltip: true },
-    { text: 'בונה תיק עבודות', tooltip: 'כלי מתקדם ליצירת תיקי עבודות מקצועיים', showTooltip: true },
-    { text: 'תקצירי פרויקט אינטראקטיביים', tooltip: 'השתמש בכלי AI לסיעור מוחות עם לקוחות על רעיונות, רפרנסים ותנאים. מנע ציפיות לא מתואמות וספק חוויית לקוח חלקה.', showTooltip: true }
-  ];
-
-  const arabicFeatures: Feature[] = [
-    { text: 'التخزين: 1TB', tooltip: 'تخزين آمن على السحابة مع نسخ احتياطي تلقائي', showTooltip: true },
-    { text: 'الأعضاء: حتى 5', tooltip: 'إدارة فريق يصل إلى 5 مستخدمين بأذونات مختلفة', showTooltip: true },
-    { text: 'المشاريع النشطة: غير محدود', tooltip: 'العمل على مشاريع غير محدودة في وقت واحد', showTooltip: true },
-    { text: 'وصول العملاء: حتى 3 ضيوف لكل مشروع' }
-  ];
-
-  const arabicExtraFeatures: Feature[] = [
-    { text: 'نظام إشعارات الدفع الذكي', tooltip: 'حدد نماذج التسعير (لكل فيديو، مشروع، مراحل، أو عقود). أتمتة إشعارات الدفع والتتبع للتأكد من عدم فقدان أي دفعة.', showTooltip: true },
-    { text: 'أدوات إدارة الفريق', tooltip: 'أدوات متقدمة لإدارة المهام والوقت', showTooltip: true },
-    { text: 'CRM مدمج وأتمتة', tooltip: 'التكامل مع أدوات مثل نماذج العملاء المحتملين من فيسبوك وواتساب للأعمال. إدارة العملاء المحتملين والمتابعات والعملاء مع خط أنابيب للعروض والتواصل السريع.', showTooltip: true },
-    { text: 'منشئ المحفظة', tooltip: 'أداة متقدمة لإنشاء محافظ احترافية', showTooltip: true },
-    { text: 'ملخصات المشروع التفاعلية', tooltip: 'استخدم أدوات الذكاء الاصطناعي للعصف الذهني مع العملاء حول الأفكار والمراجع والشروط. تجنب التوقعات غير المتطابقة وقدم تجربة عميل سلسة.', showTooltip: true }
-  ];
-
-  const englishFeatures: Feature[] = [
-    { text: 'Storage: 1TB', tooltip: 'Secure cloud storage with automatic backup', showTooltip: true },
-    { text: 'Members: Up to 5', tooltip: 'Manage a team of up to 5 users with different permissions', showTooltip: true },
-    { text: 'Active Projects: Unlimited', tooltip: 'Work on unlimited projects simultaneously', showTooltip: true },
-    { text: 'Client Access: Up to 3 Guests per project' }
-  ];
-
-  const englishExtraFeatures: Feature[] = [
-    { text: 'Smart payment notifications', tooltip: 'Define pricing models (per video, project, stages, or contracts). Automate payment notifications, and track to make sure no payment is missed.', showTooltip: true },
-    { text: 'Team management tools', tooltip: 'Advanced tools for task and time management', showTooltip: true },
-    { text: 'Built-in CRM & automation', tooltip: 'Integration with tools like Facebook lead forms and WhatsApp Business. Manage leads, follow-ups, and clients with proposal pipeline and quick communication.', showTooltip: true },
-    { text: 'Portfolio builder', tooltip: 'Advanced tool for creating professional portfolios', showTooltip: true },
-    { text: 'Interactive project briefs', tooltip: 'Use AI tools to brainstorm with clients about ideas, references, and terms. Avoid misaligned expectations and deliver a smooth client experience.', showTooltip: true }
-  ];
-
-  const spanishFeatures: Feature[] = [
-    { text: 'Almacenamiento: 1TB', tooltip: 'Almacenamiento seguro en la nube con respaldo automático', showTooltip: true },
-    { text: 'Miembros: Hasta 5', tooltip: 'Gestiona un equipo de hasta 5 usuarios con diferentes permisos', showTooltip: true },
-    { text: 'Proyectos activos: Ilimitados', tooltip: 'Trabaja en proyectos ilimitados simultáneamente', showTooltip: true },
-    { text: 'Acceso de clientes: Hasta 3 invitados por proyecto' }
-  ];
-
-  const spanishExtraFeatures: Feature[] = [
-    { text: 'Notificaciones inteligentes de pago', tooltip: 'Define modelos de precios (por video, proyecto, etapas o contratos). Automatiza notificaciones de pago y seguimiento para asegurar que no se pierda ningún pago.', showTooltip: true },
-    { text: 'Herramientas de gestión de equipo', tooltip: 'Herramientas avanzadas para gestión de tareas y tiempo', showTooltip: true },
-    { text: 'CRM integrado y automatización', tooltip: 'Integración con herramientas como formularios de leads de Facebook y WhatsApp Business. Gestiona leads, seguimientos y clientes con pipeline de propuestas y comunicación rápida.', showTooltip: true },
-    { text: 'Constructor de portafolio', tooltip: 'Herramienta avanzada para crear portafolios profesionales', showTooltip: true },
-    { text: 'Briefings interactivos de proyecto', tooltip: 'Usa herramientas de IA para hacer lluvia de ideas con clientes sobre ideas, referencias y términos. Evita expectativas desalineadas y ofrece una experiencia fluida al cliente.', showTooltip: true }
-  ];
-
   const getFeatures = () => {
     switch (language) {
       case 'he':
-        return hebrewFeatures;
+        return [
+          { text: 'אחסון: 1TB', tooltip: 'אחסון מאובטח בענן עם גיבוי אוטומטי', showTooltip: true },
+          { text: '4 משתמשים (כלול)', tooltip: 'ניהול צוות של עד 4 משתמשים עם הרשאות שונות', showTooltip: true },
+          { text: 'פרויקטים פעילים: ללא הגבלה', tooltip: 'עבודה על פרויקטים ללא הגבלה במקביל', showTooltip: true },
+          { text: 'גישת לקוחות: עד 3 אורחים לפרויקט' }
+        ];
       case 'ar':
-        return arabicFeatures;
+        return [
+          { text: 'التخزين: 1TB', tooltip: 'تخزين آمن على السحابة مع نسخ احتياطي تلقائي', showTooltip: true },
+          { text: '4 أعضاء (مشمول)', tooltip: 'إدارة فريق يصل إلى 4 مستخدمين بأذونات مختلفة', showTooltip: true },
+          { text: 'المشاريع النشطة: غير محدود', tooltip: 'العمل على مشاريع غير محدودة في وقت واحد', showTooltip: true },
+          { text: 'وصول العملاء: 3 ضيوف لكل مشروع' }
+        ];
       case 'es':
-        return spanishFeatures;
+        return [
+          { text: 'Almacenamiento: 1TB', tooltip: 'Almacenamiento seguro en la nube con respaldo automático', showTooltip: true },
+          { text: '4 miembros (incluido)', tooltip: 'Gestiona un equipo de hasta 4 usuarios con diferentes permisos', showTooltip: true },
+          { text: 'Proyectos activos: Ilimitados', tooltip: 'Trabaja en proyectos ilimitados simultáneamente', showTooltip: true },
+          { text: 'Acceso de clientes: 3 invitados por proyecto' }
+        ];
       default:
-        return englishFeatures;
+        return [
+          { text: 'Storage: 1TB', tooltip: 'Secure cloud storage with automatic backup', showTooltip: true },
+          { text: '4 members (included)', tooltip: 'Manage a team of up to 4 users with different permissions', showTooltip: true },
+          { text: 'Active Projects: Unlimited', tooltip: 'Work on unlimited projects simultaneously', showTooltip: true },
+          { text: 'Client Access: 3 Guests per project' }
+        ];
     }
   };
 
   const getExtraFeatures = () => {
     switch (language) {
       case 'he':
-        return hebrewExtraFeatures;
+        return [
+          { text: 'מערכת התראות תשלומים חכמה', tooltip: 'הגדרת מודלים לתמחור (לפי וידאו, פרויקט, שלבים או חוזים). אוטומציה של התראות תשלומים ומעקב כדי להבטיח שאף תשלום לא יוחמץ.', showTooltip: true },
+          { text: 'כלי ניהול צוות', tooltip: 'כלים מתקדמים לניהול משימות וזמן', showTooltip: true },
+          { text: 'CRM מובנה ואוטומציה', tooltip: 'אינטגרציה עם כלים כמו טפסי לידים של פייסבוק ו-WhatsApp Business. ניהול לידים, מעקבים ולקוחות עם צינור הצעות ותקשורת מהירה.', showTooltip: true },
+          { text: 'בונה תיק עבודות', tooltip: 'כלי מתקדם ליצירת תיקי עבודות מקצועיים', showTooltip: true },
+          { text: 'תקצירי פרויקט אינטראקטיביים', tooltip: 'השתמש בכלי AI לסיעור מוחות עם לקוחות על רעיונות, רפרנסים ותנאים. מנע ציפיות לא מתואמות וספק חוויית לקוח חלקה.', showTooltip: true }
+        ];
       case 'ar':
-        return arabicExtraFeatures;
+        return [
+          { text: 'نظام إشعارات الدفع الذكي', tooltip: 'حدد نماذج التسعير (لكل فيديو، مشروع، مراحل، أو عقود). أتمتة إشعارات الدفع والتتبع للتأكد من عدم فقدان أي دفعة.', showTooltip: true },
+          { text: 'أدوات إدارة الفريق', tooltip: 'أدوات متقدمة لإدارة المهام والوقت', showTooltip: true },
+          { text: 'CRM مدمج وأتمتة', tooltip: 'التكامل مع أدوات مثل نماذج العملاء المحتملين من فيسبوك وواتساب للأعمال. إدارة العملاء المحتملين والمتابعات والعملاء مع خط أنابيب للعروض والتواصل السريع.', showTooltip: true },
+          { text: 'منشئ المحفظة', tooltip: 'أداة متقدمة لإنشاء محافظ احترافية', showTooltip: true },
+          { text: 'ملخصات المشروع التفاعلية', tooltip: 'استخدم أدوات الذكاء الاصطناعي للعصف الذهني مع العملاء حول الأفكار والمراجع والشروط. تجنب التوقعات غير المتطابقة وقدم تجربة عميل سلسة.', showTooltip: true }
+        ];
       case 'es':
-        return spanishExtraFeatures;
+        return [
+          { text: 'Notificaciones inteligentes de pago', tooltip: 'Define modelos de precios (por video, proyecto, etapas o contratos). Automatiza notificaciones de pago y seguimiento para asegurar que no se pierda ningún pago.', showTooltip: true },
+          { text: 'Herramientas de gestión de equipo', tooltip: 'Herramientas avanzadas para gestión de tareas y tiempo', showTooltip: true },
+          { text: 'CRM integrado y automatización', tooltip: 'Integración con herramientas como formularios de leads de Facebook y WhatsApp Business. Gestiona leads, seguimientos y clientes con pipeline de propuestas y comunicación rápida.', showTooltip: true },
+          { text: 'Constructor de portafolio', tooltip: 'Herramienta avanzada para crear portafolios profesionales', showTooltip: true },
+          { text: 'Briefings interactivos de proyecto', tooltip: 'Usa herramientas de IA para hacer lluvia de ideas con clientes sobre ideas, referencias y términos. Evita expectativas desalineadas y ofrece una experiencia fluida al cliente.', showTooltip: true }
+        ];
       default:
-        return englishExtraFeatures;
+        return [
+          { text: 'Smart payment notifications', tooltip: 'Define pricing models (per video, project, stages, or contracts). Automate payment notifications, and track to make sure no payment is missed.', showTooltip: true },
+          { text: 'Team management tools', tooltip: 'Advanced tools for task and time management', showTooltip: true },
+          { text: 'Built-in CRM & automation', tooltip: 'Integration with tools like Facebook lead forms and WhatsApp Business. Manage leads, follow-ups, and clients with proposal pipeline and quick communication.', showTooltip: true },
+          { text: 'Portfolio builder', tooltip: 'Advanced tool for creating professional portfolios', showTooltip: true },
+          { text: 'Interactive project briefs', tooltip: 'Use AI tools to brainstorm with clients about ideas, references, and terms. Avoid misaligned expectations and deliver a smooth client experience.', showTooltip: true }
+        ];
     }
   };
 

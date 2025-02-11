@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Crown, Play } from "lucide-react";
+import { Crown, Play, HelpCircle } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -8,11 +8,19 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Slider } from "@/components/ui/slider";
 import { PlanFeature } from "./PlanFeature";
 import { PlanIcon } from "./PlanIcon";
 import { PricingContent } from "@/hooks/usePricingContent";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useState } from "react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface ProPlanProps {
   content?: PricingContent;
@@ -30,6 +38,8 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const isRTL = language === 'he' || language === 'ar';
+  const [extraStorage, setExtraStorage] = useState(0);
+  const [extraMembers, setExtraMembers] = useState(0);
   
   if (!content) return null;
 
@@ -39,17 +49,20 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
   };
 
   const basePrice = 49;
-  const price = pricingPeriod === 'yearly' 
-    ? basePrice * 0.75 
+  const storagePrice = extraStorage * 1.80;
+  const membersPrice = extraMembers * 9.99;
+  
+  const totalPrice = pricingPeriod === 'yearly' 
+    ? (basePrice + storagePrice + membersPrice) * 0.75 
     : pricingPeriod === 'quarterly' 
-      ? basePrice * 0.85 
-      : basePrice;
+      ? (basePrice + storagePrice + membersPrice) * 0.85 
+      : (basePrice + storagePrice + membersPrice);
 
   const hebrewFeatures: Feature[] = [
     { text: 'אחסון: 2TB', tooltip: 'אחסון מאובטח בענן עם גיבוי אוטומטי', showTooltip: true },
-    { text: 'משתמשים: עד 30', tooltip: 'ניהול צוות של עד 30 משתמשים עם הרשאות שונות', showTooltip: true },
+    { text: '5 משתמשים (כלול)', tooltip: 'ניהול צוות של עד 5 משתמשים עם הרשאות שונות', showTooltip: true },
     { text: 'פרויקטים פעילים: ללא הגבלה', tooltip: 'עבודה על פרויקטים ללא הגבלה במקביל', showTooltip: true },
-    { text: 'גישת לקוחות: 10 אורחים לפרויקט', tooltip: 'שיתוף פעולה עם 10 לקוחות במקביל לכל פרויקט', showTooltip: true }
+    { text: 'גישת לקוחות: ללא הגבלה', tooltip: 'שיתוף פעולה עם לקוחות ללא הגבלה', showTooltip: true }
   ];
 
   const hebrewExtraFeatures: Feature[] = [
@@ -60,9 +73,9 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
   const arabicFeatures: Feature[] = [
     { text: 'التخزين: 2TB', tooltip: 'تخزين آمن على السحابة مع نسخ احتياطي تلقائي', showTooltip: true },
-    { text: 'الأعضاء: حتى 30', tooltip: 'إدارة فريق يصل إلى 30 مستخدم بأذونات مختلفة', showTooltip: true },
+    { text: '5 أعضاء (مشمول)', tooltip: 'إدارة فريق يصل إلى 5 مستخدمين بأذونات مختلفة', showTooltip: true },
     { text: 'المشاريع النشطة: غير محدود', tooltip: 'العمل على مشاريع غير محدودة في وقت واحد', showTooltip: true },
-    { text: 'وصول العملاء: 10 ضيوف لكل مشروع', tooltip: 'التعاون مع 10 عملاء في وقت واحد لكل مشروع', showTooltip: true }
+    { text: 'وصول العملاء: غير محدود', tooltip: 'التعاون مع العملاء بشكل غير محدود', showTooltip: true }
   ];
 
   const arabicExtraFeatures: Feature[] = [
@@ -73,9 +86,9 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
   const englishFeatures: Feature[] = [
     { text: 'Storage: 2TB', tooltip: 'Secure cloud storage with automatic backup', showTooltip: true },
-    { text: 'Members: Up to 30', tooltip: 'Manage a team of up to 30 users with different permissions', showTooltip: true },
+    { text: '5 members (included)', tooltip: 'Manage a team of up to 5 users with different permissions', showTooltip: true },
     { text: 'Active Projects: Unlimited', tooltip: 'Work on unlimited projects simultaneously', showTooltip: true },
-    { text: 'Client Access: 10 Guests per project', tooltip: 'Collaborate with 10 clients simultaneously per project', showTooltip: true }
+    { text: 'Client Access: Unlimited', tooltip: 'Collaborate with unlimited client guests', showTooltip: true }
   ];
 
   const englishExtraFeatures: Feature[] = [
@@ -86,9 +99,9 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
   const spanishFeatures: Feature[] = [
     { text: 'Almacenamiento: 2TB', tooltip: 'Almacenamiento seguro en la nube con respaldo automático', showTooltip: true },
-    { text: 'Miembros: Hasta 30', tooltip: 'Gestiona un equipo de hasta 30 usuarios con diferentes permisos', showTooltip: true },
+    { text: '5 miembros (incluido)', tooltip: 'Gestiona un equipo de hasta 5 usuarios con diferentes permisos', showTooltip: true },
     { text: 'Proyectos activos: Ilimitados', tooltip: 'Trabaja en proyectos ilimitados simultáneamente', showTooltip: true },
-    { text: 'Acceso de clientes: 10 invitados por proyecto', tooltip: 'Colabora con 10 clientes simultáneamente por proyecto', showTooltip: true }
+    { text: 'Acceso de clientes: Ilimitado', tooltip: 'Colabora con clientes invitados sin límite', showTooltip: true }
   ];
 
   const spanishExtraFeatures: Feature[] = [
@@ -188,6 +201,39 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
     }
   };
 
+  const getMemberSeatsTooltip = () => {
+    switch (language) {
+      case 'he':
+        return `חברי צוות = גישה מלאה לצוות הפנימי שלך (עריכה, הקצאת משימות, ניהול פרויקטים).
+אורחי לקוח = מאשרים, לא עורכים (יכולים לצפות, להגיב, לאשר, להוריד ולהעלות קבצים גולמיים).
+למה לשלם על יותר חברים?
+יותר חברי צוות = זמן סיום פרויקט מהיר יותר ושיתוף פעולה טוב יותר.
+יותר עורכים = קיבולת עבודה גבוהה יותר ויעילות.
+יותר מבנה = פחות בלבול, בעלות ברורה לכל משימה.`;
+      case 'ar':
+        return `أعضاء الفريق = وصول كامل لفريقك الداخلي (تحرير، تعيين المهام، إدارة المشاريع).
+ضيوف العملاء = المصادقون، وليس المحررون (يمكنهم العرض، التعليق، الموافقة، التنزيل وتحميل الملفات الخام).
+لماذا تدفع مقابل المزيد من الأعضاء؟
+المزيد من أعضاء الفريق = وقت إنجاز أسرع للمشروع وتعاون أفضل.
+المزيد من المحررين = قدرة أكبر على العمل وكفاءة.
+المزيد من الهيكل = أقل ارتباك، ملكية واضحة لكل مهمة.`;
+      case 'es':
+        return `Miembros del equipo = Acceso completo para tu equipo interno (editar, asignar tareas, gestionar proyectos).
+Invitados cliente = Aprobadores, no editores (pueden ver, comentar, aprobar, descargar y subir archivos sin procesar).
+¿Por qué pagar por más miembros?
+Más miembros = finalización más rápida del proyecto y mejor colaboración.
+Más editores = mayor capacidad de trabajo y eficiencia.
+Más estructura = menos confusión, propiedad clara por tarea.`;
+      default:
+        return `Member Seats = Full access for your internal team (edit, assign tasks, manage projects).
+Client Guests = Approvers, not editors (can view, comment, approve, download, and upload raw files).
+Why pay for more members?
+More team members = faster project turnaround & better collaboration.
+More editors = higher workload capacity & efficiency.
+More structure = less confusion, clear ownership per task.`;
+    }
+  };
+
   return (
     <Card className={`relative border border-[#2A2F3C] bg-gradient-to-b from-[#1A1F2C]/50 to-[#1A1F2C] p-3 flex flex-col animate-fade-up delay-500 hover:scale-105 transition-transform duration-300 ${isRTL ? 'text-right' : ''}`}>
       <PlanIcon Icon={Crown} color="primary" />
@@ -196,13 +242,13 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
         {getSubtitle()}
       </p>
       <div className="text-2xl font-bold mb-2">
-        ${price.toFixed(2)}
+        ${totalPrice.toFixed(2)}
         <span className="text-base font-normal">
           {language === 'he' ? '/ לחודש' : language === 'ar' ? '/شهر' : language === 'es' ? '/mes' : '/month'}
         </span>
         {pricingPeriod !== 'monthly' && (
           <span className="block text-sm text-primary mt-1">
-            ${(price * (pricingPeriod === 'yearly' ? 12 : 3)).toFixed(2)} {
+            ${(totalPrice * (pricingPeriod === 'yearly' ? 12 : 3)).toFixed(2)} {
               language === 'he'
                 ? `לתשלום ${pricingPeriod === 'quarterly' ? 'רבעוני' : 'שנתי'}`
                 : language === 'ar'
@@ -258,6 +304,50 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
           {getExtraFeatures().map((feature, index) => (
             <PlanFeature key={`extra-${index}`} text={feature.text} tooltip={feature.tooltip} showTooltip={feature.showTooltip} isRTL={isRTL} />
           ))}
+        </div>
+      </div>
+
+      <div className="space-y-4 my-4">
+        <div>
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-sm text-white/70">Extra Storage ({extraStorage * 100}GB)</span>
+            <span className="text-sm text-primary">+${(extraStorage * 1.80).toFixed(2)}/mo</span>
+          </div>
+          <Slider
+            defaultValue={[0]}
+            max={100}
+            step={1}
+            value={[extraStorage]}
+            onValueChange={([value]) => setExtraStorage(value)}
+            className="my-4"
+          />
+        </div>
+
+        <div>
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-white/70">Extra Members (+{extraMembers})</span>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <HelpCircle className="h-4 w-4 text-white/40 hover:text-white/60 cursor-help" />
+                  </TooltipTrigger>
+                  <TooltipContent className="max-w-[300px] bg-card/95 backdrop-blur border-primary/20 text-white/90 whitespace-pre-line">
+                    {getMemberSeatsTooltip()}
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
+            <span className="text-sm text-primary">+${(extraMembers * 9.99).toFixed(2)}/mo</span>
+          </div>
+          <Slider
+            defaultValue={[0]}
+            max={25}
+            step={1}
+            value={[extraMembers]}
+            onValueChange={([value]) => setExtraMembers(value)}
+            className="my-4"
+          />
         </div>
       </div>
       
