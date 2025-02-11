@@ -214,6 +214,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
       <div className="space-y-4 flex-grow">
         <div className={`flex items-center gap-3 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <Check className="h-3 w-3 text-primary" />
           <span className="w-24">Storage:</span>
           <div className="flex items-center gap-2 flex-1">
             <span>{totalStorage.toFixed(1)}TB</span>
@@ -232,6 +233,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
         </div>
 
         <div className={`flex items-center gap-3 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <Check className="h-3 w-3 text-primary" />
           <span className="w-24">Members:</span>
           <div className="flex items-center gap-2 flex-1">
             <span>{totalMembers}</span>
@@ -250,17 +252,17 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
         </div>
 
         <div className={`flex items-center gap-3 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <Check className="h-3 w-3 text-primary" />
           <span className="w-24">Active Projects:</span>
           <div className="flex items-center gap-2">
-            <Check className="h-3 w-3 text-primary" />
             <span>Unlimited</span>
           </div>
         </div>
 
         <div className={`flex items-center gap-3 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <Check className="h-3 w-3 text-primary" />
           <span className="w-24">Client Access:</span>
           <div className="flex items-center gap-2">
-            <Check className="h-3 w-3 text-primary" />
             <span>Unlimited</span>
           </div>
         </div>
