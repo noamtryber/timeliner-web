@@ -12,15 +12,15 @@ export const frameioData: Competitor = {
       competitor: "$15/user/month (Basic) = $75/month for 5 users\n$25/user/month (Pro) = $750/month for 30 users",
       spanishCompetitor: "$15/usuario/mes (Básico) = $75/mes para 5 usuarios\n$25/usuario/mes (Pro) = $750/mes para 30 usuarios",
       hebrewCompetitor: "$15 למשתמש בייסיק = $75 לחודש עבור 5 משתמשים\n$25 למשתמש פרו = $750 לחודש עבור 30 משתמשים",
-      timeliner: "$29/month (fixed up to 5 users)\n$49/month (fixed up to 30 users)",
-      spanishTimeliner: "$29/mes (tarifa fija hasta 5 usuarios)\n$49/mes (tarifa fija hasta 30 usuarios)",
-      hebrewTimeliner: "$29 לחודש (עד 5 משתמשים)\n$49 לחודש (עד 30 משתמשים)",
+      timeliner: "$29/month (4 member seats included)\n$49/month (5 member seats included and extra seat for $7/month up to 20 in total)",
+      spanishTimeliner: "$29/mes (4 asientos incluidos)\n$49/mes (5 asientos incluidos y asiento extra por $7/mes hasta 20 en total)",
+      hebrewTimeliner: "$29 לחודש (4 מושבי חברים כלולים)\n$49 לחודש (5 מושבי חברים כלולים ומושב נוסף ב-$7 לחודש עד 20 בסך הכל)",
       keyTakeaways: [
         {
           type: 'negative',
           text: 'Frame.io is great for quick storage and video review, but it becomes costly as teams grow and lacks advanced workflow, CRM, and marketing tools.',
           spanishText: 'Frame.io es excelente para almacenamiento rápido y revisión de videos, pero se vuelve costoso a medida que los equipos crecen y carece de flujo de trabajo avanzado, CRM y herramientas de marketing.',
-          hebrewText: 'Frame.io מצוינת לאחסון מהיר ולכתיבת הערות, אבל העלות שלה גדלה משמעותית ככל שהצוות מתרחב ואין לה פתרונות CRM, ניהול פרויקטים או כלי שיווק.'
+          hebrewText: 'Frame.io מצוינת לאחסון מהיר ולכתיבת הערות, אבל העלות שלה גדלה משמעותית ככל שהצוות מתרחב ואין לה פתרונות CRM, ניהול פרויקטים או כלי שיווקיים.'
         },
         {
           type: 'positive',
@@ -128,20 +128,17 @@ export const frameioData: Competitor = {
     {
       name: "Educational Resources & 1-on-1 Onboarding",
       spanishName: "Recursos educativos y capacitación personalizada",
-      hebrewName: "הדרכות מותאמות ואונבורדינג 1על1 בזום",
+      hebrewName: "הדרכות מותאמות ואונבורדינג 1-on1 בזום",
       competitor: false,
       timeliner: true
     },
     {
       name: "Costs rise exponentially as team grows",
-      spanishName: "Los costos aumentan exponencialmente con el crecimiento del equipo",
       hebrewName: "תמחור גדל ככל שהצוות מתרחב",
       competitor: "$750/month for 30 users",
-      spanishCompetitor: "$750/mes para 30 usuarios",
       hebrewCompetitor: "$750 לחודש עבור 30 משתמשים",
-      timeliner: "Flat pricing covers up to 30 users with no extra fees",
-      spanishTimeliner: "Precio fijo cubre hasta 30 usuarios sin cargos adicionales",
-      hebrewTimeliner: "תמחור קבוע ללא עלות נוספת – עד 30 משתמשים!"
+      timeliner: "5 member seats included and extra seat for $7/month up to 20 in total",
+      hebrewTimeliner: "5 מושבי חברים כלולים ומושב נוסף ב-$7 לחודש עד 20 בסך הכל"
     }
   ]
 };

@@ -12,9 +12,9 @@ export const wipsterData: Competitor = {
       competitor: "$19.95/user/month = $99.75/month for 5 users\n$598.50/month for 30 users",
       spanishCompetitor: "$19.95/usuario/mes = $99.75/mes para 5 usuarios\n$598.50/mes para 30 usuarios",
       hebrewCompetitor: "$19.95 למשתמש לחודש = $99.75 לחודש עבור 5 משתמשים\n$598.50 לחודש עבור 30 משתמשים",
-      timeliner: "$29/month (up to 5 users)\n$49/month (up to 30 users)",
-      spanishTimeliner: "$29/mes (hasta 5 usuarios)\n$49/mes (hasta 30 usuarios)",
-      hebrewTimeliner: "$29 לחודש (עד 5 משתמשים)\n$49 לחודש (עד 30 משתמשים)",
+      timeliner: "$29/month (4 member seats included)\n$49/month (5 member seats included and extra seat for $7/month up to 20 in total)",
+      spanishTimeliner: "$29/mes (4 asientos incluidos)\n$49/mes (5 asientos incluidos y asiento extra por $7/mes hasta 20 en total)",
+      hebrewTimeliner: "$29 לחודש (4 מושבי חברים כלולים)\n$49 לחודש (5 מושבי חברים כלולים ומושב נוסף ב-$7 לחודש עד 20 בסך הכל)",
       keyTakeaways: [
         {
           type: "negative",
@@ -115,8 +115,8 @@ export const wipsterData: Competitor = {
       hebrewName: "תמחור גדל ככל שהצוות מתרחב",
       competitor: "$598.50/month for 30 users",
       hebrewCompetitor: "$598.50 לחודש עבור 30 משתמשים",
-      timeliner: "Flat pricing covers up to 30 users with no extra fees",
-      hebrewTimeliner: "תמחור קבוע ללא עלות נוספת – עד 30 משתמשים!"
+      timeliner: "5 member seats included and extra seat for $7/month up to 20 in total",
+      hebrewTimeliner: "5 מושבי חברים כלולים ומושב נוסף ב-$7 לחודש עד 20 בסך הכל"
     }
   ]
 };

@@ -11,10 +11,10 @@ export const vimeoData: Competitor = {
       hebrewName: "תמחור",
       competitor: "Starter: $12/month (1 seat, 100GB storage)\nStandard: $25/month (2+ seats, 1TB storage)\nAdvanced: $65/month (2+ seats, 5TB storage)\n$600+/month for 30 users (Advanced Plan)",
       spanishCompetitor: "Inicial: $12/mes (1 asiento, 100GB almacenamiento)\nEstándar: $25/mes (2+ asientos, 1TB almacenamiento)\nAvanzado: $65/mes (2+ asientos, 5TB almacenamiento)\n$600+/mes para 30 usuarios (Plan Avanzado)",
-      hebrewCompetitor: "סטארטר: $12 לחודש (משתמש אחד, 100GB אחסון)\nסטנדרט: $25 לחודש (2+ משתמשים, 1TB אחסון)\nמתקדם: $65 לחודש (2+ משתמשים, 5TB אחסון)\n$600+ לחודש עבור 30 משתמשים (תכנית מתקדמת)",
-      timeliner: "$29/month (up to 5 users, 1TB)\n$49/month (up to 30 users, 2TB)",
-      spanishTimeliner: "$29/mes (hasta 5 usuarios, 1TB)\n$49/mes (hasta 30 usuarios, 2TB)",
-      hebrewTimeliner: "$29 לחודש (עד 5 משתמשים, 1TB)\n$49 לחודש (עד 30 משתמשים, 2TB)",
+      hebrewCompetitor: "סטאר��ר: $12 לחודש (משתמש אחד, 100GB אחסון)\nסטנדרט: $25 לחודש (2+ משתמשים, 1TB אחסון)\nמתקדם: $65 לחודש (2+ משתמשים, 5TB אחסון)\n$600+ לחודש עבור 30 משתמשים (תכנית מתקדמת)",
+      timeliner: "$29/month (4 member seats included)\n$49/month (5 member seats included and extra seat for $7/month up to 20 in total)",
+      spanishTimeliner: "$29/mes (4 asientos incluidos)\n$49/mes (5 asientos incluidos y asiento extra por $7/mes hasta 20 en total)",
+      hebrewTimeliner: "$29 לחודש (4 מושבי חברים כלולים)\n$49 לחודש (5 מושבי חברים כלולים ומושב נוסף ב-$7 לחודש עד 20 בסך הכל)",
       keyTakeaways: [
         {
           type: "negative",
@@ -26,7 +26,7 @@ export const vimeoData: Competitor = {
           type: "positive",
           text: "Timeliner is purpose-built for video editors and post-production teams, with advanced version control, team monitoring, client portals, and AI-powered captions in multiple languages—not just English. It also integrates with WhatsApp, Slack, and email for streamlined client collaboration. No per-user pricing means agencies and video teams save money while getting more features. 🎬",
           spanishText: "Timeliner está diseñado específicamente para editores de video y equipos de postproducción, con control de versiones avanzado, monitoreo de equipos, portales de clientes y subtítulos impulsados por IA en varios idiomas, no solo en inglés. También se integra con WhatsApp, Slack y correo electrónico para una colaboración fluida con los clientes. Sin precios por usuario, las agencias y equipos de video ahorran dinero mientras obtienen más funciones. 🎬",
-          hebrewText: "Timeliner נבנתה במיוחד עבור עורכי וידאו וצוותי פוסט-פרודקשן, עם בקרת גרסאות מתקדמת, מעקב אחר צוותים, פורטלים ללקוחות וכתוביות מבוססות AI במספר שפות - לא רק באנגלית. היא גם משתלבת עם וואטסאפ, סלאק ואימייל לשיתוף פעולה יעיל עם לקוחות. ללא תמחור לפי משתמש, סוכנויות וצוותי וידאו חוסכים כסף תוך קבלת יותר תכונות. 🎬"
+          hebrewText: "Timeliner נבנתה במיוחד עבור עורכי וידאו וצוותי פוסט-פרודקשן, עם בקרת גרסאות מתקדמת, מעקב אחר צוותים, פורטלים ללקוחות וכתוביות מבוססות AI במספר שפות - לא רק באנגלית. היא גם משתלבת עם וואטסאפ, סלאק ואימייל לשיתוף פעולה יעיל עם לקוחות. ללא תמחור לפי משתמש, סוכנויות וצוותי וידאו חוסכים כסף תוך קבל�� יותר תכונות. 🎬"
         }
       ]
     },
@@ -107,7 +107,7 @@ export const vimeoData: Competitor = {
     },
     {
       name: "Educational Resources & 1-on-1 Onboarding",
-      hebrewName: "הדרכות מותאמות ואונבורדינג 1על1 בזום",
+      hebrewName: "הדרכות מותאמות ואונבורדינג 1-on1 בזום",
       competitor: false,
       timeliner: true
     },
@@ -116,8 +116,8 @@ export const vimeoData: Competitor = {
       hebrewName: "תמחור גדל ככל שהצוות מתרחב",
       competitor: "$600+/month for 30 users (Advanced Plan required for full features)",
       hebrewCompetitor: "$600+ לחודש עבור 30 משתמשים (נדרשת תכנית מתקדמת לתכונות מלאות)",
-      timeliner: "Flat pricing covers up to 30 users with no extra fees",
-      hebrewTimeliner: "תמחור קבוע ללא עלות נוספת – עד 30 משתמשים!"
+      timeliner: "5 member seats included and extra seat for $7/month up to 20 in total",
+      hebrewTimeliner: "5 מושבי חברים כלולים ומושב נוסף ב-$7 לחודש עד 20 בסך הכל"
     }
   ]
 };

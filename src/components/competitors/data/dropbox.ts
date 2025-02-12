@@ -12,9 +12,9 @@ export const dropboxData: Competitor = {
       competitor: "$10/user/month for Replay Add-On\nRequires Dropbox Plus ($10/user/month) = $20/user/month total\n$100/month for 5 users\n$600/month for 30 users",
       spanishCompetitor: "$10/usuario/mes para el complemento Replay\nRequiere Dropbox Plus ($10/usuario/mes) = $20/usuario/mes total\n$100/mes para 5 usuarios\n$600/mes para 30 usuarios",
       hebrewCompetitor: "$10 למשתמש לחודש עבור תוסף Replay\nדורש Dropbox Plus ($10 למשתמש לחודש) = $20 למשתמש לחודש\n$100 לחודש עבור 5 משתמשים\n$600 לחודש עבור 30 משתמשים",
-      timeliner: "$29/month (fixed up to 5 users)\n$49/month (fixed up to 30 users)",
-      spanishTimeliner: "$29/mes (fijo hasta 5 usuarios)\n$49/mes (fijo hasta 30 usuarios)",
-      hebrewTimeliner: "$29 לחודש (עד 5 משתמשים)\n$49 לחודש (עד 30 משתמשים)",
+      timeliner: "$29/month (4 member seats included)\n$49/month (5 member seats included and extra seat for $7/month up to 20 in total)",
+      spanishTimeliner: "$29/mes (4 asientos incluidos)\n$49/mes (5 asientos incluidos y asiento extra por $7/mes hasta 20 en total)",
+      hebrewTimeliner: "$29 לחודש (4 מושבי חברים כלולים)\n$49 לחודש (5 מושבי חברים כלולים ומושב נוסף ב-$7 לחודש עד 20 בסך הכל)",
       keyTakeaways: [
         {
           type: 'negative',
@@ -106,7 +106,7 @@ export const dropboxData: Competitor = {
       },
       {
         name: "Educational Resources & 1-on-1 Onboarding",
-        hebrewName: "הדרכות מותאמות ואונבורדינג 1על1 בזום",
+        hebrewName: "הדרכות מותאמות ואונבורדינג 1-on1 בזום",
         competitor: false,
         timeliner: true
       },
@@ -115,8 +115,8 @@ export const dropboxData: Competitor = {
         hebrewName: "תמחור גדל ככל שהצוות מתרחב",
         competitor: "$600/month for 30 users (Replay + Dropbox Plus required)",
         hebrewCompetitor: "$600 לחודש עבור 30 משתמשים (נדרש Replay + Dropbox Plus)",
-        timeliner: "Flat pricing covers up to 30 users with no extra fees",
-        hebrewTimeliner: "תמחור קבוע ללא עלות נוספת – עד 30 משתמשים!"
+        timeliner: "5 member seats included and extra seat for $7/month up to 20 in total",
+        hebrewTimeliner: "5 מושבי חברים כלולים ומושב נוסף ב-$7 לחודש עד 20 בסך הכל"
       }
   ]
 };
