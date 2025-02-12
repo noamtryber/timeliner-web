@@ -147,13 +147,14 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
   };
 
   const getDiscountedPrice = (price: number) => {
+    const basePrice = price;
     switch (pricingPeriod) {
       case 'yearly':
-        return price * 0.75; // 25% off
+        return basePrice * 0.75; // Apply 25% discount once
       case 'quarterly':
-        return price * 0.85; // 15% off
+        return basePrice * 0.85; // Apply 15% discount once
       default:
-        return price;
+        return basePrice;
     }
   };
 
@@ -161,14 +162,11 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
   const totalMembers = 5 + extraMembers; // Base 5 members + extra members
   
   const basePrice = 49;
-  const storagePrice = getDiscountedPrice(extraStorage * 1.5); // $1.50 per 100GB with discount
-  const membersPrice = getDiscountedPrice(extraMembers * 7); // $7 per extra member with discount
+  const storagePrice = extraStorage * 1.5; // $1.50 per 100GB
+  const membersPrice = extraMembers * 7; // $7 per extra member
   
-  const totalPrice = pricingPeriod === 'yearly' 
-    ? (basePrice + storagePrice + membersPrice) * 0.75 
-    : pricingPeriod === 'quarterly' 
-      ? (basePrice + storagePrice + membersPrice) * 0.85 
-      : (basePrice + storagePrice + membersPrice);
+  // Apply discount to total price once
+  const totalPrice = getDiscountedPrice(basePrice + storagePrice + membersPrice);
 
   const handleMemberLimit = (value: number) => {
     if (value <= 15) {
@@ -259,13 +257,13 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
   const getClientsLabel = () => {
     switch (language) {
       case 'he':
-        return 'לקוחות:';
+        return 'גישת לקוחות:';
       case 'ar':
-        return 'العملاء:';
+        return 'وصول العملاء:';
       case 'es':
-        return 'Clientes:';
+        return 'Acceso clientes:';
       default:
-        return 'Clients:';
+        return 'Client access:';
     }
   };
 
@@ -356,11 +354,11 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
       <div className="space-y-1.5 flex-grow">
         <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse justify-start' : ''}`}>
-          <div className={`flex items-center gap-2 ${isRTL ? 'order-1' : ''}`}>
+          <div className={`flex items-center gap-1.5 ${isRTL ? 'order-1' : ''}`}>
             <Check className="h-3 w-3 text-primary flex-shrink-0" />
-            <span className="w-20 flex-shrink-0">{getStorageLabel()}</span>
+            <span className="w-[4.5rem] flex-shrink-0">{getStorageLabel()}</span>
           </div>
-          <div className={`flex items-center gap-1.5 flex-1 min-w-0 ${isRTL ? 'flex-row-reverse order-0' : ''}`}>
+          <div className={`flex items-center gap-2 flex-1 min-w-0 ${isRTL ? 'flex-row-reverse order-0' : ''}`}>
             <span className="whitespace-nowrap">{totalStorage.toFixed(1)}TB</span>
             <Slider
               defaultValue={[0]}
@@ -375,48 +373,24 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
               <span className="text-xs text-primary whitespace-nowrap">+${storagePrice.toFixed(2)}{getPricePerMonthText()}</span>
             )}
           </div>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <HelpCircle className="h-3 w-3 text-primary/70 cursor-help ml-2" />
+              </TooltipTrigger>
+              <TooltipContent side={isRTL ? "left" : "right"}>
+                Storage capacity for your assets
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </div>
 
         <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse justify-start' : ''}`}>
-          <div className={`flex items-center gap-2 ${isRTL ? 'order-1' : ''}`}>
+          <div className={`flex items-center gap-1.5 ${isRTL ? 'order-1' : ''}`}>
             <Check className="h-3 w-3 text-primary flex-shrink-0" />
-            <div className="w-20 flex-shrink-0 flex items-center gap-1">
-              <span>{getMembersLabel()}</span>
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <HelpCircle className="h-3.5 w-3.5 text-primary/70 cursor-help" />
-                  </TooltipTrigger>
-                  <TooltipContent 
-                    side={isRTL ? "left" : "right"}
-                    className="max-w-[225px] p-4 space-y-3 bg-[#1A1F2C]/95 backdrop-blur-sm z-[10000] border border-primary/20 rounded-lg shadow-xl"
-                    sideOffset={5}
-                    align="end"
-                  >
-                    <div>
-                      <p className="font-semibold mb-1">{getMembersTooltipContent().title1}</p>
-                      <p className="text-sm text-white/70">{getMembersTooltipContent().desc1}</p>
-                    </div>
-                    <div>
-                      <p className="font-semibold mb-1">{getMembersTooltipContent().title2}</p>
-                      <p className="text-sm text-white/70">{getMembersTooltipContent().desc2}</p>
-                      <p className="text-sm text-white/70">{getMembersTooltipContent().desc3}</p>
-                    </div>
-                    {totalMembers >= 20 && (
-                      <Button 
-                        variant="outline" 
-                        className="w-full mt-2 border-primary/50"
-                        onClick={() => window.location.href = '/enterprise'}
-                      >
-                        {getMembersTooltipContent().enterprise}
-                      </Button>
-                    )}
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </div>
+            <span className="w-[4.5rem] flex-shrink-0">{getMembersLabel()}</span>
           </div>
-          <div className={`flex items-center gap-1.5 flex-1 min-w-0 ${isRTL ? 'flex-row-reverse order-0' : ''}`}>
+          <div className={`flex items-center gap-2 flex-1 min-w-0 ${isRTL ? 'flex-row-reverse order-0' : ''}`}>
             <span className="whitespace-nowrap">{totalMembers}</span>
             <Slider
               defaultValue={[0]}
@@ -431,24 +405,74 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
               <span className="text-xs text-primary whitespace-nowrap">+${membersPrice.toFixed(2)}{getPricePerMonthText()}</span>
             )}
           </div>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <HelpCircle className="h-3 w-3 text-primary/70 cursor-help ml-2" />
+              </TooltipTrigger>
+              <TooltipContent 
+                side={isRTL ? "left" : "right"}
+                className="max-w-[225px] p-4 space-y-3 bg-[#1A1F2C]/95 backdrop-blur-sm z-[10000] border border-primary/20 rounded-lg shadow-xl"
+                sideOffset={5}
+                align="end"
+              >
+                <div>
+                  <p className="font-semibold mb-1">{getMembersTooltipContent().title1}</p>
+                  <p className="text-sm text-white/70">{getMembersTooltipContent().desc1}</p>
+                </div>
+                <div>
+                  <p className="font-semibold mb-1">{getMembersTooltipContent().title2}</p>
+                  <p className="text-sm text-white/70">{getMembersTooltipContent().desc2}</p>
+                  <p className="text-sm text-white/70">{getMembersTooltipContent().desc3}</p>
+                </div>
+                {totalMembers >= 20 && (
+                  <Button 
+                    variant="outline" 
+                    className="w-full mt-2 border-primary/50"
+                    onClick={() => window.location.href = '/enterprise'}
+                  >
+                    {getMembersTooltipContent().enterprise}
+                  </Button>
+                )}
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </div>
 
         <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <div className={`flex items-center gap-2 flex-shrink-0 ${isRTL ? 'order-2' : ''}`}>
+          <div className={`flex items-center gap-1.5 flex-shrink-0 ${isRTL ? 'order-2' : ''}`}>
             <Check className="h-3 w-3 text-primary flex-shrink-0" />
-            <span>{getProjectsLabel()}</span>
+            <span className="w-[4.5rem]">{getProjectsLabel()}</span>
           </div>
+          <span className={`${isRTL ? 'order-1' : ''} ml-4`}>{getUnlimitedText()}</span>
           <div className="flex-1" />
-          <span className={`${isRTL ? 'order-1' : ''}`}>{getUnlimitedText()}</span>
         </div>
 
         <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 mb-1.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <div className={`flex items-center gap-2 flex-shrink-0 ${isRTL ? 'order-2' : ''}`}>
+          <div className={`flex items-center gap-1.5 flex-shrink-0 ${isRTL ? 'order-2' : ''}`}>
             <Check className="h-3 w-3 text-primary flex-shrink-0" />
-            <span>{getClientsLabel()}</span>
+            <span className="w-[4.5rem]">{getClientsLabel()}</span>
           </div>
+          <span className={`${isRTL ? 'order-1' : ''} ml-4`}>{getUnlimitedText()}</span>
           <div className="flex-1" />
-          <span className={`${isRTL ? 'order-1' : ''}`}>{getUnlimitedText()}</span>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <HelpCircle className="h-3 w-3 text-primary/70 cursor-help ml-2" />
+              </TooltipTrigger>
+              <TooltipContent 
+                side={isRTL ? "left" : "right"}
+                className="max-w-[225px] p-4 space-y-2 bg-[#1A1F2C]/95 backdrop-blur-sm border border-primary/20 rounded-lg shadow-xl"
+              >
+                <div>
+                  <p className="font-semibold mb-1">Client Guests</p>
+                  <p className="text-sm text-white/70">
+                    Approvers, not team members (they can only view, comment, approve, download, and upload raw files).
+                  </p>
+                </div>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </div>
 
         <div className="border-t border-white/10 pt-2">
