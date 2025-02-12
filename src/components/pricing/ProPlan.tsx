@@ -366,20 +366,17 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
               step={1}
               value={[extraStorage]}
               onValueChange={([value]) => setExtraStorage(value)}
-              className={`w-20 flex-shrink-0 ${isRTL ? 'transform -scale-x-100' : ''}`}
+              className={`w-20 flex-shrink-0 ${isRTL ? 'rotate-180' : ''}`}
               dir={isRTL ? 'rtl' : 'ltr'}
             />
             {extraStorage > 0 && (
               <span className="text-xs text-primary whitespace-nowrap">+${storagePrice.toFixed(2)}{getPricePerMonthText()}</span>
             )}
           </div>
-          {isRTL ? (
-            <div className="flex-1" />
-          ) : null}
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <HelpCircle className="h-3 w-3 text-primary/70 cursor-help" />
+                <HelpCircle className="h-3 w-3 text-primary/70 cursor-help ml-2" />
               </TooltipTrigger>
               <TooltipContent 
                 side="left"
@@ -405,20 +402,17 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
               step={1}
               value={[extraMembers]}
               onValueChange={([value]) => handleMemberLimit(value)}
-              className={`w-20 flex-shrink-0 ${isRTL ? 'transform -scale-x-100' : ''}`}
+              className={`w-20 flex-shrink-0 ${isRTL ? 'rotate-180' : ''}`}
               dir={isRTL ? 'rtl' : 'ltr'}
             />
             {extraMembers > 0 && (
               <span className="text-xs text-primary whitespace-nowrap">+${membersPrice.toFixed(2)}{getPricePerMonthText()}</span>
             )}
           </div>
-          {isRTL ? (
-            <div className="flex-1" />
-          ) : null}
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <HelpCircle className="h-3 w-3 text-primary/70 cursor-help" />
+                <HelpCircle className="h-3 w-3 text-primary/70 cursor-help ml-2" />
               </TooltipTrigger>
               <TooltipContent 
                 side="left"
@@ -454,7 +448,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
             <Check className="h-3 w-3 text-primary flex-shrink-0" />
             <span className="w-[4.5rem]">{getProjectsLabel()}</span>
           </div>
-          <span className={`${isRTL ? 'order-1' : ''} ml-2`}>{getUnlimitedText()}</span>
+          <span className={`${isRTL ? 'order-1' : ''} ml-4`}>{getUnlimitedText()}</span>
           <div className="flex-1" />
         </div>
 
@@ -463,14 +457,12 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
             <Check className="h-3 w-3 text-primary flex-shrink-0" />
             <span className="w-[4.5rem]">{getClientsLabel()}</span>
           </div>
-          <span className={`${isRTL ? 'order-1' : ''} ml-2`}>{getUnlimitedText()}</span>
-          {isRTL ? (
-            <div className="flex-1" />
-          ) : null}
+          <span className={`${isRTL ? 'order-1' : ''} ml-4`}>{getUnlimitedText()}</span>
+          <div className="flex-1" />
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <HelpCircle className="h-3 w-3 text-primary/70 cursor-help" />
+                <HelpCircle className="h-3 w-3 text-primary/70 cursor-help ml-2" />
               </TooltipTrigger>
               <TooltipContent 
                 side="left"
@@ -485,7 +477,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
                     'Client Guests'
                   }</p>
                   <p className="text-sm text-white/70">{
-                    language === 'he' ? 'מאשרים, לא חברי צוות (יכולים רק לצפות, להגיב, לא��ר, להוריד ולהעלות קבצים).' :
+                    language === 'he' ? 'מאשרים, לא חברי צוות (יכולים רק לצפות, להגיב, לאשר, להוריד ולהעלות קבצים).' :
                     language === 'ar' ? 'المصادقون، ليسوا أ��ضاء في الفريق (يمكنهم فقط العرض والتعليق والموافقة والتنزيل وتحميل الملفات).' :
                     language === 'es' ? 'Aprobadores, no miembros del equipo (solo pueden ver, comentar, aprobar, descargar y subir archivos).' :
                     'Approvers, not team members (they can only view, comment, approve, download, and upload raw files).'
