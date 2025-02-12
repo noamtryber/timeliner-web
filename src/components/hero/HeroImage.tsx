@@ -12,9 +12,13 @@ export const HeroImage = () => {
     return null;
   }
   
-  const imageUrl = language === 'ar' 
-    ? 'https://tbvszyxrrtqorwnionfv.supabase.co/storage/v1/object/sign/media/hero%20image%20arabic1.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJtZWRpYS9oZXJvIGltYWdlIGFyYWJpYzEucG5nIiwiaWF0IjoxNzM5Mzk0MzMyLCJleHAiOjE3NzA5MzAzMzJ9._4f57KHGLBXOpOYXeh8cY6GuwA3JykeOUOSRGX5YbaU'
-    : heroImage;
+  let imageUrl = heroImage;
+  
+  if (language === 'ar') {
+    imageUrl = 'https://tbvszyxrrtqorwnionfv.supabase.co/storage/v1/object/sign/media/hero%20image%20arabic1.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJtZWRpYS9oZXJvIGltYWdlIGFyYWJpYzEucG5nIiwiaWF0IjoxNzM5Mzk0MzMyLCJleHAiOjE3NzA5MzAzMzJ9._4f57KHGLBXOpOYXeh8cY6GuwA3JykeOUOSRGX5YbaU';
+  } else if (language === 'he') {
+    imageUrl = 'https://tbvszyxrrtqorwnionfv.supabase.co/storage/v1/object/sign/media/hero%20image%20hebrew4.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJtZWRpYS9oZXJvIGltYWdlIGhlYnJldzQucG5nIiwiaWF0IjoxNzM5Mzk0NjAxLCJleHAiOjE3NzA5MzA2MDF9.fe1RhjK9wavxi7k5N5bMcxYTbzPuG_MYBukeYCTG4zQ';
+  }
   
   return (
     <div className="hidden lg:block relative">
