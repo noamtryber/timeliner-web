@@ -208,44 +208,36 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
         return {
           title1: 'מקומות לחברי צוות',
           desc1: 'גישה מלאה לצוות הפנימי שלך (עריכה, הקצאת משימות, ניהול פרויקטים).',
-          title2: 'אורחים-לקוחות',
-          desc2: 'מאשרים, לא עורכים (יכולים לצפות, להגיב, לאשר, להוריד ולהעלות קבצים).',
-          title3: 'למה לשלם על חברי צוות נוספים?',
-          desc3: 'יותר חברי צוות = זמן תגובה מהיר יותר, שיתוף פעולה מובנה.',
-          desc4: 'יותר עורכים = חלוקת עומס טובה יותר, משלוח מהיר יותר.',
+          title2: 'למה להוסיף חברי צוות?',
+          desc2: 'יותר חברי צוות = זמן תגובה מהיר יותר, שיתוף פעולה מאורגן.',
+          desc3: 'יותר עורכים = חלוקת עבודה טובה יותר, משלוח מהיר יותר.',
           enterprise: 'צור קשר עם מכירות Enterprise'
         };
       case 'ar':
         return {
           title1: 'مقاعد الأعضاء',
           desc1: 'وصول كامل لفريقك الداخلي (تحرير، تعيين المهام، إدارة المشاريع).',
-          title2: 'ضيوف العملاء',
-          desc2: 'موافقون، ليسوا محررين (يمكنهم العرض، التعليق، الموافقة، التنزيل، ورفع الملفات).',
-          title3: 'لماذا تدفع مقابل المزيد من الأعضاء؟',
-          desc3: 'المزيد من الأعضاء = وقت استجابة أسرع، تعاون منظم.',
-          desc4: 'المزيد ������ن المحررين = توزيع أفضل لعبء العمل، تسليم أسرع.',
+          title2: 'لماذا تضيف المزيد من الأعضاء؟',
+          desc2: 'المزيد من الأعضاء = وقت استجابة أسرع، تعاون منظم.',
+          desc3: 'المزيد من المحررين = توزيع أفضل للعمل، تسليم أسرع.',
           enterprise: 'اتصل بمبيعات Enterprise'
         };
       case 'es':
         return {
           title1: 'Asientos de Miembros',
           desc1: 'Acceso completo para tu equipo interno (editar, asignar tareas, gestionar proyectos).',
-          title2: 'Invitados Clientes',
-          desc2: 'Aprobadores, no editores (pueden ver, comentar, aprobar, descargar y subir archivos).',
-          title3: '¿Por qué pagar por más miembros?',
-          desc3: 'Más miembros = respuesta más rápida, colaboración estructurada.',
-          desc4: 'Más editores = mejor distribución de trabajo, entrega más rápida.',
+          title2: '¿Por qué agregar más miembros?',
+          desc2: 'Más miembros = respuesta más rápida, colaboración estructurada.',
+          desc3: 'Más editores = mejor distribución de trabajo, entrega más rápida.',
           enterprise: 'Contactar Ventas Enterprise'
         };
       default:
         return {
           title1: 'Member Seats',
           desc1: 'Full access for your internal team (edit, assign tasks, manage projects).',
-          title2: 'Client Guests',
-          desc2: 'Approvers, not editors (can view, comment, approve, download, and upload raw files).',
-          title3: 'Why pay for more members?',
-          desc3: 'More members = faster turnaround, structured collaboration.',
-          desc4: 'More editors = better workload distribution, faster delivery.',
+          title2: 'Why pay for more members?',
+          desc2: 'More members = faster turnaround, structured collaboration.',
+          desc3: 'More editors = better workload distribution, faster delivery.',
           enterprise: 'Contact Enterprise Sales'
         };
     }
@@ -397,7 +389,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
                   </TooltipTrigger>
                   <TooltipContent 
                     side={isRTL ? "left" : "right"}
-                    className="max-w-[300px] p-4 space-y-3 bg-[#1A1F2C]/95 backdrop-blur-sm z-[10000] border border-primary/20 rounded-lg shadow-xl"
+                    className="max-w-[225px] p-4 space-y-3 bg-[#1A1F2C]/95 backdrop-blur-sm z-[10000] border border-primary/20 rounded-lg shadow-xl"
                     sideOffset={5}
                     align="end"
                   >
@@ -408,11 +400,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
                     <div>
                       <p className="font-semibold mb-1">{getMembersTooltipContent().title2}</p>
                       <p className="text-sm text-white/70">{getMembersTooltipContent().desc2}</p>
-                    </div>
-                    <div>
-                      <p className="font-semibold mb-1">{getMembersTooltipContent().title3}</p>
                       <p className="text-sm text-white/70">{getMembersTooltipContent().desc3}</p>
-                      <p className="text-sm text-white/70">{getMembersTooltipContent().desc4}</p>
                     </div>
                     {totalMembers >= 20 && (
                       <Button 
