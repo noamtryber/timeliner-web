@@ -361,15 +361,15 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
           <div className={`flex items-center ${isRTL ? 'gap-6 mx-4' : 'gap-3'} flex-1 min-w-0`}>
             <div className={`flex items-center ${isRTL ? 'flex-row-reverse gap-6' : 'gap-3'}`}>
               <span className="whitespace-nowrap font-medium">{totalStorage.toFixed(1)}TB</span>
-              <Slider
-                defaultValue={[0]}
-                max={30}
-                step={1}
-                value={[extraStorage]}
-                onValueChange={([value]) => setExtraStorage(value)}
-                className="w-32 flex-shrink-0"
-                dir="ltr"
-              />
+              <div className="w-24 flex-shrink-0">
+                <Slider
+                  defaultValue={[0]}
+                  max={30}
+                  step={1}
+                  value={[extraStorage]}
+                  onValueChange={([value]) => setExtraStorage(value)}
+                />
+              </div>
               {extraStorage > 0 && (
                 <span className="text-xs text-primary whitespace-nowrap">+${storagePrice.toFixed(2)}{getPricePerMonthText()}</span>
               )}
@@ -399,15 +399,15 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
           <div className={`flex items-center ${isRTL ? 'gap-6 mx-4' : 'gap-3'} flex-1 min-w-0`}>
             <div className={`flex items-center ${isRTL ? 'flex-row-reverse gap-6' : 'gap-3'}`}>
               <span className="whitespace-nowrap font-medium">{totalMembers}</span>
-              <Slider
-                defaultValue={[0]}
-                max={15}
-                step={1}
-                value={[extraMembers]}
-                onValueChange={([value]) => handleMemberLimit(value)}
-                className="w-32 flex-shrink-0"
-                dir="ltr"
-              />
+              <div className="w-24 flex-shrink-0">
+                <Slider
+                  defaultValue={[0]}
+                  max={15}
+                  step={1}
+                  value={[extraMembers]}
+                  onValueChange={([value]) => handleMemberLimit(value)}
+                />
+              </div>
               {extraMembers > 0 && (
                 <span className="text-xs text-primary whitespace-nowrap">+${membersPrice.toFixed(2)}{getPricePerMonthText()}</span>
               )}
