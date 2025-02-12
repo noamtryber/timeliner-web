@@ -370,7 +370,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
                   onValueChange={([value]) => setExtraStorage(value)}
                 />
               </div>
-              {extraStorage > 0 && (
+              {extraStorage > 0 && !isRTL && (
                 <span className="text-xs text-primary whitespace-nowrap">+${storagePrice.toFixed(2)}{getPricePerMonthText()}</span>
               )}
             </div>
@@ -408,7 +408,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
                   onValueChange={([value]) => handleMemberLimit(value)}
                 />
               </div>
-              {extraMembers > 0 && (
+              {extraMembers > 0 && !isRTL && (
                 <span className="text-xs text-primary whitespace-nowrap">+${membersPrice.toFixed(2)}{getPricePerMonthText()}</span>
               )}
             </div>
