@@ -356,11 +356,11 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
       <div className="space-y-1.5 flex-grow">
         <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse justify-start' : ''}`}>
-          <div className={`flex items-center gap-1.5 ${isRTL ? 'order-1' : ''}`}>
+          <div className={`flex items-center gap-2 ${isRTL ? 'order-1' : ''}`}>
             <Check className="h-3 w-3 text-primary flex-shrink-0" />
-            <span className="w-[4.5rem] flex-shrink-0">{getStorageLabel()}</span>
+            <span className="w-20 flex-shrink-0">{getStorageLabel()}</span>
           </div>
-          <div className={`flex items-center gap-2 flex-1 min-w-0 ${isRTL ? 'flex-row-reverse order-0' : ''}`}>
+          <div className={`flex items-center gap-1.5 flex-1 min-w-0 ${isRTL ? 'flex-row-reverse order-0' : ''}`}>
             <span className="whitespace-nowrap">{totalStorage.toFixed(1)}TB</span>
             <Slider
               defaultValue={[0]}
@@ -378,14 +378,14 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
         </div>
 
         <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse justify-start' : ''}`}>
-          <div className={`flex items-center gap-1.5 ${isRTL ? 'order-1' : ''}`}>
+          <div className={`flex items-center gap-2 ${isRTL ? 'order-1' : ''}`}>
             <Check className="h-3 w-3 text-primary flex-shrink-0" />
-            <div className="w-[4.5rem] flex-shrink-0 flex items-center">
+            <div className="w-20 flex-shrink-0 flex items-center gap-1">
               <span>{getMembersLabel()}</span>
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <HelpCircle className="h-3 w-3 text-primary/70 cursor-help ml-0.5" />
+                    <HelpCircle className="h-3.5 w-3.5 text-primary/70 cursor-help" />
                   </TooltipTrigger>
                   <TooltipContent 
                     side={isRTL ? "left" : "right"}
@@ -416,7 +416,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
               </TooltipProvider>
             </div>
           </div>
-          <div className={`flex items-center gap-2 flex-1 min-w-0 ${isRTL ? 'flex-row-reverse order-0' : ''}`}>
+          <div className={`flex items-center gap-1.5 flex-1 min-w-0 ${isRTL ? 'flex-row-reverse order-0' : ''}`}>
             <span className="whitespace-nowrap">{totalMembers}</span>
             <Slider
               defaultValue={[0]}
@@ -434,21 +434,21 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
         </div>
 
         <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <div className={`flex items-center gap-1.5 flex-shrink-0 ${isRTL ? 'order-2' : ''}`}>
+          <div className={`flex items-center gap-2 flex-shrink-0 ${isRTL ? 'order-2' : ''}`}>
             <Check className="h-3 w-3 text-primary flex-shrink-0" />
-            <span className="w-[4.5rem]">{getProjectsLabel()}</span>
+            <span>{getProjectsLabel()}</span>
           </div>
           <div className="flex-1" />
-          <span className={`${isRTL ? 'order-1' : ''} ml-1`}>{getUnlimitedText()}</span>
+          <span className={`${isRTL ? 'order-1' : ''}`}>{getUnlimitedText()}</span>
         </div>
 
         <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 mb-1.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <div className={`flex items-center gap-1.5 flex-shrink-0 ${isRTL ? 'order-2' : ''}`}>
+          <div className={`flex items-center gap-2 flex-shrink-0 ${isRTL ? 'order-2' : ''}`}>
             <Check className="h-3 w-3 text-primary flex-shrink-0" />
-            <span className="w-[4.5rem]">{getClientsLabel()}</span>
+            <span>{getClientsLabel()}</span>
           </div>
           <div className="flex-1" />
-          <span className={`${isRTL ? 'order-1' : ''} ml-1`}>{getUnlimitedText()}</span>
+          <span className={`${isRTL ? 'order-1' : ''}`}>{getUnlimitedText()}</span>
         </div>
 
         <div className="border-t border-white/10 pt-2">
