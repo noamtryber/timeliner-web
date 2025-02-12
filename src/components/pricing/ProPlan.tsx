@@ -358,10 +358,10 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
             <Check className="h-3 w-3 text-primary flex-shrink-0" />
             <span className="w-[4.5rem] flex-shrink-0">{getStorageLabel()}</span>
           </div>
-          <div className={`flex items-center ${isRTL ? 'gap-6 mx-4' : 'gap-3'} flex-1 min-w-0`}>
-            <div className={`flex items-center ${isRTL ? 'flex-row-reverse gap-6' : 'gap-3'}`}>
+          <div className="flex items-center gap-3 flex-1 min-w-0">
+            <div className="flex items-center gap-3">
               <span className="whitespace-nowrap font-medium">{totalStorage.toFixed(1)}TB</span>
-              <div className="w-24 flex-shrink-0" style={{ direction: 'ltr' }}>
+              <div className="w-24 flex-shrink-0">
                 <Slider
                   defaultValue={[0]}
                   max={30}
@@ -396,10 +396,10 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
             <Check className="h-3 w-3 text-primary flex-shrink-0" />
             <span className="w-[4.5rem] flex-shrink-0">{getMembersLabel()}</span>
           </div>
-          <div className={`flex items-center ${isRTL ? 'gap-6 mx-4' : 'gap-3'} flex-1 min-w-0`}>
-            <div className={`flex items-center ${isRTL ? 'flex-row-reverse gap-6' : 'gap-3'}`}>
+          <div className="flex items-center gap-3 flex-1 min-w-0">
+            <div className="flex items-center gap-3">
               <span className="whitespace-nowrap font-medium">{totalMembers}</span>
-              <div className="w-24 flex-shrink-0" style={{ direction: 'ltr' }}>
+              <div className="w-24 flex-shrink-0">
                 <Slider
                   defaultValue={[0]}
                   max={15}
