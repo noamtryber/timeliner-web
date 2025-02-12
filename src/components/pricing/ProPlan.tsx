@@ -353,31 +353,32 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
       </Dialog>
 
       <div className="space-y-1.5 flex-grow">
-        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse justify-start' : ''}`}>
-          <div className={`flex items-center gap-1.5 ${isRTL ? 'order-2 ml-2' : ''}`}>
+        <div className={`flex items-center text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse justify-between' : 'gap-2'}`}>
+          <div className={`flex items-center gap-1.5 ${isRTL ? 'order-2' : ''}`}>
             <Check className="h-3 w-3 text-primary flex-shrink-0" />
             <span className="w-[4.5rem] flex-shrink-0">{getStorageLabel()}</span>
           </div>
-          <div className={`flex items-center gap-3 flex-1 min-w-0 ${isRTL ? 'flex-row-reverse justify-end' : ''}`}>
-            <span className="whitespace-nowrap order-2">{totalStorage.toFixed(1)}TB</span>
-            <Slider
-              defaultValue={[0]}
-              max={30}
-              step={1}
-              value={[extraStorage]}
-              onValueChange={([value]) => setExtraStorage(value)}
-              className={`w-32 flex-shrink-0 ${isRTL ? 'transform -scale-x-100 order-1' : ''}`}
-              dir={isRTL ? 'rtl' : 'ltr'}
-            />
-            {extraStorage > 0 && (
-              <span className="text-xs text-primary whitespace-nowrap order-3">+${storagePrice.toFixed(2)}{getPricePerMonthText()}</span>
-            )}
+          <div className={`flex items-center ${isRTL ? 'gap-6 mx-4' : 'gap-3'} flex-1 min-w-0`}>
+            <div className={`flex items-center ${isRTL ? 'flex-row-reverse gap-6' : 'gap-3'}`}>
+              <span className="whitespace-nowrap font-medium">{totalStorage.toFixed(1)}TB</span>
+              <Slider
+                defaultValue={[0]}
+                max={30}
+                step={1}
+                value={[extraStorage]}
+                onValueChange={([value]) => setExtraStorage(value)}
+                className={`w-32 flex-shrink-0 ${isRTL ? 'transform -scale-x-100' : ''}`}
+                dir={isRTL ? 'rtl' : 'ltr'}
+              />
+              {extraStorage > 0 && (
+                <span className="text-xs text-primary whitespace-nowrap">+${storagePrice.toFixed(2)}{getPricePerMonthText()}</span>
+              )}
+            </div>
           </div>
-          {isRTL && <div className="flex-1" />}
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <HelpCircle className={`h-3 w-3 text-primary/70 cursor-help ${isRTL ? 'order-1' : ''}`} />
+                <HelpCircle className="h-3 w-3 text-primary/70 cursor-help" />
               </TooltipTrigger>
               <TooltipContent 
                 side="left"
@@ -390,37 +391,37 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
           </TooltipProvider>
         </div>
 
-        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <div className={`flex items-center gap-1.5 ${isRTL ? 'order-2 ml-2' : ''}`}>
+        <div className={`flex items-center text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse justify-between' : 'gap-2'}`}>
+          <div className={`flex items-center gap-1.5 ${isRTL ? 'order-2' : ''}`}>
             <Check className="h-3 w-3 text-primary flex-shrink-0" />
             <span className="w-[4.5rem] flex-shrink-0">{getMembersLabel()}</span>
           </div>
-          <div className={`flex items-center gap-3 flex-1 min-w-0 ${isRTL ? 'flex-row-reverse justify-end' : ''}`}>
-            <span className="whitespace-nowrap order-2">{totalMembers}</span>
-            <Slider
-              defaultValue={[0]}
-              max={15}
-              step={1}
-              value={[extraMembers]}
-              onValueChange={([value]) => handleMemberLimit(value)}
-              className={`w-32 flex-shrink-0 ${isRTL ? 'transform -scale-x-100 order-1' : ''}`}
-              dir={isRTL ? 'rtl' : 'ltr'}
-            />
-            {extraMembers > 0 && (
-              <span className="text-xs text-primary whitespace-nowrap order-3">+${membersPrice.toFixed(2)}{getPricePerMonthText()}</span>
-            )}
+          <div className={`flex items-center ${isRTL ? 'gap-6 mx-4' : 'gap-3'} flex-1 min-w-0`}>
+            <div className={`flex items-center ${isRTL ? 'flex-row-reverse gap-6' : 'gap-3'}`}>
+              <span className="whitespace-nowrap font-medium">{totalMembers}</span>
+              <Slider
+                defaultValue={[0]}
+                max={15}
+                step={1}
+                value={[extraMembers]}
+                onValueChange={([value]) => handleMemberLimit(value)}
+                className={`w-32 flex-shrink-0 ${isRTL ? 'transform -scale-x-100' : ''}`}
+                dir={isRTL ? 'rtl' : 'ltr'}
+              />
+              {extraMembers > 0 && (
+                <span className="text-xs text-primary whitespace-nowrap">+${membersPrice.toFixed(2)}{getPricePerMonthText()}</span>
+              )}
+            </div>
           </div>
-          {isRTL && <div className="flex-1" />}
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <HelpCircle className={`h-3 w-3 text-primary/70 cursor-help ${isRTL ? 'order-1' : ''}`} />
+                <HelpCircle className="h-3 w-3 text-primary/70 cursor-help" />
               </TooltipTrigger>
               <TooltipContent 
                 side="left"
                 className="max-w-[225px] p-4 space-y-3 bg-[#1A1F2C]/95 backdrop-blur-sm z-[10000] border border-primary/20 rounded-lg shadow-xl"
                 sideOffset={5}
-                align="end"
               >
                 <div>
                   <p className="font-semibold mb-1">{getMembersTooltipContent().title1}</p>
@@ -445,26 +446,46 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
           </TooltipProvider>
         </div>
 
-        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <div className={`flex items-center gap-1.5 flex-shrink-0 ${isRTL ? 'order-2' : ''}`}>
+        <div className={`flex items-center text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse justify-between' : 'gap-2'}`}>
+          <div className={`flex items-center gap-1.5 ${isRTL ? 'order-2' : ''}`}>
             <Check className="h-3 w-3 text-primary flex-shrink-0" />
             <span className="w-[4.5rem]">{getProjectsLabel()}</span>
           </div>
-          <span className={`${isRTL ? 'order-1' : ''} ml-4`}>{getUnlimitedText()}</span>
-          <div className="flex-1" />
-        </div>
-
-        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <div className={`flex items-center gap-1.5 flex-shrink-0 ${isRTL ? 'order-2' : ''}`}>
-            <Check className="h-3 w-3 text-primary flex-shrink-0" />
-            <span className="w-[4.5rem]">{getClientsLabel()}</span>
+          <div className={`flex items-center ${isRTL ? 'gap-6 mx-4' : 'gap-3'} flex-1 min-w-0`}>
+            <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+              <span className="whitespace-nowrap font-medium">{getUnlimitedText()}</span>
+            </div>
           </div>
-          <span className={`${isRTL ? 'order-1' : ''} ml-4`}>{getUnlimitedText()}</span>
-          <div className="flex-1" />
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <HelpCircle className={`h-3 w-3 text-primary/70 cursor-help ${isRTL ? 'order-1' : ''}`} />
+                <HelpCircle className="h-3 w-3 text-primary/70 cursor-help" />
+              </TooltipTrigger>
+              <TooltipContent 
+                side="left"
+                className="max-w-[225px] p-4 space-y-2 bg-[#1A1F2C]/95 backdrop-blur-sm border border-primary/20 rounded-lg shadow-xl"
+                sideOffset={5}
+              >
+                Projects capacity
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </div>
+
+        <div className={`flex items-center text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse justify-between' : 'gap-2'}`}>
+          <div className={`flex items-center gap-1.5 ${isRTL ? 'order-2' : ''}`}>
+            <Check className="h-3 w-3 text-primary flex-shrink-0" />
+            <span className="w-[4.5rem]">{getClientsLabel()}</span>
+          </div>
+          <div className={`flex items-center ${isRTL ? 'gap-6 mx-4' : 'gap-3'} flex-1 min-w-0`}>
+            <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+              <span className="whitespace-nowrap font-medium">{getUnlimitedText()}</span>
+            </div>
+          </div>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <HelpCircle className="h-3 w-3 text-primary/70 cursor-help" />
               </TooltipTrigger>
               <TooltipContent 
                 side="left"
