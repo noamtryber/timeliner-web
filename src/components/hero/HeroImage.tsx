@@ -12,8 +12,8 @@ export const HeroImage = () => {
     return null;
   }
   
-  const imageUrl = language === 'he' 
-    ? 'https://tbvszyxrrtqorwnionfv.supabase.co/storage/v1/object/sign/media/hero%20image%20hebrew4.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJtZWRpYS9oZXJvIGltYWdlIGhlYnJldzQucG5nIiwiaWF0IjoxNzM5MzkwNzg5LCJleHAiOjE3NzA5MjY3ODl9._MxiX40uxhOHPxtDryFTdHQDoTaISJKMPpmwAS96_y0'
+  const imageUrl = language === 'ar' 
+    ? 'https://tbvszyxrrtqorwnionfv.supabase.co/storage/v1/object/sign/media/hero%20image%20arabic1.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJtZWRpYS9oZXJvIGltYWdlIGFyYWJpYzEucG5nIiwiaWF0IjoxNzM5Mzk0MzMyLCJleHAiOjE3NzA5MzAzMzJ9._4f57KHGLBXOpOYXeh8cY6GuwA3JykeOUOSRGX5YbaU'
     : heroImage;
   
   return (
