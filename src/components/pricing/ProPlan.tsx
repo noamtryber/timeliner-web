@@ -367,8 +367,8 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
                 step={1}
                 value={[extraStorage]}
                 onValueChange={([value]) => setExtraStorage(value)}
-                className={`w-32 flex-shrink-0 ${isRTL ? 'transform -scale-x-100' : ''}`}
-                dir={isRTL ? 'rtl' : 'ltr'}
+                className="w-32 flex-shrink-0"
+                dir="ltr"
               />
               {extraStorage > 0 && (
                 <span className="text-xs text-primary whitespace-nowrap">+${storagePrice.toFixed(2)}{getPricePerMonthText()}</span>
@@ -405,8 +405,8 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
                 step={1}
                 value={[extraMembers]}
                 onValueChange={([value]) => handleMemberLimit(value)}
-                className={`w-32 flex-shrink-0 ${isRTL ? 'transform -scale-x-100' : ''}`}
-                dir={isRTL ? 'rtl' : 'ltr'}
+                className="w-32 flex-shrink-0"
+                dir="ltr"
               />
               {extraMembers > 0 && (
                 <span className="text-xs text-primary whitespace-nowrap">+${membersPrice.toFixed(2)}{getPricePerMonthText()}</span>
