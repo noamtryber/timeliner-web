@@ -354,29 +354,30 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
 
       <div className="space-y-1.5 flex-grow">
         <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse justify-start' : ''}`}>
-          <div className={`flex items-center gap-1.5 ${isRTL ? 'order-1' : ''}`}>
+          <div className={`flex items-center gap-1.5 ${isRTL ? 'order-2 ml-2' : ''}`}>
             <Check className="h-3 w-3 text-primary flex-shrink-0" />
             <span className="w-[4.5rem] flex-shrink-0">{getStorageLabel()}</span>
           </div>
-          <div className={`flex items-center gap-2 flex-1 min-w-0 ${isRTL ? 'flex-row-reverse order-0' : ''}`}>
-            <span className="whitespace-nowrap">{totalStorage.toFixed(1)}TB</span>
+          <div className={`flex items-center gap-3 flex-1 min-w-0 ${isRTL ? 'flex-row-reverse justify-end' : ''}`}>
+            <span className="whitespace-nowrap order-2">{totalStorage.toFixed(1)}TB</span>
             <Slider
               defaultValue={[0]}
               max={30}
               step={1}
               value={[extraStorage]}
               onValueChange={([value]) => setExtraStorage(value)}
-              className={`w-20 flex-shrink-0 ${isRTL ? 'rotate-180' : ''}`}
+              className={`w-32 flex-shrink-0 ${isRTL ? 'transform -scale-x-100 order-1' : ''}`}
               dir={isRTL ? 'rtl' : 'ltr'}
             />
             {extraStorage > 0 && (
-              <span className="text-xs text-primary whitespace-nowrap">+${storagePrice.toFixed(2)}{getPricePerMonthText()}</span>
+              <span className="text-xs text-primary whitespace-nowrap order-3">+${storagePrice.toFixed(2)}{getPricePerMonthText()}</span>
             )}
           </div>
+          {isRTL && <div className="flex-1" />}
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <HelpCircle className="h-3 w-3 text-primary/70 cursor-help ml-2" />
+                <HelpCircle className={`h-3 w-3 text-primary/70 cursor-help ${isRTL ? 'order-1' : ''}`} />
               </TooltipTrigger>
               <TooltipContent 
                 side="left"
@@ -389,30 +390,31 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
           </TooltipProvider>
         </div>
 
-        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse justify-start' : ''}`}>
-          <div className={`flex items-center gap-1.5 ${isRTL ? 'order-1' : ''}`}>
+        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <div className={`flex items-center gap-1.5 ${isRTL ? 'order-2 ml-2' : ''}`}>
             <Check className="h-3 w-3 text-primary flex-shrink-0" />
             <span className="w-[4.5rem] flex-shrink-0">{getMembersLabel()}</span>
           </div>
-          <div className={`flex items-center gap-2 flex-1 min-w-0 ${isRTL ? 'flex-row-reverse order-0' : ''}`}>
-            <span className="whitespace-nowrap">{totalMembers}</span>
+          <div className={`flex items-center gap-3 flex-1 min-w-0 ${isRTL ? 'flex-row-reverse justify-end' : ''}`}>
+            <span className="whitespace-nowrap order-2">{totalMembers}</span>
             <Slider
               defaultValue={[0]}
               max={15}
               step={1}
               value={[extraMembers]}
               onValueChange={([value]) => handleMemberLimit(value)}
-              className={`w-20 flex-shrink-0 ${isRTL ? 'rotate-180' : ''}`}
+              className={`w-32 flex-shrink-0 ${isRTL ? 'transform -scale-x-100 order-1' : ''}`}
               dir={isRTL ? 'rtl' : 'ltr'}
             />
             {extraMembers > 0 && (
-              <span className="text-xs text-primary whitespace-nowrap">+${membersPrice.toFixed(2)}{getPricePerMonthText()}</span>
+              <span className="text-xs text-primary whitespace-nowrap order-3">+${membersPrice.toFixed(2)}{getPricePerMonthText()}</span>
             )}
           </div>
+          {isRTL && <div className="flex-1" />}
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <HelpCircle className="h-3 w-3 text-primary/70 cursor-help ml-2" />
+                <HelpCircle className={`h-3 w-3 text-primary/70 cursor-help ${isRTL ? 'order-1' : ''}`} />
               </TooltipTrigger>
               <TooltipContent 
                 side="left"
@@ -462,7 +464,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <HelpCircle className="h-3 w-3 text-primary/70 cursor-help ml-2" />
+                <HelpCircle className={`h-3 w-3 text-primary/70 cursor-help ${isRTL ? 'order-1' : ''}`} />
               </TooltipTrigger>
               <TooltipContent 
                 side="left"
@@ -477,7 +479,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
                     'Client Guests'
                   }</p>
                   <p className="text-sm text-white/70">{
-                    language === 'he' ? 'מאשרים, לא חברי צוות (יכולים רק לצפות, להגיב, לאשר, להוריד ולהעלות קבצים).' :
+                    language === 'he' ? 'מאשרים, לא חברי צוות (יכולים רק לצ��ות, להגיב, לאשר, להוריד ולהעלות קבצים).' :
                     language === 'ar' ? 'المصادقون، ليسوا أ��ضاء في الفريق (يمكنهم فقط العرض والتعليق والموافقة والتنزيل وتحميل الملفات).' :
                     language === 'es' ? 'Aprobadores, no miembros del equipo (solo pueden ver, comentar, aprobar, descargar y subir archivos).' :
                     'Approvers, not team members (they can only view, comment, approve, download, and upload raw files).'
