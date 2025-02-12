@@ -257,13 +257,13 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
   const getClientsLabel = () => {
     switch (language) {
       case 'he':
-        return 'גישת לקוחות:';
+        return 'לקוחות:';
       case 'ar':
-        return 'وصول العملاء:';
+        return 'العملاء:';
       case 'es':
-        return 'Acceso clientes:';
+        return 'Clientes:';
       default:
-        return 'Client access:';
+        return 'Clients:';
     }
   };
 
@@ -366,7 +366,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
               step={1}
               value={[extraStorage]}
               onValueChange={([value]) => setExtraStorage(value)}
-              className={`w-20 flex-shrink-0 ${isRTL ? 'scale-x-[-1]' : ''}`}
+              className={`w-20 flex-shrink-0 ${isRTL ? 'rotate-180' : ''}`}
               dir={isRTL ? 'rtl' : 'ltr'}
             />
             {extraStorage > 0 && (
@@ -378,7 +378,11 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
               <TooltipTrigger asChild>
                 <HelpCircle className="h-3 w-3 text-primary/70 cursor-help ml-2" />
               </TooltipTrigger>
-              <TooltipContent side={isRTL ? "left" : "right"}>
+              <TooltipContent 
+                side="left"
+                className="max-w-[225px] p-4 space-y-2 bg-[#1A1F2C]/95 backdrop-blur-sm border border-primary/20 rounded-lg shadow-xl"
+                sideOffset={5}
+              >
                 Storage capacity for your assets
               </TooltipContent>
             </Tooltip>
@@ -398,7 +402,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
               step={1}
               value={[extraMembers]}
               onValueChange={([value]) => handleMemberLimit(value)}
-              className={`w-20 flex-shrink-0 ${isRTL ? 'scale-x-[-1]' : ''}`}
+              className={`w-20 flex-shrink-0 ${isRTL ? 'rotate-180' : ''}`}
               dir={isRTL ? 'rtl' : 'ltr'}
             />
             {extraMembers > 0 && (
@@ -411,7 +415,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
                 <HelpCircle className="h-3 w-3 text-primary/70 cursor-help ml-2" />
               </TooltipTrigger>
               <TooltipContent 
-                side={isRTL ? "left" : "right"}
+                side="left"
                 className="max-w-[225px] p-4 space-y-3 bg-[#1A1F2C]/95 backdrop-blur-sm z-[10000] border border-primary/20 rounded-lg shadow-xl"
                 sideOffset={5}
                 align="end"
@@ -474,7 +478,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
                   }</p>
                   <p className="text-sm text-white/70">{
                     language === 'he' ? 'מאשרים, לא חברי צוות (יכולים רק לצפות, להגיב, לאשר, להוריד ולהעלות קבצים).' :
-                    language === 'ar' ? 'المصادقون، ليسوا أعضاء في الفريق (يمكنهم فقط العرض والتعليق والموافقة والتنزيل وتحميل الملفات).' :
+                    language === 'ar' ? 'المصادقون، ليسوا أ��ضاء في الفريق (يمكنهم فقط العرض والتعليق والموافقة والتنزيل وتحميل الملفات).' :
                     language === 'es' ? 'Aprobadores, no miembros del equipo (solo pueden ver, comentar, aprobar, descargar y subir archivos).' :
                     'Approvers, not team members (they can only view, comment, approve, download, and upload raw files).'
                   }</p>
