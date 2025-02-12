@@ -448,7 +448,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
           <div className="flex-1" />
         </div>
 
-        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 mb-1.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
+        <div className={`flex items-center gap-2 text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
           <div className={`flex items-center gap-1.5 flex-shrink-0 ${isRTL ? 'order-2' : ''}`}>
             <Check className="h-3 w-3 text-primary flex-shrink-0" />
             <span className="w-[4.5rem]">{getClientsLabel()}</span>
@@ -461,14 +461,23 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
                 <HelpCircle className="h-3 w-3 text-primary/70 cursor-help ml-2" />
               </TooltipTrigger>
               <TooltipContent 
-                side={isRTL ? "left" : "right"}
+                side="left"
                 className="max-w-[225px] p-4 space-y-2 bg-[#1A1F2C]/95 backdrop-blur-sm border border-primary/20 rounded-lg shadow-xl"
+                sideOffset={5}
               >
                 <div>
-                  <p className="font-semibold mb-1">Client Guests</p>
-                  <p className="text-sm text-white/70">
-                    Approvers, not team members (they can only view, comment, approve, download, and upload raw files).
-                  </p>
+                  <p className="font-semibold mb-1">{
+                    language === 'he' ? 'אורחים לקוחות' :
+                    language === 'ar' ? 'ضيوف العملاء' :
+                    language === 'es' ? 'Clientes Invitados' :
+                    'Client Guests'
+                  }</p>
+                  <p className="text-sm text-white/70">{
+                    language === 'he' ? 'מאשרים, לא חברי צוות (יכולים רק לצפות, להגיב, לאשר, להוריד ולהעלות קבצים).' :
+                    language === 'ar' ? 'المصادقون، ليسوا أعضاء في الفريق (يمكنهم فقط العرض والتعليق والموافقة والتنزيل وتحميل الملفات).' :
+                    language === 'es' ? 'Aprobadores, no miembros del equipo (solo pueden ver, comentar, aprobar, descargar y subir archivos).' :
+                    'Approvers, not team members (they can only view, comment, approve, download, and upload raw files).'
+                  }</p>
                 </div>
               </TooltipContent>
             </Tooltip>
