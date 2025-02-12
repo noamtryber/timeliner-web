@@ -357,7 +357,7 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <HelpCircle className={`h-3 w-3 text-primary/70 cursor-help ${isRTL ? 'order-first' : ''}`} />
+                <HelpCircle className={`h-3 w-3 text-primary/70 cursor-help ${isRTL ? 'order-first' : 'order-last'}`} />
               </TooltipTrigger>
               <TooltipContent 
                 side={isRTL ? "right" : "left"}
@@ -395,11 +395,11 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <HelpCircle className={`h-3 w-3 text-primary/70 cursor-help ${isRTL ? 'order-first' : ''}`} />
+                <HelpCircle className={`h-3 w-3 text-primary/70 cursor-help ${isRTL ? 'order-first' : 'order-last'}`} />
               </TooltipTrigger>
               <TooltipContent 
                 side={isRTL ? "right" : "left"}
-                className="max-w-[225px] p-4 space-y-3 bg-[#1A1F2C]/95 backdrop-blur-sm z-[10000] border border-primary/20 rounded-lg shadow-xl"
+                className="max-w-[225px] p-4 space-y-2 bg-[#1A1F2C]/95 backdrop-blur-sm border border-primary/20 rounded-lg shadow-xl"
                 sideOffset={5}
               >
                 <div>
@@ -447,6 +447,20 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
         </div>
 
         <div className={`flex items-center text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse justify-between' : 'gap-2'}`}>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <HelpCircle className={`h-3 w-3 text-primary/70 cursor-help ${isRTL ? 'order-first' : 'order-last'}`} />
+              </TooltipTrigger>
+              <TooltipContent 
+                side={isRTL ? "right" : "left"}
+                className="max-w-[225px] p-4 space-y-2 bg-[#1A1F2C]/95 backdrop-blur-sm border border-primary/20 rounded-lg shadow-xl"
+                sideOffset={5}
+              >
+                Projects capacity
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
           <div className={`flex items-center gap-1.5 ${isRTL ? 'order-2' : ''}`}>
             <Check className="h-3 w-3 text-primary flex-shrink-0" />
             <span className="w-[4.5rem]">{getProjectsLabel()}</span>
@@ -456,39 +470,16 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
               <span className="whitespace-nowrap font-medium">{getUnlimitedText()}</span>
             </div>
           </div>
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <HelpCircle className="h-3 w-3 text-primary/70 cursor-help" />
-              </TooltipTrigger>
-              <TooltipContent 
-                side="left"
-                className="max-w-[225px] p-4 space-y-2 bg-[#1A1F2C]/95 backdrop-blur-sm border border-primary/20 rounded-lg shadow-xl"
-                sideOffset={5}
-              >
-                Projects capacity
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
         </div>
 
         <div className={`flex items-center text-[0.927rem] text-white/70 py-0.5 ${isRTL ? 'flex-row-reverse justify-between' : 'gap-2'}`}>
-          <div className={`flex items-center gap-1.5 ${isRTL ? 'order-2' : ''}`}>
-            <Check className="h-3 w-3 text-primary flex-shrink-0" />
-            <span className="w-[4.5rem]">{getClientsLabel()}</span>
-          </div>
-          <div className={`flex items-center ${isRTL ? 'gap-6 mx-4' : 'gap-3'} flex-1 min-w-0`}>
-            <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
-              <span className="whitespace-nowrap font-medium">{getUnlimitedText()}</span>
-            </div>
-          </div>
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <HelpCircle className="h-3 w-3 text-primary/70 cursor-help" />
+                <HelpCircle className={`h-3 w-3 text-primary/70 cursor-help ${isRTL ? 'order-first' : 'order-last'}`} />
               </TooltipTrigger>
               <TooltipContent 
-                side="left"
+                side={isRTL ? "right" : "left"}
                 className="max-w-[225px] p-4 space-y-2 bg-[#1A1F2C]/95 backdrop-blur-sm border border-primary/20 rounded-lg shadow-xl"
                 sideOffset={5}
               >
@@ -500,8 +491,8 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
                     'Client Guests'
                   }</p>
                   <p className="text-sm text-white/70">{
-                    language === 'he' ? 'מאשרים, לא חברי צוות (יכולים רק לצ��ות, להגיב, לאשר, להוריד ולהעלות קבצים).' :
-                    language === 'ar' ? 'المصادقون، ليسوا أ��ضاء في الفريق (يمكنهم فقط العرض والتعليق والموافقة والتنزيل وتحميل الملفات).' :
+                    language === 'he' ? 'מאשרים, לא חברי צוות (יכולים רק לצפות, להגיב, לאשר, להוריד ולהעלות קבצים).' :
+                    language === 'ar' ? 'المصادقون، ليسوا أعضاء في الفريق (يمكنهم فقط العرض والتعليق والموافقة والتنزيل وتحميل الملفات).' :
                     language === 'es' ? 'Aprobadores, no miembros del equipo (solo pueden ver, comentar, aprobar, descargar y subir archivos).' :
                     'Approvers, not team members (they can only view, comment, approve, download, and upload raw files).'
                   }</p>
@@ -509,6 +500,15 @@ export const ProPlan = ({ content, video, pricingPeriod }: ProPlanProps) => {
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
+          <div className={`flex items-center gap-1.5 ${isRTL ? 'order-2' : ''}`}>
+            <Check className="h-3 w-3 text-primary flex-shrink-0" />
+            <span className="w-[4.5rem]">{getClientsLabel()}</span>
+          </div>
+          <div className={`flex items-center ${isRTL ? 'gap-6 mx-4' : 'gap-3'} flex-1 min-w-0`}>
+            <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+              <span className="whitespace-nowrap font-medium">{getUnlimitedText()}</span>
+            </div>
+          </div>
         </div>
 
         <div className="border-t border-white/10 pt-2">
