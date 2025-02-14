@@ -99,7 +99,7 @@ export const Footer = () => {
           <div className={`flex flex-col md:flex-row items-start gap-6 md:gap-8 ${isRTL ? 'md:flex-row-reverse' : ''} relative z-10`}>
             <div className={`flex-1 space-y-6 md:space-y-8 ${isRTL ? 'text-right' : 'text-left'}`}>
               <div className="space-y-4">
-                <p className="text-sm font-medium text-amber-600">
+                <p className="text-sm font-medium text-primary-DEFAULT">
                   {content.ready}
                 </p>
                 <h2 className="text-xl md:text-3xl font-bold text-black">
