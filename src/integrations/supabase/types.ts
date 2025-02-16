@@ -260,7 +260,16 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      upsert_translation: {
+        Args: {
+          _language: Database["public"]["Enums"]["supported_language"]
+          _section_type: string
+          _section_id: string
+          _content_key: string
+          _content_value: string
+        }
+        Returns: undefined
+      }
     }
     Enums: {
       section_type:
