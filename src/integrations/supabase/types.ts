@@ -207,6 +207,21 @@ export type Database = {
         }
         Relationships: []
       }
+      translation_cache_versions: {
+        Row: {
+          language: Database["public"]["Enums"]["supported_language"]
+          last_updated: string
+        }
+        Insert: {
+          language: Database["public"]["Enums"]["supported_language"]
+          last_updated?: string
+        }
+        Update: {
+          language?: Database["public"]["Enums"]["supported_language"]
+          last_updated?: string
+        }
+        Relationships: []
+      }
       translations: {
         Row: {
           content_key: string

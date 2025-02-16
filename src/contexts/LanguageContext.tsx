@@ -1,6 +1,8 @@
+
 import { createContext, useContext, useEffect, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useLocation, useNavigate } from "react-router-dom";
+import { detectBrowserLanguage, clearCache } from "@/utils/translationService";
 
 export type SupportedLanguage = 'en' | 'es' | 'pt' | 'zh' | 'ru' | 'ar' | 'he';
 
@@ -25,16 +27,15 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   
-  // Initialize language based on URL path
+  // Initialize language based on URL path or browser language
   const [language, setLanguageState] = useState<SupportedLanguage>(() => {
     const pathSegments = location.pathname.split('/');
     const langFromPath = pathSegments[1] as SupportedLanguage;
-    const savedLanguage = localStorage.getItem('preferred-language');
     
-    if (['es', 'pt', 'zh', 'ru', 'ar', 'he'].includes(langFromPath)) {
+    if (['es', 'ar', 'he'].includes(langFromPath)) {
       return langFromPath;
     }
-    return (savedLanguage as SupportedLanguage) || 'en';
+    return detectBrowserLanguage();
   });
   
   const isRTL = RTL_LANGUAGES.includes(language);
@@ -43,6 +44,9 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
     console.log('Setting new language:', newLanguage);
     setLanguageState(newLanguage);
     localStorage.setItem('preferred-language', newLanguage);
+    
+    // Clear translation cache when language changes
+    clearCache();
     
     // Update URL based on selected language
     const currentPath = location.pathname;
@@ -86,15 +90,16 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
     const pathSegments = location.pathname.split('/');
     const langFromPath = pathSegments[1] as SupportedLanguage;
     
-    if (['es', 'pt', 'zh', 'ru', 'ar', 'he'].includes(langFromPath) && langFromPath !== language) {
+    if (['es', 'ar', 'he'].includes(langFromPath) && langFromPath !== language) {
       setLanguageState(langFromPath);
       localStorage.setItem('preferred-language', langFromPath);
-    } else if (!['es', 'pt', 'zh', 'ru', 'ar', 'he'].includes(langFromPath) && language !== 'en') {
+    } else if (!['es', 'ar', 'he'].includes(langFromPath) && language !== 'en') {
       setLanguageState('en');
       localStorage.setItem('preferred-language', 'en');
     }
   }, [location.pathname]);
 
+  // Update HTML attributes for language and direction
   useEffect(() => {
     document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
     document.documentElement.lang = language;
