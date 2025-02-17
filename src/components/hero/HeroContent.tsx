@@ -1,23 +1,15 @@
+
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-interface ContentTranslations {
-  video_editors: string;
-  main_title: string;
-  subtext: string;
-  get_started: string;
-  watch_demo: string;
-}
-
 interface HeroContentProps {
-  translations: ContentTranslations;
   onWatchDemo: () => void;
   isMobile: boolean;
 }
 
-export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContentProps) => {
+export const HeroContent = ({ onWatchDemo, isMobile }: HeroContentProps) => {
   const navigate = useNavigate();
   const { isRTL, language } = useLanguage();
 
@@ -29,17 +21,12 @@ export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContent
     ? "https://vumbnail.com/1044344874.jpg"
     : "https://vumbnail.com/1046016144.jpg";
 
-  const getStartTrialText = () => {
-    switch(language) {
-      case 'he':
-        return 'התחילו היום בחינם';
-      case 'es':
-        return 'Comience hoy gratis';
-      case 'ar':
-        return 'جرّب مجاناً الآن';
-      default:
-        return 'Start Free Trial';
-    }
+  const translations = {
+    video_editors: '[hero_subtitle]',
+    main_title: '[hero_title]',
+    subtext: '[hero_description]',
+    get_started: '[get_started]',
+    watch_demo: '[watch_demo]'
   };
 
   const handleSignupClick = () => {
@@ -91,7 +78,7 @@ export const HeroContent = ({ translations, onWatchDemo, isMobile }: HeroContent
           onClick={handleSignupClick}
         >
           <span className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
-            {getStartTrialText()}
+            {translations.get_started}
             <ArrowRight className={`h-4 sm:h-5 w-4 sm:w-5 ${isRTL ? 'rotate-180' : ''}`} />
           </span>
         </Button>

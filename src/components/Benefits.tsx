@@ -1,88 +1,30 @@
+
 import { VideoIcon, Building2Icon, UsersIcon } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const benefits = {
-  en: [
-    {
-      icon: VideoIcon,
-      title: "Video Editors",
-      description: "Manage client relationships and revisions effortlessly."
-    },
-    {
-      icon: Building2Icon,
-      title: "Creative Agencies",
-      description: "Oversee multiple editors, projects, and clients from one platform."
-    },
-    {
-      icon: UsersIcon,
-      title: "Project Managers",
-      description: "Streamline short-form content production and team coordination."
-    }
-  ],
-  he: [
-    {
-      icon: VideoIcon,
-      title: "עורכי וידאו",
-      description: "ניהול פשוט של קשרי לקוחות ותיקונים, ללא מאמץ."
-    },
-    {
-      icon: Building2Icon,
-      title: "סוכנויות תוכן וקרייטיב",
-      description: "פלטפורמה מרכזית לניהול צוותים, פרויקטים וקשרי לקוחות."
-    },
-    {
-      icon: UsersIcon,
-      title: "מנהלי פרויקטים",
-      description: "ייעלו את תהליך הפקת תוכן קצר/ארוך ואת התיאום בין הצוותים."
-    }
-  ],
-  es: [
-    {
-      icon: VideoIcon,
-      title: "Editores de Video",
-      description: "Gestiona las relaciones con clientes y revisiones sin esfuerzo."
-    },
-    {
-      icon: Building2Icon,
-      title: "Agencias Creativas",
-      description: "Supervisa múltiples editores, proyectos y clientes desde una sola plataforma."
-    },
-    {
-      icon: UsersIcon,
-      title: "Gestores de Proyecto",
-      description: "Optimiza la producción de contenido y la coordinación del equipo."
-    }
-  ],
-  ar: [
-    {
-      icon: VideoIcon,
-      title: "محررو الفيديو",
-      description: "إدارة العملاء والمراجعات بكل سهولة."
-    },
-    {
-      icon: Building2Icon,
-      title: "وكالات المحتوى",
-      description: "تحكم كامل بالمحررين، المشاريع، والعملاء من منصة واحدة."
-    },
-    {
-      icon: UsersIcon,
-      title: "مديرو المشاريع",
-      description: "تنسيق إنتاج المحتوى القصير وإدارة الفرق بدون تعقيد."
-    }
-  ]
-};
-
 export const Benefits = () => {
   const { language } = useLanguage();
-  const content = benefits[language === 'he' ? 'he' : language === 'es' ? 'es' : language === 'ar' ? 'ar' : 'en'];
-  const title = language === 'he' 
-    ? 'מי מרוויח מטיימליינר?' 
-    : language === 'es'
-    ? '¿Quién se Beneficia de Timeliner?'
-    : language === 'ar'
-    ? 'مين بيستفيد من Timeliner؟'
-    : 'Who Benefits from Timeliner?';
+  const isRTL = language === 'he' || language === 'ar';
+
+  const title = '[benefits_title]';
+  const content = [
+    {
+      icon: VideoIcon,
+      title: '[benefit_1_title]',
+      description: '[benefit_1_description]'
+    },
+    {
+      icon: Building2Icon,
+      title: '[benefit_2_title]',
+      description: '[benefit_2_description]'
+    },
+    {
+      icon: UsersIcon,
+      title: '[benefit_3_title]',
+      description: '[benefit_3_description]'
+    }
+  ];
 
   return (
     <section className="py-24 relative overflow-hidden">

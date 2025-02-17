@@ -1,31 +1,20 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "./ui/button";
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 export const Footer = () => {
-  const {
-    isRTL,
-    language
-  } = useLanguage();
+  const { isRTL, language } = useLanguage();
   const navigate = useNavigate();
-  const location = useLocation();
-  const [mousePosition, setMousePosition] = useState({
-    x: 0,
-    y: 0
-  });
-  const isSpanish = language === 'es';
-  const isArabic = language === 'ar';
-  const isHebrew = language === 'he';
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       const rect = document.getElementById('footer-container')?.getBoundingClientRect();
       if (rect) {
         const x = (e.clientX - rect.left) / rect.width - 0.5;
         const y = (e.clientY - rect.top) / rect.height - 0.5;
-        setMousePosition({
-          x,
-          y
-        });
+        setMousePosition({ x, y });
       }
     };
     const container = document.getElementById('footer-container');
@@ -34,14 +23,15 @@ export const Footer = () => {
       container?.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
+
   const handleSignupClick = () => {
     const prefix = language === 'en' ? '' : `/${language}`;
     navigate(`${prefix}/signup`);
   };
+
   const handleCommunityClick = () => {
     const prefix = language === 'en' ? '' : `/${language}`;
     navigate(`${prefix}/community`);
-    // Use setTimeout to ensure navigation completes before scrolling
     setTimeout(() => {
       window.scrollTo({
         top: 0,
@@ -49,51 +39,19 @@ export const Footer = () => {
       });
     }, 100);
   };
-  const getContent = () => {
-    if (isHebrew) {
-      return {
-        ready: 'מוכנים לקחת שליטה?',
-        description: 'סוף לבלאגן. מערכת חכמה לניהול פרויקטים, תיקונים ותשלומים- הכל במקום אחד',
-        startFree: 'התחילו בחינם',
-        joinCommunity: 'הצטרפו לקהילה',
-        privacy: 'מדיניות פרטיות',
-        terms: 'תנאים והגבלות',
-        designedBy: 'עוצב על ידי נועם טרייבר'
-      };
-    } else if (isArabic) {
-      return {
-        ready: 'هل أنت مستعد لتولي زمام الأمور؟',
-        description: 'قم بتبسيط سير عملك باستخدام أدوات إنتاج فيديو أكثر ذكاءً.',
-        startFree: 'ابدأ مجاناً',
-        joinCommunity: 'انضم إلى المجتمع',
-        privacy: 'سياسة الخصوصية',
-        terms: 'الشروط والأحكام',
-        designedBy: 'تصميم نوعم ترايبر'
-      };
-    } else if (isSpanish) {
-      return {
-        ready: '¿LISTO PARA TOMAR EL CONTROL?',
-        description: 'Optimiza tu flujo de trabajo con herramientas más inteligentes de producción de video.',
-        startFree: 'Comienza Gratis',
-        joinCommunity: 'Únete a la comunidad',
-        privacy: 'Política de Privacidad',
-        terms: 'Términos y Condiciones',
-        designedBy: 'Diseñado por Noam Tryber'
-      };
-    } else {
-      return {
-        ready: 'READY TO TAKE CONTROL?',
-        description: 'Streamline your workflow with smarter video production tools.',
-        startFree: 'Get Started For Free',
-        joinCommunity: 'Join the community',
-        privacy: 'Privacy Policy',
-        terms: 'Terms & Conditions',
-        designedBy: 'Designed by Noam Tryber'
-      };
-    }
+
+  const content = {
+    ready: '[footer_ready]',
+    description: '[footer_description]',
+    startFree: '[footer_start_free]',
+    joinCommunity: '[footer_join_community]',
+    privacy: '[footer_privacy]',
+    terms: '[footer_terms]',
+    designedBy: '[footer_designed_by]'
   };
-  const content = getContent();
-  return <footer className="w-full mt-20">
+
+  return (
+    <footer className="w-full mt-20">
       <div className="container mx-auto px-4 py-8 md:py-12">
         <div id="footer-container" className="bg-gradient-to-br from-[#F1F1F1] to-[#e6e9f0] rounded-2xl p-6 md:p-12 relative overflow-hidden">
           <div className={`flex flex-col md:flex-row items-start gap-6 md:gap-8 ${isRTL ? 'md:flex-row-reverse' : ''} relative z-10`}>
@@ -173,5 +131,6 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>;
+    </footer>
+  );
 };
