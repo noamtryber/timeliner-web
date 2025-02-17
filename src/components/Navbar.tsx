@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -83,7 +84,6 @@ export const Navbar = () => {
             </a>
             <div className={`hidden md:flex items-center ${isRTL ? 'flex-row-reverse space-x-reverse' : 'space-x-4'}`}>
               <NavItems 
-                content={content} 
                 handleSectionClick={handleSectionClick}
                 hideMainNav={hideMainNav}
               />
