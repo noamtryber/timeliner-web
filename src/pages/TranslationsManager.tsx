@@ -6,6 +6,10 @@ import { supabase } from "@/integrations/supabase/client";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Loader2Icon } from "lucide-react";
+import type { Database } from "@/integrations/supabase/types";
+
+// Define the supported languages type from the database schema
+type SupportedLanguage = Database["public"]["Enums"]["supported_language"];
 
 export const TranslationsManager = () => {
   const [isDownloading, setIsDownloading] = useState(false);
@@ -78,7 +82,7 @@ export const TranslationsManager = () => {
         const content_key = row[2];
         
         // Process each language column (en, es, ar, he)
-        const languageColumns = ['en', 'es', 'ar', 'he'];
+        const languageColumns: SupportedLanguage[] = ['en', 'es', 'ar', 'he'];
         for (let langIndex = 0; langIndex < languageColumns.length; langIndex++) {
           const content_value = row[langIndex + 3]?.trim();
           if (!content_value) continue;
