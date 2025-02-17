@@ -80,12 +80,16 @@ export const fetchTranslations = async (
   const cache = getStoredCache();
   const cachedData = cache[cacheKey];
 
-  // Check cache version
-  const { data: versionData } = await supabase
+  // Check cache version - using maybeSingle() instead of single()
+  const { data: versionData, error: versionError } = await supabase
     .from('translation_cache_versions')
     .select('last_updated')
     .eq('language', language)
-    .single();
+    .maybeSingle();
+
+  if (versionError) {
+    console.error('Error fetching cache version:', versionError);
+  }
 
   const serverVersion = versionData?.last_updated;
 
@@ -93,6 +97,17 @@ export const fetchTranslations = async (
   if (cachedData && serverVersion && isCacheValid(cachedData, serverVersion)) {
     console.log('Using cached translations for:', cacheKey);
     return cachedData.translations;
+  }
+
+  // Initialize cache version if it doesn't exist
+  if (!serverVersion) {
+    const { error: insertError } = await supabase
+      .from('translation_cache_versions')
+      .insert({ language: language });
+    
+    if (insertError) {
+      console.error('Error initializing cache version:', insertError);
+    }
   }
 
   // Fetch fresh data
@@ -114,11 +129,10 @@ export const fetchTranslations = async (
     transformedContent[item.content_key] = item.content_value;
   });
 
-  // Update cache
-  if (serverVersion) {
-    setCache(cacheKey, transformedContent, serverVersion);
-    setCacheVersion(language, serverVersion);
-  }
+  // Update cache if we have a version
+  const currentVersion = serverVersion || new Date().toISOString();
+  setCache(cacheKey, transformedContent, currentVersion);
+  setCacheVersion(language, currentVersion);
 
   return transformedContent;
 };
