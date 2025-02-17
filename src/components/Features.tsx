@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { usePageContent } from "@/hooks/usePageContent";
 import { useMediaContent } from "@/hooks/useMediaContent";
@@ -8,7 +9,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { featureGroups } from "./features/featureData";
 import { featureGroupsHe } from "./features/featureDataHe";
 import { featureGroupsAr } from "./features/featureDataAr";
-import { featureGroupsEs } from "./features/featureData";
+import { featureGroupsEs } from "./features/featureDataEs";
 import { iconComponents } from "./features/iconComponents";
 import { Button } from "./ui/button";
 
