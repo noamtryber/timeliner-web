@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -34,31 +35,31 @@ export const MobileMenu = ({
               onClick={() => handleSectionClick('features')} 
               className={`text-white block px-3 py-2 rounded-md text-base font-medium w-full ${isRTL ? 'text-right' : 'text-left'}`}
             >
-              {content?.features_link || 'Features'}
+              [nav_features]
             </button>
             <button 
               onClick={() => handleSectionClick('testimonials')} 
               className={`text-white block px-3 py-2 rounded-md text-base font-medium w-full ${isRTL ? 'text-right' : 'text-left'}`}
             >
-              {content?.testimonials_link || 'Testimonials'}
+              [nav_testimonials]
             </button>
             <button 
               onClick={() => handleSectionClick('pricing')} 
               className={`text-white block px-3 py-2 rounded-md text-base font-medium w-full ${isRTL ? 'text-right' : 'text-left'}`}
             >
-              {content?.pricing_link || 'Pricing'}
+              [nav_pricing]
             </button>
             <button 
               onClick={() => handleSectionClick('blog')} 
               className={`text-white block px-3 py-2 rounded-md text-base font-medium w-full ${isRTL ? 'text-right' : 'text-left'}`}
             >
-              {content?.blog_link || 'Blog'}
+              [nav_blog]
             </button>
             <button 
               onClick={() => handleSectionClick('community')} 
               className={`text-white block px-3 py-2 rounded-md text-base font-medium w-full ${isRTL ? 'text-right' : 'text-left'}`}
             >
-              {content?.community_link || 'Community'}
+              [nav_community]
             </button>
           </>
         )}

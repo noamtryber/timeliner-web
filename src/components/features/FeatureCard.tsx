@@ -6,12 +6,13 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 interface FeatureCardProps {
   feature: Feature;
-  isSelected: boolean;
   onClick: () => void;
+  isSelected?: boolean;
+  index?: number;
+  isRTL?: boolean;
 }
 
-export const FeatureCard = ({ feature, isSelected, onClick }: FeatureCardProps) => {
-  const { isRTL } = useLanguage();
+export const FeatureCard = ({ feature, onClick, isSelected = false, isRTL = false }: FeatureCardProps) => {
   const Icon = iconComponents[feature.icon];
 
   return (

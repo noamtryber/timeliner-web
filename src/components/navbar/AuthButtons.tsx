@@ -9,9 +9,10 @@ import { useNavigate } from "react-router-dom";
 
 interface AuthButtonsProps {
   handleAuthClick?: () => void;
+  content?: Record<string, string>;
 }
 
-export const AuthButtons = ({ handleAuthClick }: AuthButtonsProps) => {
+export const AuthButtons = ({ handleAuthClick, content }: AuthButtonsProps) => {
   const { session } = useAuth();
   const { toast } = useToast();
   const { language } = useLanguage();
