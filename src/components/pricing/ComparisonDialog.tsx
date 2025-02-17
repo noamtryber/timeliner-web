@@ -14,31 +14,8 @@ import { useLanguage } from "@/contexts/LanguageContext";
 export const ComparisonDialog = () => {
   const { language } = useLanguage();
 
-  const getButtonText = () => {
-    switch (language) {
-      case 'he':
-        return 'השוואה מלאה בין תוכניות';
-      case 'ar':
-        return 'مقارنة كاملة بين الخطط';
-      case 'es':
-        return 'Ver comparación completa';
-      default:
-        return 'View Full Comparison';
-    }
-  };
-
-  const getTitleText = () => {
-    switch (language) {
-      case 'he':
-        return 'השוואת תכונות מפורטת';
-      case 'ar':
-        return 'مقارنة مفصلة للميزات';
-      case 'es':
-        return 'Comparación detallada de características';
-      default:
-        return 'Detailed Feature Comparison';
-    }
-  };
+  const getButtonText = () => '[comparison_button]';
+  const getTitleText = () => '[comparison_title]';
 
   return (
     <div className="flex justify-center">

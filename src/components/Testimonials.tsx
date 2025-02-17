@@ -7,60 +7,60 @@ const testimonials = {
   en: [
     {
       name: "Noga Levi",
-      role: "Video Editor",
-      quote: "Timeliner has completely streamlined my workflow as a video editor. I save hours every week, allowing me to focus on creativity rather than admin tasks.",
+      role: '[testimonial_1_role]',
+      quote: '[testimonial_1_quote]',
       image: "/lovable-uploads/be9f8176-6ebd-4c6f-a721-34b1f9bd40cd.png"
     },
     {
       name: "Zohar Vanunu",
-      role: "Creative Manager",
-      quote: "As a creative manager, managing multiple teams was chaotic. Timeliner brought everything into one platform and increased our efficiency by 40%.",
+      role: '[testimonial_2_role]',
+      quote: '[testimonial_2_quote]',
       image: "/lovable-uploads/6782f7e6-215f-48d2-b9fb-8abfc1b5d97b.png"
     },
     {
       name: "Noam Tryber",
-      role: "Agency Owner",
-      quote: "For my agency, Timeliner not only saves us time but helps retain clients with improved communication and project delivery. Our revenue has increased by 25%!",
+      role: '[testimonial_3_role]',
+      quote: '[testimonial_3_quote]',
       image: "/lovable-uploads/e4c99774-d5fc-4c77-ab34-cabac470ed41.png"
     }
   ],
   es: [
     {
       name: "Noga Levi",
-      role: "Editora de Video",
-      quote: "Timeliner ha simplificado completamente mi flujo de trabajo como editora de video. Ahorro horas cada semana, permitiéndome concentrarme en la creatividad en lugar de tareas administrativas.",
+      role: '[testimonial_1_role]',
+      quote: '[testimonial_1_quote]',
       image: "/lovable-uploads/be9f8176-6ebd-4c6f-a721-34b1f9bd40cd.png"
     },
     {
       name: "Zohar Vanunu",
-      role: "Gerente Creativo",
-      quote: "Como gerente creativo, gestionar múltiples equipos era caótico. Timeliner unificó todo en una plataforma y aumentó nuestra eficiencia en un 40%.",
+      role: '[testimonial_2_role]',
+      quote: '[testimonial_2_quote]',
       image: "/lovable-uploads/6782f7e6-215f-48d2-b9fb-8abfc1b5d97b.png"
     },
     {
       name: "Noam Tryber",
-      role: "Dueño de Agencia",
-      quote: "Para mi agencia, Timeliner no solo nos ahorra tiempo sino que ayuda a retener clientes con una mejor comunicación y entrega de proyectos. ¡Nuestros ingresos han aumentado un 25%!",
+      role: '[testimonial_3_role]',
+      quote: '[testimonial_3_quote]',
       image: "/lovable-uploads/e4c99774-d5fc-4c77-ab34-cabac470ed41.png"
     }
   ],
   he: [
     {
       name: "נגה לוי",
-      role: "עורכת וידאו",
-      quote: "טיימליינר שיפר ממש את תהליך העבודה שלי כעורכת וידאו מול לקוחות. אני חוסכת שעות בכל שבוע, ומאפשרת לי להתמקד ביצירתיות במקום במשימות מעצבנות ובלאגן בווצאפ.",
+      role: '[testimonial_1_role]',
+      quote: '[testimonial_1_quote]',
       image: "/lovable-uploads/be9f8176-6ebd-4c6f-a721-34b1f9bd40cd.png"
     },
     {
       name: "זוהר וענונו",
-      role: "יוצר תלת ומנהל פרויקטים",
-      quote: "כאיש תלת מימד ובעבודה מול לקוחות בינלאומיים, טיימליינר ריכז את הכל לפלטפורמה אחת והעלה את היעילות שלי והלקוחות שלי לפחות פי 2.",
+      role: '[testimonial_2_role]',
+      quote: '[testimonial_2_quote]',
       image: "/lovable-uploads/6782f7e6-215f-48d2-b9fb-8abfc1b5d97b.png"
     },
     {
       name: "נועם טרייבר",
-      role: "בעל סוכנות תוכן קצר",
-      quote: "Timeliner לא רק חוסך לנו זמן אלא גם מסייע בשימור לקוחות עם תקשורת משופרת ומסירת פרויקטים מדוייקים בזמן. ההכנסות שלנו גדלו ב-15%!",
+      role: '[testimonial_3_role]',
+      quote: '[testimonial_3_quote]',
       image: "/lovable-uploads/e4c99774-d5fc-4c77-ab34-cabac470ed41.png"
     }
   ]
@@ -71,51 +71,51 @@ const stats = {
     {
       value: 2.4,
       suffix: "X",
-      label: "Faster Revision Rounds"
+      label: '[stat_1_label]'
     },
     {
       value: 19.7,
       suffix: "%",
-      label: "Increase in Earnings"
+      label: '[stat_2_label]'
     },
     {
       value: 24.1,
       suffix: "%",
-      label: "Increase of Client Retention in Retainers"
+      label: '[stat_3_label]'
     }
   ],
   es: [
     {
       value: 2.4,
       suffix: "X",
-      label: "Rondas de Revisión más Rápidas"
+      label: '[stat_1_label]'
     },
     {
       value: 19.7,
       suffix: "%",
-      label: "Aumento en Ganancias"
+      label: '[stat_2_label]'
     },
     {
       value: 24.1,
       suffix: "%",
-      label: "Aumento en Retención de Clientes"
+      label: '[stat_3_label]'
     }
   ],
   he: [
     {
       value: 2.4,
       suffix: "X",
-      label: "מהירות סבבי תיקונים"
+      label: '[stat_1_label]'
     },
     {
       value: 19.7,
       suffix: "%",
-      label: "עלייה בהכנסות"
+      label: '[stat_2_label]'
     },
     {
       value: 24.1,
       suffix: "%",
-      label: "עלייה בשימור לקוחות"
+      label: '[stat_3_label]'
     }
   ]
 };
@@ -182,21 +182,11 @@ export const Testimonials = () => {
   const content = testimonials[language === 'he' ? 'he' : language === 'es' ? 'es' : 'en'];
   const statsContent = stats[language === 'he' ? 'he' : language === 'es' ? 'es' : 'en'];
   
-  const title = {
-    en: 'Testimonials',
-    es: 'Testimonios',
-    he: 'המלצות'
-  }[language === 'he' ? 'he' : language === 'es' ? 'es' : 'en'];
-
-  const subtitle = {
-    en: 'What others are saying',
-    es: '¿Qué dicen nuestros clientes?',
-    he: 'מה הלקוחות שלנו מספרים?'
-  }[language === 'he' ? 'he' : language === 'es' ? 'es' : 'en'];
+  const title = '[testimonials_title]';
+  const subtitle = '[testimonials_subtitle]';
 
   return (
     <section id="testimonials" className="py-24 relative overflow-hidden">
-      {/* Background gradient effects */}
       <div className="absolute -top-[40%] -right-[20%] w-[70%] h-[100%] bg-primary/20 blur-[120px] rounded-full" />
       <div className="absolute -bottom-[40%] -left-[20%] w-[70%] h-[100%] bg-accent/20 blur-[120px] rounded-full" />
       
@@ -210,7 +200,6 @@ export const Testimonials = () => {
           </h2>
         </div>
 
-        {/* Statistics */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
           {statsContent.map((stat, index) => (
             <Card 
@@ -226,7 +215,6 @@ export const Testimonials = () => {
           ))}
         </div>
 
-        {/* Testimonials */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
           {content.map((testimonial, index) => (
             <Card 

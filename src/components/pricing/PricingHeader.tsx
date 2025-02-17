@@ -13,85 +13,10 @@ export const PricingHeader = ({ pricingPeriod, setPricingPeriod }: PricingHeader
   const { data: content } = usePageContent('pricing', 'header');
   const isRTL = language === 'he' || language === 'ar';
 
-  const getTitle = () => {
-    switch (language) {
-      case 'ar':
-        return 'اختر الخطة المثالية لك';
-      case 'es':
-        return 'Encuentra el Plan Perfecto para Ti';
-      case 'he':
-        return 'בחרו את התוכנית המושלמת עבורכם';
-      default:
-        return 'Find the Perfect Plan for You';
-    }
-  };
-
-  const getSubtitle = () => {
-    switch (language) {
-      case 'ar':
-        return 'ابدأ مجانًا وتوسع مع نمو أعمالك. اختر الخطة التي تناسب سير عملك.';
-      case 'es':
-        return 'Comienza gratis y escala mientras creces. Elige el plan que se ajuste a tu flujo de trabajo.';
-      case 'he':
-        return 'התחילו בחינם והתקדמו ככל שתצמחו. בחרו בתוכנית שמתאימה בדיוק לסגנון העבודה שלכם.';
-      default:
-        return 'Start for free and scale up as you grow. Choose the plan that fits your workflow.';
-    }
-  };
-
-  const getPeriodText = (period: 'monthly' | 'quarterly' | 'yearly') => {
-    switch (language) {
-      case 'ar':
-        switch (period) {
-          case 'monthly':
-            return 'شهري';
-          case 'quarterly':
-            return 'ربع سنوي';
-          case 'yearly':
-            return 'سنوي';
-        }
-      case 'es':
-        switch (period) {
-          case 'monthly':
-            return 'Mensual';
-          case 'quarterly':
-            return 'Trimestral';
-          case 'yearly':
-            return 'Anual';
-        }
-      case 'he':
-        switch (period) {
-          case 'monthly':
-            return 'חודשי';
-          case 'quarterly':
-            return 'רבעוני';
-          case 'yearly':
-            return 'שנתי';
-        }
-      default:
-        switch (period) {
-          case 'monthly':
-            return 'Monthly';
-          case 'quarterly':
-            return 'Quarterly';
-          case 'yearly':
-            return 'Yearly';
-        }
-    }
-  };
-
-  const getDiscountText = (discount: '15%' | '25%') => {
-    switch (language) {
-      case 'ar':
-        return `خصم ${discount}`;
-      case 'es':
-        return `${discount} de descuento`;
-      case 'he':
-        return `${discount} הנחה`;
-      default:
-        return `${discount} off`;
-    }
-  };
+  const getTitle = () => '[pricing_title]';
+  const getSubtitle = () => '[pricing_subtitle]';
+  const getPeriodText = (period: 'monthly' | 'quarterly' | 'yearly') => `[pricing_period_${period}]`;
+  const getDiscountText = (discount: '15%' | '25%') => `[pricing_discount_${discount.replace('%', '')}]`;
 
   return (
     <div className="text-center max-w-3xl mx-auto mb-16">
