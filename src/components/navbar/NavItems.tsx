@@ -1,52 +1,26 @@
+
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useNavigate } from "react-router-dom";
+import { usePageContent } from "@/hooks/usePageContent";
 
 interface NavItemsProps {
-  content?: any;
   handleSectionClick: (sectionId: string) => void;
   hideMainNav?: boolean;
 }
 
-const translations = {
-  features: {
-    en: 'Features',
-    es: 'Funcionalidades',
-    he: 'פיצ\'רים'
-  },
-  testimonials: {
-    en: 'Testimonials',
-    es: 'Testimonios',
-    he: 'המלצות'
-  },
-  pricing: {
-    en: 'Pricing',
-    es: 'Precios',
-    he: 'תמחור'
-  },
-  blog: {
-    en: 'Blog',
-    es: 'Blog',
-    he: 'בלוג'
-  },
-  community: {
-    en: 'Community',
-    es: 'Comunidad',
-    he: 'קהילה'
-  }
-};
-
-export const NavItems = ({ content, handleSectionClick, hideMainNav }: NavItemsProps) => {
+export const NavItems = ({ handleSectionClick, hideMainNav }: NavItemsProps) => {
   const { language, isRTL } = useLanguage();
   const navigate = useNavigate();
+  const { data: content } = usePageContent('nav', 'main-nav');
 
   if (hideMainNav) return null;
 
   const navItems = [
-    { id: 'features', onClick: () => handleSectionClick('features') },
-    { id: 'testimonials', onClick: () => handleSectionClick('testimonials') },
-    { id: 'pricing', onClick: () => handleSectionClick('pricing') },
-    { id: 'blog', onClick: () => handleSectionClick('blog') },
-    { id: 'community', onClick: () => navigate('/community') }
+    { id: 'features', link_key: 'features_link', onClick: () => handleSectionClick('features') },
+    { id: 'testimonials', link_key: 'testimonials_link', onClick: () => handleSectionClick('testimonials') },
+    { id: 'pricing', link_key: 'pricing_link', onClick: () => handleSectionClick('pricing') },
+    { id: 'blog', link_key: 'blog_link', onClick: () => handleSectionClick('blog') },
+    { id: 'community', link_key: 'community_link', onClick: () => navigate('/community') }
   ];
 
   const items = isRTL ? [...navItems].reverse() : navItems;
@@ -59,9 +33,7 @@ export const NavItems = ({ content, handleSectionClick, hideMainNav }: NavItemsP
           onClick={item.onClick} 
           className={`text-white hover:text-white px-3 py-2 rounded-md text-base font-medium w-full ${isRTL ? 'text-right' : 'text-left'}`}
         >
-          {translations[item.id as keyof typeof translations][language as keyof typeof translations.features] || 
-           content?.[`${item.id}_link`] || 
-           item.id.charAt(0).toUpperCase() + item.id.slice(1)}
+          {content?.[item.link_key] || `[${item.link_key}]`}
         </button>
       ))}
     </>

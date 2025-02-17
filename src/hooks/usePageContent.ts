@@ -19,7 +19,23 @@ export const usePageContent = (sectionType: SectionType, sectionId?: string) => 
     queryKey: ['translations', sectionType, sectionId, language],
     queryFn: async () => {
       try {
-        return await fetchTranslations(sectionType, sectionId, language);
+        const translations = await fetchTranslations(sectionType, sectionId, language);
+        
+        // If translations object is empty, return an empty object
+        // to prevent unnecessary placeholder display
+        if (Object.keys(translations).length === 0) {
+          return {};
+        }
+
+        // Create proxy object to handle missing translations
+        return new Proxy(translations, {
+          get: (target, prop) => {
+            if (typeof prop === 'string') {
+              return target[prop] || `[${prop}]`;
+            }
+            return undefined;
+          }
+        });
       } catch (error) {
         console.error('Error in usePageContent:', error);
         toast({
