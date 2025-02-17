@@ -1,3 +1,4 @@
+
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -22,10 +23,10 @@ export const DemoDialog = ({ showDemo, onClose, content, media, language }: Demo
         <DialogContent dir="rtl" className="sm:max-w-[800px] bg-card/95 backdrop-blur-xl">
           <DialogHeader>
             <DialogTitle className="text-2xl gradient-text text-right">
-              איך זה תכל'ס עובד?
+              [demo_title_he]
             </DialogTitle>
             <DialogDescription className="text-lg text-white/70 mt-4 leading-relaxed text-right">
-              צפו בסרטון המלא ותבינו למה טיימליינר הוא הכלי היחיד שתצטרכו לניהול פרויקטים, סבבי תיקונים וקבלת תשלומים בזמן.
+              [demo_description_he]
             </DialogDescription>
           </DialogHeader>
           <div className="mt-6 rounded-xl overflow-hidden aspect-video">
@@ -46,10 +47,10 @@ export const DemoDialog = ({ showDemo, onClose, content, media, language }: Demo
       <DialogContent className="sm:max-w-[800px] bg-card/95 backdrop-blur-xl">
         <DialogHeader>
           <DialogTitle className="text-2xl gradient-text">
-            {content?.demo_title || "See How It Works"}
+            [demo_title]
           </DialogTitle>
           <DialogDescription className="text-lg text-white/70 mt-4 leading-relaxed">
-            {content?.demo_description || "Watch our 2-minute demo to see how Timeliner can streamline your creative workflow and help you manage projects more efficiently."}
+            [demo_description]
           </DialogDescription>
         </DialogHeader>
         <div className="mt-6 rounded-xl overflow-hidden aspect-video">
