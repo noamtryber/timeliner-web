@@ -1,5 +1,5 @@
 
-import { getVimeoEmbedUrl } from "../utils/videoUtils";
+import { getVimeoEmbedUrl } from "@/utils/videoUtils";
 
 interface FeaturePreviewProps {
   videoUrl: string;
@@ -29,3 +29,4 @@ export const FeaturePreview = ({ videoUrl, isAlternate }: FeaturePreviewProps) =
     </div>
   );
 };
+
