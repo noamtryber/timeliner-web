@@ -37,12 +37,15 @@ export const usePageContent = (sectionType: SectionType, sectionId?: string) => 
           }
         });
       } catch (error) {
+        // Log the error but don't show toast for duplicate key errors
         console.error('Error in usePageContent:', error);
-        toast({
-          variant: "destructive",
-          title: "Error fetching translations",
-          description: "Please try refreshing the page"
-        });
+        if (!error.message?.includes('duplicate key value')) {
+          toast({
+            variant: "destructive",
+            title: "Error fetching translations",
+            description: "Please try refreshing the page"
+          });
+        }
         return {};
       }
     },

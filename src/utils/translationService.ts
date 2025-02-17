@@ -80,7 +80,7 @@ export const fetchTranslations = async (
   const cache = getStoredCache();
   const cachedData = cache[cacheKey];
 
-  // Check cache version - using maybeSingle() instead of single()
+  // Check cache version
   const { data: versionData, error: versionError } = await supabase
     .from('translation_cache_versions')
     .select('last_updated')
@@ -99,14 +99,19 @@ export const fetchTranslations = async (
     return cachedData.translations;
   }
 
-  // Initialize cache version if it doesn't exist
+  // Initialize cache version if it doesn't exist - use upsert instead of insert
   if (!serverVersion) {
-    const { error: insertError } = await supabase
+    const { error: upsertError } = await supabase
       .from('translation_cache_versions')
-      .insert({ language: language });
+      .upsert({ 
+        language: language,
+        last_updated: new Date().toISOString()
+      }, {
+        onConflict: 'language'
+      });
     
-    if (insertError) {
-      console.error('Error initializing cache version:', insertError);
+    if (upsertError) {
+      console.error('Error initializing cache version:', upsertError);
     }
   }
 
