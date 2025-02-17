@@ -1,6 +1,6 @@
 import { Competitor } from "../types";
 
-export const dropboxData: Competitor = {
+export const dropbox: Competitor = {
   id: "dropbox",
   name: "Dropbox Replay",
   logo: "/lovable-uploads/16ee0992-d929-4b38-b7b4-bbfb80f50721.png",

@@ -1,6 +1,6 @@
 import { Competitor } from "../types";
 
-export const frameioData: Competitor = {
+export const frameio: Competitor = {
   id: "frameio",
   name: "Frame.io",
   logo: "/lovable-uploads/acfcdad6-1f19-423f-9c1e-ae8fdb3f3620.png",

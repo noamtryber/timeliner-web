@@ -1,6 +1,6 @@
 import { Competitor } from "../types";
 
-export const vimeoData: Competitor = {
+export const vimeo: Competitor = {
   id: "vimeo",
   name: "Vimeo Review",
   logo: "/lovable-uploads/e612d0f5-d66b-4f48-9de7-f142a4fa9670.png",
@@ -26,7 +26,7 @@ export const vimeoData: Competitor = {
           type: "positive",
           text: "Timeliner is purpose-built for video editors and post-production teams, with advanced version control, team monitoring, client portals, and AI-powered captions in multiple languages—not just English. It also integrates with WhatsApp, Slack, and email for streamlined client collaboration. No per-user pricing means agencies and video teams save money while getting more features. 🎬",
           spanishText: "Timeliner está diseñado específicamente para editores de video y equipos de postproducción, con control de versiones avanzado, monitoreo de equipos, portales de clientes y subtítulos impulsados por IA en varios idiomas, no solo en inglés. También se integra con WhatsApp, Slack y correo electrónico para una colaboración fluida con los clientes. Sin precios por usuario, las agencias y equipos de video ahorran dinero mientras obtienen más funciones. 🎬",
-          hebrewText: "Timeliner נבנתה במיוחד עבור עורכי וידאו וצוותי פוסט-פרודקשן, עם בקרת גרסאות מתקדמת, מעקב אחר צוותים, פורטלים ללקוחות וכתוביות מבוססות AI במספר שפות - לא רק באנגלית. היא גם משתלבת עם וואטסאפ, סלאק ואימייל לשיתוף פעולה יעיל עם לקוחות. ללא תמחור לפי משתמש, סוכנויות וצוותי וידאו חוסכים כסף תוך קבל�� יותר תכונות. 🎬"
+          hebrewText: "Timeliner נבנתה במיוחד עבור עורכי וידאו וצוותי פוסט-פרודקשן, עם בקרת גרסאות מתקדמת, מעקב אחר צוותים, פורטלים ללקוחות וכתוביות מבוססות AI במספר שפות - לא רק באנגלית. היא גם משתלבת ע�� וואטסאפ, סלאק ואימייל לשיתוף פעולה יעיל עם לקוחות. ללא תמחור לפי משתמש, סוכנויות וצוותי וידאו חוסכים כסף תוך קבל�� יותר תכונות. 🎬"
         }
       ]
     },

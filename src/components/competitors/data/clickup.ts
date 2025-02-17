@@ -1,6 +1,6 @@
 import { Competitor } from "../types";
 
-export const clickupData: Competitor = {
+export const clickup: Competitor = {
   id: "clickup",
   name: "ClickUp",
   logo: "/lovable-uploads/d4d71abe-8984-4b88-baf8-c4dd913ee9b6.png",
