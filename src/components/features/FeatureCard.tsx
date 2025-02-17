@@ -1,49 +1,45 @@
-import { Button } from "@/components/ui/button";
-import { PlayCircle } from "lucide-react";
+
+import { cn } from "@/lib/utils";
+import { Feature } from "./featureData";
+import { iconComponents } from "./iconComponents";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface FeatureCardProps {
-  feature: {
-    id: string;
-    title: string;
-    description: string;
-    icon: string;
-  };
+  feature: Feature;
+  isSelected: boolean;
   onClick: () => void;
-  previewUrl: string;
-  index: number;
-  isRTL: boolean;
 }
 
-export const FeatureCard = ({ feature, onClick, previewUrl, index, isRTL }: FeatureCardProps) => {
+export const FeatureCard = ({ feature, isSelected, onClick }: FeatureCardProps) => {
+  const { isRTL } = useLanguage();
+  const Icon = iconComponents[feature.icon];
+
   return (
-    <div 
-      className="group bg-card/50 backdrop-blur-sm rounded-2xl p-6 hover:bg-card/80 transition-all duration-300
-        opacity-0 translate-y-10 animate-[fade-in_0.5s_ease-out_forwards]"
-      style={{ animationDelay: `${index * 0.1}s` }}
+    <button
+      onClick={onClick}
+      className={cn(
+        "w-full p-4 rounded-lg transition-all duration-300",
+        "hover:bg-white/5",
+        isSelected ? "bg-white/5" : "bg-transparent",
+        isRTL ? "text-right" : "text-left"
+      )}
     >
-      <div className="aspect-video rounded-lg overflow-hidden mb-6 bg-black/20">
-        {previewUrl && (
-          <iframe
-            src={`${previewUrl}?autoplay=1&loop=1&autopause=0&background=1&muted=1`}
-            className="w-full h-full scale-[1.01]"
-            allow="autoplay; fullscreen; picture-in-picture"
-            style={{
-              border: 'none',
-              background: 'transparent',
-            }}
-          />
-        )}
+      <div className={cn(
+        "flex items-start gap-3",
+        isRTL && "flex-row-reverse"
+      )}>
+        <div className="flex-shrink-0">
+          <Icon className="w-6 h-6 text-primary" />
+        </div>
+        <div>
+          <h3 className="font-medium mb-1">
+            {feature.title}
+          </h3>
+          <p className="text-sm text-white/70">
+            {feature.description}
+          </p>
+        </div>
       </div>
-      <h4 className="text-xl font-semibold mb-3">{feature.title}</h4>
-      <p className="text-white/70 mb-6 min-h-[3rem]">{feature.description}</p>
-      <Button 
-        onClick={onClick}
-        variant="outline"
-        className="w-full justify-center hover:bg-primary hover:text-white"
-      >
-        <PlayCircle className="w-5 h-5 mr-2" />
-        Learn More
-      </Button>
-    </div>
+    </button>
   );
 };
