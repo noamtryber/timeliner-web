@@ -1,3 +1,4 @@
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Toaster } from "@/components/ui/toaster";
 import { AccessibilityButton } from "@/components/accessibility/AccessibilityButton";
@@ -8,6 +9,7 @@ import Blog from "@/pages/Blog";
 import Community from "@/pages/Community";
 import SignUp from "@/pages/SignUp";
 import Waitlist from "@/pages/Waitlist";
+import TranslationsManager from "@/pages/TranslationsManager";
 
 function App() {
   return (
@@ -38,6 +40,7 @@ function App() {
             <Route path="/community" element={<Community />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/waitlist" element={<Waitlist />} />
+            <Route path="/translations" element={<TranslationsManager />} />
           </Routes>
           <AccessibilityButton />
           <Toaster />
