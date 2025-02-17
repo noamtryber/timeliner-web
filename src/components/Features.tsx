@@ -10,8 +10,9 @@ import { featureGroups } from "./features/featureData";
 import { featureGroupsHe } from "./features/featureDataHe";
 import { featureGroupsAr } from "./features/featureDataAr";
 import { featureGroupsEs } from "./features/featureDataEs";
-import { iconComponents } from "./features/iconComponents";
-import { Button } from "./ui/button";
+import { FeatureSelector } from "./features/FeatureSelector";
+import { FeaturePreview } from "./features/FeaturePreview";
+import { FeatureDetails } from "./features/FeatureDetails";
 
 export const Features = () => {
   const [openDialog, setOpenDialog] = useState<string | null>(null);
@@ -53,14 +54,6 @@ export const Features = () => {
 
   const activeFeature = currentFeatureGroups.flatMap(group => group.features).find(f => f.id === openDialog);
   
-  const getFeatureContent = (featureId: string, key: string): string => {
-    const feature = currentFeatureGroups.flatMap(g => g.features).find(f => f.id === featureId);
-    if (feature && key in feature) {
-      return feature[key as keyof typeof feature] as string;
-    }
-    return '';
-  };
-
   const getFeatureMedia = (sectionId: string, key: string) => {
     if (!media) return '';
     const mediaItem = media.find(item => 
@@ -71,10 +64,17 @@ export const Features = () => {
     return mediaItem?.media_url || '';
   };
 
-  const getVimeoEmbedUrl = (url: string) => {
-    if (!url) return '';
-    const vimeoId = url.match(/vimeo\.com\/(\d+)/)?.[1];
-    return vimeoId ? `https://player.vimeo.com/video/${vimeoId}?autoplay=1&loop=1&muted=1&background=1&quality=1080p` : '';
+  const getLearnMoreText = () => {
+    switch (language) {
+      case 'he':
+        return 'למדו עוד';
+      case 'ar':
+        return 'اعرف المزيد';
+      case 'es':
+        return 'Saber más';
+      default:
+        return 'Learn More';
+    }
   };
 
   if (contentLoading || mediaLoading) {
@@ -93,19 +93,6 @@ export const Features = () => {
     );
   }
 
-  const getLearnMoreText = () => {
-    switch (language) {
-      case 'he':
-        return 'למדו עוד';
-      case 'ar':
-        return 'اعرف المزيد';
-      case 'es':
-        return 'Saber más';
-      default:
-        return 'Learn More';
-    }
-  };
-
   return (
     <section id="features" className="py-20 overflow-hidden relative" dir={isRTL ? 'rtl' : 'ltr'}>
       {/* Background gradients */}
@@ -121,94 +108,36 @@ export const Features = () => {
         <div className="space-y-32 md:space-y-64 lg:space-y-96 pb-[200px]">
           {currentFeatureGroups.map((group, index) => {
             const currentFeature = group.features.find(f => f.id === selectedFeatures[group.id]);
-            const IconComponent = currentFeature ? iconComponents[currentFeature.icon] : null;
             const isAlternate = index === 1 || index === 3;
 
             return (
               <div key={group.id} className="space-y-8 md:space-y-12">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-center">
-                  {/* Feature List - Mobile: First */}
-                  <div className={`col-span-1 md:col-span-2 md:space-y-2 flex flex-col order-1 md:${isAlternate ? 'order-3' : 'order-1'}`}>
-                    <div className={`grid grid-cols-2 md:grid-cols-1 gap-2 mb-6 md:mb-0 ${group.features.length === 1 ? 'grid-cols-1 justify-items-center' : ''}`}>
-                      {group.features.map((feature) => (
-                        <button
-                          key={feature.id}
-                          onClick={() => setSelectedFeatures(prev => ({
-                            ...prev,
-                            [group.id]: feature.id
-                          }))}
-                          className={`p-3 rounded-lg transition-all duration-300 flex items-center 
-                            ${group.features.length === 1 ? 'w-1/2 mx-auto md:w-full md:mx-0' : 'w-full'}
-                            ${selectedFeatures[group.id] === feature.id 
-                              ? 'bg-primary/10 font-semibold text-primary' 
-                              : 'hover:bg-card/50 text-white'
-                            }
-                            ${feature.title.includes('WhatsApp') || feature.title.includes('Slack') || feature.title.includes('Transparent Payment Tracking') 
-                              ? 'justify-start' 
-                              : 'justify-center md:justify-start'
-                            }`}
-                        >
-                          <span className="text-sm">{feature.title}</span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+                  <FeatureSelector
+                    features={group.features}
+                    selectedFeatureId={selectedFeatures[group.id]}
+                    onFeatureSelect={(featureId) => setSelectedFeatures(prev => ({
+                      ...prev,
+                      [group.id]: featureId
+                    }))}
+                    isAlternate={isAlternate}
+                  />
 
-                  {/* Rest of the component */}
-                  {/* Video Preview - Mobile: Second */}
-                  <div className={`col-span-1 md:col-span-6 order-2 
-                    ${isAlternate 
-                      ? 'md:order-1 md:col-start-1' 
-                      : 'md:col-start-7 md:order-3'
-                    }`}>
-                    <div className="aspect-video rounded-xl overflow-hidden bg-black/20 shadow-xl w-full">
-                      {currentFeature && (
-                        <iframe
-                          src={getVimeoEmbedUrl(getFeatureMedia(currentFeature.id, 'preview'))}
-                          className="w-full h-full scale-[1.01]"
-                          allow="autoplay; fullscreen; picture-in-picture"
-                          style={{
-                            border: 'none',
-                            background: 'transparent',
-                          }}
-                        />
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Feature Details - Mobile: Third */}
                   {currentFeature && (
-                    <div className={`col-span-1 md:col-span-4 order-3 ${isAlternate ? 'md:order-2' : 'md:order-2'}`}>
-                      <div className="flex flex-col justify-center h-full">
-                        <div className="flex items-start">
-                          {IconComponent && (
-                            <div className="flex-shrink-0">
-                              <IconComponent className="w-8 h-8 text-primary" />
-                            </div>
-                          )}
-                          <div className={`${isRTL ? 'mr-4 text-right' : 'ml-4 text-left'}`}>
-                            <h3 className="text-xl md:text-2xl font-bold leading-tight mb-4">
-                              {currentFeature.title}
-                            </h3>
-                          </div>
-                        </div>
-                        <div className={`${isRTL ? 'text-right' : 'text-left'}`}>
-                          <p className="text-white/70 text-base md:text-lg leading-relaxed mb-4">
-                            {currentFeature.description}
-                          </p>
-                          <div>
-                            <Button 
-                              onClick={() => setOpenDialog(currentFeature.id)}
-                              variant="outline"
-                              size="lg"
-                              className="w-1/2 md:w-auto text-lg"
-                            >
-                              {getLearnMoreText()}
-                            </Button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <>
+                      <FeaturePreview
+                        videoUrl={getFeatureMedia(currentFeature.id, 'preview')}
+                        isAlternate={isAlternate}
+                      />
+
+                      <FeatureDetails
+                        feature={currentFeature}
+                        isAlternate={isAlternate}
+                        isRTL={isRTL}
+                        onLearnMore={() => setOpenDialog(currentFeature.id)}
+                        learnMoreText={getLearnMoreText()}
+                      />
+                    </>
                   )}
                 </div>
               </div>
